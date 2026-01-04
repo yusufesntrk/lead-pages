@@ -1,28 +1,57 @@
-Lies die Datei leads.csv in diesem Verzeichnis.
+Du bist ein Agent der personalisierte Landingpages für Leads erstellt.
 
-Für JEDE Zeile in der CSV (außer Header):
+## Schritt 1: Airtable Leads abrufen
 
-1. Erstelle einen Ordner in docs/ mit dem Firmennamen (lowercase, Leerzeichen durch Bindestriche ersetzen, Umlaute ersetzen: ä→ae, ö→oe, ü→ue, ß→ss)
+Nutze den Airtable MCP um alle Leads aus der Base "Lead Pages", Table "Leads" zu lesen, 
+bei denen das Feld "Seite erstellt" NICHT angehakt ist (false/leer).
 
-2. Erstelle eine personalisierte index.html basierend auf template.html mit folgenden Anpassungen:
-   - {{FIRMA}} → Firmenname aus CSV
-   - {{BRANCHE}} → Branche aus CSV
-   - {{ANSPRECHPARTNER}} → Ansprechpartner aus CSV
-   - {{PAIN_POINT}} → Pain Point aus CSV, ausformuliert als 2-3 Sätze
-   - {{SOLUTION_TEXT}} → Schreibe 2-3 Sätze wie ShortSelect/Leyal Tech diesen spezifischen Pain Point löst
-   - {{BENEFITS_HTML}} → Generiere 3-4 branchenspezifische Benefits als HTML:
+## Schritt 2: Für jeden Lead eine Seite erstellen
+
+Für JEDEN Lead ohne erstellte Seite:
+
+1. Erstelle einen Ordner in docs/ mit dem Firmennamen:
+   - lowercase
+   - Leerzeichen → Bindestriche
+   - Umlaute ersetzen: ä→ae, ö→oe, ü→ue, ß→ss
+   - Sonderzeichen entfernen
+
+2. Erstelle eine personalisierte index.html basierend auf template.html:
+   - {{FIRMA}} → Firmenname
+   - {{BRANCHE}} → Branche
+   - {{ANSPRECHPARTNER}} → Ansprechpartner
+   - {{PAIN_POINT}} → Pain Point als 2-3 ausformulierte Sätze
+   - {{SOLUTION_TEXT}} → 2-3 Sätze wie ShortSelect/Leyal Tech diesen Pain Point löst
+   - {{BENEFITS_HTML}} → 3-4 branchenspezifische Benefits als HTML:
+     ```html
      <div class="benefit">
        <div class="benefit-icon">✓</div>
-       <div>[Benefit Text]</div>
+       <div>[Benefit passend zur Branche und Pain Point]</div>
      </div>
+     ```
 
-3. Die Benefits sollen spezifisch für die Branche und den Pain Point sein, nicht generisch.
+3. Speichere als docs/[firmenname]/index.html
 
-4. Speichere die Datei als docs/[firmenname]/index.html
+## Schritt 3: Git Push
 
-Nachdem alle Seiten erstellt sind:
-- git add .
-- git commit -m "Neue Lead-Seiten generiert: [Liste der Firmennamen]"
-- git push
+Nachdem ALLE Seiten erstellt sind:
+```bash
+git add .
+git commit -m "Neue Lead-Seiten: [Liste der Firmennamen]"
+git push
+```
 
-Zeige mir am Ende eine Liste aller erstellten Seiten mit ihren zukünftigen URLs.
+## Schritt 4: Airtable aktualisieren
+
+Für JEDEN erstellten Lead, nutze Airtable MCP um:
+1. Das Feld "Seite erstellt" auf true/checked zu setzen
+2. Das Feld "Landingpage URL" zu füllen mit:
+   `https://lead-pages.pages.dev/[firmenname]/`
+
+## Schritt 5: Zusammenfassung
+
+Zeige eine Tabelle mit:
+| Firma | Landingpage URL | Status |
+|-------|-----------------|--------|
+| ... | ... | ✓ Erstellt |
+
+Melde wenn keine neuen Leads vorhanden sind.

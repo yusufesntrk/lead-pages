@@ -1,52 +1,83 @@
 # Lead Pages Generator
 
 Generiert personalisierte Landingpages für Leads mit Claude Code und deployed sie auf Cloudflare Pages.
+Lead-Daten werden in Airtable verwaltet.
 
 ## Setup (einmalig)
 
-### 1. GitHub Repo erstellen
-```bash
-cd /Users/yusufesentuerk/lead-pages
-git init
-git add .
-git commit -m "Initial setup"
-gh repo create lead-pages --public --push
+### 1. Airtable Personal Access Token erstellen
+1. Gehe zu [Airtable Developer Hub](https://airtable.com/create/tokens)
+2. "Create new token"
+3. Scopes auswählen:
+   - `data.records:read`
+   - `data.records:write`
+   - `schema.bases:read`
+   - `schema.bases:write`
+4. Access: Wähle "All current and future bases" oder spezifische Workspace
+5. Token kopieren (beginnt mit `pat...`)
+
+### 2. Airtable MCP in Claude Code einrichten
+Füge zu deiner Claude Code MCP Config hinzu:
+
+**macOS:** `~/.claude/claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "airtable": {
+      "command": "npx",
+      "args": ["airtable-mcp-server"],
+      "env": {
+        "AIRTABLE_API_KEY": "patXXXXXXXXXXXXXX"
+      }
+    }
+  }
+}
 ```
 
-### 2. Cloudflare Pages verbinden
-1. Gehe zu [Cloudflare Dashboard](https://dash.cloudflare.com/) → Pages
+### 3. Cloudflare Pages verbinden
+1. [Cloudflare Dashboard](https://dash.cloudflare.com/) → Pages
 2. "Create a project" → "Connect to Git"
-3. Wähle das `lead-pages` Repository
-4. Build settings:
-   - Build command: (leer lassen)
-   - Build output directory: `docs`
+3. Repository `lead-pages` wählen
+4. Build output directory: `docs`
 5. Save and Deploy
 
-### 3. Custom Domain (optional)
-In Cloudflare Pages → Custom Domains → `leads.leyal.tech`
+### 4. Custom Domain (optional)
+Cloudflare Pages → Custom Domains → `leads.leyal.tech`
 
 ## Verwendung
 
-### 1. Leads vorbereiten
-Bearbeite `leads.csv` mit deinen Leads:
-```csv
-firma,branche,website,ansprechpartner,pain_point
-TechCorp GmbH,IT,techcorp.de,Max Müller,Zu viele Bewerbungen
-```
-
-### 2. Seiten generieren
-Terminal öffnen und ausführen:
+### Seiten generieren
 ```bash
 cd /Users/yusufesentuerk/lead-pages
 claude -p "$(cat generate-prompt.md)"
 ```
 
-### 3. Fertig!
-Nach dem Push sind die Seiten live unter:
-- `https://lead-pages.pages.dev/techcorp-gmbh/`
-- oder `https://leads.leyal.tech/techcorp-gmbh/`
+Der Agent:
+1. Liest Leads aus Airtable (nur wo "Seite erstellt" = false)
+2. Generiert personalisierte Landingpages
+3. Pushed zu GitHub → Cloudflare deployed automatisch
+4. Schreibt die URLs zurück in Airtable
+5. Setzt "Seite erstellt" auf ✓
 
-## Struktur
+## Airtable Struktur
+
+**Base:** Lead Pages
+**Table:** Leads
+
+| Feld | Typ | Beschreibung |
+|------|-----|--------------|
+| Firma | Single line text | Firmenname |
+| Branche | Single select | IT, Healthcare, Finance, etc. |
+| Website | URL | Firmenwebsite |
+| Ansprechpartner | Single line text | Kontaktperson |
+| Position | Single line text | Job-Titel |
+| Pain Point | Long text | Hauptproblem im Recruiting |
+| Seite erstellt | Checkbox | ✓ wenn Landingpage generiert |
+| Landingpage URL | URL | Generierte Seiten-URL |
+| Erstellt am | Created time | Auto |
+
+## Projekt-Struktur
 ```
 lead-pages/
 ├── docs/                  # Generierte Seiten (Cloudflare Build Output)
@@ -54,7 +85,6 @@ lead-pages/
 │   │   └── index.html
 │   └── firma-b/
 │       └── index.html
-├── leads.csv              # Deine Lead-Liste
 ├── template.html          # Basis-Template
 ├── generate-prompt.md     # Claude Code Prompt
 └── README.md
