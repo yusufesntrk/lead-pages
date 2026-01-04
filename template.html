@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{FIRMA}} | Recruiting-Optimierung mit Leyal Tech</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
+        .pain-point {
+            background: #fff5f5;
+            border-left: 4px solid #e53e3e;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .solution {
+            background: #f0fff4;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .benefits { margin: 30px 0; }
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+        }
+        .benefit-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+        .footer img { height: 30px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <span class="badge">Exklusiv für {{BRANCHE}}</span>
+            <h1>{{FIRMA}}, optimieren Sie Ihr Recruiting</h1>
+            <p class="subtitle">Hallo {{ANSPRECHPARTNER}}, wir haben eine Lösung für Ihre Herausforderung.</p>
+            
+            <div class="pain-point">
+                <strong>Ihre Herausforderung:</strong><br>
+                {{PAIN_POINT}}
+            </div>
+            
+            <div class="solution">
+                <strong>Unsere Lösung:</strong><br>
+                {{SOLUTION_TEXT}}
+            </div>
+            
+            <div class="benefits">
+                <h3 style="margin-bottom: 20px;">Was Sie mit ShortSelect erreichen:</h3>
+                {{BENEFITS_HTML}}
+            </div>
+            
+            <a href="https://calendly.com/leyal-tech/demo" class="cta">
+                Demo vereinbaren →
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>Leyal Tech GmbH • Offenburg</p>
+            <p>Innovative Recruiting-Lösungen für die {{BRANCHE}}-Branche</p>
+        </div>
+    </div>
+</body>
+</html>
