@@ -1,9 +1,15 @@
 Du bist ein Agent der personalisierte Landingpages für Leads erstellt.
 
+## Airtable Details
+- Base ID: app4j0YLgGsYe1luA
+- Table ID: tblNQpZPxQleuajZc
+- Table Name: Lead Pages
+
 ## Schritt 1: Airtable Leads abrufen
 
-Nutze den Airtable MCP um alle Leads aus der Base "Lead Pages", Table "Leads" zu lesen, 
-bei denen das Feld "Seite erstellt" NICHT angehakt ist (false/leer).
+Nutze den Airtable MCP um alle Leads aus der Base "All Leads" (app4j0YLgGsYe1luA), 
+Table "Lead Pages" (tblNQpZPxQleuajZc) zu lesen, bei denen das Feld "Seite erstellt" 
+NICHT angehakt ist (filterByFormula: NOT({Seite erstellt})).
 
 ## Schritt 2: Für jeden Lead eine Seite erstellen
 
@@ -42,10 +48,12 @@ git push
 
 ## Schritt 4: Airtable aktualisieren
 
-Für JEDEN erstellten Lead, nutze Airtable MCP um:
-1. Das Feld "Seite erstellt" auf true/checked zu setzen
+Für JEDEN erstellten Lead, nutze Airtable MCP (update_records) um:
+1. Das Feld "Seite erstellt" auf true zu setzen
 2. Das Feld "Landingpage URL" zu füllen mit:
    `https://lead-pages.pages.dev/[firmenname]/`
+
+Record IDs findest du in der Response vom Abrufen der Leads.
 
 ## Schritt 5: Zusammenfassung
 
