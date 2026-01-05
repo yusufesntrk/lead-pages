@@ -196,12 +196,60 @@ python -m generator.main --test
 8. Team-Fotos suchen (Agent 6)
 9. Link QA (Agent 5)
 10. Design Review Loop (Agent 10) - max. 3 Iterationen
+11. Airtable aktualisieren
+12. Git commit & push
 ```
 
 ---
 
-## Deployment
+## Deployment & Finalisierung
+
+### Output-Struktur
 
 - Output: `docs/[firmenname]/`
 - Cloudflare Pages: automatisch bei git push
 - URL: `https://lead-pages.pages.dev/[firmenname]/`
+
+### Nach Website-Erstellung (PFLICHT!)
+
+**1. Airtable aktualisieren:**
+```bash
+# Felder setzen:
+- "Seite erstellt" → true (Checkbox)
+- "Landingpage URL" → https://lead-pages.pages.dev/[firmenname]/
+```
+
+```python
+# Via MCP Tool:
+mcp__airtable__update_records(
+    baseId="app4j0YLgGsYe1luA",
+    tableId="tblNQpZPxQleuajZc",
+    records=[{
+        "id": "recXXXXXX",
+        "fields": {
+            "Seite erstellt": True,
+            "Landingpage URL": "https://lead-pages.pages.dev/firmenname/"
+        }
+    }]
+)
+```
+
+**2. Git Commit & Push:**
+```bash
+git add docs/[firmenname]/
+git commit -m "Add landing page for [Firmenname]"
+git push origin main
+```
+
+**3. Deployment verifizieren:**
+- Warten bis Cloudflare Pages Build fertig (~1-2 Min)
+- URL aufrufen und prüfen: `https://lead-pages.pages.dev/[firmenname]/`
+
+### Checkliste Abschluss
+
+- [ ] Alle Seiten erstellt und geprüft
+- [ ] Design Review bestanden
+- [ ] Airtable "Seite erstellt" = true
+- [ ] Airtable "Landingpage URL" gesetzt
+- [ ] Git gepusht
+- [ ] Live-URL funktioniert

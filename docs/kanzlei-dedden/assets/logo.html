@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanzlei Dedden - Logo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8f9fa;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #1a3a52;
+            margin-bottom: 30px;
+        }
+
+        .logo-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .logo-display.light {
+            background: white;
+            border: 1px solid #e0e0e0;
+        }
+
+        .logo-display.dark {
+            background: #1a3a52;
+        }
+
+        /* Logo Styles */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        .logo-full {
+            font-size: 36px;
+            color: #1a3a52;
+        }
+
+        .logo-full.white {
+            color: white;
+        }
+
+        .logo-with-line {
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .logo-with-line::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #c9a961 0%, #c9a961 50%, transparent 50%);
+        }
+
+        .logo-with-accent {
+            position: relative;
+        }
+
+        .logo-with-accent::before {
+            content: '◆';
+            margin-right: 12px;
+            color: #c9a961;
+            font-size: 20px;
+        }
+
+        .variation {
+            margin-bottom: 30px;
+        }
+
+        .variation-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #5f5f5f;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sizes {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .size-box {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .size-label {
+            font-size: 12px;
+            color: #5f5f5f;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .logo-sm {
+            font-size: 18px;
+            color: #1a3a52;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .logo-md {
+            font-size: 28px;
+            color: #1a3a52;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .logo-lg {
+            font-size: 48px;
+            color: #1a3a52;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .logo-xl {
+            font-size: 64px;
+            color: #1a3a52;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .description {
+            color: #5f5f5f;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .colors-used {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .color-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <h2>Kanzlei Dedden - Logo Variationen</h2>
+
+            <div class="variation">
+                <div class="variation-label">Hauptversion - Heller Hintergrund</div>
+                <div class="logo-display light">
+                    <div class="logo logo-full">Kanzlei Dedden</div>
+                </div>
+                <p class="description">Für helle Hintergründe, Navigation, Hero-Sections</p>
+            </div>
+
+            <div class="variation">
+                <div class="variation-label">Version mit Akzent-Symbol</div>
+                <div class="logo-display light">
+                    <div class="logo logo-full logo-with-accent">Kanzlei Dedden</div>
+                </div>
+                <p class="description">Mit Gold-Diamant als Akzent - elegant und professionell</p>
+            </div>
+
+            <div class="variation">
+                <div class="variation-label">Hauptversion - Dunkler Hintergrund (weiß)</div>
+                <div class="logo-display dark">
+                    <div class="logo logo-full white">Kanzlei Dedden</div>
+                </div>
+                <p class="description">Für Dark-Mode oder dunkle Hintergründe (Footer, Hero)</p>
+            </div>
+
+            <div class="variation">
+                <div class="variation-label">Versionen nach Größe</div>
+                <div class="sizes">
+                    <div class="size-box">
+                        <div class="size-label">Klein (18px)</div>
+                        <div class="logo-sm">KD</div>
+                    </div>
+                    <div class="size-box">
+                        <div class="size-label">Mittel (28px)</div>
+                        <div class="logo-md">Kanzlei Dedden</div>
+                    </div>
+                    <div class="size-box">
+                        <div class="size-label">Groß (48px)</div>
+                        <div class="logo-lg">Kanzlei Dedden</div>
+                    </div>
+                    <div class="size-box">
+                        <div class="size-label">Extra Groß (64px)</div>
+                        <div class="logo-xl">Kanzlei Dedden</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="variation">
+                <div class="variation-label">Verwendete Farben</div>
+                <div class="colors-used">
+                    <div class="color-box">
+                        <div class="color-swatch" style="background-color: #1a3a52;"></div>
+                        <span>Dunkelblau (Primary)</span>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background-color: #c9a961;"></div>
+                        <span>Gold (Accent)</span>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background-color: white; border: 2px solid #1a3a52;"></div>
+                        <span>Weiß (Dark Mode)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
