@@ -718,25 +718,93 @@ REVIEW-KATEGORIEN:
    ls -la assets/
    ```
 
-2. **🚨 MODERNES DESIGN CHECK** (KRITISCH!):
-   Die Website darf NICHT wie eine veraltete WordPress-Seite aussehen!
+2. **🚨 SEKTIONSWEISE SCREENSHOT-ANALYSE** (KRITISCH!):
+   NIEMALS nur einen Screenshot der ganzen Seite machen!
+   Prüfe JEDE Sektion einzeln für detaillierte Analyse.
 
-   PRÜFE MIT PLAYWRIGHT SCREENSHOTS:
+   WORKFLOW:
    ```bash
    # 1. Temp-Ordner erstellen
    mkdir -p .playwright-tmp
+   ```
 
-   # 2. Screenshots machen (Desktop + Mobile)
-   # → savePng: true, downloadsDir: ".playwright-tmp"
-   playwright_screenshot(name="desktop", width=1440, height=900, savePng=true, downloadsDir=".playwright-tmp")
-   playwright_screenshot(name="mobile", width=375, height=667, savePng=true, downloadsDir=".playwright-tmp")
+   ```javascript
+   // 2. Seite öffnen
+   playwright_navigate({ url: "file:///.../index.html" })
 
-   # 3. Screenshots analysieren (Read Tool)
+   // 3. SEKTIONSWEISE Screenshots (JEDE Sektion einzeln!)
+   // Scrolle zur Sektion und mache Screenshot:
+   playwright_screenshot({ name: "01-header-hero", selector: "header, .hero, section:first-of-type" })
+   playwright_screenshot({ name: "02-services", selector: ".services, #services" })
+   playwright_screenshot({ name: "03-about", selector: ".about, #about, #ueber-uns" })
+   playwright_screenshot({ name: "04-team", selector: ".team, #team" })
+   playwright_screenshot({ name: "05-testimonials", selector: ".testimonials, #referenzen" })
+   playwright_screenshot({ name: "06-contact", selector: ".contact, #kontakt" })
+   playwright_screenshot({ name: "07-footer", selector: "footer" })
+   // ... für jede Sektion!
+   ```
 
-   # 4. SOFORT nach Analyse löschen!
+   ```bash
+   # 4. Screenshots analysieren (Read Tool für jedes Bild)
+   # 5. SOFORT nach Analyse löschen!
    rm .playwright-tmp/*.png && rmdir .playwright-tmp
    ```
-   - Bewerte: Wirkt die Seite MODERN oder VERALTET?
+
+3. **🖼️ LOGO-PRÜFUNG** (KRITISCH!):
+   Logos können "unsichtbar" sein wenn:
+   - Weißes Logo auf weißem Hintergrund
+   - SVG ohne Füllung (nur Pfade)
+   - Falsches Farbschema
+
+   PRÜFE:
+   - Screenshot vom Header machen
+   - Ist das Logo SICHTBAR? Nicht nur ein weißes Rechteck?
+   - Stimmen die Logo-Farben mit dem Style Guide?
+   - Bei hellem Header: Dunkles Logo nötig!
+   - Bei dunklem Header: Helles/weißes Logo nötig!
+
+   FIX bei unsichtbarem Logo:
+   - logo.svg Farben anpassen
+   - Oder logo-dark.svg / logo-light.svg je nach Kontext verwenden
+   - CSS-Filter als Fallback: `filter: invert(1)` oder `brightness(0)`
+
+4. **📸 PERSONENBILD-QUALITÄT** (KRITISCH!):
+   Prüfe ALLE Bilder von Personen (Team, Testimonials, Über uns):
+
+   QUALITÄTSPROBLEME erkennen:
+   - Bild zu klein/pixelig (unter 150x150px Original)
+   - Bild zu groß dargestellt (wirkt unscharf/gestreckt)
+   - Schlechte Auflösung sichtbar
+   - Bild verzerrt oder falsch zugeschnitten
+
+   ```bash
+   # Bildgrößen prüfen
+   file assets/*.jpg assets/*.png
+   # Erwarte: mindestens 200x200 für Thumbnails, 400x400 für große Darstellung
+   ```
+
+   BEI SCHLECHTER BILDQUALITÄT → DESIGN ANPASSEN:
+   ❌ NICHT: Große Bilder mit schlechter Qualität zeigen
+   ✅ STATTDESSEN:
+   - Kleinere Bild-Container verwenden (max 80-100px für Team-Cards)
+   - Runde Thumbnails mit Border (versteckt Qualitätsprobleme)
+   - CSS-Filter: `filter: grayscale(20%)` kaschiert Artefakte
+   - Initialen-Avatar als Fallback wenn Qualität zu schlecht
+   - Object-fit: cover mit kleinerem Container
+
+   CSS-Anpassung bei schlechter Qualität:
+   ```css
+   .team-photo-small {
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     object-fit: cover;
+     border: 3px solid var(--primary-color);
+   }
+   ```
+
+5. **🚨 MODERNES DESIGN CHECK**:
+   Bewerte: Wirkt die Seite MODERN oder VERALTET?
 
    WARNSIGNALE (veraltetes Design):
    ❌ Zu enge Container (alles zusammengequetscht)
