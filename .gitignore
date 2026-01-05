@@ -3,7 +3,7 @@
 node_modules/
 
 # API Keys nicht committen!
-.claude/settings.local.json
+.claude
 .env
 .mcp.json
 .playwright-tmp/
