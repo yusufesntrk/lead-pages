@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Speisekarte Restaurant Glück Offenburg. Entdecken Sie unsere Sushi, chinesische Gerichte, Vorspeisen und mehr. Authentische asiatische Küche.">
+  <meta name="keywords" content="Speisekarte Restaurant Glück, Sushi Offenburg Menü, Chinesisches Essen Offenburg">
+  <title>Speisekarte | Restaurant Glück Offenburg</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo-white.svg" alt="Restaurant Glück Logo" width="200" height="63">
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="speisekarte.html" class="nav-link active">Speisekarte</a></li>
+        <li><a href="ueber-uns.html" class="nav-link">Über uns</a></li>
+        <li><a href="referenzen.html" class="nav-link">Bewertungen</a></li>
+        <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+        <li><a href="tel:+4978197051115" class="nav-link btn-nav">Reservieren</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <header class="page-hero page-hero-menu">
+    <div class="page-hero-bg"></div>
+    <div class="container page-hero-content">
+      <span class="hero-tagline">Kulinarische Vielfalt</span>
+      <h1>Unsere Speisekarte</h1>
+      <p class="hero-subtitle">Von frischem Sushi bis zu traditionellen chinesischen Klassikern – entdecken Sie die Aromen Asiens.</p>
+    </div>
+  </header>
+
+  <!-- Menu Navigation -->
+  <section class="menu-nav-section">
+    <div class="container">
+      <nav class="menu-nav reveal">
+        <a href="#vorspeisen" class="menu-nav-link">Vorspeisen</a>
+        <a href="#sushi" class="menu-nav-link">Sushi & Sashimi</a>
+        <a href="#hauptgerichte" class="menu-nav-link">Hauptgerichte</a>
+        <a href="#vegetarisch" class="menu-nav-link">Vegetarisch</a>
+        <a href="#desserts" class="menu-nav-link">Desserts</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Vorspeisen -->
+  <section class="menu-category-section" id="vorspeisen">
+    <div class="container">
+      <div class="category-header reveal">
+        <div class="category-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12" y="24" width="40" height="28" rx="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 32H52" stroke="currentColor" stroke-width="2"/>
+            <circle cx="24" cy="40" r="3" fill="currentColor"/>
+            <circle cx="40" cy="40" r="3" fill="currentColor"/>
+            <path d="M28 12L32 20L36 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2>Vorspeisen & Dim Sum</h2>
+        <p class="category-description">Köstliche Appetitmacher für den perfekten Start</p>
+      </div>
+
+      <div class="menu-items-grid">
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Frühlingsrollen <span class="portion">(4 Stück)</span></h3>
+            <p>Knusprig gebratene Rollen gefüllt mit Gemüse, serviert mit süß-saurer Sauce</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegetarisch</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Dim Sum Auswahl <span class="portion">(6 Stück)</span></h3>
+            <p>Gedämpfte Teigtaschen mit verschiedenen Füllungen nach Art des Hauses</p>
+          </div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Wan-Tan Suppe</h3>
+            <p>Klare Hühnerbrühe mit gefüllten Wan-Tan und frischem Gemüse</p>
+          </div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Pekingsuppe</h3>
+            <p>Traditionelle süß-sauer-scharfe Suppe mit Tofu, Ei und Gemüse</p>
+          </div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Edamame</h3>
+            <p>Gedämpfte Sojabohnen mit Meersalz – der japanische Klassiker</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegan</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Gyoza <span class="portion">(6 Stück)</span></h3>
+            <p>Japanische Teigtaschen, knusprig gebraten, mit Dip-Sauce</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sushi & Sashimi -->
+  <section class="menu-category-section menu-category-alt" id="sushi">
+    <div class="container">
+      <div class="category-header reveal">
+        <div class="category-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2"/>
+            <path d="M20 32C20 32 26 26 32 26C38 26 44 32 44 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <ellipse cx="32" cy="38" rx="8" ry="4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h2>Sushi & Sashimi</h2>
+        <p class="category-description">Frisch zubereitet mit höchster Präzision</p>
+      </div>
+
+      <div class="menu-items-grid">
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Maki Classic <span class="portion">(8 Stück)</span></h3>
+            <p>Lachs, Thunfisch oder Gurke – umhüllt von Nori und Reis</p>
+          </div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>California Roll <span class="portion">(8 Stück)</span></h3>
+            <p>Inside-Out Roll mit Surimi, Avocado und Gurke, Sesam</p>
+          </div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Rainbow Roll <span class="portion">(8 Stück)</span></h3>
+            <p>Spezialrolle belegt mit verschiedenen Fischsorten</p>
+          </div>
+          <div class="menu-item-tag special">Empfehlung</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Nigiri Set <span class="portion">(6 Stück)</span></h3>
+            <p>Handgeformte Reisbällchen mit Lachs, Thunfisch und Garnele</p>
+          </div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Sashimi Platte</h3>
+            <p>Feinste rohe Fischfilets – Lachs, Thunfisch und Butterfisch</p>
+          </div>
+          <div class="menu-item-tag special">Premium</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Dragon Roll <span class="portion">(8 Stück)</span></h3>
+            <p>Spezialrolle mit Aal, Avocado und unagi-Sauce</p>
+          </div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Vegetarisches Sushi Set <span class="portion">(12 Stück)</span></h3>
+            <p>Avocado, Gurke, Rettich und eingelegtes Gemüse</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegetarisch</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Sushi Platte Deluxe <span class="portion">(24 Stück)</span></h3>
+            <p>Unsere große Auswahl für zwei Personen – Maki, Nigiri und Spezialrollen</p>
+          </div>
+          <div class="menu-item-tag special">Für 2 Personen</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hauptgerichte -->
+  <section class="menu-category-section" id="hauptgerichte">
+    <div class="container">
+      <div class="category-header reveal">
+        <div class="category-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="44" rx="24" ry="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 44C8 44 8 28 32 28C56 28 56 44 56 44" stroke="currentColor" stroke-width="2"/>
+            <path d="M24 20C24 20 28 16 32 16C36 16 40 20 40 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h2>Hauptgerichte</h2>
+        <p class="category-description">Traditionelle chinesische Küche aus dem Wok</p>
+      </div>
+
+      <!-- Subsection: Ente -->
+      <div class="menu-subsection reveal">
+        <h3 class="subsection-title">Enten-Spezialitäten</h3>
+        <div class="menu-items-grid">
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Knusprige Ente</h3>
+              <p>Kross gebratene Ente mit süß-saurer Sauce, serviert mit Reis</p>
+            </div>
+            <div class="menu-item-tag special">Beliebt</div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Ente Peking Art</h3>
+              <p>Knusprig gebratene Ente mit Pfannkuchen, Gurke und Hoisin-Sauce</p>
+            </div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Ente mit Gemüse</h3>
+              <p>Zarte Entenbrust mit frischem Wok-Gemüse in Austernsauce</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Subsection: Hähnchen -->
+      <div class="menu-subsection reveal">
+        <h3 class="subsection-title">Hähnchen-Gerichte</h3>
+        <div class="menu-items-grid">
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Hähnchen Kung Pao</h3>
+              <p>Gebratenes Hähnchen mit Erdnüssen, Chili und Gemüse</p>
+            </div>
+            <div class="menu-item-tag spicy">Scharf</div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Hähnchen süß-sauer</h3>
+              <p>Paniertes Hähnchen in fruchtiger süß-saurer Sauce</p>
+            </div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Hähnchen mit Cashewkernen</h3>
+              <p>Zartes Hähnchenfleisch mit gerösteten Cashewkernen</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Subsection: Rindfleisch -->
+      <div class="menu-subsection reveal">
+        <h3 class="subsection-title">Rindfleisch</h3>
+        <div class="menu-items-grid">
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Rindfleisch mit Zwiebeln</h3>
+              <p>Zarte Rindfleischstreifen mit karamellisierten Zwiebeln</p>
+            </div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Rindfleisch Szechuan</h3>
+              <p>Würzig-scharfes Rindfleisch mit Paprika und Szechuan-Pfeffer</p>
+            </div>
+            <div class="menu-item-tag spicy">Scharf</div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Rindfleisch mit Brokkoli</h3>
+              <p>Rindfleisch mit frischem Brokkoli in Austernsauce</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Subsection: Nudeln & Reis -->
+      <div class="menu-subsection reveal">
+        <h3 class="subsection-title">Nudeln & Reis</h3>
+        <div class="menu-items-grid">
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Gebratene Nudeln</h3>
+              <p>Mit Hähnchen, Garnelen oder Gemüse – Ihr Favorit aus dem Wok</p>
+            </div>
+            <div class="menu-item-tag special">Klassiker</div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Gebratener Reis</h3>
+              <p>Mit Ei, Gemüse und wahlweise Hähnchen, Garnelen oder Ente</p>
+            </div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Pad Thai</h3>
+            <p>Thailändische Reisnudeln mit Ei, Tofu, Erdnüssen und Limette</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Subsection: Meeresfrüchte -->
+      <div class="menu-subsection reveal">
+        <h3 class="subsection-title">Meeresfrüchte</h3>
+        <div class="menu-items-grid">
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Garnelen in Knoblauchsauce</h3>
+              <p>Saftige Garnelen mit Knoblauch und frischen Kräutern</p>
+            </div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Tintenfisch gebraten</h3>
+              <p>Zarter Tintenfisch aus dem Wok mit Gemüse</p>
+            </div>
+          </article>
+
+          <article class="menu-item">
+            <div class="menu-item-content">
+              <h3>Meeresfrüchte-Platte</h3>
+              <p>Garnelen, Tintenfisch und Muscheln mit Wok-Gemüse</p>
+            </div>
+            <div class="menu-item-tag special">Für 2 Personen</div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vegetarisch -->
+  <section class="menu-category-section menu-category-alt" id="vegetarisch">
+    <div class="container">
+      <div class="category-header reveal">
+        <div class="category-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 48C16 48 20 36 32 36C44 36 48 48 48 48" stroke="currentColor" stroke-width="2"/>
+            <ellipse cx="32" cy="48" rx="20" ry="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M28 28C28 28 32 20 36 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="32" cy="24" r="6" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h2>Vegetarisch & Vegan</h2>
+        <p class="category-description">Köstliche fleischfreie Alternativen</p>
+      </div>
+
+      <div class="menu-items-grid">
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Tofu Mapo</h3>
+            <p>Seidentofu in würziger Bohnenpasten-Sauce – ein Szechuan-Klassiker</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegan</div>
+          <div class="menu-item-tag spicy">Scharf</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Gemüse aus dem Wok</h3>
+            <p>Buntes Wok-Gemüse der Saison mit Sojasauce</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegan</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Gebratener Reis vegetarisch</h3>
+            <p>Reis mit Ei, frischem Gemüse und Frühlingszwiebeln</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegetarisch</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Gebratene Nudeln vegetarisch</h3>
+            <p>Eiernudeln mit knackigem Gemüse aus dem Wok</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegetarisch</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Tofu süß-sauer</h3>
+            <p>Knusprig frittierter Tofu in fruchtiger Sauce</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegan</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Buddha Bowl</h3>
+            <p>Reis mit Edamame, Avocado, Gurke, Karotten und Sesam-Dressing</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegan</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Desserts -->
+  <section class="menu-category-section" id="desserts">
+    <div class="container">
+      <div class="category-header reveal">
+        <div class="category-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="48" rx="20" ry="6" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 48V36c0-11 9-20 20-20s20 9 20 20v12" stroke="currentColor" stroke-width="2"/>
+            <circle cx="24" cy="36" r="3" fill="currentColor"/>
+            <circle cx="40" cy="36" r="3" fill="currentColor"/>
+            <circle cx="32" cy="28" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+        <h2>Desserts</h2>
+        <p class="category-description">Süße Versuchungen zum Abschluss</p>
+      </div>
+
+      <div class="menu-items-grid menu-items-narrow">
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Gebackene Banane</h3>
+            <p>Mit Honig, Sesam und Vanilleeis</p>
+          </div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Gebackene Ananas</h3>
+            <p>Mit Karamellsauce und Vanilleeis</p>
+          </div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Lychees</h3>
+            <p>Erfrischende Lychees aus der Dose</p>
+          </div>
+          <div class="menu-item-tag vegetarian">Vegan</div>
+        </article>
+
+        <article class="menu-item reveal">
+          <div class="menu-item-content">
+            <h3>Mochi Eis <span class="portion">(2 Stück)</span></h3>
+            <p>Japanische Reiskuchen mit Eisfüllung – verschiedene Sorten</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Note -->
+  <section class="menu-note-section">
+    <div class="container">
+      <div class="menu-note reveal">
+        <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <p>Alle Gerichte können auch zum Mitnehmen bestellt werden. Bei Allergien oder Unverträglichkeiten sprechen Sie uns bitte an. Die vollständige Speisekarte mit allen Preisen erhalten Sie vor Ort.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="page-cta-section">
+    <div class="container">
+      <div class="page-cta-content reveal">
+        <h2>Appetit bekommen?</h2>
+        <p>Reservieren Sie jetzt Ihren Tisch oder bestellen Sie bequem zur Lieferung.</p>
+        <div class="cta-buttons">
+          <a href="tel:+4978197051115" class="btn btn-primary large">
+            <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Jetzt reservieren
+          </a>
+          <a href="https://www.lieferando.de" target="_blank" rel="noopener" class="btn btn-secondary-light">Auf Lieferando bestellen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo-white.svg" alt="Restaurant Glück" width="180" height="57">
+          <p>Authentische chinesische Küche und frisches Sushi in gemütlicher Atmosphäre.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/glueck_offenburg/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                <circle cx="18" cy="6" r="1" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="speisekarte.html">Speisekarte</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="referenzen.html">Bewertungen</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Service</h4>
+          <ul>
+            <li><a href="tel:+4978197051115">Tisch reservieren</a></li>
+            <li><a href="https://www.lieferando.de" target="_blank" rel="noopener">Lieferando</a></li>
+            <li><a href="https://www.toogoodtogo.com" target="_blank" rel="noopener">Too Good To Go</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Restaurant Glück. Alle Rechte vorbehalten.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

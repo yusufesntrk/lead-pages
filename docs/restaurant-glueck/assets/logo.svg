@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" width="320" height="100">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D4AF37"/>
+      <stop offset="50%" style="stop-color:#F0D875"/>
+      <stop offset="100%" style="stop-color:#D4AF37"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Decorative Chinese-style element -->
+  <g transform="translate(10, 15)">
+    <!-- Stylized fortune/luck symbol frame -->
+    <rect x="0" y="0" width="70" height="70" rx="8" fill="none" stroke="#C8102E" stroke-width="3"/>
+    <rect x="8" y="8" width="54" height="54" rx="4" fill="none" stroke="url(#goldGradient)" stroke-width="1.5"/>
+
+    <!-- Simplified "福" (fortune/luck) inspired design -->
+    <path d="M20 25 L50 25 M35 18 L35 55 M22 40 L48 40 M25 55 L35 45 L45 55"
+          fill="none" stroke="#C8102E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Restaurant name -->
+  <text x="95" y="42" font-family="'Playfair Display', Georgia, serif"
+        font-size="32" font-weight="700" fill="#1A1A1A">Restaurant</text>
+  <text x="95" y="78" font-family="'Playfair Display', Georgia, serif"
+        font-size="38" font-weight="700" fill="#C8102E">Glück</text>
+
+  <!-- Decorative gold line -->
+  <line x1="95" y1="48" x2="200" y2="48" stroke="url(#goldGradient)" stroke-width="1.5"/>
+</svg>
