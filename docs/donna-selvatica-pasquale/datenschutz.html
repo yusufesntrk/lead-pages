@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung | Donna Selvatica - Italienisches Restaurant Offenburg</title>
+    <meta name="description" content="Datenschutzerklärung von Donna Selvatica. Informationen zum Umgang mit Ihren personenbezogenen Daten.">
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .legal-page {
+            padding-top: 120px;
+            padding-bottom: var(--section-padding);
+            background: var(--color-white);
+            min-height: 100vh;
+        }
+
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .legal-header {
+            margin-bottom: var(--space-3xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .legal-header__tagline {
+            display: inline-block;
+            font-family: var(--font-accent);
+            font-size: var(--text-base);
+            font-style: italic;
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .legal-header__title {
+            font-size: var(--text-3xl);
+            margin-bottom: var(--space-md);
+        }
+
+        .legal-header__subtitle {
+            color: var(--color-gray);
+        }
+
+        .legal-section {
+            margin-bottom: var(--space-3xl);
+        }
+
+        .legal-section__title {
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-lg);
+            color: var(--color-secondary);
+        }
+
+        .legal-section__subtitle {
+            font-size: var(--text-xl);
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+            color: var(--color-secondary);
+        }
+
+        .legal-section p {
+            color: var(--color-gray);
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+        }
+
+        .legal-section ul,
+        .legal-section ol {
+            color: var(--color-gray);
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-xl);
+            line-height: 1.8;
+        }
+
+        .legal-section li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .legal-section a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        .legal-section a:hover {
+            color: var(--color-primary-dark);
+        }
+
+        .legal-contact-card {
+            background: var(--color-cream);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .legal-contact-card p {
+            color: var(--color-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .legal-contact-card strong {
+            font-size: var(--text-xl);
+            display: block;
+            margin-bottom: var(--space-md);
+            font-family: var(--font-heading);
+        }
+
+        .legal-note {
+            background: rgba(184, 134, 11, 0.1);
+            border-left: 4px solid var(--color-gold);
+            padding: var(--space-lg);
+            border-radius: var(--radius-sm);
+            margin: var(--space-xl) 0;
+        }
+
+        .legal-note p {
+            color: var(--color-secondary);
+            margin: 0;
+        }
+
+        .legal-back {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-2xl);
+            padding: var(--space-md) var(--space-xl);
+            background: var(--color-cream);
+            border-radius: var(--radius-sm);
+            color: var(--color-secondary);
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+
+        .legal-back:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .toc {
+            background: var(--color-cream);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .toc__title {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-md);
+            color: var(--color-secondary);
+        }
+
+        .toc__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc__list li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .toc__list a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .toc__list a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .legal-page {
+                padding-top: 100px;
+            }
+
+            .legal-header__title {
+                font-size: var(--text-2xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Donna Selvatica - Vini e Cucina" width="200" height="50">
+            </a>
+
+            <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <ul class="nav__menu">
+                <li><a href="speisekarte.html" class="nav__link">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="referenzen.html" class="nav__link">Referenzen</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                <li><a href="tel:+497819190999" class="nav__link nav__link--cta">Reservieren</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="legal-page">
+        <div class="container">
+            <div class="legal-content">
+                <!-- Header -->
+                <header class="legal-header">
+                    <span class="legal-header__tagline">Rechtliche Informationen</span>
+                    <h1 class="legal-header__title">Datenschutzerklärung</h1>
+                    <p class="legal-header__subtitle">Stand: Januar 2025</p>
+                </header>
+
+                <!-- Inhaltsverzeichnis -->
+                <nav class="toc">
+                    <h2 class="toc__title">Inhaltsverzeichnis</h2>
+                    <ol class="toc__list">
+                        <li><a href="#verantwortlicher">Verantwortlicher</a></li>
+                        <li><a href="#uebersicht">Übersicht der Verarbeitungen</a></li>
+                        <li><a href="#rechtsgrundlagen">Rechtsgrundlagen</a></li>
+                        <li><a href="#sicherheit">Sicherheitsmaßnahmen</a></li>
+                        <li><a href="#hosting">Bereitstellung des Onlineangebotes</a></li>
+                        <li><a href="#kontakt">Kontaktaufnahme</a></li>
+                        <li><a href="#google-maps">Google Maps</a></li>
+                        <li><a href="#rechte">Rechte der betroffenen Personen</a></li>
+                    </ol>
+                </nav>
+
+                <!-- 1. Verantwortlicher -->
+                <section id="verantwortlicher" class="legal-section">
+                    <h2 class="legal-section__title">1. Verantwortlicher</h2>
+
+                    <div class="legal-contact-card">
+                        <strong>Pasquale Viglioglia</strong>
+                        <p>Vini e cucina Donna Selvatica</p>
+                        <p>Talweg 4</p>
+                        <p>77654 Offenburg (Zell-Weierbach)</p>
+                        <p>Telefon: +49 781 9190999</p>
+                    </div>
+                </section>
+
+                <!-- 2. Übersicht der Verarbeitungen -->
+                <section id="uebersicht" class="legal-section">
+                    <h2 class="legal-section__title">2. Übersicht der Verarbeitungen</h2>
+                    <p>Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.</p>
+
+                    <h3 class="legal-section__subtitle">Arten der verarbeiteten Daten</h3>
+                    <ul>
+                        <li>Kontaktdaten (z.B. Telefonnummer bei Reservierungsanfragen)</li>
+                        <li>Inhaltsdaten (z.B. Eingaben in Formularen)</li>
+                        <li>Nutzungsdaten (z.B. besuchte Seiten, Zugriffszeit)</li>
+                        <li>Meta-/Kommunikationsdaten (z.B. Geräte-Informationen, IP-Adressen)</li>
+                    </ul>
+
+                    <h3 class="legal-section__subtitle">Kategorien betroffener Personen</h3>
+                    <ul>
+                        <li>Nutzer (z.B. Webseitenbesucher, Interessenten)</li>
+                    </ul>
+
+                    <h3 class="legal-section__subtitle">Zwecke der Verarbeitung</h3>
+                    <ul>
+                        <li>Bereitstellung unseres Onlineangebotes und Nutzerfreundlichkeit</li>
+                        <li>Kontaktanfragen und Kommunikation</li>
+                        <li>Sicherheitsmaßnahmen</li>
+                        <li>Reichweitenmessung</li>
+                    </ul>
+                </section>
+
+                <!-- 3. Rechtsgrundlagen -->
+                <section id="rechtsgrundlagen" class="legal-section">
+                    <h2 class="legal-section__title">3. Maßgebliche Rechtsgrundlagen</h2>
+                    <p>Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten.</p>
+                    <ul>
+                        <li><strong>Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO)</strong> – Die betroffene Person hat ihre Einwilligung in die Verarbeitung der sie betreffenden personenbezogenen Daten für einen spezifischen Zweck oder mehrere bestimmte Zwecke gegeben.</li>
+                        <li><strong>Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO)</strong> – Die Verarbeitung ist für die Erfüllung eines Vertrags, dessen Vertragspartei die betroffene Person ist, oder zur Durchführung vorvertraglicher Maßnahmen erforderlich, die auf Anfrage der betroffenen Person erfolgen.</li>
+                        <li><strong>Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</strong> – Die Verarbeitung ist zur Wahrung der berechtigten Interessen des Verantwortlichen oder eines Dritten erforderlich, sofern nicht die Interessen oder Grundrechte und Grundfreiheiten der betroffenen Person, die den Schutz personenbezogener Daten erfordern, überwiegen.</li>
+                    </ul>
+                </section>
+
+                <!-- 4. Sicherheitsmaßnahmen -->
+                <section id="sicherheit" class="legal-section">
+                    <h2 class="legal-section__title">4. Sicherheitsmaßnahmen</h2>
+                    <p>Wir treffen nach Maßgabe der gesetzlichen Vorgaben unter Berücksichtigung des Stands der Technik, der Implementierungskosten und der Art, des Umfangs, der Umstände und der Zwecke der Verarbeitung sowie der unterschiedlichen Eintrittswahrscheinlichkeiten und des Ausmaßes der Bedrohung der Rechte und Freiheiten natürlicher Personen geeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten.</p>
+                    <p>Zu den Maßnahmen gehören insbesondere die Sicherung der Vertraulichkeit, Integrität und Verfügbarkeit von Daten durch Kontrolle des physischen und elektronischen Zugangs zu den Daten als auch des sie betreffenden Zugriffs, der Eingabe, der Weitergabe, der Sicherung der Verfügbarkeit und ihrer Trennung. Die Übertragung von Daten erfolgt verschlüsselt via SSL/TLS.</p>
+                </section>
+
+                <!-- 5. Hosting -->
+                <section id="hosting" class="legal-section">
+                    <h2 class="legal-section__title">5. Bereitstellung des Onlineangebotes und Webhosting</h2>
+                    <p>Wir verarbeiten die Daten der Nutzer, um ihnen unsere Online-Dienste zur Verfügung stellen zu können. Zu diesem Zweck verarbeiten wir die IP-Adresse des Nutzers, die notwendig ist, um die Inhalte und Funktionen unserer Online-Dienste an den Browser oder das Endgerät der Nutzer zu übermitteln.</p>
+
+                    <h3 class="legal-section__subtitle">Erhebung von Zugriffsdaten und Logfiles</h3>
+                    <p>Der Zugriff auf unser Onlineangebot wird in Form von sogenannten Server-Logfiles protokolliert. Zu den Serverlogfiles können die Adresse und Name der abgerufenen Webseiten und Dateien, Datum und Uhrzeit des Abrufs, übertragene Datenmengen, Meldung über erfolgreichen Abruf, Browsertyp nebst Version, das Betriebssystem des Nutzers, Referrer URL (die zuvor besuchte Seite) und im Regelfall IP-Adressen und der anfragende Provider gehören.</p>
+                    <p>Die Serverlogfiles können zum einen zu Zwecken der Sicherheit eingesetzt werden, z.B., um eine Überlastung der Server zu vermeiden (insbesondere im Fall von missbräuchlichen Angriffen, sogenannten DDoS-Attacken) und zum anderen, um die Auslastung der Server und ihre Stabilität sicherzustellen.</p>
+
+                    <ul>
+                        <li><strong>Verarbeitete Datenarten:</strong> Inhaltsdaten, Nutzungsdaten, Meta-/Kommunikationsdaten</li>
+                        <li><strong>Betroffene Personen:</strong> Nutzer</li>
+                        <li><strong>Zwecke:</strong> Bereitstellung des Onlineangebotes, Sicherheitsmaßnahmen</li>
+                        <li><strong>Rechtsgrundlagen:</strong> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</li>
+                    </ul>
+
+                    <h3 class="legal-section__subtitle">Cloudflare</h3>
+                    <p>Wir nutzen das Content Delivery Network (CDN) von Cloudflare Germany GmbH, Rosental 7, 80331 München, Deutschland. Cloudflare bietet ein weltweit verteiltes Content Delivery Network mit DNS an. Dabei wird der Informationstransfer zwischen Ihrem Browser und unserer Webseite technisch über das Netzwerk von Cloudflare geleitet, was die Ladegeschwindigkeit und Sicherheit erhöht. Dies stellt ein berechtigtes Interesse im Sinne des Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+                    <p>Cloudflare ist nach dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in der <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noopener">Datenschutzerklärung von Cloudflare</a>.</p>
+                </section>
+
+                <!-- 6. Kontaktaufnahme -->
+                <section id="kontakt" class="legal-section">
+                    <h2 class="legal-section__title">6. Kontaktaufnahme</h2>
+                    <p>Bei der Kontaktaufnahme mit uns (z.B. per Telefon) werden die Angaben des Nutzers zur Bearbeitung der Kontaktanfrage und deren Abwicklung verarbeitet.</p>
+
+                    <ul>
+                        <li><strong>Verarbeitete Datenarten:</strong> Kontaktdaten (Telefonnummer), Inhaltsdaten (Ihre Mitteilung)</li>
+                        <li><strong>Betroffene Personen:</strong> Kommunikationspartner</li>
+                        <li><strong>Zwecke:</strong> Kontaktanfragen und Kommunikation</li>
+                        <li><strong>Rechtsgrundlagen:</strong> Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO), Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</li>
+                    </ul>
+
+                    <h3 class="legal-section__subtitle">Telefonische Reservierungen</h3>
+                    <p>Bei telefonischen Reservierungen speichern wir Ihren Namen, Ihre Telefonnummer, die gewünschte Personenzahl sowie Datum und Uhrzeit der Reservierung. Diese Daten werden ausschließlich zur Durchführung und Organisation Ihrer Reservierung verwendet und nach dem Restaurantbesuch gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+                </section>
+
+                <!-- 7. Google Maps -->
+                <section id="google-maps" class="legal-section">
+                    <h2 class="legal-section__title">7. Google Maps</h2>
+                    <p>Wir binden die Landkarten des Dienstes „Google Maps" des Anbieters Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, ein.</p>
+                    <p>Zu den verarbeiteten Daten können insbesondere IP-Adressen und Standortdaten der Nutzer gehören. Diese Daten können in den USA verarbeitet werden. Google ist nach dem EU-US Data Privacy Framework zertifiziert.</p>
+
+                    <ul>
+                        <li><strong>Verarbeitete Datenarten:</strong> Nutzungsdaten, Meta-/Kommunikationsdaten, Standortdaten</li>
+                        <li><strong>Betroffene Personen:</strong> Nutzer</li>
+                        <li><strong>Zwecke:</strong> Bereitstellung der Kartenansicht zur Anfahrtsbeschreibung</li>
+                        <li><strong>Rechtsgrundlagen:</strong> Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</li>
+                    </ul>
+
+                    <p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a></p>
+                </section>
+
+                <!-- 8. Rechte der betroffenen Personen -->
+                <section id="rechte" class="legal-section">
+                    <h2 class="legal-section__title">8. Rechte der betroffenen Personen</h2>
+                    <p>Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu, die sich insbesondere aus Art. 15 bis 21 DSGVO ergeben:</p>
+
+                    <ul>
+                        <li><strong>Widerspruchsrecht:</strong> Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung der Sie betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DSGVO erfolgt, Widerspruch einzulegen.</li>
+                        <li><strong>Widerrufsrecht bei Einwilligungen:</strong> Sie haben das Recht, erteilte Einwilligungen jederzeit zu widerrufen.</li>
+                        <li><strong>Auskunftsrecht:</strong> Sie haben das Recht, eine Bestätigung darüber zu verlangen, ob betreffende Daten verarbeitet werden und auf Auskunft über diese Daten sowie auf weitere Informationen und Kopie der Daten.</li>
+                        <li><strong>Recht auf Berichtigung:</strong> Sie haben das Recht, die Vervollständigung der Sie betreffenden Daten oder die Berichtigung der Sie betreffenden unrichtigen Daten zu verlangen.</li>
+                        <li><strong>Recht auf Löschung und Einschränkung der Verarbeitung:</strong> Sie haben das Recht, zu verlangen, dass Sie betreffende Daten unverzüglich gelöscht werden, bzw. alternativ die Einschränkung der Verarbeitung der Daten zu verlangen.</li>
+                        <li><strong>Recht auf Datenübertragbarkeit:</strong> Sie haben das Recht, Sie betreffende Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten oder die Übermittlung an einen anderen Verantwortlichen zu fordern.</li>
+                        <li><strong>Beschwerde bei Aufsichtsbehörde:</strong> Sie haben das Recht, sich bei einer Aufsichtsbehörde zu beschweren, z.B. bei der zuständigen Aufsichtsbehörde in dem Bundesland, in dem Sie wohnen oder arbeiten, oder in dem Bundesland, in dem der mutmaßliche Verstoß stattgefunden hat.</li>
+                    </ul>
+
+                    <div class="legal-note">
+                        <p><strong>Zuständige Aufsichtsbehörde in Baden-Württemberg:</strong><br>
+                        Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg<br>
+                        Lautenschlagerstraße 20, 70173 Stuttgart<br>
+                        Telefon: +49 711 615541-0<br>
+                        <a href="https://www.baden-wuerttemberg.datenschutz.de/" target="_blank" rel="noopener">www.baden-wuerttemberg.datenschutz.de</a></p>
+                    </div>
+                </section>
+
+                <a href="index.html" class="legal-back">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Zurück zur Startseite
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <img src="assets/logo-white.svg" alt="Donna Selvatica" width="180" height="45" class="footer__logo">
+                    <p class="footer__tagline">Authentische italienische Küche im historischen Fachwerkhaus seit 1980.</p>
+                </div>
+
+                <div class="footer__nav">
+                    <h3 class="footer__title">Navigation</h3>
+                    <ul class="footer__links">
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h3 class="footer__title">Kontakt</h3>
+                    <address class="footer__address">
+                        Talweg 4<br>
+                        77654 Offenburg<br>
+                        <a href="tel:+497819190999">+49 781 9190999</a>
+                    </address>
+                </div>
+
+                <div class="footer__hours">
+                    <h3 class="footer__title">Öffnungszeiten</h3>
+                    <p>Di–So: 11:30–14:30<br>& 17:30–23:00</p>
+                    <p><strong>Montag: Ruhetag</strong></p>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Donna Selvatica. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

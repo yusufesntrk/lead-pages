@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Hauptname -->
+  <text x="200" y="42" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="32" font-weight="600" fill="#FFFFFF">Donna Selvatica</text>
+  <!-- Untertitel -->
+  <text x="200" y="68" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="14" fill="#F5F0E6" letter-spacing="3">VINI E CUCINA</text>
+  <!-- Dekorative Linie -->
+  <line x1="120" y1="80" x2="280" y2="80" stroke="#B8860B" stroke-width="1"/>
+</svg>

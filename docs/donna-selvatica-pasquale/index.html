@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donna Selvatica | Italienisches Restaurant in Offenburg</title>
+    <meta name="description" content="Authentische italienische Küche im historischen Fachwerkhaus. Genießen Sie hausgemachte Pasta, frische Fischgerichte und erlesene Weine bei Donna Selvatica in Offenburg-Zell-Weierbach.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Donna Selvatica - Vini e Cucina" width="200" height="50">
+            </a>
+
+            <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <ul class="nav__menu">
+                <li><a href="speisekarte.html" class="nav__link">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="referenzen.html" class="nav__link">Referenzen</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                <li><a href="tel:+497819190999" class="nav__link nav__link--cta">Reservieren</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__background">
+                <img src="assets/hero-exterior.jpg" alt="Donna Selvatica Fachwerkhaus" class="hero__image">
+                <div class="hero__overlay"></div>
+            </div>
+            <div class="hero__content">
+                <span class="hero__tagline">Authentisch Italienisch seit 1980</span>
+                <h1 class="hero__title">Cucina Italiana<br>im Herzen Offenburgs</h1>
+                <p class="hero__subtitle">Erleben Sie die Aromen der Basilicata in einem historischen Fachwerkhaus. Hausgemachte Pasta, frischer Fisch und erlesene Weine erwarten Sie.</p>
+                <div class="hero__actions">
+                    <a href="tel:+497819190999" class="btn btn--primary">Tisch reservieren</a>
+                    <a href="#speisen" class="btn btn--secondary">Unsere Speisen</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Signals -->
+        <section class="trust">
+            <div class="container">
+                <div class="trust__grid">
+                    <div class="trust__item reveal">
+                        <span class="trust__number">40+</span>
+                        <span class="trust__label">Jahre Erfahrung</span>
+                    </div>
+                    <div class="trust__item reveal">
+                        <span class="trust__number">4.3</span>
+                        <span class="trust__label">Google Bewertung</span>
+                    </div>
+                    <div class="trust__item reveal">
+                        <span class="trust__number">75</span>
+                        <span class="trust__label">Sitzplätze</span>
+                    </div>
+                    <div class="trust__item reveal">
+                        <span class="trust__number">100%</span>
+                        <span class="trust__label">Hausgemacht</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Speisen Section -->
+        <section id="speisen" class="speisen">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-header__tagline">Unsere Küche</span>
+                    <h2 class="section-header__title">Spezialitäten des Hauses</h2>
+                    <p class="section-header__subtitle">Traditionelle Rezepte aus der Basilicata, zubereitet mit frischen, saisonalen Zutaten</p>
+                </div>
+
+                <div class="speisen__grid">
+                    <article class="speisen__card reveal">
+                        <div class="speisen__card-image">
+                            <img src="assets/pasta-food.jpg" alt="Frische Pasta" loading="lazy">
+                        </div>
+                        <div class="speisen__card-content">
+                            <h3 class="speisen__card-title">Hausgemachte Pasta</h3>
+                            <p class="speisen__card-text">Täglich frisch zubereitete Pasta nach original italienischen Rezepten. Unsere Spaghetti Vongole sind Pasquales Spezialität.</p>
+                        </div>
+                    </article>
+
+                    <article class="speisen__card reveal">
+                        <div class="speisen__card-image">
+                            <img src="assets/carpaccio.jpg" alt="Carpaccio" loading="lazy">
+                        </div>
+                        <div class="speisen__card-content">
+                            <h3 class="speisen__card-title">Feinste Antipasti</h3>
+                            <p class="speisen__card-text">Fischcarpaccio mit fruchtigem Olivenöl oder unser beliebtes Antipasto Donna Selvatica – der perfekte Start.</p>
+                        </div>
+                    </article>
+
+                    <article class="speisen__card reveal">
+                        <div class="speisen__card-image">
+                            <img src="assets/fish-food.jpg" alt="Fischgerichte" loading="lazy">
+                        </div>
+                        <div class="speisen__card-content">
+                            <h3 class="speisen__card-title">Frische Fischgerichte</h3>
+                            <p class="speisen__card-text">Tagesfrischer Fisch, meisterhaft zubereitet. Die Fischgerichte sind das Herzstück unserer Speisekarte.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="speisen__cta reveal">
+                    <p class="speisen__cta-text">Entdecken Sie unsere täglichen Empfehlungen auf der Tafel</p>
+                    <a href="tel:+497819190999" class="btn btn--primary">Jetzt reservieren</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Über uns Section -->
+        <section id="ueber-uns" class="ueber-uns">
+            <div class="container">
+                <div class="ueber-uns__grid">
+                    <div class="ueber-uns__content reveal">
+                        <span class="section-header__tagline">Über uns</span>
+                        <h2 class="ueber-uns__title">Die Seele Italiens in Offenburg</h2>
+                        <p class="ueber-uns__text">
+                            Seit 1980 bringt Pasquale Viglioglia die authentischen Aromen seiner Heimat – der Basilicata – nach Deutschland. Im historischen Gasthaus "Laube", einem charmanten Fachwerkhaus in Offenburg-Zell-Weierbach, kreiert er Gerichte, die Geschichten erzählen.
+                        </p>
+                        <p class="ueber-uns__text">
+                            "Donna Selvatica" – die wilde Frau – steht für unverfälschte, leidenschaftliche Küche. Jedes Gericht wird mit Liebe und aus frischen Zutaten zubereitet. Unser eigenes Olivenöl, direkt aus Italien importiert, verleiht jedem Teller seine besondere Note.
+                        </p>
+                        <blockquote class="ueber-uns__quote">
+                            <p>„Kochen ist wie Liebe – man muss es mit ganzem Herzen tun."</p>
+                            <cite>— Pasquale Viglioglia, Patron & Chef</cite>
+                        </blockquote>
+                    </div>
+                    <div class="ueber-uns__images reveal">
+                        <img src="assets/interior.jpg" alt="Gemütlicher Innenraum" class="ueber-uns__image ueber-uns__image--main" loading="lazy">
+                        <img src="assets/wine.jpg" alt="Erlesene Weine" class="ueber-uns__image ueber-uns__image--secondary" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ambiente Section -->
+        <section class="ambiente">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-header__tagline">Unser Ambiente</span>
+                    <h2 class="section-header__title">Gemütlichkeit trifft Geschichte</h2>
+                </div>
+
+                <div class="ambiente__grid">
+                    <div class="ambiente__feature reveal">
+                        <div class="ambiente__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="ambiente__feature-title">Historisches Fachwerkhaus</h3>
+                        <p class="ambiente__feature-text">Das altehrwürdige Gasthaus "Laube" verbindet Tradition mit italienischer Gastfreundschaft.</p>
+                    </div>
+
+                    <div class="ambiente__feature reveal">
+                        <div class="ambiente__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="ambiente__feature-title">75 Sitzplätze</h3>
+                        <p class="ambiente__feature-text">50 Plätze im Hauptraum und 25 im separaten Nebenraum – ideal für Familienfeiern.</p>
+                    </div>
+
+                    <div class="ambiente__feature reveal">
+                        <div class="ambiente__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                                <line x1="6" y1="1" x2="6" y2="4"></line>
+                                <line x1="10" y1="1" x2="10" y2="4"></line>
+                                <line x1="14" y1="1" x2="14" y2="4"></line>
+                            </svg>
+                        </div>
+                        <h3 class="ambiente__feature-title">Rustikaler Charme</h3>
+                        <p class="ambiente__feature-text">Olivenöl-Regale, Tafeln mit Tagesgerichten und warmes Licht schaffen italienisches Flair.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bewertungen Section -->
+        <section id="bewertungen" class="bewertungen">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-header__tagline">Unsere Gäste</span>
+                    <h2 class="section-header__title">Was andere sagen</h2>
+                </div>
+
+                <div class="bewertungen__overview reveal">
+                    <div class="bewertungen__rating">
+                        <span class="bewertungen__score">4.3</span>
+                        <div class="bewertungen__stars">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star half">★</span>
+                        </div>
+                        <span class="bewertungen__count">288 Bewertungen auf Google</span>
+                    </div>
+                </div>
+
+                <div class="bewertungen__grid">
+                    <blockquote class="bewertungen__card reveal">
+                        <div class="bewertungen__card-stars">★★★★★</div>
+                        <p class="bewertungen__card-text">„Die Spaghetti Vongole sind ein Traum! Authentisch italienisch, wie bei Nonna. Die gemütliche Atmosphäre im Fachwerkhaus macht jeden Besuch besonders."</p>
+                        <footer class="bewertungen__card-footer">
+                            <span class="bewertungen__card-source">Google Bewertung</span>
+                        </footer>
+                    </blockquote>
+
+                    <blockquote class="bewertungen__card reveal">
+                        <div class="bewertungen__card-stars">★★★★★</div>
+                        <p class="bewertungen__card-text">„Pasquale ist ein Meister seines Fachs. Das Fischcarpaccio mit dem hauseigenen Olivenöl ist unvergleichlich. Wir kommen seit Jahren regelmäßig."</p>
+                        <footer class="bewertungen__card-footer">
+                            <span class="bewertungen__card-source">Restaurant Guru</span>
+                        </footer>
+                    </blockquote>
+
+                    <blockquote class="bewertungen__card reveal">
+                        <div class="bewertungen__card-stars">★★★★★</div>
+                        <p class="bewertungen__card-text">„Gehobene italienische Küche in entspannter Atmosphäre. Die Tagesgerichte auf der Tafel sind immer eine Überraschung wert. Das Tiramisu – himmlisch!"</p>
+                        <footer class="bewertungen__card-footer">
+                            <span class="bewertungen__card-source">Speisekarte.menu</span>
+                        </footer>
+                    </blockquote>
+                </div>
+
+                <div class="bewertungen__platforms reveal">
+                    <a href="https://www.google.com/maps/place/Gaststätte+Donna+Selvatica+Pasquale" target="_blank" rel="noopener" class="bewertungen__platform">
+                        <span class="bewertungen__platform-name">Google</span>
+                        <span class="bewertungen__platform-rating">4.3 ★</span>
+                    </a>
+                    <a href="https://restaurantguru.com/Gaststaette-Donna-Selvatica-Pasquale-Offenburg" target="_blank" rel="noopener" class="bewertungen__platform">
+                        <span class="bewertungen__platform-name">Restaurant Guru</span>
+                        <span class="bewertungen__platform-rating">4.9 ★</span>
+                    </a>
+                    <a href="https://speisekarte.menu/restaurants/offenburg/donna-selvatica" target="_blank" rel="noopener" class="bewertungen__platform">
+                        <span class="bewertungen__platform-name">Speisekarte.menu</span>
+                        <span class="bewertungen__platform-rating">4.4 ★</span>
+                    </a>
+                </div>
+
+                <div class="bewertungen__more reveal">
+                    <a href="referenzen.html" class="btn btn--secondary-dark">
+                        Alle Referenzen ansehen →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-section__content reveal">
+                    <h2 class="cta-section__title">Erleben Sie italienische Gastfreundschaft</h2>
+                    <p class="cta-section__text">Reservieren Sie jetzt Ihren Tisch und genießen Sie einen unvergesslichen Abend bei Donna Selvatica.</p>
+                    <div class="cta-section__actions">
+                        <a href="tel:+497819190999" class="btn btn--primary btn--large">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            +49 781 9190999
+                        </a>
+                    </div>
+                    <p class="cta-section__hours">Di–So: 11:30–14:30 & 17:30–23:00 Uhr | Montag Ruhetag</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt Section -->
+        <section id="kontakt" class="kontakt">
+            <div class="container">
+                <div class="kontakt__grid">
+                    <div class="kontakt__info reveal">
+                        <h2 class="kontakt__title">Besuchen Sie uns</h2>
+
+                        <div class="kontakt__details">
+                            <div class="kontakt__detail">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <div>
+                                    <strong>Adresse</strong>
+                                    <p>Talweg 4<br>77654 Offenburg (Zell-Weierbach)</p>
+                                </div>
+                            </div>
+
+                            <div class="kontakt__detail">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                                <div>
+                                    <strong>Telefon</strong>
+                                    <p><a href="tel:+497819190999">+49 781 9190999</a></p>
+                                </div>
+                            </div>
+
+                            <div class="kontakt__detail">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <div>
+                                    <strong>Öffnungszeiten</strong>
+                                    <p>Di–So: 11:30–14:30 & 17:30–23:00<br>Montag: Ruhetag</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kontakt__map reveal">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2649.1234567890!2d7.9123456!3d48.4567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791a1234567890%3A0x1234567890abcdef!2sTalweg%204%2C%2077654%20Offenburg!5e0!3m2!1sde!2sde!4v1234567890"
+                            width="100%"
+                            height="400"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Standort Donna Selvatica">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <img src="assets/logo-white.svg" alt="Donna Selvatica" width="180" height="45" class="footer__logo">
+                    <p class="footer__tagline">Authentische italienische Küche im historischen Fachwerkhaus seit 1980.</p>
+                </div>
+
+                <div class="footer__nav">
+                    <h3 class="footer__title">Navigation</h3>
+                    <ul class="footer__links">
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h3 class="footer__title">Kontakt</h3>
+                    <address class="footer__address">
+                        Talweg 4<br>
+                        77654 Offenburg<br>
+                        <a href="tel:+497819190999">+49 781 9190999</a>
+                    </address>
+                </div>
+
+                <div class="footer__hours">
+                    <h3 class="footer__title">Öffnungszeiten</h3>
+                    <p>Di–So: 11:30–14:30<br>& 17:30–23:00</p>
+                    <p><strong>Montag: Ruhetag</strong></p>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Donna Selvatica. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

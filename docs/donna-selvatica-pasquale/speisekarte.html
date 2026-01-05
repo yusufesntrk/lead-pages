@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speisekarte | Donna Selvatica - Italienische Spezialitäten</title>
+    <meta name="description" content="Entdecken Sie unsere hausgemachte Pasta, frische Fischgerichte und feine Antipasti. Authentische italienische Küche aus der Basilicata.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Donna Selvatica - Vini e Cucina" width="200" height="50">
+            </a>
+
+            <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <ul class="nav__menu">
+                <li><a href="speisekarte.html" class="nav__link nav__link--active">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="referenzen.html" class="nav__link">Referenzen</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                <li><a href="tel:+497819190999" class="nav__link nav__link--cta">Reservieren</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="page-hero__background">
+                <img src="assets/pasta-food.jpg" alt="Frische Pasta" class="page-hero__image">
+                <div class="page-hero__overlay"></div>
+            </div>
+            <div class="page-hero__content">
+                <span class="page-hero__tagline">Cucina Italiana</span>
+                <h1 class="page-hero__title">Unsere Speisekarte</h1>
+                <p class="page-hero__subtitle">Traditionelle Rezepte aus der Basilicata, täglich frisch zubereitet</p>
+            </div>
+        </section>
+
+        <!-- Menu Introduction -->
+        <section class="menu-intro">
+            <div class="container">
+                <div class="menu-intro__content reveal">
+                    <p class="menu-intro__text">
+                        Unsere Speisekarte ändert sich mit den Jahreszeiten. Die Tagesgerichte finden Sie auf unserer Tafel im Restaurant. Hier präsentieren wir Ihnen unsere beliebtesten Klassiker und Spezialitäten.
+                    </p>
+                    <div class="menu-intro__note">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <span>Preisklasse: €30–60 pro Person</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Antipasti Section -->
+        <section class="menu-section menu-section--cream">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <span class="menu-section__tagline">Zum Start</span>
+                    <h2 class="menu-section__title">Antipasti</h2>
+                    <p class="menu-section__subtitle">Der perfekte Auftakt für Ihr italienisches Erlebnis</p>
+                </div>
+
+                <div class="menu-grid menu-grid--featured">
+                    <article class="menu-card menu-card--featured reveal">
+                        <div class="menu-card__image">
+                            <img src="assets/carpaccio.jpg" alt="Fischcarpaccio" loading="lazy">
+                            <span class="menu-card__badge">Empfehlung</span>
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Fischcarpaccio</h3>
+                            <p class="menu-card__description">Hauchdünn geschnittener frischer Fisch, verfeinert mit unserem fruchtigen Olivenöl aus Italien, Zitrone und frischen Kräutern.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card reveal">
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Antipasto Donna Selvatica</h3>
+                            <p class="menu-card__description">Unsere Signature-Vorspeise mit einer Auswahl italienischer Köstlichkeiten – perfekt zum Teilen.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card reveal">
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Vitello Tonnato</h3>
+                            <p class="menu-card__description">Zartes Kalbfleisch mit cremiger Thunfischsauce – ein Klassiker der italienischen Küche.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pasta Section -->
+        <section class="menu-section">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <span class="menu-section__tagline">Handgemacht</span>
+                    <h2 class="menu-section__title">Pasta</h2>
+                    <p class="menu-section__subtitle">Täglich frisch in unserer Küche zubereitet</p>
+                </div>
+
+                <div class="menu-grid">
+                    <article class="menu-card menu-card--highlight reveal">
+                        <div class="menu-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="menu-card__content">
+                            <span class="menu-card__label">Pasquales Spezialität</span>
+                            <h3 class="menu-card__title">Spaghetti Vongole</h3>
+                            <p class="menu-card__description">Das Signature-Gericht unseres Hauses. Frische Venusmuscheln in Weißweinsauce mit Knoblauch, Petersilie und einem Hauch Peperoncino.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card reveal">
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Tagliatelle al Ragù</h3>
+                            <p class="menu-card__description">Hausgemachte Bandnudeln mit langsam geschmortem Fleischragù nach Großmutters Rezept.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card reveal">
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Penne all'Arrabbiata</h3>
+                            <p class="menu-card__description">Für Liebhaber der scharfen Küche – Penne in feuriger Tomatensauce mit Knoblauch und Chili.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card reveal">
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Risotto del Giorno</h3>
+                            <p class="menu-card__description">Unser Tagesrisotto, je nach Saison mit frischen Zutaten zubereitet – fragen Sie nach der aktuellen Kreation.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fish Section -->
+        <section class="menu-section menu-section--dark">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <span class="menu-section__tagline">Aus dem Meer</span>
+                    <h2 class="menu-section__title">Fischgerichte</h2>
+                    <p class="menu-section__subtitle">Tagesfrischer Fisch, meisterhaft zubereitet</p>
+                </div>
+
+                <div class="fish-showcase reveal">
+                    <div class="fish-showcase__image">
+                        <img src="assets/fish-food.jpg" alt="Frische Fischgerichte" loading="lazy">
+                    </div>
+                    <div class="fish-showcase__content">
+                        <p class="fish-showcase__intro">
+                            Fisch ist das Herzstück unserer Speisekarte. Pasquale wählt persönlich die besten Stücke aus und bereitet sie nach traditionellen Rezepten seiner Heimat zu.
+                        </p>
+
+                        <div class="fish-showcase__items">
+                            <div class="fish-item">
+                                <h3 class="fish-item__title">Branzino alla Griglia</h3>
+                                <p class="fish-item__description">Gegrillter Wolfsbarsch mit mediterranen Kräutern</p>
+                            </div>
+                            <div class="fish-item">
+                                <h3 class="fish-item__title">Orata al Forno</h3>
+                                <p class="fish-item__description">Im Ofen gebackene Dorade mit Kartoffeln</p>
+                            </div>
+                            <div class="fish-item">
+                                <h3 class="fish-item__title">Frutti di Mare</h3>
+                                <p class="fish-item__description">Gemischte Meeresfrüchte nach Tagesangebot</p>
+                            </div>
+                        </div>
+
+                        <p class="fish-showcase__note">
+                            Die Auswahl variiert je nach Tagesfang. Fragen Sie uns nach dem aktuellen Angebot.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dessert Section -->
+        <section class="menu-section menu-section--cream">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <span class="menu-section__tagline">Süßer Abschluss</span>
+                    <h2 class="menu-section__title">Dolci</h2>
+                    <p class="menu-section__subtitle">Hausgemachte Desserts zum Verlieben</p>
+                </div>
+
+                <div class="dessert-grid">
+                    <article class="dessert-card reveal">
+                        <div class="dessert-card__image">
+                            <img src="assets/panna-cotta.jpg" alt="Panna Cotta" loading="lazy">
+                        </div>
+                        <div class="dessert-card__content">
+                            <h3 class="dessert-card__title">Panna Cotta</h3>
+                            <p class="dessert-card__description">Samtiger italienischer Puddingklassiker mit saisonalem Früchtespiegel.</p>
+                        </div>
+                    </article>
+
+                    <article class="dessert-card reveal">
+                        <div class="dessert-card__content">
+                            <h3 class="dessert-card__title">Tiramisu</h3>
+                            <p class="dessert-card__description">Das Original nach Pasquales Familienrezept – cremig, aromatisch, unwiderstehlich.</p>
+                            <span class="dessert-card__badge">Gästeliebling</span>
+                        </div>
+                    </article>
+
+                    <article class="dessert-card reveal">
+                        <div class="dessert-card__content">
+                            <h3 class="dessert-card__title">Gelato della Casa</h3>
+                            <p class="dessert-card__description">Hausgemachtes Eis in wechselnden Geschmacksrichtungen.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wine Section -->
+        <section class="menu-section">
+            <div class="container">
+                <div class="wine-showcase reveal">
+                    <div class="wine-showcase__content">
+                        <span class="section-header__tagline">Vini e Cucina</span>
+                        <h2 class="wine-showcase__title">Erlesene Weine</h2>
+                        <p class="wine-showcase__text">
+                            Zu einem perfekten italienischen Essen gehört der richtige Wein. Unsere sorgfältig ausgewählte Weinkarte umfasst Tropfen aus allen Regionen Italiens – von frischen Weißweinen bis zu kräftigen Rotweinen.
+                        </p>
+                        <p class="wine-showcase__text">
+                            Lassen Sie sich von Pasquale beraten – er kennt zu jedem Gericht die perfekte Begleitung.
+                        </p>
+
+                        <div class="wine-special">
+                            <h3 class="wine-special__title">Unser Olivenöl</h3>
+                            <p class="wine-special__text">Direkt aus Italien importiert, veredelt unser hochwertiges Olivenöl jedes Gericht. Erhältlich zum Mitnehmen für €12,50 pro Flasche.</p>
+                        </div>
+                    </div>
+                    <div class="wine-showcase__image">
+                        <img src="assets/wine.jpg" alt="Erlesene Weine" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-section__content reveal">
+                    <h2 class="cta-section__title">Genießen Sie bei uns</h2>
+                    <p class="cta-section__text">Reservieren Sie Ihren Tisch und lassen Sie sich von Pasquales Kochkunst verwöhnen.</p>
+                    <div class="cta-section__actions">
+                        <a href="tel:+497819190999" class="btn btn--primary btn--large">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            +49 781 9190999
+                        </a>
+                    </div>
+                    <p class="cta-section__hours">Di–So: 11:30–14:30 & 17:30–23:00 Uhr | Montag Ruhetag</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <img src="assets/logo-white.svg" alt="Donna Selvatica" width="180" height="45" class="footer__logo">
+                    <p class="footer__tagline">Authentische italienische Küche im historischen Fachwerkhaus seit 1980.</p>
+                </div>
+
+                <div class="footer__nav">
+                    <h3 class="footer__title">Navigation</h3>
+                    <ul class="footer__links">
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h3 class="footer__title">Kontakt</h3>
+                    <address class="footer__address">
+                        Talweg 4<br>
+                        77654 Offenburg<br>
+                        <a href="tel:+497819190999">+49 781 9190999</a>
+                    </address>
+                </div>
+
+                <div class="footer__hours">
+                    <h3 class="footer__title">Öffnungszeiten</h3>
+                    <p>Di–So: 11:30–14:30<br>& 17:30–23:00</p>
+                    <p><strong>Montag: Ruhetag</strong></p>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Donna Selvatica. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
