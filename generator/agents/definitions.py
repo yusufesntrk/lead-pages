@@ -72,6 +72,15 @@ TEAM-SEITE FINDEN (WICHTIG!):
   - Foto-URL (HTTPS!) - dokumentiere den EXAKTEN Pfad zum Download!
   - Kurzbiografie falls vorhanden
 
+🍽️ SPEISEKARTE FINDEN (NUR BEI RESTAURANTS/CAFÉS):
+- Suche nach Speisekarte/Menü auf der Website
+- Typische URLs: /speisekarte, /menu, /karte, /speisen
+- Typische Formate: PDF, Bilder (JPG/PNG), oder HTML-Seite
+- Dokumentiere im Style Guide:
+  - Speisekarten-URL (falls PDF oder Bild)
+  - Speisekarten-Inhalt (falls HTML - Kategorien und Gerichte extrahieren)
+- Lade PDF/Bilder herunter nach assets/speisekarte.pdf oder assets/speisekarte-X.jpg
+
 WICHTIG - DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß
 - NIEMALS ae, oe, ue, ss schreiben
@@ -84,7 +93,24 @@ Erstelle eine STYLE-GUIDE.md Datei mit:
 - Alle extrahierten Inhalte (Firmenname, Kontakt, Team, Services)
 - **Team-Sektion mit Foto-URLs** (z.B. https://example.de/Bilder/foto.jpg)
 - Logo-URL für späteren Download
-- Impressum/Datenschutz Texte falls vorhanden""",
+- Impressum/Datenschutz Texte falls vorhanden
+
+🎨 DESIGN-EMPFEHLUNGEN (PFLICHT im Style Guide!):
+Füge eine "## Kreative Design-Empfehlungen" Sektion hinzu mit:
+
+1. **Empfohlenes Layout-Konzept** (basierend auf Branche):
+   - z.B. "Bento Grid für Services" oder "Split-Screen Hero"
+
+2. **Signature-Effekt** (wähle EINEN passenden):
+   - Glasmorphism, Gradient-Overlays, geometrische Akzente, etc.
+
+3. **Animations-Level** (basierend auf Branche):
+   - Dezent (Anwalt) / Moderat (Restaurant) / Expressiv (Tech)
+
+4. **Besondere Sektionen** die zur Firma passen:
+   - z.B. "Timeline für Firmengeschichte" oder "Interaktive Karte"
+
+Diese Empfehlungen sind PFLICHT damit die Homepage nicht generisch wird!""",
     tools=["Read", "Write", "WebFetch", "WebSearch", "Grep", "Glob", "mcp__playwright__*"],
     model="opus"
 )
@@ -161,6 +187,69 @@ SYMMETRIE & BALANCE:
 - Gleiche Abstände zwischen gleichartigen Elementen
 - Visuelle Balance auch bei asymmetrischen Designs
 
+🎨 KREATIVES & EINZIGARTIGES DESIGN (WICHTIG!):
+Jede Website MUSS einzigartig sein - KEIN Standard-Template-Look!
+
+KREATIVE LAYOUT-IDEEN (wähle passend zur Branche):
+- **Bento Grid Layout**: Verschiedene Kartengrößen wie Apple-Style
+- **Split-Screen Hero**: 50/50 oder 60/40 Aufteilung mit Kontrast
+- **Overlapping Sections**: Elemente die über Sektionsgrenzen ragen
+- **Diagonal Dividers**: Schräge Übergänge statt gerader Linien
+- **Floating Elements**: Elemente die über andere schweben
+- **Card Masonry**: Pinterest-Style Grid mit unterschiedlichen Höhen
+- **Full-Width Statements**: Große Typografie-Sektionen
+- **Scroll-Triggered Reveals**: Elemente die beim Scrollen erscheinen
+- **Sticky Sidebars**: Fixierte Elemente die mitlaufen
+- **Horizontal Scroll Sections**: Karussells für Testimonials/Portfolio
+
+VISUELLER SIGNATURE-EFFEKT (wähle EINEN pro Website):
+- Dezenter Glasmorphism-Effekt (backdrop-blur)
+- Subtile Gradient-Overlays auf Bildern
+- Geometrische Akzente (Kreise, Linien, Dots)
+- Animierte Unterstreichungen bei Hover
+- Soft Shadows mit Farbakzent
+- Outline-Buttons mit Fill-Animation
+- Icon-Animation bei Hover (scale, rotate)
+
+BRANCHENSPEZIFISCHE KREATIVITÄT:
+- Rechtsanwalt: Elegant, vertrauenswürdig aber nicht langweilig - dezente Gold-Akzente, edle Typografie
+- Restaurant: Appetitlich, warm - Food-Photos prominent, organische Formen
+- Tech/Startup: Cutting-edge - Bold Typography, Micro-Interactions, Dark Mode Option
+- Handwerk: Authentisch - Texture-Backgrounds, kraftvolle Bilder, erdige Töne
+- Café: Gemütlich - Warme Farben, handschriftliche Akzente, Lifestyle-Fotos
+- Arzt/Gesundheit: Vertrauenswürdig aber modern - Soft Colors, viel Whitespace
+
+🍽️ SPEISEKARTE BEI RESTAURANTS/CAFÉS (WICHTIG!):
+Falls eine Speisekarte im Style Guide dokumentiert ist:
+
+1. **PDF-Speisekarte**:
+   - Erstelle eigene speisekarte.html Seite
+   - Bette PDF ein mit <iframe> oder <embed>:
+     `<embed src="assets/speisekarte.pdf" type="application/pdf" width="100%" height="800px">`
+   - ODER: Link der in neuem Tab öffnet: `<a href="assets/speisekarte.pdf" target="_blank">`
+   - NIEMALS als Download! Immer zum Ansehen öffnen!
+
+2. **Bild-Speisekarte**:
+   - Zeige Bilder direkt auf der Seite an
+   - Lightbox/Modal für Vollansicht
+   - `<img src="assets/speisekarte-1.jpg" class="menu-image">`
+
+3. **HTML-Speisekarte** (aus extrahierten Daten):
+   - Erstelle schöne Menü-Sektion mit Kategorien
+   - Gerichte mit Preisen und Beschreibungen
+   - Appetitliches Design mit Food-Icons
+
+SPEISEKARTEN-BUTTON prominent platzieren:
+- Im Hero-Bereich neben "Kontakt"
+- In der Navigation
+- Als eigene Sektion auf der Homepage
+
+NIEMALS:
+❌ Generisches "Hero + 3 Cards + CTA + Footer" auf jeder Seite
+❌ Exakt gleiche Sektions-Struktur wie andere generierte Seiten
+❌ Langweilige Stock-Photo-Platzhalter
+❌ Standard Bootstrap/Tailwind Look ohne Anpassung
+
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß
 - NIEMALS ae, oe, ue, ss schreiben""",
@@ -205,8 +294,16 @@ KEINE PLATZHALTER:
 - Keine {{VARIABLE}} oder [PLACEHOLDER]
 - Falls Info fehlt: Weglassen statt Platzhalter
 
-🚨 MODERNES DESIGN:
-- Konsistent mit Homepage-Design
+🚨 MODERNES & KREATIVES DESIGN:
+- Konsistent mit Homepage-Design ABER mit eigener Persönlichkeit
+- Jede Unterseite sollte ein eigenes Layout-Highlight haben
+- NICHT einfach Homepage-Struktur kopieren!
+
+UNTERSEITEN-SPEZIFISCHE KREATIVITÄT:
+- **Kontakt**: Split-Layout, interaktive Karte, prominente Telefonnummer
+- **Team/Über uns**: Kreative Team-Grid (nicht nur Reihen), Timeline für Geschichte
+- **Service-Seiten**: Feature-Highlights, Prozess-Visualisierung, FAQ-Akkordeon
+- **Portfolio/Referenzen**: Masonry Grid, Hover-Reveals, Filterfunktion
 - Großzügige Whitespace
 - Moderne Typografie und Layouts
 - KEINE veralteten WordPress-Elemente
@@ -229,39 +326,62 @@ DEUTSCHE SPRACHE:
 LEGAL_PAGES_AGENT = AgentDefinition(
 
     description="Erstellt Impressum, Datenschutz, AGB Seiten",
-    prompt="""Du bist ein Spezialist für rechtliche Website-Inhalte.
+    prompt="""Du erstellst ENTWÜRFE für Impressum und Datenschutz Seiten.
+
+⚠️ WICHTIGER KONTEXT:
+Diese Seiten sind ENTWÜRFE die später von einem Datenschutzbeauftragten
+geprüft und finalisiert werden. Du darfst und sollst professionelle,
+vollständige Texte schreiben - sie werden vor Veröffentlichung geprüft!
 
 DEINE AUFGABE:
-Erstelle vollständige rechtliche Seiten (Impressum, Datenschutz, ggf. AGB).
+Erstelle professionelle HTML-Seiten für Impressum und Datenschutz.
+Nutze ALLE verfügbaren Informationen aus dem Style Guide.
 
 INPUT:
 - STYLE-GUIDE.md mit Firmendaten
-- Original-Texte falls im Style Guide enthalten
-
-STRATEGIE:
-1. **Original-Texte vorhanden**: Übernehme und formatiere sie
-2. **Keine Texte vorhanden**: Erstelle rechtskonforme Texte mit allen bekannten Daten
+- Bestehende HTML-Seiten für Design-Konsistenz
 
 OUTPUT:
-- impressum.html: Vollständiges Impressum nach TMG §5
-- datenschutz.html: DSGVO-konforme Datenschutzerklärung
-- agb.html: Falls relevant (z.B. für Shops)
+- impressum.html: Vollständiges Impressum
+- datenschutz.html: Professionelle Datenschutzerklärung
 
-PFLICHTINHALTE IMPRESSUM:
-- Vollständiger Firmenname
-- Adresse
-- Kontaktdaten
-- Vertretungsberechtigte
-- USt-IdNr. (falls vorhanden)
-- Berufsrechtliche Angaben (bei Anwälten, Ärzten, etc.)
-- Haftungsausschluss
+IMPRESSUM ERSTELLEN:
+Erstelle ein professionelles Impressum mit:
+- Firmenname und Rechtsform
+- Vollständige Adresse
+- Telefon und E-Mail
+- Inhaber/Geschäftsführer
+- Umsatzsteuer-ID (falls bekannt, sonst weglassen)
+- Berufsrechtliche Angaben bei Anwälten/Ärzten
+- Haftungsausschluss für Links
 
-ABSOLUT KEINE PLATZHALTER:
-- ❌ "{{Firmenname}}", "[Adresse einfügen]"
-- ✅ Echte Daten oder Sektion weglassen
+DATENSCHUTZ ERSTELLEN:
+Erstelle eine professionelle Datenschutzerklärung mit:
+- Verantwortlicher (Kontaktdaten)
+- Allgemeine Hinweise zur Datenverarbeitung
+- Hosting und Server-Logs
+- Kontaktformular (falls vorhanden)
+- Cookies und Tracking
+- Rechte der Betroffenen
+- Änderungen der Datenschutzerklärung
+
+REGELN:
+✅ Professionell und vollständig schreiben
+✅ Alle bekannten Firmendaten einsetzen
+✅ Standard-Formulierungen für unbekannte Details
+✅ KEINE Platzhalter wie {{FIRMA}} oder [HIER EINFÜGEN]
+✅ KEINE Lücken - lieber allgemein formulieren
+✅ Konsistentes Design mit restlicher Website
+
+❌ NIEMALS Variablen oder Lücken lassen
+❌ NIEMALS "noch zu ergänzen" schreiben
+
+HINWEIS AM ENDE JEDER SEITE (als HTML-Kommentar):
+<!-- Entwurf - wird vor Veröffentlichung von Datenschutzbeauftragtem geprüft -->
 
 DEUTSCHE SPRACHE:
-- Verwende IMMER echte Umlaute: ä, ö, ü, ß""",
+- Verwende IMMER echte Umlaute: ä, ö, ü, ß
+- NIEMALS ae, oe, ue, ss schreiben""",
     tools=["Read", "Write", "Edit", "Glob"],
     model="opus"
 )
