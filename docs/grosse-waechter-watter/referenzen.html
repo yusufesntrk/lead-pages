@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Referenzen und Auszeichnungen der Kanzlei Große-Wächter & Watter. FOCUS Top-Anwalt, Google Bewertungen und Mandantenstimmen.">
+  <meta name="keywords" content="Referenzen, Bewertungen, FOCUS Top-Anwalt, Arbeitsrecht, Kehl, Kundenstimmen">
+  <title>Referenzen | Große-Wächter & Watter - Fachanwälte für Arbeitsrecht</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <style>
+    /* References Page Specific Styles */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='60' font-size='80' fill='rgba(255,255,255,0.03)' text-anchor='middle'%3E§%3C/text%3E%3C/svg%3E") no-repeat center center;
+      background-size: contain;
+      pointer-events: none;
+    }
+
+    .page-hero h1 {
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .page-hero p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Awards Section */
+    .awards {
+      padding: var(--section-padding);
+      background-color: var(--bg-white);
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .award-card {
+      background: linear-gradient(135deg, #f8f4e8 0%, #fff9e6 100%);
+      border: 2px solid var(--accent-gold);
+      border-radius: var(--radius-md);
+      padding: 40px 32px;
+      text-align: center;
+      transition: all var(--transition-normal);
+    }
+
+    .award-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(184, 134, 11, 0.2);
+    }
+
+    .award-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #d4a50a 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .award-icon svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .award-card h3 {
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .award-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .award-years {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .award-year {
+      display: inline-block;
+      padding: 6px 14px;
+      background-color: var(--accent-gold);
+      color: white;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Google Rating Section */
+    .google-rating {
+      padding: var(--section-padding);
+      background-color: var(--bg-section);
+    }
+
+    .rating-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .rating-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background-color: var(--bg-white);
+      padding: 24px 40px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 32px;
+    }
+
+    .rating-stars {
+      display: flex;
+      gap: 4px;
+      color: #FBBC05;
+    }
+
+    .rating-stars svg {
+      width: 28px;
+      height: 28px;
+      fill: #FBBC05;
+    }
+
+    .rating-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .rating-info {
+      text-align: left;
+    }
+
+    .rating-info span {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .google-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-top: 16px;
+    }
+
+    .google-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: var(--section-padding);
+      background-color: var(--bg-white);
+    }
+
+    .testimonial-card {
+      background-color: var(--bg-light);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      max-width: 800px;
+      margin: 48px auto 0;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 32px;
+      font-size: 120px;
+      font-family: Georgia, serif;
+      color: var(--primary);
+      opacity: 0.15;
+      line-height: 1;
+    }
+
+    .testimonial-quote {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+      font-style: italic;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .testimonial-avatar {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+
+    .testimonial-info h4 {
+      color: var(--text-primary);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .testimonial-info p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .testimonial-source {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .testimonial-source svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .testimonial-source span {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 2px;
+      color: #FBBC05;
+      margin-top: 8px;
+    }
+
+    .testimonial-stars svg {
+      width: 18px;
+      height: 18px;
+      fill: #FBBC05;
+    }
+
+    /* Trustlocal Section */
+    .trustlocal {
+      padding: var(--section-padding);
+      background: linear-gradient(135deg, var(--bg-section) 0%, var(--bg-light) 100%);
+    }
+
+    .trustlocal-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .trustlocal-badge {
+      background-color: var(--bg-white);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+
+    .trustlocal-badge h3 {
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .trustlocal-rank {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .trustlocal-badge p {
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .trustlocal-text h3 {
+      margin-bottom: 16px;
+    }
+
+    .trustlocal-text p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    @media (min-width: 768px) {
+      .trustlocal-content {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
+    /* CTA Section Override for this page */
+    .references-cta {
+      padding: var(--section-padding);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      text-align: center;
+    }
+
+    .references-cta h2 {
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .references-cta p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-text">
+          <span>Große-Wächter & Watter</span>
+          <span>Kanzlei für Arbeitsrecht</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Startseite</a>
+        <a href="leistungen.html">Leistungen</a>
+        <a href="team.html">Team</a>
+        <a href="frankreich.html">Frankreich-Service</a>
+        <a href="referenzen.html">Referenzen</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+
+      <a href="tel:+4978518080" class="btn btn-primary header-cta">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        Anrufen
+      </a>
+
+      <button class="mobile-toggle" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="fade-in">Referenzen & Auszeichnungen</h1>
+      <p class="fade-in fade-in-delay-1">
+        Überzeugen Sie sich von unserer Expertise. Mehrfach ausgezeichnet und von zufriedenen Mandanten empfohlen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Awards Section -->
+  <section class="awards section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Auszeichnungen</h2>
+        <p>Rechtsanwalt Wolfgang Große-Wächter wurde mehrfach vom renommierten Nachrichtenmagazin FOCUS zu den besten Arbeitsrechtlern Deutschlands gezählt.</p>
+      </div>
+
+      <div class="awards-grid">
+        <div class="award-card fade-in">
+          <div class="award-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          </div>
+          <h3>FOCUS Top-Anwalt</h3>
+          <p>Ausgezeichnet in der Kategorie Arbeitsrecht durch Empfehlungen von Fachkollegen</p>
+          <div class="award-years">
+            <span class="award-year">2013</span>
+            <span class="award-year">2014</span>
+            <span class="award-year">2015</span>
+            <span class="award-year">2018</span>
+          </div>
+        </div>
+
+        <div class="award-card fade-in fade-in-delay-1">
+          <div class="award-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <h3>Top 10 Rechtsanwälte</h3>
+          <p>Zu den besten Rechtsanwälten in Kehl und Umgebung gezählt</p>
+          <div class="award-years">
+            <span class="award-year">Trustlocal</span>
+          </div>
+        </div>
+
+        <div class="award-card fade-in fade-in-delay-2">
+          <div class="award-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3>Über 40 Jahre Erfahrung</h3>
+          <p>Seit 1984 ausschließlich auf Arbeitsrecht spezialisiert</p>
+          <div class="award-years">
+            <span class="award-year">Seit 1984</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Rating Section -->
+  <section class="google-rating section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Google Bewertungen</h2>
+        <p>Was unsere Mandanten über uns sagen</p>
+      </div>
+
+      <div class="rating-wrapper fade-in fade-in-delay-1">
+        <div class="rating-badge">
+          <div class="rating-number">4,7</div>
+          <div class="rating-info">
+            <div class="rating-stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24" style="fill: #E0E0E0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span>von 5 Sternen</span>
+            <span>6 Bewertungen</span>
+          </div>
+        </div>
+
+        <a href="https://www.google.com/maps/place/Kanzlei+f%C3%BCr+Arbeitsrecht+Gro%C3%9Fe-W%C3%A4chter+und+Watter/@48.5728,7.8114,17z" target="_blank" rel="noopener noreferrer" class="google-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Alle Bewertungen auf Google Maps ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Mandantenstimmen</h2>
+        <p>Echte Erfahrungen unserer Mandanten</p>
+      </div>
+
+      <div class="testimonial-card fade-in fade-in-delay-1">
+        <p class="testimonial-quote">
+          „Ausgezeichneter Anwalt, hat sich bestens um meine Angelegenheit gekümmert und diese ‚Sehr schnell' durchgezogen und das Erfolgreich. Ich persönlich kann diesen Rechtsanwalt nur weiterempfehlen."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AA</div>
+          <div class="testimonial-info">
+            <h4>Alex Ander</h4>
+            <p>Juli 2022</p>
+            <div class="testimonial-source">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Google Reviews</span>
+            </div>
+            <div class="testimonial-stars">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trustlocal Section -->
+  <section class="trustlocal section">
+    <div class="container">
+      <div class="trustlocal-content fade-in">
+        <div class="trustlocal-badge">
+          <div class="trustlocal-rank">Top 10</div>
+          <h3>Rechtsanwälte in Kehl</h3>
+          <p>laut Trustlocal</p>
+        </div>
+        <div class="trustlocal-text">
+          <h3>Regionale Anerkennung</h3>
+          <p>
+            Wolfgang Große-Wächter wird auf dem unabhängigen Bewertungsportal Trustlocal zu den <strong>Top 10 der besten Rechtsanwälte in Kehl und Umgebung</strong> gezählt.
+          </p>
+          <p>
+            Diese Auszeichnung basiert auf der Gesamtbewertung von 7,3 von 10 Punkten und spiegelt die hohe Zufriedenheit unserer Mandanten wider.
+          </p>
+          <a href="https://trustlocal.de/baden-w%C3%BCrttemberg/kehl/rechtsanwalt/kehl-/" target="_blank" rel="noopener noreferrer" class="google-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            Profil auf Trustlocal ansehen
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="references-cta section">
+    <div class="container">
+      <div class="cta-content fade-in">
+        <h2>Überzeugen Sie sich selbst</h2>
+        <p>
+          Vereinbaren Sie jetzt einen Beratungstermin und erfahren Sie, warum unsere Mandanten uns weiterempfehlen.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="kontakt.html" class="btn btn-light">
+            Jetzt Beratungstermin vereinbaren
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="tel:+4978518080" class="btn btn-secondary" style="border-color: white; color: white;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            +49 7851 8080
+          </a>
+        </div>
+
+        <div class="cta-contact">
+          <div class="cta-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="tel:+4978518080">+49 7851 8080</a>
+          </div>
+          <div class="cta-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <a href="mailto:info@gww-arbeitsrecht.de">info@gww-arbeitsrecht.de</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-text">
+            <span>Große-Wächter & Watter</span>
+            <span>Kanzlei für Arbeitsrecht</span>
+          </div>
+          <p>
+            Ihre Fachanwälte für Arbeitsrecht in Kehl. Seit über 40 Jahren kompetent und engagiert an Ihrer Seite.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="leistungen.html">Leistungen</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="frankreich.html">Frankreich-Service</a></li>
+            <li><a href="referenzen.html">Referenzen</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Kontakt</h4>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Richard-Wagner-Straße 109<br>77694 Kehl</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+49 7851 8080</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@gww-arbeitsrecht.de</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kanzlei für Arbeitsrecht Große-Wächter & Watter. Alle Rechte vorbehalten.</p>
+        <div class="footer-legal">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
