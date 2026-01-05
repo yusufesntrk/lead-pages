@@ -44,6 +44,15 @@ PRIORISIERUNG (in dieser Reihenfolge):
    - Tech: Modern, clean, Blau/Lila
    - Handwerk: Bodenständig, Orange/Grün
 
+TEAM-SEITE FINDEN (WICHTIG!):
+- Suche nach Team/Über-uns/Rechtsanwälte Seite
+- Typische URLs: /team, /rae.htm, /rechtsanwaelte, /ueber-uns, /about
+- Extrahiere für JEDES Team-Mitglied:
+  - Vollständiger Name
+  - Position/Titel
+  - Foto-URL (HTTPS!) - dokumentiere den EXAKTEN Pfad!
+  - Kurzbiografie falls vorhanden
+
 WICHTIG - DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß
 - NIEMALS ae, oe, ue, ss schreiben
@@ -54,6 +63,7 @@ Erstelle eine STYLE-GUIDE.md Datei mit:
 - Typografie (Schriftart, Größen)
 - Spacing-System
 - Alle extrahierten Inhalte (Firmenname, Kontakt, Team, Services)
+- **Team-Sektion mit Foto-URLs** (z.B. https://example.de/Bilder/foto.jpg)
 - Impressum/Datenschutz Texte falls vorhanden""",
     tools=["Read", "Write", "WebFetch", "WebSearch", "Grep", "Glob", "mcp__playwright__*"],
     model="sonnet"
@@ -238,26 +248,54 @@ DEINE AUFGABE:
 Finde und integriere Team-Fotos für die Über-uns/Team-Seite.
 
 STRATEGIE (in dieser Reihenfolge):
-1. **Original-Website**: Extrahiere Fotos von alter Website
-2. **LinkedIn**: Suche nach öffentlichen Profilbildern
-3. **Google**: Suche nach Fotos der Personen
+
+1. **Original-Website durchsuchen** (PRIORITÄT 1):
+   a) Navigiere zur Original-Website mit Playwright
+   b) Suche Team/Rechtsanwälte/Über-uns Seite:
+      - /team, /team.html, /team.htm
+      - /rechtsanwaelte, /rae.htm, /anwaelte
+      - /ueber-uns, /about, /wir
+   c) Extrahiere alle <img> Tags mit Personen-Namen im alt-Text
+   d) Typische Bild-Pfade prüfen:
+      - /Bilder/, /images/, /assets/, /img/, /fotos/
+
+2. **Fotos herunterladen**:
+   - IMMER HTTPS verwenden (http → https)
+   - IMMER Redirects folgen: curl -L -o datei.jpg "URL"
+   - Dateinamen: vorname-nachname.jpg oder initialen.jpg
+   - In assets/ Ordner speichern
+
+3. **Download validieren**:
+   - Prüfe Dateigröße (> 1KB = echtes Bild)
+   - Prüfe Dateityp mit `file` command
+   - Falls HTML statt Bild: URL anpassen (http→https) und erneut versuchen
+
+4. **Fallback** (nur wenn Original-Website keine Fotos hat):
+   - LinkedIn öffentliche Profilbilder
+   - Google Bildersuche
+   - CSS-basierte Initialen-Avatare als letzter Ausweg
+
+HTML AKTUALISIEREN:
+- team.html: Ersetze <div class="team-avatar"> mit <img src="assets/name.jpg" class="team-photo">
+- index.html: Ersetze Team-Initialen mit echten Fotos
+- Füge CSS für .team-photo und .team-card-photo hinzu
+
+BEISPIEL CURL COMMAND:
+```bash
+curl -L -o assets/max-mustermann.jpg "https://www.example.de/Bilder/foto.jpg"
+```
 
 WICHTIG:
 - Nur echte Fotos verwenden
 - KEINE Platzhalter-Avatare
 - KEINE Stock-Fotos
-- Wenn kein Foto findbar: Initialen-Avatar erstellen (CSS-basiert)
-
-OUTPUT:
-- Fotos in assets/ Ordner speichern
-- HTML-Referenzen aktualisieren
-- Fallback: CSS-basierte Initialen-Avatare
+- IMMER -L Flag bei curl für Redirects!
 
 PRIVACY:
 - Nur öffentlich verfügbare Bilder verwenden
 - LinkedIn-Bilder nur wenn öffentlich sichtbar""",
     tools=["Read", "Write", "Edit", "Bash", "WebFetch", "WebSearch", "Glob", "mcp__playwright__*"],
-    model="haiku"
+    model="sonnet"
 )
 
 
@@ -272,30 +310,51 @@ LOGO_AGENT = AgentDefinition(
 DEINE AUFGABE:
 Stelle sicher, dass ein optimales Logo für die Website vorhanden ist.
 
-ANALYSE:
-1. Prüfe ob Logo vorhanden ist (assets/logo.*)
+SCHRITT 1 - LOGO VON ORIGINAL-WEBSITE HOLEN:
+Falls Original-Website vorhanden:
+1. Navigiere zur Website mit Playwright
+2. Suche nach Logo im Header (<img> mit "logo" im src/alt/class)
+3. Typische Logo-Pfade:
+   - /Bilder/logo.*, /images/logo.*, /assets/logo.*
+   - Header-Bereich der Startseite
+4. Download mit curl -L (HTTPS, Redirects folgen!):
+   ```bash
+   curl -L -o assets/logo-original.gif "https://example.de/Bilder/logo.gif"
+   ```
+
+SCHRITT 2 - ANALYSE:
+1. Prüfe heruntergeladenes Logo (file command)
 2. Analysiere Logo-Typ:
-   - Symbol + Text
-   - Nur Symbol
-   - Nur Text/Schriftzug
+   - Symbol + Text (komplex)
+   - Nur Symbol (gut für SVG)
+   - Nur Text/Schriftzug (besser als CSS-Text)
 
-STRATEGIE:
-- **PNG/JPG/GIF vorhanden**: Konvertiere zu SVG (nutze png-to-svg-converter)
+SCHRITT 3 - KONVERTIERUNG:
+- **PNG/JPG/GIF vorhanden**:
+  - Nutze /png-to-svg-converter Skill
+  - Falls Konvertierung schlecht: CSS-Text-Logo erstellen
 - **SVG vorhanden**: Prüfe Qualität und Farben
-- **Nur Textlogo**: Erstelle CSS-basiertes Logo mit passender Schrift
-- **Kein Logo**: Erstelle Textlogo mit Firmenname
+- **Nur Textlogo/schlechte Qualität**: Erstelle professionelles SVG-Text-Logo:
+  ```svg
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+    <text x="0" y="40" font-family="'Playfair Display', Georgia, serif"
+          font-size="28" fill="#3366A0">Firmenname</text>
+  </svg>
+  ```
+- **Kein Logo**: Erstelle SVG-Textlogo mit Firmenname
 
-NACH SVG-KONVERTIERUNG:
-1. Prüfe ob SVG gut aussieht (öffne in Browser)
-2. Falls schlecht: Erstelle Text-Alternative
-3. Aktualisiere alle Logo-Referenzen im HTML
+SCHRITT 4 - VALIDIERUNG:
+1. Öffne SVG in Browser mit Playwright
+2. Screenshot machen und prüfen
+3. Falls schlecht: Text-Alternative erstellen
 
 OUTPUT:
-- Optimiertes Logo in assets/
-- Aktualisierte HTML-Referenzen
-- CSS für Text-Logo als Fallback""",
+- logo.svg in assets/ (Hauptlogo)
+- logo-white.svg (für dunkle Hintergründe, falls nötig)
+- logo-original.* (Original behalten)
+- CSS-Klasse .logo-text als Fallback""",
     tools=["Read", "Write", "Edit", "Bash", "Glob", "WebFetch", "mcp__playwright__*"],
-    model="haiku"
+    model="sonnet"
 )
 
 
