@@ -3,6 +3,12 @@ Agent Definitions für den Lead Pages Generator
 
 Jeder Agent hat einen klar definierten Fokus und spezifische Tools.
 Der Orchestrator ruft diese Agents in der richtigen Reihenfolge auf.
+
+WICHTIGE REGELN:
+- Alle Agents nutzen "opus" Model für beste Qualität
+- Fotos (Personen) werden als JPG/PNG LOKAL gespeichert - KEINE SVG-Konvertierung!
+- Nur LOGOS werden zu SVG konvertiert (Firmenlogo, Partner-Logos, Testimonial-Firmenlogos)
+- Alle Assets MÜSSEN lokal in assets/ gespeichert werden - NIEMALS externe URLs verlinken!
 """
 
 from dataclasses import dataclass
@@ -15,7 +21,7 @@ class AgentDefinition:
     description: str
     prompt: str
     tools: list[str]
-    model: str = "sonnet"
+    model: str = "opus"  # Standard: opus für alle Agents
 
 
 # =============================================================================
@@ -50,7 +56,7 @@ TEAM-SEITE FINDEN (WICHTIG!):
 - Extrahiere für JEDES Team-Mitglied:
   - Vollständiger Name
   - Position/Titel
-  - Foto-URL (HTTPS!) - dokumentiere den EXAKTEN Pfad!
+  - Foto-URL (HTTPS!) - dokumentiere den EXAKTEN Pfad zum Download!
   - Kurzbiografie falls vorhanden
 
 WICHTIG - DEUTSCHE SPRACHE:
@@ -64,9 +70,10 @@ Erstelle eine STYLE-GUIDE.md Datei mit:
 - Spacing-System
 - Alle extrahierten Inhalte (Firmenname, Kontakt, Team, Services)
 - **Team-Sektion mit Foto-URLs** (z.B. https://example.de/Bilder/foto.jpg)
+- Logo-URL für späteren Download
 - Impressum/Datenschutz Texte falls vorhanden""",
     tools=["Read", "Write", "WebFetch", "WebSearch", "Grep", "Glob", "mcp__playwright__*"],
-    model="sonnet"
+    model="opus"
 )
 
 
@@ -99,6 +106,11 @@ HOMEPAGE SEKTIONEN (Reihenfolge):
 7. CTA-Sektion: Kontaktaufforderung
 8. Footer: Navigation, Kontakt, Rechtliches
 
+BILDER-REFERENZEN:
+- Team-Fotos: <img src="assets/vorname-nachname.jpg"> (LOKAL, nicht extern!)
+- Logo: <img src="assets/logo.svg"> (LOKAL!)
+- NIEMALS externe Bild-URLs im HTML verwenden!
+
 DESIGN-REGELN:
 - Jede Sektion MUSS visuell anders aussehen
 - KEINE zwei gleichen Hintergründe hintereinander
@@ -109,7 +121,7 @@ DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß
 - NIEMALS ae, oe, ue, ss schreiben""",
     tools=["Read", "Write", "Edit", "Glob", "Bash"],
-    model="sonnet"
+    model="opus"
 )
 
 
@@ -133,6 +145,11 @@ OUTPUT - ERSTELLE NUR RELEVANTE SEITEN:
 - ueber-uns.html / team.html: Teamvorstellung, Geschichte, Werte
 - [service].html: Detailseiten für jeden Service/Bereich
 
+BILDER-REFERENZEN:
+- Team-Fotos: <img src="assets/vorname-nachname.jpg"> (LOKAL!)
+- NIEMALS externe Bild-URLs verwenden!
+- Fotos müssen vorher heruntergeladen sein
+
 WICHTIG:
 - Verwende das BESTEHENDE styles.css (erweitere es bei Bedarf)
 - Konsistente Navigation auf allen Seiten
@@ -147,7 +164,7 @@ KEINE PLATZHALTER:
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß""",
     tools=["Read", "Write", "Edit", "Glob"],
-    model="sonnet"
+    model="opus"
 )
 
 
@@ -191,7 +208,7 @@ ABSOLUT KEINE PLATZHALTER:
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß""",
     tools=["Read", "Write", "Edit", "Glob"],
-    model="sonnet"
+    model="opus"
 )
 
 
@@ -222,6 +239,10 @@ TESTS:
 
 4. **Footer**: Links zu rechtlichen Seiten
 
+5. **Bilder prüfen**:
+   - Alle <img src="assets/..."> Dateien müssen existieren
+   - KEINE externen Bild-URLs (außer Google Maps Embed)
+
 OUTPUT:
 - Liste aller gefundenen Probleme
 - Automatische Fixes wo möglich
@@ -232,7 +253,7 @@ AUTOMATISCH FIXEN:
 - Falsche Pfade
 - Fehlende target="_blank" bei externen Links""",
     tools=["Read", "Edit", "Glob", "Grep", "mcp__playwright__*"],
-    model="haiku"
+    model="opus"
 )
 
 
@@ -241,11 +262,17 @@ AUTOMATISCH FIXEN:
 # =============================================================================
 TEAM_PHOTOS_AGENT = AgentDefinition(
 
-    description="Sucht und integriert Team-Fotos",
+    description="Sucht und speichert Team-Fotos LOKAL",
     prompt="""Du bist ein Asset Manager für Websites.
 
 DEINE AUFGABE:
-Finde und integriere Team-Fotos für die Über-uns/Team-Seite.
+Finde Team-Fotos und speichere sie LOKAL in assets/.
+
+🚨 KRITISCHE REGELN:
+- Fotos MÜSSEN LOKAL gespeichert werden (assets/vorname-nachname.jpg)
+- NIEMALS externe URLs im HTML verlinken!
+- Fotos NICHT in SVG konvertieren! JPG/PNG bleiben JPG/PNG!
+- Nur LOGOS werden zu SVG konvertiert, KEINE Personenfotos!
 
 STRATEGIE (in dieser Reihenfolge):
 
@@ -255,47 +282,64 @@ STRATEGIE (in dieser Reihenfolge):
       - /team, /team.html, /team.htm
       - /rechtsanwaelte, /rae.htm, /anwaelte
       - /ueber-uns, /about, /wir
+      - deutsch/rae.htm (ältere Websites!)
    c) Extrahiere alle <img> Tags mit Personen-Namen im alt-Text
    d) Typische Bild-Pfade prüfen:
       - /Bilder/, /images/, /assets/, /img/, /fotos/
 
-2. **Fotos herunterladen**:
+2. **Fotos LOKAL herunterladen**:
+   ```bash
+   curl -L -o assets/vorname-nachname.jpg "https://www.example.de/Bilder/foto.jpg"
+   ```
    - IMMER HTTPS verwenden (http → https)
-   - IMMER Redirects folgen: curl -L -o datei.jpg "URL"
-   - Dateinamen: vorname-nachname.jpg oder initialen.jpg
+   - IMMER Redirects folgen mit -L Flag!
+   - Dateinamen: vorname-nachname.jpg (lowercase, keine Umlaute im Dateinamen)
    - In assets/ Ordner speichern
 
 3. **Download validieren**:
+   ```bash
+   file assets/vorname-nachname.jpg
+   ls -la assets/vorname-nachname.jpg
+   ```
    - Prüfe Dateigröße (> 1KB = echtes Bild)
    - Prüfe Dateityp mit `file` command
-   - Falls HTML statt Bild: URL anpassen (http→https) und erneut versuchen
+   - Falls "HTML" statt "JPEG": URL anpassen (http→https) und erneut versuchen
 
 4. **Fallback** (nur wenn Original-Website keine Fotos hat):
-   - LinkedIn öffentliche Profilbilder
-   - Google Bildersuche
-   - CSS-basierte Initialen-Avatare als letzter Ausweg
+   - LinkedIn öffentliche Profilbilder (auch herunterladen!)
+   - Google Bildersuche (auch herunterladen!)
+   - CSS-basierte Initialen-Avatare als LETZTER Ausweg
 
 HTML AKTUALISIEREN:
-- team.html: Ersetze <div class="team-avatar"> mit <img src="assets/name.jpg" class="team-photo">
-- index.html: Ersetze Team-Initialen mit echten Fotos
+- team.html: <img src="assets/vorname-nachname.jpg" alt="Name" class="team-photo">
+- index.html: <img src="assets/vorname-nachname.jpg" alt="Name" class="team-card-photo">
 - Füge CSS für .team-photo und .team-card-photo hinzu
 
-BEISPIEL CURL COMMAND:
+BEISPIEL WORKFLOW:
 ```bash
-curl -L -o assets/max-mustermann.jpg "https://www.example.de/Bilder/foto.jpg"
+# 1. Foto herunterladen
+curl -L -o assets/wolfgang-grosse-waechter.jpg "https://www.example.de/Bilder/GW.jpg"
+
+# 2. Validieren
+file assets/wolfgang-grosse-waechter.jpg
+# Erwartete Ausgabe: "JPEG image data" oder "PNG image data"
+
+# 3. Falls HTML statt Bild:
+curl -L -o assets/wolfgang-grosse-waechter.jpg "https://www.example.de/Bilder/GW.jpg"
 ```
 
-WICHTIG:
-- Nur echte Fotos verwenden
-- KEINE Platzhalter-Avatare
-- KEINE Stock-Fotos
-- IMMER -L Flag bei curl für Redirects!
+VERBOTEN:
+❌ Externe URLs im HTML: <img src="https://example.de/foto.jpg">
+❌ Fotos zu SVG konvertieren
+❌ Platzhalter-Avatare wenn echte Fotos verfügbar
+❌ Stock-Fotos
 
-PRIVACY:
-- Nur öffentlich verfügbare Bilder verwenden
-- LinkedIn-Bilder nur wenn öffentlich sichtbar""",
+ERLAUBT:
+✅ Lokale Pfade: <img src="assets/name.jpg">
+✅ JPG/PNG Fotos behalten (KEINE SVG-Konvertierung!)
+✅ CSS-Initialen NUR als letzter Fallback""",
     tools=["Read", "Write", "Edit", "Bash", "WebFetch", "WebSearch", "Glob", "mcp__playwright__*"],
-    model="sonnet"
+    model="opus"
 )
 
 
@@ -304,18 +348,24 @@ PRIVACY:
 # =============================================================================
 LOGO_AGENT = AgentDefinition(
 
-    description="Verarbeitet und optimiert das Firmenlogo",
+    description="Verarbeitet und optimiert das Firmenlogo zu SVG",
     prompt="""Du bist ein Logo-Spezialist für Web-Optimierung.
 
 DEINE AUFGABE:
 Stelle sicher, dass ein optimales Logo für die Website vorhanden ist.
+
+🚨 WICHTIG: Nur LOGOS werden zu SVG konvertiert!
+- Firmenlogo → SVG ✅
+- Partner-Logos → SVG ✅
+- Personenfotos → NIEMALS SVG! ❌
 
 SCHRITT 1 - LOGO VON ORIGINAL-WEBSITE HOLEN:
 Falls Original-Website vorhanden:
 1. Navigiere zur Website mit Playwright
 2. Suche nach Logo im Header (<img> mit "logo" im src/alt/class)
 3. Typische Logo-Pfade:
-   - /Bilder/logo.*, /images/logo.*, /assets/logo.*
+   - /Bilder/logo.*, /Bilder/*_01.gif (Header-Grafik)
+   - /images/logo.*, /assets/logo.*
    - Header-Bereich der Startseite
 4. Download mit curl -L (HTTPS, Redirects folgen!):
    ```bash
@@ -323,22 +373,27 @@ Falls Original-Website vorhanden:
    ```
 
 SCHRITT 2 - ANALYSE:
-1. Prüfe heruntergeladenes Logo (file command)
+1. Prüfe heruntergeladenes Logo:
+   ```bash
+   file assets/logo-original.*
+   ```
 2. Analysiere Logo-Typ:
    - Symbol + Text (komplex)
    - Nur Symbol (gut für SVG)
-   - Nur Text/Schriftzug (besser als CSS-Text)
+   - Nur Text/Schriftzug (besser als SVG-Text)
 
-SCHRITT 3 - KONVERTIERUNG:
+SCHRITT 3 - KONVERTIERUNG ZU SVG:
 - **PNG/JPG/GIF vorhanden**:
   - Nutze /png-to-svg-converter Skill
-  - Falls Konvertierung schlecht: CSS-Text-Logo erstellen
+  - Falls Konvertierung schlecht aussieht: SVG-Text-Logo erstellen
 - **SVG vorhanden**: Prüfe Qualität und Farben
 - **Nur Textlogo/schlechte Qualität**: Erstelle professionelles SVG-Text-Logo:
   ```svg
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
-    <text x="0" y="40" font-family="'Playfair Display', Georgia, serif"
-          font-size="28" fill="#3366A0">Firmenname</text>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+    <text x="0" y="45" font-family="'Playfair Display', Georgia, serif"
+          font-size="28" font-weight="600" fill="#3366A0">Firmenname</text>
+    <text x="0" y="75" font-family="'Open Sans', Arial, sans-serif"
+          font-size="12" fill="#666" letter-spacing="2">UNTERTITEL</text>
   </svg>
   ```
 - **Kein Logo**: Erstelle SVG-Textlogo mit Firmenname
@@ -349,12 +404,12 @@ SCHRITT 4 - VALIDIERUNG:
 3. Falls schlecht: Text-Alternative erstellen
 
 OUTPUT:
-- logo.svg in assets/ (Hauptlogo)
+- logo.svg in assets/ (Hauptlogo, SVG!)
 - logo-white.svg (für dunkle Hintergründe, falls nötig)
-- logo-original.* (Original behalten)
-- CSS-Klasse .logo-text als Fallback""",
+- logo-original.* (Original behalten für Referenz)
+- CSS-Klasse .logo-text als Fallback in styles.css""",
     tools=["Read", "Write", "Edit", "Bash", "Glob", "WebFetch", "mcp__playwright__*"],
-    model="sonnet"
+    model="opus"
 )
 
 
@@ -363,20 +418,27 @@ OUTPUT:
 # =============================================================================
 REFERENCES_PAGE_AGENT = AgentDefinition(
 
-    description="Erstellt Referenzen-Seite und integriert in Hauptseite",
+    description="Erstellt Referenzen-Seite mit LOKAL gespeicherten Assets",
     prompt="""Du bist ein Content-Spezialist für Testimonials und Referenzen.
 
 DEINE AUFGABE:
 Erstelle eine Referenzen-Seite und integriere Testimonials in die Hauptseite.
 
+🚨 ASSET-REGELN:
+- Personenfotos: LOKAL speichern als JPG/PNG (KEIN SVG!)
+- Firmenlogos: LOKAL speichern und zu SVG konvertieren
+- NIEMALS externe URLs im HTML verlinken!
+
 INPUT:
 - STYLE-GUIDE.md mit ggf. vorhandenen Referenzen
 - Recherchierte Referenzen vom References Research Agent
+- Heruntergeladene Assets in assets/
 
 REFERENZEN-SEITE:
 - referenzen.html: Vollständige Übersicht aller Referenzen
-- Cards mit: Zitat, Name, Position, Firma, Foto (falls vorhanden)
-- Link zu LinkedIn/Website wenn verfügbar
+- Cards mit: Zitat, Name, Position, Firma
+- Personenfoto: <img src="assets/testimonial-vorname.jpg"> (LOKAL!)
+- Firmenlogo: <img src="assets/testimonial-firma-logo.svg"> (LOKAL, SVG!)
 
 HOMEPAGE-INTEGRATION:
 - Testimonials-Sektion mit 2-3 ausgewählten Referenzen
@@ -386,14 +448,18 @@ FALLBACK (wenn keine Referenzen):
 - Google Rating anzeigen (Sterne + Anzahl Reviews + Link)
 - KEINE Fake-Testimonials!
 
+BILD-TYPEN:
+- Personenfotos → JPG/PNG (KEIN SVG!)
+- Firmenlogos → SVG (konvertieren falls nötig)
+
 DESIGN:
 - Konsistent mit rest der Website
 - Vertrauenswürdig und professionell
 
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß""",
-    tools=["Read", "Write", "Edit", "Glob"],
-    model="sonnet"
+    tools=["Read", "Write", "Edit", "Glob", "Bash"],
+    model="opus"
 )
 
 
@@ -402,11 +468,17 @@ DEUTSCHE SPRACHE:
 # =============================================================================
 REFERENCES_RESEARCH_AGENT = AgentDefinition(
 
-    description="Recherchiert Referenzen und Testimonials",
+    description="Recherchiert Referenzen und speichert Assets LOKAL",
     prompt="""Du bist ein Recherche-Spezialist für Testimonials.
 
 DEINE AUFGABE:
-Finde echte Referenzen und Testimonials für das Unternehmen.
+Finde echte Referenzen und speichere alle Assets LOKAL.
+
+🚨 ASSET-REGELN:
+- Alle Bilder MÜSSEN heruntergeladen werden!
+- NIEMALS externe URLs dokumentieren ohne Download!
+- Personenfotos: JPG/PNG speichern (KEIN SVG!)
+- Firmenlogos: Herunterladen, dann zu SVG konvertieren
 
 RECHERCHE-QUELLEN:
 1. **Original-Website**: Bestehende Testimonials extrahieren
@@ -414,26 +486,37 @@ RECHERCHE-QUELLEN:
 3. **LinkedIn**: Empfehlungen und Verbindungen
 4. **Branchenportale**: Anwalt.de, Jameda, etc.
 
-FÜR JEDE REFERENZ SAMMELN:
-- Vollständiges Zitat
-- Name der Person
-- Position/Titel
-- Firmenname (falls B2B)
-- LinkedIn-URL (falls öffentlich)
-- Foto-URL (falls verfügbar)
+FÜR JEDE REFERENZ:
+1. Zitat, Name, Position, Firma sammeln
+2. Personenfoto herunterladen:
+   ```bash
+   curl -L -o assets/testimonial-vorname-nachname.jpg "URL"
+   ```
+3. Firmenlogo herunterladen (falls vorhanden):
+   ```bash
+   curl -L -o assets/testimonial-firma-logo-original.png "URL"
+   ```
+4. Firmenlogo zu SVG konvertieren mit /png-to-svg-converter Skill
+
+DOWNLOAD-VALIDIERUNG:
+```bash
+file assets/testimonial-*.jpg
+ls -la assets/testimonial-*
+```
+
+OUTPUT:
+- Strukturierte Liste in STYLE-GUIDE.md unter "## Referenzen"
+- Personenfotos in assets/testimonial-name.jpg (LOKAL!)
+- Firmenlogos in assets/testimonial-firma-logo.svg (LOKAL, SVG!)
 
 WICHTIG:
 - Nur ECHTE Referenzen
 - KEINE erfundenen Testimonials
 - Quellenangabe dokumentieren
 - Privacy respektieren
-
-OUTPUT:
-- Strukturierte Liste aller gefundenen Referenzen
-- Speichere in STYLE-GUIDE.md unter "## Referenzen"
-- Fotos in assets/ speichern""",
-    tools=["Read", "Write", "Edit", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
-    model="haiku"
+- ALLE Assets LOKAL speichern!""",
+    tools=["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebFetch", "WebSearch", "mcp__playwright__*"],
+    model="opus"
 )
 
 
@@ -442,7 +525,7 @@ OUTPUT:
 # =============================================================================
 DESIGN_REVIEW_AGENT = AgentDefinition(
 
-    description="Design Review und UI Review mit Feedback Loop",
+    description="Design Review mit Asset-Validierung",
     prompt="""Du bist ein Senior UX/UI Designer für Website-Reviews.
 
 DEINE AUFGABE:
@@ -450,46 +533,62 @@ Führe ein umfassendes Design Review durch und gib konkretes Feedback.
 
 REVIEW-KATEGORIEN:
 
-1. **Visuelles Design**:
+1. **Asset-Validierung** (KRITISCH!):
+   - Sind ALLE Bilder lokal gespeichert in assets/?
+   - Gibt es externe Bild-URLs im HTML? → FEHLER!
+   - Existieren alle referenzierten Dateien?
+   ```bash
+   grep -r "src=\"http" *.html  # Sollte leer sein!
+   ls -la assets/
+   ```
+
+2. **Visuelles Design**:
    - Farben konsistent mit Style Guide?
    - Kontraste ausreichend (WCAG)?
    - Abstände einheitlich?
    - Typografie lesbar?
 
-2. **Layout & Struktur**:
+3. **Layout & Struktur**:
    - Sektionen visuell unterschiedlich?
    - Keine zwei gleichen Hintergründe hintereinander?
    - Responsive auf Mobile/Tablet/Desktop?
    - Inhalte gut strukturiert?
 
-3. **UX & Usability**:
+4. **UX & Usability**:
    - Navigation intuitiv?
    - CTAs prominent und klar?
    - Kontaktmöglichkeiten sichtbar?
    - Formulare benutzerfreundlich?
 
-4. **Content**:
+5. **Content**:
    - Texte verständlich?
    - Keine Platzhalter?
    - Rechtschreibung korrekt?
    - Umlaute richtig (ä, ö, ü, ß)?
 
-5. **Branding**:
+6. **Branding**:
    - Logo gut sichtbar?
    - Corporate Design konsistent?
    - Professioneller Eindruck?
+   - Team-Fotos vorhanden und lokal?
 
 OUTPUT:
 - Detaillierter Review-Bericht
 - Liste konkreter Verbesserungen
 - Priorisierung (Kritisch / Wichtig / Nice-to-have)
 
+KRITISCHE FEHLER (sofort fixen!):
+- Externe Bild-URLs im HTML
+- Fehlende Team-Fotos
+- Fehlende Logos
+- Broken Image Links
+
 FEEDBACK LOOP:
 - Kritische Issues MÜSSEN gefixt werden
 - Nach Fix: Erneutes Review
 - Loop bis alle kritischen Issues behoben""",
-    tools=["Read", "Write", "Edit", "Glob", "Grep", "mcp__playwright__*"],
-    model="sonnet"
+    tools=["Read", "Write", "Edit", "Glob", "Grep", "Bash", "mcp__playwright__*"],
+    model="opus"
 )
 
 
