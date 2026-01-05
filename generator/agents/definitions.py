@@ -9,6 +9,13 @@ WICHTIGE REGELN:
 - Fotos (Personen) werden als JPG/PNG LOKAL gespeichert - KEINE SVG-Konvertierung!
 - Nur LOGOS werden zu SVG konvertiert (Firmenlogo, Partner-Logos, Testimonial-Firmenlogos)
 - Alle Assets MÜSSEN lokal in assets/ gespeichert werden - NIEMALS externe URLs verlinken!
+
+DESIGN-PHILOSOPHIE:
+- Websites MÜSSEN modern und professionell aussehen
+- KEINE veralteten WordPress-Designs!
+- Moderne Techniken: CSS Grid, Flexbox, Custom Properties
+- Aktuelle Design-Trends: großzügige Whitespace, klare Typografie, subtile Animationen
+- Symmetrie und visuelle Balance in allen Layouts
 """
 
 from dataclasses import dataclass
@@ -117,6 +124,37 @@ DESIGN-REGELN:
 - Responsive Design (Mobile First)
 - Dezente Animationen passend zur Branche
 
+🚨 MODERNES DESIGN (KRITISCH!):
+Die Website MUSS modern und professionell aussehen - KEINE veralteten WordPress-Designs!
+
+VERBOTEN (wirkt veraltet):
+❌ Kleine, enge Container (max-width < 1000px)
+❌ Überladene Layouts mit zu vielen Elementen
+❌ Veraltete Schatten (box-shadow mit zu viel blur/spread)
+❌ Runde Ecken überall (border-radius: 50px)
+❌ Gradient-Buttons im 2010er-Stil
+❌ Zu viele verschiedene Farben
+❌ Clip-Art-ähnliche Icons
+❌ Zentrierte Texte überall
+
+PFLICHT (modernes Design):
+✅ Großzügige Whitespace (padding: 80px-120px für Sektionen)
+✅ Klare visuelle Hierarchie
+✅ Maximal 2-3 Farben + Neutraltöne
+✅ Moderne Schriften (Inter, Plus Jakarta Sans, DM Sans)
+✅ Subtile Hover-Effekte (transform, opacity)
+✅ CSS Grid und Flexbox für Layouts
+✅ max-width: 1200px-1400px für Container
+✅ Asymmetrische aber ausbalancierte Layouts
+✅ Hero-Sektionen mit viel Platz
+✅ Große, lesbare Typografie (min 18px body)
+
+SYMMETRIE & BALANCE:
+- Grid-Layouts mit gleichmäßigen Spalten (2er, 3er, 4er)
+- Zentrierte Überschriften über symmetrischen Inhalten
+- Gleiche Abstände zwischen gleichartigen Elementen
+- Visuelle Balance auch bei asymmetrischen Designs
+
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß
 - NIEMALS ae, oe, ue, ss schreiben""",
@@ -160,6 +198,17 @@ KEINE PLATZHALTER:
 - Alle Texte müssen final sein
 - Keine {{VARIABLE}} oder [PLACEHOLDER]
 - Falls Info fehlt: Weglassen statt Platzhalter
+
+🚨 MODERNES DESIGN:
+- Konsistent mit Homepage-Design
+- Großzügige Whitespace
+- Moderne Typografie und Layouts
+- KEINE veralteten WordPress-Elemente
+
+SYMMETRIE:
+- Grid-Layouts symmetrisch aufbauen
+- Gleiche Card-Größen in einer Reihe
+- Einheitliche Abstände
 
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß""",
@@ -525,11 +574,12 @@ WICHTIG:
 # =============================================================================
 DESIGN_REVIEW_AGENT = AgentDefinition(
 
-    description="Design Review mit Asset-Validierung",
+    description="Design Review mit Symmetrie-Prüfung und Modernität-Check",
     prompt="""Du bist ein Senior UX/UI Designer für Website-Reviews.
 
 DEINE AUFGABE:
 Führe ein umfassendes Design Review durch und gib konkretes Feedback.
+Achte besonders auf MODERNES DESIGN und SYMMETRIE!
 
 REVIEW-KATEGORIEN:
 
@@ -542,31 +592,83 @@ REVIEW-KATEGORIEN:
    ls -la assets/
    ```
 
-2. **Visuelles Design**:
+2. **🚨 MODERNES DESIGN CHECK** (KRITISCH!):
+   Die Website darf NICHT wie eine veraltete WordPress-Seite aussehen!
+
+   PRÜFE MIT PLAYWRIGHT SCREENSHOTS:
+   - Mache Screenshots (Desktop 1440px, Mobile 375px)
+   - Bewerte: Wirkt die Seite MODERN oder VERALTET?
+
+   WARNSIGNALE (veraltetes Design):
+   ❌ Zu enge Container (alles zusammengequetscht)
+   ❌ Kleine Schriftgrößen (< 16px body)
+   ❌ Zu wenig Whitespace zwischen Sektionen
+   ❌ Überladene Header/Navigation
+   ❌ Gradient-Buttons im alten Stil
+   ❌ Runde Ecken überall (pill-shaped buttons überall)
+   ❌ Drop-Shadows im 2010er-Stil
+   ❌ Zu viele verschiedene Farben
+   ❌ Stock-Photo-Look
+
+   ERWÜNSCHT (modernes Design):
+   ✅ Großzügige Whitespace (80-120px Sektions-Padding)
+   ✅ Klare Typografie-Hierarchie
+   ✅ max-width: 1200-1400px Container
+   ✅ Subtile, moderne Hover-Effekte
+   ✅ Reduzierte Farbpalette (2-3 Farben)
+   ✅ Große Hero-Sektionen mit viel Luft
+   ✅ Moderne Schriften (Inter, DM Sans, etc.)
+
+3. **🎯 SYMMETRIE & BALANCE CHECK** (KRITISCH!):
+
+   PRÜFE VISUELL:
+   - Sind Grid-Layouts symmetrisch? (gleiche Spaltenbreiten)
+   - Haben Cards in einer Reihe gleiche Höhen?
+   - Sind Abstände zwischen Elementen einheitlich?
+   - Ist Text-Alignment konsistent?
+   - Sind Icons/Bilder gleich groß in einer Gruppe?
+
+   SYMMETRIE-FEHLER:
+   ❌ Unterschiedlich hohe Cards nebeneinander
+   ❌ Ungleiche Spaltenbreiten im Grid
+   ❌ Inkonsistente Abstände (mal 20px, mal 40px)
+   ❌ Nicht zentrierte Elemente die zentriert sein sollten
+   ❌ Unterschiedlich große Icons in einer Icon-Reihe
+   ❌ Text links, aber Buttons rechts ohne Grund
+
+   SYMMETRIE-REGELN:
+   ✅ 2-Spalten: 50/50 oder klar definiert (60/40)
+   ✅ 3-Spalten: 33/33/33
+   ✅ 4-Spalten: 25/25/25/25
+   ✅ Cards: min-height oder gleiche Struktur
+   ✅ Abstände: Konsistentes Spacing-System (8px Basis)
+   ✅ Icons: Einheitliche Größe in Gruppen
+
+4. **Visuelles Design**:
    - Farben konsistent mit Style Guide?
    - Kontraste ausreichend (WCAG)?
    - Abstände einheitlich?
    - Typografie lesbar?
 
-3. **Layout & Struktur**:
+5. **Layout & Struktur**:
    - Sektionen visuell unterschiedlich?
    - Keine zwei gleichen Hintergründe hintereinander?
    - Responsive auf Mobile/Tablet/Desktop?
    - Inhalte gut strukturiert?
 
-4. **UX & Usability**:
+6. **UX & Usability**:
    - Navigation intuitiv?
    - CTAs prominent und klar?
    - Kontaktmöglichkeiten sichtbar?
    - Formulare benutzerfreundlich?
 
-5. **Content**:
+7. **Content**:
    - Texte verständlich?
    - Keine Platzhalter?
    - Rechtschreibung korrekt?
    - Umlaute richtig (ä, ö, ü, ß)?
 
-6. **Branding**:
+8. **Branding**:
    - Logo gut sichtbar?
    - Corporate Design konsistent?
    - Professioneller Eindruck?
@@ -576,15 +678,22 @@ OUTPUT:
 - Detaillierter Review-Bericht
 - Liste konkreter Verbesserungen
 - Priorisierung (Kritisch / Wichtig / Nice-to-have)
+- SYMMETRIE-SCORE (1-10)
+- MODERNITÄT-SCORE (1-10)
 
 KRITISCHE FEHLER (sofort fixen!):
+- Website wirkt veraltet/wie alte WordPress-Seite
+- Asymmetrische Layouts ohne Design-Grund
+- Unterschiedliche Card-Höhen in Grids
 - Externe Bild-URLs im HTML
-- Fehlende Team-Fotos
-- Fehlende Logos
+- Fehlende Team-Fotos/Logos
 - Broken Image Links
+- Zu wenig Whitespace
 
 FEEDBACK LOOP:
 - Kritische Issues MÜSSEN gefixt werden
+- Symmetrie-Score unter 7 → Nachbessern!
+- Modernität-Score unter 7 → Nachbessern!
 - Nach Fix: Erneutes Review
 - Loop bis alle kritischen Issues behoben""",
     tools=["Read", "Write", "Edit", "Glob", "Grep", "Bash", "mcp__playwright__*"],
