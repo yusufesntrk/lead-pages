@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Speisekarte des Kaiserpalast China Restaurant in Offenburg - Entdecken Sie unser reichhaltiges Büfett und à la carte Angebot.">
+  <meta name="keywords" content="Kaiserpalast Speisekarte, China Restaurant Menü, Chinesisches Büfett Offenburg, Asiatische Gerichte">
+  <meta name="author" content="Kaiserpalast China Restaurant">
+
+  <title>Speisekarte | Kaiserpalast China Restaurant Offenburg</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+<body>
+
+  <!-- ========================================
+       HEADER
+       ======================================== -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="header__brand">
+          <img src="assets/logo.svg" alt="Kaiserpalast China Restaurant" class="header__logo">
+        </a>
+
+        <nav class="nav">
+          <ul class="nav__list">
+            <li><a href="index.html" class="nav__link">Startseite</a></li>
+            <li><a href="speisekarte.html" class="nav__link nav__link--active">Speisekarte</a></li>
+            <li><a href="galerie.html" class="nav__link">Galerie</a></li>
+            <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+            <li><a href="referenzen.html" class="nav__link">Referenzen</a></li>
+            <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+          </ul>
+          <a href="tel:+497819681818" class="btn btn--primary nav__cta">Reservieren</a>
+        </nav>
+
+        <button class="menu-toggle" aria-label="Menü öffnen">
+          <span class="menu-toggle__line"></span>
+          <span class="menu-toggle__line"></span>
+          <span class="menu-toggle__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <ul class="mobile-nav__list">
+      <li><a href="index.html" class="mobile-nav__link">Startseite</a></li>
+      <li><a href="speisekarte.html" class="mobile-nav__link">Speisekarte</a></li>
+      <li><a href="galerie.html" class="mobile-nav__link">Galerie</a></li>
+      <li><a href="ueber-uns.html" class="mobile-nav__link">Über uns</a></li>
+      <li><a href="referenzen.html" class="mobile-nav__link">Referenzen</a></li>
+      <li><a href="kontakt.html" class="mobile-nav__link">Kontakt</a></li>
+    </ul>
+    <a href="tel:+497819681818" class="btn btn--primary mobile-nav__cta">Jetzt reservieren</a>
+  </nav>
+
+  <!-- ========================================
+       PAGE HERO
+       ======================================== -->
+  <section class="page-hero page-hero--short">
+    <div class="page-hero__bg">
+      <img src="assets/buffet-auslage.jpg"
+           alt="Kaiserpalast Büfett Auswahl"
+           class="page-hero__bg-image">
+    </div>
+    <div class="page-hero__overlay"></div>
+
+    <div class="container">
+      <div class="page-hero__content">
+        <span class="page-hero__label">Kulinarisch</span>
+        <h1 class="page-hero__title">Speisekarte</h1>
+        <p class="page-hero__subtitle">
+          Entdecken Sie die Vielfalt der chinesischen Küche an unserem Büfett und à la carte.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       MENU DOWNLOAD
+       ======================================== -->
+  <section class="menu-download section--sm">
+    <div class="container">
+      <div class="menu-download__card reveal">
+        <div class="menu-download__content">
+          <svg class="menu-download__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <div class="menu-download__text">
+            <h2 class="menu-download__title">Vollständige Speisekarte</h2>
+            <p class="menu-download__desc">
+              Laden Sie unsere komplette Speisekarte als PDF herunter – mit allen Gerichten und Preisen.
+            </p>
+          </div>
+        </div>
+        <a href="https://cdn.website.dish.co/media/9d/d0/7127350/Speisekarte.pdf" class="btn btn--primary" target="_blank" rel="noopener">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          </svg>
+          PDF herunterladen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       BUFFET SECTION
+       ======================================== -->
+  <section class="menu-section section">
+    <div class="container">
+      <header class="menu-section__header">
+        <span class="section-label">Unser Highlight</span>
+        <h2 class="section-title">Das China-Büfett</h2>
+        <p class="section-subtitle">
+          Täglich frisch zubereitet – über 50 verschiedene Gerichte zum Sattessen
+        </p>
+      </header>
+
+      <div class="buffet-showcase">
+        <div class="buffet-showcase__image reveal">
+          <img src="assets/buffet-bereich.jpg"
+               alt="Reichhaltiges China Büfett"
+               loading="lazy">
+        </div>
+
+        <div class="buffet-showcase__content reveal reveal--delay-1">
+          <h3 class="buffet-showcase__title">All-you-can-eat</h3>
+          <p class="buffet-showcase__text">
+            Unser reichhaltiges Büfett bietet Ihnen die volle Vielfalt der chinesischen Küche.
+            Bedienen Sie sich so oft Sie möchten an unseren täglich frisch zubereiteten Gerichten.
+          </p>
+
+          <div class="buffet-showcase__categories">
+            <div class="buffet-category">
+              <span class="buffet-category__icon">🍜</span>
+              <div class="buffet-category__info">
+                <h4 class="buffet-category__title">Vorspeisen</h4>
+                <p class="buffet-category__text">Frühlingsrollen, Wan-Tan-Suppe, Knusprige Ente, Salate</p>
+              </div>
+            </div>
+
+            <div class="buffet-category">
+              <span class="buffet-category__icon">🥢</span>
+              <div class="buffet-category__info">
+                <h4 class="buffet-category__title">Hauptgerichte</h4>
+                <p class="buffet-category__text">Gebratene Nudeln, Reis-Variationen, Fleisch & Fisch</p>
+              </div>
+            </div>
+
+            <div class="buffet-category">
+              <span class="buffet-category__icon">🥬</span>
+              <div class="buffet-category__info">
+                <h4 class="buffet-category__title">Gemüse</h4>
+                <p class="buffet-category__text">Asiatisches Gemüse, Tofu-Gerichte, Vegetarische Optionen</p>
+              </div>
+            </div>
+
+            <div class="buffet-category">
+              <span class="buffet-category__icon">🍨</span>
+              <div class="buffet-category__info">
+                <h4 class="buffet-category__title">Desserts</h4>
+                <p class="buffet-category__text">Süße Nachspeisen, frisches Obst, chinesische Spezialitäten</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       MENU CATEGORIES
+       ======================================== -->
+  <section class="menu-categories section">
+    <div class="container">
+      <header class="menu-categories__header">
+        <span class="section-label">À la Carte</span>
+        <h2 class="section-title">Unsere Gerichte</h2>
+        <p class="section-subtitle">
+          Klassiker der chinesischen Küche, frisch für Sie zubereitet
+        </p>
+      </header>
+
+      <div class="menu-categories__grid">
+        <!-- Vorspeisen -->
+        <div class="menu-card reveal">
+          <div class="menu-card__header">
+            <span class="menu-card__icon">🥟</span>
+            <h3 class="menu-card__title">Vorspeisen</h3>
+          </div>
+          <ul class="menu-card__list">
+            <li class="menu-card__item">
+              <span class="menu-card__name">Frühlingsrollen</span>
+              <span class="menu-card__desc">Knusprig gebacken mit Gemüsefüllung</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Wan-Tan-Suppe</span>
+              <span class="menu-card__desc">Traditionelle Suppe mit gefüllten Teigtaschen</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Pekingsuppe</span>
+              <span class="menu-card__desc">Würzig-sauer mit Tofu und Gemüse</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Gebackene Garnelen</span>
+              <span class="menu-card__desc">Im knusprigen Teigmantel</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Rindfleisch -->
+        <div class="menu-card reveal reveal--delay-1">
+          <div class="menu-card__header">
+            <span class="menu-card__icon">🥩</span>
+            <h3 class="menu-card__title">Rindfleisch</h3>
+          </div>
+          <ul class="menu-card__list">
+            <li class="menu-card__item">
+              <span class="menu-card__name">Rindfleisch mit Zwiebeln</span>
+              <span class="menu-card__desc">Zart gebratenes Rindfleisch</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Rindfleisch Szechuan</span>
+              <span class="menu-card__desc">Pikant mit Chili und Paprika</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Rindfleisch mit Bambus</span>
+              <span class="menu-card__desc">Mit Bambussprossen und Pilzen</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Rindfleisch mit Brokkoli</span>
+              <span class="menu-card__desc">Klassiker mit frischem Gemüse</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Schweinefleisch -->
+        <div class="menu-card reveal reveal--delay-2">
+          <div class="menu-card__header">
+            <span class="menu-card__icon">🐖</span>
+            <h3 class="menu-card__title">Schweinefleisch</h3>
+          </div>
+          <ul class="menu-card__list">
+            <li class="menu-card__item">
+              <span class="menu-card__name">Schweinefleisch süß-sauer</span>
+              <span class="menu-card__desc">Der Klassiker mit fruchtigem Geschmack</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Mu-Shu Schweinefleisch</span>
+              <span class="menu-card__desc">Mit Mu-Err-Pilzen und Eierstreifen</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Schweinefleisch Kung Pao</span>
+              <span class="menu-card__desc">Mit Erdnüssen und Chili</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Knuspriges Schweinefleisch</span>
+              <span class="menu-card__desc">Knusprig gebacken mit Soße</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Geflügel -->
+        <div class="menu-card reveal">
+          <div class="menu-card__header">
+            <span class="menu-card__icon">🍗</span>
+            <h3 class="menu-card__title">Geflügel</h3>
+          </div>
+          <ul class="menu-card__list">
+            <li class="menu-card__item">
+              <span class="menu-card__name">Hähnchen süß-sauer</span>
+              <span class="menu-card__desc">Knusprig paniert mit fruchtiger Soße</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Hähnchen Kung Pao</span>
+              <span class="menu-card__desc">Pikant mit Erdnüssen</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Knusprige Ente</span>
+              <span class="menu-card__desc">Mit Pflaumensoße oder süß-sauer</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Hähnchen mit Cashewnüssen</span>
+              <span class="menu-card__desc">Zart gebraten mit Gemüse</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Fisch & Meeresfrüchte -->
+        <div class="menu-card reveal reveal--delay-1">
+          <div class="menu-card__header">
+            <span class="menu-card__icon">🦐</span>
+            <h3 class="menu-card__title">Fisch & Meeresfrüchte</h3>
+          </div>
+          <ul class="menu-card__list">
+            <li class="menu-card__item">
+              <span class="menu-card__name">Garnelen mit Gemüse</span>
+              <span class="menu-card__desc">Frische Garnelen mit asiatischem Gemüse</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Knusprige Garnelen</span>
+              <span class="menu-card__desc">Im Teigmantel gebacken</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Tintenfisch Szechuan</span>
+              <span class="menu-card__desc">Pikant mit Chili und Paprika</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Meeresfrüchte-Mix</span>
+              <span class="menu-card__desc">Garnelen, Muscheln und Tintenfisch</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Nudeln & Reis -->
+        <div class="menu-card reveal reveal--delay-2">
+          <div class="menu-card__header">
+            <span class="menu-card__icon">🍜</span>
+            <h3 class="menu-card__title">Nudeln & Reis</h3>
+          </div>
+          <ul class="menu-card__list">
+            <li class="menu-card__item">
+              <span class="menu-card__name">Gebratene Nudeln</span>
+              <span class="menu-card__desc">Mit Gemüse und Ei</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Gebratener Reis</span>
+              <span class="menu-card__desc">Klassisch mit Ei und Gemüse</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Chop Suey</span>
+              <span class="menu-card__desc">Gemüsepfanne mit Fleisch nach Wahl</span>
+            </li>
+            <li class="menu-card__item">
+              <span class="menu-card__name">Bami Goreng</span>
+              <span class="menu-card__desc">Indonesische Nudelpfanne</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="menu-categories__note">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <p>
+          Dies ist nur ein Auszug aus unserer Speisekarte.
+          <a href="https://cdn.website.dish.co/media/9d/d0/7127350/Speisekarte.pdf" target="_blank" rel="noopener">
+            Laden Sie die vollständige Speisekarte als PDF herunter
+          </a>
+          für alle Gerichte und aktuelle Preise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       ALLERGEN INFO
+       ======================================== -->
+  <section class="allergen section--sm">
+    <div class="container">
+      <div class="allergen__inner">
+        <h3 class="allergen__title">Allergene & Zusatzstoffe</h3>
+        <p class="allergen__text">
+          Informationen zu Allergenen und Zusatzstoffen erhalten Sie gerne von unserem
+          Service-Personal oder in unserer ausführlichen Speisekarte.
+        </p>
+        <div class="allergen__icons">
+          <span class="allergen__icon" title="Vegetarisch">🥬</span>
+          <span class="allergen__icon" title="Vegan möglich">🌱</span>
+          <span class="allergen__icon" title="Scharf">🌶️</span>
+          <span class="allergen__icon" title="Enthält Nüsse">🥜</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       CTA SECTION
+       ======================================== -->
+  <section class="cta section--sm">
+    <div class="container">
+      <h2 class="cta__title reveal">Appetit bekommen?</h2>
+      <p class="cta__text reveal reveal--delay-1">
+        Reservieren Sie jetzt Ihren Tisch und genießen Sie unser Büfett.
+      </p>
+      <div class="cta__actions reveal reveal--delay-2">
+        <a href="tel:+497819681818" class="btn btn--white">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+          </svg>
+          Tisch reservieren
+        </a>
+        <a href="kontakt.html" class="btn btn--outline-white">
+          Kontakt aufnehmen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/logo-white.svg" alt="Kaiserpalast China Restaurant" class="footer__logo">
+          <p class="footer__tagline">
+            Authentische chinesische Küche in Offenburg. Besuchen Sie unser reichhaltiges
+            Büfett oder genießen Sie unsere Spezialitäten à la carte.
+          </p>
+        </div>
+
+        <div class="footer__nav">
+          <h4 class="footer__nav-title">Navigation</h4>
+          <ul class="footer__nav-list">
+            <li><a href="index.html" class="footer__nav-link">Startseite</a></li>
+            <li><a href="speisekarte.html" class="footer__nav-link">Speisekarte</a></li>
+            <li><a href="galerie.html" class="footer__nav-link">Galerie</a></li>
+            <li><a href="ueber-uns.html" class="footer__nav-link">Über uns</a></li>
+            <li><a href="referenzen.html" class="footer__nav-link">Referenzen</a></li>
+            <li><a href="kontakt.html" class="footer__nav-link">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__nav">
+          <h4 class="footer__nav-title">Service</h4>
+          <ul class="footer__nav-list">
+            <li><a href="https://cdn.website.dish.co/media/9d/d0/7127350/Speisekarte.pdf" class="footer__nav-link" target="_blank" rel="noopener">Speisekarte (PDF)</a></li>
+            <li><a href="tel:+497819681818" class="footer__nav-link">Reservierung</a></li>
+            <li><a href="https://maps.google.com/?q=Kehler+Straße+47,+77652+Offenburg" class="footer__nav-link" target="_blank" rel="noopener">Anfahrt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__nav">
+          <h4 class="footer__nav-title">Kontakt</h4>
+          <ul class="footer__nav-list">
+            <li><a href="tel:+497819681818" class="footer__nav-link">+49 781 9681818</a></li>
+            <li><a href="mailto:qunyongye8@hotmail.com" class="footer__nav-link">qunyongye8@hotmail.com</a></li>
+            <li><span class="footer__nav-link">Kehler Str. 47, 77652 Offenburg</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; <span class="footer__year">2025</span> Kaiserpalast China Restaurant. Alle Rechte vorbehalten.
+        </p>
+        <div class="footer__legal">
+          <a href="impressum.html" class="footer__legal-link">Impressum</a>
+          <a href="datenschutz.html" class="footer__legal-link">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

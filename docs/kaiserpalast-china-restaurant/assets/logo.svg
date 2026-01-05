@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" width="320" height="100">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E8A85C"/>
+      <stop offset="50%" stop-color="#D4A574"/>
+      <stop offset="100%" stop-color="#C17F59"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Decorative Chinese-style element -->
+  <g transform="translate(10, 15)">
+    <!-- Pagoda-inspired shape -->
+    <path d="M25 0 L35 12 L32 12 L32 20 L38 20 L38 22 L12 22 L12 20 L18 20 L18 12 L15 12 Z"
+          fill="#8E6B6B" opacity="0.9"/>
+    <rect x="20" y="22" width="10" height="8" fill="#8E6B6B"/>
+    <!-- Roof details -->
+    <path d="M22 12 L28 12 L28 20 L22 20 Z" fill="#C17F59"/>
+  </g>
+
+  <!-- Main text -->
+  <text x="55" y="42" font-family="'Cinzel', 'Playfair Display', Georgia, serif"
+        font-size="28" font-weight="700" fill="#8E6B6B" letter-spacing="2">
+    KAISERPALAST
+  </text>
+
+  <!-- Subtitle -->
+  <text x="55" y="65" font-family="'Open Sans', Arial, sans-serif"
+        font-size="11" font-weight="400" fill="#C17F59" letter-spacing="4">
+    CHINA RESTAURANT
+  </text>
+
+  <!-- Decorative line -->
+  <line x1="55" y1="75" x2="200" y2="75" stroke="url(#goldGradient)" stroke-width="1"/>
+
+  <!-- Location text -->
+  <text x="55" y="90" font-family="'Open Sans', Arial, sans-serif"
+        font-size="9" font-weight="400" fill="#666666" letter-spacing="2">
+    OFFENBURG · BÜHL
+  </text>
+</svg>
