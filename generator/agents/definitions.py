@@ -16,6 +16,12 @@ DESIGN-PHILOSOPHIE:
 - Moderne Techniken: CSS Grid, Flexbox, Custom Properties
 - Aktuelle Design-Trends: großzügige Whitespace, klare Typografie, subtile Animationen
 - Symmetrie und visuelle Balance in allen Layouts
+
+PLAYWRIGHT-SCREENSHOTS:
+- Screenshots IMMER im Projektordner speichern: .playwright-tmp/
+- Nach Analyse SOFORT löschen: rm .playwright-tmp/*.png && rmdir .playwright-tmp
+- NIEMALS Screenshots in globalen Ordnern speichern!
+- Workflow: Screenshot → Analysieren → Löschen
 """
 
 from dataclasses import dataclass
@@ -596,7 +602,20 @@ REVIEW-KATEGORIEN:
    Die Website darf NICHT wie eine veraltete WordPress-Seite aussehen!
 
    PRÜFE MIT PLAYWRIGHT SCREENSHOTS:
-   - Mache Screenshots (Desktop 1440px, Mobile 375px)
+   ```bash
+   # 1. Temp-Ordner erstellen
+   mkdir -p .playwright-tmp
+
+   # 2. Screenshots machen (Desktop + Mobile)
+   # → savePng: true, downloadsDir: ".playwright-tmp"
+   playwright_screenshot(name="desktop", width=1440, height=900, savePng=true, downloadsDir=".playwright-tmp")
+   playwright_screenshot(name="mobile", width=375, height=667, savePng=true, downloadsDir=".playwright-tmp")
+
+   # 3. Screenshots analysieren (Read Tool)
+
+   # 4. SOFORT nach Analyse löschen!
+   rm .playwright-tmp/*.png && rmdir .playwright-tmp
+   ```
    - Bewerte: Wirkt die Seite MODERN oder VERALTET?
 
    WARNSIGNALE (veraltetes Design):

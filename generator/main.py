@@ -202,17 +202,38 @@ async def main():
     try:
         output_path = await generate_website(lead, args.output)
 
-        # Airtable aktualisieren (wenn nicht Test-Modus)
+        # Finalisierung (wenn nicht Test-Modus)
         if not args.test and lead.id != "test_001":
             url = f"https://lead-pages.pages.dev/{output_path.name}/"
+
+            # 1. Git commit & push
+            print("\n📤 Git commit & push...")
+            import subprocess
+            try:
+                subprocess.run(["git", "add", str(output_path)], check=True, capture_output=True)
+                subprocess.run(
+                    ["git", "commit", "-m", f"Add landing page for {lead.firma}"],
+                    check=True,
+                    capture_output=True
+                )
+                subprocess.run(["git", "push", "origin", "main"], check=True, capture_output=True)
+                print(f"   ✅ Gepusht: {output_path.name}/")
+            except subprocess.CalledProcessError as e:
+                print(f"   ⚠️ Git-Fehler: {e.stderr.decode() if e.stderr else str(e)}")
+
+            # 2. Airtable aktualisieren
+            print("\n📊 Airtable aktualisieren...")
             update_lead(lead.id, {
                 "Seite erstellt": True,
                 "Landingpage URL": url
             })
-            print(f"\n✅ Airtable aktualisiert: {url}")
+            print(f"   ✅ Seite erstellt: True")
+            print(f"   ✅ Landingpage URL: {url}")
 
         print(f"\n🎉 Fertig! Website unter: {output_path}")
         print(f"   Lokal öffnen: file://{output_path.absolute()}/index.html")
+        if not args.test and lead.id != "test_001":
+            print(f"   Live URL: https://lead-pages.pages.dev/{output_path.name}/")
 
     except Exception as e:
         print(f"\n❌ Fehler beim Generieren: {e}")

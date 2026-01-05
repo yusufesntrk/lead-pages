@@ -210,46 +210,30 @@ python -m generator.main --test
 - Cloudflare Pages: automatisch bei git push
 - URL: `https://lead-pages.pages.dev/[firmenname]/`
 
-### Nach Website-Erstellung (PFLICHT!)
+### Automatische Finalisierung (im SDK)
 
-**1. Airtable aktualisieren:**
+Nach erfolgreicher Website-Generierung führt das SDK automatisch aus:
+
+1. **Git Commit & Push** → `docs/[firmenname]/` wird committed und gepusht
+2. **Airtable Update** → `Seite erstellt: true` + `Landingpage URL` gesetzt
+3. **Live-URL Ausgabe** → `https://lead-pages.pages.dev/[firmenname]/`
+
+**Hinweis:** Im Test-Modus (`--test`) werden Git und Airtable übersprungen.
+
+### Manuelle Finalisierung (falls nötig)
+
+Falls das SDK die Finalisierung nicht durchführt:
+
 ```bash
-# Felder setzen:
-- "Seite erstellt" → true (Checkbox)
-- "Landingpage URL" → https://lead-pages.pages.dev/[firmenname]/
-```
-
-```python
-# Via MCP Tool:
-mcp__airtable__update_records(
-    baseId="app4j0YLgGsYe1luA",
-    tableId="tblNQpZPxQleuajZc",
-    records=[{
-        "id": "recXXXXXX",
-        "fields": {
-            "Seite erstellt": True,
-            "Landingpage URL": "https://lead-pages.pages.dev/firmenname/"
-        }
-    }]
-)
-```
-
-**2. Git Commit & Push:**
-```bash
+# Git
 git add docs/[firmenname]/
 git commit -m "Add landing page for [Firmenname]"
 git push origin main
+
+# Airtable (via MCP)
+mcp__airtable__update_records(
+    baseId="app4j0YLgGsYe1luA",
+    tableId="tblNQpZPxQleuajZc",
+    records=[{"id": "recXXX", "fields": {"Seite erstellt": True, "Landingpage URL": "https://..."}}]
+)
 ```
-
-**3. Deployment verifizieren:**
-- Warten bis Cloudflare Pages Build fertig (~1-2 Min)
-- URL aufrufen und prüfen: `https://lead-pages.pages.dev/[firmenname]/`
-
-### Checkliste Abschluss
-
-- [ ] Alle Seiten erstellt und geprüft
-- [ ] Design Review bestanden
-- [ ] Airtable "Seite erstellt" = true
-- [ ] Airtable "Landingpage URL" gesetzt
-- [ ] Git gepusht
-- [ ] Live-URL funktioniert
