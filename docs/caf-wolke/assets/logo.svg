@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="280" height="80">
+  <defs>
+    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B8C4CE"/>
+      <stop offset="100%" stop-color="#E8DDD4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Wolken-Symbol -->
+  <g transform="translate(0, 15)">
+    <!-- Hauptwolke -->
+    <ellipse cx="35" cy="35" rx="18" ry="14" fill="url(#cloudGradient)"/>
+    <ellipse cx="22" cy="40" rx="12" ry="10" fill="url(#cloudGradient)"/>
+    <ellipse cx="48" cy="40" rx="14" ry="11" fill="url(#cloudGradient)"/>
+    <ellipse cx="35" cy="44" rx="20" ry="10" fill="url(#cloudGradient)"/>
+
+    <!-- Dampf/Steam über der Wolke -->
+    <path d="M30 18 Q32 12 36 15 Q40 10 42 16" stroke="#8B7355" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+  </g>
+
+  <!-- Text: Café -->
+  <text x="72" y="38" font-family="'Playfair Display', Georgia, serif" font-size="24" font-weight="600" fill="#4A3728" letter-spacing="1">Café</text>
+
+  <!-- Text: Wolke -->
+  <text x="72" y="62" font-family="'Playfair Display', Georgia, serif" font-size="28" font-weight="700" fill="#8B7355" letter-spacing="2">Wolke</text>
+</svg>

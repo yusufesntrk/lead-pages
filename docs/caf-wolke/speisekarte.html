@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entdecke die Speisekarte von Café Wolke – Hausgemachte Kuchen, türkisches Frühstück mit Menemen, lokal gerösteter Kaffee und mehr in Offenburg.">
+    <meta name="keywords" content="Café Wolke Speisekarte, Kuchen Offenburg, Frühstück, Menemen, Kaffee, Torten">
+    <title>Speisekarte – Café Wolke Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Lato:wght@300;400;500;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Café Wolke Logo" width="180" height="52">
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">Start</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="speisekarte.html" class="nav__link nav__link--active">Speisekarte</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="ueber-uns.html" class="nav__link">Über uns</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="hochzeitstorten.html" class="nav__link">Hochzeitstorten</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="kontakt.html" class="nav__link">Kontakt</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="tel:+4978155776" class="nav__link nav__link--cta">Anrufen</a>
+                    </li>
+                </ul>
+
+                <button class="nav__close" id="nav-close" aria-label="Menü schließen">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <button class="nav__toggle" id="nav-toggle" aria-label="Menü öffnen">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero page-hero--menu">
+            <div class="page-hero__bg">
+                <div class="page-hero__clouds">
+                    <div class="cloud cloud--1"></div>
+                    <div class="cloud cloud--2"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="page-hero__content reveal">
+                    <span class="page-hero__tagline">Hausgemacht mit Liebe</span>
+                    <h1 class="page-hero__title">Unsere Speisekarte</h1>
+                    <p class="page-hero__subtitle">Von der legendären Wolken Torte bis zum authentischen Menemen – entdecke unsere Köstlichkeiten.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Navigation -->
+        <section class="menu-nav">
+            <div class="container">
+                <div class="menu-nav__tabs reveal">
+                    <a href="#kuchen" class="menu-nav__tab menu-nav__tab--active">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2z"/>
+                            <path d="M6 13V8a6 6 0 0 1 12 0v5"/>
+                        </svg>
+                        <span>Kuchen & Torten</span>
+                    </a>
+                    <a href="#fruehstueck" class="menu-nav__tab">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <span>Frühstück</span>
+                    </a>
+                    <a href="#kaffee" class="menu-nav__tab">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                        </svg>
+                        <span>Kaffee & Getränke</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kuchen & Torten Section -->
+        <section class="menu-section" id="kuchen">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <div class="menu-section__icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 21H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2z"/>
+                            <path d="M2 15h20"/>
+                            <path d="M6 13V8a6 6 0 0 1 12 0v5"/>
+                            <path d="M12 4V2"/>
+                        </svg>
+                    </div>
+                    <div class="menu-section__text">
+                        <h2 class="menu-section__title">Kuchen & Torten</h2>
+                        <p class="menu-section__subtitle">Täglich frisch gebacken – alle Kuchen 100% hausgemacht</p>
+                    </div>
+                </div>
+
+                <!-- Signature Item -->
+                <div class="menu-signature reveal">
+                    <div class="menu-signature__badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <span>Signature</span>
+                    </div>
+                    <div class="menu-signature__content">
+                        <div class="menu-signature__image">
+                            <div class="menu-signature__placeholder">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <path d="M20 21H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2z"/>
+                                    <path d="M6 13V8a6 6 0 0 1 12 0v5"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="menu-signature__info">
+                            <h3 class="menu-signature__name">Wolken Torte</h3>
+                            <p class="menu-signature__description">
+                                Unsere legendäre Signature-Kreation – luftig leicht wie eine Wolke.
+                                Die Torte, die Café Wolke berühmt gemacht hat. Eine himmlische
+                                Kombination aus zarter Creme und feinem Biskuit.
+                            </p>
+                            <span class="menu-signature__quote">„Der beste Kuchen in Offenburg"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-grid">
+                    <div class="menu-item reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Käsekuchen</h3>
+                        </div>
+                        <p class="menu-item__description">Cremig, saftig und mit perfekt karamellisierter Oberfläche</p>
+                    </div>
+
+                    <div class="menu-item reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Schwarzwälder Kirsch</h3>
+                        </div>
+                        <p class="menu-item__description">Der Klassiker mit Kirschen, Sahne und Schokolade</p>
+                    </div>
+
+                    <div class="menu-item reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Apfelkuchen</h3>
+                        </div>
+                        <p class="menu-item__description">Mit frischen Äpfeln und einer Prise Zimt</p>
+                    </div>
+
+                    <div class="menu-item reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Schokoladentorte</h3>
+                        </div>
+                        <p class="menu-item__description">Für echte Schokoholics – intensiv und verführerisch</p>
+                    </div>
+
+                    <div class="menu-item reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Obstkuchen (saisonal)</h3>
+                        </div>
+                        <p class="menu-item__description">Je nach Saison mit frischen Früchten</p>
+                    </div>
+
+                    <div class="menu-item reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Weitere Tagesangebote</h3>
+                        </div>
+                        <p class="menu-item__description">Täglich wechselnde Kreationen – frag einfach nach!</p>
+                    </div>
+                </div>
+
+                <div class="menu-note reveal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <span>Alle Kuchen auch zum Mitnehmen (To-Go) erhältlich</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frühstück Section -->
+        <section class="menu-section menu-section--alt" id="fruehstueck">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <div class="menu-section__icon menu-section__icon--breakfast">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="menu-section__text">
+                        <h2 class="menu-section__title">Frühstück</h2>
+                        <p class="menu-section__subtitle">Samstag, Sonntag & Feiertage von 9:00 – 12:00 Uhr</p>
+                    </div>
+                </div>
+
+                <div class="menu-highlight reveal">
+                    <span class="menu-highlight__badge">Türkische Spezialität</span>
+                    <div class="menu-highlight__grid">
+                        <div class="menu-highlight__image">
+                            <div class="menu-highlight__placeholder">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <ellipse cx="12" cy="12" rx="10" ry="6"/>
+                                    <path d="M12 18c5.5 0 10-2.7 10-6"/>
+                                </svg>
+                                <span>Menemen</span>
+                            </div>
+                        </div>
+                        <div class="menu-highlight__content">
+                            <h3 class="menu-highlight__name">Menemen</h3>
+                            <p class="menu-highlight__description">
+                                Authentische türkische Rühreier mit Tomaten, Paprika und Gewürzen –
+                                ein Klassiker der türkischen Frühstückskultur. Serviert mit frischem Brot.
+                            </p>
+                            <span class="menu-highlight__tag">Vegetarisch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-grid menu-grid--wide">
+                    <div class="menu-item menu-item--featured reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Avocado Toast</h3>
+                            <span class="menu-item__tag">Beliebt</span>
+                        </div>
+                        <p class="menu-item__description">
+                            Frische Avocado auf knusprigem Sauerteigbrot mit Kirschtomaten und Microgreens
+                        </p>
+                    </div>
+
+                    <div class="menu-item menu-item--featured reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Türkisches Frühstück</h3>
+                        </div>
+                        <p class="menu-item__description">
+                            Käse, Oliven, Tomaten, Gurken, Butter, Marmelade und frisches Brot
+                        </p>
+                    </div>
+
+                    <div class="menu-item reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Rührei Classic</h3>
+                        </div>
+                        <p class="menu-item__description">Cremiges Rührei mit Toast und Butter</p>
+                    </div>
+
+                    <div class="menu-item reveal">
+                        <div class="menu-item__header">
+                            <h3 class="menu-item__name">Croissant mit Marmelade</h3>
+                        </div>
+                        <p class="menu-item__description">Butteriges Croissant mit hausgemachter Marmelade</p>
+                    </div>
+                </div>
+
+                <div class="menu-note menu-note--important reveal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <span>Frühstück nur am Wochenende & an Feiertagen (Sa/So/Feiertage: 9–12 Uhr)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kaffee Section -->
+        <section class="menu-section" id="kaffee">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <div class="menu-section__icon menu-section__icon--coffee">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="4"/>
+                            <line x1="10" y1="1" x2="10" y2="4"/>
+                            <line x1="14" y1="1" x2="14" y2="4"/>
+                        </svg>
+                    </div>
+                    <div class="menu-section__text">
+                        <h2 class="menu-section__title">Kaffee & Getränke</h2>
+                        <p class="menu-section__subtitle">Lokal geröstete Bohnen von Röstereien aus der Region</p>
+                    </div>
+                </div>
+
+                <div class="coffee-grid">
+                    <div class="coffee-category reveal">
+                        <h3 class="coffee-category__title">Espresso-Klassiker</h3>
+                        <ul class="coffee-list">
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Espresso</span>
+                                <span class="coffee-item__desc">Klassisch italienisch</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Doppio</span>
+                                <span class="coffee-item__desc">Doppelter Espresso</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Americano</span>
+                                <span class="coffee-item__desc">Espresso mit heißem Wasser</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="coffee-category reveal">
+                        <h3 class="coffee-category__title">Milchkaffee</h3>
+                        <ul class="coffee-list">
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Cappuccino</span>
+                                <span class="coffee-item__desc">Espresso, Milch, Milchschaum</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Latte Macchiato</span>
+                                <span class="coffee-item__desc">Geschichteter Milchkaffee</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Flat White</span>
+                                <span class="coffee-item__desc">Samtiger Milchschaum</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Café Latte</span>
+                                <span class="coffee-item__desc">Espresso mit viel Milch</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="coffee-category reveal">
+                        <h3 class="coffee-category__title">Spezialitäten</h3>
+                        <ul class="coffee-list">
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Türkischer Mokka</span>
+                                <span class="coffee-item__desc">Traditionell im Cezve zubereitet</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Eiskaffee</span>
+                                <span class="coffee-item__desc">Mit Vanilleeis und Sahne</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Heiße Schokolade</span>
+                                <span class="coffee-item__desc">Cremig und reichhaltig</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="coffee-category reveal">
+                        <h3 class="coffee-category__title">Tee & Mehr</h3>
+                        <ul class="coffee-list">
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Türkischer Tee</span>
+                                <span class="coffee-item__desc">Traditionell im Glas</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Schwarzer Tee</span>
+                                <span class="coffee-item__desc">Verschiedene Sorten</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Kräutertee</span>
+                                <span class="coffee-item__desc">Kamille, Pfefferminze & mehr</span>
+                            </li>
+                            <li class="coffee-item">
+                                <span class="coffee-item__name">Softdrinks & Säfte</span>
+                                <span class="coffee-item__desc">Auf Anfrage</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="coffee-badge reveal">
+                    <div class="coffee-badge__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="coffee-badge__text">
+                        <strong>Lokal geröstet</strong>
+                        <span>Unsere Bohnen stammen von Röstereien aus der Region</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Note -->
+        <section class="pricing-note">
+            <div class="container">
+                <div class="pricing-note__box reveal">
+                    <div class="pricing-note__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <div class="pricing-note__content">
+                        <h3 class="pricing-note__title">Preise & Verfügbarkeit</h3>
+                        <p class="pricing-note__text">
+                            Unsere aktuelle Karte mit allen Preisen findest du direkt vor Ort.
+                            Das Angebot variiert je nach Saison und Tageskreation.
+                            Preisklasse: ca. 9–22€ pro Person.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- To-Go Section -->
+        <section class="togo-section">
+            <div class="container">
+                <div class="togo-grid">
+                    <div class="togo-content reveal">
+                        <span class="section-tag">To-Go Service</span>
+                        <h2 class="togo-title">Kuchen zum Mitnehmen</h2>
+                        <p class="togo-text">
+                            Du möchtest unsere Kuchen auch zu Hause genießen? Kein Problem!
+                            Alle unsere Torten und Kuchen sind auch zum Mitnehmen erhältlich.
+                            Ruf einfach vorher an, damit wir deine Lieblingsstücke für dich reservieren.
+                        </p>
+                        <div class="togo-features">
+                            <div class="togo-feature">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Ganze Kuchen auf Bestellung</span>
+                            </div>
+                            <div class="togo-feature">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Einzelne Stücke zum Mitnehmen</span>
+                            </div>
+                            <div class="togo-feature">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Vorbestellung telefonisch möglich</span>
+                            </div>
+                        </div>
+                        <a href="tel:+4978155776" class="btn btn--primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>Jetzt bestellen</span>
+                        </a>
+                    </div>
+                    <div class="togo-image reveal">
+                        <div class="togo-image__wrapper">
+                            <div class="togo-image__placeholder">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <path d="M21 10H7a4 4 0 0 0-4 4v6h22v-6a4 4 0 0 0-4-4z"/>
+                                    <path d="M7 10V6a5 5 0 0 1 10 0v4"/>
+                                </svg>
+                                <span>Mitnahme-Service</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-section__clouds">
+                <div class="cloud cloud--cta-1"></div>
+                <div class="cloud cloud--cta-2"></div>
+            </div>
+
+            <div class="container">
+                <div class="cta-section__content reveal">
+                    <span class="cta-section__tagline">Lust bekommen?</span>
+                    <h2 class="cta-section__title">Reserviere deinen Tisch</h2>
+                    <p class="cta-section__text">
+                        Besonders am Wochenende empfehlen wir eine Reservierung.
+                        Ruf uns einfach an – wir halten einen Platz für dich frei.
+                    </p>
+
+                    <div class="cta-section__buttons">
+                        <a href="tel:+4978155776" class="btn btn--primary btn--large">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>+49 781 55776</span>
+                        </a>
+                        <a href="kontakt.html" class="btn btn--outline-light btn--large">
+                            <span>Kontakt & Anfahrt</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Café Wolke Logo" width="160" height="46">
+                    </a>
+                    <p class="footer__tagline">Wo Genuss auf Gemütlichkeit trifft.</p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/cafe.wolke/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navigation</h4>
+                    <ul class="footer__list">
+                        <li><a href="index.html">Start</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="hochzeitstorten.html">Hochzeitstorten</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Rechtliches</h4>
+                    <ul class="footer__list">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__title">Kontakt</h4>
+                    <address class="footer__address">
+                        Amalie-Hofer-Straße 2<br>
+                        77656 Offenburg<br><br>
+                        <a href="tel:+4978155776">+49 781 55776</a>
+                    </address>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 Café Wolke. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
