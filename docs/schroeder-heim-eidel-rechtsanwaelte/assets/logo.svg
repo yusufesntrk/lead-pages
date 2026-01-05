@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" width="400" height="80">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Firmenname -->
+  <text x="0" y="38"
+        font-family="'Playfair Display', 'Georgia', 'Times New Roman', serif"
+        font-size="28"
+        font-weight="500"
+        fill="#3D6B80"
+        letter-spacing="0.5">Schröder-Heim &amp; Eidel</text>
+  <!-- Untertitel -->
+  <text x="0" y="62"
+        font-family="'Source Sans Pro', 'Open Sans', 'Arial', sans-serif"
+        font-size="13"
+        font-weight="400"
+        fill="#5A8FA8"
+        letter-spacing="1.5">FAMILIENRECHT</text>
+</svg>
