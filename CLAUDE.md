@@ -24,6 +24,17 @@ Screenshots temporär in `.playwright-tmp/` speichern und nach Analyse löschen.
 
 ## Website-Erstellung - Kernprinzipien
 
+### 0. Deutsche Sprache - Umlaute verwenden!
+
+**IMMER echte deutsche Umlaute und Sonderzeichen:**
+- ä, ö, ü, ß (NICHT ae, oe, ue, ss)
+- Beispiel: "Fachanwältinnen für Familienrecht" (NICHT "Fachanwaeltinnen fuer")
+
+Dies gilt für:
+- Alle HTML-Dateien
+- Style Guide
+- Alle generierten Texte
+
 ### 1. KEINE Templates - Unique Design
 
 Jede Website ist individuell. Basierend auf:
@@ -137,6 +148,55 @@ Felder:
 - Google Rating, Google Reviews
 - Seite erstellt (Checkbox)
 - Landingpage URL
+
+---
+
+## Generator-System (Agent SDK)
+
+Der Lead Pages Generator nutzt das **Claude Agent SDK** mit 10 spezialisierten Agents:
+
+### Agents und ihre Aufgaben
+
+| # | Agent | Aufgabe |
+|---|-------|---------|
+| 1 | `style-guide` | Analysiert alte Website/Logo/Branche → Style Guide |
+| 2 | `homepage` | Erstellt index.html, styles.css, script.js |
+| 3 | `subpages` | Erstellt Kontakt, Über uns, Service-Seiten |
+| 4 | `legal-pages` | Impressum, Datenschutz, AGB (keine Platzhalter!) |
+| 5 | `link-qa` | Prüft und fixt alle Links/Buttons |
+| 6 | `team-photos` | Sucht Team-Fotos (Website, LinkedIn, Google) |
+| 7 | `logo` | PNG→SVG Konvertierung, Text-Logo Fallback |
+| 8 | `references-page` | Erstellt Referenzen-Seite |
+| 9 | `references-research` | Recherchiert echte Testimonials |
+| 10 | `design-review` | QA mit Feedback Loop (max. 3 Iterationen) |
+
+### Verwendung
+
+```bash
+# Interaktiv Lead auswählen
+python -m generator.main
+
+# Spezifischer Lead
+python -m generator.main --lead recXXXXXX
+
+# Test-Modus
+python -m generator.main --test
+```
+
+### Workflow
+
+```
+1. Style Guide erstellen (Agent 1)
+2. Logo verarbeiten (Agent 7)
+3. Referenzen recherchieren (Agent 9)
+4. Homepage erstellen (Agent 2)
+5. Unterseiten erstellen (Agent 3)
+6. Rechtliche Seiten erstellen (Agent 4)
+7. Referenzen-Seite erstellen (Agent 8)
+8. Team-Fotos suchen (Agent 6)
+9. Link QA (Agent 5)
+10. Design Review Loop (Agent 10) - max. 3 Iterationen
+```
 
 ---
 

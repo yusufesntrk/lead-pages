@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar System - Referenz | Schroeder-Heim & Eidel</title>
+    <style>
+        :root {
+            --color-primary: #81AEC0;
+            --color-primary-dark: #6a9aad;
+            --color-primary-light: #a3c5d2;
+            --color-secondary: #F5D75E;
+            --color-accent: #c9a227;
+            --color-text: #000000;
+            --color-text-secondary: #5B5B5B;
+            --color-bg: #FFFFFF;
+            --color-bg-light: #FAFAFA;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background-color: var(--color-bg-light);
+            color: var(--color-text);
+            padding: var(--space-lg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: var(--space-lg);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin-bottom: var(--space-lg);
+            color: var(--color-primary);
+        }
+
+        .section {
+            margin-bottom: var(--space-lg);
+        }
+
+        .section h2 {
+            font-size: 1.25rem;
+            margin: var(--space-lg) 0 var(--space-md) 0;
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: var(--space-md);
+        }
+
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .avatar-item {
+            text-align: center;
+        }
+
+        .avatar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 700;
+            color: #ffffff;
+            flex-shrink: 0;
+            overflow: hidden;
+            margin-bottom: var(--space-md);
+        }
+
+        .avatar--sm {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+
+        .avatar--md {
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+        }
+
+        .avatar--lg {
+            width: 200px;
+            height: 200px;
+            font-size: 4rem;
+        }
+
+        .avatar--primary {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+        }
+
+        .avatar--secondary {
+            background: linear-gradient(135deg, #a8c9da 0%, #81AEC0 100%);
+        }
+
+        .avatar--tertiary {
+            background: linear-gradient(135deg, #6a9aad 0%, #5a8999 100%);
+        }
+
+        .avatar-label {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .avatar-name {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            padding: var(--space-md);
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            margin-bottom: var(--space-md);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--space-lg);
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--color-bg-light);
+            font-weight: 600;
+        }
+
+        .note {
+            background-color: #e8f4f8;
+            border-left: 4px solid var(--color-primary);
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Avatar-System - Schroeder-Heim & Eidel</h1>
+
+        <div class="note">
+            <strong>ℹ️ Info:</strong> Dies ist eine Referenzdokumentation für das CSS-basierte Avatar-System.
+            Die Avatare werden verwendet, wenn echte Profilfotos nicht verfügbar sind.
+        </div>
+
+        <!-- TEAM AVATARS SECTION -->
+        <div class="section">
+            <h2>Team-Avatare</h2>
+            <p>Die drei Fachanwältinnen der Kanzlei:</p>
+
+            <div class="avatar-grid">
+                <div class="avatar-item">
+                    <div class="avatar avatar--lg avatar--primary">US</div>
+                    <div class="avatar-label">Ursula Schroeder-Heim</div>
+                    <div class="avatar-name">Fachanwältin für Erbrecht</div>
+                </div>
+
+                <div class="avatar-item">
+                    <div class="avatar avatar--lg avatar--secondary">JE</div>
+                    <div class="avatar-label">Julia Eidel</div>
+                    <div class="avatar-name">Fachanwältin für Familienrecht</div>
+                </div>
+
+                <div class="avatar-item">
+                    <div class="avatar avatar--lg avatar--tertiary">HMS</div>
+                    <div class="avatar-label">Hanna Martje Schroeder</div>
+                    <div class="avatar-name">Fachanwältin für Erbrecht & Familienrecht</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIZE VARIANTS -->
+        <div class="section">
+            <h2>Avatar-Größen</h2>
+            <p>Das Avatar-System unterstützt drei verschiedene Größen:</p>
+
+            <div class="avatar-grid">
+                <div class="avatar-item">
+                    <div class="avatar avatar--sm avatar--primary">US</div>
+                    <div class="avatar-label">Klein (40x40px)</div>
+                    <div class="avatar-name">avatar--sm</div>
+                </div>
+
+                <div class="avatar-item">
+                    <div class="avatar avatar--md avatar--primary">US</div>
+                    <div class="avatar-label">Mittel (80x80px)</div>
+                    <div class="avatar-name">avatar--md</div>
+                </div>
+
+                <div class="avatar-item">
+                    <div class="avatar avatar--lg avatar--primary">US</div>
+                    <div class="avatar-label">Groß (250x250px)</div>
+                    <div class="avatar-name">avatar--lg</div>
+                </div>
+            </div>
+
+            <div class="code-block">
+&lt;!-- Klein --&gt;
+&lt;div class="avatar avatar--sm avatar--primary"&gt;US&lt;/div&gt;
+
+&lt;!-- Mittel --&gt;
+&lt;div class="avatar avatar--md avatar--primary"&gt;US&lt;/div&gt;
+
+&lt;!-- Groß --&gt;
+&lt;div class="avatar avatar--lg avatar--primary"&gt;US&lt;/div&gt;
+            </div>
+        </div>
+
+        <!-- COLOR VARIANTS -->
+        <div class="section">
+            <h2>Avatar-Farben</h2>
+            <p>Es sind drei verschiedene Farbvarianten verfügbar:</p>
+
+            <div class="avatar-grid">
+                <div class="avatar-item">
+                    <div class="avatar avatar--lg avatar--primary">US</div>
+                    <div class="avatar-label">Primary</div>
+                    <div class="avatar-name">#81AEC0 (Primärblau)</div>
+                </div>
+
+                <div class="avatar-item">
+                    <div class="avatar avatar--lg avatar--secondary">JE</div>
+                    <div class="avatar-label">Secondary</div>
+                    <div class="avatar-name">#a8c9da → #81AEC0</div>
+                </div>
+
+                <div class="avatar-item">
+                    <div class="avatar avatar--lg avatar--tertiary">HMS</div>
+                    <div class="avatar-label">Tertiary</div>
+                    <div class="avatar-name">#6a9aad → #5a8999</div>
+                </div>
+            </div>
+
+            <div class="code-block">
+&lt;div class="avatar avatar--lg avatar--primary"&gt;US&lt;/div&gt;
+&lt;div class="avatar avatar--lg avatar--secondary"&gt;JE&lt;/div&gt;
+&lt;div class="avatar avatar--lg avatar--tertiary"&gt;HMS&lt;/div&gt;
+            </div>
+        </div>
+
+        <!-- TEAM MEMBERS TABLE -->
+        <div class="section">
+            <h2>Team-Mitglieder & Initialen</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Initialen</th>
+                        <th>Größe</th>
+                        <th>Farbe-Klasse</th>
+                        <th>Primärfarbe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ursula Schroeder-Heim</td>
+                        <td><span class="avatar avatar--sm avatar--primary">US</span></td>
+                        <td>250x250px</td>
+                        <td>avatar--primary</td>
+                        <td>#81AEC0</td>
+                    </tr>
+                    <tr>
+                        <td>Julia Eidel</td>
+                        <td><span class="avatar avatar--sm avatar--secondary">JE</span></td>
+                        <td>250x250px</td>
+                        <td>avatar--secondary</td>
+                        <td>#a8c9da</td>
+                    </tr>
+                    <tr>
+                        <td>Hanna Martje Schroeder</td>
+                        <td><span class="avatar avatar--sm avatar--tertiary">HMS</span></td>
+                        <td>250x250px</td>
+                        <td>avatar--tertiary</td>
+                        <td>#6a9aad</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- HTML EXAMPLE -->
+        <div class="section">
+            <h2>HTML-Implementierung</h2>
+            <p>So werden die Avatare in team.html implementiert:</p>
+
+            <div class="code-block">
+&lt;div class="team-photo-avatar"&gt;
+    &lt;div class="avatar avatar--lg avatar--primary" title="Ursula Schroeder-Heim"&gt;US&lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </div>
+
+        <!-- MIGRATION GUIDE -->
+        <div class="section">
+            <h2>📸 Migration zu echten Fotos</h2>
+            <p>Wenn echte Profilfotos verfügbar werden, können diese so implementiert werden:</p>
+
+            <h3>Schritt 1: Bilder speichern</h3>
+            <div class="code-block">
+docs/schroeder-heim-eidel/assets/
+├── ursula-schroeder-heim.jpg
+├── julia-eidel.jpg
+└── hanna-martje-schroeder.jpg
+            </div>
+
+            <h3>Schritt 2: HTML aktualisieren</h3>
+            <div class="code-block">
+&lt;div class="team-photo-avatar"&gt;
+    &lt;img src="assets/ursula-schroeder-heim.jpg"
+         alt="Ursula Schroeder-Heim - Fachanwältin für Erbrecht"
+         class="team-photo-img"&gt;
+&lt;/div&gt;
+            </div>
+
+            <h3>Schritt 3: CSS aktualisieren (in styles.css)</h3>
+            <div class="code-block">
+.team-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+            </div>
+        </div>
+
+        <!-- BROWSER SUPPORT -->
+        <div class="section">
+            <h2>🌐 Browser-Unterstützung</h2>
+            <p>Das Avatar-System ist vollständig kompatibel mit allen modernen Browsern:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Chrome/Edge: ✓ Vollständig</li>
+                <li>Firefox: ✓ Vollständig</li>
+                <li>Safari: ✓ Vollständig</li>
+                <li>Mobile Browser: ✓ Vollständig</li>
+            </ul>
+        </div>
+
+        <!-- CSS PROPERTIES -->
+        <div class="section">
+            <h2>CSS-Eigenschaften</h2>
+
+            <h3>.avatar</h3>
+            <div class="code-block">
+display: inline-flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+font-weight: 700;
+color: #ffffff;
+overflow: hidden;
+            </div>
+
+            <h3>Größen-Varianten</h3>
+            <div class="code-block">
+.avatar--sm {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+}
+
+.avatar--md {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+}
+
+.avatar--lg {
+    width: 250px;
+    height: 250px;
+    font-size: 5rem;
+}
+            </div>
+
+            <h3>Farb-Varianten</h3>
+            <div class="code-block">
+.avatar--primary {
+    background: linear-gradient(135deg, #a3c5d2 0%, #81AEC0 100%);
+}
+
+.avatar--secondary {
+    background: linear-gradient(135deg, #a8c9da 0%, #81AEC0 100%);
+}
+
+.avatar--tertiary {
+    background: linear-gradient(135deg, #6a9aad 0%, #5a8999 100%);
+}
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="section" style="text-align: center; border-top: 1px solid #ddd; padding-top: var(--space-lg);">
+            <p style="color: var(--color-text-secondary); font-size: 0.875rem;">
+                Avatar-System v1.0 | Schroeder-Heim & Eidel Rechtsanwältinnen<br>
+                Letzte Aktualisierung: 2025-01-05
+            </p>
+        </div>
+    </div>
+</body>
+</html>
