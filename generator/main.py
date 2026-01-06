@@ -148,6 +148,7 @@ async def main():
     parser.add_argument("--lead", help="Airtable Record ID des Leads")
     parser.add_argument("--test", action="store_true", help="Test-Modus mit Beispiel-Lead")
     parser.add_argument("--output", default="docs", help="Output-Verzeichnis")
+    parser.add_argument("--yes", "-y", action="store_true", help="Bestätigung überspringen")
 
     args = parser.parse_args()
 
@@ -193,10 +194,11 @@ async def main():
     print(f"   Website:  {lead.website or 'Keine'}")
     print(f"   Ort:      {lead.ort or 'Unbekannt'}")
 
-    confirm = input("\n▶️ Website generieren? (j/n): ").strip().lower()
-    if confirm != "j":
-        print("👋 Abgebrochen")
-        sys.exit(0)
+    if not args.yes:
+        confirm = input("\n▶️ Website generieren? (j/n): ").strip().lower()
+        if confirm != "j":
+            print("👋 Abgebrochen")
+            sys.exit(0)
 
     # Website generieren
     try:
