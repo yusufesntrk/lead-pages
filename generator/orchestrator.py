@@ -3,8 +3,13 @@ Lead Pages Generator - Orchestrator
 
 Koordiniert alle spezialisierten Agents in der richtigen Reihenfolge
 und verwaltet den Kontext zwischen den Agents.
+
+ARCHITEKTUR-SWITCH:
+- use_new_agents=False: Legacy-Modus (prompt-basierte Agents aus definitions.py)
+- use_new_agents=True: Neue Agent-Klassen (SDLC-Pattern)
 """
 
+import os
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -14,6 +19,41 @@ from typing import Optional
 from claude_code_sdk import query, ClaudeCodeOptions
 
 from .agents.definitions import AGENTS
+from .agents import (
+    StyleGuideAgent,
+    HomepageAgent,
+    SubpagesAgent,
+    LegalPagesAgent,
+    LogoAgent,
+    TeamPhotosAgent,
+    ReferencesResearchAgent,
+    ReferencesPageAgent,
+    InstagramPhotosAgent,
+    ImageVerificationAgent,
+    LayoutPatternsAgent,
+    HumanViewAgent,
+    LinkQAAgent,
+    DesignReviewAgent,
+    FinalizeAgent,
+)
+from .results import (
+    StyleGuideResult,
+    HomepageResult,
+    SubpagesResult,
+    LegalPagesResult,
+    LogoResult,
+    TeamPhotosResult,
+    ReferencesResult,
+    InstagramPhotosResult,
+    ImageVerificationResult,
+    LayoutPatternsResult,
+    HumanViewResult,
+    LinkQAResult,
+    DesignReviewResult,
+    FinalizeResult,
+    LeadTask,
+    TaskStatus,
+)
 
 
 @dataclass
@@ -52,15 +92,103 @@ class LeadPagesOrchestrator:
 
     Ruft spezialisierte Agents in der richtigen Reihenfolge auf
     und übergibt Kontext zwischen den Schritten.
+
+    Args:
+        lead: Lead-Daten aus Airtable
+        base_output_dir: Basis-Verzeichnis für Output
+        use_new_agents: True = neue Agent-Klassen (SDLC-Pattern), False = Legacy
+                        Default: liest aus ENV "USE_NEW_AGENTS" oder False
     """
 
-    def __init__(self, lead: Lead, base_output_dir: str = "docs"):
+    def __init__(
+        self,
+        lead: Lead,
+        base_output_dir: str = "docs",
+        use_new_agents: Optional[bool] = None
+    ):
         self.lead = lead
         self.output_dir = Path(base_output_dir) / self._slugify(lead.firma)
         self.context = GeneratorContext(
             lead=lead,
             output_dir=self.output_dir
         )
+
+        # Architektur-Switch: ENV oder Parameter
+        if use_new_agents is None:
+            self.use_new_agents = os.environ.get("USE_NEW_AGENTS", "").lower() == "true"
+        else:
+            self.use_new_agents = use_new_agents
+
+        # Neue Agent-Instanzen (lazy initialization)
+        self._agents_initialized = False
+        self._style_guide_agent: Optional[StyleGuideAgent] = None
+        self._homepage_agent: Optional[HomepageAgent] = None
+        self._subpages_agent: Optional[SubpagesAgent] = None
+        self._legal_pages_agent: Optional[LegalPagesAgent] = None
+        self._logo_agent: Optional[LogoAgent] = None
+        self._team_photos_agent: Optional[TeamPhotosAgent] = None
+        self._references_research_agent: Optional[ReferencesResearchAgent] = None
+        self._references_page_agent: Optional[ReferencesPageAgent] = None
+        self._instagram_photos_agent: Optional[InstagramPhotosAgent] = None
+        self._image_verification_agent: Optional[ImageVerificationAgent] = None
+        self._layout_patterns_agent: Optional[LayoutPatternsAgent] = None
+        self._human_view_agent: Optional[HumanViewAgent] = None
+        self._link_qa_agent: Optional[LinkQAAgent] = None
+        self._design_review_agent: Optional[DesignReviewAgent] = None
+        self._finalize_agent: Optional[FinalizeAgent] = None
+
+        # LeadTask für Tracking (neue Architektur)
+        self._lead_task: Optional[LeadTask] = None
+
+        if self.use_new_agents:
+            print("🔧 Modus: Neue Agent-Klassen (SDLC-Pattern)")
+            self._init_agents()
+        else:
+            print("🔧 Modus: Legacy (prompt-basiert)")
+
+    def _init_agents(self):
+        """Initialisiert alle Agent-Instanzen."""
+        if self._agents_initialized:
+            return
+
+        working_dir = str(self.context.output_dir.parent.parent)
+
+        self._style_guide_agent = StyleGuideAgent(working_dir)
+        self._homepage_agent = HomepageAgent(working_dir)
+        self._subpages_agent = SubpagesAgent(working_dir)
+        self._legal_pages_agent = LegalPagesAgent(working_dir)
+        self._logo_agent = LogoAgent(working_dir)
+        self._team_photos_agent = TeamPhotosAgent(working_dir)
+        self._references_research_agent = ReferencesResearchAgent(working_dir)
+        self._references_page_agent = ReferencesPageAgent(working_dir)
+        self._instagram_photos_agent = InstagramPhotosAgent(working_dir)
+        self._image_verification_agent = ImageVerificationAgent(working_dir)
+        self._layout_patterns_agent = LayoutPatternsAgent(working_dir)
+        self._human_view_agent = HumanViewAgent(working_dir)
+        self._link_qa_agent = LinkQAAgent(working_dir)
+        self._design_review_agent = DesignReviewAgent(working_dir)
+        self._finalize_agent = FinalizeAgent(working_dir)
+
+        # LeadTask initialisieren
+        self._lead_task = LeadTask(
+            id=self.lead.id,
+            company=self.lead.firma,
+            branche=self.lead.branche,
+            output_dir=str(self.output_dir)
+        )
+
+        self._agents_initialized = True
+
+    def _create_message_callback(self, agent_name: str):
+        """Erstellt einen Message-Callback für Streaming-Output."""
+        def on_message(msg):
+            if hasattr(msg, 'content'):
+                for block in msg.content:
+                    if hasattr(block, 'text'):
+                        print(block.text, end="", flush=True)
+            if hasattr(msg, 'total_cost_usd'):
+                print(f"\n✅ {agent_name} fertig (${msg.total_cost_usd:.6f})")
+        return on_message
 
     def _slugify(self, text: str) -> str:
         """Konvertiert Text zu URL-sicherem Slug"""
@@ -176,7 +304,95 @@ KONTEXT:
         return result_text
 
     async def run_style_guide_agent(self) -> str:
-        """Agent 1: Style Guide erstellen"""
+        """
+        Agent 1: Style Guide erstellen
+
+        Verwendet entweder:
+        - Legacy: _run_agent("style-guide", ...) mit prompt aus definitions.py
+        - Neu: StyleGuideAgent.extract() mit typisiertem Result
+        """
+        # Speichere Style Guide Pfad im Kontext (für beide Modi)
+        self.context.style_guide_path = self.context.output_dir / "STYLE-GUIDE.md"
+
+        if self.use_new_agents:
+            # === NEUE ARCHITEKTUR (SDLC-Pattern) ===
+            return await self._run_style_guide_new()
+        else:
+            # === LEGACY ARCHITEKTUR (prompt-basiert) ===
+            return await self._run_style_guide_legacy()
+
+    async def _run_style_guide_new(self) -> str:
+        """
+        Neue Architektur: StyleGuideAgent mit typisiertem Result.
+
+        Vorteile:
+        - Kleinerer Kontext (nur relevante Daten)
+        - Typisiertes Result (StyleGuideResult)
+        - Bessere Fehlerbehandlung
+        """
+        print("\n🆕 StyleGuideAgent (SDLC-Pattern)")
+
+        # Lazy initialization
+        if self._style_guide_agent is None:
+            self._style_guide_agent = StyleGuideAgent(
+                working_dir=str(self.context.output_dir.parent.parent)  # Projekt-Root
+            )
+
+        # Company data für Agent
+        company_data = {
+            "strasse": self.context.lead.strasse,
+            "plz": self.context.lead.plz,
+            "ort": self.context.lead.ort,
+            "telefon": self.context.lead.telefon,
+            "email": self.context.lead.email,
+            "google_rating": self.context.lead.google_rating,
+            "google_reviews": self.context.lead.google_reviews,
+        }
+
+        # Message callback für Streaming-Output
+        def on_message(msg):
+            if hasattr(msg, 'content'):
+                for block in msg.content:
+                    if hasattr(block, 'text'):
+                        print(block.text, end="", flush=True)
+            if hasattr(msg, 'total_cost_usd'):
+                print(f"\n✅ Agent fertig (${msg.total_cost_usd:.6f})")
+
+        # Agent ausführen
+        result: StyleGuideResult = await self._style_guide_agent.extract(
+            company_name=self.context.lead.firma,
+            website_url=self.context.lead.website,
+            branche=self.context.lead.branche,
+            company_data=company_data,
+            output_dir=self.context.output_dir,
+            on_message=on_message
+        )
+
+        if not result.success:
+            print(f"\n⚠️ StyleGuideAgent fehlgeschlagen: {result.error}")
+            print("Erstelle Fallback...")
+            return await self._create_fallback_style_guide()
+
+        # Lese erstellten Style Guide
+        if self.context.style_guide_path.exists():
+            self.context.style_guide_content = self.context.style_guide_path.read_text()
+
+        # Log extrahierte Daten
+        if result.colors:
+            print(f"\n📊 Extrahierte Farben: {result.colors}")
+        if result.fonts:
+            print(f"📝 Extrahierte Fonts: {result.fonts}")
+        if result.team_members:
+            print(f"👥 Team-Mitglieder: {len(result.team_members)}")
+        if result.services:
+            print(f"🔧 Services: {len(result.services)}")
+
+        return self.context.style_guide_content
+
+    async def _run_style_guide_legacy(self) -> str:
+        """
+        Legacy Architektur: prompt-basierte Agents aus definitions.py
+        """
         task = f"""
 Erstelle einen Style Guide für {self.context.lead.firma}.
 
@@ -199,9 +415,6 @@ FIRMENDATEN (für Impressum):
         except Exception as e:
             print(f"\n⚠️ Style-Guide Agent fehlgeschlagen, erstelle Fallback...")
             result = await self._create_fallback_style_guide()
-
-        # Speichere Style Guide Pfad im Kontext
-        self.context.style_guide_path = self.context.output_dir / "STYLE-GUIDE.md"
 
         # Lese Style Guide für nächste Agents
         if self.context.style_guide_path.exists():
@@ -293,6 +506,58 @@ Bitte passe Farben und Schriften nach Bedarf an.
 
     async def run_logo_agent(self) -> str:
         """Agent 7: Logo verarbeiten"""
+        if self.use_new_agents:
+            return await self._run_logo_new()
+        else:
+            return await self._run_logo_legacy()
+
+    async def _run_logo_new(self) -> str:
+        """Neue Architektur: LogoAgent"""
+        print("\n🆕 LogoAgent (SDLC-Pattern)")
+
+        # Extrahiere logo_url und primary_color aus Style Guide
+        logo_url = None
+        primary_color = "#333333"  # Fallback
+
+        if self.context.style_guide_content:
+            # Suche nach logo_url
+            import re
+            logo_match = re.search(r'Logo.*?URL.*?[`"\']?(https?://[^\s`"\']+)', self.context.style_guide_content, re.IGNORECASE)
+            if logo_match:
+                logo_url = logo_match.group(1)
+
+            # Suche nach primary color
+            color_match = re.search(r'(?:Prim[äa]rfarbe|Primary).*?[`"\']?(#[0-9A-Fa-f]{3,6})', self.context.style_guide_content, re.IGNORECASE)
+            if color_match:
+                primary_color = color_match.group(1)
+
+        result: LogoResult = await self._logo_agent.process(
+            company_name=self.context.lead.firma,
+            website_url=self.context.lead.website,
+            logo_url=logo_url,
+            primary_color=primary_color,
+            output_dir=self.context.output_dir,
+            on_message=self._create_message_callback("LogoAgent")
+        )
+
+        if not result.success:
+            print(f"⚠️ LogoAgent Warnung: {result.error}")
+
+        if self._lead_task:
+            self._lead_task.logo = result
+            self._lead_task.status = TaskStatus.LOGO
+
+        if result.svg_path:
+            print(f"\n📊 Logo: {result.svg_path}")
+            if result.converted_to_svg:
+                print(f"   Konvertiert von: {result.original_format}")
+            if result.used_text_logo:
+                print("   (Text-Logo verwendet)")
+
+        return f"Logo verarbeitet: {result.svg_path or 'Text-Logo'}"
+
+    async def _run_logo_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Verarbeite das Logo für {self.context.lead.firma}.
 
@@ -314,6 +579,60 @@ STYLE GUIDE:
 
     async def run_homepage_agent(self) -> str:
         """Agent 2: Homepage erstellen"""
+        if self.use_new_agents:
+            return await self._run_homepage_new()
+        else:
+            return await self._run_homepage_legacy()
+
+    async def _run_homepage_new(self) -> str:
+        """Neue Architektur: HomepageAgent"""
+        print("\n🆕 HomepageAgent (SDLC-Pattern)")
+
+        # Extrahiere Daten aus Style Guide Result oder Content
+        colors = {}
+        fonts = {}
+        hero_content = {}
+        services = []
+        team_members = []
+
+        if self._lead_task and self._lead_task.style_guide:
+            sg = self._lead_task.style_guide
+            colors = sg.colors
+            fonts = sg.fonts
+            hero_content = sg.hero_content
+            services = sg.services
+            team_members = sg.team_members
+
+        result: HomepageResult = await self._homepage_agent.create(
+            company_name=self.context.lead.firma,
+            branche=self.context.lead.branche,
+            colors=colors,
+            fonts=fonts,
+            hero_content=hero_content,
+            services=services,
+            team_members=team_members,
+            output_dir=self.context.output_dir,
+            style_guide_content=self.context.style_guide_content,
+            on_message=self._create_message_callback("HomepageAgent")
+        )
+
+        if not result.success:
+            raise Exception(f"HomepageAgent fehlgeschlagen: {result.error}")
+
+        self.context.created_files.extend(result.files_created)
+
+        if self._lead_task:
+            self._lead_task.homepage = result
+            self._lead_task.status = TaskStatus.HOMEPAGE
+
+        print(f"\n📊 Erstellte Dateien: {result.files_created}")
+        print(f"📊 Sektionen: {result.sections_created}")
+        print(f"📊 CTAs: {result.cta_count}")
+
+        return f"Homepage erstellt: {result.files_created}"
+
+    async def _run_homepage_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Erstelle die Homepage für {self.context.lead.firma}.
 
@@ -336,6 +655,63 @@ STYLE GUIDE:
 
     async def run_subpages_agent(self) -> str:
         """Agent 3: Unterseiten erstellen"""
+        if self.use_new_agents:
+            return await self._run_subpages_new()
+        else:
+            return await self._run_subpages_legacy()
+
+    async def _run_subpages_new(self) -> str:
+        """Neue Architektur: SubpagesAgent"""
+        print("\n🆕 SubpagesAgent (SDLC-Pattern)")
+
+        # Extrahiere Daten aus Style Guide Result
+        services = []
+        team_members = []
+        if self._lead_task and self._lead_task.style_guide:
+            sg = self._lead_task.style_guide
+            services = sg.services
+            team_members = sg.team_members
+
+        # Standard-Seiten basierend auf Branche
+        pages_to_create = ["kontakt", "ueber-uns"]
+        if services:
+            pages_to_create.append("leistungen")
+
+        company_data = {
+            "firma": self.context.lead.firma,
+            "strasse": self.context.lead.strasse,
+            "plz": self.context.lead.plz,
+            "ort": self.context.lead.ort,
+            "telefon": self.context.lead.telefon,
+            "email": self.context.lead.email,
+        }
+
+        result: SubpagesResult = await self._subpages_agent.create(
+            company_name=self.context.lead.firma,
+            branche=self.context.lead.branche,
+            pages_to_create=pages_to_create,
+            services=services,
+            team_members=team_members,
+            company_data=company_data,
+            output_dir=self.context.output_dir,
+            style_guide_content=self.context.style_guide_content,
+            on_message=self._create_message_callback("SubpagesAgent")
+        )
+
+        if not result.success:
+            print(f"⚠️ SubpagesAgent Warnung: {result.error}")
+
+        self.context.created_files.extend(result.pages_created)
+
+        if self._lead_task:
+            self._lead_task.subpages = result
+            self._lead_task.status = TaskStatus.SUBPAGES
+
+        print(f"\n📊 Erstellte Seiten: {result.pages_created}")
+        return f"Unterseiten erstellt: {result.pages_created}"
+
+    async def _run_subpages_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Erstelle alle Unterseiten für {self.context.lead.firma}.
 
@@ -358,6 +734,60 @@ BEREITS ERSTELLT:
 
     async def run_legal_pages_agent(self) -> str:
         """Agent 4: Rechtliche Seiten erstellen"""
+        if self.use_new_agents:
+            return await self._run_legal_pages_new()
+        else:
+            return await self._run_legal_pages_legacy()
+
+    async def _run_legal_pages_new(self) -> str:
+        """Neue Architektur: LegalPagesAgent"""
+        print("\n🆕 LegalPagesAgent (SDLC-Pattern)")
+
+        company_data = {
+            "firma": self.context.lead.firma,
+            "strasse": self.context.lead.strasse,
+            "plz": self.context.lead.plz,
+            "ort": self.context.lead.ort,
+            "telefon": self.context.lead.telefon,
+            "email": self.context.lead.email,
+        }
+
+        # Hole Original-Texte aus Style Guide Result falls vorhanden
+        impressum_text = None
+        datenschutz_text = None
+        if self._lead_task and self._lead_task.style_guide:
+            impressum_text = self._lead_task.style_guide.impressum_text
+            datenschutz_text = self._lead_task.style_guide.datenschutz_text
+
+        result: LegalPagesResult = await self._legal_pages_agent.create(
+            company_name=self.context.lead.firma,
+            company_data=company_data,
+            branche=self.context.lead.branche,
+            output_dir=self.context.output_dir,
+            impressum_text=impressum_text,
+            datenschutz_text=datenschutz_text,
+            on_message=self._create_message_callback("LegalPagesAgent")
+        )
+
+        if not result.success:
+            print(f"⚠️ LegalPagesAgent Fehler: {result.error}")
+            print("Erstelle Fallback...")
+            return await self._create_legal_pages_fallback()
+
+        self.context.created_files.extend(result.pages_created)
+
+        if self._lead_task:
+            self._lead_task.legal_pages = result
+            self._lead_task.status = TaskStatus.LEGAL_PAGES
+
+        if result.placeholders_found > 0:
+            print(f"⚠️ {result.placeholders_found} Platzhalter gefunden!")
+
+        print(f"\n📊 Erstellte Seiten: {result.pages_created}")
+        return f"Legal Pages erstellt: {result.pages_created}"
+
+    async def _run_legal_pages_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Erstelle die rechtlichen Seiten für {self.context.lead.firma}.
 
@@ -678,6 +1108,33 @@ STYLE GUIDE (enthält Firmendaten und ggf. Original-Texte):
 
     async def run_references_research_agent(self) -> str:
         """Agent 9: Referenzen recherchieren"""
+        if self.use_new_agents:
+            return await self._run_references_research_new()
+        else:
+            return await self._run_references_research_legacy()
+
+    async def _run_references_research_new(self) -> str:
+        """Neue Architektur: ReferencesResearchAgent"""
+        print("\n🆕 ReferencesResearchAgent (SDLC-Pattern)")
+
+        result = await self._references_research_agent.research(
+            company_name=self.context.lead.firma,
+            website_url=self.context.lead.website,
+            google_rating=self.context.lead.google_rating,
+            google_reviews_count=self.context.lead.google_reviews or 0,
+            output_dir=str(self.context.output_dir),
+            on_message=self._create_message_callback("ReferencesResearchAgent")
+        )
+
+        if result.testimonials:
+            print(f"\n📊 Gefundene Testimonials: {len(result.testimonials)}")
+        if result.google_rating:
+            print(f"📊 Google Rating: {result.google_rating}")
+
+        return f"Referenzen recherchiert: {len(result.testimonials)} Testimonials"
+
+    async def _run_references_research_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Recherchiere Referenzen und Testimonials für {self.context.lead.firma}.
 
@@ -694,6 +1151,34 @@ Speichere gefundene Referenzen im Style Guide unter "## Referenzen".
 
     async def run_references_page_agent(self) -> str:
         """Agent 8: Referenzen-Seite erstellen"""
+        if self.use_new_agents:
+            return await self._run_references_page_new()
+        else:
+            return await self._run_references_page_legacy()
+
+    async def _run_references_page_new(self) -> str:
+        """Neue Architektur: ReferencesPageAgent"""
+        print("\n🆕 ReferencesPageAgent (SDLC-Pattern)")
+
+        result: ReferencesResult = await self._references_page_agent.create(
+            testimonials=[],  # Wird vom Agent aus Style Guide gelesen
+            google_rating=self.context.lead.google_rating,
+            google_reviews_count=self.context.lead.google_reviews or 0,
+            company_name=self.context.lead.firma,
+            output_dir=str(self.context.output_dir),
+            style_guide_path=str(self.context.style_guide_path),
+            on_message=self._create_message_callback("ReferencesPageAgent")
+        )
+
+        if self._lead_task:
+            self._lead_task.references = result
+            self._lead_task.status = TaskStatus.REFERENCES
+
+        print(f"\n📊 Referenzen-Seite erstellt: {result.references_page_created}")
+        return f"Referenzen-Seite: {'erstellt' if result.references_page_created else 'übersprungen'}"
+
+    async def _run_references_page_legacy(self) -> str:
+        """Legacy Architektur"""
         # Aktualisiere Style Guide Content
         if self.context.style_guide_path and self.context.style_guide_path.exists():
             self.context.style_guide_content = self.context.style_guide_path.read_text()
@@ -715,6 +1200,36 @@ STYLE GUIDE (enthält recherchierte Referenzen):
 
     async def run_team_photos_agent(self) -> str:
         """Agent 6: Team-Fotos suchen"""
+        if self.use_new_agents:
+            return await self._run_team_photos_new()
+        else:
+            return await self._run_team_photos_legacy()
+
+    async def _run_team_photos_new(self) -> str:
+        """Neue Architektur: TeamPhotosAgent"""
+        print("\n🆕 TeamPhotosAgent (SDLC-Pattern)")
+
+        # Team-Mitglieder aus Style Guide extrahieren (vereinfacht)
+        team_members = []  # Wird vom Agent aus Style Guide gelesen
+
+        result: TeamPhotosResult = await self._team_photos_agent.find(
+            team_members=team_members,
+            company_name=self.context.lead.firma,
+            website_url=self.context.lead.website,
+            output_dir=str(self.context.output_dir),
+            on_message=self._create_message_callback("TeamPhotosAgent")
+        )
+
+        if self._lead_task:
+            self._lead_task.team_photos = result
+            self._lead_task.status = TaskStatus.TEAM_PHOTOS
+
+        print(f"\n📊 Team-Fotos gefunden: {result.photos_found}")
+        print(f"📊 Quellen: {result.sources}")
+        return f"Team-Fotos: {result.photos_found} gefunden"
+
+    async def _run_team_photos_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Finde Team-Fotos für {self.context.lead.firma}.
 
@@ -736,6 +1251,34 @@ STYLE GUIDE (enthält Team-Informationen):
 
     async def run_instagram_photos_agent(self) -> str:
         """Agent 10: Instagram-Fotos extrahieren"""
+        if self.use_new_agents:
+            return await self._run_instagram_photos_new()
+        else:
+            return await self._run_instagram_photos_legacy()
+
+    async def _run_instagram_photos_new(self) -> str:
+        """Neue Architektur: InstagramPhotosAgent"""
+        print("\n🆕 InstagramPhotosAgent (SDLC-Pattern)")
+
+        result: InstagramPhotosResult = await self._instagram_photos_agent.extract(
+            company_name=self.context.lead.firma,
+            city=self.context.lead.ort or "",
+            branche=self.context.lead.branche,
+            instagram_handle=None,  # Wird vom Agent gesucht
+            output_dir=str(self.context.output_dir),
+            on_message=self._create_message_callback("InstagramPhotosAgent")
+        )
+
+        if self._lead_task:
+            self._lead_task.instagram_photos = result
+
+        print(f"\n📊 Instagram-Fotos: {result.photos_found}")
+        if result.instagram_handle:
+            print(f"📊 Handle: @{result.instagram_handle}")
+        return f"Instagram: {result.photos_found} Fotos"
+
+    async def _run_instagram_photos_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Extrahiere Fotos von Instagram für {self.context.lead.firma}.
 
@@ -743,34 +1286,47 @@ WANN DIESER AGENT RELEVANT IST:
 - Firma hat KEINE Website (nur Social Media)
 - Firma hat Website OHNE Bilder
 - Branche: Restaurant, Café, Bäckerei, etc. → Food-Fotos
-- Branche: Friseur, Kosmetik → Vorher/Nachher Bilder
-- Allgemein: Ambiente, Interior, Produkt-Fotos
 
 SCHRITTE:
-1. Instagram-Handle finden (suche im Style Guide oder via WebSearch)
-2. Instagram-Profil mit Playwright öffnen
-3. Bild-URLs extrahieren (JavaScript)
-4. Bilder herunterladen nach {self.context.output_dir}/assets/images/
-5. HTML-Platzhalter durch echte Bilder ersetzen
-6. CSS für Bild-Container in styles.css ergänzen
-
-HINWEIS:
-Prüfe zuerst ob es Platzhalter-SVGs in den HTML-Dateien gibt.
-Wenn keine Platzhalter vorhanden → Agent kann übersprungen werden.
+1. Instagram-Handle finden
+2. Bild-URLs extrahieren
+3. Bilder herunterladen nach {self.context.output_dir}/assets/images/
 """
 
         additional_context = f"""
 STYLE GUIDE:
 {self.context.style_guide_content}
-
-BEREITS ERSTELLTE DATEIEN:
-{', '.join(self.context.created_files)}
 """
 
         return await self._run_agent("instagram-photos", task, additional_context)
 
     async def run_link_qa_agent(self) -> str:
         """Agent 5: Link QA"""
+        if self.use_new_agents:
+            return await self._run_link_qa_new()
+        else:
+            return await self._run_link_qa_legacy()
+
+    async def _run_link_qa_new(self) -> str:
+        """Neue Architektur: LinkQAAgent"""
+        print("\n🆕 LinkQAAgent (SDLC-Pattern)")
+
+        result: LinkQAResult = await self._link_qa_agent.check(
+            output_dir=str(self.context.output_dir),
+            on_message=self._create_message_callback("LinkQAAgent")
+        )
+
+        if self._lead_task:
+            self._lead_task.link_qa = result
+            self._lead_task.status = TaskStatus.LINK_QA
+
+        print(f"\n📊 Links geprüft: {result.links_checked}")
+        print(f"📊 Broken: {result.broken_links_found}")
+        print(f"📊 Gefixt: {result.broken_links_fixed}")
+        return f"Link QA: {result.broken_links_fixed}/{result.broken_links_found} gefixt"
+
+    async def _run_link_qa_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Prüfe alle Links und Buttons in {self.context.output_dir}/.
 
@@ -787,6 +1343,29 @@ Fixe alle gefundenen Probleme automatisch.
 
     async def run_layout_patterns_agent(self) -> str:
         """Agent 13: Layout Patterns (CSS/Code QA)"""
+        if self.use_new_agents:
+            return await self._run_layout_patterns_new()
+        else:
+            return await self._run_layout_patterns_legacy()
+
+    async def _run_layout_patterns_new(self) -> str:
+        """Neue Architektur: LayoutPatternsAgent"""
+        print("\n🆕 LayoutPatternsAgent (SDLC-Pattern)")
+
+        result: LayoutPatternsResult = await self._layout_patterns_agent.check(
+            output_dir=str(self.context.output_dir),
+            on_message=self._create_message_callback("LayoutPatternsAgent")
+        )
+
+        if self._lead_task:
+            self._lead_task.layout_patterns = result
+
+        print(f"\n📊 Checks: {result.checks_passed}/{result.checks_run}")
+        print(f"📊 Issues gefixt: {result.issues_fixed}")
+        return f"Layout Patterns: {result.checks_passed}/{result.checks_run} OK"
+
+    async def _run_layout_patterns_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Prüfe alle CSS/Layout Patterns in {self.context.output_dir}/.
 
@@ -813,6 +1392,44 @@ Fixe ALLE gefundenen Probleme automatisch!
         Returns:
             Tuple von (review_text, has_critical_issues)
         """
+        if self.use_new_agents:
+            return await self._run_design_review_new()
+        else:
+            return await self._run_design_review_legacy()
+
+    async def _run_design_review_new(self) -> tuple[str, bool]:
+        """Neue Architektur: DesignReviewAgent"""
+        print("\n🆕 DesignReviewAgent (SDLC-Pattern)")
+
+        # Extrahiere previous_findings aus LeadTask falls vorhanden
+        previous_findings = None
+        if self._lead_task and self._lead_task.findings:
+            previous_findings = self._lead_task.findings
+
+        result: DesignReviewResult = await self._design_review_agent.review(
+            output_dir=self.context.output_dir,
+            style_guide_content=self.context.style_guide_content,
+            iteration=self.context.iteration,
+            previous_findings=previous_findings,
+            on_message=self._create_message_callback("DesignReviewAgent")
+        )
+
+        if self._lead_task:
+            self._lead_task.design_review = result
+            self._lead_task.status = TaskStatus.DESIGN_REVIEW
+            self._lead_task.findings = result.findings
+
+        # Speichere Feedback
+        feedback_text = f"Score: {result.score}, Findings: {len(result.findings)}"
+        self.context.review_feedback.append(f"Iteration {self.context.iteration + 1}:\n{feedback_text}")
+
+        print(f"\n📊 Score: {result.score}/100")
+        print(f"📊 Findings: {len(result.findings)}")
+
+        return feedback_text, result.fix_required
+
+    async def _run_design_review_legacy(self) -> tuple[str, bool]:
+        """Legacy Architektur"""
         task = f"""
 Führe ein vollständiges Design Review durch für {self.context.output_dir}/.
 
@@ -851,15 +1468,43 @@ VORHERIGES FEEDBACK:
 
     async def run_human_view_agent(self) -> str:
         """Agent 14: Human View - Visuelle Sektions-Prüfung"""
+        if self.use_new_agents:
+            return await self._run_human_view_new()
+        else:
+            return await self._run_human_view_legacy()
+
+    async def _run_human_view_new(self) -> str:
+        """Neue Architektur: HumanViewAgent"""
+        print("\n🆕 HumanViewAgent (SDLC-Pattern)")
+
+        slug = self.context.output_dir.name
+
+        result: HumanViewResult = await self._human_view_agent.review(
+            output_dir=str(self.context.output_dir),
+            company_slug=slug,
+            on_message=self._create_message_callback("HumanViewAgent")
+        )
+
+        if self._lead_task:
+            self._lead_task.human_view = result
+
+        print(f"\n📊 Overall Score: {result.overall_score}/100")
+        print(f"📊 Desktop: {result.desktop_score}/100")
+        print(f"📊 Mobile: {result.mobile_score}/100")
+        print(f"📊 Critical Fixes: {result.critical_fixes}")
+        return f"Human View: {result.overall_score}/100"
+
+    async def _run_human_view_legacy(self) -> str:
+        """Legacy Architektur"""
         task = f"""
 Prüfe die Website aus Sicht eines echten Nutzers.
 
 WEBSITE: {self.context.output_dir}/
 
 FÜR JEDE SEKTION mache 3 Screenshots:
-1. Desktop Viewport (1280x800) - Was sieht der User auf dem Laptop?
-2. Mobile Viewport (375x812) - Was sieht der User auf dem Handy?
-3. Sektion komplett - Wie sieht die gesamte Sektion aus?
+1. Desktop Viewport (1280x800)
+2. Mobile Viewport (375x812)
+3. Sektion komplett
 
 PRÜFE jede Sektion auf:
 - Lesbarkeit, Buttons, CTAs
@@ -868,14 +1513,42 @@ PRÜFE jede Sektion auf:
 - Visuelle Hierarchie
 
 Fixe kritische Issues sofort!
-Erstelle am Ende einen Gesamtüberblick mit Score.
 """
 
         return await self._run_agent("human-view", task)
 
     async def run_finalize_agent(self) -> str:
         """Agent 15: Finalize - Git Push & Airtable Update"""
+        if self.use_new_agents:
+            return await self._run_finalize_new()
+        else:
+            return await self._run_finalize_legacy()
 
+    async def _run_finalize_new(self) -> str:
+        """Neue Architektur: FinalizeAgent"""
+        print("\n🆕 FinalizeAgent (SDLC-Pattern)")
+
+        result: FinalizeResult = await self._finalize_agent.finalize(
+            lead_id=self.context.lead.id,
+            company_name=self.context.lead.firma,
+            output_dir=str(self.context.output_dir),
+            on_message=self._create_message_callback("FinalizeAgent")
+        )
+
+        if self._lead_task:
+            self._lead_task.finalize = result
+            self._lead_task.status = TaskStatus.COMPLETE if result.success else TaskStatus.FAILED
+
+        print(f"\n📊 Git Committed: {result.git_committed}")
+        print(f"📊 Git Pushed: {result.git_pushed}")
+        print(f"📊 Airtable Updated: {result.airtable_updated}")
+        if result.live_url:
+            print(f"🌐 Live URL: {result.live_url}")
+
+        return f"Finalize: {'Erfolg' if result.success else 'Fehler'}"
+
+    async def _run_finalize_legacy(self) -> str:
+        """Legacy Architektur"""
         # Slug für URL erstellen
         slug = self.context.output_dir.name
 
@@ -985,16 +1658,32 @@ WICHTIG: Beide Schritte MÜSSEN erfolgreich sein!
             raise
 
 
-async def generate_website(lead: Lead, base_output_dir: str = "docs") -> Path:
+async def generate_website(
+    lead: Lead,
+    base_output_dir: str = "docs",
+    use_new_agents: Optional[bool] = None
+) -> Path:
     """
     Convenience-Funktion zum Generieren einer Website.
 
     Args:
         lead: Lead-Daten aus Airtable
         base_output_dir: Basis-Verzeichnis für Output
+        use_new_agents: True = neue Agent-Klassen, False = Legacy, None = ENV
 
     Returns:
         Pfad zum generierten Website-Verzeichnis
+
+    Usage:
+        # Legacy-Modus (default)
+        await generate_website(lead)
+
+        # Neue Agent-Klassen
+        await generate_website(lead, use_new_agents=True)
+
+        # Via Environment-Variable
+        export USE_NEW_AGENTS=true
+        await generate_website(lead)
     """
-    orchestrator = LeadPagesOrchestrator(lead, base_output_dir)
+    orchestrator = LeadPagesOrchestrator(lead, base_output_dir, use_new_agents)
     return await orchestrator.generate()
