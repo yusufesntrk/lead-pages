@@ -150,6 +150,14 @@ BILDER-REFERENZEN:
 - Logo: <img src="assets/logo.svg"> (LOKAL!)
 - NIEMALS externe Bild-URLs im HTML verwenden!
 
+🖼️ KEINE BILD-DUPLIKATE (KRITISCH!):
+Jedes Bild darf NUR EINMAL auf der gesamten Website verwendet werden!
+- ❌ NIEMALS das gleiche Bild in verschiedenen Sektionen wiederholen
+- ❌ NIEMALS das gleiche Bild auf verschiedenen Seiten verwenden
+- ✅ Für jede Sektion/Stelle ein EINZIGARTIGES Bild wählen
+- ✅ Lieber Icon/Platzhalter als Bild-Duplikat
+Ausnahme: Logo und Team-Fotos (diese dürfen mehrfach erscheinen)
+
 🔗 LOGO-VERLINKUNG (KRITISCH!):
 Das Logo im Header MUSS IMMER auf index.html verlinken:
 ```html
@@ -292,6 +300,12 @@ BILDER-REFERENZEN:
 - Team-Fotos: <img src="assets/vorname-nachname.jpg"> (LOKAL!)
 - NIEMALS externe Bild-URLs verwenden!
 - Fotos müssen vorher heruntergeladen sein
+
+🖼️ KEINE BILD-DUPLIKATE:
+Jedes Bild darf NUR EINMAL auf der gesamten Website verwendet werden!
+- Prüfe welche Bilder bereits auf der Homepage verwendet werden
+- Wähle für Unterseiten ANDERE Bilder
+- Ausnahme: Logo und Team-Fotos
 
 🗺️ GOOGLE MAPS URL - RICHTIG VERLINKEN (KRITISCH!):
 Wenn du einen Google Maps Link für die Kontaktseite erstellst:
@@ -819,6 +833,11 @@ Basierend auf Alt-Text und Bildinhalt:
 
 SCHRITT 5 - HTML AKTUALISIEREN:
 Ersetze ALLE Platzhalter-Divs durch echte Bilder:
+
+🚨 KEINE DUPLIKATE: Jedes Bild darf NUR EINMAL auf der Website verwendet werden!
+- Prüfe VORHER welche Bilder bereits eingebunden sind
+- Verwende jedes Bild nur an EINER Stelle
+- Lieber Platzhalter behalten als Bild doppelt verwenden
 
 ```html
 <!-- VORHER (Platzhalter) -->
