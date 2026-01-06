@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diyar's Laufsteg | Türkisches Restaurant & Café in Offenburg</title>
+    <meta name="description" content="Authentische türkische Küche und orientalisches Frühstück in Offenburg. Genießen Sie unser türkisches Frühstück für 2, Kebab-Spezialitäten und mehr. Frühstück bis 16 Uhr!">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Skip to content -->
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav__logo">
+                    <img src="assets/logo.svg" alt="Diyar's Laufsteg Logo" width="200" height="50">
+                </a>
+
+                <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                </button>
+
+                <ul class="nav__menu">
+                    <li><a href="index.html" class="nav__link nav__link--active">Startseite</a></li>
+                    <li><a href="speisekarte.html" class="nav__link">Speisekarte</a></li>
+                    <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                    <li><a href="referenzen.html" class="nav__link">Referenzen</a></li>
+                    <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                    <li><a href="tel:+497812036641" class="nav__cta btn btn--primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        Anrufen
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__bg">
+                <div class="hero__pattern"></div>
+            </div>
+            <div class="container">
+                <div class="hero__content">
+                    <span class="hero__badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        4.6 auf Google (288 Bewertungen)
+                    </span>
+                    <h1 class="hero__title">Willkommen bei <span>Diyar's Laufsteg</span></h1>
+                    <p class="hero__subtitle">Authentische türkische Küche und orientalisches Frühstück im Herzen von Offenburg. Erleben Sie Gastfreundschaft, die von Herzen kommt.</p>
+                    <div class="hero__ctas">
+                        <a href="speisekarte.html" class="btn btn--primary btn--lg">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+                                <path d="M7 2v20"/>
+                                <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+                            </svg>
+                            Speisekarte ansehen
+                        </a>
+                        <a href="tel:+497812036641" class="btn btn--secondary btn--lg">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Jetzt reservieren
+                        </a>
+                    </div>
+                    <div class="hero__info">
+                        <div class="hero__info-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <span>Heute geöffnet: 08:00 - 23:00 Uhr</span>
+                        </div>
+                        <div class="hero__info-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Hauptstraße 84, 77652 Offenburg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__scroll">
+                <span>Entdecken</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Frühstücks-Highlight Banner -->
+        <section class="highlight">
+            <div class="container">
+                <div class="highlight__card reveal">
+                    <div class="highlight__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="4"/>
+                            <line x1="10" y1="1" x2="10" y2="4"/>
+                            <line x1="14" y1="1" x2="14" y2="4"/>
+                        </svg>
+                    </div>
+                    <div class="highlight__content">
+                        <h2 class="highlight__title">Frühstück bis 16:00 Uhr</h2>
+                        <p class="highlight__text">Starten Sie entspannt in den Tag – bei uns gibt es Frühstück, wann immer Sie möchten. Genießen Sie unser legendäres türkisches Frühstück für 2 Personen.</p>
+                    </div>
+                    <a href="speisekarte.html" class="btn btn--gold">Frühstückskarte ansehen</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spezialitäten -->
+        <section class="specialties">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Unsere Empfehlungen</span>
+                    <h2 class="section-title">Beliebte Spezialitäten</h2>
+                    <div class="gold-divider"></div>
+                </div>
+
+                <div class="specialties__grid">
+                    <article class="specialty-card specialty-card--featured reveal">
+                        <div class="specialty-card__badge">Bestseller</div>
+                        <div class="specialty-card__image">
+                            <img src="assets/images/breakfast-1.jpg" alt="Türkisches Frühstück für 2 Personen" loading="lazy">
+                        </div>
+                        <h3 class="specialty-card__title">Türkisches Frühstück für 2</h3>
+                        <p class="specialty-card__desc">Eine Auswahl feinster orientalischer Köstlichkeiten: Käse, Oliven, Sucuk, frisches Brot, Eier und vieles mehr.</p>
+                        <span class="specialty-card__price">Für 2 Personen</span>
+                    </article>
+
+                    <article class="specialty-card reveal">
+                        <div class="specialty-card__image">
+                            <img src="assets/images/burger-1.jpg" alt="Cheeseburger bei Diyar's Laufsteg" loading="lazy">
+                        </div>
+                        <h3 class="specialty-card__title">Cheeseburger</h3>
+                        <p class="specialty-card__desc">Saftiger Burger mit geschmolzenem Käse, frischem Salat und hausgemachter Sauce.</p>
+                        <span class="specialty-card__price">Beliebt</span>
+                    </article>
+
+                    <article class="specialty-card reveal">
+                        <div class="specialty-card__image">
+                            <img src="assets/images/food-2.jpg" alt="Kebab-Variationen" loading="lazy">
+                        </div>
+                        <h3 class="specialty-card__title">Kebab-Variationen</h3>
+                        <p class="specialty-card__desc">Traditionell mariniert und auf dem Grill zubereitet – serviert mit frischem Salat und Beilagen.</p>
+                        <span class="specialty-card__price">Klassiker</span>
+                    </article>
+
+                    <article class="specialty-card reveal">
+                        <div class="specialty-card__image">
+                            <img src="assets/images/dessert-1.jpg" alt="Frische Crêpes und Desserts" loading="lazy">
+                        </div>
+                        <h3 class="specialty-card__title">Frische Crêpes</h3>
+                        <p class="specialty-card__desc">Hauchdünne Crêpes mit Ihrer Wahl an süßen Toppings – perfekt zum Kaffee oder als Dessert.</p>
+                        <span class="specialty-card__price">Süße Versuchung</span>
+                    </article>
+                </div>
+
+                <div class="specialties__cta reveal">
+                    <a href="speisekarte.html" class="btn btn--outline">Komplette Speisekarte ansehen</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Über uns Teaser -->
+        <section class="about-teaser">
+            <div class="about-teaser__pattern"></div>
+            <div class="container">
+                <div class="about-teaser__grid">
+                    <div class="about-teaser__content reveal">
+                        <span class="section-label">Über uns</span>
+                        <h2 class="section-title">Türkische Gastfreundschaft <span>mitten in Offenburg</span></h2>
+                        <p class="about-teaser__text">
+                            Bei Diyar's Laufsteg verbinden wir authentische türkische Küche mit der Gemütlichkeit eines Cafés.
+                            Von früh morgens bis spät abends sind Sie bei uns willkommen – ob zum ausgiebigen Frühstück,
+                            einem schnellen Mittagessen oder einem geselligen Abend bei orientalischen Spezialitäten.
+                        </p>
+                        <ul class="about-teaser__features">
+                            <li>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                100% Halal-Zertifiziert
+                            </li>
+                            <li>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                Frische Zutaten täglich
+                            </li>
+                            <li>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                                Familienfreundliche Atmosphäre
+                            </li>
+                        </ul>
+                        <a href="ueber-uns.html" class="btn btn--primary">Mehr über uns erfahren</a>
+                    </div>
+                    <div class="about-teaser__visual reveal">
+                        <div class="about-teaser__stats">
+                            <div class="stat-card">
+                                <span class="stat-card__number">4.6</span>
+                                <span class="stat-card__label">Google Bewertung</span>
+                                <div class="stat-card__stars">★★★★★</div>
+                            </div>
+                            <div class="stat-card stat-card--accent">
+                                <span class="stat-card__number">288+</span>
+                                <span class="stat-card__label">Zufriedene Gäste haben bewertet</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-card__number">7</span>
+                                <span class="stat-card__label">Tage die Woche geöffnet</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategorien-Showcase -->
+        <section class="categories">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Was erwartet Sie</span>
+                    <h2 class="section-title">Für jeden Geschmack etwas</h2>
+                    <div class="gold-divider"></div>
+                </div>
+
+                <div class="categories__grid">
+                    <a href="speisekarte.html#fruehstueck" class="category-card category-card--large category-card--image reveal">
+                        <div class="category-card__bg" style="background-image: url('assets/images/food-1.jpg');"></div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__title">Frühstück & Brunch</h3>
+                            <p class="category-card__desc">Türkisches Frühstück, Rührei-Variationen und mehr – bis 16 Uhr!</p>
+                            <span class="category-card__link">Entdecken →</span>
+                        </div>
+                    </a>
+
+                    <a href="speisekarte.html#hauptgerichte" class="category-card category-card--image reveal">
+                        <div class="category-card__bg" style="background-image: url('assets/images/food-2.jpg');"></div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__title">Hauptgerichte</h3>
+                            <p class="category-card__desc">Kebab, Burger & Falafel</p>
+                        </div>
+                    </a>
+
+                    <a href="speisekarte.html#desserts" class="category-card category-card--image reveal">
+                        <div class="category-card__bg" style="background-image: url('assets/images/dessert-1.jpg');"></div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__title">Desserts</h3>
+                            <p class="category-card__desc">Crêpes & Süßes</p>
+                        </div>
+                    </a>
+
+                    <a href="speisekarte.html#getraenke" class="category-card category-card--image reveal">
+                        <div class="category-card__bg" style="background-image: url('assets/images/salat-1.jpg');"></div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__title">Getränke</h3>
+                            <p class="category-card__desc">Tee, Kaffee & Cocktails</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Reviews -->
+        <section class="reviews">
+            <div class="container">
+                <div class="reviews__header reveal">
+                    <div class="reviews__rating">
+                        <div class="reviews__score">4.6</div>
+                        <div class="reviews__stars">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#D97706"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#D97706"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#D97706"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#D97706"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#D97706" opacity="0.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <span class="reviews__count">288 Bewertungen auf Google, TripAdvisor & Restaurant Guru</span>
+                    </div>
+                    <a href="referenzen.html" class="btn btn--outline">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        Alle Referenzen ansehen
+                    </a>
+                </div>
+
+                <div class="reviews__grid">
+                    <blockquote class="review-card reveal">
+                        <div class="review-card__stars">★★★★★</div>
+                        <p class="review-card__text">"Das orientalische Frühstück für 2 Personen ist sehr schön angerichtet und geschmacklich gibt es nichts zu beanstanden. Das Preis-Leistungs-Verhältnis stimmt absolut!"</p>
+                        <footer class="review-card__footer">
+                            <div class="review-card__avatar">G</div>
+                            <div>
+                                <cite class="review-card__author">Gast</cite>
+                                <span class="review-card__source">Google Review</span>
+                            </div>
+                        </footer>
+                    </blockquote>
+
+                    <blockquote class="review-card reveal">
+                        <div class="review-card__stars">★★★★★</div>
+                        <p class="review-card__text">"Der Chef und das gesamte Team sind super freundlich und zuvorkommend, das Preis-Leistungs-Verhältnis stimmt und sowohl Essen als auch Getränke sind sehr gut."</p>
+                        <footer class="review-card__footer">
+                            <div class="review-card__avatar">R</div>
+                            <div>
+                                <cite class="review-card__author">Restaurant-Besucher</cite>
+                                <span class="review-card__source">Restaurant Guru</span>
+                            </div>
+                        </footer>
+                    </blockquote>
+
+                    <blockquote class="review-card reveal">
+                        <div class="review-card__stars">★★★★★</div>
+                        <p class="review-card__text">"Im Sommer kann man toll draußen auf dem Marktplatz sitzen und sich wie im Kurzurlaub fühlen. Super leckere Salate und bezahlbare Preise. Ich empfehle das Laufsteg wärmstens!"</p>
+                        <footer class="review-card__footer">
+                            <div class="review-card__avatar">S</div>
+                            <div>
+                                <cite class="review-card__author">Stammgast</cite>
+                                <span class="review-card__source">TripAdvisor</span>
+                            </div>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Öffnungszeiten & Kontakt CTA -->
+        <section class="contact-cta">
+            <div class="container">
+                <div class="contact-cta__grid">
+                    <div class="contact-cta__hours reveal">
+                        <h2 class="contact-cta__title">Öffnungszeiten</h2>
+                        <div class="gold-divider gold-divider--left"></div>
+                        <dl class="hours-list">
+                            <div class="hours-list__item">
+                                <dt>Montag – Donnerstag</dt>
+                                <dd>08:00 – 23:00 Uhr</dd>
+                            </div>
+                            <div class="hours-list__item hours-list__item--highlight">
+                                <dt>Freitag – Samstag</dt>
+                                <dd>08:00 – 01:00 Uhr</dd>
+                            </div>
+                            <div class="hours-list__item">
+                                <dt>Sonntag</dt>
+                                <dd>08:00 – 23:00 Uhr</dd>
+                            </div>
+                        </dl>
+                        <p class="contact-cta__note">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            Frühstück wird bis 16:00 Uhr serviert
+                        </p>
+                    </div>
+
+                    <div class="contact-cta__action reveal">
+                        <div class="contact-cta__card">
+                            <h3>Reservierung & Anfragen</h3>
+                            <p>Rufen Sie uns an oder besuchen Sie uns spontan – wir freuen uns auf Sie!</p>
+                            <a href="tel:+497812036641" class="btn btn--primary btn--lg btn--full">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                                +49 781 2036641
+                            </a>
+                            <div class="contact-cta__address">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                <address>
+                                    Hauptstraße 84<br>
+                                    77652 Offenburg
+                                </address>
+                            </div>
+                            <a href="kontakt.html" class="contact-cta__link">Anfahrt & Kontakt →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Diyar's Laufsteg" width="180" height="45">
+                    </a>
+                    <p class="footer__tagline">Türkisches Restaurant & Café im Herzen von Offenburg. Authentische Küche, herzliche Gastfreundschaft.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/diyarslaufsteg" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.google.com/maps/place/Diyar's+Laufsteg/@48.4717168,7.9426339,17z" target="_blank" rel="noopener" aria-label="Google Maps">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C7.31 0 3.5 3.81 3.5 8.5c0 6.45 7.43 14.63 7.75 14.98.17.19.41.28.65.28s.48-.1.65-.28c.32-.35 7.75-8.53 7.75-14.98C20.5 3.81 16.69 0 12 0zm0 12c-1.93 0-3.5-1.57-3.5-3.5S10.07 5 12 5s3.5 1.57 3.5 3.5S13.93 12 12 12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__nav">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4>Kontakt</h4>
+                    <address>
+                        <p>Hauptstraße 84<br>77652 Offenburg</p>
+                        <p><a href="tel:+497812036641">+49 781 2036641</a></p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2026 Diyar's Laufsteg. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

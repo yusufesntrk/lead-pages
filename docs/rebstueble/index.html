@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rebstüble Offenburg - Gemütliche Weinstube mit regionaler badischer Küche und erlesenen Durbacher Weinen. Reservieren Sie jetzt!">
+    <meta name="keywords" content="Weinstube Offenburg, Restaurant Offenburg, Badische Küche, Durbacher Weine, Flammkuchen">
+    <title>Rebstüble Offenburg | Weinstube & Regionale Küche</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Rebstüble Logo" width="200" height="57">
+            </a>
+
+            <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="index.html" class="nav__link active">Startseite</a></li>
+                <li><a href="speisekarte.html" class="nav__link">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                <li><a href="kontakt.html#reservierung" class="nav__link nav__link--cta">Reservieren</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__bg">
+                <div class="hero__overlay"></div>
+            </div>
+            <div class="hero__content container">
+                <div class="hero__text">
+                    <span class="hero__badge">Weinstube & Restaurant</span>
+                    <h1 class="hero__title">
+                        Willkommen im<br>
+                        <span class="hero__title-accent">Rebstüble</span>
+                    </h1>
+                    <p class="hero__subtitle">
+                        Genießen Sie badische Gastfreundschaft, regionale Küche und
+                        erlesene Weine aus dem Durbacher Tal – mitten in Offenburg.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="kontakt.html#reservierung" class="btn btn--primary">Tisch reservieren</a>
+                        <a href="speisekarte.html" class="btn btn--secondary">Speisekarte</a>
+                    </div>
+                </div>
+                <div class="hero__visual">
+                    <div class="hero__card">
+                        <div class="hero__card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2C10.5 6 8 8 4 8c0 8 4 12 8 14 4-2 8-6 8-14-4 0-6.5-2-8-6z"/>
+                            </svg>
+                        </div>
+                        <div class="hero__card-content">
+                            <span class="hero__card-label">Google Bewertung</span>
+                            <div class="hero__card-rating">
+                                <span class="hero__card-stars">★★★★★</span>
+                                <span class="hero__card-score">4.5</span>
+                            </div>
+                            <span class="hero__card-reviews">200+ Bewertungen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__scroll">
+                <span>Mehr entdecken</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Features / Vertrauenssignale -->
+        <section class="features">
+            <div class="container">
+                <div class="features__grid">
+                    <div class="feature reveal">
+                        <div class="feature__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M8 22V8a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v14"/>
+                                <path d="M6 14h12"/>
+                                <circle cx="12" cy="18" r="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature__title">Durbacher Weine</h3>
+                        <p class="feature__text">Erlesene Tropfen direkt aus dem nahegelegenen Weinanbaugebiet</p>
+                    </div>
+                    <div class="feature reveal" data-delay="100">
+                        <div class="feature__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature__title">Abendöffnung</h3>
+                        <p class="feature__text">Täglich ab 16:30 Uhr für Sie geöffnet (Dienstag Ruhetag)</p>
+                    </div>
+                    <div class="feature reveal" data-delay="200">
+                        <div class="feature__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/>
+                                <path d="M12 11v6M8 17h8"/>
+                                <circle cx="6" cy="17" r="2"/>
+                                <circle cx="18" cy="17" r="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature__title">Regionale Küche</h3>
+                        <p class="feature__text">Traditionelle badische Gerichte mit frischen Zutaten aus der Region</p>
+                    </div>
+                    <div class="feature reveal" data-delay="300">
+                        <div class="feature__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature__title">Gemütlichkeit</h3>
+                        <p class="feature__text">Warme Atmosphäre zum Wohlfühlen in uriger Weinstuben-Tradition</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Über uns Teaser -->
+        <section class="about">
+            <div class="container">
+                <div class="about__wrapper reveal">
+                    <div class="about__content">
+                        <span class="section-badge">Über uns</span>
+                        <h2 class="section-title">Ein Stück badische <span class="text-accent">Weinkultur</span></h2>
+                        <p class="about__text">
+                            Das Rebstüble an der Durbacher Straße vereint das Beste aus zwei Welten:
+                            die Gemütlichkeit einer traditionellen Weinstube und die Qualität moderner Gastronomie.
+                        </p>
+                        <p class="about__text">
+                            Direkt am Fuße der Durbacher Weinberge gelegen, servieren wir Ihnen nicht nur
+                            erstklassige Weine aus der Region, sondern auch herzhafte badische Küche –
+                            von knusprigen Flammkuchen bis zu deftigen Vesperplatten.
+                        </p>
+                        <a href="ueber-uns.html" class="btn btn--outline">Mehr erfahren</a>
+                    </div>
+                    <div class="about__visual">
+                        <div class="about__image-frame">
+                            <div class="about__image-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <path d="M8 22V8a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v14"/>
+                                    <path d="M6 14h12"/>
+                                    <circle cx="12" cy="18" r="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="about__decoration">
+                            <span class="about__decoration-text">Seit Jahren<br>in Offenburg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Speisekarte Highlights -->
+        <section class="menu-highlights">
+            <div class="menu-highlights__bg"></div>
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge section-badge--light">Unsere Küche</span>
+                    <h2 class="section-title section-title--light">Kulinarische <span class="text-gold">Highlights</span></h2>
+                    <p class="section-subtitle section-subtitle--light">
+                        Entdecken Sie unsere Spezialitäten – zubereitet mit Liebe und regionalen Zutaten
+                    </p>
+                </div>
+
+                <div class="menu-highlights__grid">
+                    <div class="menu-card reveal">
+                        <div class="menu-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <ellipse cx="12" cy="6" rx="8" ry="3"/>
+                                <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/>
+                                <path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/>
+                            </svg>
+                        </div>
+                        <h3 class="menu-card__title">Flammkuchen</h3>
+                        <p class="menu-card__text">Knusprig aus dem Ofen – klassisch mit Speck und Zwiebeln oder in kreativen Variationen</p>
+                    </div>
+
+                    <div class="menu-card reveal" data-delay="100">
+                        <div class="menu-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                <line x1="6" y1="1" x2="6" y2="4"/>
+                                <line x1="10" y1="1" x2="10" y2="4"/>
+                                <line x1="14" y1="1" x2="14" y2="4"/>
+                            </svg>
+                        </div>
+                        <h3 class="menu-card__title">Vesperplatten</h3>
+                        <p class="menu-card__text">Deftige Brotzeiten mit regionalen Wurstspezialitäten und hausgemachten Beilagen</p>
+                    </div>
+
+                    <div class="menu-card reveal" data-delay="200">
+                        <div class="menu-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M8 22V8a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v14"/>
+                                <path d="M6 14h12"/>
+                                <circle cx="12" cy="18" r="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="menu-card__title">Durbacher Weine</h3>
+                        <p class="menu-card__text">Ausgewählte Tropfen aus dem nahegelegenen Weinanbaugebiet – rot, weiß und rosé</p>
+                    </div>
+                </div>
+
+                <div class="menu-highlights__cta reveal">
+                    <a href="speisekarte.html" class="btn btn--gold">Komplette Speisekarte</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Öffnungszeiten -->
+        <section class="hours">
+            <div class="container">
+                <div class="hours__wrapper">
+                    <div class="hours__content reveal">
+                        <span class="section-badge">Öffnungszeiten</span>
+                        <h2 class="section-title">Wann Sie uns <span class="text-accent">besuchen</span> können</h2>
+                        <p class="hours__intro">
+                            Wir freuen uns auf Ihren Besuch. Für größere Gruppen empfehlen wir eine Reservierung.
+                        </p>
+                    </div>
+                    <div class="hours__card reveal" data-delay="100">
+                        <div class="hours__card-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12,6 12,12 16,14"/>
+                            </svg>
+                            <span>Öffnungszeiten</span>
+                        </div>
+                        <ul class="hours__list">
+                            <li class="hours__item">
+                                <span class="hours__day">Montag</span>
+                                <span class="hours__time">16:30 – 23:00</span>
+                            </li>
+                            <li class="hours__item hours__item--closed">
+                                <span class="hours__day">Dienstag</span>
+                                <span class="hours__time">Ruhetag</span>
+                            </li>
+                            <li class="hours__item">
+                                <span class="hours__day">Mittwoch</span>
+                                <span class="hours__time">16:30 – 23:00</span>
+                            </li>
+                            <li class="hours__item">
+                                <span class="hours__day">Donnerstag</span>
+                                <span class="hours__time">16:30 – 23:00</span>
+                            </li>
+                            <li class="hours__item">
+                                <span class="hours__day">Freitag</span>
+                                <span class="hours__time">16:30 – 23:00</span>
+                            </li>
+                            <li class="hours__item">
+                                <span class="hours__day">Samstag</span>
+                                <span class="hours__time">16:30 – 23:00</span>
+                            </li>
+                            <li class="hours__item">
+                                <span class="hours__day">Sonntag</span>
+                                <span class="hours__time">16:30 – 23:00</span>
+                            </li>
+                        </ul>
+                        <div class="hours__note">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="16" x2="12" y2="12"/>
+                                <line x1="12" y1="8" x2="12.01" y2="8"/>
+                            </svg>
+                            <span>Küche bis 22:00 Uhr</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Reviews -->
+        <section class="reviews">
+            <div class="container">
+                <div class="reviews__wrapper reveal">
+                    <div class="reviews__header">
+                        <div class="reviews__score">
+                            <span class="reviews__number">4.5</span>
+                            <div class="reviews__stars">★★★★★</div>
+                            <span class="reviews__count">200+ Google Bewertungen</span>
+                        </div>
+                        <div class="reviews__content">
+                            <h2 class="section-title">Was unsere <span class="text-accent">Gäste</span> sagen</h2>
+                            <p class="reviews__text">
+                                Überzeugen Sie sich selbst von unserer Gastfreundschaft.
+                                Wir sind stolz auf das positive Feedback unserer Gäste.
+                            </p>
+                            <a href="https://maps.google.com/?q=Rebstüble+Offenburg" target="_blank" rel="noopener" class="btn btn--outline">
+                                Alle Bewertungen lesen
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="cta__bg"></div>
+            <div class="container">
+                <div class="cta__content reveal">
+                    <h2 class="cta__title">Reservieren Sie Ihren Tisch</h2>
+                    <p class="cta__text">
+                        Ob romantisches Dinner zu zweit, Familienfeier oder geselliger Abend mit Freunden –
+                        wir heißen Sie herzlich willkommen.
+                    </p>
+                    <div class="cta__actions">
+                        <a href="tel:+4978193995533" class="btn btn--light">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            0781 93995533
+                        </a>
+                        <a href="kontakt.html" class="btn btn--gold">Kontakt aufnehmen</a>
+                    </div>
+                    <p class="cta__address">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Durbacher Str. 32, 77654 Offenburg
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Rebstüble Logo" width="180" height="51">
+                    </a>
+                    <p class="footer__tagline">
+                        Weinstube & Restaurant<br>
+                        Badische Gastfreundschaft in Offenburg
+                    </p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navigation</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__title">Kontakt</h4>
+                    <address class="footer__address">
+                        <p>Durbacher Str. 32<br>77654 Offenburg</p>
+                        <p><a href="tel:+4978193995533">0781 93995533</a></p>
+                    </address>
+                </div>
+
+                <div class="footer__legal">
+                    <h4 class="footer__title">Rechtliches</h4>
+                    <ul class="footer__links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    © 2025 Rebstüble Offenburg. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

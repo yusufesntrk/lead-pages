@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | Dear Mama - Döner & Pizza in Offenburg</title>
+    <meta name="description" content="Kontaktieren Sie Dear Mama in Offenburg. Besuchen Sie uns im Kaufland Offenburg oder rufen Sie uns an. Öffnungszeiten und Anfahrt.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Dear Mama Logo">
+            </a>
+
+            <button class="nav__toggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav__menu">
+                <li><a href="speisekarte.html" class="nav__link">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="index.html#bewertungen" class="nav__link">Bewertungen</a></li>
+                <li><a href="kontakt.html" class="nav__link nav__link--active">Kontakt</a></li>
+                <li><a href="tel:+4915228021175" class="btn btn--primary nav__cta">Jetzt anrufen</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero page-hero--contact">
+            <div class="page-hero__background">
+                <div class="page-hero__pattern"></div>
+            </div>
+            <div class="container">
+                <div class="page-hero__content reveal">
+                    <span class="section-label">Wir freuen uns auf dich</span>
+                    <h1 class="page-hero__title">Kontakt & Anfahrt</h1>
+                    <p class="page-hero__subtitle">Besuche uns im Kaufland Offenburg oder ruf einfach an – wir sind für dich da!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Split Section -->
+        <section class="contact-split">
+            <div class="contact-split__map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.5!2d7.9456!3d48.4568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791b39e0f9a9b97%3A0x7e7c8e8e9e9e9e9e!2sOkenstra%C3%9Fe%2074%2C%2077652%20Offenburg!5e0!3m2!1sde!2sde!4v1704499200000"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Dear Mama Standort - Okenstraße 74, Offenburg">
+                </iframe>
+            </div>
+            <div class="contact-split__content">
+                <div class="contact-split__inner reveal">
+                    <div class="contact-card contact-card--phone">
+                        <div class="contact-card__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-card__content">
+                            <span class="contact-card__label">Telefon</span>
+                            <a href="tel:+4915228021175" class="contact-card__value contact-card__value--large">+49 152 28021175</a>
+                            <span class="contact-card__hint">Tippe zum Anrufen</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="contact-card__content">
+                            <span class="contact-card__label">Adresse</span>
+                            <p class="contact-card__value">
+                                Okenstraße 74<br>
+                                77652 Offenburg
+                            </p>
+                            <span class="contact-card__badge">Im Kaufland</span>
+                        </div>
+                    </div>
+
+                    <a href="https://www.google.com/maps/dir//Okenstraße+74,+77652+Offenburg" target="_blank" rel="noopener" class="btn btn--primary btn--large contact-split__cta">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+                        </svg>
+                        Route planen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Opening Hours Section -->
+        <section class="hours-section">
+            <div class="container">
+                <div class="hours-grid">
+                    <div class="hours-card reveal">
+                        <div class="hours-card__header">
+                            <div class="hours-card__icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <h2 class="hours-card__title">Öffnungszeiten</h2>
+                        </div>
+                        <ul class="hours-list">
+                            <li class="hours-list__item">
+                                <span class="hours-list__day">Montag</span>
+                                <span class="hours-list__time">10:30 – 20:00</span>
+                            </li>
+                            <li class="hours-list__item hours-list__item--short">
+                                <span class="hours-list__day">Dienstag</span>
+                                <span class="hours-list__time">10:30 – 12:30</span>
+                            </li>
+                            <li class="hours-list__item hours-list__item--closed">
+                                <span class="hours-list__day">Mittwoch</span>
+                                <span class="hours-list__time">Geschlossen</span>
+                            </li>
+                            <li class="hours-list__item hours-list__item--closed">
+                                <span class="hours-list__day">Donnerstag</span>
+                                <span class="hours-list__time">Geschlossen</span>
+                            </li>
+                            <li class="hours-list__item">
+                                <span class="hours-list__day">Freitag</span>
+                                <span class="hours-list__time">10:30 – 20:00</span>
+                            </li>
+                            <li class="hours-list__item">
+                                <span class="hours-list__day">Samstag</span>
+                                <span class="hours-list__time">10:30 – 20:00</span>
+                            </li>
+                            <li class="hours-list__item hours-list__item--closed">
+                                <span class="hours-list__day">Sonntag</span>
+                                <span class="hours-list__time">Geschlossen</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-cards reveal">
+                        <div class="info-card">
+                            <div class="info-card__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="1" y="3" width="15" height="13"/>
+                                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                                    <circle cx="5.5" cy="18.5" r="2.5"/>
+                                    <circle cx="18.5" cy="18.5" r="2.5"/>
+                                </svg>
+                            </div>
+                            <div class="info-card__content">
+                                <h3>Parkplätze</h3>
+                                <p>Kostenlose Parkplätze direkt am Kaufland verfügbar.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-card__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="info-card__content">
+                                <h3>Für Gruppen</h3>
+                                <p>Bei größeren Bestellungen rufe uns gerne vorher an.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-card__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                </svg>
+                            </div>
+                            <div class="info-card__content">
+                                <h3>Sprachen</h3>
+                                <p>Wir sprechen Deutsch und Türkisch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="social-section">
+            <div class="container">
+                <div class="social-section__content reveal">
+                    <span class="section-label">Bleib in Kontakt</span>
+                    <h2 class="section-title">Folge uns auf Social Media</h2>
+                    <p class="section-subtitle">Entdecke unsere neuesten Kreationen und bleibe immer auf dem Laufenden!</p>
+
+                    <div class="social-buttons">
+                        <a href="https://www.instagram.com/dear.mama_offenburg" target="_blank" rel="noopener" class="social-button social-button--instagram">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.tiktok.com/@dear.mama_offenburg" target="_blank" rel="noopener" class="social-button social-button--tiktok">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                            <span>TikTok</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta__content reveal">
+                    <h2 class="cta__title">Hunger?</h2>
+                    <p class="cta__text">Wir freuen uns auf deinen Besuch oder Anruf!</p>
+                    <div class="cta__actions">
+                        <a href="tel:+4915228021175" class="btn btn--primary btn--large">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Jetzt anrufen
+                        </a>
+                        <a href="speisekarte.html" class="btn btn--secondary btn--large">
+                            Speisekarte ansehen
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Dear Mama Logo">
+                    </a>
+                    <p class="footer__tagline">Frisch. Hausgemacht. Mit Liebe.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="index.html#bewertungen">Bewertungen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer__contact">
+                    <h4>Kontakt</h4>
+                    <p>Okenstraße 74<br>77652 Offenburg</p>
+                    <p><a href="tel:+4915228021175">+49 152 28021175</a></p>
+                </div>
+                <div class="footer__legal">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Dear Mama. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Call Button -->
+    <a href="tel:+4915228021175" class="mobile-call" aria-label="Jetzt anrufen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

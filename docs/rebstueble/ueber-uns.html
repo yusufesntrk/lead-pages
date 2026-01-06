@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Erfahren Sie mehr über das Rebstüble in Offenburg – Ihre gemütliche Weinstube mit badischer Küche und erlesenen Durbacher Weinen.">
+    <meta name="keywords" content="Rebstüble Geschichte, Weinstube Offenburg, Badische Tradition, Durbacher Weine">
+    <title>Über uns | Rebstüble Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Rebstüble Logo" width="200" height="57">
+            </a>
+
+            <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="index.html" class="nav__link">Startseite</a></li>
+                <li><a href="speisekarte.html" class="nav__link">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link active">Über uns</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                <li><a href="kontakt.html#reservierung" class="nav__link nav__link--cta">Reservieren</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero page-hero--about">
+            <div class="page-hero__bg"></div>
+            <div class="container">
+                <div class="page-hero__content">
+                    <span class="page-hero__badge">Über uns</span>
+                    <h1 class="page-hero__title">Unser <span class="text-accent">Rebstüble</span></h1>
+                    <p class="page-hero__subtitle">
+                        Ein kleines Stück badische Weinkultur – gemütlich, herzlich und authentisch.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="story">
+            <div class="container">
+                <div class="story__wrapper">
+                    <div class="story__content reveal">
+                        <span class="section-badge">Unsere Geschichte</span>
+                        <h2 class="section-title">Wo Tradition auf <span class="text-accent">Genuss</span> trifft</h2>
+                        <p class="story__text">
+                            Das Rebstüble – wörtlich „Reben-Stübchen" – ist mehr als nur ein Restaurant.
+                            Es ist ein Ort, an dem badische Gastfreundschaft gelebt wird. Direkt an der
+                            Durbacher Straße gelegen, verbinden wir die Nähe zu den berühmten Durbacher
+                            Weinbergen mit der Gemütlichkeit einer traditionellen Weinstube.
+                        </p>
+                        <p class="story__text">
+                            Bei uns erwartet Sie keine anonyme Gastronomie, sondern ein Zuhause für
+                            Genießer. Ob Sie nach einem Spaziergang durch die Weinberge einkehren,
+                            einen besonderen Anlass feiern oder einfach den Feierabend bei einem
+                            guten Glas Wein ausklingen lassen möchten – im Rebstüble sind Sie richtig.
+                        </p>
+                    </div>
+                    <div class="story__visual reveal" data-delay="200">
+                        <div class="story__image-stack">
+                            <div class="story__image-placeholder story__image-placeholder--1">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <path d="M8 22V8a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v14"/>
+                                    <path d="M6 14h12"/>
+                                    <circle cx="12" cy="18" r="2"/>
+                                </svg>
+                            </div>
+                            <div class="story__image-placeholder story__image-placeholder--2">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section class="philosophy">
+            <div class="philosophy__bg"></div>
+            <div class="container">
+                <div class="philosophy__content reveal">
+                    <div class="philosophy__quote">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48" opacity="0.3">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
+                        <blockquote class="philosophy__blockquote">
+                            Wir glauben daran, dass gutes Essen und guter Wein Menschen zusammenbringen.
+                            Deshalb setzen wir auf Qualität, Regionalität und eine Atmosphäre,
+                            in der man sich einfach wohlfühlt.
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge">Unsere Werte</span>
+                    <h2 class="section-title">Was uns <span class="text-accent">ausmacht</span></h2>
+                </div>
+
+                <div class="values__grid">
+                    <div class="value-card reveal">
+                        <div class="value-card__number">01</div>
+                        <div class="value-card__content">
+                            <h3 class="value-card__title">Regionalität</h3>
+                            <p class="value-card__text">
+                                Unsere Zutaten stammen, wo immer möglich, von Erzeugern aus der Region.
+                                Die Weine kommen direkt aus dem nahegelegenen Durbach – frischer geht es nicht.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="value-card reveal" data-delay="100">
+                        <div class="value-card__number">02</div>
+                        <div class="value-card__content">
+                            <h3 class="value-card__title">Handwerk</h3>
+                            <p class="value-card__text">
+                                Jedes Gericht wird mit Sorgfalt zubereitet. Von den knusprigen Flammkuchen
+                                bis zu den deftigen Vesperplatten – bei uns schmeckt man die Liebe zum Detail.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="value-card reveal" data-delay="200">
+                        <div class="value-card__number">03</div>
+                        <div class="value-card__content">
+                            <h3 class="value-card__title">Gastfreundschaft</h3>
+                            <p class="value-card__text">
+                                Bei uns ist jeder Gast willkommen. Ob Stammgast oder Erstbesucher –
+                                wir sorgen dafür, dass Sie sich wie zu Hause fühlen.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="value-card reveal" data-delay="300">
+                        <div class="value-card__number">04</div>
+                        <div class="value-card__content">
+                            <h3 class="value-card__title">Tradition</h3>
+                            <p class="value-card__text">
+                                Die badische Weinstubenkultur hat eine lange Geschichte. Wir führen
+                                diese Tradition fort – mit Respekt vor dem Bewährten und Offenheit für Neues.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wine Region Section -->
+        <section class="wine-region">
+            <div class="container">
+                <div class="wine-region__wrapper reveal">
+                    <div class="wine-region__visual">
+                        <div class="wine-region__image-frame">
+                            <div class="wine-region__image-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                    <path d="M12 2C10.5 6 8 8 4 8c0 8 4 12 8 14 4-2 8-6 8-14-4 0-6.5-2-8-6z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="wine-region__badge">
+                            <span class="wine-region__badge-icon">🍇</span>
+                            <span>Durbacher<br>Weinregion</span>
+                        </div>
+                    </div>
+                    <div class="wine-region__content">
+                        <span class="section-badge">Die Region</span>
+                        <h2 class="section-title">Das Durbacher <span class="text-accent">Weinland</span></h2>
+                        <p class="wine-region__text">
+                            Das Durbacher Tal, nur wenige Kilometer von Offenburg entfernt, zählt zu den
+                            renommiertesten Weinanbaugebieten Badens. Die steilen Hänge und das milde Klima
+                            schaffen ideale Bedingungen für erstklassige Weine.
+                        </p>
+                        <p class="wine-region__text">
+                            Unsere Weinkarte spiegelt diese Vielfalt wider: Von fruchtigem Riesling über
+                            eleganten Spätburgunder bis hin zu vollmundigem Grauburgunder – die Durbacher
+                            Winzer liefern uns ihre besten Tropfen.
+                        </p>
+                        <div class="wine-region__wines">
+                            <span class="wine-region__wine">Riesling</span>
+                            <span class="wine-region__wine">Spätburgunder</span>
+                            <span class="wine-region__wine">Grauburgunder</span>
+                            <span class="wine-region__wine">Müller-Thurgau</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Reviews -->
+        <section class="reviews reviews--alt">
+            <div class="container">
+                <div class="reviews__wrapper reveal">
+                    <div class="reviews__header">
+                        <div class="reviews__score">
+                            <span class="reviews__number">4.5</span>
+                            <div class="reviews__stars">★★★★★</div>
+                            <span class="reviews__count">200+ Google Bewertungen</span>
+                        </div>
+                        <div class="reviews__content">
+                            <h2 class="section-title">Das sagen unsere <span class="text-accent">Gäste</span></h2>
+                            <p class="reviews__text">
+                                Wir sind stolz auf die vielen positiven Bewertungen unserer Gäste.
+                                Überzeugen Sie sich selbst und werden Sie Teil der Rebstüble-Familie.
+                            </p>
+                            <a href="https://maps.google.com/?q=Rebstüble+Offenburg" target="_blank" rel="noopener" class="btn btn--outline">
+                                Alle Bewertungen lesen
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="cta__bg"></div>
+            <div class="container">
+                <div class="cta__content reveal">
+                    <h2 class="cta__title">Lernen Sie uns kennen</h2>
+                    <p class="cta__text">
+                        Besuchen Sie uns und erleben Sie badische Gastfreundschaft hautnah.
+                        Wir freuen uns auf Sie!
+                    </p>
+                    <div class="cta__actions">
+                        <a href="kontakt.html#reservierung" class="btn btn--light">Tisch reservieren</a>
+                        <a href="speisekarte.html" class="btn btn--gold">Speisekarte ansehen</a>
+                    </div>
+                    <p class="cta__address">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Durbacher Str. 32, 77654 Offenburg
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Rebstüble Logo" width="180" height="51">
+                    </a>
+                    <p class="footer__tagline">
+                        Weinstube & Restaurant<br>
+                        Badische Gastfreundschaft in Offenburg
+                    </p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navigation</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__title">Kontakt</h4>
+                    <address class="footer__address">
+                        <p>Durbacher Str. 32<br>77654 Offenburg</p>
+                        <p><a href="tel:+4978193995533">0781 93995533</a></p>
+                    </address>
+                </div>
+
+                <div class="footer__legal">
+                    <h4 class="footer__title">Rechtliches</h4>
+                    <ul class="footer__links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    © 2025 Rebstüble Offenburg. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

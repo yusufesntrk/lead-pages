@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speisekarte | Dear Mama - Döner & Pizza in Offenburg</title>
+    <meta name="description" content="Die Speisekarte von Dear Mama in Offenburg. Döner, Pizza, Lahmacun, Pide und mehr – alles frisch und hausgemacht.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Dear Mama Logo">
+            </a>
+
+            <button class="nav__toggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav__menu">
+                <li><a href="speisekarte.html" class="nav__link nav__link--active">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="index.html#bewertungen" class="nav__link">Bewertungen</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                <li><a href="tel:+4915228021175" class="btn btn--primary nav__cta">Jetzt anrufen</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero page-hero--menu">
+            <div class="page-hero__background">
+                <div class="page-hero__pattern"></div>
+            </div>
+            <div class="container">
+                <div class="page-hero__content reveal">
+                    <span class="section-label">Frisch & Hausgemacht</span>
+                    <h1 class="page-hero__title">Unsere Speisekarte</h1>
+                    <p class="page-hero__subtitle">Von Döner bis Pizza – alles täglich frisch zubereitet mit den besten Zutaten.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Navigation -->
+        <section class="menu-nav-section">
+            <div class="container">
+                <div class="menu-nav reveal">
+                    <a href="#doener" class="menu-nav__item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M8 6c0-2 4-4 4-4s4 2 4 4c0 4-4 6-4 10 0-4-4-6-4-10z"/>
+                        </svg>
+                        Döner & Kebab
+                    </a>
+                    <a href="#pizza" class="menu-nav__item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="8" cy="10" r="1" fill="currentColor"/>
+                            <circle cx="15" cy="9" r="1" fill="currentColor"/>
+                        </svg>
+                        Pizza
+                    </a>
+                    <a href="#tuerkisch" class="menu-nav__item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <ellipse cx="12" cy="6" rx="8" ry="3"/>
+                            <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/>
+                        </svg>
+                        Türkische Spezialitäten
+                    </a>
+                    <a href="#beilagen" class="menu-nav__item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="4"/>
+                            <line x1="10" y1="1" x2="10" y2="4"/>
+                            <line x1="14" y1="1" x2="14" y2="4"/>
+                        </svg>
+                        Beilagen & Mehr
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Döner Section -->
+        <section class="menu-section" id="doener">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <div class="menu-section__icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2v20M8 6c0-2 4-4 4-4s4 2 4 4c0 4-4 6-4 10 0-4-4-6-4-10z"/>
+                            <ellipse cx="12" cy="20" rx="4" ry="2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="menu-section__title">Döner & Kebab</h2>
+                        <p class="menu-section__subtitle">Unser Klassiker – mit frisch gebackenem Brot</p>
+                    </div>
+                </div>
+
+                <div class="menu-items-grid">
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Döner Kebab</h3>
+                            <span class="menu-item-card__price">7,00 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Saftiges Dönerfleisch im frisch gebackenen Fladenbrot, mit knackigem Salat, Tomaten, Zwiebeln und hausgemachter Sauce.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Klassiker</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card menu-item-card--featured reveal">
+                        <div class="menu-item-card__badge">Bestseller</div>
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Yufka (hausgemacht)</h3>
+                            <span class="menu-item-card__price">8,00 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Unsere Spezialität! Hausgemachter, hauchdünner Teig mit Dönerfleisch, frischem Gemüse und Saucen – gerollt und gegrillt.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag menu-item-card__tag--primary">Hausspezialität</span>
+                            <span class="menu-item-card__tag">Hausgemacht</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Dürüm</h3>
+                            <span class="menu-item-card__price">7,50 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Dönerfleisch im dünnen Fladenbrot, fest gerollt mit Salat, Gemüse und Sauce deiner Wahl.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Beliebt</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Döner Teller</h3>
+                            <span class="menu-item-card__price">9,50 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Großzügige Portion Dönerfleisch serviert mit Reis oder Pommes, frischem Salat und Saucen.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Sättigend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pizza Section -->
+        <section class="menu-section menu-section--alt" id="pizza">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <div class="menu-section__icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+                            <circle cx="8" cy="10" r="1.5" fill="currentColor"/>
+                            <circle cx="15" cy="9" r="1.5" fill="currentColor"/>
+                            <circle cx="10" cy="15" r="1.5" fill="currentColor"/>
+                            <circle cx="16" cy="14" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="menu-section__title">Pizza</h2>
+                        <p class="menu-section__subtitle">Täglich frischer Teig, handbelegt</p>
+                    </div>
+                </div>
+
+                <div class="menu-items-grid">
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Pizza Margherita</h3>
+                            <span class="menu-item-card__price">8,50 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Der italienische Klassiker: Tomatensauce, Mozzarella und frisches Basilikum auf knusprigem Teig.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Vegetarisch</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card menu-item-card--featured reveal">
+                        <div class="menu-item-card__badge">Top bewertet</div>
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Geflügel-Salami Pizza</h3>
+                            <span class="menu-item-card__price">9,50 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Die beste Geflügel-Salami-Pizza der Ortenau! Mit würziger Salami, Käse und Tomatensauce.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag menu-item-card__tag--primary">Kundenliebling</span>
+                            <span class="menu-item-card__tag">Halal</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Pizza Funghi</h3>
+                            <span class="menu-item-card__price">9,00 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Tomatensauce, Mozzarella und frische Champignons – einfach und köstlich.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Vegetarisch</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Pizza Döner</h3>
+                            <span class="menu-item-card__price">10,50 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Das Beste aus zwei Welten: Knuspriger Pizzaboden mit saftigem Dönerfleisch, Salat und Sauce.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Fusion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Turkish Specialties Section -->
+        <section class="menu-section" id="tuerkisch">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <div class="menu-section__icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <ellipse cx="12" cy="6" rx="8" ry="3"/>
+                            <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/>
+                            <path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="menu-section__title">Türkische Spezialitäten</h2>
+                        <p class="menu-section__subtitle">Traditionelle Rezepte, authentischer Geschmack</p>
+                    </div>
+                </div>
+
+                <div class="menu-items-grid">
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Lahmacun</h3>
+                            <span class="menu-item-card__price">6,00 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Hauchdünner, knuspriger Teigfladen mit würzigem Hackfleisch, Tomaten, Zwiebeln und Kräutern.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Traditionell</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Pide</h3>
+                            <span class="menu-item-card__price">7,50 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Türkisches Fladenbrot in Schiffchenform, gefüllt mit verschiedenen Belägen – herzhaft und sättigend.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Traditionell</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Pide mit Käse</h3>
+                            <span class="menu-item-card__price">8,00 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Gefüllt mit geschmolzenem Käse – cremig und köstlich.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Vegetarisch</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card reveal">
+                        <div class="menu-item-card__header">
+                            <h3 class="menu-item-card__title">Pide mit Sucuk</h3>
+                            <span class="menu-item-card__price">8,50 €</span>
+                        </div>
+                        <p class="menu-item-card__description">
+                            Mit würziger türkischer Knoblauchwurst und Käse – ein Geschmackserlebnis.
+                        </p>
+                        <div class="menu-item-card__tags">
+                            <span class="menu-item-card__tag">Würzig</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sides Section -->
+        <section class="menu-section menu-section--alt" id="beilagen">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <div class="menu-section__icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="4"/>
+                            <line x1="10" y1="1" x2="10" y2="4"/>
+                            <line x1="14" y1="1" x2="14" y2="4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="menu-section__title">Beilagen & Mehr</h2>
+                        <p class="menu-section__subtitle">Die perfekte Ergänzung zu deinem Hauptgericht</p>
+                    </div>
+                </div>
+
+                <div class="menu-items-list">
+                    <div class="menu-list-item reveal">
+                        <span class="menu-list-item__name">Panini</span>
+                        <span class="menu-list-item__line"></span>
+                        <span class="menu-list-item__price">5,50 €</span>
+                    </div>
+                    <div class="menu-list-item reveal">
+                        <span class="menu-list-item__name">Pommes Frites</span>
+                        <span class="menu-list-item__line"></span>
+                        <span class="menu-list-item__price">3,50 €</span>
+                    </div>
+                    <div class="menu-list-item reveal">
+                        <span class="menu-list-item__name">Gemischter Salat</span>
+                        <span class="menu-list-item__line"></span>
+                        <span class="menu-list-item__price">4,50 €</span>
+                    </div>
+                    <div class="menu-list-item reveal">
+                        <span class="menu-list-item__name">Bauernsalat</span>
+                        <span class="menu-list-item__line"></span>
+                        <span class="menu-list-item__price">5,00 €</span>
+                    </div>
+                    <div class="menu-list-item reveal">
+                        <span class="menu-list-item__name">Extra Sauce</span>
+                        <span class="menu-list-item__line"></span>
+                        <span class="menu-list-item__price">0,50 €</span>
+                    </div>
+                    <div class="menu-list-item reveal">
+                        <span class="menu-list-item__name">Getränke (diverse)</span>
+                        <span class="menu-list-item__line"></span>
+                        <span class="menu-list-item__price">ab 1,50 €</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Note -->
+        <section class="menu-info">
+            <div class="container">
+                <div class="menu-info__card reveal">
+                    <div class="menu-info__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                    </div>
+                    <div class="menu-info__content">
+                        <h3>Hinweise</h3>
+                        <ul>
+                            <li>Alle Gerichte werden frisch zubereitet</li>
+                            <li>Unser Brot und Teig sind täglich hausgemacht</li>
+                            <li>Bei Allergien oder besonderen Wünschen sprich uns einfach an</li>
+                            <li>Preise können sich ändern – aktuelle Preise vor Ort</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta__content reveal">
+                    <h2 class="cta__title">Appetit bekommen?</h2>
+                    <p class="cta__text">Besuch uns im Kaufland Offenburg oder ruf an für größere Bestellungen!</p>
+                    <div class="cta__actions">
+                        <a href="tel:+4915228021175" class="btn btn--primary btn--large">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Jetzt anrufen
+                        </a>
+                        <a href="kontakt.html" class="btn btn--secondary btn--large">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Anfahrt & Öffnungszeiten
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Dear Mama Logo">
+                    </a>
+                    <p class="footer__tagline">Frisch. Hausgemacht. Mit Liebe.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="index.html#bewertungen">Bewertungen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer__contact">
+                    <h4>Kontakt</h4>
+                    <p>Okenstraße 74<br>77652 Offenburg</p>
+                    <p><a href="tel:+4915228021175">+49 152 28021175</a></p>
+                </div>
+                <div class="footer__legal">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Dear Mama. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Call Button -->
+    <a href="tel:+4915228021175" class="mobile-call" aria-label="Jetzt anrufen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dear Mama | Döner & Pizza in Offenburg</title>
+    <meta name="description" content="Dear Mama - Frischer Döner, hausgemachte Yufka und Pizza in Offenburg. Täglich frisch gebackenes Brot. Besuchen Sie uns im Kaufland Offenburg!">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Dear Mama Logo">
+            </a>
+
+            <button class="nav__toggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav__menu">
+                <li><a href="#speisekarte" class="nav__link">Speisekarte</a></li>
+                <li><a href="#ueber-uns" class="nav__link">Über uns</a></li>
+                <li><a href="#bewertungen" class="nav__link">Bewertungen</a></li>
+                <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+                <li><a href="tel:+4915228021175" class="btn btn--primary nav__cta">Jetzt anrufen</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__background">
+                <img src="assets/restaurant-main.jpg" alt="Dear Mama Restaurant Offenburg" class="hero__image">
+                <div class="hero__overlay"></div>
+            </div>
+            <div class="hero__content container">
+                <div class="hero__badge">
+                    <span class="hero__rating">★ 4,9</span>
+                    <span class="hero__reviews">145 Google Bewertungen</span>
+                </div>
+                <h1 class="hero__title">
+                    <span class="hero__title-accent">Dear Mama</span>
+                    <span class="hero__title-main">Frisch. Hausgemacht. Mit Liebe.</span>
+                </h1>
+                <p class="hero__subtitle">Döner, Pizza & türkische Spezialitäten in Offenburg – täglich frisch für dich zubereitet.</p>
+                <div class="hero__actions">
+                    <a href="#speisekarte" class="btn btn--primary btn--large">Speisekarte ansehen</a>
+                    <a href="tel:+4915228021175" class="btn btn--secondary btn--large">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        Anrufen
+                    </a>
+                </div>
+            </div>
+            <div class="hero__scroll">
+                <span>Mehr entdecken</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- USP Section -->
+        <section class="usp">
+            <div class="container">
+                <div class="usp__grid">
+                    <div class="usp__item reveal">
+                        <div class="usp__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="usp__title">Täglich frisch</h3>
+                        <p class="usp__text">Unser Brot wird jeden Tag frisch gebacken</p>
+                    </div>
+                    <div class="usp__item reveal">
+                        <div class="usp__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                        <h3 class="usp__title">Mit Liebe gemacht</h3>
+                        <p class="usp__text">Hausgemachte Yufka & traditionelle Rezepte</p>
+                    </div>
+                    <div class="usp__item reveal">
+                        <div class="usp__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                        </div>
+                        <h3 class="usp__title">Top bewertet</h3>
+                        <p class="usp__text">4,9 Sterne bei 145 Google Bewertungen</p>
+                    </div>
+                    <div class="usp__item reveal">
+                        <div class="usp__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <h3 class="usp__title">Schnell & frisch</h3>
+                        <p class="usp__text">Kurze Wartezeiten, beste Qualität</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Speisekarte Section -->
+        <section class="menu" id="speisekarte">
+            <div class="menu__pattern"></div>
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Unsere Spezialitäten</span>
+                    <h2 class="section-title">Speisekarte</h2>
+                    <p class="section-subtitle">Von Döner bis Pizza – alles frisch zubereitet mit den besten Zutaten</p>
+                </div>
+
+                <div class="menu__grid">
+                    <!-- Döner & Kebab -->
+                    <div class="menu__category reveal">
+                        <div class="menu__category-header">
+                            <div class="menu__category-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2v20M8 6c0-2 4-4 4-4s4 2 4 4c0 4-4 6-4 10 0-4-4-6-4-10z"/>
+                                    <ellipse cx="12" cy="20" rx="4" ry="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="menu__category-title">Döner & Kebab</h3>
+                        </div>
+                        <ul class="menu__list">
+                            <li class="menu__item">
+                                <span class="menu__item-name">Döner Kebab</span>
+                                <span class="menu__item-line"></span>
+                                <span class="menu__item-price">7,00 €</span>
+                            </li>
+                            <li class="menu__item">
+                                <span class="menu__item-name">Yufka (hausgemacht)</span>
+                                <span class="menu__item-line"></span>
+                                <span class="menu__item-price">8,00 €</span>
+                            </li>
+                            <li class="menu__item">
+                                <span class="menu__item-name">Dürüm</span>
+                                <span class="menu__item-line"></span>
+                                <span class="menu__item-price">7,50 €</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Pizza -->
+                    <div class="menu__category reveal">
+                        <div class="menu__category-header">
+                            <div class="menu__category-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/>
+                                    <circle cx="8" cy="10" r="1.5" fill="currentColor"/>
+                                    <circle cx="15" cy="9" r="1.5" fill="currentColor"/>
+                                    <circle cx="10" cy="15" r="1.5" fill="currentColor"/>
+                                    <circle cx="16" cy="14" r="1.5" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3 class="menu__category-title">Pizza</h3>
+                        </div>
+                        <ul class="menu__list">
+                            <li class="menu__item">
+                                <span class="menu__item-name">Pizza Margherita</span>
+                                <span class="menu__item-line"></span>
+                                <span class="menu__item-price">8,50 €</span>
+                            </li>
+                            <li class="menu__item">
+                                <span class="menu__item-name">Geflügel-Salami Pizza</span>
+                                <span class="menu__item-line"></span>
+                                <span class="menu__item-price">9,50 €</span>
+                            </li>
+                            <li class="menu__item menu__item--highlight">
+                                <span class="menu__item-badge">Bestseller</span>
+                                <span class="menu__item-name">Weitere Varianten</span>
+                                <span class="menu__item-line"></span>
+                                <span class="menu__item-price">ab 8,50 €</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Türkische Spezialitäten -->
+                    <div class="menu__category reveal">
+                        <div class="menu__category-header">
+                            <div class="menu__category-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <ellipse cx="12" cy="6" rx="8" ry="3"/>
+                                    <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/>
+                                    <path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/>
+                                </svg>
+                            </div>
+                            <h3 class="menu__category-title">Türkische Spezialitäten</h3>
+                        </div>
+                        <ul class="menu__list">
+                            <li class="menu__item">
+                                <span class="menu__item-name">Lahmacun</span>
+                                <span class="menu__item-line"></span>
+                                <span class="menu__item-price">6,00 €</span>
+                            </li>
+                            <li class="menu__item">
+                                <span class="menu__item-name">Pide</span>
+                                <span class="menu__item-line"></span>
+                                <span class="menu__item-price">7,50 €</span>
+                            </li>
+                            <li class="menu__item">
+                                <span class="menu__item-name">Panini</span>
+                                <span class="menu__item-line"></span>
+                                <span class="menu__item-price">5,50 €</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu__note reveal">
+                    <p>Alle Gerichte werden frisch zubereitet. Unser Brot und Teig sind täglich hausgemacht.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Über uns Section -->
+        <section class="about" id="ueber-uns">
+            <div class="container">
+                <div class="about__grid">
+                    <div class="about__content reveal">
+                        <span class="section-label">Über uns</span>
+                        <h2 class="section-title">Willkommen bei Dear Mama</h2>
+                        <p class="about__text">
+                            Bei Dear Mama dreht sich alles um Frische und Qualität. Wir backen unser Brot täglich selbst und bereiten unseren Teig jeden Morgen frisch zu. Unsere hausgemachte Yufka ist ein echtes Highlight – dünn, knusprig und voller Geschmack.
+                        </p>
+                        <p class="about__text">
+                            Im Herzen von Offenburg, direkt im Kaufland, bieten wir dir Döner, Pizza und türkische Spezialitäten – alles mit Liebe zubereitet, genau wie bei Mama.
+                        </p>
+                        <div class="about__features">
+                            <div class="about__feature">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Täglich frisches Brot</span>
+                            </div>
+                            <div class="about__feature">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Hausgemachter Teig</span>
+                            </div>
+                            <div class="about__feature">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Traditionelle Rezepte</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about__visual reveal">
+                        <div class="about__image-wrapper">
+                            <img src="assets/speisekarte-highlight.jpg" alt="Dear Mama Speisekarte" class="about__image">
+                            <div class="about__badge">
+                                <span class="about__badge-number">€</span>
+                                <span class="about__badge-text">Faire Preise<br>1-10 €</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bewertungen Section -->
+        <section class="reviews" id="bewertungen">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Das sagen unsere Gäste</span>
+                    <h2 class="section-title">Bewertungen</h2>
+                </div>
+
+                <div class="reviews__highlight reveal">
+                    <div class="reviews__rating">
+                        <div class="reviews__stars">
+                            <span class="reviews__star">★</span>
+                            <span class="reviews__star">★</span>
+                            <span class="reviews__star">★</span>
+                            <span class="reviews__star">★</span>
+                            <span class="reviews__star reviews__star--partial">★</span>
+                        </div>
+                        <span class="reviews__score">4,9</span>
+                    </div>
+                    <p class="reviews__count">Basierend auf <strong>145 Bewertungen</strong> bei Google</p>
+                </div>
+
+                <div class="reviews__grid">
+                    <div class="reviews__card reveal">
+                        <div class="reviews__card-stars">★★★★★</div>
+                        <p class="reviews__card-text">"Beste Geflügel-Salami-Pizza der Ortenau! Der Teig ist immer frisch und knusprig. Komme regelmäßig wieder."</p>
+                        <div class="reviews__card-author">
+                            <span class="reviews__card-name">Google Nutzer</span>
+                            <span class="reviews__card-source">via Google Reviews</span>
+                        </div>
+                    </div>
+                    <div class="reviews__card reveal">
+                        <div class="reviews__card-stars">★★★★★</div>
+                        <p class="reviews__card-text">"Das Brot ist immer frisch gebacken und der Döner schmeckt fantastisch. Super freundliches Personal!"</p>
+                        <div class="reviews__card-author">
+                            <span class="reviews__card-name">Google Nutzer</span>
+                            <span class="reviews__card-source">via Google Reviews</span>
+                        </div>
+                    </div>
+                    <div class="reviews__card reveal">
+                        <div class="reviews__card-stars">★★★★★</div>
+                        <p class="reviews__card-text">"Hausgemachte Yufka – einfach unschlagbar! Man merkt, dass hier alles mit Liebe gemacht wird."</p>
+                        <div class="reviews__card-author">
+                            <span class="reviews__card-name">Google Nutzer</span>
+                            <span class="reviews__card-source">via Google Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews__cta reveal">
+                    <a href="https://www.google.com/maps/search/Dear+Mama+Offenburg" target="_blank" rel="noopener" class="btn btn--secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/>
+                        </svg>
+                        Alle Bewertungen ansehen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Standort & Öffnungszeiten -->
+        <section class="location" id="kontakt">
+            <div class="location__map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.123456789!2d7.9456789!3d48.4567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDI3JzI0LjQiTiA3wrA1NiczOC40IkU!5e0!3m2!1sde!2sde!4v1234567890"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Dear Mama Standort">
+                </iframe>
+            </div>
+            <div class="location__content">
+                <div class="location__info reveal">
+                    <span class="section-label">Besuche uns</span>
+                    <h2 class="section-title">Standort & Öffnungszeiten</h2>
+
+                    <div class="location__details">
+                        <div class="location__detail">
+                            <div class="location__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <strong>Adresse</strong>
+                                <p>Okenstraße 74<br>77652 Offenburg<br><em>(Im Kaufland)</em></p>
+                            </div>
+                        </div>
+                        <div class="location__detail">
+                            <div class="location__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <strong>Telefon</strong>
+                                <p><a href="tel:+4915228021175">+49 152 28021175</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location__hours">
+                        <h3>Öffnungszeiten</h3>
+                        <ul class="location__hours-list">
+                            <li><span>Montag</span><span>10:30 – 20:00</span></li>
+                            <li><span>Dienstag</span><span>10:30 – 12:30</span></li>
+                            <li class="location__hours-closed"><span>Mittwoch</span><span>Geschlossen</span></li>
+                            <li class="location__hours-closed"><span>Donnerstag</span><span>Geschlossen</span></li>
+                            <li><span>Freitag</span><span>10:30 – 20:00</span></li>
+                            <li><span>Samstag</span><span>10:30 – 20:00</span></li>
+                            <li class="location__hours-closed"><span>Sonntag</span><span>Geschlossen</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="location__social">
+                        <h3>Folge uns</h3>
+                        <div class="location__social-links">
+                            <a href="https://www.instagram.com/dear.mama_offenburg" target="_blank" rel="noopener" class="location__social-link" aria-label="Instagram">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.tiktok.com/@dear.mama_offenburg" target="_blank" rel="noopener" class="location__social-link" aria-label="TikTok">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta__content reveal">
+                    <h2 class="cta__title">Hunger?</h2>
+                    <p class="cta__text">Komm vorbei oder ruf uns an – wir freuen uns auf dich!</p>
+                    <div class="cta__actions">
+                        <a href="tel:+4915228021175" class="btn btn--primary btn--large">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            Jetzt anrufen
+                        </a>
+                        <a href="https://www.google.com/maps/dir//Dear+Mama+Offenburg" target="_blank" rel="noopener" class="btn btn--secondary btn--large">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Route planen
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Dear Mama Logo">
+                    </a>
+                    <p class="footer__tagline">Frisch. Hausgemacht. Mit Liebe.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#speisekarte">Speisekarte</a></li>
+                        <li><a href="#ueber-uns">Über uns</a></li>
+                        <li><a href="#bewertungen">Bewertungen</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer__contact">
+                    <h4>Kontakt</h4>
+                    <p>Okenstraße 74<br>77652 Offenburg</p>
+                    <p><a href="tel:+4915228021175">+49 152 28021175</a></p>
+                </div>
+                <div class="footer__legal">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Dear Mama. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Call Button -->
+    <a href="tel:+4915228021175" class="mobile-call" aria-label="Jetzt anrufen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

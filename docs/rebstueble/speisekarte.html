@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Speisekarte des Rebstüble Offenburg – Flammkuchen, Vesperplatten, badische Spezialitäten und erlesene Durbacher Weine.">
+    <meta name="keywords" content="Speisekarte Rebstüble, Flammkuchen Offenburg, Badische Küche, Durbacher Weine, Vesperplatte">
+    <title>Speisekarte | Rebstüble Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Rebstüble Logo" width="200" height="57">
+            </a>
+
+            <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="index.html" class="nav__link">Startseite</a></li>
+                <li><a href="speisekarte.html" class="nav__link active">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                <li><a href="kontakt.html#reservierung" class="nav__link nav__link--cta">Reservieren</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero page-hero--menu">
+            <div class="page-hero__bg"></div>
+            <div class="container">
+                <div class="page-hero__content">
+                    <span class="page-hero__badge">Speisekarte</span>
+                    <h1 class="page-hero__title">Kulinarische <span class="text-accent">Genüsse</span></h1>
+                    <p class="page-hero__subtitle">
+                        Von knusprigen Flammkuchen über deftige Vesperplatten bis hin zu
+                        erlesenen Weinen aus dem Durbacher Tal.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Notice -->
+        <section class="menu-notice">
+            <div class="container">
+                <div class="menu-notice__card reveal">
+                    <div class="menu-notice__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                    </div>
+                    <div class="menu-notice__content">
+                        <h3 class="menu-notice__title">Saisonale Küche</h3>
+                        <p class="menu-notice__text">
+                            Unsere Speisekarte wechselt saisonal. Die hier gezeigten Gerichte geben einen
+                            Überblick über unser Angebot. Die aktuelle Karte mit Preisen erhalten Sie bei Ihrem Besuch.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Categories -->
+        <section class="menu-categories">
+            <div class="container">
+                <!-- Flammkuchen -->
+                <div class="menu-category reveal" id="flammkuchen">
+                    <div class="menu-category__header">
+                        <div class="menu-category__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <ellipse cx="12" cy="6" rx="8" ry="3"/>
+                                <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/>
+                                <path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/>
+                            </svg>
+                        </div>
+                        <div class="menu-category__title-wrap">
+                            <h2 class="menu-category__title">Flammkuchen</h2>
+                            <p class="menu-category__subtitle">Knusprig aus dem Ofen – unser Klassiker</p>
+                        </div>
+                    </div>
+                    <div class="menu-category__grid">
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Elsässer Art</h4>
+                            <p class="menu-item__desc">Mit Schmand, Speck und Zwiebeln – der Klassiker</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Bauernflammkuchen</h4>
+                            <p class="menu-item__desc">Mit Schmand, Speck, Zwiebeln und Bergkäse</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Vegetarisch</h4>
+                            <p class="menu-item__desc">Mit Schmand, Tomaten, Zucchini und Feta</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Münsterländer</h4>
+                            <p class="menu-item__desc">Mit Schmand, Champignons und Münsterkäse</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Schinken-Lauch</h4>
+                            <p class="menu-item__desc">Mit Schmand, Schinken und frischem Lauch</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Süßer Flammkuchen</h4>
+                            <p class="menu-item__desc">Mit Äpfeln, Zimt und Vanillesoße</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vorspeisen -->
+                <div class="menu-category reveal" id="vorspeisen">
+                    <div class="menu-category__header">
+                        <div class="menu-category__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div class="menu-category__title-wrap">
+                            <h2 class="menu-category__title">Vorspeisen & Salate</h2>
+                            <p class="menu-category__subtitle">Frische Einstimmung auf Ihren Genuss</p>
+                        </div>
+                    </div>
+                    <div class="menu-category__grid">
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Hausgmachter Wurstsalat</h4>
+                            <p class="menu-item__desc">Mit Zwiebeln und hausgemachtem Dressing</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Gemischter Blattsalat</h4>
+                            <p class="menu-item__desc">Saisonale Blattsalate mit Vinaigrette</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Feldsalat mit Speck</h4>
+                            <p class="menu-item__desc">Mit gebratenen Speckwürfeln und Croutons</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Suppe des Tages</h4>
+                            <p class="menu-item__desc">Täglich wechselnd, fragen Sie uns</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vesper -->
+                <div class="menu-category reveal" id="vesper">
+                    <div class="menu-category__header">
+                        <div class="menu-category__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                <line x1="6" y1="1" x2="6" y2="4"/>
+                                <line x1="10" y1="1" x2="10" y2="4"/>
+                                <line x1="14" y1="1" x2="14" y2="4"/>
+                            </svg>
+                        </div>
+                        <div class="menu-category__title-wrap">
+                            <h2 class="menu-category__title">Vesper & Brotzeiten</h2>
+                            <p class="menu-category__subtitle">Deftige badische Klassiker</p>
+                        </div>
+                    </div>
+                    <div class="menu-category__grid">
+                        <div class="menu-item menu-item--featured">
+                            <span class="menu-item__badge">Beliebt</span>
+                            <h4 class="menu-item__name">Rebstüble Vesperplatte</h4>
+                            <p class="menu-item__desc">Schinken, Wurst, Käse, Essiggurken und frisches Bauernbrot – für 2 Personen</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Schwarzwälder Schinken</h4>
+                            <p class="menu-item__desc">Mit Bauernbrot und Butter</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Käsebrett</h4>
+                            <p class="menu-item__desc">Auswahl regionaler Käsesorten mit Trauben</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Schmalzbrot</h4>
+                            <p class="menu-item__desc">Mit hausgemachtem Griebenschmalz</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Wurstsalat „Baden"</h4>
+                            <p class="menu-item__desc">Mit Käse, Zwiebeln und Brot</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hauptgerichte -->
+                <div class="menu-category reveal" id="hauptgerichte">
+                    <div class="menu-category__header">
+                        <div class="menu-category__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/>
+                                <path d="M12 11v6M8 17h8"/>
+                                <circle cx="6" cy="17" r="2"/>
+                                <circle cx="18" cy="17" r="2"/>
+                            </svg>
+                        </div>
+                        <div class="menu-category__title-wrap">
+                            <h2 class="menu-category__title">Warme Küche</h2>
+                            <p class="menu-category__subtitle">Regionale Gerichte aus frischen Zutaten</p>
+                        </div>
+                    </div>
+                    <div class="menu-category__grid">
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Brägele mit Speck</h4>
+                            <p class="menu-item__desc">Badische Bratkartoffeln mit knusprigem Speck</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Käsespätzle</h4>
+                            <p class="menu-item__desc">Hausgemachte Spätzle mit Bergkäse und Röstzwiebeln</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Schnitzel Wiener Art</h4>
+                            <p class="menu-item__desc">Mit Pommes frites oder Bratkartoffeln</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Zwiebelrostbraten</h4>
+                            <p class="menu-item__desc">Vom Rind mit Röstzwiebeln und Spätzle</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-category reveal" id="desserts">
+                    <div class="menu-category__header">
+                        <div class="menu-category__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v4M6.343 6.343l2.828 2.828M2 12h4M6.343 17.657l2.828-2.828M12 22v-4M17.657 17.657l-2.828-2.828M22 12h-4M17.657 6.343l-2.828 2.828"/>
+                                <circle cx="12" cy="12" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="menu-category__title-wrap">
+                            <h2 class="menu-category__title">Süße Versuchungen</h2>
+                            <p class="menu-category__subtitle">Der perfekte Abschluss</p>
+                        </div>
+                    </div>
+                    <div class="menu-category__grid">
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Süßer Flammkuchen</h4>
+                            <p class="menu-item__desc">Mit Äpfeln, Zimt und Vanillesoße</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Hausgemachter Käsekuchen</h4>
+                            <p class="menu-item__desc">Nach Omas Rezept</p>
+                        </div>
+                        <div class="menu-item">
+                            <h4 class="menu-item__name">Eis-Variation</h4>
+                            <p class="menu-item__desc">Drei Kugeln mit Sahne</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wine Section -->
+        <section class="wine-section">
+            <div class="wine-section__bg"></div>
+            <div class="container">
+                <div class="wine-section__content reveal">
+                    <div class="wine-section__header">
+                        <span class="section-badge section-badge--light">Unsere Weine</span>
+                        <h2 class="section-title section-title--light">Durbacher <span class="text-gold">Weinkultur</span></h2>
+                        <p class="wine-section__intro">
+                            Direkt aus dem nahegelegenen Weinanbaugebiet – unsere Weine erzählen
+                            die Geschichte des Durbacher Tals.
+                        </p>
+                    </div>
+
+                    <div class="wine-section__grid">
+                        <div class="wine-card">
+                            <div class="wine-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M8 22V8a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v14"/>
+                                    <path d="M6 14h12"/>
+                                    <circle cx="12" cy="18" r="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="wine-card__title">Weißweine</h3>
+                            <ul class="wine-card__list">
+                                <li>Riesling trocken</li>
+                                <li>Grauburgunder</li>
+                                <li>Müller-Thurgau</li>
+                                <li>Weißburgunder</li>
+                            </ul>
+                        </div>
+
+                        <div class="wine-card">
+                            <div class="wine-card__icon wine-card__icon--red">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M8 22V8a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v14"/>
+                                    <path d="M6 14h12"/>
+                                    <circle cx="12" cy="18" r="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="wine-card__title">Rotweine</h3>
+                            <ul class="wine-card__list">
+                                <li>Spätburgunder trocken</li>
+                                <li>Spätburgunder Barrique</li>
+                                <li>Dornfelder</li>
+                            </ul>
+                        </div>
+
+                        <div class="wine-card">
+                            <div class="wine-card__icon wine-card__icon--rose">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M8 22V8a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v14"/>
+                                    <path d="M6 14h12"/>
+                                    <circle cx="12" cy="18" r="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="wine-card__title">Rosé & Sekt</h3>
+                            <ul class="wine-card__list">
+                                <li>Spätburgunder Rosé</li>
+                                <li>Weißherbst</li>
+                                <li>Winzersekt</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p class="wine-section__note">
+                        Alle Weine auch offen erhältlich – fragen Sie nach unserer aktuellen Weinkarte.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Drinks Section -->
+        <section class="drinks-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge">Getränke</span>
+                    <h2 class="section-title">Weitere <span class="text-accent">Getränke</span></h2>
+                </div>
+
+                <div class="drinks-grid reveal">
+                    <div class="drink-category">
+                        <h3 class="drink-category__title">Bier</h3>
+                        <ul class="drink-category__list">
+                            <li>Rothaus Pils vom Fass</li>
+                            <li>Rothaus Hefeweizen</li>
+                            <li>Alkoholfreie Varianten</li>
+                        </ul>
+                    </div>
+
+                    <div class="drink-category">
+                        <h3 class="drink-category__title">Alkoholfreies</h3>
+                        <ul class="drink-category__list">
+                            <li>Mineralwasser</li>
+                            <li>Apfelschorle</li>
+                            <li>Softdrinks</li>
+                            <li>Säfte</li>
+                        </ul>
+                    </div>
+
+                    <div class="drink-category">
+                        <h3 class="drink-category__title">Heiße Getränke</h3>
+                        <ul class="drink-category__list">
+                            <li>Kaffee</li>
+                            <li>Espresso</li>
+                            <li>Cappuccino</li>
+                            <li>Tee-Auswahl</li>
+                        </ul>
+                    </div>
+
+                    <div class="drink-category">
+                        <h3 class="drink-category__title">Spirituosen</h3>
+                        <ul class="drink-category__list">
+                            <li>Obstbrände aus der Region</li>
+                            <li>Digestifs</li>
+                            <li>Liköre</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="cta__bg"></div>
+            <div class="container">
+                <div class="cta__content reveal">
+                    <h2 class="cta__title">Guten Appetit!</h2>
+                    <p class="cta__text">
+                        Lassen Sie sich von unserer Küche verwöhnen. Für Reservierungen und
+                        besondere Wünsche stehen wir Ihnen gerne zur Verfügung.
+                    </p>
+                    <div class="cta__actions">
+                        <a href="tel:+4978193995533" class="btn btn--light">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            0781 93995533
+                        </a>
+                        <a href="kontakt.html#reservierung" class="btn btn--gold">Tisch reservieren</a>
+                    </div>
+                    <p class="cta__address">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12,6 12,12 16,14"/>
+                        </svg>
+                        Küche täglich bis 22:00 Uhr
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Rebstüble Logo" width="180" height="51">
+                    </a>
+                    <p class="footer__tagline">
+                        Weinstube & Restaurant<br>
+                        Badische Gastfreundschaft in Offenburg
+                    </p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navigation</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__title">Kontakt</h4>
+                    <address class="footer__address">
+                        <p>Durbacher Str. 32<br>77654 Offenburg</p>
+                        <p><a href="tel:+4978193995533">0781 93995533</a></p>
+                    </address>
+                </div>
+
+                <div class="footer__legal">
+                    <h4 class="footer__title">Rechtliches</h4>
+                    <ul class="footer__links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    © 2025 Rebstüble Offenburg. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

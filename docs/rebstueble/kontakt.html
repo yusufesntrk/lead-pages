@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontaktieren Sie das Rebstüble in Offenburg. Reservieren Sie Ihren Tisch telefonisch oder besuchen Sie uns in der Durbacher Str. 32.">
+    <meta name="keywords" content="Rebstüble Kontakt, Reservierung Offenburg, Weinstube Offenburg, Restaurant Offenburg">
+    <title>Kontakt & Reservierung | Rebstüble Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Rebstüble Logo" width="200" height="57">
+            </a>
+
+            <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="index.html" class="nav__link">Startseite</a></li>
+                <li><a href="speisekarte.html" class="nav__link">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="kontakt.html" class="nav__link active">Kontakt</a></li>
+                <li><a href="#reservierung" class="nav__link nav__link--cta">Reservieren</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="page-hero__bg"></div>
+            <div class="container">
+                <div class="page-hero__content">
+                    <span class="page-hero__badge">Kontakt</span>
+                    <h1 class="page-hero__title">Wir freuen uns<br>auf <span class="text-accent">Sie</span></h1>
+                    <p class="page-hero__subtitle">
+                        Ob telefonische Reservierung oder persönlicher Besuch –
+                        wir heißen Sie herzlich willkommen.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Split Section -->
+        <section class="contact-split">
+            <div class="container">
+                <div class="contact-split__grid">
+                    <!-- Contact Info -->
+                    <div class="contact-info reveal">
+                        <div class="contact-info__card contact-info__card--phone" id="reservierung">
+                            <div class="contact-info__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info__content">
+                                <span class="contact-info__label">Telefonische Reservierung</span>
+                                <a href="tel:+4978193995533" class="contact-info__value contact-info__value--large">
+                                    0781 93995533
+                                </a>
+                                <p class="contact-info__hint">Rufen Sie uns einfach an – wir beraten Sie gerne</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info__card">
+                            <div class="contact-info__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info__content">
+                                <span class="contact-info__label">Adresse</span>
+                                <address class="contact-info__address">
+                                    Rebstüble<br>
+                                    Durbacher Str. 32<br>
+                                    77654 Offenburg
+                                </address>
+                                <a href="https://www.google.de/maps/search/Durbacher+Str.+32+77654+Offenburg" target="_blank" rel="noopener" class="contact-info__link">
+                                    Route planen
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-info__card">
+                            <div class="contact-info__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info__content">
+                                <span class="contact-info__label">Öffnungszeiten</span>
+                                <div class="contact-info__hours">
+                                    <div class="contact-info__hours-row">
+                                        <span>Mo, Mi – So</span>
+                                        <span>16:30 – 23:00</span>
+                                    </div>
+                                    <div class="contact-info__hours-row contact-info__hours-row--closed">
+                                        <span>Dienstag</span>
+                                        <span>Ruhetag</span>
+                                    </div>
+                                </div>
+                                <p class="contact-info__hint">Küche bis 22:00 Uhr</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="contact-map reveal" data-delay="200">
+                        <div class="contact-map__frame">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.5!2d7.9172319!3d48.4592341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sDurbacher+Str.+32%2C+77654+Offenburg!5e0!3m2!1sde!2sde!4v1704499200000"
+                                width="100%"
+                                height="100%"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Rebstüble Standort auf Google Maps">
+                            </iframe>
+                        </div>
+                        <div class="contact-map__overlay">
+                            <span class="contact-map__badge">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Am Fuße der Durbacher Weinberge
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservation Info -->
+        <section class="reservation-info">
+            <div class="container">
+                <div class="reservation-info__wrapper reveal">
+                    <div class="reservation-info__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <div class="reservation-info__content">
+                        <h2 class="reservation-info__title">Tisch reservieren</h2>
+                        <p class="reservation-info__text">
+                            Für größere Gruppen oder besondere Anlässe empfehlen wir eine telefonische Reservierung.
+                            So können wir Ihren Besuch optimal vorbereiten und Ihnen den besten Platz sichern.
+                        </p>
+                        <div class="reservation-info__features">
+                            <div class="reservation-info__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Gruppen bis 20 Personen</span>
+                            </div>
+                            <div class="reservation-info__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Familienfeiern</span>
+                            </div>
+                            <div class="reservation-info__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Firmenfeiern</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="tel:+4978193995533" class="btn btn--primary reservation-info__cta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        Jetzt anrufen
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anfahrt Section -->
+        <section class="directions">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-badge">Anfahrt</span>
+                    <h2 class="section-title">So finden Sie <span class="text-accent">uns</span></h2>
+                </div>
+
+                <div class="directions__grid">
+                    <div class="direction-card reveal">
+                        <div class="direction-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                        </div>
+                        <h3 class="direction-card__title">Mit dem Auto</h3>
+                        <p class="direction-card__text">
+                            Über die B3 Richtung Durbach. Das Rebstüble befindet sich direkt an der
+                            Durbacher Straße. Parkplätze sind in unmittelbarer Nähe verfügbar.
+                        </p>
+                    </div>
+
+                    <div class="direction-card reveal" data-delay="100">
+                        <div class="direction-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="direction-card__title">Mit Bus & Bahn</h3>
+                        <p class="direction-card__text">
+                            Ab Offenburg Bahnhof erreichen Sie uns bequem mit dem Bus Richtung Durbach.
+                            Haltestelle „Durbacher Straße" in unmittelbarer Nähe.
+                        </p>
+                    </div>
+
+                    <div class="direction-card reveal" data-delay="200">
+                        <div class="direction-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="5" r="3"/>
+                                <line x1="12" y1="22" x2="12" y2="8"/>
+                                <path d="M5 12H2a10 10 0 0 0 20 0h-3"/>
+                            </svg>
+                        </div>
+                        <h3 class="direction-card__title">Zu Fuß oder mit Rad</h3>
+                        <p class="direction-card__text">
+                            Idyllisch gelegen am Rand der Weinberge – perfekt für einen Spaziergang
+                            oder eine Radtour durch das schöne Durbacher Tal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="cta__bg"></div>
+            <div class="container">
+                <div class="cta__content reveal">
+                    <h2 class="cta__title">Wir erwarten Sie</h2>
+                    <p class="cta__text">
+                        Genießen Sie badische Gastfreundschaft, erlesene Weine und herzhafte Küche
+                        in gemütlicher Weinstuben-Atmosphäre.
+                    </p>
+                    <div class="cta__actions">
+                        <a href="tel:+4978193995533" class="btn btn--light">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            0781 93995533
+                        </a>
+                        <a href="speisekarte.html" class="btn btn--gold">Zur Speisekarte</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Rebstüble Logo" width="180" height="51">
+                    </a>
+                    <p class="footer__tagline">
+                        Weinstube & Restaurant<br>
+                        Badische Gastfreundschaft in Offenburg
+                    </p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navigation</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__title">Kontakt</h4>
+                    <address class="footer__address">
+                        <p>Durbacher Str. 32<br>77654 Offenburg</p>
+                        <p><a href="tel:+4978193995533">0781 93995533</a></p>
+                    </address>
+                </div>
+
+                <div class="footer__legal">
+                    <h4 class="footer__title">Rechtliches</h4>
+                    <ul class="footer__links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    © 2025 Rebstüble Offenburg. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

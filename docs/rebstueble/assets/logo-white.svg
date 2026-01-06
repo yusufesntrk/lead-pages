@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" width="280" height="80">
+  <defs>
+    <!-- Weintraube als dekoratives Element -->
+    <g id="grape-white">
+      <circle cx="0" cy="0" r="4" fill="#FDF8F3"/>
+    </g>
+  </defs>
+
+  <!-- Kleine Weintrauben-Dekoration links -->
+  <g transform="translate(15, 30)">
+    <use href="#grape-white" x="0" y="0"/>
+    <use href="#grape-white" x="7" y="3"/>
+    <use href="#grape-white" x="-3" y="7"/>
+    <use href="#grape-white" x="4" y="10"/>
+    <use href="#grape-white" x="10" y="7"/>
+    <!-- Stiel -->
+    <path d="M4 -3 Q8 -10 14 -8" stroke="#E8DFD4" stroke-width="1.5" fill="none"/>
+    <!-- Blatt -->
+    <path d="M12 -9 Q18 -12 16 -6 Q14 -4 12 -9" fill="#C9A227"/>
+  </g>
+
+  <!-- Haupttext: Rebstüble -->
+  <text x="40" y="45" font-family="'Playfair Display', 'Cormorant Garamond', Georgia, serif"
+        font-size="32" font-weight="600" fill="#FDF8F3" letter-spacing="1">
+    Rebstüble
+  </text>
+
+  <!-- Untertitel -->
+  <text x="40" y="65" font-family="'Lato', 'Open Sans', Arial, sans-serif"
+        font-size="11" fill="#E8DFD4" letter-spacing="3" text-transform="uppercase">
+    WEINSTUBE · OFFENBURG
+  </text>
+
+  <!-- Dekorative Linie -->
+  <line x1="40" y1="50" x2="200" y2="50" stroke="#C9A227" stroke-width="0.5" opacity="0.8"/>
+</svg>

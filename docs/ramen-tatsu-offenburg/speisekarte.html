@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Speisekarte von Ramen Tatsu Offenburg. Authentische japanische Ramen, Vorspeisen, Beilagen und Getränke. Tonkotsu, Miso, Shoyu und vegetarische Optionen.">
+    <meta name="keywords" content="Ramen Speisekarte, Japanisches Restaurant Offenburg, Tonkotsu, Miso Ramen, Gyoza, Japanische Küche">
+    <title>Speisekarte | Ramen Tatsu Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@600;700&family=Shippori+Mincho:wght@500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Ramen Tatsu Offenburg Logo">
+            </a>
+
+            <button class="nav__toggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav__menu">
+                <li><a href="index.html" class="nav__link">Home</a></li>
+                <li><a href="speisekarte.html" class="nav__link active">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                <li><a href="kontakt.html" class="btn btn--primary nav__cta">Reservieren</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero page-hero--menu">
+            <div class="page-hero__overlay"></div>
+            <div class="page-hero__content container">
+                <span class="page-hero__kanji reveal">品</span>
+                <h1 class="page-hero__title reveal">Unsere <span class="highlight">Speisekarte</span></h1>
+                <p class="page-hero__subtitle reveal">Entdecken Sie authentische japanische Aromen – von cremigen Brühen bis zu knusprigen Gyoza.</p>
+            </div>
+        </section>
+
+        <!-- Menu Navigation -->
+        <nav class="menu-nav">
+            <div class="container">
+                <ul class="menu-nav__list">
+                    <li><a href="#ramen" class="menu-nav__link active">Ramen</a></li>
+                    <li><a href="#vorspeisen" class="menu-nav__link">Vorspeisen</a></li>
+                    <li><a href="#beilagen" class="menu-nav__link">Beilagen</a></li>
+                    <li><a href="#getraenke" class="menu-nav__link">Getränke</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Ramen Section -->
+        <section id="ramen" class="menu-section">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <span class="menu-section__kanji">麺</span>
+                    <div class="menu-section__title-wrap">
+                        <h2 class="menu-section__title">Ramen</h2>
+                        <p class="menu-section__desc">Unsere Signature-Gerichte – jede Brühe stundenlang gekocht für perfektes Umami.</p>
+                    </div>
+                </div>
+
+                <div class="menu-grid">
+                    <!-- Tonkotsu -->
+                    <article class="menu-item reveal">
+                        <div class="menu-item__badge">Bestseller</div>
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Tonkotsu Ramen</h3>
+                                <span class="menu-item__price">14,90 €</span>
+                            </div>
+                            <p class="menu-item__desc">Cremige 12-Stunden Schweineknochenbrühe mit zartem Chashu, halbweichem Ajitama-Ei, knackigen Bambussprossen und aromatischem Nori.</p>
+                            <div class="menu-item__tags">
+                                <span class="tag">Schwein</span>
+                                <span class="tag">Cremig</span>
+                                <span class="tag">12h Brühe</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Miso -->
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Miso Ramen</h3>
+                                <span class="menu-item__price">14,90 €</span>
+                            </div>
+                            <p class="menu-item__desc">Kräftige Miso-Brühe nach Hokkaido-Art mit goldener Butter, süßem Mais, saftigem Chashu und frischem Gemüse.</p>
+                            <div class="menu-item__tags">
+                                <span class="tag">Miso</span>
+                                <span class="tag">Herzhaft</span>
+                                <span class="tag">Hokkaido</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Shoyu -->
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Shoyu Ramen</h3>
+                                <span class="menu-item__price">13,90 €</span>
+                            </div>
+                            <p class="menu-item__desc">Klassische klare Sojasaucen-Brühe – die Mutter aller Ramen. Mit zartem Chashu, Ei, Nori und frischen Frühlingszwiebeln.</p>
+                            <div class="menu-item__tags">
+                                <span class="tag">Sojasauce</span>
+                                <span class="tag">Klassisch</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Shio -->
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Shio Ramen</h3>
+                                <span class="menu-item__price">12,90 €</span>
+                            </div>
+                            <p class="menu-item__desc">Leichte, kristallklare Salzbrühe auf Hühnerbasis. Perfekt für Einsteiger – mit zartem Hühnchen und knackigem Gemüse.</p>
+                            <div class="menu-item__tags">
+                                <span class="tag">Huhn</span>
+                                <span class="tag">Leicht</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Tantanmen -->
+                    <article class="menu-item reveal">
+                        <div class="menu-item__badge badge--spicy">Scharf</div>
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Tantanmen</h3>
+                                <span class="menu-item__price">14,90 €</span>
+                            </div>
+                            <p class="menu-item__desc">Feurig-cremige Sesam-Brühe mit würzigem Hackfleisch, frischem Pak Choi und aromatischem Chiliöl. Für Liebhaber der Schärfe.</p>
+                            <div class="menu-item__tags">
+                                <span class="tag tag--red">Scharf 🌶️</span>
+                                <span class="tag">Sesam</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Vegetarisch -->
+                    <article class="menu-item reveal">
+                        <div class="menu-item__badge badge--green">Vegetarisch</div>
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Yasai Ramen</h3>
+                                <span class="menu-item__price">12,90 €</span>
+                            </div>
+                            <p class="menu-item__desc">Aromatische Gemüsebrühe mit seidigem Tofu, Shiitake-Pilzen, saisonalem Gemüse und frischen Kräutern. Vegan auf Wunsch.</p>
+                            <div class="menu-item__tags">
+                                <span class="tag tag--green">Vegan möglich</span>
+                                <span class="tag">Gemüse</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vorspeisen Section -->
+        <section id="vorspeisen" class="menu-section menu-section--alt">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <span class="menu-section__kanji">前</span>
+                    <div class="menu-section__title-wrap">
+                        <h2 class="menu-section__title">Vorspeisen</h2>
+                        <p class="menu-section__desc">Perfekt zum Teilen oder als Einstimmung auf Ihr Ramen-Erlebnis.</p>
+                    </div>
+                </div>
+
+                <div class="menu-grid menu-grid--3col">
+                    <article class="menu-item menu-item--compact reveal">
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Gyoza (5 Stk.)</h3>
+                                <span class="menu-item__price">6,90 €</span>
+                            </div>
+                            <p class="menu-item__desc">Knusprig gebratene japanische Teigtaschen mit würziger Schweineflischfüllung. Dazu hausgemachte Dip-Sauce.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-item menu-item--compact reveal">
+                        <div class="menu-item__badge badge--green">Vegan</div>
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Edamame</h3>
+                                <span class="menu-item__price">4,90 €</span>
+                            </div>
+                            <p class="menu-item__desc">Gedämpfte Sojabohnen mit grobem Meersalz. Der perfekte Snack zum Bier.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-item menu-item--compact reveal">
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Karaage</h3>
+                                <span class="menu-item__price">7,90 €</span>
+                            </div>
+                            <p class="menu-item__desc">Knusprig frittiertes Hühnchen nach japanischer Art mit Zitrone und Kewpie-Mayo.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-item menu-item--compact reveal">
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Takoyaki (6 Stk.)</h3>
+                                <span class="menu-item__price">7,50 €</span>
+                            </div>
+                            <p class="menu-item__desc">Goldene Oktopus-Bällchen mit Bonito-Flocken, Takoyaki-Sauce und Mayonnaise.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-item menu-item--compact reveal">
+                        <div class="menu-item__badge badge--green">Vegetarisch</div>
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Agedashi Tofu</h3>
+                                <span class="menu-item__price">6,50 €</span>
+                            </div>
+                            <p class="menu-item__desc">Knusprig frittierter Seidentofu in aromatischer Dashi-Brühe mit Rettich und Ingwer.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-item menu-item--compact reveal">
+                        <div class="menu-item__content">
+                            <div class="menu-item__header">
+                                <h3 class="menu-item__name">Wakame Salat</h3>
+                                <span class="menu-item__price">5,50 €</span>
+                            </div>
+                            <p class="menu-item__desc">Erfrischender Algensalat mit Sesam-Dressing und gerösteten Sesamsamen.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beilagen Section -->
+        <section id="beilagen" class="menu-section">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <span class="menu-section__kanji">添</span>
+                    <div class="menu-section__title-wrap">
+                        <h2 class="menu-section__title">Beilagen & Extras</h2>
+                        <p class="menu-section__desc">Erweitern Sie Ihre Ramen-Schüssel nach Ihrem Geschmack.</p>
+                    </div>
+                </div>
+
+                <div class="extras-grid reveal">
+                    <div class="extra-item">
+                        <span class="extra-item__name">Extra Chashu (2 Stk.)</span>
+                        <span class="extra-item__dots"></span>
+                        <span class="extra-item__price">3,50 €</span>
+                    </div>
+                    <div class="extra-item">
+                        <span class="extra-item__name">Ajitama (mariniertes Ei)</span>
+                        <span class="extra-item__dots"></span>
+                        <span class="extra-item__price">2,00 €</span>
+                    </div>
+                    <div class="extra-item">
+                        <span class="extra-item__name">Extra Nudeln</span>
+                        <span class="extra-item__dots"></span>
+                        <span class="extra-item__price">2,50 €</span>
+                    </div>
+                    <div class="extra-item">
+                        <span class="extra-item__name">Gohan (Reis)</span>
+                        <span class="extra-item__dots"></span>
+                        <span class="extra-item__price">2,50 €</span>
+                    </div>
+                    <div class="extra-item">
+                        <span class="extra-item__name">Extra Nori (3 Stk.)</span>
+                        <span class="extra-item__dots"></span>
+                        <span class="extra-item__price">1,50 €</span>
+                    </div>
+                    <div class="extra-item">
+                        <span class="extra-item__name">Menma (Bambus)</span>
+                        <span class="extra-item__dots"></span>
+                        <span class="extra-item__price">2,00 €</span>
+                    </div>
+                    <div class="extra-item">
+                        <span class="extra-item__name">Mais</span>
+                        <span class="extra-item__dots"></span>
+                        <span class="extra-item__price">1,50 €</span>
+                    </div>
+                    <div class="extra-item">
+                        <span class="extra-item__name">Extra Tofu</span>
+                        <span class="extra-item__dots"></span>
+                        <span class="extra-item__price">2,50 €</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Getränke Section -->
+        <section id="getraenke" class="menu-section menu-section--alt">
+            <div class="container">
+                <div class="menu-section__header reveal">
+                    <span class="menu-section__kanji">飲</span>
+                    <div class="menu-section__title-wrap">
+                        <h2 class="menu-section__title">Getränke</h2>
+                        <p class="menu-section__desc">Von japanischem Bier bis zu erfrischendem Grüntee.</p>
+                    </div>
+                </div>
+
+                <div class="drinks-grid">
+                    <!-- Alkoholisch -->
+                    <div class="drinks-category reveal">
+                        <h3 class="drinks-category__title">Japanisches Bier</h3>
+                        <div class="drinks-list">
+                            <div class="drink-item">
+                                <span class="drink-item__name">Asahi Super Dry (0,33l)</span>
+                                <span class="drink-item__price">4,50 €</span>
+                            </div>
+                            <div class="drink-item">
+                                <span class="drink-item__name">Sapporo Premium (0,33l)</span>
+                                <span class="drink-item__price">4,50 €</span>
+                            </div>
+                            <div class="drink-item">
+                                <span class="drink-item__name">Kirin Ichiban (0,33l)</span>
+                                <span class="drink-item__price">4,50 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tee -->
+                    <div class="drinks-category reveal">
+                        <h3 class="drinks-category__title">Tee & Warmes</h3>
+                        <div class="drinks-list">
+                            <div class="drink-item">
+                                <span class="drink-item__name">Grüner Tee (Kanne)</span>
+                                <span class="drink-item__price">3,00 €</span>
+                            </div>
+                            <div class="drink-item">
+                                <span class="drink-item__name">Genmaicha (Reistee)</span>
+                                <span class="drink-item__price">3,50 €</span>
+                            </div>
+                            <div class="drink-item">
+                                <span class="drink-item__name">Hojicha (gerösteter Tee)</span>
+                                <span class="drink-item__price">3,50 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Softdrinks -->
+                    <div class="drinks-category reveal">
+                        <h3 class="drinks-category__title">Erfrischungen</h3>
+                        <div class="drinks-list">
+                            <div class="drink-item">
+                                <span class="drink-item__name">Ramune (Japanische Limo)</span>
+                                <span class="drink-item__price">3,50 €</span>
+                            </div>
+                            <div class="drink-item">
+                                <span class="drink-item__name">Calpis</span>
+                                <span class="drink-item__price">3,50 €</span>
+                            </div>
+                            <div class="drink-item">
+                                <span class="drink-item__name">Cola / Fanta / Sprite</span>
+                                <span class="drink-item__price">2,90 €</span>
+                            </div>
+                            <div class="drink-item">
+                                <span class="drink-item__name">Stilles Wasser (0,5l)</span>
+                                <span class="drink-item__price">2,50 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sake -->
+                    <div class="drinks-category reveal">
+                        <h3 class="drinks-category__title">Sake & Spirituosen</h3>
+                        <div class="drinks-list">
+                            <div class="drink-item">
+                                <span class="drink-item__name">Junmai Sake (kalt/warm)</span>
+                                <span class="drink-item__price">6,50 €</span>
+                            </div>
+                            <div class="drink-item">
+                                <span class="drink-item__name">Sake Karaffe (180ml)</span>
+                                <span class="drink-item__price">12,00 €</span>
+                            </div>
+                            <div class="drink-item">
+                                <span class="drink-item__name">Plum Wine (Umeshu)</span>
+                                <span class="drink-item__price">5,50 €</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Note -->
+        <section class="menu-info">
+            <div class="container">
+                <div class="menu-info__content reveal">
+                    <div class="menu-info__icon">ℹ️</div>
+                    <div class="menu-info__text">
+                        <h3>Allergene & Besonderheiten</h3>
+                        <p>Informationen zu Allergenen erhalten Sie gerne von unserem Service-Team. Viele Gerichte können auf Wunsch vegetarisch oder vegan angepasst werden.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="cta__pattern"></div>
+            <div class="container">
+                <div class="cta__content reveal">
+                    <span class="cta__kanji">龍</span>
+                    <h2 class="cta__title">Appetit bekommen?</h2>
+                    <p class="cta__text">Reservieren Sie jetzt Ihren Tisch oder bestellen Sie telefonisch zum Mitnehmen.</p>
+                    <div class="cta__buttons">
+                        <a href="kontakt.html" class="btn btn--white btn--large">Reservieren</a>
+                        <a href="tel:+4978196717806" class="btn btn--outline-white btn--large">Anrufen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Ramen Tatsu Offenburg Logo">
+                    </a>
+                    <p class="footer__tagline">Authentische japanische Ramen<br>im Herzen von Offenburg.</p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navigation</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__title">Kontakt</h4>
+                    <address class="footer__address">
+                        Hauptstraße 93<br>
+                        77652 Offenburg<br>
+                        <a href="tel:+4978196717806">+49 781 96717806</a>
+                    </address>
+                </div>
+
+                <div class="footer__hours">
+                    <h4 class="footer__title">Öffnungszeiten</h4>
+                    <p>
+                        Di – Sa: 11:30 – 14:30 · 17:30 – 21:30<br>
+                        Sonntag: 12:00 – 21:00<br>
+                        <span class="footer__closed">Montag: Ruhetag</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copy">&copy; 2025 Ramen Tatsu Offenburg. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
