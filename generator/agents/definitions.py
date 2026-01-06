@@ -965,23 +965,54 @@ REVIEW-KATEGORIEN:
    rm .playwright-tmp/*.png && rmdir .playwright-tmp
    ```
 
-3. **🖼️ LOGO-PRÜFUNG** (KRITISCH!):
-   Logos können "unsichtbar" sein wenn:
-   - Weißes Logo auf weißem Hintergrund
-   - SVG ohne Füllung (nur Pfade)
-   - Falsches Farbschema
+3. **🖼️ LOGO-PRÜFUNG DESKTOP + MOBILE** (KRITISCH!):
 
-   PRÜFE:
-   - Screenshot vom Header machen
-   - Ist das Logo SICHTBAR? Nicht nur ein weißes Rechteck?
-   - Stimmen die Logo-Farben mit dem Style Guide?
-   - Bei hellem Header: Dunkles Logo nötig!
-   - Bei dunklem Header: Helles/weißes Logo nötig!
+   A) **SVG LOGO FONT-CHECK** (MUSS ZUERST!):
+   ```bash
+   # Prüfe ob SVG externe Fonts importiert (= FEHLER!)
+   grep -i "@import" assets/*.svg
+   grep -i "fonts.googleapis" assets/*.svg
+   ```
+   ❌ FEHLER wenn @import oder Google Fonts gefunden!
+   → FIX: Ersetze durch Web-Safe Fonts (Georgia, Arial, etc.)
 
-   FIX bei unsichtbarem Logo:
-   - logo.svg Farben anpassen
-   - Oder logo-dark.svg / logo-light.svg je nach Kontext verwenden
-   - CSS-Filter als Fallback: `filter: invert(1)` oder `brightness(0)`
+   B) **DESKTOP LOGO CHECK** (1280px):
+   ```javascript
+   playwright_navigate({ url: "...", width: 1280, height: 800 })
+   playwright_screenshot({ name: "logo-desktop", selector: ".nav-logo, .logo, header" })
+   ```
+   - Ist das Logo SICHTBAR und LESBAR?
+   - Stimmt die Farbe zum Header-Hintergrund?
+   - Wird der richtige Logo-Typ angezeigt (logo-white vs logo-dark)?
+
+   C) **MOBILE LOGO CHECK** (375px):
+   ```javascript
+   playwright_resize({ width: 375, height: 812 })
+   playwright_screenshot({ name: "logo-mobile", selector: ".nav-logo, .logo, header" })
+   ```
+   - Ist das Logo auf Mobile sichtbar?
+   - Passt es in den Header ohne Overflow?
+   - Wird bei weißem Mobile-Header das dunkle Logo angezeigt?
+
+   D) **LOGO DIREKT RENDERN**:
+   ```javascript
+   // Logo-SVG direkt öffnen um Font-Rendering zu prüfen
+   playwright_navigate({ url: ".../assets/logo.svg" })
+   playwright_screenshot({ name: "logo-direct" })
+   ```
+   - Wird der Text korrekt angezeigt?
+   - Fehlen Buchstaben oder Texte?
+
+   HÄUFIGE LOGO-FEHLER:
+   ❌ @import Google Fonts in SVG → Browser blockiert oft!
+   ❌ Weißer Text auf weißem Header (Mobile)
+   ❌ Logo-Switch (white/dark) funktioniert nicht
+   ❌ Font-Fallback sieht anders aus als erwartet
+
+   FIX-STRATEGIEN:
+   - Web-Safe Fonts: Georgia, Arial, Helvetica, Times New Roman
+   - Oder: Text als Pfade konvertieren (Illustrator/Inkscape)
+   - CSS Logo-Switch mit Media Query oder JS
 
 4. **📸 PERSONENBILD-QUALITÄT** (KRITISCH!):
    Prüfe ALLE Bilder von Personen (Team, Testimonials, Über uns):
@@ -1062,6 +1093,41 @@ REVIEW-KATEGORIEN:
    ✅ 2-Spalten: 50/50 oder klar definiert (60/40)
    ✅ 3-Spalten: 33/33/33
    ✅ 4-Spalten: 25/25/25/25
+
+4. **🔲 GRID-ALIGNMENT CHECK** (KRITISCH!):
+
+   HÄUFIGES PROBLEM: Weißer Abstand in Grid-Layouts!
+   Wenn eine Grid-Spalte kürzer ist als die andere, entsteht Leerraum.
+
+   ```bash
+   # Suche nach Grid-Layouts ohne align-items
+   grep -n "display: grid" styles.css
+   grep -n "grid-template-columns" styles.css
+   ```
+
+   PRÜFE bei jedem 2-Spalten Grid:
+   - Hat eine Spalte mehr Inhalt als die andere?
+   - Entsteht dadurch ungewollter Leerraum?
+   - Fehlt `align-items: start` im CSS?
+
+   TYPISCHE PROBLEM-SEKTIONEN:
+   - Kontakt: Info-Spalte (lang) + Karte (kurz) → Leerraum unter Karte!
+   - Über uns: Text (lang) + Bild (kurz)
+   - Team: Bio (lang) + Foto (kurz)
+
+   FIX:
+   ```css
+   .kontakt-grid,
+   .about-grid,
+   .team-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     align-items: start;  /* ← KRITISCH! Verhindert Stretch */
+   }
+   ```
+
+   ❌ OHNE align-items: Grid streckt beide Spalten auf gleiche Höhe
+   ✅ MIT align-items: start: Spalten behalten natürliche Höhe
    ✅ Cards: min-height oder gleiche Struktur
    ✅ Abstände: Konsistentes Spacing-System (8px Basis)
    ✅ Icons: Einheitliche Größe in Gruppen
