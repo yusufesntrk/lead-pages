@@ -124,9 +124,11 @@ Page Builder → Design Review → SEO Audit
 ### Phase 3: Design Review
 ```
 1. Spawn design-review-agent (subagent_type: "general-purpose")
-2. ⚠️ ERSTE AKTION: Port finden und Screenshot machen!
-   PORT=$(lsof -i :3000,:5173,:8080,:8083,:4173 -P 2>/dev/null | grep LISTEN | head -1 | awk '{print $9}' | cut -d: -f2) && npx playwright screenshot http://localhost:$PORT design-review.png --full-page
+2. ⚠️ ERSTE AKTION: Temp-Ordner erstellen, dann Screenshot machen!
+   mkdir -p .playwright-tmp
+   PORT=$(lsof -i :3000,:5173,:8080,:8083,:4173 -P 2>/dev/null | grep LISTEN | head -1 | awk '{print $9}' | cut -d: -f2) && npx playwright screenshot http://localhost:$PORT .playwright-tmp/design-review.png --full-page
 3. Screenshot mit Read-Tool öffnen und visuell analysieren
+   🚨 NIEMALS Screenshots in ~/Downloads/ speichern!
 4. Check all UX patterns:
    - Scroll containers
    - Card alignment
@@ -193,14 +195,18 @@ Prompt:
 
   ## ⚠️ ALLERERSTE AKTION - BEVOR DU IRGENDETWAS SCHREIBST:
 
-  Rufe das Bash-Tool auf mit diesem Befehl:
-  PORT=$(lsof -i :3000,:5173,:8080,:8083,:4173 -P 2>/dev/null | grep LISTEN | head -1 | awk '{print $9}' | cut -d: -f2) && npx playwright screenshot http://localhost:$PORT design-review.png --full-page
+  🚨 SCREENSHOTS IMMER IM PROJEKTORDNER - NIEMALS IN DOWNLOADS!
+
+  Rufe das Bash-Tool auf mit diesen Befehlen:
+  mkdir -p .playwright-tmp
+  PORT=$(lsof -i :3000,:5173,:8080,:8083,:4173 -P 2>/dev/null | grep LISTEN | head -1 | awk '{print $9}' | cut -d: -f2) && npx playwright screenshot http://localhost:$PORT .playwright-tmp/design-review.png --full-page
 
   ⛔ WICHTIG: Du musst das BASH-TOOL aufrufen!
   ⛔ NICHT den Befehl als Text/Markdown in deine Antwort schreiben!
   ⛔ NICHT sagen "ich führe aus..." - EINFACH TUN!
 
-  Dann: Read-Tool auf design-review.png
+  Dann: Read-Tool auf .playwright-tmp/design-review.png
+  Am Ende: rm .playwright-tmp/*.png && rmdir .playwright-tmp
 
   Prüfe die modifizierten Dateien:
   - [paths]

@@ -13,16 +13,28 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 
 ## ⚠️ PFLICHT: Playwright Screenshot - KEINE AUSREDEN!
 
-**SCHRITT 1 - Port automatisch finden und Screenshot machen:**
+**🚨 SCREENSHOTS IMMER IM PROJEKTORDNER SPEICHERN!**
+- ❌ NIEMALS: ~/Downloads/, ~/Desktop/, /tmp/
+- ✅ IMMER: Im Projektordner einen `.playwright-tmp/` Ordner anlegen
 
+**SCHRITT 1 - Temp-Ordner im Projektordner erstellen:**
 ```bash
-PORT=$(lsof -i :3000,:5173,:8080,:8083,:4173 -P 2>/dev/null | grep LISTEN | head -1 | awk '{print $9}' | cut -d: -f2) && npx playwright screenshot http://localhost:$PORT design-review.png --full-page
+mkdir -p .playwright-tmp
 ```
 
-**SCHRITT 2 - Screenshot öffnen:**
-
+**SCHRITT 2 - Port automatisch finden und Screenshot machen:**
+```bash
+PORT=$(lsof -i :3000,:5173,:8080,:8083,:4173 -P 2>/dev/null | grep LISTEN | head -1 | awk '{print $9}' | cut -d: -f2) && npx playwright screenshot http://localhost:$PORT .playwright-tmp/design-review.png --full-page
 ```
-Read design-review.png
+
+**SCHRITT 3 - Screenshot öffnen:**
+```
+Read .playwright-tmp/design-review.png
+```
+
+**SCHRITT 4 - Nach Analyse SOFORT löschen:**
+```bash
+rm .playwright-tmp/*.png && rmdir .playwright-tmp
 ```
 
 **KEINE AUSREDEN - FÜHRE DEN BEFEHL EINFACH AUS!**
@@ -392,16 +404,26 @@ grep -rn "activeTab\|useState.*Tab" src/components/ | xargs -I {} grep -l "Anima
 
 ### ⚠️ PFLICHT: Playwright Screenshot!
 
-**SCHRITT 1 - Port automatisch finden und Screenshot machen:**
+**🚨 SCREENSHOTS IMMER IM PROJEKTORDNER SPEICHERN!**
 
+**SCHRITT 1 - Temp-Ordner erstellen:**
 ```bash
-PORT=$(lsof -i :3000,:5173,:8080,:8083,:4173 -P 2>/dev/null | grep LISTEN | head -1 | awk '{print $9}' | cut -d: -f2) && npx playwright screenshot http://localhost:$PORT design-review.png --full-page
+mkdir -p .playwright-tmp
 ```
 
-**SCHRITT 2 - Screenshot öffnen:**
-
+**SCHRITT 2 - Port automatisch finden und Screenshot machen:**
+```bash
+PORT=$(lsof -i :3000,:5173,:8080,:8083,:4173 -P 2>/dev/null | grep LISTEN | head -1 | awk '{print $9}' | cut -d: -f2) && npx playwright screenshot http://localhost:$PORT .playwright-tmp/design-review.png --full-page
 ```
-Read design-review.png
+
+**SCHRITT 3 - Screenshot öffnen:**
+```
+Read .playwright-tmp/design-review.png
+```
+
+**SCHRITT 4 - Nach Analyse löschen:**
+```bash
+rm .playwright-tmp/*.png && rmdir .playwright-tmp
 ```
 
 **KEINE AUSREDEN - FÜHRE DEN BEFEHL EINFACH AUS!**

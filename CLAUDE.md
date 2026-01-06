@@ -18,7 +18,33 @@ Jede Website behält das Corporate Design der Firma, aber mit modernem, professi
 browser.launch({ headless: true })
 ```
 
-Screenshots temporär in `.playwright-tmp/` speichern und nach Analyse löschen.
+### Screenshots - IMMER im Projektordner!
+
+**NIEMALS Screenshots in globalen Ordnern speichern!**
+- ❌ NIEMALS: `~/Downloads/`, `~/Desktop/`, `/tmp/`
+- ✅ IMMER: Im jeweiligen Website-Ordner einen tmp-Ordner anlegen
+
+**Workflow für Lead Pages:**
+```bash
+# 1. Temp-Ordner im Website-Ordner erstellen
+mkdir -p docs/[firmenname]/.playwright-tmp
+
+# 2. Screenshots dort speichern
+playwright_screenshot({
+  name: "review-desktop",
+  savePng: true,
+  downloadsDir: "docs/[firmenname]/.playwright-tmp"
+})
+
+# 3. Nach Analyse SOFORT löschen!
+rm docs/[firmenname]/.playwright-tmp/*.png
+rmdir docs/[firmenname]/.playwright-tmp
+```
+
+**Für Agents die Screenshots machen:**
+- Screenshot-Pfad = aktueller Arbeitsordner + `.playwright-tmp/`
+- Beispiel: Arbeite an `docs/kanzlei-knaub/` → Screenshots in `docs/kanzlei-knaub/.playwright-tmp/`
+- Nach Analyse IMMER löschen (Bilder + Ordner)
 
 ---
 

@@ -374,6 +374,27 @@ Fixe alle gefundenen Probleme automatisch.
 
         return await self._run_agent("link-qa", task)
 
+    async def run_layout_patterns_agent(self) -> str:
+        """Agent 13: Layout Patterns (CSS/Code QA)"""
+        task = f"""
+Prüfe alle CSS/Layout Patterns in {self.context.output_dir}/.
+
+FÜHRE ALLE 9 CHECKS DURCH:
+1. Scroll Container - keine Pfeile
+2. Hover Scale Verbot
+3. Card Alignment mit flex-col
+4. Container Breakout Pattern
+5. Animation Overflow
+6. Scroll vs Grid Regel (≤4 Items = Grid!)
+7. Animation Height Konsistenz
+8. Theme Token Enforcement
+9. Grid Alignment (align-items)
+
+Fixe ALLE gefundenen Probleme automatisch!
+"""
+
+        return await self._run_agent("layout-patterns", task)
+
     async def run_design_review_agent(self) -> tuple[str, bool]:
         """
         Agent 10: Design Review mit Feedback Loop
@@ -417,6 +438,30 @@ VORHERIGES FEEDBACK:
 
         return result, has_critical
 
+    async def run_human_view_agent(self) -> str:
+        """Agent 14: Human View - Visuelle Sektions-Prüfung"""
+        task = f"""
+Prüfe die Website aus Sicht eines echten Nutzers.
+
+WEBSITE: {self.context.output_dir}/
+
+FÜR JEDE SEKTION mache 3 Screenshots:
+1. Desktop Viewport (1280x800) - Was sieht der User auf dem Laptop?
+2. Mobile Viewport (375x812) - Was sieht der User auf dem Handy?
+3. Sektion komplett - Wie sieht die gesamte Sektion aus?
+
+PRÜFE jede Sektion auf:
+- Lesbarkeit, Buttons, CTAs
+- Leerraum-Probleme
+- Mobile-Probleme
+- Visuelle Hierarchie
+
+Fixe kritische Issues sofort!
+Erstelle am Ende einen Gesamtüberblick mit Score.
+"""
+
+        return await self._run_agent("human-view", task)
+
     async def generate(self) -> Path:
         """
         Hauptmethode: Generiert die komplette Website.
@@ -456,6 +501,7 @@ VORHERIGES FEEDBACK:
             # Phase 3: QA
             print("\n🔍 PHASE 3: Quality Assurance")
             await self.run_link_qa_agent()
+            await self.run_layout_patterns_agent()
 
             # Phase 4: Design Review Loop
             print("\n🎨 PHASE 4: Design Review (Feedback Loop)")
@@ -472,6 +518,10 @@ VORHERIGES FEEDBACK:
                     break
 
                 print(f"\n🔄 Kritische Issues gefunden. Starte Iteration {self.context.iteration + 1}...")
+
+            # Phase 5: Human View (Finale visuelle Prüfung)
+            print("\n👁️ PHASE 5: Human View (Finale visuelle Prüfung)")
+            await self.run_human_view_agent()
 
             # Zusammenfassung
             duration = datetime.now() - start_time

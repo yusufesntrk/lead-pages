@@ -10,8 +10,10 @@
     --color-primary-dark: #0E7490;
     --color-secondary: #D97706;
     --color-secondary-dark: #B45309;
+    --color-secondary-light: #F59E0B;
     --color-accent: #C2410C;
     --color-dark: #1F2937;
+    --color-dark-light: #374151;
     --color-brown: #78350F;
 
     /* Colors - Background */
@@ -164,7 +166,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
 .gold-divider {
     height: 3px;
     width: 80px;
-    background: linear-gradient(90deg, var(--color-secondary), #F59E0B);
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-secondary-light));
     margin: 0 auto;
     border-radius: 2px;
 }
@@ -213,7 +215,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
 }
 
 .btn--gold {
-    background: linear-gradient(135deg, var(--color-secondary) 0%, #F59E0B 100%);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
     color: white;
     box-shadow: var(--shadow-gold);
 }
@@ -463,7 +465,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
     display: flex;
     align-items: center;
     gap: var(--space-xl);
-    background: linear-gradient(135deg, var(--color-dark) 0%, #374151 100%);
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
     padding: var(--space-2xl) var(--space-3xl);
     border-radius: var(--radius-xl);
     color: white;
@@ -575,7 +577,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
     height: 180px;
     margin-bottom: var(--space-lg);
     border-radius: var(--radius-md);
-    overflow: hidden;
+    overflow: hidden; /* Prevents scale animation from causing layout shifts */
 }
 
 .specialty-card__image img {
@@ -776,7 +778,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
 .category-card--large {
     grid-row: span 2;
     padding: var(--space-2xl);
-    background: linear-gradient(135deg, var(--color-dark) 0%, #374151 100%);
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
     color: white;
 }
 
@@ -1638,7 +1640,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
 /* CTA Banner */
 .cta-banner {
     padding: var(--space-3xl) 0;
-    background: linear-gradient(135deg, var(--color-dark) 0%, #374151 100%);
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
 }
 
 .cta-banner__content {
@@ -1814,7 +1816,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
 }
 
 .feature-highlight {
-    background: linear-gradient(135deg, var(--color-dark) 0%, #374151 100%);
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
     border-radius: var(--radius-xl);
     padding: var(--space-3xl);
     color: white;
@@ -1872,7 +1874,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
 }
 
 .feature-stat--gold {
-    background: linear-gradient(135deg, var(--color-secondary) 0%, #F59E0B 100%);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
     color: white;
 }
 
@@ -1982,6 +1984,8 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
     padding: var(--space-sm) 0;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .menu-nav::-webkit-scrollbar {
@@ -2001,6 +2005,8 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
     color: var(--color-text);
     white-space: nowrap;
     transition: all var(--transition);
+    scroll-snap-align: start;
+    flex-shrink: 0;
 }
 
 .menu-nav__item:hover {
@@ -2334,7 +2340,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
 /* Menu CTA */
 .menu-cta {
     padding: var(--section-padding) 0;
-    background: linear-gradient(135deg, var(--color-dark) 0%, #374151 100%);
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
 }
 
 .menu-cta__content {
@@ -2684,7 +2690,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
     align-items: center;
     justify-content: space-between;
     gap: var(--space-2xl);
-    background: linear-gradient(135deg, var(--color-dark) 0%, #374151 100%);
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-light) 100%);
     padding: var(--space-2xl) var(--space-3xl);
     border-radius: var(--radius-xl);
     color: white;
@@ -2785,7 +2791,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
     width: 64px;
     height: 64px;
     font-size: 24px;
-    background: linear-gradient(135deg, var(--color-secondary) 0%, #F59E0B 100%);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
 }
 
 .testimonial-card__meta {
