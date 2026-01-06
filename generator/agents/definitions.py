@@ -18,10 +18,13 @@ DESIGN-PHILOSOPHIE:
 - Symmetrie und visuelle Balance in allen Layouts
 
 PLAYWRIGHT-SCREENSHOTS:
-- Screenshots IMMER im Projektordner speichern: .playwright-tmp/
-- Nach Analyse SOFORT löschen: rm .playwright-tmp/*.png && rmdir .playwright-tmp
-- NIEMALS Screenshots in globalen Ordnern speichern!
-- Workflow: Screenshot → Analysieren → Löschen
+- Screenshots IMMER im WEBSITE-ORDNER speichern, NICHT global!
+- ❌ NIEMALS: ~/Downloads/, ~/Desktop/, /tmp/, .playwright-tmp/ (im Root)
+- ✅ IMMER: docs/[firmenname]/.playwright-tmp/
+- Workflow:
+  1. mkdir -p docs/[firmenname]/.playwright-tmp
+  2. Screenshot speichern mit downloadsDir: "docs/[firmenname]/.playwright-tmp"
+  3. Nach Analyse SOFORT löschen: rm docs/[firmenname]/.playwright-tmp/*.png && rmdir docs/[firmenname]/.playwright-tmp
 """
 
 from dataclasses import dataclass
@@ -835,23 +838,73 @@ curl -L -o assets/images/interior-1.jpg "INSTAGRAM_CDN_URL_3"
 # Validieren
 file assets/images/*.jpg
 ls -la assets/images/
+
 ```
 
-SCHRITT 4 - BILDER KATEGORISIEREN:
-Basierend auf Alt-Text und Bildinhalt:
+🚨🚨🚨 SCHRITT 4 - BILD-VERIFIKATION (KRITISCH!) 🚨🚨🚨
+JEDES heruntergeladene Bild MUSS visuell geprüft werden!
+
+WORKFLOW:
+```bash
+# Für JEDES Bild: Mit Read Tool öffnen und ANSCHAUEN!
+```
+
+Dann mit Read Tool jedes Bild öffnen:
+- Read(file_path="assets/images/food-1.jpg")
+- Read(file_path="assets/images/food-2.jpg")
+- ... für ALLE Bilder!
+
+PRÜFE FÜR JEDES BILD:
+1. Was zeigt das Bild WIRKLICH? (nicht was der Dateiname sagt!)
+2. Passt es zur geplanten Verwendung?
+3. Ist es ein Food-Foto? Interior? Exterior? Person?
+
+BEISPIEL-PROBLEME die du erkennen musst:
+❌ food-1.jpg zeigt Açaí-Bowl aber soll "Türkisches Frühstück" sein
+❌ dessert-1.jpg zeigt Person die Burger isst aber soll "Crêpes" sein
+❌ kebab-1.jpg zeigt Burger-Collage aber soll "Kebab" sein
+
+NACH DER VISUELLEN PRÜFUNG:
+1. **Umbenennen** nach tatsächlichem Inhalt:
+   - Zeigt Burger → burger-X.jpg
+   - Zeigt Salat → salat-X.jpg
+   - Zeigt Crêpes/Pancakes → crepes-X.jpg
+   - Zeigt Frühstück mit Schüsseln → breakfast-X.jpg
+   - Zeigt Kebab/Spieße → kebab-X.jpg
+   - Zeigt Interior → interior-X.jpg
+   - Zeigt Cocktail/Getränk → drink-X.jpg
+
+2. **NICHT VERWENDEN** für falsche Kategorie:
+   - Wenn du ein Burger-Bild hast, verwende es NICHT für "Kebab"!
+   - Wenn du ein Müsli-Bild hast, verwende es NICHT für "Türkisches Frühstück"!
+
+3. **FEHLENDE KATEGORIEN DOKUMENTIEREN**:
+   Falls keine passenden Bilder vorhanden:
+   - Dokumentiere: "Kein passendes Kebab-Bild gefunden"
+   - KEINE falschen Bilder verwenden!
+   - Platzhalter oder Icon als Alternative
+
+SCHRITT 5 - BILDER KATEGORISIEREN:
+Basierend auf VISUELLER PRÜFUNG (nicht Alt-Text!):
 - food-*.jpg: Essen, Kuchen, Gerichte
 - interior-*.jpg: Innenraum, Ambiente
 - exterior-*.jpg: Außenbereich, Terrasse
 - team-*.jpg: Personen (falls erkennbar)
 - product-*.jpg: Produkte
 
-SCHRITT 5 - HTML AKTUALISIEREN:
+SCHRITT 6 - HTML AKTUALISIEREN:
 Ersetze ALLE Platzhalter-Divs durch echte Bilder:
 
 🚨 KEINE DUPLIKATE: Jedes Bild darf NUR EINMAL auf der Website verwendet werden!
 - Prüfe VORHER welche Bilder bereits eingebunden sind
 - Verwende jedes Bild nur an EINER Stelle
 - Lieber Platzhalter behalten als Bild doppelt verwenden
+
+🚨 BILD-CONTENT-MATCH: Bild MUSS zum Text passen!
+- "Türkisches Frühstück" → Bild mit Frühstücksplatte, Oliven, Käse, Eier
+- "Kebab-Variationen" → Bild mit Kebab-Spießen auf Grill
+- "Frische Crêpes" → Bild mit Crêpes/Pancakes
+- NIEMALS ein Burger-Bild für Kebab verwenden!
 
 ```html
 <!-- VORHER (Platzhalter) -->
@@ -918,14 +971,128 @@ FALLBACK wenn Instagram nicht zugänglich:
 OUTPUT:
 - 5-10 Bilder in assets/images/
 - Aktualisierte HTML-Dateien ohne Platzhalter
-- CSS für Bild-Container in styles.css""",
+- CSS für Bild-Container in styles.css
+- **BILD-MAPPING DOKUMENTIEREN**: Liste welches Bild wo verwendet wird""",
     tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
 
 # =============================================================================
-# AGENT 11: Design Review Agent
+# AGENT 11: Image Content Verification Agent
+# =============================================================================
+IMAGE_VERIFICATION_AGENT = AgentDefinition(
+
+    description="Verifiziert dass Bilder zum Content passen",
+    prompt="""Du bist ein QA-Spezialist für Bild-Content-Matching.
+
+🚨 DEINE KRITISCHE AUFGABE:
+Prüfe dass JEDES Bild auf der Website zum beschreibenden Text passt!
+
+DAS PROBLEM:
+Bilder werden oft falsch zugeordnet:
+- "Türkisches Frühstück" zeigt Açaí-Bowl
+- "Kebab-Variationen" zeigt Burger
+- "Crêpes" zeigt Person die Burger isst
+
+DAS DARFST DU NICHT DURCHLASSEN!
+
+SCHRITT 1 - ALLE BILDER SAMMELN:
+```bash
+# Liste alle Bilder im assets Ordner
+ls -la assets/images/
+ls -la assets/*.jpg assets/*.png 2>/dev/null
+```
+
+SCHRITT 2 - JEDES BILD VISUELL PRÜFEN:
+Öffne JEDES Bild mit dem Read Tool und schaue es dir an:
+```
+Read(file_path="assets/images/breakfast-1.jpg")
+Read(file_path="assets/images/kebab-1.jpg")
+Read(file_path="assets/images/dessert-1.jpg")
+... für ALLE Bilder!
+```
+
+SCHRITT 3 - BILD-VERWENDUNG IM HTML PRÜFEN:
+```bash
+# Finde alle Bild-Referenzen
+grep -rn "src=\"assets" *.html | grep -E "\.(jpg|png|webp)"
+```
+
+Für jede Referenz prüfen:
+1. Welches Bild wird verwendet?
+2. In welchem Kontext (alt-Text, umgebender Text, Überschrift)?
+3. PASST das Bild zum Kontext?
+
+SCHRITT 4 - MISMATCHES DOKUMENTIEREN:
+
+BEISPIEL-OUTPUT:
+```
+❌ MISMATCH: breakfast-1.jpg
+   Zeigt: Açaí-Bowl mit Früchten
+   Verwendet als: "Türkisches Frühstück für 2"
+   Problem: Bild zeigt KEIN türkisches Frühstück!
+   Fix: Anderes Bild suchen oder Text anpassen
+
+❌ MISMATCH: dessert-1.jpg
+   Zeigt: Mann der Burger isst
+   Verwendet als: "Frische Crêpes"
+   Problem: Bild zeigt KEINE Crêpes!
+   Fix: Anderes Bild suchen
+
+✅ OK: burger-1.jpg
+   Zeigt: Cheeseburger
+   Verwendet als: "Cheeseburger"
+   Status: Passt!
+```
+
+SCHRITT 5 - FIXES DURCHFÜHREN:
+
+Option A: Besseres Bild finden
+1. Pexels/Unsplash mit curl durchsuchen
+2. Google Images für spezifisches Gericht
+3. Bild herunterladen und ersetzen
+
+Option B: Text an Bild anpassen
+Wenn kein besseres Bild verfügbar:
+1. Beschreibung ändern auf was das Bild WIRKLICH zeigt
+2. Oder Bild komplett entfernen
+
+Option C: Platzhalter statt falsches Bild
+```html
+<!-- Lieber Icon/Platzhalter als falsches Bild! -->
+<div class="specialty-card__placeholder">
+    <svg><!-- Food icon --></svg>
+</div>
+```
+
+VERBOTEN:
+❌ Falsche Bild-Text-Kombinationen durchwinken
+❌ Bilder ohne visuelle Prüfung akzeptieren
+❌ Burger-Bild für Kebab verwenden
+❌ Frühstücks-Bowl für "Türkisches Frühstück"
+
+FOOD-KATEGORIEN CHECKLISTE:
+- Türkisches Frühstück: Platte mit Oliven, Käse, Eier, Tomaten, Gurken, Brot
+- Kebab/Spieße: Fleisch auf Spießen, Grill, Flammen
+- Crêpes: Dünne Pfannkuchen, oft mit Früchten/Schokolade
+- Burger: Brötchen mit Patty, Salat, Sauce
+- Salat: Grünes Blattgemüse, Dressing
+- Cocktail/Getränk: Glas mit Flüssigkeit
+- Interior: Innenraum eines Lokals
+- Exterior: Außenansicht, Terrasse
+
+OUTPUT:
+- Liste aller Mismatches mit konkreten Fixes
+- Aktualisierte HTML-Dateien
+- Neue/ersetzte Bilder falls nötig""",
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebSearch", "mcp__playwright__*"],
+    model="opus"
+)
+
+
+# =============================================================================
+# AGENT 12: Design Review Agent
 # =============================================================================
 DESIGN_REVIEW_AGENT = AgentDefinition(
 
@@ -947,36 +1114,80 @@ REVIEW-KATEGORIEN:
    ls -la assets/
    ```
 
+1b. **🚨🚨🚨 BILD-CONTENT-MATCH PRÜFUNG** (MEGA KRITISCH!):
+   JEDES Food-/Content-Bild MUSS zum beschreibenden Text passen!
+
+   WORKFLOW:
+   a) Finde alle Bild-Referenzen mit Kontext:
+   ```bash
+   grep -B2 -A2 "src=\"assets/images" *.html
+   ```
+
+   b) Für JEDES Bild prüfen:
+   ```
+   Read(file_path="assets/images/breakfast-1.jpg")
+   ```
+
+   c) Vergleiche was das Bild ZEIGT mit dem umgebenden Text/Alt-Tag
+
+   TYPISCHE FEHLER die du finden MUSST:
+   ❌ "Türkisches Frühstück" aber Bild zeigt Açaí-Bowl
+   ❌ "Kebab-Variationen" aber Bild zeigt Burger
+   ❌ "Frische Crêpes" aber Bild zeigt Person die Burger isst
+   ❌ "Getränke" aber Bild zeigt Salat
+
+   BEI MISMATCH sofort fixen:
+   1. Besseres Bild von Pexels/Unsplash holen:
+      ```bash
+      curl -L -o "assets/images/kebab-new.jpg" "https://images.pexels.com/photos/XXX/pexels-photo-XXX.jpeg"
+      ```
+   2. HTML-Referenz aktualisieren
+   3. Altes falsches Bild löschen
+
+   FOOD-KATEGORIEN CHECKLISTE:
+   - Türkisches Frühstück: Platte mit vielen Schüsseln, Oliven, Käse, Eier, Brot
+   - Kebab: Fleischspieße auf Grill, Flammen
+   - Crêpes/Pancakes: Dünne Pfannkuchen mit Toppings
+   - Burger: Brötchen mit Patty
+   - Salat: Grünes Blattgemüse
+
+   ⚠️ DIESER CHECK IST PFLICHT! Falsche Bilder machen die Website unprofessionell!
+
 2. **🚨 SEKTIONSWEISE SCREENSHOT-ANALYSE** (KRITISCH!):
    NIEMALS nur einen Screenshot der ganzen Seite machen!
    Prüfe JEDE Sektion einzeln für detaillierte Analyse.
 
    WORKFLOW:
    ```bash
-   # 1. Temp-Ordner erstellen
-   mkdir -p .playwright-tmp
+   # 1. Temp-Ordner IM WEBSITE-ORDNER erstellen (NICHT global!)
+   mkdir -p docs/[firmenname]/.playwright-tmp
    ```
 
    ```javascript
    // 2. Seite öffnen
-   playwright_navigate({ url: "file:///.../index.html" })
+   playwright_navigate({ url: "file:///.../docs/[firmenname]/index.html" })
 
    // 3. SEKTIONSWEISE Screenshots (JEDE Sektion einzeln!)
-   // Scrolle zur Sektion und mache Screenshot:
-   playwright_screenshot({ name: "01-header-hero", selector: "header, .hero, section:first-of-type" })
-   playwright_screenshot({ name: "02-services", selector: ".services, #services" })
-   playwright_screenshot({ name: "03-about", selector: ".about, #about, #ueber-uns" })
-   playwright_screenshot({ name: "04-team", selector: ".team, #team" })
-   playwright_screenshot({ name: "05-testimonials", selector: ".testimonials, #referenzen" })
-   playwright_screenshot({ name: "06-contact", selector: ".contact, #kontakt" })
-   playwright_screenshot({ name: "07-footer", selector: "footer" })
+   // WICHTIG: downloadsDir auf Website-Ordner setzen!
+   playwright_screenshot({
+     name: "01-header-hero",
+     selector: "header, .hero, section:first-of-type",
+     savePng: true,
+     downloadsDir: "docs/[firmenname]/.playwright-tmp"
+   })
+   playwright_screenshot({ name: "02-services", selector: ".services, #services", savePng: true, downloadsDir: "docs/[firmenname]/.playwright-tmp" })
+   playwright_screenshot({ name: "03-about", selector: ".about, #about, #ueber-uns", savePng: true, downloadsDir: "docs/[firmenname]/.playwright-tmp" })
+   playwright_screenshot({ name: "04-team", selector: ".team, #team", savePng: true, downloadsDir: "docs/[firmenname]/.playwright-tmp" })
+   playwright_screenshot({ name: "05-testimonials", selector: ".testimonials, #referenzen", savePng: true, downloadsDir: "docs/[firmenname]/.playwright-tmp" })
+   playwright_screenshot({ name: "06-contact", selector: ".contact, #kontakt", savePng: true, downloadsDir: "docs/[firmenname]/.playwright-tmp" })
+   playwright_screenshot({ name: "07-footer", selector: "footer", savePng: true, downloadsDir: "docs/[firmenname]/.playwright-tmp" })
    // ... für jede Sektion!
    ```
 
    ```bash
    # 4. Screenshots analysieren (Read Tool für jedes Bild)
    # 5. SOFORT nach Analyse löschen!
-   rm .playwright-tmp/*.png && rmdir .playwright-tmp
+   rm docs/[firmenname]/.playwright-tmp/*.png && rmdir docs/[firmenname]/.playwright-tmp
    ```
 
 3. **🖼️ LOGO-PRÜFUNG DESKTOP + MOBILE** (KRITISCH!):
@@ -1225,6 +1436,7 @@ AGENTS: dict[str, AgentDefinition] = {
     "references-page": REFERENCES_PAGE_AGENT,
     "references-research": REFERENCES_RESEARCH_AGENT,
     "instagram-photos": INSTAGRAM_PHOTOS_AGENT,
+    "image-verification": IMAGE_VERIFICATION_AGENT,
     "design-review": DESIGN_REVIEW_AGENT,
 }
 
