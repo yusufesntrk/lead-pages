@@ -1098,7 +1098,24 @@ playwright_evaluate({
    curl -L -o img.jpg "https://images.unsplash.com/photo-...?w=1920"
    ```
 
-3. **Instagram-Bilder oft schlecht!**
+3. **🎯 TRICK: Bild zuerst in neuem Tab öffnen!**
+   - NIEMALS direkt von der Seite herunterladen
+   - Erst Bild-URL in neuem Tab öffnen → dann downloaden
+   - So bekommst du die volle Auflösung statt Thumbnail!
+
+   ```javascript
+   // Mit Playwright: Bild-URL extrahieren und in neuem Tab öffnen
+   playwright_evaluate({
+       script: `
+           const img = document.querySelector('.gallery img');
+           // Rechtsklick → "Bild in neuem Tab öffnen" simulieren
+           window.open(img.src, '_blank');
+       `
+   })
+   // Dann von dem Tab die URL kopieren und mit curl laden
+   ```
+
+4. **Instagram-Bilder oft schlecht!**
    - Instagram komprimiert stark
    - Versuch Original von Website zu bekommen
    - Oder Stock-Foto als Ersatz
@@ -1315,7 +1332,12 @@ playwright_evaluate({
    curl -L -o img.jpg "https://images.pexels.com/...?w=1920"
    ```
 
-3. **Instagram = oft schlecht**
+3. **🎯 TRICK: Bild zuerst in neuem Tab öffnen!**
+   - NIEMALS direkt von Seite herunterladen
+   - Erst Bild-URL in neuem Tab öffnen → dann downloaden
+   - So bekommst du volle Auflösung statt Thumbnail!
+
+4. **Instagram = oft schlecht**
    - Instagram komprimiert stark
    - Lieber Stock-Foto in guter Qualität!
 
