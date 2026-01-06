@@ -7,14 +7,16 @@ und verwaltet den Kontext zwischen den Agents.
 ARCHITEKTUR-SWITCH:
 - use_new_agents=False: Legacy-Modus (prompt-basierte Agents aus definitions.py)
 - use_new_agents=True: Neue Agent-Klassen (SDLC-Pattern)
+- use_parallel=True: Parallelisierte Ausführung mit QA-Loop
 """
 
+import asyncio
 import os
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 
 from claude_code_sdk import query, ClaudeCodeOptions
 
@@ -53,6 +55,13 @@ from .results import (
     FinalizeResult,
     LeadTask,
     TaskStatus,
+    QAPhaseResult,
+    Finding,
+)
+from .config import (
+    QA_MAX_ITERATIONS,
+    CRITICAL_SEVERITIES,
+    PARALLEL_AGENT_TIMEOUT,
 )
 
 
@@ -104,7 +113,8 @@ class LeadPagesOrchestrator:
         self,
         lead: Lead,
         base_output_dir: str = "docs",
-        use_new_agents: Optional[bool] = None
+        use_new_agents: Optional[bool] = None,
+        use_parallel: Optional[bool] = None
     ):
         self.lead = lead
         self.output_dir = Path(base_output_dir) / self._slugify(lead.firma)
@@ -118,6 +128,12 @@ class LeadPagesOrchestrator:
             self.use_new_agents = os.environ.get("USE_NEW_AGENTS", "").lower() == "true"
         else:
             self.use_new_agents = use_new_agents
+
+        # Parallelisierungs-Switch: ENV oder Parameter
+        if use_parallel is None:
+            self.use_parallel = os.environ.get("USE_PARALLEL", "").lower() == "true"
+        else:
+            self.use_parallel = use_parallel
 
         # Neue Agent-Instanzen (lazy initialization)
         self._agents_initialized = False
@@ -141,7 +157,10 @@ class LeadPagesOrchestrator:
         self._lead_task: Optional[LeadTask] = None
 
         if self.use_new_agents:
-            print("🔧 Modus: Neue Agent-Klassen (SDLC-Pattern)")
+            if self.use_parallel:
+                print("🔧 Modus: Parallelisiert (SDLC-Pattern + QA-Loop)")
+            else:
+                print("🔧 Modus: Neue Agent-Klassen (SDLC-Pattern)")
             self._init_agents()
         else:
             print("🔧 Modus: Legacy (prompt-basiert)")
@@ -203,6 +222,308 @@ class LeadPagesOrchestrator:
             slug = slug.replace(old, new)
         slug = re.sub(r'[^a-z0-9]+', '-', slug)
         return slug.strip('-')
+
+    # =========================================================================
+    # PARALLEL EXECUTION METHODS
+    # =========================================================================
+
+    async def _run_parallel(self, *coroutines) -> list:
+        """
+        Führt mehrere Coroutines parallel aus.
+
+        Args:
+            *coroutines: Variable Anzahl von Coroutines
+
+        Returns:
+            Liste der Ergebnisse (Exceptions werden durchgereicht)
+        """
+        return await asyncio.gather(*coroutines, return_exceptions=True)
+
+    async def run_qa_phase(self, iteration: int = 0) -> QAPhaseResult:
+        """
+        Führt alle 4 QA-Agents parallel aus.
+
+        Args:
+            iteration: Aktuelle QA-Loop Iteration
+
+        Returns:
+            QAPhaseResult mit aggregierten Findings
+        """
+        print(f"\n🔍 QA Phase (Iteration {iteration + 1}): Starte 4 Agents parallel...")
+
+        # Alle 4 QA-Agents parallel ausführen
+        results = await self._run_parallel(
+            self._run_link_qa_new(),
+            self._run_layout_patterns_new(),
+            self._run_design_review_new(),
+            self._run_human_view_new(),
+        )
+
+        # Ergebnisse verarbeiten
+        link_qa_result = None
+        layout_patterns_result = None
+        design_review_result = None
+        human_view_result = None
+        all_findings: List[Finding] = []
+
+        for r in results:
+            if isinstance(r, Exception):
+                print(f"⚠️ Agent-Fehler: {r}")
+                continue
+
+            # Ergebnis-Typ identifizieren
+            if isinstance(r, LinkQAResult):
+                link_qa_result = r
+                all_findings.extend(r.findings)
+            elif isinstance(r, LayoutPatternsResult):
+                layout_patterns_result = r
+                all_findings.extend(r.findings)
+            elif isinstance(r, DesignReviewResult):
+                design_review_result = r
+                all_findings.extend(r.findings)
+            elif isinstance(r, HumanViewResult):
+                human_view_result = r
+                all_findings.extend(r.all_findings)
+            elif isinstance(r, str):
+                # Legacy string results - ignorieren
+                pass
+
+        # Deduplizieren nach ID
+        seen_ids = set()
+        unique_findings = []
+        for f in all_findings:
+            if f.id not in seen_ids:
+                seen_ids.add(f.id)
+                unique_findings.append(f)
+
+        # Severity-Counts
+        critical_count = sum(1 for f in unique_findings if f.severity == "critical")
+        major_count = sum(1 for f in unique_findings if f.severity == "major")
+        minor_count = sum(1 for f in unique_findings if f.severity == "minor")
+
+        return QAPhaseResult(
+            success=True,
+            all_findings=unique_findings,
+            critical_count=critical_count,
+            major_count=major_count,
+            minor_count=minor_count,
+            link_qa=link_qa_result,
+            layout_patterns=layout_patterns_result,
+            design_review=design_review_result,
+            human_view=human_view_result,
+            iteration=iteration,
+            fix_required=critical_count > 0,
+        )
+
+    async def fix_findings(self, findings: List[Finding]) -> int:
+        """
+        Fixt eine Liste von Findings via Claude Agent.
+
+        Args:
+            findings: Liste der zu fixenden Findings
+
+        Returns:
+            Anzahl erfolgreich gefixte Findings
+        """
+        if not findings:
+            return 0
+
+        print(f"\n🔧 Fixe {len(findings)} Findings...")
+
+        # Gruppiere nach Datei
+        by_file: dict = {}
+        for f in findings:
+            file_path = f.location.split(":")[0]
+            by_file.setdefault(file_path, []).append(f)
+
+        fixed_count = 0
+
+        for file_path, file_findings in by_file.items():
+            print(f"   📄 {file_path}: {len(file_findings)} Findings")
+
+            # Baue Fix-Prompt
+            prompt = self._build_fix_prompt(file_path, file_findings)
+
+            # Führe Fix aus
+            try:
+                result_text, error = await self._run_fix_agent(prompt)
+                if error:
+                    print(f"      ❌ Fehler: {error}")
+                    continue
+
+                # Zähle erfolgreiche Fixes
+                fix_count = result_text.upper().count("FIXED:") + result_text.upper().count("GEFIXT:")
+                fixed_count += fix_count
+                print(f"      ✅ {fix_count} gefixt")
+
+            except Exception as e:
+                print(f"      ❌ Exception: {e}")
+
+        return fixed_count
+
+    def _build_fix_prompt(self, file_path: str, findings: List[Finding]) -> str:
+        """Baut den Prompt für den Fix-Agent."""
+        findings_text = "\n".join([
+            f"- [{f.id}] {f.severity}: {f.problem}\n  Fix: {f.fix_instruction}"
+            for f in findings
+        ])
+
+        return f"""
+## AUFGABE
+
+Fixe die folgenden Probleme in der Datei: **{self.context.output_dir}/{file_path}**
+
+## FINDINGS
+
+{findings_text}
+
+## ANWEISUNGEN
+
+1. Lies die Datei
+2. Führe ALLE Fixes durch
+3. Schreibe die aktualisierte Datei
+4. Bestätige jeden Fix mit "FIXED: [ID]"
+
+## OUTPUT
+
+```
+FIXED: L001
+FIXED: L002
+...
+```
+"""
+
+    async def _run_fix_agent(self, prompt: str) -> tuple:
+        """Führt den Fix-Agent aus."""
+        from .config import create_agent_options, ALL_TOOLS
+
+        options = create_agent_options(
+            working_dir=str(self.context.output_dir.parent.parent),
+            system_prompt="Du bist ein Code-Fix Agent. Fixe die angegebenen Probleme.",
+            allowed_tools=ALL_TOOLS,
+            model="sonnet"  # Schneller für Fixes
+        )
+
+        result_text = ""
+        error = None
+
+        try:
+            async for msg in query(prompt=prompt, options=options):
+                if hasattr(msg, 'content'):
+                    for block in msg.content:
+                        if hasattr(block, 'text'):
+                            result_text += block.text
+        except Exception as e:
+            error = str(e)
+
+        return result_text, error
+
+    async def _generate_parallel(self) -> Path:
+        """
+        Parallelisierte Website-Generierung.
+
+        Nutzt asyncio.gather für parallele Agent-Ausführung
+        und implementiert den QA-Loop.
+        """
+        print(f"\n{'#'*60}")
+        print(f"# LEAD PAGES GENERATOR (PARALLEL)")
+        print(f"# Firma: {self.context.lead.firma}")
+        print(f"# Branche: {self.context.lead.branche}")
+        print(f"# Output: {self.context.output_dir}")
+        print(f"{'#'*60}\n")
+
+        start_time = datetime.now()
+
+        # Erstelle Output-Verzeichnis
+        self.context.output_dir.mkdir(parents=True, exist_ok=True)
+        (self.context.output_dir / "assets").mkdir(exist_ok=True)
+
+        try:
+            # ===== PHASE 1: Research =====
+            print("\n📚 PHASE 1: Research")
+
+            # StyleGuide muss zuerst laufen (andere brauchen den Output)
+            await self.run_style_guide_agent()
+
+            # Logo + ReferencesResearch parallel
+            await self._run_parallel(
+                self.run_logo_agent(),
+                self.run_references_research_agent(),
+            )
+
+            # ===== PHASE 2: Content =====
+            print("\n✍️ PHASE 2: Content")
+
+            # Homepage + Subpages + LegalPages parallel
+            await self._run_parallel(
+                self.run_homepage_agent(),
+                self.run_subpages_agent(),
+                self.run_legal_pages_agent(),
+            )
+
+            # ReferencesPage braucht recherchierte Daten
+            await self.run_references_page_agent()
+
+            # TeamPhotos + InstagramPhotos parallel
+            await self._run_parallel(
+                self.run_team_photos_agent(),
+                self.run_instagram_photos_agent(),
+            )
+
+            # ===== PHASE 3: QA Loop =====
+            print(f"\n🔍 PHASE 3: QA Loop (max {QA_MAX_ITERATIONS}x)")
+
+            for iteration in range(QA_MAX_ITERATIONS):
+                print(f"\n--- Iteration {iteration + 1}/{QA_MAX_ITERATIONS} ---")
+
+                # Alle QA-Agents parallel
+                qa_result = await self.run_qa_phase(iteration)
+
+                print(f"\n📊 QA Ergebnis:")
+                print(f"   Critical: {qa_result.critical_count}")
+                print(f"   Major: {qa_result.major_count}")
+                print(f"   Minor: {qa_result.minor_count}")
+
+                if not qa_result.fix_required:
+                    print(f"\n✅ QA bestanden! Keine kritischen Findings.")
+                    break
+
+                # Nur kritische Findings fixen
+                critical_findings = [
+                    f for f in qa_result.all_findings
+                    if f.severity in CRITICAL_SEVERITIES
+                ]
+
+                print(f"\n⚠️ {len(critical_findings)} kritische Findings gefunden")
+
+                if critical_findings:
+                    fixed = await self.fix_findings(critical_findings)
+                    print(f"✅ {fixed} Findings gefixt")
+
+                if iteration == QA_MAX_ITERATIONS - 1:
+                    print(f"\n⚠️ Max. Iterationen erreicht ({QA_MAX_ITERATIONS})")
+
+            # ===== PHASE 4: Finalize =====
+            if self.context.lead.id and not self.context.lead.id.startswith("test"):
+                print("\n🚀 PHASE 4: Finalize (Git Push & Airtable)")
+                await self.run_finalize_agent()
+            else:
+                print("\n⏭️ PHASE 4: Übersprungen (Test-Modus)")
+
+            # Zusammenfassung
+            duration = datetime.now() - start_time
+            print(f"\n{'='*60}")
+            print(f"✅ WEBSITE ERFOLGREICH GENERIERT (PARALLEL)!")
+            print(f"📁 Output: {self.context.output_dir}")
+            print(f"⏱️ Dauer: {duration.total_seconds():.1f}s")
+            print(f"{'='*60}\n")
+
+            return self.context.output_dir
+
+        except Exception as e:
+            self.context.errors.append(str(e))
+            print(f"\n❌ FEHLER: {e}")
+            raise
 
     async def _run_agent(
         self,
@@ -1322,8 +1643,8 @@ STYLE GUIDE:
 
         print(f"\n📊 Links geprüft: {result.links_checked}")
         print(f"📊 Broken: {result.broken_links_found}")
-        print(f"📊 Gefixt: {result.broken_links_fixed}")
-        return f"Link QA: {result.broken_links_fixed}/{result.broken_links_found} gefixt"
+        print(f"📊 Findings: {len(result.findings)}")
+        return result  # Return result for QA aggregation
 
     async def _run_link_qa_legacy(self) -> str:
         """Legacy Architektur"""
@@ -1361,8 +1682,8 @@ Fixe alle gefundenen Probleme automatisch.
             self._lead_task.layout_patterns = result
 
         print(f"\n📊 Checks: {result.checks_passed}/{result.checks_run}")
-        print(f"📊 Issues gefixt: {result.issues_fixed}")
-        return f"Layout Patterns: {result.checks_passed}/{result.checks_run} OK"
+        print(f"📊 Findings: {len(result.findings)}")
+        return result  # Return result for QA aggregation
 
     async def _run_layout_patterns_legacy(self) -> str:
         """Legacy Architektur"""
@@ -1393,11 +1714,14 @@ Fixe ALLE gefundenen Probleme automatisch!
             Tuple von (review_text, has_critical_issues)
         """
         if self.use_new_agents:
-            return await self._run_design_review_new()
+            result = await self._run_design_review_new()
+            # Extract tuple for sequential mode compatibility
+            feedback_text = f"Score: {result.score}, Findings: {len(result.findings)}"
+            return feedback_text, result.fix_required
         else:
             return await self._run_design_review_legacy()
 
-    async def _run_design_review_new(self) -> tuple[str, bool]:
+    async def _run_design_review_new(self) -> DesignReviewResult:
         """Neue Architektur: DesignReviewAgent"""
         print("\n🆕 DesignReviewAgent (SDLC-Pattern)")
 
@@ -1426,7 +1750,7 @@ Fixe ALLE gefundenen Probleme automatisch!
         print(f"\n📊 Score: {result.score}/100")
         print(f"📊 Findings: {len(result.findings)}")
 
-        return feedback_text, result.fix_required
+        return result  # Return result for QA aggregation
 
     async def _run_design_review_legacy(self) -> tuple[str, bool]:
         """Legacy Architektur"""
@@ -1578,7 +1902,16 @@ WICHTIG: Beide Schritte MÜSSEN erfolgreich sein!
 
         Führt alle Agents in der richtigen Reihenfolge aus
         und implementiert den Design Review Feedback Loop.
+
+        Modi:
+        - use_parallel=True: Parallelisierte Ausführung mit QA-Loop
+        - use_parallel=False: Sequentielle Ausführung (Standard)
         """
+        # Parallelisierter Modus
+        if self.use_parallel and self.use_new_agents:
+            return await self._generate_parallel()
+
+        # Sequentieller Modus (Legacy oder neue Agents)
         print(f"\n{'#'*60}")
         print(f"# LEAD PAGES GENERATOR")
         print(f"# Firma: {self.context.lead.firma}")
@@ -1661,7 +1994,8 @@ WICHTIG: Beide Schritte MÜSSEN erfolgreich sein!
 async def generate_website(
     lead: Lead,
     base_output_dir: str = "docs",
-    use_new_agents: Optional[bool] = None
+    use_new_agents: Optional[bool] = None,
+    use_parallel: Optional[bool] = None
 ) -> Path:
     """
     Convenience-Funktion zum Generieren einer Website.
@@ -1670,6 +2004,7 @@ async def generate_website(
         lead: Lead-Daten aus Airtable
         base_output_dir: Basis-Verzeichnis für Output
         use_new_agents: True = neue Agent-Klassen, False = Legacy, None = ENV
+        use_parallel: True = parallelisierte Ausführung, False = sequentiell, None = ENV
 
     Returns:
         Pfad zum generierten Website-Verzeichnis
@@ -1678,12 +2013,15 @@ async def generate_website(
         # Legacy-Modus (default)
         await generate_website(lead)
 
-        # Neue Agent-Klassen
+        # Neue Agent-Klassen (sequentiell)
         await generate_website(lead, use_new_agents=True)
 
+        # Parallelisiert mit QA-Loop
+        await generate_website(lead, use_new_agents=True, use_parallel=True)
+
         # Via Environment-Variable
-        export USE_NEW_AGENTS=true
+        export USE_NEW_AGENTS=true USE_PARALLEL=true
         await generate_website(lead)
     """
-    orchestrator = LeadPagesOrchestrator(lead, base_output_dir, use_new_agents)
+    orchestrator = LeadPagesOrchestrator(lead, base_output_dir, use_new_agents, use_parallel)
     return await orchestrator.generate()
