@@ -1992,6 +1992,89 @@ FIX automatisch anwenden:
 2. Image-Container auf `flex: 1; height: auto; min-height: Xpx;` setzen
 
 ═══════════════════════════════════════════════════════════════
+  CHECK 12: BADGE POSITION BEI BREITEN CARDS
+═══════════════════════════════════════════════════════════════
+
+⚠️ Bei Cards die mehrere Spalten spannen (span 2+) wirkt ein
+Badge links oben VERLOREN. Es sollte ZENTRIERT sein!
+
+**Das Problem visuell:**
+```
+┌────────────────────────────────────────────┐
+│ [Badge]                                    │  ← Badge links = verloren!
+│                                            │
+│              [großes Bild]                 │
+│                                            │
+└────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────┐
+│               [Badge]                      │  ← Badge zentriert = besser!
+│                                            │
+│              [großes Bild]                 │
+│                                            │
+└────────────────────────────────────────────┘
+```
+
+**CSS-Pattern zum Finden:**
+```bash
+# Finde Cards mit span 2+
+grep -n "grid-column.*span 2\|grid-column.*span 3\|grid-column:.*/" styles.css
+
+# Prüfe Badge-Position
+grep -B5 -A10 "badge" styles.css | grep -E "left:|transform"
+```
+
+**Wann Badge LINKS OK ist:**
+✅ Normale Cards (1 Spalte)
+✅ Kleine Cards in Grid
+
+**Wann Badge ZENTRIERT sein muss:**
+❌ Featured Cards mit `grid-column: span 2` oder mehr
+❌ Cards mit `grid-column: 1 / 3` oder ähnlich
+❌ Breite Cards (width > 500px)
+
+**Die Lösung:**
+```css
+/* Badge default: links */
+.card__badge {
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-md);
+}
+
+/* Badge zentriert bei breiten Cards */
+.card--featured .card__badge,
+.card--wide .card__badge {
+    left: 50%;
+    transform: translateX(-50%);
+}
+```
+
+**Prüf-Workflow mit Playwright:**
+```javascript
+playwright_evaluate({
+    script: `
+        const cards = document.querySelectorAll('[class*="featured"], [class*="wide"], [class*="span"]');
+        Array.from(cards).map(card => {
+            const badge = card.querySelector('[class*="badge"]');
+            if (!badge) return null;
+            const style = window.getComputedStyle(badge);
+            const cardWidth = card.offsetWidth;
+            return {
+                cardClass: card.className,
+                cardWidth: cardWidth,
+                badgeLeft: style.left,
+                badgeTransform: style.transform,
+                problem: cardWidth > 400 && !style.transform.includes('translate') ? 'BADGE NICHT ZENTRIERT!' : 'OK'
+            };
+        }).filter(Boolean);
+    `
+})
+```
+
+**AUTO-FIX anwenden wenn Problem gefunden!**
+
+═══════════════════════════════════════════════════════════════
   OUTPUT FORMAT
 ═══════════════════════════════════════════════════════════════
 
@@ -2177,8 +2260,27 @@ Read("assets/images/breakfast-1.jpg")
 ❌ Badges rechts außen bei breiten Cards (span 2+)
 
 **BADGE POSITION:**
-- Bei Cards mit span 2+: Badge LINKS oben (nicht rechts!)
-- Badge rechts = wirkt verloren bei breiten Cards
+- Bei normalen Cards (1 Spalte): Badge LINKS oben ✅
+- Bei breiten Cards (span 2+): Badge ZENTRIERT oben ✅
+- Badge links bei breiter Card = wirkt verloren ❌
+
+**Prüfen mit Playwright:**
+```javascript
+playwright_evaluate({
+    script: `
+        const wide = document.querySelectorAll('[class*="featured"], [class*="wide"]');
+        Array.from(wide).map(card => {
+            const badge = card.querySelector('[class*="badge"]');
+            if (!badge) return null;
+            const style = window.getComputedStyle(badge);
+            return {
+                centered: style.transform.includes('translate'),
+                problem: !style.transform.includes('translate') ? 'BADGE NICHT ZENTRIERT!' : 'OK'
+            };
+        }).filter(Boolean);
+    `
+})
+```
 
 ═══════════════════════════════════════════════════════════════
   🚨 CHECK 4: GRID-ALIGNMENT
