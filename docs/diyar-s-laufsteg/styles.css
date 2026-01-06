@@ -542,7 +542,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
 .specialty-card__badge {
     position: absolute;
     top: var(--space-md);
-    right: var(--space-md);
+    left: var(--space-md);  /* Links - sieht bei breiten Cards besser aus */
     background: var(--color-secondary);
     color: white;
     font-family: var(--font-accent);
