@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <!-- YUMMY Text (White for dark backgrounds) -->
+  <text x="10" y="48" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="38" font-weight="700" fill="#FFFFFF">YUMMY</text>
+  <!-- Döner Subtitle -->
+  <text x="12" y="68" font-family="'Poppins', 'Segoe UI', sans-serif" font-size="13" font-weight="500" fill="rgba(255,255,255,0.85)" letter-spacing="3">DÖNER OFFENBURG</text>
+</svg>
