@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kundenbewertungen und Referenzen der Rechtsanwaltskanzlei Mutter und Jäckl in Kehl. Überzeugen Sie sich von unserer Kompetenz und unserem Engagement.">
+    <meta name="keywords" content="Rechtsanwalt Kehl Bewertungen, Anwalt Kehl Erfahrungen, Mutter Jäckl Referenzen">
+    <title>Referenzen & Bewertungen | Mutter & Jäckl Rechtsanwälte Kehl</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Referenzen Page Specific Styles */
+        .references-hero {
+            padding: calc(80px + var(--space-16)) 0 var(--space-16);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .references-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.03);
+            transform: rotate(15deg);
+        }
+
+        .references-hero__title {
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            margin-bottom: var(--space-4);
+            color: var(--color-white);
+        }
+
+        .references-hero__subtitle {
+            font-size: var(--text-xl);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Google Rating Section */
+        .google-rating-section {
+            padding: var(--space-20) 0;
+            background: var(--color-white);
+        }
+
+        .google-rating-card {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: var(--space-12);
+            background: var(--color-bg);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .google-rating-card__logo {
+            margin-bottom: var(--space-6);
+        }
+
+        .google-rating-card__logo svg {
+            width: 120px;
+            height: auto;
+        }
+
+        .google-rating-card__score {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+
+        .google-rating-card__number {
+            font-family: var(--font-heading);
+            font-size: var(--text-6xl);
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .google-rating-card__stars {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-1);
+        }
+
+        .google-rating-card__stars-row {
+            display: flex;
+            gap: var(--space-1);
+        }
+
+        .google-rating-card__stars-row svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--color-accent);
+        }
+
+        .google-rating-card__stars-row svg.half {
+            fill: url(#star-gradient);
+        }
+
+        .google-rating-card__stars-row svg.empty {
+            fill: var(--color-border);
+        }
+
+        .google-rating-card__max {
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+        }
+
+        .google-rating-card__count {
+            font-size: var(--text-lg);
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-8);
+        }
+
+        .google-rating-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-4) var(--space-8);
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+        }
+
+        .google-rating-card__link:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: var(--space-20) 0;
+            background: var(--color-bg);
+        }
+
+        .testimonial-card {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-10);
+            box-shadow: var(--shadow-md);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card__quote-icon {
+            position: absolute;
+            top: var(--space-6);
+            left: var(--space-6);
+            opacity: 0.1;
+        }
+
+        .testimonial-card__quote-icon svg {
+            width: 64px;
+            height: 64px;
+            fill: var(--color-primary);
+        }
+
+        .testimonial-card__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card__stars {
+            display: flex;
+            gap: var(--space-1);
+            margin-bottom: var(--space-6);
+            justify-content: center;
+        }
+
+        .testimonial-card__stars svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-accent);
+        }
+
+        .testimonial-card__text {
+            font-family: var(--font-heading);
+            font-size: var(--text-2xl);
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--color-text);
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .testimonial-card__author {
+            text-align: center;
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .testimonial-card__name {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
+        }
+
+        .testimonial-card__meta {
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+        }
+
+        .testimonial-card__source {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-top: var(--space-4);
+            padding: var(--space-2) var(--space-4);
+            background: var(--color-bg);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+        }
+
+        /* Other Platforms Section */
+        .platforms-section {
+            padding: var(--space-20) 0;
+            background: var(--color-white);
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-8);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .platform-card {
+            text-align: center;
+            padding: var(--space-8);
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            transition: all var(--transition-base);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .platform-card__name {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+        }
+
+        .platform-card__rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-2);
+        }
+
+        .platform-card__score {
+            font-family: var(--font-heading);
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .platform-card__stars {
+            color: var(--color-accent);
+            font-size: var(--text-lg);
+        }
+
+        .platform-card__count {
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: var(--space-20) 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+        }
+
+        .trust-section .section-header {
+            color: var(--color-white);
+        }
+
+        .trust-section .section-title {
+            color: var(--color-white);
+        }
+
+        .trust-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: var(--space-6);
+        }
+
+        .trust-item__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--space-4);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+        }
+
+        .trust-item__icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--color-white);
+        }
+
+        .trust-item__title {
+            font-family: var(--font-heading);
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+        }
+
+        .trust-item__text {
+            font-size: var(--text-sm);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .google-rating-card__score {
+                flex-direction: column;
+            }
+
+            .google-rating-card__stars {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav__logo">
+                    <img src="assets/logo.svg" alt="Mutter & Jäckl Rechtsanwälte Logo">
+                </a>
+
+                <ul class="nav__menu" id="navMenu">
+                    <li><a href="index.html" class="nav__link">Start</a></li>
+                    <li><a href="referenzen.html" class="nav__link active">Referenzen</a></li>
+                    <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                </ul>
+
+                <a href="tel:+4978517066" class="nav__cta">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span>07851 7066</span>
+                </a>
+
+                <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="references-hero">
+        <div class="container">
+            <h1 class="references-hero__title reveal">Unsere Referenzen</h1>
+            <p class="references-hero__subtitle reveal">
+                Überzeugen Sie sich von der Zufriedenheit unserer Mandanten.
+                Vertrauen, das seit über 40 Jahren gewachsen ist.
+            </p>
+        </div>
+    </section>
+
+    <!-- Google Rating Section -->
+    <section class="google-rating-section">
+        <div class="container">
+            <div class="google-rating-card reveal">
+                <div class="google-rating-card__logo">
+                    <svg viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/>
+                        <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/>
+                        <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/>
+                        <path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/>
+                        <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/>
+                        <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#4285F4"/>
+                    </svg>
+                </div>
+                <div class="google-rating-card__score">
+                    <span class="google-rating-card__number">4.4</span>
+                    <div class="google-rating-card__stars">
+                        <div class="google-rating-card__stars-row">
+                            <!-- Star SVG definition with gradient for half star -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <defs>
+                                    <linearGradient id="star-gradient">
+                                        <stop offset="50%" stop-color="#C9A227"/>
+                                        <stop offset="50%" stop-color="#E5E5E5"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="half">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <span class="google-rating-card__max">von 5 Sternen</span>
+                    </div>
+                </div>
+                <p class="google-rating-card__count">Basierend auf 9 Bewertungen</p>
+                <a href="https://www.google.com/search?q=Rechtsanwaltskanzlei+Mutter+und+J%C3%A4ckl+Kehl+Bewertungen" target="_blank" rel="noopener noreferrer" class="google-rating-card__link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                    Alle Google-Bewertungen ansehen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Mandantenstimmen</span>
+                <h2 class="section-title">Was unsere Mandanten sagen</h2>
+                <p class="section-subtitle">
+                    Echte Bewertungen von zufriedenen Mandanten
+                </p>
+            </div>
+
+            <div class="testimonial-card reveal">
+                <div class="testimonial-card__quote-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                </div>
+                <div class="testimonial-card__content">
+                    <div class="testimonial-card__stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <blockquote class="testimonial-card__text">
+                        „Sehr freundlich und immer hilfsbereit ist Herr Mutter"
+                    </blockquote>
+                    <div class="testimonial-card__author">
+                        <p class="testimonial-card__name">Zufriedener Mandant</p>
+                        <p class="testimonial-card__meta">Dezember 2020</p>
+                        <span class="testimonial-card__source">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            Verifizierte Bewertung auf 11880.com
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Platforms Section -->
+    <section class="platforms-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Weitere Plattformen</span>
+                <h2 class="section-title">Bewertungen auf anderen Portalen</h2>
+                <p class="section-subtitle">
+                    Unsere Kanzlei wird auf verschiedenen Plattformen bewertet
+                </p>
+            </div>
+
+            <div class="platforms-grid">
+                <div class="platform-card reveal">
+                    <h3 class="platform-card__name">11880.com</h3>
+                    <div class="platform-card__rating">
+                        <span class="platform-card__score">5.0</span>
+                        <span class="platform-card__stars">★★★★★</span>
+                    </div>
+                    <p class="platform-card__count">1 Bewertung</p>
+                </div>
+
+                <div class="platform-card reveal">
+                    <h3 class="platform-card__name">Das Örtliche</h3>
+                    <div class="platform-card__rating">
+                        <span class="platform-card__score">5.0</span>
+                        <span class="platform-card__stars">★★★★★</span>
+                    </div>
+                    <p class="platform-card__count">1 Bewertung</p>
+                </div>
+
+                <div class="platform-card reveal">
+                    <h3 class="platform-card__name">Trustlocal</h3>
+                    <div class="platform-card__rating">
+                        <span class="platform-card__score">7.9</span>
+                        <span class="platform-card__stars">/ 10</span>
+                    </div>
+                    <p class="platform-card__count">6 Bewertungen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label" style="color: var(--color-accent);">Vertrauen & Erfahrung</span>
+                <h2 class="section-title">Warum uns Mandanten vertrauen</h2>
+                <p class="section-subtitle">
+                    Über vier Jahrzehnte Erfahrung und persönliche Betreuung
+                </p>
+            </div>
+
+            <div class="trust-grid">
+                <div class="trust-item reveal">
+                    <div class="trust-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <p class="trust-item__title">Seit 1978</p>
+                    <p class="trust-item__text">Kanzleigründung in Kehl</p>
+                </div>
+
+                <div class="trust-item reveal">
+                    <div class="trust-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <p class="trust-item__title">DE & FR</p>
+                    <p class="trust-item__text">Grenzüberschreitende Kompetenz</p>
+                </div>
+
+                <div class="trust-item reveal">
+                    <div class="trust-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <p class="trust-item__title">DAV</p>
+                    <p class="trust-item__text">Mitglied im Deutschen Anwaltverein</p>
+                </div>
+
+                <div class="trust-item reveal">
+                    <div class="trust-item__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <p class="trust-item__title">ACE</p>
+                    <p class="trust-item__text">Vertrauensanwalt</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta__content reveal">
+                <h2 class="cta__title">Überzeugen Sie sich selbst.</h2>
+                <p class="cta__text">
+                    Vereinbaren Sie einen unverbindlichen Beratungstermin
+                    und lernen Sie uns persönlich kennen.
+                </p>
+                <div class="cta__buttons">
+                    <a href="tel:+4978517066" class="btn btn--primary btn--large">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        07851 7066 anrufen
+                    </a>
+                    <a href="kontakt.html" class="btn btn--white">
+                        Kontaktformular
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="cta__hours">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span>Mo – Fr: 08:00 – 17:00 Uhr und nach Vereinbarung</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Mutter & Jäckl Rechtsanwälte Logo">
+                    </a>
+                    <p class="footer__tagline">
+                        Ihre Rechtsanwaltskanzlei in Kehl am Rhein –
+                        kompetent, persönlich, grenzüberschreitend.
+                    </p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navigation</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Start</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Rechtsgebiete</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html#rechtsgebiete">Familienrecht</a></li>
+                        <li><a href="index.html#rechtsgebiete">Verkehrsrecht</a></li>
+                        <li><a href="index.html#rechtsgebiete">Arbeitsrecht</a></li>
+                        <li><a href="index.html#rechtsgebiete">Mietrecht</a></li>
+                        <li><a href="index.html#rechtsgebiete">Strafrecht</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__title">Kontakt</h4>
+                    <address class="footer__address">
+                        <p>Nibelungenstraße 20<br>77694 Kehl am Rhein</p>
+                        <p>
+                            <a href="tel:+4978517066">+49 7851 7066</a><br>
+                            <a href="mailto:raemutter_jaeckl@t-online.de">raemutter_jaeckl@t-online.de</a>
+                        </p>
+                    </address>
+                    <div class="footer__hours">
+                        <p><strong>Bürozeiten:</strong></p>
+                        <p>Mo – Fr: 08:00 – 17:00 Uhr<br>und nach Vereinbarung</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    © 2025 Rechtsanwaltskanzlei Mutter und Jäckl. Alle Rechte vorbehalten.
+                </p>
+                <div class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
