@@ -168,6 +168,13 @@ Das Logo im Header MUSS IMMER auf index.html verlinken:
 ❌ NIEMALS href="/" verwenden! Bei Cloudflare Pages führt "/" zur Root-Domain, nicht zum Projekt-Ordner!
 ✅ IMMER href="index.html" auf ALLEN Seiten (auch auf der index.html selbst)
 
+🗺️ GOOGLE MAPS EMBED (falls auf Homepage):
+Wenn du eine Karte auf der Homepage einbettest:
+1. Suche ZUERST die echte Business-URL mit Place-ID via WebSearch
+2. Extrahiere Place-ID und Koordinaten aus der URL
+3. Verwende die GLEICHE Embed-URL später auch auf der Kontaktseite!
+❌ NIEMALS Platzhalter-Koordinaten wie 2647.123456789 verwenden!
+
 DESIGN-REGELN:
 - Jede Sektion MUSS visuell anders aussehen
 - KEINE zwei gleichen Hintergründe hintereinander
@@ -333,8 +340,9 @@ BEISPIEL WORKFLOW:
 3. Diese URL im HTML verwenden
 ```
 
-🗺️ GOOGLE MAPS EMBED (für Kontaktseite):
-Wenn du eine Karte einbetten willst:
+🗺️ GOOGLE MAPS EMBED (für ALLE Seiten mit Karte!):
+Google Maps kann auf Homepage UND Kontaktseite eingebettet werden!
+
 1. Suche die Business-URL mit Place-ID (siehe oben)
 2. Extrahiere Place-ID und Koordinaten aus der URL:
    - URL: .../place/Name/@48.4592341,7.9172319,.../!1s0x4796d315a845c207:0x1b136d7ae9bb68b
@@ -344,6 +352,12 @@ Wenn du eine Karte einbetten willst:
 ```html
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2650!2d[LNG]!3d[LAT]!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s[PLACE_ID_ENCODED]!2s[NAME_ENCODED]!5e0!3m2!1sde!2sde!4v1704499200000"></iframe>
 ```
+
+🚨 KRITISCH - GLEICHE URL AUF ALLEN SEITEN:
+- Wenn Maps auf Homepage → GLEICHE URL auch auf Kontaktseite verwenden!
+- Wenn Maps auf Kontaktseite → GLEICHE URL auch auf Homepage (falls vorhanden)!
+- NIEMALS unterschiedliche URLs auf verschiedenen Seiten!
+
 ❌ NIEMALS Platzhalter-Koordinaten wie 2647.123456789 verwenden!
 
 WICHTIG:
