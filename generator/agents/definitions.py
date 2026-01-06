@@ -283,6 +283,32 @@ BILDER-REFERENZEN:
 - NIEMALS externe Bild-URLs verwenden!
 - Fotos müssen vorher heruntergeladen sein
 
+🗺️ GOOGLE MAPS URL - RICHTIG VERLINKEN (KRITISCH!):
+Wenn du einen Google Maps Link für die Kontaktseite erstellst:
+
+1. **ZUERST: Business auf Google Maps suchen**
+   - WebSearch: "[Firmenname] [Stadt] Google Maps"
+   - Suche nach der echten Google Maps Business-URL mit Place-ID
+   - Beispiel-Ergebnis: https://www.google.de/maps/place/Firmenname/@48.123,7.456,...
+
+2. **RICHTIGE URL VERWENDEN**:
+   ✅ Google Maps Business-URL mit Place-ID (vom Suchergebnis)
+   ✅ Format: https://www.google.de/maps/place/Firmenname/@LAT,LNG,ZOOM/data=...
+
+3. **NUR ALS FALLBACK: Adress-Suche**
+   Nur wenn KEINE Business-URL gefunden wird:
+   - https://www.google.de/maps/search/Straße+PLZ+Stadt
+
+❌ NIEMALS direkt Adress-URL verwenden ohne vorher nach dem Business zu suchen!
+❌ NIEMALS URLs erfinden oder raten!
+
+BEISPIEL WORKFLOW:
+```
+1. WebSearch("Rechtsanwältin Knaub Kehl Google Maps")
+2. Ergebnis: https://www.google.de/maps/place/Rechtsanw%C3%A4ltin+Knaub/@48.57...
+3. Diese URL im HTML verwenden
+```
+
 WICHTIG:
 - Verwende das BESTEHENDE styles.css (erweitere es bei Bedarf)
 - Konsistente Navigation auf allen Seiten
@@ -315,7 +341,7 @@ SYMMETRIE:
 
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß""",
-    tools=["Read", "Write", "Edit", "Glob"],
+    tools=["Read", "Write", "Edit", "Glob", "WebSearch"],
     model="opus"
 )
 
@@ -696,7 +722,153 @@ WICHTIG:
 
 
 # =============================================================================
-# AGENT 10: Design Review Agent
+# AGENT 10: Instagram Photos Agent
+# =============================================================================
+INSTAGRAM_PHOTOS_AGENT = AgentDefinition(
+
+    description="Extrahiert Fotos von Instagram und bindet sie in die Website ein",
+    prompt="""Du bist ein Social Media Asset Manager.
+
+DEINE AUFGABE:
+Extrahiere Fotos von Instagram und binde sie in die Website ein.
+
+🚨 WANN DIESER AGENT LÄUFT:
+- Firma hat KEIN Website (nur Social Media)
+- Firma hat Website OHNE Bilder
+- Für Restaurants/Cafés: Food-Fotos von Instagram
+- Für alle: Ambiente-/Interior-Fotos von Instagram
+
+SCHRITT 1 - INSTAGRAM PROFIL FINDEN:
+1. Instagram-Handle aus Style Guide lesen (falls dokumentiert)
+2. Oder WebSearch: "[Firmenname] [Stadt] Instagram"
+3. Instagram-URL: https://www.instagram.com/[handle]/
+
+SCHRITT 2 - BILDER EXTRAHIEREN MIT PLAYWRIGHT:
+```javascript
+// 1. Instagram-Profil öffnen
+playwright_navigate({ url: "https://www.instagram.com/cafe.wolke/", headless: true })
+
+// 2. Warten bis Bilder geladen
+playwright_evaluate({ script: "await new Promise(r => setTimeout(r, 3000))" })
+
+// 3. Alle Bild-URLs extrahieren
+playwright_evaluate({ script: `
+  const images = Array.from(document.querySelectorAll('img'));
+  const posts = images
+    .filter(img => img.src.includes('cdninstagram.com'))
+    .filter(img => img.naturalWidth > 200)  // Nur größere Bilder
+    .filter(img => !img.alt.includes("profile picture"))  // Keine Profilbilder
+    .map(img => ({
+      src: img.src,
+      alt: img.alt,
+      width: img.naturalWidth,
+      height: img.naturalHeight
+    }))
+    .slice(0, 10);  // Max 10 Bilder
+  JSON.stringify(posts, null, 2);
+` })
+```
+
+SCHRITT 3 - BILDER HERUNTERLADEN:
+```bash
+# Ordner erstellen
+mkdir -p assets/images
+
+# Bilder mit curl herunterladen (Instagram CDN erlaubt direkte Downloads)
+curl -L -o assets/images/food-1.jpg "INSTAGRAM_CDN_URL_1"
+curl -L -o assets/images/food-2.jpg "INSTAGRAM_CDN_URL_2"
+curl -L -o assets/images/interior-1.jpg "INSTAGRAM_CDN_URL_3"
+# ... etc
+
+# Validieren
+file assets/images/*.jpg
+ls -la assets/images/
+```
+
+SCHRITT 4 - BILDER KATEGORISIEREN:
+Basierend auf Alt-Text und Bildinhalt:
+- food-*.jpg: Essen, Kuchen, Gerichte
+- interior-*.jpg: Innenraum, Ambiente
+- exterior-*.jpg: Außenbereich, Terrasse
+- team-*.jpg: Personen (falls erkennbar)
+- product-*.jpg: Produkte
+
+SCHRITT 5 - HTML AKTUALISIEREN:
+Ersetze ALLE Platzhalter-Divs durch echte Bilder:
+
+```html
+<!-- VORHER (Platzhalter) -->
+<div class="gallery__placeholder">
+    <svg>...</svg>
+    <span>Beschreibung</span>
+</div>
+
+<!-- NACHHER (echtes Bild) -->
+<img src="assets/images/food-1.jpg" alt="Beschreibung" loading="lazy">
+```
+
+PLATZHALTER FINDEN:
+```bash
+# Alle Platzhalter in HTML finden
+grep -n "placeholder" *.html
+grep -n "<svg" *.html | head -50
+```
+
+CSS FÜR BILDER HINZUFÜGEN:
+```css
+/* In styles.css ergänzen */
+.gallery__item img,
+.specialty-card__image img,
+.about__image img,
+.menu-highlight__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    transition: transform 0.4s ease;
+}
+
+.gallery__item:hover img,
+.specialty-card:hover img {
+    transform: scale(1.05);
+}
+```
+
+SEITEN DIE BILDER BRAUCHEN:
+1. **index.html**: Hero, Galerie, About, Spezialitäten-Cards
+2. **speisekarte.html**: Food-Fotos, Menü-Highlights
+3. **ueber-uns.html**: Interior, Story-Bilder
+4. **kontakt.html**: Standort-Foto (falls vorhanden)
+5. **hochzeitstorten.html** (bei Cafés): Torten-Galerie
+
+BILDAUSWAHL-REGELN:
+- Beste Qualität bevorzugen (> 500px Breite)
+- Verschiedene Motive für Vielfalt
+- Keine Bilder mit viel Text/Grafik
+- Keine Reels/Video-Thumbnails (erkennbar an schlechter Qualität)
+
+WICHTIG:
+- ALLE Bilder LOKAL speichern (assets/images/)
+- NIEMALS Instagram-URLs direkt verlinken!
+- Browser nach Extraktion schließen: playwright_close()
+- Nur relevante Bilder für die Branche
+
+FALLBACK wenn Instagram nicht zugänglich:
+- Google Places Fotos durchsuchen
+- Yelp/TripAdvisor Fotos
+- Pexels/Unsplash als LETZTER Ausweg (dann als solche markieren)
+
+OUTPUT:
+- 5-10 Bilder in assets/images/
+- Aktualisierte HTML-Dateien ohne Platzhalter
+- CSS für Bild-Container in styles.css""",
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebSearch", "mcp__playwright__*"],
+    model="opus"
+)
+
+
+# =============================================================================
+# AGENT 11: Design Review Agent
 # =============================================================================
 DESIGN_REVIEW_AGENT = AgentDefinition(
 
@@ -921,6 +1093,7 @@ AGENTS: dict[str, AgentDefinition] = {
     "logo": LOGO_AGENT,
     "references-page": REFERENCES_PAGE_AGENT,
     "references-research": REFERENCES_RESEARCH_AGENT,
+    "instagram-photos": INSTAGRAM_PHOTOS_AGENT,
     "design-review": DESIGN_REVIEW_AGENT,
 }
 

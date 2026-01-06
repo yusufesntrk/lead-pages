@@ -323,6 +323,41 @@ STYLE GUIDE (enthält Team-Informationen):
 
         return await self._run_agent("team-photos", task, additional_context)
 
+    async def run_instagram_photos_agent(self) -> str:
+        """Agent 10: Instagram-Fotos extrahieren"""
+        task = f"""
+Extrahiere Fotos von Instagram für {self.context.lead.firma}.
+
+WANN DIESER AGENT RELEVANT IST:
+- Firma hat KEINE Website (nur Social Media)
+- Firma hat Website OHNE Bilder
+- Branche: Restaurant, Café, Bäckerei, etc. → Food-Fotos
+- Branche: Friseur, Kosmetik → Vorher/Nachher Bilder
+- Allgemein: Ambiente, Interior, Produkt-Fotos
+
+SCHRITTE:
+1. Instagram-Handle finden (suche im Style Guide oder via WebSearch)
+2. Instagram-Profil mit Playwright öffnen
+3. Bild-URLs extrahieren (JavaScript)
+4. Bilder herunterladen nach {self.context.output_dir}/assets/images/
+5. HTML-Platzhalter durch echte Bilder ersetzen
+6. CSS für Bild-Container in styles.css ergänzen
+
+HINWEIS:
+Prüfe zuerst ob es Platzhalter-SVGs in den HTML-Dateien gibt.
+Wenn keine Platzhalter vorhanden → Agent kann übersprungen werden.
+"""
+
+        additional_context = f"""
+STYLE GUIDE:
+{self.context.style_guide_content}
+
+BEREITS ERSTELLTE DATEIEN:
+{', '.join(self.context.created_files)}
+"""
+
+        return await self._run_agent("instagram-photos", task, additional_context)
+
     async def run_link_qa_agent(self) -> str:
         """Agent 5: Link QA"""
         task = f"""
@@ -416,6 +451,7 @@ VORHERIGES FEEDBACK:
             await self.run_legal_pages_agent()
             await self.run_references_page_agent()
             await self.run_team_photos_agent()
+            await self.run_instagram_photos_agent()
 
             # Phase 3: QA
             print("\n🔍 PHASE 3: Quality Assurance")
