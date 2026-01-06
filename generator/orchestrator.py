@@ -128,23 +128,49 @@ KONTEXT:
         )
 
         result_text = ""
+        max_retries = 2
+        retry_count = 0
 
-        try:
-            async for msg in query(prompt=full_prompt, options=options):
-                # Text-Blöcke verarbeiten
-                if hasattr(msg, 'content'):
-                    for block in msg.content:
-                        if hasattr(block, 'text'):
-                            result_text += block.text
-                            print(block.text, end="", flush=True)
+        while retry_count <= max_retries:
+            try:
+                async for msg in query(prompt=full_prompt, options=options):
+                    # Text-Blöcke verarbeiten
+                    if hasattr(msg, 'content'):
+                        for block in msg.content:
+                            if hasattr(block, 'text'):
+                                result_text += block.text
+                                print(block.text, end="", flush=True)
 
-                # Result Message für Stats
-                if hasattr(msg, 'total_cost_usd'):
-                    print(f"\n✅ Agent fertig (${msg.total_cost_usd:.6f})")
-        except Exception as e:
-            print(f"\n❌ Agent-Fehler: {e}")
-            self.context.errors.append(f"{agent_name}: {str(e)}")
-            raise
+                    # Result Message für Stats
+                    if hasattr(msg, 'total_cost_usd'):
+                        print(f"\n✅ Agent fertig (${msg.total_cost_usd:.6f})")
+
+                # Erfolg - aus der Schleife brechen
+                break
+
+            except Exception as e:
+                error_str = str(e)
+                retry_count += 1
+
+                # Bestimmte Fehler sind nicht retry-fähig
+                non_retryable = [
+                    "content filtering policy",
+                    "rate_limit",
+                    "authentication",
+                ]
+
+                is_retryable = not any(err in error_str.lower() for err in non_retryable)
+
+                if is_retryable and retry_count <= max_retries:
+                    print(f"\n⚠️ Agent-Fehler (Retry {retry_count}/{max_retries}): {e}")
+                    # Bei Bild-Fehlern: Prompt anpassen
+                    if "Could not process image" in error_str or "buffer size" in error_str:
+                        full_prompt += "\n\n⚠️ WICHTIG: Überspringe problematische Bilder/PDFs und mach ohne sie weiter!"
+                    continue
+                else:
+                    print(f"\n❌ Agent-Fehler: {e}")
+                    self.context.errors.append(f"{agent_name}: {error_str}")
+                    raise
 
         print()  # Neue Zeile am Ende
         return result_text
@@ -168,7 +194,11 @@ FIRMENDATEN (für Impressum):
 - Google Rating: {self.context.lead.google_rating or 'Nicht bekannt'} ({self.context.lead.google_reviews or 0} Bewertungen)
 """
 
-        result = await self._run_agent("style-guide", task)
+        try:
+            result = await self._run_agent("style-guide", task)
+        except Exception as e:
+            print(f"\n⚠️ Style-Guide Agent fehlgeschlagen, erstelle Fallback...")
+            result = await self._create_fallback_style_guide()
 
         # Speichere Style Guide Pfad im Kontext
         self.context.style_guide_path = self.context.output_dir / "STYLE-GUIDE.md"
@@ -176,8 +206,90 @@ FIRMENDATEN (für Impressum):
         # Lese Style Guide für nächste Agents
         if self.context.style_guide_path.exists():
             self.context.style_guide_content = self.context.style_guide_path.read_text()
+        else:
+            # Fallback wenn Datei nicht existiert
+            print("⚠️ Style Guide nicht erstellt, erstelle Fallback...")
+            result = await self._create_fallback_style_guide()
+            if self.context.style_guide_path.exists():
+                self.context.style_guide_content = self.context.style_guide_path.read_text()
 
         return result
+
+    async def _create_fallback_style_guide(self) -> str:
+        """Erstellt einen minimalen Fallback Style Guide basierend auf Branche"""
+        branche = self.context.lead.branche or "Unbekannt"
+
+        # Branchenspezifische Farben
+        branche_colors = {
+            "Restaurant": {"primary": "#C8943D", "secondary": "#E94F1D", "text": "#333333"},
+            "Rechtsanwalt": {"primary": "#1E3A5F", "secondary": "#C8943D", "text": "#2C3E50"},
+            "Steuerberater": {"primary": "#2C5282", "secondary": "#38A169", "text": "#2D3748"},
+            "Handwerk": {"primary": "#DD6B20", "secondary": "#38A169", "text": "#2D3748"},
+            "Arzt": {"primary": "#3182CE", "secondary": "#48BB78", "text": "#2D3748"},
+        }
+
+        colors = branche_colors.get(branche, {"primary": "#3182CE", "secondary": "#E53E3E", "text": "#2D3748"})
+
+        fallback_content = f"""# Style Guide - {self.context.lead.firma}
+
+## Firmeninfos
+
+| Feld | Wert |
+|------|------|
+| **Name** | {self.context.lead.firma} |
+| **Branche** | {branche} |
+| **Adresse** | {self.context.lead.strasse or ''}, {self.context.lead.plz or ''} {self.context.lead.ort or ''} |
+| **Telefon** | {self.context.lead.telefon or 'Nicht bekannt'} |
+| **E-Mail** | {self.context.lead.email or 'info@example.de'} |
+| **Google Rating** | {self.context.lead.google_rating or 'N/A'} ({self.context.lead.google_reviews or 0} Bewertungen) |
+
+---
+
+## Farbpalette
+
+| Farbe | Hex | Verwendung |
+|-------|-----|------------|
+| **Primärfarbe** | `{colors['primary']}` | Buttons, Akzente, Links |
+| **Sekundärfarbe** | `{colors['secondary']}` | CTAs, Highlights |
+| **Textfarbe** | `{colors['text']}` | Fließtext |
+| **Hintergrund** | `#FFFFFF` | Seitenhintergrund |
+| **Hintergrund Alt** | `#F7FAFC` | Sektionen |
+
+---
+
+## Typografie
+
+| Typ | Schrift | Verwendung |
+|-----|---------|------------|
+| **Headlines** | Inter | H1, H2, H3 |
+| **Body** | Inter | Fließtext |
+
+---
+
+## Hinweis
+
+Dieser Style Guide wurde automatisch erstellt, da die Original-Website nicht analysiert werden konnte.
+Bitte passe Farben und Schriften nach Bedarf an.
+
+---
+
+## Kreative Design-Empfehlungen
+
+1. **Layout-Konzept**: Modernes Card-Grid für Services
+2. **Signature-Effekt**: Subtile Schatten und Hover-Animationen
+3. **Animations-Level**: Moderat - sanfte Übergänge
+4. **Besondere Sektionen**: Hero mit CTA, Services-Grid, Kontakt-Sektion
+"""
+
+        # Erstelle Output-Verzeichnis falls nicht vorhanden
+        self.context.output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Schreibe Fallback Style Guide
+        style_guide_path = self.context.output_dir / "STYLE-GUIDE.md"
+        style_guide_path.write_text(fallback_content)
+
+        print(f"✅ Fallback Style Guide erstellt: {style_guide_path}")
+        return fallback_content
 
     async def run_logo_agent(self) -> str:
         """Agent 7: Logo verarbeiten"""

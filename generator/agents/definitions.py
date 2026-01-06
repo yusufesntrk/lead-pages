@@ -113,7 +113,25 @@ Füge eine "## Kreative Design-Empfehlungen" Sektion hinzu mit:
 4. **Besondere Sektionen** die zur Firma passen:
    - z.B. "Timeline für Firmengeschichte" oder "Interaktive Karte"
 
-Diese Empfehlungen sind PFLICHT damit die Homepage nicht generisch wird!""",
+Diese Empfehlungen sind PFLICHT damit die Homepage nicht generisch wird!
+
+🛡️ FEHLERTOLERANZ (KRITISCH!):
+Wenn ein Bild/PDF nicht geladen oder verarbeitet werden kann:
+1. ÜBERSPRINGE das problematische Asset
+2. Notiere es als "Nicht verfügbar" im Style Guide
+3. MACH WEITER mit den nächsten Schritten
+4. Brich NIEMALS den gesamten Prozess ab wegen eines Bildes!
+
+Beispiel: Wenn ein Logo-Bild einen API-Fehler wirft:
+- ❌ FALSCH: Prozess abbrechen
+- ✅ RICHTIG: "Logo: Nicht extrahierbar, Text-Logo erstellen" notieren und weitermachen
+
+Bei Facebook/Social-Media-Seiten ohne echte Website:
+- Extrahiere nur die grundlegenden Infos (Name, Adresse, Öffnungszeiten)
+- Erstelle ein Design basierend auf der Branche
+- Dokumentiere: "Keine Website vorhanden - Design nach Branche erstellt"
+
+NIEMALS aufgeben - immer einen Style Guide erstellen!""",
     tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
