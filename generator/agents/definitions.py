@@ -864,7 +864,36 @@ ls -la assets/images/
 
 ```
 
-🚨🚨🚨 SCHRITT 4 - BILD-VERIFIKATION (KRITISCH!) 🚨🚨🚨
+🚨🚨🚨 SCHRITT 4 - BILD-QUALITÄTSPRÜFUNG (KRITISCH!) 🚨🚨🚨
+
+A) AUFLÖSUNG PRÜFEN:
+```bash
+# Für JEDES Bild die Auflösung prüfen
+for f in assets/images/*.jpg; do
+  echo "$f: $(sips -g pixelWidth -g pixelHeight "$f" | grep pixel)"
+done
+```
+
+MINDESTANFORDERUNGEN:
+- Breite: min. 800px (besser 1200px)
+- Höhe: min. 600px
+
+❌ ABLEHNEN wenn:
+- Breite < 800px → Suche Stock-Foto als Ersatz!
+- Bild ist nur Thumbnail (< 400px)
+
+B) WASSERZEICHEN PRÜFEN:
+JEDES Bild mit Read Tool öffnen und auf Wasserzeichen prüfen!
+
+❌ SOFORT ABLEHNEN bei:
+- "CapCut" Logo/Text (TikTok Editor)
+- "TikTok" Wasserzeichen
+- "@username" Text-Overlays
+- Herz-Icons oder Emoji-Sticker
+- "TODAY's mood" oder ähnliche Text-Overlays
+- Jegliche sichtbare Watermarks
+
+C) VISUELL PRÜFEN:
 JEDES heruntergeladene Bild MUSS visuell geprüft werden!
 
 WORKFLOW:
@@ -1177,12 +1206,28 @@ Bilder werden oft falsch zugeordnet:
 
 DAS DARFST DU NICHT DURCHLASSEN!
 
-SCHRITT 1 - ALLE BILDER SAMMELN:
+SCHRITT 1 - ALLE BILDER SAMMELN UND AUFLÖSUNG PRÜFEN:
 ```bash
-# Liste alle Bilder im assets Ordner
-ls -la assets/images/
-ls -la assets/*.jpg assets/*.png 2>/dev/null
+# Liste alle Bilder mit Auflösung
+for f in assets/images/*.jpg assets/images/*.png 2>/dev/null; do
+  echo "$f: $(sips -g pixelWidth -g pixelHeight "$f" 2>/dev/null | grep pixel | awk '{print $2}' | tr '\n' 'x')"
+done
 ```
+
+🚨 BILDQUALITÄTS-CHECK:
+| Auflösung | Status | Aktion |
+|-----------|--------|--------|
+| ≥1200px Breite | ✅ OK | Behalten |
+| 800-1199px | ⚠️ Akzeptabel | Behalten, aber dokumentieren |
+| <800px | ❌ ZU KLEIN | Stock-Foto als Ersatz suchen! |
+
+🚨 WASSERZEICHEN-CHECK:
+Jedes Bild visuell prüfen auf:
+- CapCut/TikTok Logos
+- Text-Overlays ("TODAY's mood", etc.)
+- @username Watermarks
+- Emoji-Sticker oder Herz-Icons
+→ Bei Wasserzeichen: SOFORT durch Stock-Foto ersetzen!
 
 SCHRITT 2 - JEDES BILD VISUELL PRÜFEN:
 Öffne JEDES Bild mit dem Read Tool und schaue es dir an:
@@ -1255,6 +1300,27 @@ WebSearch("pexels turkish breakfast spread")
 | Pizza | "pizza margherita oven" |
 | Lahmacun | "lahmacun turkish pizza" |
 | Pide | "turkish pide bread" |
+
+🎯 VERIFIZIERTE STOCK-FOTO URLs (Hochauflösend, ohne Wasserzeichen):
+
+**Türkische Küche:**
+| Gericht | Unsplash URL |
+|---------|--------------|
+| Döner/Gyros Wrap | https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=1200&q=80 |
+| Fleischplatte/Iskender | https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80 |
+| Pizza/Fladenbrot | https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=80 |
+| Falafel | https://images.unsplash.com/photo-1547058881-aa0edd92aab3?w=1200&q=80 |
+| Salat Bowl | https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=80 |
+| Baklava | https://images.unsplash.com/photo-1598110750624-207050c4f28c?w=1200&q=80 |
+
+**Allgemein:**
+| Typ | Unsplash URL |
+|-----|--------------|
+| Frisches Gemüse | https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1200&q=80 |
+| Restaurant Interior | https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80 |
+| Kaffee/Café | https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80 |
+
+⚠️ WICHTIG: Immer Bild nach Download visuell prüfen!
 
 **Stock-Foto herunterladen:**
 ```bash
