@@ -572,7 +572,7 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
 .specialty-card__badge {
     position: absolute;
     top: var(--space-md);
-    left: var(--space-md);  /* Links - sieht bei breiten Cards besser aus */
+    left: var(--space-md);
     background: var(--color-secondary);
     color: white;
     font-family: var(--font-accent);
@@ -580,6 +580,12 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
     font-weight: 600;
     padding: var(--space-xs) var(--space-md);
     border-radius: 50px;
+}
+
+/* Badge zentriert bei breiten Cards */
+.specialty-card--featured .specialty-card__badge {
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .specialty-card__icon {
