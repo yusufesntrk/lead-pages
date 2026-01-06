@@ -165,7 +165,7 @@ KONTEXT:
                     print(f"\n⚠️ Agent-Fehler (Retry {retry_count}/{max_retries}): {e}")
                     # Bei Bild-Fehlern: Prompt anpassen
                     if "Could not process image" in error_str or "buffer size" in error_str:
-                        full_prompt += "\n\n⚠️ WICHTIG: Überspringe problematische Bilder/PDFs und mach ohne sie weiter!"
+                        full_prompt += "\n\n⚠️ WICHTIG: Das vorherige Bild/PDF hat nicht funktioniert! Suche ALTERNATIVE Bilder: andere Formate, andere Seiten der Website, Google Images, oder Social Media. Versuche es NICHT nochmal mit dem gleichen Bild!"
                     continue
                 else:
                     print(f"\n❌ Agent-Fehler: {e}")

@@ -115,23 +115,28 @@ Füge eine "## Kreative Design-Empfehlungen" Sektion hinzu mit:
 
 Diese Empfehlungen sind PFLICHT damit die Homepage nicht generisch wird!
 
-🛡️ FEHLERTOLERANZ (KRITISCH!):
-Wenn ein Bild/PDF nicht geladen oder verarbeitet werden kann:
-1. ÜBERSPRINGE das problematische Asset
-2. Notiere es als "Nicht verfügbar" im Style Guide
-3. MACH WEITER mit den nächsten Schritten
-4. Brich NIEMALS den gesamten Prozess ab wegen eines Bildes!
+🛡️ FEHLERTOLERANZ - ALTERNATIVE BILDER SUCHEN (KRITISCH!):
+Wenn ein Bild nicht geladen oder verarbeitet werden kann:
+1. SUCHE ALTERNATIVE BILDER auf der gleichen Website
+2. Probiere andere Formate (PNG statt JPG, kleinere Version)
+3. Suche auf anderen Seiten der Website (/galerie, /fotos, /ueber-uns)
+4. Falls Website nichts hat: Suche via Google Images "[Firmenname] [Ort]"
+5. Brich NIEMALS ab wegen eines Bildes - finde immer eine Alternative!
 
-Beispiel: Wenn ein Logo-Bild einen API-Fehler wirft:
-- ❌ FALSCH: Prozess abbrechen
-- ✅ RICHTIG: "Logo: Nicht extrahierbar, Text-Logo erstellen" notieren und weitermachen
+Beispiel bei Logo-Fehler:
+- ❌ FALSCH: "Logo nicht verfügbar" und aufgeben
+- ✅ RICHTIG: Suche nach Logo in anderen Formaten, auf Social Media, oder Google
+
+Beispiel bei Speisekarte-PDF zu groß:
+- ❌ FALSCH: Abbrechen
+- ✅ RICHTIG: Screenshots der einzelnen Seiten machen, oder HTML-Version suchen
 
 Bei Facebook/Social-Media-Seiten ohne echte Website:
-- Extrahiere nur die grundlegenden Infos (Name, Adresse, Öffnungszeiten)
-- Erstelle ein Design basierend auf der Branche
-- Dokumentiere: "Keine Website vorhanden - Design nach Branche erstellt"
+- Extrahiere Infos von der Facebook-Seite (Name, Adresse, Öffnungszeiten, Fotos)
+- Suche Bilder auf Google Maps, Google Images, oder Instagram
+- Erstelle Design basierend auf gefundenen Bildern + Branche
 
-NIEMALS aufgeben - immer einen Style Guide erstellen!""",
+NIEMALS aufgeben - IMMER Alternativen suchen und einen Style Guide erstellen!""",
     tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
