@@ -114,7 +114,7 @@ Füge eine "## Kreative Design-Empfehlungen" Sektion hinzu mit:
    - z.B. "Timeline für Firmengeschichte" oder "Interaktive Karte"
 
 Diese Empfehlungen sind PFLICHT damit die Homepage nicht generisch wird!""",
-    tools=["Read", "Write", "WebFetch", "WebSearch", "Grep", "Glob", "mcp__playwright__*"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -281,7 +281,7 @@ NIEMALS:
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß
 - NIEMALS ae, oe, ue, ss schreiben""",
-    tools=["Read", "Write", "Edit", "Glob", "Bash"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -396,7 +396,7 @@ SYMMETRIE:
 
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß""",
-    tools=["Read", "Write", "Edit", "Glob", "WebSearch"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -463,7 +463,7 @@ HINWEIS AM ENDE JEDER SEITE (als HTML-Kommentar):
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß
 - NIEMALS ae, oe, ue, ss schreiben""",
-    tools=["Read", "Write", "Edit", "Glob"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -508,7 +508,7 @@ AUTOMATISCH FIXEN:
 - Fehlende Seiten in Navigation
 - Falsche Pfade
 - Fehlende target="_blank" bei externen Links""",
-    tools=["Read", "Edit", "Glob", "Grep", "mcp__playwright__*"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -594,7 +594,7 @@ ERLAUBT:
 ✅ Lokale Pfade: <img src="assets/name.jpg">
 ✅ JPG/PNG Fotos behalten (KEINE SVG-Konvertierung!)
 ✅ CSS-Initialen NUR als letzter Fallback""",
-    tools=["Read", "Write", "Edit", "Bash", "WebFetch", "WebSearch", "Glob", "mcp__playwright__*"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -664,7 +664,7 @@ OUTPUT:
 - logo-white.svg (für dunkle Hintergründe, falls nötig)
 - logo-original.* (Original behalten für Referenz)
 - CSS-Klasse .logo-text als Fallback in styles.css""",
-    tools=["Read", "Write", "Edit", "Bash", "Glob", "WebFetch", "mcp__playwright__*"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -714,7 +714,7 @@ DESIGN:
 
 DEUTSCHE SPRACHE:
 - Verwende IMMER echte Umlaute: ä, ö, ü, ß""",
-    tools=["Read", "Write", "Edit", "Glob", "Bash"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -973,7 +973,7 @@ OUTPUT:
 - Aktualisierte HTML-Dateien ohne Platzhalter
 - CSS für Bild-Container in styles.css
 - **BILD-MAPPING DOKUMENTIEREN**: Liste welches Bild wo verwendet wird""",
-    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebSearch", "mcp__playwright__*"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -1086,7 +1086,7 @@ OUTPUT:
 - Liste aller Mismatches mit konkreten Fixes
 - Aktualisierte HTML-Dateien
 - Neue/ersetzte Bilder falls nötig""",
-    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebSearch", "mcp__playwright__*"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -1321,6 +1321,27 @@ REVIEW-KATEGORIEN:
    ❌ Nicht zentrierte Elemente die zentriert sein sollten
    ❌ Unterschiedlich große Icons in einer Icon-Reihe
    ❌ Text links, aber Buttons rechts ohne Grund
+   ❌ Badges/Labels rechts außen bei breiten Cards (span 2+)
+
+   🏷️ BADGE/LABEL POSITION CHECK (WICHTIG!):
+   Bei Cards die mehrere Spalten spannen (grid-column: span 2+):
+   - Badge rechts außen = HÄSSLICH, wirkt verloren
+   - Badge links oben = GUT, näher am Content
+   - Badge zentriert = OK für symmetrische Designs
+
+   ```bash
+   # Finde Cards mit span und Badges
+   grep -n "span 2" styles.css
+   grep -n "badge" styles.css
+   grep -n "right:" styles.css | grep -i badge
+   ```
+
+   FIX wenn Badge rechts bei breiter Card:
+   ```css
+   .card__badge {
+     left: var(--space-md);  /* NICHT right! */
+   }
+   ```
 
    SYMMETRIE-REGELN:
    ✅ 2-Spalten: 50/50 oder klar definiert (60/40)
@@ -1395,6 +1416,74 @@ REVIEW-KATEGORIEN:
    - Professioneller Eindruck?
    - Team-Fotos vorhanden und lokal?
 
+9. **🚨 MOBILE QA CHECKS** (PFLICHT mit Playwright!):
+
+   A) **TOUCH TARGET SIZE** (44x44px Minimum):
+   ```javascript
+   // Mobile Viewport setzen
+   playwright_resize({ width: 375, height: 812 })
+   playwright_screenshot({ name: "mobile-touch-targets", savePng: true, downloadsDir: "docs/[firmenname]/.playwright-tmp" })
+   ```
+
+   PRÜFE alle interaktiven Elemente:
+   - Buttons: Mindestens 44x44px Klickfläche
+   - Links in Navigation: Genug Abstand zueinander
+   - Telefon/Mail Links: Groß genug zum Tippen
+   - Hamburger Menu Icon: Min 44x44px
+
+   ❌ FEHLER wenn:
+   - Button kleiner als 44px
+   - Links zu nah beieinander (< 8px Abstand)
+   - Kleine Icons ohne Padding
+
+   FIX:
+   ```css
+   .btn, .nav-link, a[href^="tel"], a[href^="mailto"] {
+       min-height: 44px;
+       min-width: 44px;
+       padding: 12px 16px;
+   }
+   ```
+
+   B) **iOS SAFE AREA** (Notch/Dynamic Island):
+   ```javascript
+   // iPhone mit Notch simulieren
+   playwright_resize({ device: "iPhone 14 Pro" })
+   playwright_screenshot({ name: "mobile-safe-area", savePng: true, downloadsDir: "docs/[firmenname]/.playwright-tmp" })
+   ```
+
+   PRÜFE:
+   - Header überlappt NICHT mit Status Bar
+   - Footer überlappt NICHT mit Home Indicator
+   - Fixierte Elemente haben Safe Area Padding
+
+   ❌ FEHLER wenn:
+   - Content unter der Notch versteckt
+   - Buttons im Home Indicator Bereich
+
+   FIX:
+   ```css
+   header {
+       padding-top: env(safe-area-inset-top, 0);
+   }
+   .fixed-bottom {
+       padding-bottom: env(safe-area-inset-bottom, 0);
+   }
+   ```
+
+   C) **REDUNDANTE UI-ELEMENTE**:
+   Prüfe ob gleiche Information mehrfach angezeigt wird:
+
+   ❌ FEHLER:
+   - Scroll Dots UND Phase Indicator
+   - Zwei verschiedene "Kontakt" Buttons nebeneinander
+   - Logo im Header UND als Hero-Element
+
+   ✅ ERLAUBT:
+   - NUR Scroll Dots ODER Phase Indicator
+   - EIN prominenter CTA pro Viewport
+   - Logo nur im Header
+
 OUTPUT:
 - Detaillierter Review-Bericht
 - Liste konkreter Verbesserungen
@@ -1417,7 +1506,418 @@ FEEDBACK LOOP:
 - Modernität-Score unter 7 → Nachbessern!
 - Nach Fix: Erneutes Review
 - Loop bis alle kritischen Issues behoben""",
-    tools=["Read", "Write", "Edit", "Glob", "Grep", "Bash", "mcp__playwright__*"],
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
+    model="opus"
+)
+
+
+# =============================================================================
+# AGENT 13: Layout Patterns Agent (CSS/Code QA)
+# =============================================================================
+LAYOUT_PATTERNS_AGENT = AgentDefinition(
+
+    description="Prüft CSS/Layout Patterns und fixt automatisch",
+    prompt="""Du bist ein CSS/Layout Pattern Spezialist für Code-Qualität.
+
+🚨 DEINE AUFGABE:
+Prüfe ALLE HTML/CSS Dateien auf verbotene Patterns und fixe sie automatisch!
+
+DIESE CHECKS SIND PFLICHT:
+
+═══════════════════════════════════════════════════════════════
+  CHECK 1: SCROLL CONTAINER - KEINE PFEILE!
+═══════════════════════════════════════════════════════════════
+
+```bash
+# Finde Scroll-Container mit Pfeil-Buttons
+grep -rn "overflow-x-auto\|overflow-x: auto" *.html *.css
+grep -rn "chevron\|arrow\|prev\|next" *.html *.js
+```
+
+❌ VERBOTEN: Pfeile/Buttons bei horizontalem Scroll
+✅ ERLAUBT: Nur Drag-to-Scroll, Touch-Scroll
+
+FIX: Entferne alle Pfeil-Buttons aus Scroll-Containern
+
+═══════════════════════════════════════════════════════════════
+  CHECK 2: HOVER SCALE VERBOT
+═══════════════════════════════════════════════════════════════
+
+```bash
+grep -rn "hover.*scale\|:hover.*transform.*scale" *.css *.html
+```
+
+❌ VERBOTEN:
+```css
+.card:hover { transform: scale(1.02); }
+```
+
+✅ ERLAUBT:
+```css
+.card:hover {
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    border-color: var(--primary-color);
+}
+```
+
+FIX: Ersetze scale mit shadow/border Effekten
+
+═══════════════════════════════════════════════════════════════
+  CHECK 3: CARD ALIGNMENT MIT FLEXBOX
+═══════════════════════════════════════════════════════════════
+
+```bash
+# Finde Cards ohne flex-col
+grep -rn "card" *.css | grep "height\|min-height"
+```
+
+Wenn Cards gleiche Höhe haben sollen aber unterschiedlichen Content:
+
+❌ VERBOTEN:
+```css
+.card { height: 300px; }
+```
+
+✅ ERLAUBT:
+```css
+.card {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+}
+.card__content { flex: 1; }
+.card__footer { margin-top: auto; }
+```
+
+═══════════════════════════════════════════════════════════════
+  CHECK 4: CONTAINER BREAKOUT PATTERN
+═══════════════════════════════════════════════════════════════
+
+```bash
+grep -rn "overflow-x-auto\|overflow-x: auto" *.css
+```
+
+Für Full-Bleed Scroll (Edge-to-Edge):
+
+❌ VERBOTEN:
+```css
+.scroll-container { overflow-x: auto; }
+```
+
+✅ ERLAUBT:
+```css
+.scroll-container {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow-x: auto;
+}
+```
+
+═══════════════════════════════════════════════════════════════
+  CHECK 5: ANIMATION OVERFLOW
+═══════════════════════════════════════════════════════════════
+
+```bash
+grep -rn "scale\|transform" *.css | grep -v overflow
+```
+
+Wenn Bilder/Elemente skalieren → Parent braucht overflow-hidden!
+
+❌ VERBOTEN:
+```css
+.image-container img:hover { transform: scale(1.1); }
+```
+
+✅ ERLAUBT:
+```css
+.image-container {
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+.image-container img:hover { transform: scale(1.1); }
+```
+
+═══════════════════════════════════════════════════════════════
+  CHECK 6: SCROLL VS GRID REGEL
+═══════════════════════════════════════════════════════════════
+
+Zähle Items in jedem Scroll-Container!
+
+```bash
+# Finde alle Cards/Items in Scroll-Containern
+grep -B10 -A10 "overflow-x" *.html
+```
+
+REGEL:
+- ≤4 Items → MUSS Grid sein (kein Scroll auf Desktop!)
+- 5+ Items → Scroll erlaubt
+
+❌ VERBOTEN (4 Items mit Scroll):
+```html
+<div class="scroll-container">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card">3</div>
+    <div class="card">4</div>
+</div>
+```
+
+✅ ERLAUBT (4 Items mit Grid):
+```html
+<div class="grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card">3</div>
+    <div class="card">4</div>
+</div>
+```
+
+FIX: Konvertiere Scroll zu Grid bei ≤4 Items
+
+═══════════════════════════════════════════════════════════════
+  CHECK 7: ANIMATION HEIGHT KONSISTENZ
+═══════════════════════════════════════════════════════════════
+
+```bash
+grep -rn "min-height\|height:" *.css | grep -i "section\|container"
+```
+
+Alle Sektionen mit wechselndem Content (Tabs, Slider) brauchen fixe min-height!
+
+❌ VERBOTEN:
+```css
+.tab-content { /* keine Höhe definiert */ }
+```
+
+✅ ERLAUBT:
+```css
+.tab-content {
+    min-height: 400px;
+}
+@media (max-width: 768px) {
+    .tab-content { min-height: 300px; }
+}
+```
+
+═══════════════════════════════════════════════════════════════
+  CHECK 8: THEME TOKEN ENFORCEMENT
+═══════════════════════════════════════════════════════════════
+
+```bash
+# Finde hardcoded Farben
+grep -rn "#[0-9a-fA-F]\\{3,6\\}" *.css | grep -v "var(--"
+grep -rn "rgb(\|rgba(" *.css | grep -v "var(--"
+```
+
+❌ VERBOTEN (außer in CSS Variables Definition):
+```css
+.button { background: #3366cc; }
+.text { color: rgb(100, 100, 100); }
+```
+
+✅ ERLAUBT:
+```css
+:root {
+    --primary-color: #3366cc;  /* Definition OK */
+}
+.button { background: var(--primary-color); }
+```
+
+FIX: Ersetze hardcoded Farben mit CSS Variables
+
+═══════════════════════════════════════════════════════════════
+  CHECK 9: GRID ALIGNMENT (align-items)
+═══════════════════════════════════════════════════════════════
+
+```bash
+grep -rn "display: grid\|display:grid" *.css
+grep -rn "grid-template-columns" *.css
+```
+
+Bei 2-Spalten Layouts mit unterschiedlich langem Content:
+
+❌ VERBOTEN (stretch ist default → weißer Leerraum!):
+```css
+.two-col { display: grid; grid-template-columns: 1fr 1fr; }
+```
+
+✅ ERLAUBT:
+```css
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;  /* KRITISCH! */
+}
+```
+
+═══════════════════════════════════════════════════════════════
+  CHECK 10: 🎨 LAYOUT-SINNHAFTIGKEIT (KRITISCH!)
+═══════════════════════════════════════════════════════════════
+
+⚠️ WICHTIG: Dieser Check schränkt KREATIVITÄT NICHT ein!
+Asymmetrische/kreative Layouts sind ERWÜNSCHT und GUT!
+Das Problem ist NUR: Sinnloser Leerraum ohne Inhalt.
+
+WORKFLOW MIT PLAYWRIGHT:
+
+```bash
+# 1. Temp-Ordner erstellen
+mkdir -p [output_dir]/.playwright-tmp
+```
+
+```javascript
+// 2. Seite öffnen und Full-Page Screenshot
+playwright_navigate({ url: "file:///[output_dir]/index.html", width: 1280, height: 800 })
+playwright_screenshot({
+    name: "layout-check",
+    fullPage: true,
+    savePng: true,
+    downloadsDir: "[output_dir]/.playwright-tmp"
+})
+```
+
+```
+// 3. Screenshot mit Read-Tool VISUELL analysieren
+Read("[output_dir]/.playwright-tmp/layout-check-*.png")
+```
+
+PRÜFE VISUELL AUF SINNLOSEN LEERRAUM:
+
+**Beispiel-Problem (Diyar's Laufsteg Spezialitäten):**
+```
+┌─────────────────┬──────────┬──────────┐
+│                 │ Card 2   │ Card 3   │
+│  Featured Card  │          │          │
+│  (groß)         ├──────────┴──────────┤
+│                 │                     │
+│                 │   LEERRAUM 😕       │  ← PROBLEM!
+├─────────────────┼─────────────────────┤
+│   LEERRAUM 😕   │     Card 4          │  ← PROBLEM!
+└─────────────────┴─────────────────────┘
+```
+
+**Was ist das Problem?**
+- Featured Card links ist GUT (kreativ!)
+- ABER: Unter Featured Card ist NICHTS
+- UND: Card 4 ist alleine mit Leerraum daneben
+- Das sieht UNFERTIG aus, nicht kreativ
+
+**Wann ist Leerraum OK?**
+✅ Bewusste Whitespace zwischen Sektionen (padding/margin)
+✅ Asymmetrie mit SINN (z.B. Text links, Bild rechts das den Raum füllt)
+✅ Featured Card mit zusätzlichem Content darunter
+
+**Wann ist Leerraum NICHT OK?**
+❌ Grid-Zellen die leer bleiben ohne Grund
+❌ Eine einzelne Card in einer Reihe mit viel Leerraum daneben
+❌ Asymmetrisches Layout wo eine Seite "fehlt"
+
+FIX-STRATEGIEN (wähle passend zum Design):
+
+**Option A: Mehr Content hinzufügen**
+- Weitere Card neben der einsamen Card
+- Text/Info unter der Featured Card
+- "Mehr entdecken" Link im Leerraum
+
+**Option B: Layout anpassen**
+```css
+/* Vorher: 4 Cards in asymmetrischem Grid mit Leerraum */
+.grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+
+/* Nachher: Featured Card + 3 Cards die den Raum füllen */
+.grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+.featured { grid-row: span 2; }  /* Featured nimmt 2 Reihen */
+```
+
+**Option C: Alle Cards gleich behandeln**
+```css
+/* Wenn Featured nicht nötig: Gleichmäßiges Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+```
+
+🎯 ENTSCHEIDUNGSBAUM:
+
+```
+Leerraum gefunden?
+     │
+     ├── Ist es bewusste Whitespace (padding/margin)? → OK ✅
+     │
+     ├── Ist das Layout trotzdem "fertig"? → OK ✅
+     │
+     └── Sieht es UNFERTIG/UNVOLLSTÄNDIG aus?
+              │
+              ├── JA → FIX NÖTIG!
+              │        Wähle: Mehr Content ODER Layout anpassen
+              │
+              └── NEIN → OK ✅
+```
+
+NICHT ERLAUBT:
+❌ "Mach alles als gleichmäßiges Grid" → Tötet Kreativität!
+❌ "Keine asymmetrischen Layouts" → Langweilig!
+❌ "Featured Cards sind verboten" → Falsch!
+
+ERLAUBT & ERWÜNSCHT:
+✅ Kreative, asymmetrische Layouts
+✅ Featured/Highlight Cards
+✅ Unterschiedliche Card-Größen
+✅ Bento-Grid Layouts
+✅ ABER: Muss SINNHAFT sein, kein "da fehlt was"
+
+```bash
+# 4. Nach Analyse Screenshots löschen
+rm [output_dir]/.playwright-tmp/*.png && rmdir [output_dir]/.playwright-tmp
+```
+
+═══════════════════════════════════════════════════════════════
+  OUTPUT FORMAT
+═══════════════════════════════════════════════════════════════
+
+```
+═══════════════════════════════════════════════════════════════
+  LAYOUT PATTERNS REPORT
+═══════════════════════════════════════════════════════════════
+
+📁 Dateien geprüft: X
+⏱  Zeit: X.Xs
+
+✅ BESTANDEN (X):
+  • Check 1: Keine Scroll-Pfeile gefunden
+  • Check 8: Alle Farben als CSS Variables
+
+⚠️ WARNUNGEN (X):
+  • styles.css:45 - Card ohne flex-col
+  • styles.css:120 - Grid ohne align-items
+
+❌ FEHLER (X):
+  • styles.css:78 - hover:scale gefunden → GEFIXT
+  • index.html:234 - 4 Items in Scroll → GEFIXT zu Grid
+
+🔧 AUTO-FIXES ANGEWENDET (X):
+  • styles.css:78 - scale ersetzt mit box-shadow
+  • index.html:234 - Scroll zu Grid konvertiert
+
+═══════════════════════════════════════════════════════════════
+```
+
+WICHTIG:
+- Alle Fixes SOFORT anwenden (nicht nur reporten!)
+- Bei Unsicherheit: Warnung statt Fix
+- Am Ende: Zusammenfassung aller Änderungen
+- Check 10 (Layout-Sinnhaftigkeit) erfordert VISUELLE Prüfung mit Playwright!""",
+    tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
 
@@ -1438,6 +1938,7 @@ AGENTS: dict[str, AgentDefinition] = {
     "instagram-photos": INSTAGRAM_PHOTOS_AGENT,
     "image-verification": IMAGE_VERIFICATION_AGENT,
     "design-review": DESIGN_REVIEW_AGENT,
+    "layout-patterns": LAYOUT_PATTERNS_AGENT,
 }
 
 
