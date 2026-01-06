@@ -150,6 +150,16 @@ BILDER-REFERENZEN:
 - Logo: <img src="assets/logo.svg"> (LOKAL!)
 - NIEMALS externe Bild-URLs im HTML verwenden!
 
+🔗 LOGO-VERLINKUNG (KRITISCH!):
+Das Logo im Header MUSS IMMER auf index.html verlinken:
+```html
+<a href="index.html" class="nav__logo">
+    <img src="assets/logo.svg" alt="Firmenname Logo">
+</a>
+```
+❌ NIEMALS href="/" verwenden! Bei Cloudflare Pages führt "/" zur Root-Domain, nicht zum Projekt-Ordner!
+✅ IMMER href="index.html" auf ALLEN Seiten (auch auf der index.html selbst)
+
 DESIGN-REGELN:
 - Jede Sektion MUSS visuell anders aussehen
 - KEINE zwei gleichen Hintergründe hintereinander
@@ -312,6 +322,7 @@ BEISPIEL WORKFLOW:
 WICHTIG:
 - Verwende das BESTEHENDE styles.css (erweitere es bei Bedarf)
 - Konsistente Navigation auf allen Seiten
+- Logo MUSS auf index.html verlinken: <a href="index.html">
 - Jede Seite MUSS mindestens einen CTA haben
 - Footer auf allen Seiten identisch
 
