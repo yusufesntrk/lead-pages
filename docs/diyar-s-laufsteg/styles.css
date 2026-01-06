@@ -540,6 +540,14 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
     padding: var(--space-3xl);
     background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-beige) 100%);
     border-color: var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+}
+
+.specialty-card--featured .specialty-card__image {
+    flex: 1;
+    height: auto;
+    min-height: 300px;
 }
 
 /* Kleine Cards rechts oben */
