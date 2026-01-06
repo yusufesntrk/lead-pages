@@ -1961,9 +1961,37 @@ playwright_evaluate({
 
 SCHRITT 3: FÜR JEDE SEKTION - 3 SCREENSHOTS
 
-**A) Desktop (1280x800)** - Viewport Screenshot
-**B) Mobile (375x812)** - Viewport Screenshot
-**C) Sektion Full** - Element Screenshot
+⚠️ PFLICHT: Immer die GESAMTE SEKTION screenshotten, nicht nur Viewport!
+Nur so erkennst du leere Flächen, abgeschnittene Cards, Layout-Probleme!
+
+**A) Desktop Viewport (1280x800)**
+```javascript
+playwright_resize({ width: 1280, height: 800 })
+playwright_screenshot({ name: "section-X-desktop-viewport", savePng: true, downloadsDir: "[output_dir]/.playwright-tmp" })
+```
+
+**B) Mobile Viewport (375x812)**
+```javascript
+playwright_resize({ width: 375, height: 812 })
+playwright_screenshot({ name: "section-X-mobile-viewport", savePng: true, downloadsDir: "[output_dir]/.playwright-tmp" })
+```
+
+**C) 🚨 SEKTION KOMPLETT (KRITISCH für Layout-Check!)**
+```javascript
+// Scrolle zur Sektion und screenshotte das ELEMENT, nicht den Viewport!
+playwright_evaluate({ script: "document.querySelectorAll('section')[X].scrollIntoView()" })
+playwright_screenshot({
+    name: "section-X-full",
+    selector: "section:nth-of-type(X)",  // ← ELEMENT-SELECTOR!
+    savePng: true,
+    downloadsDir: "[output_dir]/.playwright-tmp"
+})
+```
+
+⚠️ WARUM SEKTION KOMPLETT SO WICHTIG IST:
+- Viewport zeigt nur 800px → versteckt Leerraum darunter!
+- Element-Screenshot zeigt die GESAMTE Sektion
+- Nur so siehst du: "Crêpes Card alleine mit Leerraum daneben"
 
 ═══════════════════════════════════════════════════════════════
   🚨 CHECK 1: LAYOUT-SINNHAFTIGKEIT (KRITISCH!)
