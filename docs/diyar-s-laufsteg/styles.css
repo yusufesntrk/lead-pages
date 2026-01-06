@@ -541,6 +541,10 @@ h3 { font-size: clamp(20px, 3vw, 24px); font-weight: 600; }
     border-color: var(--color-secondary);
 }
 
+.specialty-card--wide {
+    grid-column: span 2;
+}
+
 .specialty-card__badge {
     position: absolute;
     top: var(--space-md);
