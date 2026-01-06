@@ -963,10 +963,73 @@ WICHTIG:
 - Browser nach Extraktion schließen: playwright_close()
 - Nur relevante Bilder für die Branche
 
-FALLBACK wenn Instagram nicht zugänglich:
-- Google Places Fotos durchsuchen
-- Yelp/TripAdvisor Fotos
-- Pexels/Unsplash als LETZTER Ausweg (dann als solche markieren)
+═══════════════════════════════════════════════════════════════
+  🚨 FALLBACK: STOCK-FOTOS WENN KEINE ORIGINAL-BILDER
+═══════════════════════════════════════════════════════════════
+
+Wenn Instagram/Website KEINE passenden Bilder hat → Stock-Fotos suchen!
+
+**Priorität:**
+1. Original-Bilder vom Unternehmen (Website, Instagram, Google Maps)
+2. Stock-Fotos die zum GERICHT passen (Pexels, Unsplash)
+3. NIEMALS: Falsches Bild oder Platzhalter
+
+**WORKFLOW für Stock-Foto Suche:**
+
+```python
+# Beispiel: "Türkisches Frühstück" - keine Original-Bilder gefunden
+
+# 1. Suchbegriff aus Beschreibung ableiten
+beschreibung = "Käse, Oliven, Sucuk, frisches Brot, Eier"
+suchbegriff = "turkish breakfast cheese olives eggs bread"
+
+# 2. Pexels API nutzen (kostenlos, keine API-Key nötig für Suche)
+WebSearch("pexels turkish breakfast")
+# → Ergebnis: https://www.pexels.com/search/turkish%20breakfast/
+
+# 3. Bild-URL von Pexels holen
+WebFetch("https://www.pexels.com/search/turkish%20breakfast/",
+         prompt="Finde die URL des besten Bildes das türkisches Frühstück mit Käse, Oliven, Eier, Brot zeigt")
+```
+
+**Konkrete Suchbegriffe pro Gericht:**
+
+| Gericht | Suchbegriff für Stock-Foto |
+|---------|---------------------------|
+| Türkisches Frühstück | "turkish breakfast spread cheese olives eggs bread" |
+| Kebab/Döner | "kebab skewers grilled meat" |
+| Crêpes | "crepes pancakes berries chocolate" |
+| Burger | "gourmet cheeseburger" |
+| Salat | "fresh salad bowl" |
+| Cocktails | "cocktail bar drink" |
+| Interior Restaurant | "restaurant interior cozy" |
+
+**Bild herunterladen von Pexels:**
+```bash
+# Pexels Bilder können direkt heruntergeladen werden
+# Format: https://images.pexels.com/photos/[ID]/pexels-photo-[ID].jpeg
+
+curl -L -o assets/images/turkish-breakfast.jpg "https://images.pexels.com/photos/5638693/pexels-photo-5638693.jpeg?auto=compress&cs=tinysrgb&w=1260"
+```
+
+**Alternative: Unsplash**
+```bash
+# Unsplash Bilder können auch direkt heruntergeladen werden
+# Format: https://images.unsplash.com/photo-[ID]
+
+curl -L -o assets/images/kebab.jpg "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=1200"
+```
+
+🚨 WICHTIG: Stock-Foto MUSS zum beschreibenden Text passen!
+- Beschreibung sagt "Sucuk, Käse, Oliven" → Bild MUSS diese zeigen
+- Nicht irgendein Frühstücksbild nehmen!
+- Lieber länger suchen als falsches Bild!
+
+**Nach Download: VISUELL PRÜFEN!**
+```
+Read("assets/images/turkish-breakfast.jpg")
+```
+→ Zeigt es wirklich türkisches Frühstück mit den genannten Zutaten?
 
 OUTPUT:
 - 5-10 Bilder in assets/images/
@@ -1048,19 +1111,66 @@ BEISPIEL-OUTPUT:
 
 SCHRITT 5 - FIXES DURCHFÜHREN:
 
-Option A: Besseres Bild finden
-1. Pexels/Unsplash mit curl durchsuchen
-2. Google Images für spezifisches Gericht
-3. Bild herunterladen und ersetzen
+**Option A: STOCK-FOTO SUCHEN (BEVORZUGT!)**
 
-Option B: Text an Bild anpassen
-Wenn kein besseres Bild verfügbar:
+Wenn Bild nicht passt → Passendes Stock-Foto von Pexels/Unsplash holen!
+
+```python
+# Beispiel: "Türkisches Frühstück" zeigt falsches Bild
+
+# 1. Beschreibung aus HTML lesen
+beschreibung = "Käse, Oliven, Sucuk, frisches Brot, Eier"
+
+# 2. Passenden Suchbegriff erstellen
+suchbegriff = "turkish breakfast cheese olives eggs bread simit"
+
+# 3. Pexels durchsuchen
+WebSearch("pexels turkish breakfast spread")
+```
+
+**Suchbegriff-Tabelle:**
+| Gericht | Suchbegriff |
+|---------|-------------|
+| Türkisches Frühstück | "turkish breakfast spread cheese olives eggs bread" |
+| Kebab | "kebab skewers grilled meat doner" |
+| Crêpes | "crepes pancakes chocolate berries" |
+| Burger | "gourmet cheeseburger" |
+| Pizza | "pizza margherita oven" |
+| Lahmacun | "lahmacun turkish pizza" |
+| Pide | "turkish pide bread" |
+
+**Stock-Foto herunterladen:**
+```bash
+# Von Pexels
+curl -L -o assets/images/turkish-breakfast-new.jpg \
+  "https://images.pexels.com/photos/5638693/pexels-photo-5638693.jpeg?auto=compress&cs=tinysrgb&w=1260"
+
+# Von Unsplash
+curl -L -o assets/images/kebab-new.jpg \
+  "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=1200"
+```
+
+**Nach Download VISUELL PRÜFEN:**
+```
+Read("assets/images/turkish-breakfast-new.jpg")
+```
+→ Zeigt es WIRKLICH türkisches Frühstück mit Käse, Oliven, Sucuk, Brot?
+→ Wenn JA: Altes Bild ersetzen
+→ Wenn NEIN: Anderes Stock-Foto suchen!
+
+🚨 KRITISCH: Stock-Foto MUSS zur Beschreibung passen!
+- Beschreibung: "Sucuk, Käse, Oliven, Brot, Eier"
+- Stock-Foto MUSS diese Elemente zeigen
+- Nicht irgendein Frühstücksbild nehmen!
+
+**Option B: Text an Bild anpassen (NUR wenn kein passendes Bild findbar)**
+Wenn WIRKLICH kein passendes Stock-Foto existiert:
 1. Beschreibung ändern auf was das Bild WIRKLICH zeigt
-2. Oder Bild komplett entfernen
+2. ABER: Vorher mindestens 3 verschiedene Stock-Foto Suchen durchführen!
 
-Option C: Platzhalter statt falsches Bild
+**Option C: Platzhalter (LETZTER AUSWEG)**
 ```html
-<!-- Lieber Icon/Platzhalter als falsches Bild! -->
+<!-- Nur wenn WIRKLICH nichts passendes gefunden! -->
 <div class="specialty-card__placeholder">
     <svg><!-- Food icon --></svg>
 </div>
