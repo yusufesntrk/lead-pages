@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Speisekarte Gasthaus EFEM - Türkische Spezialitäten: Köfte-Ekmek, Adana Kebab, frischer Fisch, Meze und mehr. Authentische Grillkunst in Offenburg.">
+    <title>Speisekarte | Gasthaus EFEM Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Gasthaus EFEM Logo" width="200" height="63">
+            </a>
+
+            <button class="nav__toggle" aria-label="Navigation öffnen" aria-expanded="false">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <ul class="nav__menu">
+                <li><a href="index.html" class="nav__link">Startseite</a></li>
+                <li><a href="speisekarte.html" class="nav__link nav__link--active">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="referenzen.html" class="nav__link">Referenzen</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero page-hero--menu">
+            <div class="page-hero__bg"></div>
+            <div class="container">
+                <div class="page-hero__content">
+                    <span class="page-hero__tag">Speisekarte</span>
+                    <h1 class="page-hero__title">Unsere Spezialitäten</h1>
+                    <p class="page-hero__text">Authentische türkische Grillkunst – frisch zubereitet mit Leidenschaft</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Categories -->
+        <section class="menu-nav">
+            <div class="container">
+                <div class="menu-nav__wrapper">
+                    <a href="#vorspeisen" class="menu-nav__link">Vorspeisen</a>
+                    <a href="#vom-grill" class="menu-nav__link">Vom Grill</a>
+                    <a href="#fisch" class="menu-nav__link">Fischgerichte</a>
+                    <a href="#klassiker" class="menu-nav__link">Klassiker</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlight Banner -->
+        <section class="menu-highlight">
+            <div class="container">
+                <div class="menu-highlight__grid reveal">
+                    <div class="menu-highlight__image">
+                        <img src="assets/images/kofte.jpg" alt="Köfte vom Grill - unser Bestseller" loading="lazy">
+                    </div>
+                    <div class="menu-highlight__content">
+                        <div class="menu-highlight__badge">Unser Bestseller</div>
+                        <h2 class="menu-highlight__title">Köfte-Ekmek</h2>
+                        <p class="menu-highlight__text">Saftig gegrillte Hackfleischbällchen im frischen Fladenbrot – legendär in der ganzen Region. Dieses Gericht hat uns berühmt gemacht!</p>
+                        <div class="menu-highlight__quote">
+                            <blockquote>„Legendäres Köfte-Ekmek und Fisch in der ganzen Region. Einfach nur zu empfehlen!"</blockquote>
+                            <cite>— Jale Kalay, Google Review</cite>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vorspeisen -->
+        <section id="vorspeisen" class="menu-section">
+            <div class="container">
+                <header class="section-header reveal">
+                    <span class="section-header__tag">Meze</span>
+                    <h2 class="section-header__title">Vorspeisen<br>& Meze</h2>
+                    <p class="section-header__text">Perfekt zum Teilen und als Einstieg in die türkische Küche</p>
+                </header>
+
+                <div class="menu-grid menu-grid--3">
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Hummus</h3>
+                            <p class="menu-item__desc">Cremige Kichererbsenpaste mit Tahini, Olivenöl und orientalischen Gewürzen</p>
+                        </div>
+                        <span class="menu-item__tag">Vegetarisch</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Cacık</h3>
+                            <p class="menu-item__desc">Erfrischender Joghurt mit Gurken, Knoblauch und frischer Minze</p>
+                        </div>
+                        <span class="menu-item__tag">Vegetarisch</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Çoban Salatası</h3>
+                            <p class="menu-item__desc">Frischer Hirtensalat mit Tomaten, Gurken, Paprika und Sumach</p>
+                        </div>
+                        <span class="menu-item__tag">Vegetarisch</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Meze Platte</h3>
+                            <p class="menu-item__desc">Auswahl verschiedener Vorspeisen – ideal zum Teilen für 2-3 Personen</p>
+                        </div>
+                        <span class="menu-item__tag">Empfehlung</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Sigara Böreği</h3>
+                            <p class="menu-item__desc">Knusprige Yufka-Röllchen gefüllt mit Schafskäse und Petersilie</p>
+                        </div>
+                        <span class="menu-item__tag">Vegetarisch</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Patlıcan Salatası</h3>
+                            <p class="menu-item__desc">Geräucherte Auberginencreme mit Knoblauch und Joghurt</p>
+                        </div>
+                        <span class="menu-item__tag">Vegetarisch</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vom Grill -->
+        <section id="vom-grill" class="menu-section menu-section--alt">
+            <div class="container">
+                <header class="section-header reveal">
+                    <span class="section-header__tag">Grillspezialitäten</span>
+                    <h2 class="section-header__title">Vom<br>Holzkohlegrill</h2>
+                    <p class="section-header__text">Unsere Grillgerichte werden über offener Flamme zubereitet – für das authentische Aroma</p>
+                </header>
+
+                <div class="menu-featured">
+                    <article class="menu-featured__item reveal">
+                        <div class="menu-featured__icon">
+                            <svg viewBox="0 0 64 64" width="56" height="56">
+                                <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M20 28c0-6.6 5.4-12 12-12s12 5.4 12 12" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <ellipse cx="32" cy="38" rx="14" ry="8" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="24" y1="44" x2="24" y2="50" stroke="currentColor" stroke-width="2"/>
+                                <line x1="32" y1="46" x2="32" y2="52" stroke="currentColor" stroke-width="2"/>
+                                <line x1="40" y1="44" x2="40" y2="50" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="menu-featured__content">
+                            <span class="menu-featured__badge">Bestseller</span>
+                            <h3 class="menu-featured__name">Köfte</h3>
+                            <p class="menu-featured__desc">Hausgemachte Hackfleischbällchen nach traditionellem Familienrezept, würzig mariniert und saftig gegrillt. Serviert mit Reis und Salat.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-featured__item reveal">
+                        <div class="menu-featured__icon">
+                            <svg viewBox="0 0 64 64" width="56" height="56">
+                                <rect x="12" y="28" width="40" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 28c0-8 6-12 16-12s16 4 16 12" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="36" x2="44" y2="36" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="42" x2="36" y2="42" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="menu-featured__content">
+                            <span class="menu-featured__badge">Original</span>
+                            <h3 class="menu-featured__name">Adana Kebab</h3>
+                            <p class="menu-featured__desc">Das Original aus Südostanatolien – würzig mariniertes Hackfleisch am Spieß, über Holzkohle gegrillt. Ein Meisterwerk der türkischen Grillkunst.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="menu-grid menu-grid--2">
+                    <article class="menu-item menu-item--dark reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Grillteller EFEM</h3>
+                            <p class="menu-item__desc">Unsere Grillauswahl: Köfte, Adana, Hähnchen und Lamm mit Beilagen</p>
+                        </div>
+                        <span class="menu-item__tag">Für 2 Personen</span>
+                    </article>
+
+                    <article class="menu-item menu-item--dark reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Kuzu Şiş</h3>
+                            <p class="menu-item__desc">Zarte Lammfleischspieße mit Paprika und Zwiebeln vom Grill</p>
+                        </div>
+                        <span class="menu-item__tag">Lamm</span>
+                    </article>
+
+                    <article class="menu-item menu-item--dark reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Tavuk Şiş</h3>
+                            <p class="menu-item__desc">Marinierte Hähnchenspieße, saftig und aromatisch gegrillt</p>
+                        </div>
+                        <span class="menu-item__tag">Hähnchen</span>
+                    </article>
+
+                    <article class="menu-item menu-item--dark reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Beyti</h3>
+                            <p class="menu-item__desc">Gewürztes Hackfleisch im Yufka-Mantel mit Joghurt und Tomatensauce</p>
+                        </div>
+                        <span class="menu-item__tag">Spezialität</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fischgerichte -->
+        <section id="fisch" class="menu-section">
+            <div class="container">
+                <header class="section-header reveal">
+                    <span class="section-header__tag">Aus dem Meer</span>
+                    <h2 class="section-header__title">Frische<br>Fischgerichte</h2>
+                    <p class="section-header__text">Täglich frisch – perfekt gegrillt und mit mediterranen Aromen verfeinert</p>
+                </header>
+
+                <div class="fish-showcase fish-showcase--with-image reveal">
+                    <div class="fish-showcase__image">
+                        <img src="assets/images/makrele.jpg" alt="Frischer Fisch vom Grill" loading="lazy">
+                    </div>
+                    <div class="fish-showcase__content">
+                        <blockquote class="fish-showcase__quote">
+                            „Gestern bekam ich im EFEM die beste Dorade, welche ich jemals in Deutschland essen durfte!"
+                        </blockquote>
+                        <cite class="fish-showcase__cite">— Google Review</cite>
+                    </div>
+                </div>
+
+                <div class="menu-grid menu-grid--2">
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Dorade</h3>
+                            <p class="menu-item__desc">Ganze Dorade vom Grill, mit Zitrone, Knoblauch und frischen Kräutern</p>
+                        </div>
+                        <span class="menu-item__tag">Empfehlung</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Loup de Mer</h3>
+                            <p class="menu-item__desc">Wolfsbarsch gegrillt, serviert mit mediterranem Gemüse</p>
+                        </div>
+                        <span class="menu-item__tag">Premium</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Fischplatte</h3>
+                            <p class="menu-item__desc">Auswahl gegrillter Fische mit Meeresfrüchten und Beilagen</p>
+                        </div>
+                        <span class="menu-item__tag">Für 2 Personen</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Karides</h3>
+                            <p class="menu-item__desc">Garnelen in Knoblauch-Butter, serviert in der heißen Pfanne</p>
+                        </div>
+                        <span class="menu-item__tag">Meeresfrüchte</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Klassiker -->
+        <section id="klassiker" class="menu-section menu-section--cream">
+            <div class="container">
+                <header class="section-header reveal">
+                    <span class="section-header__tag">Türkische Klassiker</span>
+                    <h2 class="section-header__title">Beliebte<br>Gerichte</h2>
+                    <p class="section-header__text">Die Klassiker der türkischen Küche – zeitlos gut</p>
+                </header>
+
+                <div class="menu-grid menu-grid--3">
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Döner Teller</h3>
+                            <p class="menu-item__desc">Frisch geschnittenes Dönerfleisch mit Reis, Salat und hausgemachten Saucen</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">İskender</h3>
+                            <p class="menu-item__desc">Dönerfleisch auf Fladenbrot mit Tomatensauce, Joghurt und zerlassener Butter</p>
+                        </div>
+                        <span class="menu-item__tag">Klassiker</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Lahmacun</h3>
+                            <p class="menu-item__desc">Türkische Pizza – hauchdünn und knusprig, mit würzigem Hackfleisch</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Pide</h3>
+                            <p class="menu-item__desc">Gefüllte Fladenbrote – verschiedene Füllungen verfügbar</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Köfte-Ekmek</h3>
+                            <p class="menu-item__desc">Unsere legendären Köfte im frischen Fladenbrot – der Favorit!</p>
+                        </div>
+                        <span class="menu-item__tag">Legende</span>
+                    </article>
+
+                    <article class="menu-item reveal">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Vegetarischer Teller</h3>
+                            <p class="menu-item__desc">Auswahl vegetarischer Meze mit Reis und frischem Salat</p>
+                        </div>
+                        <span class="menu-item__tag">Vegetarisch</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta__content reveal">
+                    <h2 class="cta__title">Appetit bekommen?</h2>
+                    <p class="cta__text">Reservieren Sie Ihren Tisch und erleben Sie authentische türkische Küche!</p>
+                    <div class="cta__actions">
+                        <a href="kontakt.html" class="btn btn--primary btn--large">Tisch reservieren</a>
+                        <a href="tel:+4978159376686" class="cta__phone">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            <span>0781 59376686</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html">
+                        <img src="assets/logo-white.svg" alt="Gasthaus EFEM" width="180" height="56">
+                    </a>
+                    <p class="footer__desc">Authentische türkische Küche mitten in Offenburg. Besuchen Sie uns für unvergessliche Geschmackserlebnisse.</p>
+                </div>
+
+                <div class="footer__nav">
+                    <h3 class="footer__title">Navigation</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h3 class="footer__title">Kontakt</h3>
+                    <address class="footer__address">
+                        <p>Goldgasse 45<br>77652 Offenburg</p>
+                        <p><a href="tel:+4978159376686">0781 59376686</a></p>
+                    </address>
+                </div>
+
+                <div class="footer__legal">
+                    <h3 class="footer__title">Rechtliches</h3>
+                    <ul class="footer__links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 Gasthaus EFEM. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

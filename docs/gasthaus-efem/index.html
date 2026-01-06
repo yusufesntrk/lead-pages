@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gasthaus EFEM in Offenburg - Authentische türkische Spezialitäten, legendäres Köfte-Ekmek und frischer Fisch vom Grill. 4,8★ Google Rating.">
+    <title>Gasthaus EFEM | Türkische Spezialitäten in Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="assets/logo.svg" alt="Gasthaus EFEM Logo" width="200" height="63">
+            </a>
+
+            <button class="nav__toggle" aria-label="Navigation öffnen" aria-expanded="false">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+            </button>
+
+            <ul class="nav__menu">
+                <li><a href="index.html" class="nav__link nav__link--active">Startseite</a></li>
+                <li><a href="speisekarte.html" class="nav__link">Speisekarte</a></li>
+                <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                <li><a href="referenzen.html" class="nav__link">Referenzen</a></li>
+                <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__bg"></div>
+            <div class="hero__content container">
+                <span class="hero__badge">★ 4,8 von 5 bei Google</span>
+                <h1 class="hero__title">Authentische<br><span>türkische Küche</span></h1>
+                <p class="hero__subtitle">„Gestern bekam ich im EFEM die beste Dorade, welche ich jemals in Deutschland essen durfte!"</p>
+                <div class="hero__actions">
+                    <a href="speisekarte.html" class="btn btn--primary">Speisekarte ansehen</a>
+                    <a href="kontakt.html" class="btn btn--outline">Tisch reservieren</a>
+                </div>
+            </div>
+            <div class="hero__scroll">
+                <span>Mehr entdecken</span>
+                <div class="hero__scroll-icon"></div>
+            </div>
+        </section>
+
+        <!-- Trust Signals -->
+        <section class="trust">
+            <div class="container">
+                <div class="trust__grid">
+                    <div class="trust__item reveal">
+                        <span class="trust__number">4,8</span>
+                        <span class="trust__label">Google Rating</span>
+                        <span class="trust__detail">189+ Bewertungen</span>
+                    </div>
+                    <div class="trust__divider"></div>
+                    <div class="trust__item reveal">
+                        <span class="trust__number">97</span>
+                        <span class="trust__label">Sluurpy Score</span>
+                        <span class="trust__detail">von 100 Punkten</span>
+                    </div>
+                    <div class="trust__divider"></div>
+                    <div class="trust__item reveal">
+                        <span class="trust__number">★</span>
+                        <span class="trust__label">Restaurant Guru</span>
+                        <span class="trust__detail">4,3 von 5 Sternen</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialties Section -->
+        <section class="specialties">
+            <div class="container">
+                <header class="section-header reveal">
+                    <span class="section-header__tag">Unsere Spezialitäten</span>
+                    <h2 class="section-header__title">Meisterhafte<br>Grillkunst</h2>
+                    <p class="section-header__text">Traditionelle türkische Rezepte, frische Zutaten und die Leidenschaft fürs Kochen – das macht unser Essen besonders.</p>
+                </header>
+
+                <div class="specialties__grid">
+                    <article class="specialty-card specialty-card--large reveal">
+                        <div class="specialty-card__icon">
+                            <svg viewBox="0 0 64 64" width="48" height="48">
+                                <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M20 28c0-6.6 5.4-12 12-12s12 5.4 12 12" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <ellipse cx="32" cy="38" rx="14" ry="8" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="24" y1="44" x2="24" y2="50" stroke="currentColor" stroke-width="2"/>
+                                <line x1="32" y1="46" x2="32" y2="52" stroke="currentColor" stroke-width="2"/>
+                                <line x1="40" y1="44" x2="40" y2="50" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="specialty-card__title">Köfte-Ekmek</h3>
+                        <p class="specialty-card__desc">Unser legendäres Köfte-Ekmek ist weit über Offenburg bekannt – saftig gegrillte Hackfleischbällchen im frischen Fladenbrot.</p>
+                        <span class="specialty-card__badge">Bestseller</span>
+                    </article>
+
+                    <article class="specialty-card reveal">
+                        <div class="specialty-card__icon">
+                            <svg viewBox="0 0 64 64" width="48" height="48">
+                                <ellipse cx="32" cy="42" rx="22" ry="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M14 42c0-12 8-24 18-26s18 14 18 26" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="32" y1="16" x2="32" y2="12" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="32" cy="10" r="2" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="specialty-card__title">Frischer Fisch</h3>
+                        <p class="specialty-card__desc">Dorade und Loup de Mer – täglich frisch und perfekt gegrillt.</p>
+                    </article>
+
+                    <article class="specialty-card reveal">
+                        <div class="specialty-card__icon">
+                            <svg viewBox="0 0 64 64" width="48" height="48">
+                                <rect x="12" y="28" width="40" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 28c0-8 6-12 16-12s16 4 16 12" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="36" x2="44" y2="36" stroke="currentColor" stroke-width="2"/>
+                                <line x1="20" y1="42" x2="36" y2="42" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="specialty-card__title">Adana Kebab</h3>
+                        <p class="specialty-card__desc">Original aus Südostanatolien – würzig mariniertes Hackfleisch am Spieß.</p>
+                    </article>
+
+                    <article class="specialty-card reveal">
+                        <div class="specialty-card__icon">
+                            <svg viewBox="0 0 64 64" width="48" height="48">
+                                <circle cx="32" cy="36" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <ellipse cx="32" cy="36" rx="12" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M26 32c2-4 6-6 10-4" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="38" cy="30" r="2" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="specialty-card__title">Meze Vielfalt</h3>
+                        <p class="specialty-card__desc">Hummus, Cacık und mehr – perfekt zum Teilen und Genießen.</p>
+                    </article>
+
+                    <article class="specialty-card reveal">
+                        <div class="specialty-card__icon">
+                            <svg viewBox="0 0 64 64" width="48" height="48">
+                                <ellipse cx="32" cy="38" rx="20" ry="12" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 38c0-8 7-18 16-18s16 10 16 18" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="26" cy="34" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="38" cy="34" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M28 42c4 2 8 2 12 0" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="specialty-card__title">Pide & Lahmacun</h3>
+                        <p class="specialty-card__desc">Türkische Pizza frisch aus dem Steinofen – knusprig und aromatisch.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Food Gallery -->
+        <section class="food-gallery">
+            <div class="container">
+                <header class="section-header reveal">
+                    <span class="section-header__tag">Impressionen</span>
+                    <h2 class="section-header__title">Einblicke in<br>unsere Küche</h2>
+                    <p class="section-header__text">Frisch zubereitet mit Leidenschaft – entdecken Sie unsere Spezialitäten</p>
+                </header>
+
+                <div class="gallery-grid reveal">
+                    <div class="gallery-item gallery-item--large">
+                        <img src="assets/images/meze.jpg" alt="Meze-Platte mit Hummus, Cacık und frischem Gemüse" loading="lazy">
+                        <div class="gallery-item__overlay">
+                            <span>Meze Vielfalt</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/kofte.jpg" alt="Saftige Köfte mit Pommes vom Grill" loading="lazy">
+                        <div class="gallery-item__overlay">
+                            <span>Köfte</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/grillteller.jpg" alt="Grillteller mit zartem Lammfleisch" loading="lazy">
+                        <div class="gallery-item__overlay">
+                            <span>Vom Grill</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/sarma.jpg" alt="Yaprak Sarma - gefüllte Weinblätter" loading="lazy">
+                        <div class="gallery-item__overlay">
+                            <span>Sarma</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/garnelen.jpg" alt="Garnelen in würziger Sauce" loading="lazy">
+                        <div class="gallery-item__overlay">
+                            <span>Meeresfrüchte</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Teaser -->
+        <section class="about-teaser">
+            <div class="about-teaser__pattern"></div>
+            <div class="container">
+                <div class="about-teaser__content reveal">
+                    <span class="section-header__tag section-header__tag--light">Über uns</span>
+                    <h2 class="about-teaser__title">Gastfreundschaft<br>wie in der Türkei</h2>
+                    <p class="about-teaser__text">Bei uns im Gasthaus EFEM erwartet Sie mehr als nur ein Essen – erleben Sie echte türkische Herzlichkeit mitten in Offenburg. Unsere Küche verbindet traditionelle Rezepte mit der Frische regionaler Zutaten.</p>
+                    <blockquote class="about-teaser__quote">
+                        „The waitresses and owner fantastic! So welcoming, warm and helpful..."
+                        <cite>— Google Review</cite>
+                    </blockquote>
+                    <a href="ueber-uns.html" class="btn btn--secondary">Mehr erfahren</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <header class="section-header reveal">
+                    <span class="section-header__tag">Gästestimmen</span>
+                    <h2 class="section-header__title">Das sagen<br>unsere Gäste</h2>
+                </header>
+
+                <div class="testimonials__grid">
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-card__rating">★★★★★</div>
+                        <p class="testimonial-card__text">„Heiliger Meister des Grill in diesem kulinarisch eher unaufgeregtem Dorf. Super Adana, Köfte, Grillteller, Fisch etc."</p>
+                        <footer class="testimonial-card__footer">
+                            <div class="testimonial-card__avatar">PD</div>
+                            <div class="testimonial-card__author">
+                                <span class="testimonial-card__name">Phil D.</span>
+                                <span class="testimonial-card__source">Google Review</span>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-card__rating">★★★★★</div>
+                        <p class="testimonial-card__text">„Legendäres Köfte-Ekmek und Fisch in der ganzen Region. Einfach nur zu empfehlen!"</p>
+                        <footer class="testimonial-card__footer">
+                            <div class="testimonial-card__avatar">JK</div>
+                            <div class="testimonial-card__author">
+                                <span class="testimonial-card__name">Jale Kalay</span>
+                                <span class="testimonial-card__source">Google Review</span>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-card__rating">★★★★★</div>
+                        <p class="testimonial-card__text">„Best Turkish food... shepherd's salad, meze dishes, meat simply divine!"</p>
+                        <footer class="testimonial-card__footer">
+                            <div class="testimonial-card__avatar">AK</div>
+                            <div class="testimonial-card__author">
+                                <span class="testimonial-card__name">Arzu Kopdur</span>
+                                <span class="testimonial-card__source">Google Review</span>
+                            </div>
+                        </footer>
+                    </article>
+                </div>
+
+                <div class="testimonials__cta reveal">
+                    <a href="referenzen.html" class="btn btn--secondary">Alle Referenzen ansehen</a>
+                    <a href="https://maps.app.goo.gl/YP8t6JZjTzPn6vJL7" target="_blank" rel="noopener" class="google-badge">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                        <span>189 Google Bewertungen</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta__content reveal">
+                    <h2 class="cta__title">Haben Sie Appetit bekommen?</h2>
+                    <p class="cta__text">Reservieren Sie Ihren Tisch oder besuchen Sie uns spontan – wir freuen uns auf Sie!</p>
+                    <div class="cta__actions">
+                        <a href="kontakt.html" class="btn btn--primary btn--large">Jetzt reservieren</a>
+                        <a href="tel:+4978159376686" class="cta__phone">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            <span>0781 59376686</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html">
+                        <img src="assets/logo-white.svg" alt="Gasthaus EFEM" width="180" height="56">
+                    </a>
+                    <p class="footer__desc">Authentische türkische Küche mitten in Offenburg. Besuchen Sie uns für unvergessliche Geschmackserlebnisse.</p>
+                </div>
+
+                <div class="footer__nav">
+                    <h3 class="footer__title">Navigation</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="referenzen.html">Referenzen</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h3 class="footer__title">Kontakt</h3>
+                    <address class="footer__address">
+                        <p>Goldgasse 45<br>77652 Offenburg</p>
+                        <p><a href="tel:+4978159376686">0781 59376686</a></p>
+                    </address>
+                </div>
+
+                <div class="footer__legal">
+                    <h3 class="footer__title">Rechtliches</h3>
+                    <ul class="footer__links">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 Gasthaus EFEM. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
