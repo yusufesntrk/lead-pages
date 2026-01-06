@@ -994,14 +994,22 @@ REVIEW-KATEGORIEN:
    - Passt es in den Header ohne Overflow?
    - Wird bei weißem Mobile-Header das dunkle Logo angezeigt?
 
-   D) **LOGO DIREKT RENDERN**:
+   D) **LOGO DIREKT RENDERN** (PFLICHT!):
    ```javascript
    // Logo-SVG direkt öffnen um Font-Rendering zu prüfen
-   playwright_navigate({ url: ".../assets/logo.svg" })
-   playwright_screenshot({ name: "logo-direct" })
+   playwright_navigate({ url: ".../assets/logo.svg", width: 500, height: 150 })
+   playwright_screenshot({ name: "logo-direct", width: 500, height: 150 })
    ```
+   PRÜFE GENAU:
    - Wird der Text korrekt angezeigt?
    - Fehlen Buchstaben oder Texte?
+   - **Ist genug ABSTAND zwischen Wörtern?** (z.B. "Kanzlei Knaub" nicht "KanzleiKnaub")
+   - Ist die Schrift lesbar und nicht zu eng/weit?
+
+   ⚠️ FONT-BREITEN-PROBLEM:
+   Web-Safe Fonts (Georgia, Arial) haben ANDERE Breiten als Google Fonts!
+   → Text-Positionen im SVG müssen ggf. angepasst werden
+   → Prüfe ob Wörter überlappen oder zu nah beieinander sind
 
    HÄUFIGE LOGO-FEHLER:
    ❌ @import Google Fonts in SVG → Browser blockiert oft!
