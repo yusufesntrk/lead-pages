@@ -1768,20 +1768,50 @@ mkdir -p [output_dir]/.playwright-tmp
 ```
 
 ```javascript
-// 2. Seite öffnen und Full-Page Screenshot
+// 2. Seite öffnen
 playwright_navigate({ url: "file:///[output_dir]/index.html", width: 1280, height: 800 })
+
+// 3. Full-Page Screenshot für Überblick
 playwright_screenshot({
-    name: "layout-check",
+    name: "layout-full-page",
     fullPage: true,
     savePng: true,
     downloadsDir: "[output_dir]/.playwright-tmp"
 })
 ```
 
+⚠️ PFLICHT: JEDE SEKTION EINZELN SCREENSHOTTEN!
+Nur so erkennst du Leerraum INNERHALB einer Sektion!
+
+```javascript
+// 4. Sektionen identifizieren
+playwright_evaluate({
+    script: `Array.from(document.querySelectorAll('section')).map((s,i) => ({
+        index: i, id: s.id, class: s.className, height: s.offsetHeight
+    }))`
+})
+
+// 5. FÜR JEDE SEKTION: Element-Screenshot (KRITISCH!)
+// Beispiel für Sektion 2 (Spezialitäten):
+playwright_evaluate({ script: "document.querySelectorAll('section')[2].scrollIntoView()" })
+playwright_screenshot({
+    name: "section-2-full",
+    selector: "section:nth-of-type(3)",  // ← ELEMENT-SELECTOR = GESAMTE SEKTION!
+    savePng: true,
+    downloadsDir: "[output_dir]/.playwright-tmp"
+})
 ```
-// 3. Screenshot mit Read-Tool VISUELL analysieren
-Read("[output_dir]/.playwright-tmp/layout-check-*.png")
+
 ```
+// 6. Screenshots mit Read-Tool VISUELL analysieren
+Read("[output_dir]/.playwright-tmp/section-X-full.png")
+```
+
+⚠️ WARUM ELEMENT-SCREENSHOTS KRITISCH SIND:
+- fullPage ist gut für Überblick
+- ABER: Du musst JEDE Sektion einzeln sehen!
+- Viewport schneidet Sektionen ab → versteckt Leerraum
+- Element-Screenshot zeigt die GESAMTE Sektion mit allen Cards
 
 PRÜFE VISUELL AUF SINNLOSEN LEERRAUM:
 
