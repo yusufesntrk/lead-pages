@@ -462,6 +462,32 @@ Erstelle am Ende einen Gesamtüberblick mit Score.
 
         return await self._run_agent("human-view", task)
 
+    async def run_finalize_agent(self) -> str:
+        """Agent 15: Finalize - Git Push & Airtable Update"""
+
+        # Slug für URL erstellen
+        slug = self.context.output_dir.name
+
+        task = f"""
+Finalisiere die Website für {self.context.lead.firma}.
+
+DATEN:
+- Output-Verzeichnis: {self.context.output_dir}
+- Firmenname: {self.context.lead.firma}
+- URL-Slug: {slug}
+- Airtable Record ID: {self.context.lead.id}
+
+SCHRITTE:
+1. Git: Committe und pushe {self.context.output_dir}/
+2. Airtable: Aktualisiere Record {self.context.lead.id}
+   - "Seite erstellt": true
+   - "Landingpage URL": https://lead-pages.pages.dev/{slug}/
+
+WICHTIG: Beide Schritte MÜSSEN erfolgreich sein!
+"""
+
+        return await self._run_agent("finalize", task)
+
     async def generate(self) -> Path:
         """
         Hauptmethode: Generiert die komplette Website.
@@ -522,6 +548,14 @@ Erstelle am Ende einen Gesamtüberblick mit Score.
             # Phase 5: Human View (Finale visuelle Prüfung)
             print("\n👁️ PHASE 5: Human View (Finale visuelle Prüfung)")
             await self.run_human_view_agent()
+
+            # Phase 6: Finalize (Git Push & Airtable Update)
+            # Nur wenn KEIN Test-Modus und echte Record ID
+            if self.context.lead.id and not self.context.lead.id.startswith("test"):
+                print("\n🚀 PHASE 6: Finalize (Git Push & Airtable)")
+                await self.run_finalize_agent()
+            else:
+                print("\n⏭️ PHASE 6: Übersprungen (Test-Modus)")
 
             # Zusammenfassung
             duration = datetime.now() - start_time
