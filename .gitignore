@@ -7,3 +7,4 @@ node_modules/
 .env
 .mcp.json
 .playwright-tmp/
+__pycache__/
