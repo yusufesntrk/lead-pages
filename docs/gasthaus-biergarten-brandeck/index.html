@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gasthaus Biergarten Brandeck | Restaurant in Offenburg</title>
+    <meta name="description" content="Gasthaus Biergarten Brandeck in Offenburg - Deutsche Küche, wunderschöner Biergarten, hausgemachte Waffeln. Seit 1903. Jetzt Tisch reservieren!">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <img src="assets/logo.svg" alt="Brandeck Logo">
+            </a>
+
+            <nav class="header__nav" id="nav">
+                <ul class="header__nav-list">
+                    <li><a href="#willkommen" class="header__nav-link">Willkommen</a></li>
+                    <li><a href="speisekarte.html" class="header__nav-link">Speisekarte</a></li>
+                    <li><a href="#galerie" class="header__nav-link">Galerie</a></li>
+                    <li><a href="#ueber-uns" class="header__nav-link">Über uns</a></li>
+                    <li><a href="kontakt.html" class="header__nav-link">Kontakt</a></li>
+                    <li><a href="tel:078130352" class="header__nav-link header__nav-link--cta">Reservieren</a></li>
+                </ul>
+            </nav>
+
+            <button class="header__menu-toggle" id="menu-toggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__bg">
+            <img src="assets/hero-biergarten.jpg" alt="Biergarten Brandeck unter schattenspendenden Bäumen" class="hero__bg-img">
+            <div class="hero__overlay"></div>
+        </div>
+
+        <div class="hero__content">
+            <div class="hero__badge">
+                <span class="hero__badge-dot"></span>
+                <span id="open-status">Heute geöffnet</span>
+            </div>
+
+            <h1 class="hero__title">
+                <span class="hero__title-sub">Urwald-Gaststätte seit 1903</span>
+                Gasthaus Biergarten<br>
+                <span class="hero__title-accent">Brandeck</span>
+            </h1>
+
+            <p class="hero__text">
+                Deutsche Küche mit Herz, frische regionale Gerichte und ein wunderschöner Biergarten unter alten Bäumen. Willkommen in Offenburg.
+            </p>
+
+            <div class="hero__actions">
+                <a href="#kontakt" class="btn btn--primary">Tisch reservieren</a>
+                <a href="speisekarte.html" class="btn btn--secondary">Speisekarte ansehen</a>
+            </div>
+
+            <div class="hero__rating">
+                <div class="hero__stars">★★★★☆</div>
+                <span class="hero__rating-text">4.4 von 5 · 1.305 Google Bewertungen</span>
+            </div>
+        </div>
+
+        <div class="hero__scroll">
+            <span>Entdecken</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Willkommen Section -->
+    <section class="welcome" id="willkommen">
+        <div class="container">
+            <div class="welcome__grid">
+                <div class="welcome__content reveal">
+                    <span class="section-tag">Herzlich Willkommen</span>
+                    <h2 class="section-title">Ein Ort zum Wohlfühlen</h2>
+                    <div class="divider"></div>
+                    <p class="welcome__text">
+                        Genießen Sie unsere große Auswahl an köstlicher, liebevoll zubereiteter deutscher Küche. Vom klassischen Wiener Schnitzel über Wild- und Fischgerichte bis hin zu vegetarischen Leckereien – bei uns ist für jeden Geschmack etwas dabei.
+                    </p>
+                    <p class="welcome__text">
+                        Lassen Sie sich zwischendurch von unseren <strong>hausgemachten Waffeln</strong> und himmlischen Desserts verführen.
+                    </p>
+                </div>
+
+                <div class="welcome__features reveal">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🍽️</div>
+                        <h3 class="feature-card__title">Regionale Küche</h3>
+                        <p class="feature-card__text">Frische Produkte aus der Region, liebevoll zubereitet</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🌳</div>
+                        <h3 class="feature-card__title">Biergarten</h3>
+                        <p class="feature-card__text">Schattenspendende Bäume und gemütliche Atmosphäre</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card__icon">👨‍👩‍👧‍👦</div>
+                        <h3 class="feature-card__title">Familienfreundlich</h3>
+                        <p class="feature-card__text">Kinderecke mit vielen Spielmöglichkeiten</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🐕</div>
+                        <h3 class="feature-card__title">Hundefreundlich</h3>
+                        <p class="feature-card__text">Vierbeiner sind bei uns herzlich willkommen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speisekarte Section -->
+    <section class="menu" id="speisekarte">
+        <div class="menu__bg"></div>
+        <div class="container">
+            <div class="menu__header reveal">
+                <span class="section-tag section-tag--light">Unsere Küche</span>
+                <h2 class="section-title section-title--light">Speisekarte</h2>
+                <div class="divider"></div>
+                <p class="menu__intro">Von Klassikern bis zu saisonalen Spezialitäten – entdecken Sie unsere vielfältige Auswahl</p>
+            </div>
+
+            <div class="menu__categories reveal">
+                <div class="menu-card">
+                    <div class="menu-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                    </div>
+                    <h3 class="menu-card__title">Hauptgerichte</h3>
+                    <p class="menu-card__text">Schnitzel, Rumpsteak, Wild & Fisch</p>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="menu-card__title">Salate</h3>
+                    <p class="menu-card__text">Knackig frisch aus regionalem Anbau</p>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05l-5 2V1h-2v8l-5-2 .37 8.46c.09.8.79 1.42 1.59 1.42h1.66l-.67 5.11h3.44l.67-5.11z"/>
+                        </svg>
+                    </div>
+                    <h3 class="menu-card__title">Vegetarisch</h3>
+                    <p class="menu-card__text">Vielfältige fleischlose Gerichte</p>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 3L4 9v12h16V9l-8-6zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 8.5 12 8.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="menu-card__title">Desserts</h3>
+                    <p class="menu-card__text">Hausgemachte Waffeln & mehr</p>
+                </div>
+            </div>
+
+            <div class="menu__cta reveal">
+                <a href="speisekarte.html" class="btn btn--primary btn--large">Komplette Speisekarte</a>
+                <a href="assets/speisekarte.pdf" target="_blank" class="btn btn--outline-light">PDF herunterladen</a>
+            </div>
+
+            <!-- Mittagstisch Teaser -->
+            <div class="menu__mittagstisch reveal">
+                <div class="mittagstisch-card">
+                    <div class="mittagstisch-card__content">
+                        <span class="mittagstisch-card__badge">Täglicher Mittagstisch</span>
+                        <h3 class="mittagstisch-card__title">Günstig & Lecker</h3>
+                        <p class="mittagstisch-card__text">Jeden Tag zwei frische Gerichte ab nur <strong>9,90 €</strong></p>
+                        <a href="speisekarte.html#mittagstisch" class="mittagstisch-card__link">Wochenplan ansehen →</a>
+                    </div>
+                    <div class="mittagstisch-card__image">
+                        <img src="assets/mittagstisch.jpg" alt="Mittagstisch Wochenplan">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie Section -->
+    <section class="gallery" id="galerie">
+        <div class="container">
+            <div class="gallery__header reveal">
+                <span class="section-tag">Impressionen</span>
+                <h2 class="section-title">Unser Gasthaus</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="gallery__grid reveal">
+                <div class="gallery__item gallery__item--large">
+                    <img src="assets/biergarten-1.jpg" alt="Gemütlicher Biergarten mit Sonnenschirmen" loading="lazy">
+                    <div class="gallery__item-overlay">
+                        <span>Biergarten</span>
+                    </div>
+                </div>
+
+                <div class="gallery__item">
+                    <img src="assets/gericht-1.jpg" alt="Herzhaftes Gericht aus unserer Küche" loading="lazy">
+                    <div class="gallery__item-overlay">
+                        <span>Unsere Küche</span>
+                    </div>
+                </div>
+
+                <div class="gallery__item">
+                    <img src="assets/innenraum.jpg" alt="Gemütlicher Gastraum" loading="lazy">
+                    <div class="gallery__item-overlay">
+                        <span>Gastraum</span>
+                    </div>
+                </div>
+
+                <div class="gallery__item">
+                    <img src="assets/dessert-waffeln.jpg" alt="Hausgemachte Waffeln mit Früchten" loading="lazy">
+                    <div class="gallery__item-overlay">
+                        <span>Desserts</span>
+                    </div>
+                </div>
+
+                <div class="gallery__item gallery__item--wide">
+                    <img src="assets/biergarten-2.jpg" alt="Biergarten Panorama" loading="lazy">
+                    <div class="gallery__item-overlay">
+                        <span>Unter alten Bäumen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über uns Section -->
+    <section class="about" id="ueber-uns">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__image reveal">
+                    <img src="assets/gericht-2.jpg" alt="Liebevoll angerichtetes Gericht">
+                    <div class="about__image-accent"></div>
+                </div>
+
+                <div class="about__content reveal">
+                    <span class="section-tag">Seit 1903</span>
+                    <h2 class="section-title">Tradition trifft Moderne</h2>
+                    <div class="divider divider--left"></div>
+
+                    <p class="about__text">
+                        Als Urwald-Gaststätte sind wir seit über 120 Jahren ein fester Bestandteil der Offenburger Gastronomielandschaft. Unser wunderschöner Biergarten unter alten Bäumen lädt zum Verweilen ein.
+                    </p>
+
+                    <p class="about__text">
+                        Ob ein gemütliches Mittagessen, ein Abendessen mit der Familie oder eine Feier in unseren Räumlichkeiten – wir freuen uns darauf, Sie bei uns begrüßen zu dürfen!
+                    </p>
+
+                    <ul class="about__list">
+                        <li>
+                            <span class="about__list-icon">✓</span>
+                            Speisen auch zum Mitnehmen
+                        </li>
+                        <li>
+                            <span class="about__list-icon">✓</span>
+                            Räumlichkeiten für Feiern & Veranstaltungen
+                        </li>
+                        <li>
+                            <span class="about__list-icon">✓</span>
+                            Eigener Parkplatz vorhanden
+                        </li>
+                    </ul>
+
+                    <a href="#kontakt" class="btn btn--primary">Jetzt anfragen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Reviews Section -->
+    <section class="reviews">
+        <div class="container">
+            <div class="reviews__card reveal">
+                <div class="reviews__header">
+                    <div class="reviews__google-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                    </div>
+                    <div class="reviews__info">
+                        <div class="reviews__stars">
+                            <span class="reviews__star">★</span>
+                            <span class="reviews__star">★</span>
+                            <span class="reviews__star">★</span>
+                            <span class="reviews__star">★</span>
+                            <span class="reviews__star reviews__star--half">★</span>
+                        </div>
+                        <p class="reviews__rating">4.4 von 5 Sternen</p>
+                        <p class="reviews__count">Basierend auf 1.305 Bewertungen</p>
+                    </div>
+                </div>
+
+                <a href="https://www.google.com/maps/place/Gasthaus+Biergarten+Brandeck/@48.4583333,7.9419444,17z/" target="_blank" rel="noopener" class="reviews__link">
+                    Alle Bewertungen auf Google ansehen →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Öffnungszeiten Section -->
+    <section class="hours" id="oeffnungszeiten">
+        <div class="container">
+            <div class="hours__grid">
+                <div class="hours__info reveal">
+                    <span class="section-tag">Öffnungszeiten</span>
+                    <h2 class="section-title">Wann Sie uns besuchen können</h2>
+                    <div class="divider divider--left"></div>
+
+                    <p class="hours__note">
+                        <strong>Hinweis:</strong> Die Küchenzeiten können abweichen. Bitte rufen Sie uns bei Fragen gerne an.
+                    </p>
+                </div>
+
+                <div class="hours__table reveal">
+                    <div class="hours__row">
+                        <span class="hours__day">Montag</span>
+                        <span class="hours__time">10:30 – 23:00</span>
+                    </div>
+                    <div class="hours__row hours__row--closed">
+                        <span class="hours__day">Dienstag</span>
+                        <span class="hours__time">Ruhetag</span>
+                    </div>
+                    <div class="hours__row">
+                        <span class="hours__day">Mittwoch</span>
+                        <span class="hours__time">10:30 – 23:00</span>
+                    </div>
+                    <div class="hours__row">
+                        <span class="hours__day">Donnerstag</span>
+                        <span class="hours__time">10:30 – 23:00</span>
+                    </div>
+                    <div class="hours__row">
+                        <span class="hours__day">Freitag</span>
+                        <span class="hours__time">10:30 – 23:00</span>
+                    </div>
+                    <div class="hours__row">
+                        <span class="hours__day">Samstag</span>
+                        <span class="hours__time">10:30 – 23:00</span>
+                    </div>
+                    <div class="hours__row">
+                        <span class="hours__day">Sonntag</span>
+                        <span class="hours__time">11:30 – 21:30</span>
+                    </div>
+
+                    <div class="hours__kitchen">
+                        <p><strong>Warme Küche:</strong></p>
+                        <p>Mo, Mi–Fr: 11:30–14:30 & 17:00–21:30</p>
+                        <p>Sa: 11:30–21:30 | So: 11:30–21:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="kontakt">
+        <div class="cta__bg">
+            <img src="assets/gericht-3.jpg" alt="Köstliches Gericht" class="cta__bg-img">
+            <div class="cta__overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="cta__content reveal">
+                <h2 class="cta__title">Reservieren Sie Ihren Tisch</h2>
+                <p class="cta__text">
+                    Ob gemütliches Dinner zu zweit, Familienfeier oder Firmenveranstaltung – wir freuen uns auf Ihren Besuch!
+                </p>
+
+                <div class="cta__contact">
+                    <a href="tel:078130352" class="cta__phone">
+                        <span class="cta__phone-icon">📞</span>
+                        <span class="cta__phone-number">0781 / 30352</span>
+                    </a>
+
+                    <a href="mailto:katarina.henninger@googlemail.com" class="cta__email">
+                        ✉️ E-Mail schreiben
+                    </a>
+                </div>
+
+                <div class="cta__address">
+                    <p>📍 Zeller Straße 44, 77654 Offenburg</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anfahrt Section -->
+    <section class="location">
+        <div class="location__map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.5!2d7.9494!3d48.473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796d36d332ef9dd%3A0x906f0cdade3f77df!2sGasthaus%20Brandeck%2C%20Biergarten%2C%20die%20alte%20Brauereigastst%C3%A4tte!5e0!3m2!1sde!2sde!4v1704499200000"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <div class="container">
+            <div class="location__info reveal">
+                <div class="location__card">
+                    <h3 class="location__title">Anfahrt & Parken</h3>
+                    <p class="location__address">
+                        Zeller Straße 44<br>
+                        77654 Offenburg
+                    </p>
+                    <p class="location__parking">
+                        <span class="location__parking-icon">🅿️</span>
+                        Eigener Parkplatz vorhanden
+                    </p>
+                    <a href="https://www.google.com/maps/dir//Gasthaus+Brandeck,+Biergarten,+die+alte+Brauereigastst%C3%A4tte" target="_blank" rel="noopener" class="btn btn--primary">
+                        Route planen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Brandeck Logo">
+                    </a>
+                    <p class="footer__tagline">Urwald-Gaststätte seit 1903</p>
+                    <p class="footer__description">
+                        Deutsche Küche mit Herz, ein wunderschöner Biergarten und herzliche Gastfreundschaft – das ist das Brandeck.
+                    </p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__nav-title">Navigation</h4>
+                    <ul class="footer__nav-list">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="#ueber-uns">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__nav-title">Kontakt</h4>
+                    <address class="footer__address">
+                        <p>Zeller Straße 44</p>
+                        <p>77654 Offenburg</p>
+                        <p><a href="tel:078130352">0781 / 30352</a></p>
+                        <p><a href="mailto:katarina.henninger@googlemail.com">E-Mail senden</a></p>
+                    </address>
+                </div>
+
+                <div class="footer__legal">
+                    <h4 class="footer__nav-title">Rechtliches</h4>
+                    <ul class="footer__nav-list">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copy">© 2026 Gasthaus Biergarten Brandeck. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

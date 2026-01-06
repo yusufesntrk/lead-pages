@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speisekarte | Gasthaus Biergarten Brandeck</title>
+    <meta name="description" content="Unsere Speisekarte: Deutsche Küche mit regionalen Produkten, frische Salate, Wild- und Fischgerichte, vegetarische Auswahl und hausgemachte Desserts.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header header--solid" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">
+                <img src="assets/logo.svg" alt="Brandeck Logo">
+            </a>
+
+            <nav class="header__nav" id="nav">
+                <ul class="header__nav-list">
+                    <li><a href="index.html" class="header__nav-link">Startseite</a></li>
+                    <li><a href="speisekarte.html" class="header__nav-link header__nav-link--active">Speisekarte</a></li>
+                    <li><a href="index.html#galerie" class="header__nav-link">Galerie</a></li>
+                    <li><a href="index.html#ueber-uns" class="header__nav-link">Über uns</a></li>
+                    <li><a href="kontakt.html" class="header__nav-link">Kontakt</a></li>
+                    <li><a href="tel:078130352" class="header__nav-link header__nav-link--cta">Reservieren</a></li>
+                </ul>
+            </nav>
+
+            <button class="header__menu-toggle" id="menu-toggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero__bg">
+            <img src="assets/gericht-4.jpg" alt="Köstliche Speisen aus unserer Küche" class="page-hero__bg-img">
+            <div class="page-hero__overlay"></div>
+        </div>
+        <div class="page-hero__content">
+            <span class="page-hero__tag">Unsere Küche</span>
+            <h1 class="page-hero__title">Speisekarte</h1>
+            <p class="page-hero__text">Von Klassikern bis zu saisonalen Spezialitäten – entdecken Sie unsere vielfältige Auswahl an regionalen Gerichten.</p>
+        </div>
+    </section>
+
+    <!-- Download Banner -->
+    <section class="download-banner">
+        <div class="container">
+            <div class="download-banner__content reveal">
+                <div class="download-banner__text">
+                    <h2>Komplette Speisekarte als PDF</h2>
+                    <p>Laden Sie unsere vollständige Speisekarte herunter – ideal zum Stöbern vor Ihrem Besuch.</p>
+                </div>
+                <a href="assets/speisekarte.pdf" target="_blank" class="btn btn--primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    PDF herunterladen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Categories -->
+    <section class="menu-page">
+        <div class="container">
+
+            <!-- Hauptgerichte -->
+            <div class="menu-section reveal" id="hauptgerichte">
+                <div class="menu-section__header">
+                    <span class="menu-section__icon">🍽️</span>
+                    <h2 class="menu-section__title">Hauptgerichte</h2>
+                    <p class="menu-section__subtitle">Klassiker der deutschen Küche</p>
+                </div>
+
+                <div class="menu-section__grid">
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Wiener Schnitzel</h3>
+                            <p class="menu-item__desc">Paniertes Kalbsschnitzel mit Pommes frites, Preiselbeeren und Salatbeilage</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Rumpsteak</h3>
+                            <p class="menu-item__desc">Zartes Rumpsteak vom Grill mit Kräuterbutter, Bratkartoffeln und gemischtem Salat</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Rindergulasch</h3>
+                            <p class="menu-item__desc">Hausgemachtes Gulasch in würziger Paprikasoße mit Spätzle</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Schwäbischer Zwiebelrostbraten</h3>
+                            <p class="menu-item__desc">Saftiger Rostbraten mit geschmorten Zwiebeln und Bratensoße</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wild & Fisch -->
+            <div class="menu-section menu-section--alt reveal" id="wild-fisch">
+                <div class="menu-section__header">
+                    <span class="menu-section__icon">🐟</span>
+                    <h2 class="menu-section__title">Wild & Fisch</h2>
+                    <p class="menu-section__subtitle">Frisch aus der Region</p>
+                </div>
+
+                <div class="menu-section__grid">
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Forelle Müllerin</h3>
+                            <p class="menu-item__desc">Frische Schwarzwaldforelle in Butter gebraten mit Mandeln und Salzkartoffeln</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Hausgemachte Fischklößchen</h3>
+                            <p class="menu-item__desc">Zarte Fischklößchen in feiner Dillsoße mit Gemüse und Salzkartoffeln</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Hirschgulasch</h3>
+                            <p class="menu-item__desc">Zartes Hirschgulasch mit Rotkraut, Preiselbeeren und hausgemachten Spätzle</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Rehrücken</h3>
+                            <p class="menu-item__desc">Rosa gebratener Rehrücken an Wildsoße mit Spätzle und Waldpilzen (saisonal)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salate -->
+            <div class="menu-section reveal" id="salate">
+                <div class="menu-section__header">
+                    <span class="menu-section__icon">🥗</span>
+                    <h2 class="menu-section__title">Knackige Salate</h2>
+                    <p class="menu-section__subtitle">Frisch und regional</p>
+                </div>
+
+                <div class="menu-section__grid">
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Großer Gemischter Salat</h3>
+                            <p class="menu-item__desc">Knackige Blattsalate mit Tomaten, Gurken, Radieschen und Hausdressing</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Salat mit gebratenen Putenstreifen</h3>
+                            <p class="menu-item__desc">Frische Blattsalate mit warmen Putenstreifen und Honig-Senf-Dressing</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Schafskäse-Salat</h3>
+                            <p class="menu-item__desc">Bunter Salat mit gebackenem Schafskäse, Oliven und Kräutern</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vegetarisch -->
+            <div class="menu-section menu-section--alt reveal" id="vegetarisch">
+                <div class="menu-section__header">
+                    <span class="menu-section__icon">🥬</span>
+                    <h2 class="menu-section__title">Vegetarisch</h2>
+                    <p class="menu-section__subtitle">Fleischlose Vielfalt</p>
+                </div>
+
+                <div class="menu-section__grid">
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Käsespätzle</h3>
+                            <p class="menu-item__desc">Hausgemachte Spätzle mit würzigem Bergkäse überbacken und Röstzwiebeln</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Schupfnudeln mit Gemüse</h3>
+                            <p class="menu-item__desc">Gebratene Schupfnudeln mit frischem Gemüse und Champignons</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Bunter Gemüseteller</h3>
+                            <p class="menu-item__desc">Saisonales Gemüse mit Spiegelei und Salzkartoffeln</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Tomaten-Zucchini-Gemüse</h3>
+                            <p class="menu-item__desc">Mediterranes Gemüse mit Schafskäse, dazu Reis und Salat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-section reveal" id="desserts">
+                <div class="menu-section__header">
+                    <span class="menu-section__icon">🧇</span>
+                    <h2 class="menu-section__title">Desserts</h2>
+                    <p class="menu-section__subtitle">Süße Verführungen</p>
+                </div>
+
+                <div class="menu-section__grid">
+                    <div class="menu-item menu-item--featured">
+                        <div class="menu-item__badge">Hausgemacht</div>
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Hausgemachte Waffeln</h3>
+                            <p class="menu-item__desc">Knusprige Waffeln nach Hausrezept mit frischen Früchten, Sahne und Vanilleeis</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Schwarzwälder Kirschbecher</h3>
+                            <p class="menu-item__desc">Vanilleeis mit heißen Kirschen, Sahne und Schokoladenspänen</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Apfelstrudel</h3>
+                            <p class="menu-item__desc">Warmer Apfelstrudel mit Vanillesoße und einer Kugel Vanilleeis</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item__content">
+                            <h3 class="menu-item__name">Gemischtes Eis</h3>
+                            <p class="menu-item__desc">Drei Kugeln Eis nach Wahl mit Sahne</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Mittagstisch -->
+    <section class="mittagstisch" id="mittagstisch">
+        <div class="container">
+            <div class="mittagstisch__wrapper reveal">
+                <div class="mittagstisch__header">
+                    <span class="section-tag">Täglich frisch</span>
+                    <h2 class="section-title">Mittagstisch</h2>
+                    <div class="divider"></div>
+                    <p class="mittagstisch__intro">Jeden Werktag servieren wir zwei frische Gerichte zu günstigen Preisen. Ideal für die Mittagspause!</p>
+                </div>
+
+                <div class="mittagstisch__content">
+                    <div class="mittagstisch__image-wrapper">
+                        <img src="assets/mittagstisch.jpg" alt="Aktueller Mittagstisch Wochenplan" class="mittagstisch__img">
+                        <p class="mittagstisch__caption">Aktueller Wochenplan</p>
+                    </div>
+
+                    <div class="mittagstisch__info">
+                        <div class="mittagstisch__price-card">
+                            <span class="mittagstisch__price-label">Schon ab</span>
+                            <span class="mittagstisch__price">9,90 €</span>
+                            <span class="mittagstisch__price-note">inkl. Salatbeilage</span>
+                        </div>
+
+                        <div class="mittagstisch__times">
+                            <h3>Mittagstisch-Zeiten</h3>
+                            <ul>
+                                <li><strong>Montag:</strong> 10:30 – 14:30 Uhr</li>
+                                <li><strong>Mittwoch – Freitag:</strong> 11:30 – 14:30 Uhr</li>
+                            </ul>
+                            <p class="mittagstisch__note">Dienstag ist Ruhetag</p>
+                        </div>
+
+                        <div class="mittagstisch__features">
+                            <div class="mittagstisch__feature">
+                                <span class="mittagstisch__feature-icon">📦</span>
+                                <span>Auch zum Mitnehmen</span>
+                            </div>
+                            <div class="mittagstisch__feature">
+                                <span class="mittagstisch__feature-icon">🥗</span>
+                                <span>Immer mit Salat</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Allergene Hinweis -->
+    <section class="allergen-notice">
+        <div class="container">
+            <div class="allergen-notice__content reveal">
+                <h3>Allergene & Zusatzstoffe</h3>
+                <p>Informationen zu Allergenen und Zusatzstoffen erhalten Sie auf Anfrage bei unserem Servicepersonal. Wir beraten Sie gerne!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="page-cta">
+        <div class="container">
+            <div class="page-cta__content reveal">
+                <h2 class="page-cta__title">Appetit bekommen?</h2>
+                <p class="page-cta__text">Reservieren Sie jetzt Ihren Tisch im Gasthaus Brandeck und genießen Sie unsere regionale Küche.</p>
+                <div class="page-cta__actions">
+                    <a href="tel:078130352" class="btn btn--primary btn--large">
+                        <span>📞</span> 0781 / 30352
+                    </a>
+                    <a href="kontakt.html" class="btn btn--secondary btn--large">Kontakt aufnehmen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="Brandeck Logo">
+                    </a>
+                    <p class="footer__tagline">Urwald-Gaststätte seit 1903</p>
+                    <p class="footer__description">
+                        Deutsche Küche mit Herz, ein wunderschöner Biergarten und herzliche Gastfreundschaft – das ist das Brandeck.
+                    </p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__nav-title">Navigation</h4>
+                    <ul class="footer__nav-list">
+                        <li><a href="index.html">Startseite</a></li>
+                        <li><a href="speisekarte.html">Speisekarte</a></li>
+                        <li><a href="index.html#ueber-uns">Über uns</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__nav-title">Kontakt</h4>
+                    <address class="footer__address">
+                        <p>Zeller Straße 44</p>
+                        <p>77654 Offenburg</p>
+                        <p><a href="tel:078130352">0781 / 30352</a></p>
+                        <p><a href="mailto:katarina.henninger@googlemail.com">E-Mail senden</a></p>
+                    </address>
+                </div>
+
+                <div class="footer__legal">
+                    <h4 class="footer__nav-title">Rechtliches</h4>
+                    <ul class="footer__nav-list">
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copy">© 2026 Gasthaus Biergarten Brandeck. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

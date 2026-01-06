@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <!-- Transparenter Hintergrund für dunkle Sections -->
+
+  <!-- Hauptname: Brandeck -->
+  <text x="160" y="38"
+        font-family="'Baskervville', 'Georgia', serif"
+        font-size="32"
+        font-weight="400"
+        fill="#FFC107"
+        text-anchor="middle">Brandeck</text>
+
+  <!-- Untertitel -->
+  <text x="160" y="58"
+        font-family="'Roboto', 'Arial', sans-serif"
+        font-size="10"
+        fill="rgba(255,255,255,0.9)"
+        text-anchor="middle"
+        letter-spacing="0.5">Urwald-Gaststätte seit 1903 mit großem Biergarten</text>
+</svg>
