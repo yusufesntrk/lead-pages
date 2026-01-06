@@ -1031,11 +1031,88 @@ Read("assets/images/turkish-breakfast.jpg")
 ```
 → Zeigt es wirklich türkisches Frühstück mit den genannten Zutaten?
 
+═══════════════════════════════════════════════════════════════
+  🚨 BILDQUALITÄT & AUFLÖSUNG (MEGA KRITISCH!)
+═══════════════════════════════════════════════════════════════
+
+JEDES Bild MUSS gute Qualität haben! Egal ob:
+- Hintergrundbild
+- Produktfoto (Burger, Kebab, etc.)
+- Personenfoto (Team, Testimonials)
+- Interior/Exterior
+
+**Mindest-Auflösung nach Verwendung:**
+| Verwendung | Min. Breite | Min. Höhe |
+|------------|-------------|-----------|
+| Hero/Fullwidth | 1400px | 800px |
+| Featured Card (groß) | 800px | 600px |
+| Normale Card | 500px | 400px |
+| Thumbnail/Icon | 200px | 200px |
+| Hintergrundbild | 1920px | 1080px |
+
+**Qualität prüfen:**
+```bash
+# Auflösung aller Bilder checken
+for img in assets/images/*.jpg assets/images/*.png; do
+    [ -f "$img" ] && file "$img" | grep -oE '[0-9]+ x [0-9]+'
+done
+```
+
+**Qualität mit Playwright prüfen:**
+```javascript
+playwright_evaluate({
+    script: `
+        const images = document.querySelectorAll('img');
+        Array.from(images).map(img => ({
+            src: img.src.split('/').pop(),
+            displaySize: img.offsetWidth + 'x' + img.offsetHeight,
+            naturalSize: img.naturalWidth + 'x' + img.naturalHeight,
+            ratio: (img.naturalWidth / img.offsetWidth).toFixed(2),
+            quality: img.naturalWidth >= img.offsetWidth * 1.5 ? 'GUT' :
+                     img.naturalWidth >= img.offsetWidth ? 'OK' : 'SCHLECHT!'
+        }));
+    `
+})
+```
+
+**Bewertung:**
+- ratio >= 1.5 → GUT (Retina-ready)
+- ratio >= 1.0 → OK (gerade ausreichend)
+- ratio < 1.0 → SCHLECHT (pixelig/unscharf!)
+
+**BEI SCHLECHTER QUALITÄT:**
+
+1. **Erst: Bild kleiner machen und prüfen**
+   ```css
+   .card__image { max-width: 300px; } /* statt 100% */
+   ```
+   → Sieht es jetzt OK aus? Dann so lassen.
+
+2. **Wenn immer noch schlecht: NEUES BILD SUCHEN!**
+   - Stock-Fotos IMMER in höchster Auflösung laden:
+   ```bash
+   # Pexels: w=1920 für beste Qualität
+   curl -L -o img.jpg "https://images.pexels.com/.../photo.jpeg?w=1920"
+
+   # Unsplash: w=1920 für beste Qualität
+   curl -L -o img.jpg "https://images.unsplash.com/photo-...?w=1920"
+   ```
+
+3. **Instagram-Bilder oft schlecht!**
+   - Instagram komprimiert stark
+   - Versuch Original von Website zu bekommen
+   - Oder Stock-Foto als Ersatz
+
+🚨 NIEMALS pixelige/unscharfe Bilder verwenden!
+Ein unscharfes Bild zerstört den gesamten professionellen Eindruck!
+Lieber gutes Stock-Foto als schlechtes Original!
+
 OUTPUT:
 - 5-10 Bilder in assets/images/
 - Aktualisierte HTML-Dateien ohne Platzhalter
 - CSS für Bild-Container in styles.css
-- **BILD-MAPPING DOKUMENTIEREN**: Liste welches Bild wo verwendet wird""",
+- **BILD-MAPPING DOKUMENTIEREN**: Liste welches Bild wo verwendet wird
+- **QUALITÄTS-REPORT**: Auflösung jedes verwendeten Bildes""",
     tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
@@ -1192,10 +1269,64 @@ FOOD-KATEGORIEN CHECKLISTE:
 - Interior: Innenraum eines Lokals
 - Exterior: Außenansicht, Terrasse
 
+═══════════════════════════════════════════════════════════════
+  🚨 SCHRITT 6: BILDQUALITÄT PRÜFEN (MEGA KRITISCH!)
+═══════════════════════════════════════════════════════════════
+
+Jedes Bild MUSS gute Auflösung haben! Pixelige Bilder = unprofessionell!
+
+**Qualität mit Playwright prüfen:**
+```javascript
+playwright_evaluate({
+    script: `
+        const images = document.querySelectorAll('img');
+        Array.from(images).map(img => ({
+            src: img.src.split('/').pop(),
+            display: img.offsetWidth + 'x' + img.offsetHeight,
+            natural: img.naturalWidth + 'x' + img.naturalHeight,
+            ratio: (img.naturalWidth / img.offsetWidth).toFixed(2),
+            quality: img.naturalWidth >= img.offsetWidth * 1.5 ? 'GUT' :
+                     img.naturalWidth >= img.offsetWidth ? 'OK' : 'SCHLECHT!'
+        }));
+    `
+})
+```
+
+**Mindest-Auflösung:**
+| Verwendung | Minimum |
+|------------|---------|
+| Hero/Fullwidth | 1400x800px |
+| Featured Card | 800x600px |
+| Normale Card | 500x400px |
+| Hintergrund | 1920x1080px |
+
+**BEI SCHLECHTER QUALITÄT (ratio < 1.0):**
+
+1. **Erst: Bild kleiner anzeigen**
+   ```css
+   .image { max-width: 300px; }
+   ```
+   → Prüfen ob es dann OK aussieht
+
+2. **Wenn immer noch schlecht: NEUES BILD!**
+   - Stock-Fotos in höchster Auflösung laden:
+   ```bash
+   # w=1920 für beste Qualität!
+   curl -L -o img.jpg "https://images.pexels.com/...?w=1920"
+   ```
+
+3. **Instagram = oft schlecht**
+   - Instagram komprimiert stark
+   - Lieber Stock-Foto in guter Qualität!
+
+🚨 NIEMALS pixelige Bilder durchlassen!
+Ein unscharfes Bild zerstört den professionellen Eindruck!
+
 OUTPUT:
 - Liste aller Mismatches mit konkreten Fixes
 - Aktualisierte HTML-Dateien
-- Neue/ersetzte Bilder falls nötig""",
+- Neue/ersetzte Bilder falls nötig
+- **QUALITÄTS-REPORT** für jedes Bild (Auflösung, ratio)""",
     tools=["Read", "Write", "Edit", "Bash", "Glob", "Grep", "WebFetch", "WebSearch", "mcp__playwright__*"],
     model="opus"
 )
