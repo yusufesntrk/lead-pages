@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Paragraph Symbol als Akzent -->
+  <text x="0" y="52" font-family="'Playfair Display', Georgia, serif" font-size="42" font-weight="700" fill="#c9a962">§</text>
+
+  <!-- Kanzlei Name -->
+  <text x="36" y="38" font-family="'Playfair Display', Georgia, serif" font-size="26" font-weight="700" fill="#ffffff">Kanzlei</text>
+  <text x="130" y="38" font-family="'Playfair Display', Georgia, serif" font-size="26" font-weight="700" fill="#ffffff">Knaub</text>
+
+  <!-- Untertitel -->
+  <text x="36" y="58" font-family="'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="400" fill="rgba(255,255,255,0.7)" letter-spacing="1.5">RECHTSANWÄLTIN</text>
+
+  <!-- Goldene Akzentlinie -->
+  <rect x="36" y="64" width="60" height="2" fill="#c9a962" rx="1"/>
+</svg>
