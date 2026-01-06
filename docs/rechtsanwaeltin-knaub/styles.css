@@ -1110,6 +1110,7 @@ p:last-child {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-3xl);
+  align-items: start;
 }
 
 .kontakt-info .section-badge,
