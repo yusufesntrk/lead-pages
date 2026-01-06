@@ -263,7 +263,306 @@ STYLE GUIDE (enthält Firmendaten und ggf. Original-Texte):
 {self.context.style_guide_content}
 """
 
-        return await self._run_agent("legal-pages", task, additional_context)
+        try:
+            return await self._run_agent("legal-pages", task, additional_context)
+        except Exception as e:
+            error_str = str(e).lower()
+            if "content filtering" in error_str or "blocked" in error_str:
+                print("\n⚠️ Content-Filter bei Legal Pages - verwende Fallback-Templates...")
+                return await self._create_legal_pages_fallback()
+            raise
+
+    async def _create_legal_pages_fallback(self) -> str:
+        """
+        Fallback: Erstellt Legal Pages mit Templates wenn Content-Filter triggert.
+        """
+        lead = self.context.lead
+
+        # Extrahiere Header/Footer aus index.html wenn vorhanden
+        index_path = self.context.output_dir / "index.html"
+        header_html = ""
+        footer_html = ""
+
+        if index_path.exists():
+            index_content = index_path.read_text()
+
+            # Extrahiere Header
+            import re
+            header_match = re.search(r'(<header.*?</header>)', index_content, re.DOTALL)
+            if header_match:
+                header_html = header_match.group(1)
+
+            # Extrahiere Footer
+            footer_match = re.search(r'(<footer.*?</footer>)', index_content, re.DOTALL)
+            if footer_match:
+                footer_html = footer_match.group(1)
+
+        # Fallback Header wenn nicht gefunden
+        if not header_html:
+            header_html = f'''<header class="header" id="header">
+        <div class="header__container">
+            <a href="index.html" class="header__logo">{lead.firma}</a>
+            <nav class="header__nav" id="nav">
+                <ul class="header__nav-list">
+                    <li><a href="index.html" class="header__nav-link">Startseite</a></li>
+                    <li><a href="kontakt.html" class="header__nav-link">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>'''
+
+        # Fallback Footer wenn nicht gefunden
+        if not footer_html:
+            footer_html = f'''<footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p class="footer__copy">© {datetime.now().year} {lead.firma}. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>'''
+
+        # Adresse zusammenbauen
+        adresse = ""
+        if lead.strasse:
+            adresse += f"{lead.strasse}<br>"
+        if lead.plz or lead.ort:
+            adresse += f"{lead.plz or ''} {lead.ort or ''}"
+
+        # Impressum HTML
+        impressum_html = f'''<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum | {lead.firma}</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    {header_html}
+
+    <main class="legal-page">
+        <div class="container">
+            <div class="legal-page__content">
+                <h1 class="legal-page__title">Impressum</h1>
+
+                <section class="legal-section">
+                    <h2>Angaben gemäß § 5 TMG</h2>
+                    <p>
+                        <strong>{lead.firma}</strong><br>
+                        {adresse}
+                    </p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Kontakt</h2>
+                    <p>
+                        {f'Telefon: <a href="tel:{lead.telefon}">{lead.telefon}</a><br>' if lead.telefon else ''}
+                        {f'E-Mail: <a href="mailto:{lead.email}">{lead.email}</a>' if lead.email else ''}
+                    </p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Streitschlichtung</h2>
+                    <p>
+                        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+                        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>
+                    </p>
+                    <p>
+                        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                    </p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Haftung für Inhalte</h2>
+                    <p>
+                        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.
+                    </p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>Haftung für Links</h2>
+                    <p>
+                        Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+                    </p>
+                </section>
+
+                <div class="legal-page__back">
+                    <a href="index.html" class="btn btn--secondary">← Zurück zur Startseite</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {footer_html}
+
+    <script src="script.js"></script>
+</body>
+</html>'''
+
+        # Datenschutz HTML
+        datenschutz_html = f'''<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutz | {lead.firma}</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    {header_html}
+
+    <main class="legal-page">
+        <div class="container">
+            <div class="legal-page__content">
+                <h1 class="legal-page__title">Datenschutzerklärung</h1>
+
+                <section class="legal-section">
+                    <h2>1. Datenschutz auf einen Blick</h2>
+                    <h3>Allgemeine Hinweise</h3>
+                    <p>
+                        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.
+                    </p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>2. Verantwortliche Stelle</h2>
+                    <p>
+                        {lead.firma}<br>
+                        {adresse}
+                        {f'<br>Telefon: {lead.telefon}' if lead.telefon else ''}
+                        {f'<br>E-Mail: {lead.email}' if lead.email else ''}
+                    </p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>3. Datenerfassung auf dieser Website</h2>
+                    <h3>Server-Log-Dateien</h3>
+                    <p>
+                        Der Provider der Seiten erhebt und speichert automatisch Informationen in Server-Log-Dateien, die Ihr Browser automatisch übermittelt: Browsertyp, Betriebssystem, Referrer URL, Hostname, Uhrzeit der Serveranfrage und IP-Adresse.
+                    </p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>4. Externe Dienste</h2>
+                    <h3>Google Maps</h3>
+                    <p>
+                        Diese Seite nutzt ggf. den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.
+                    </p>
+                </section>
+
+                <section class="legal-section">
+                    <h2>5. Ihre Rechte</h2>
+                    <p>Sie haben jederzeit das Recht auf Auskunft über Ihre gespeicherten Daten, deren Berichtigung, Löschung oder Einschränkung der Verarbeitung.</p>
+                </section>
+
+                <div class="legal-page__back">
+                    <a href="index.html" class="btn btn--secondary">← Zurück zur Startseite</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {footer_html}
+
+    <script src="script.js"></script>
+</body>
+</html>'''
+
+        # Dateien schreiben
+        (self.context.output_dir / "impressum.html").write_text(impressum_html)
+        (self.context.output_dir / "datenschutz.html").write_text(datenschutz_html)
+
+        # CSS für Legal Pages hinzufügen wenn nicht vorhanden
+        styles_path = self.context.output_dir / "styles.css"
+        if styles_path.exists():
+            styles_content = styles_path.read_text()
+            if ".legal-page" not in styles_content:
+                legal_css = '''
+
+/* ========================================
+   Legal Pages (Impressum, Datenschutz)
+   ======================================== */
+.legal-page {
+    padding-top: calc(var(--header-height, 80px) + 3rem);
+    padding-bottom: 4rem;
+    min-height: 100vh;
+}
+
+.legal-page__content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legal-page__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 3rem;
+}
+
+.legal-page__title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--color-primary, #333);
+    margin-top: 1rem;
+}
+
+.legal-section {
+    margin-bottom: 3rem;
+}
+
+.legal-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.legal-section h3 {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.75rem;
+}
+
+.legal-section p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.legal-section ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.legal-section ul li {
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+}
+
+.legal-section a {
+    color: var(--color-primary, #333);
+    text-decoration: underline;
+}
+
+.legal-page__back {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+'''
+                styles_path.write_text(styles_content + legal_css)
+
+        print("✅ Legal Pages via Fallback-Templates erstellt:")
+        print(f"   - {self.context.output_dir}/impressum.html")
+        print(f"   - {self.context.output_dir}/datenschutz.html")
+
+        return "Legal Pages via Fallback erstellt"
 
     async def run_references_research_agent(self) -> str:
         """Agent 9: Referenzen recherchieren"""
