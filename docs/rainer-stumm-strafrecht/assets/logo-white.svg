@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="400" height="100">
+  <!-- Text Section (White version for dark backgrounds) -->
+  <text x="0" y="28" font-family="'Georgia', 'Times New Roman', serif" font-size="18" font-weight="400" fill="#cccccc">Rechtsanwalt</text>
+  <text x="0" y="55" font-family="'Georgia', 'Times New Roman', serif" font-size="22" font-weight="700" fill="#ffffff">Rainer Stumm</text>
+  <text x="0" y="80" font-family="'Georgia', 'Times New Roman', serif" font-size="16" font-weight="400" fill="#cccccc">Fachanwalt für Strafrecht</text>
+
+  <!-- Icon: Two overlapping squares -->
+  <g transform="translate(290, 15)">
+    <!-- Light gray square (back) -->
+    <rect x="20" y="0" width="50" height="50" fill="#999999"/>
+    <!-- Light blue square (front) -->
+    <rect x="0" y="20" width="50" height="50" fill="#5A7AAD"/>
+    <!-- White small square (overlap) -->
+    <rect x="20" y="20" width="18" height="18" fill="#ffffff"/>
+  </g>
+</svg>
