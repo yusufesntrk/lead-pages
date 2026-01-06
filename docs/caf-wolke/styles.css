@@ -1729,6 +1729,35 @@ address {
     color: var(--color-dark-wood);
 }
 
+/* ===================================
+   Image Containers - Global Styles
+   =================================== */
+.about__image img,
+.gallery__item img,
+.story-image__wrapper img,
+.fusion-image img,
+.menu-signature__image img,
+.menu-highlight__image img,
+.togo-image__wrapper img,
+.wedding-showcase__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    transition: transform 0.4s ease;
+}
+
+.about__image:hover img,
+.gallery__item:hover img,
+.fusion-image:hover img {
+    transform: scale(1.05);
+}
+
+.gallery__item {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
 .legal-update {
     text-align: center;
     color: var(--color-text-muted);
