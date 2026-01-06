@@ -1912,6 +1912,86 @@ rm [output_dir]/.playwright-tmp/*.png && rmdir [output_dir]/.playwright-tmp
 ```
 
 ═══════════════════════════════════════════════════════════════
+  CHECK 11: LEERRAUM INNERHALB VON CARDS (KRITISCH!)
+═══════════════════════════════════════════════════════════════
+
+⚠️ Cards die über mehrere Grid-Rows spannen (z.B. Featured Cards)
+haben oft zu viel Leerraum INNERHALB der Card!
+
+**Das Problem:**
+```
+┌─────────────────────────────────┐
+│  [kleines Bild]                 │
+│                                 │
+│  Titel                          │
+│  Beschreibung                   │
+│  Button                         │
+│                                 │
+│   ~~~~~~~~~~~~~~~~~~~~~~~~      │  ← LEERER RAUM!
+│   ~~~~~~~~~~~~~~~~~~~~~~~~      │  ← Das ist das Problem!
+│   ~~~~~~~~~~~~~~~~~~~~~~~~      │
+└─────────────────────────────────┘
+```
+
+**Wann passiert das?**
+- Featured Card mit `grid-row: span 2` oder `grid-row: 1/3`
+- Bild hat fixe Höhe (z.B. `height: 240px`)
+- Card ist aber viel höher (z.B. 600px wegen Grid-Span)
+- → Leerer Raum unter dem Content!
+
+**CSS-Pattern zum Finden:**
+```bash
+grep -n "grid-row.*span\|grid-row:.*/" styles.css
+grep -B5 -A5 "featured" styles.css | grep -E "height|flex"
+```
+
+**Die Lösung - Flex-Grow für Bilder:**
+```css
+/* ❌ PROBLEM: Bild hat fixe Höhe */
+.featured-card__image {
+    height: 240px;
+}
+
+/* ✅ LÖSUNG: Bild wächst mit */
+.featured-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-card__image {
+    flex: 1;           /* ← Nimmt verfügbaren Platz! */
+    min-height: 200px; /* ← Mindesthöhe */
+    height: auto;      /* ← Überschreibt fixe Höhe */
+}
+```
+
+**Prüf-Workflow mit Playwright:**
+```javascript
+// 1. Featured Cards finden und Höhen prüfen
+playwright_evaluate({
+    script: `
+        const featured = document.querySelectorAll('[class*="featured"], [class*="span-2"]');
+        Array.from(featured).map(card => {
+            const img = card.querySelector('img, [class*="image"]');
+            const content = card.querySelector('[class*="content"], [class*="title"]');
+            return {
+                cardHeight: card.offsetHeight,
+                imageHeight: img?.offsetHeight || 0,
+                contentHeight: content?.offsetHeight || 0,
+                emptySpace: card.offsetHeight - (img?.offsetHeight || 0) - (content?.parentElement?.offsetHeight || 0)
+            };
+        });
+    `
+})
+```
+
+**Wenn emptySpace > 100px → PROBLEM!**
+
+FIX automatisch anwenden:
+1. Card auf `display: flex; flex-direction: column;` setzen
+2. Image-Container auf `flex: 1; height: auto; min-height: Xpx;` setzen
+
+═══════════════════════════════════════════════════════════════
   OUTPUT FORMAT
 ═══════════════════════════════════════════════════════════════
 
@@ -2216,6 +2296,71 @@ ls -la assets/images/
 □ Keine Platzhalter im Text?
 □ Rechtschreibung korrekt?
 □ Umlaute richtig (ä, ö, ü, ß)?
+
+═══════════════════════════════════════════════════════════════
+  🚨 CHECK 10: LEERRAUM INNERHALB VON CARDS (KRITISCH!)
+═══════════════════════════════════════════════════════════════
+
+⚠️ Featured Cards die über mehrere Grid-Rows spannen haben oft
+zu viel Leerraum INNERHALB der Card!
+
+**Das Problem visuell:**
+```
+┌─────────────────────────────────┐
+│  [kleines Bild]                 │
+│                                 │
+│  Titel                          │
+│  Beschreibung                   │
+│  Button                         │
+│                                 │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │  ← LEERER RAUM!
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │  ← Bild füllt nicht!
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+└─────────────────────────────────┘
+```
+
+**Prüf-Workflow:**
+```javascript
+// Featured Cards finden und Höhen-Verhältnis prüfen
+playwright_evaluate({
+    script: `
+        const featured = document.querySelectorAll('[class*="featured"]');
+        Array.from(featured).map(card => {
+            const img = card.querySelector('[class*="image"]');
+            const cardH = card.offsetHeight;
+            const imgH = img?.offsetHeight || 0;
+            const ratio = imgH / cardH;
+            return {
+                class: card.className,
+                cardHeight: cardH,
+                imageHeight: imgH,
+                imageRatio: (ratio * 100).toFixed(1) + '%',
+                problem: ratio < 0.4 ? 'BILD ZU KLEIN!' : 'OK'
+            };
+        });
+    `
+})
+```
+
+**Wenn imageRatio < 40% bei Featured Card → PROBLEM!**
+
+**Die Lösung:**
+```css
+/* Featured Card muss Flex-Column sein */
+.featured-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bild wächst mit der Card-Höhe */
+.featured-card .image-container {
+    flex: 1;           /* ← Nimmt verfügbaren Platz! */
+    min-height: 200px;
+    height: auto;      /* ← Überschreibt fixe Höhe! */
+}
+```
+
+**AUTO-FIX anwenden wenn Problem gefunden!**
 
 ═══════════════════════════════════════════════════════════════
   OUTPUT FORMAT
