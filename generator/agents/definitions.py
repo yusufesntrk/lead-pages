@@ -319,6 +319,19 @@ BEISPIEL WORKFLOW:
 3. Diese URL im HTML verwenden
 ```
 
+🗺️ GOOGLE MAPS EMBED (für Kontaktseite):
+Wenn du eine Karte einbetten willst:
+1. Suche die Business-URL mit Place-ID (siehe oben)
+2. Extrahiere Place-ID und Koordinaten aus der URL:
+   - URL: .../place/Name/@48.4592341,7.9172319,.../!1s0x4796d315a845c207:0x1b136d7ae9bb68b
+   - Place-ID: 0x4796d315a845c207:0x1b136d7ae9bb68b
+   - Koordinaten: 48.4592341, 7.9172319
+3. Erstelle Embed-URL:
+```html
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2650!2d[LNG]!3d[LAT]!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s[PLACE_ID_ENCODED]!2s[NAME_ENCODED]!5e0!3m2!1sde!2sde!4v1704499200000"></iframe>
+```
+❌ NIEMALS Platzhalter-Koordinaten wie 2647.123456789 verwenden!
+
 WICHTIG:
 - Verwende das BESTEHENDE styles.css (erweitere es bei Bedarf)
 - Konsistente Navigation auf allen Seiten
