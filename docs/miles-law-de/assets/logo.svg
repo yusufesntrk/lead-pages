@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 75" width="320" height="75">
+  <style>
+    .logo-text { font-family: Georgia, 'Times New Roman', serif; }
+    .slogan-text { font-family: Arial, 'Helvetica Neue', sans-serif; }
+  </style>
+  <!-- MILES-LAW.DE -->
+  <text x="0" y="38" class="logo-text" font-size="32" font-weight="500" fill="#009B77" letter-spacing="3">MILES-LAW.DE</text>
+  <!-- Slogan -->
+  <text x="0" y="62" class="slogan-text" font-size="12" font-style="italic" fill="#C9A227" letter-spacing="0.3">IHR RECHT IST UNSER GESETZ</text>
+</svg>
