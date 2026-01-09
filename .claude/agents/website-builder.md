@@ -54,6 +54,53 @@ Verwende das Corporate Design des Unternehmens. Die Website soll einzigartig und
 - **IMMER alle Seiten** aus der Sitemap implementieren
 - **IMMER Corporate Design** authentisch umsetzen
 
+## CSS Best Practices (PFLICHT!)
+
+### Card Grids - Gleiche Breite & Button-Ausrichtung
+
+**IMMER `minmax(0, 1fr)` für gleiche Kartenbreiten:**
+```css
+/* ❌ FALSCH - Karten können unterschiedlich breit werden */
+.card-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* ✅ RICHTIG - Alle Karten exakt gleich breit */
+.card-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+```
+
+**IMMER Flexbox für Karten mit Buttons am Ende:**
+```css
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-content {
+    flex-grow: 1;  /* Füllt verfügbaren Platz */
+}
+
+.card-link {
+    margin-top: auto;  /* Button immer unten */
+}
+```
+
+### Responsive Grid Breakpoints
+
+```css
+/* Desktop: 4 Spalten */
+grid-template-columns: repeat(4, minmax(0, 1fr));
+
+/* Tablet (max-width: 1024px): 2 Spalten */
+grid-template-columns: repeat(2, minmax(0, 1fr));
+
+/* Mobile (max-width: 768px): 1 Spalte */
+grid-template-columns: 1fr;
+```
+
 ## Tools-Verwendung
 
 - **WebFetch**: Bestehende Website laden und analysieren
