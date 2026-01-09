@@ -19,6 +19,7 @@ Prüfe alle Google Maps URLs auf der Website und stelle sicher, dass sie auf das
 ```
 https://maps.google.com/maps?q=Musterstraße+1,+80331+München
 https://www.google.com/maps/@48.1351,11.5820,15z
+https://www.google.com/maps/embed?pb=...!2sAdresse...  (Embed nur mit Adresse)
 ```
 - Zeigt nur Pin auf Karte
 - Keine Business-Informationen
@@ -27,15 +28,32 @@ https://www.google.com/maps/@48.1351,11.5820,15z
 
 ### ✅ RICHTIG: Google Business Profile
 ```
+# Direkte Links
 https://www.google.com/maps/place/Firmenname/@48.1351,11.5820,15z/data=...
 https://maps.app.goo.gl/ABC123xyz (Short Link)
-https://goo.gl/maps/ABC123 (Legacy Short Link)
+
+# Embed mit Place-ID (für iframes)
+https://www.google.com/maps/embed?pb=!1m18!...!1s0x479e...:0x123...!2sFirmenname
 ```
 - Zeigt Business-Profil
 - Reviews sichtbar
 - Öffnungszeiten, Telefon, Website
 - Fotos vom Business
 - "Route planen" Button
+
+### Embed-URL Unterschied
+
+**❌ Nur Adresse (Problem):**
+```
+embed?pb=...!2sHermann-Dietrich-Stra%C3%9Fe%204%2C%2077694%20Kehl
+                ↑ Nur Straßenadresse
+```
+
+**✅ Mit Business-Name:**
+```
+embed?pb=...!1s0x4796...:0x123...!2sAnwaltskanzlei+Lederle
+              ↑ Place-ID          ↑ Business-Name
+```
 
 ## Pflicht-Workflow
 
@@ -114,7 +132,60 @@ https://goo.gl/maps/ABC123
 /@48.1351,11.5820
 ```
 
-### 3. Google Business Profile suchen
+### 3. Korrekte Embed-URL generieren (WICHTIG!)
+
+**Schritt-für-Schritt mit Playwright:**
+
+```javascript
+// 1. Google Maps öffnen und nach Business suchen
+mcp__playwright__playwright_navigate({
+  url: "https://www.google.com/maps/search/Firmenname+Stadt",
+  headless: true
+})
+
+// 2. Screenshot machen um zu sehen ob Business gefunden
+mcp__playwright__playwright_screenshot({ name: "maps-search" })
+
+// 3. Auf das Business klicken (falls mehrere Ergebnisse)
+mcp__playwright__playwright_click({ selector: '[data-result-index="0"]' })
+
+// 4. Share/Teilen Button klicken
+mcp__playwright__playwright_click({ selector: '[data-value="Share"]' })
+// oder
+mcp__playwright__playwright_click({ selector: 'button[aria-label*="Teilen"]' })
+
+// 5. "Karte einbetten" Tab wählen
+mcp__playwright__playwright_click({ selector: '[aria-label*="Karte einbetten"]' })
+
+// 6. HTML aus dem Textfeld extrahieren
+mcp__playwright__playwright_get_visible_html({ selector: 'input[type="text"]' })
+```
+
+**Alternative: Direkt die Place-URL extrahieren:**
+
+```javascript
+// Nach Navigation zum Business
+mcp__playwright__playwright_evaluate({
+  script: "window.location.href"
+})
+// Ergebnis: https://www.google.com/maps/place/Anwaltskanzlei+Lederle/@48.574,7.815,17z/data=...
+```
+
+**Embed-URL aus Place-URL erstellen:**
+
+```
+Place-URL:
+https://www.google.com/maps/place/Anwaltskanzlei+Lederle/@48.574,7.815,17z/data=!3m1!4b1!4m6!3m5!1s0x4796b7c5e8f8f8f8:0x1234567890abcdef!8m2!3d48.574!4d7.815!16s...
+
+Embed-URL (daraus ableiten):
+https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2640!2d7.815!3d48.574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796b7c5e8f8f8f8:0x1234567890abcdef!2sAnwaltskanzlei+Lederle!5e0!3m2!1sde!2sde!4v1234567890
+```
+
+**Die wichtigen Teile:**
+- `!1s0x....:0x....` = Place-ID (MUSS vorhanden sein!)
+- `!2sAnwaltskanzlei+Lederle` = Business-Name (MUSS vorhanden sein!)
+
+### 4. Google Business Profile suchen
 
 Für jeden problematischen Link das korrekte Business-Profil finden:
 
