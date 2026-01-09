@@ -83,6 +83,167 @@
         <div class="hero__decorative"></div>
     </section>
 
+    <!-- Interactive Justice Scale Section -->
+    <section class="justice-scale-section">
+        <div class="container">
+            <div class="justice-scale-wrapper">
+                <div class="justice-scale-content">
+                    <span class="justice-scale-label fade-in">Das Fundament unserer Arbeit</span>
+                    <h2 class="justice-scale-title fade-in fade-in-delay-1">Gerechtigkeit in Balance</h2>
+                    <p class="justice-scale-text fade-in fade-in-delay-2">
+                        Wie die Waage der Justitia streben wir nach Ausgewogenheit und Fairness.
+                        Jeder Fall wird sorgfältig abgewogen – Ihr Recht ist unser Maßstab.
+                    </p>
+                </div>
+
+                <div class="justice-scale-animation fade-in fade-in-delay-2">
+                    <svg class="justice-scale" viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- Goldener Gradient für die Waage -->
+                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d4a84b;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#b8860b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8b6914;stop-opacity:1" />
+                            </linearGradient>
+
+                            <!-- Dunkler Gradient für Schatten -->
+                            <linearGradient id="darkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#1a365d;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0f2442;stop-opacity:1" />
+                            </linearGradient>
+
+                            <!-- Glow-Effekt -->
+                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+
+                            <!-- Schatten -->
+                            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#1a365d" flood-opacity="0.3"/>
+                            </filter>
+
+                            <!-- 3D Effekt für Schalen -->
+                            <radialGradient id="bowlGradient" cx="50%" cy="30%" r="70%">
+                                <stop offset="0%" style="stop-color:#d4a84b;stop-opacity:1" />
+                                <stop offset="70%" style="stop-color:#b8860b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8b6914;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Basis/Sockel der Waage -->
+                        <g class="scale-base" filter="url(#shadow)">
+                            <!-- Sockel unten -->
+                            <path d="M160 320 L240 320 L250 340 L150 340 Z" fill="url(#darkGradient)"/>
+                            <ellipse cx="200" cy="320" rx="50" ry="8" fill="url(#goldGradient)"/>
+
+                            <!-- Säule -->
+                            <rect x="192" y="140" width="16" height="180" fill="url(#goldGradient)" rx="2"/>
+
+                            <!-- Dekorative Ringe an der Säule -->
+                            <ellipse cx="200" cy="160" rx="12" ry="3" fill="#d4a84b"/>
+                            <ellipse cx="200" cy="200" rx="10" ry="2" fill="#d4a84b"/>
+                            <ellipse cx="200" cy="280" rx="12" ry="3" fill="#d4a84b"/>
+                        </g>
+
+                        <!-- Drehpunkt oben -->
+                        <g class="scale-pivot" filter="url(#glow)">
+                            <circle cx="200" cy="130" r="15" fill="url(#goldGradient)"/>
+                            <circle cx="200" cy="130" r="8" fill="#1a365d"/>
+                            <circle cx="200" cy="130" r="4" fill="#d4a84b"/>
+                        </g>
+
+                        <!-- Waagebalken (beweglich) -->
+                        <g class="scale-beam" filter="url(#shadow)">
+                            <rect class="beam" x="50" y="125" width="300" height="10" rx="5" fill="url(#goldGradient)"
+                                  transform-origin="200 130"/>
+                        </g>
+
+                        <!-- Linke Seite - Ketten und Schale -->
+                        <g class="scale-left">
+                            <!-- Ketten links -->
+                            <g class="chain-left">
+                                <line x1="80" y1="135" x2="60" y2="200" stroke="#b8860b" stroke-width="2"/>
+                                <line x1="80" y1="135" x2="100" y2="200" stroke="#b8860b" stroke-width="2"/>
+                                <!-- Kettenringe -->
+                                <circle cx="70" cy="155" r="3" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+                                <circle cx="65" cy="175" r="3" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+                                <circle cx="90" cy="155" r="3" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+                                <circle cx="95" cy="175" r="3" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+                            </g>
+
+                            <!-- Waagschale links -->
+                            <g class="bowl-left" filter="url(#shadow)">
+                                <ellipse cx="80" cy="210" rx="45" ry="12" fill="url(#bowlGradient)"/>
+                                <path d="M35 210 Q35 235 80 240 Q125 235 125 210" fill="url(#bowlGradient)" opacity="0.9"/>
+                                <!-- Innerer Schatten -->
+                                <ellipse cx="80" cy="215" rx="35" ry="8" fill="#8b6914" opacity="0.4"/>
+
+                                <!-- Symbol: Paragraph (Recht) -->
+                                <text x="80" y="225" text-anchor="middle" fill="#1a365d" font-size="24" font-weight="bold" opacity="0.6">§</text>
+                            </g>
+                        </g>
+
+                        <!-- Rechte Seite - Ketten und Schale -->
+                        <g class="scale-right">
+                            <!-- Ketten rechts -->
+                            <g class="chain-right">
+                                <line x1="320" y1="135" x2="300" y2="200" stroke="#b8860b" stroke-width="2"/>
+                                <line x1="320" y1="135" x2="340" y2="200" stroke="#b8860b" stroke-width="2"/>
+                                <!-- Kettenringe -->
+                                <circle cx="310" cy="155" r="3" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+                                <circle cx="305" cy="175" r="3" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+                                <circle cx="330" cy="155" r="3" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+                                <circle cx="335" cy="175" r="3" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+                            </g>
+
+                            <!-- Waagschale rechts -->
+                            <g class="bowl-right" filter="url(#shadow)">
+                                <ellipse cx="320" cy="210" rx="45" ry="12" fill="url(#bowlGradient)"/>
+                                <path d="M275 210 Q275 235 320 240 Q365 235 365 210" fill="url(#bowlGradient)" opacity="0.9"/>
+                                <!-- Innerer Schatten -->
+                                <ellipse cx="320" cy="215" rx="35" ry="8" fill="#8b6914" opacity="0.4"/>
+
+                                <!-- Symbol: Waage (Gerechtigkeit) -->
+                                <text x="320" y="225" text-anchor="middle" fill="#1a365d" font-size="20" font-weight="bold" opacity="0.6">⚖</text>
+                            </g>
+                        </g>
+
+                        <!-- Dekorative Elemente -->
+                        <g class="decorations" opacity="0.15">
+                            <!-- Lorbeerblätter links -->
+                            <path d="M30 280 Q50 260 40 240" stroke="#b8860b" stroke-width="2" fill="none"/>
+                            <path d="M35 275 Q55 255 45 235" stroke="#b8860b" stroke-width="2" fill="none"/>
+
+                            <!-- Lorbeerblätter rechts -->
+                            <path d="M370 280 Q350 260 360 240" stroke="#b8860b" stroke-width="2" fill="none"/>
+                            <path d="M365 275 Q345 255 355 235" stroke="#b8860b" stroke-width="2" fill="none"/>
+                        </g>
+
+                        <!-- Schwebende Partikel (animated) -->
+                        <g class="particles">
+                            <circle class="particle particle-1" cx="100" cy="180" r="2" fill="#d4a84b" opacity="0.6"/>
+                            <circle class="particle particle-2" cx="300" cy="170" r="1.5" fill="#d4a84b" opacity="0.5"/>
+                            <circle class="particle particle-3" cx="150" cy="250" r="1" fill="#d4a84b" opacity="0.4"/>
+                            <circle class="particle particle-4" cx="250" cy="260" r="2" fill="#d4a84b" opacity="0.5"/>
+                        </g>
+                    </svg>
+
+                    <!-- Interaktions-Hinweis -->
+                    <p class="scale-hint">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                        Scrollen Sie, um die Balance zu erleben
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Introduction Section -->
     <section class="section">
         <div class="container">

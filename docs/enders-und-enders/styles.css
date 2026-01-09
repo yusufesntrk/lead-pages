@@ -1286,3 +1286,300 @@ ul, ol {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+/* ==========================================================================
+   Interactive Justice Scale Section - Einzigartiges Feature
+   ========================================================================== */
+
+.justice-scale-section {
+    padding: var(--spacing-3xl) 0;
+    background: linear-gradient(135deg, var(--color-off-white) 0%, #f0f4f8 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.justice-scale-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+}
+
+.justice-scale-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+}
+
+.justice-scale-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .justice-scale-wrapper {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+}
+
+.justice-scale-content {
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .justice-scale-content {
+        text-align: left;
+    }
+}
+
+.justice-scale-label {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.justice-scale-title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.justice-scale-text {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    line-height: 1.8;
+    max-width: 500px;
+}
+
+@media (min-width: 768px) {
+    .justice-scale-text {
+        max-width: none;
+    }
+}
+
+.justice-scale-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Die SVG Waage */
+.justice-scale {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    cursor: pointer;
+    filter: drop-shadow(0 20px 40px rgba(26, 54, 93, 0.15));
+    transition: filter var(--transition-slow);
+}
+
+.justice-scale:hover {
+    filter: drop-shadow(0 25px 50px rgba(26, 54, 93, 0.25));
+}
+
+/* Waagebalken Animation */
+.justice-scale .beam {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: 200px 130px;
+}
+
+.justice-scale.tilted-left .beam {
+    transform: rotate(-8deg);
+}
+
+.justice-scale.tilted-right .beam {
+    transform: rotate(8deg);
+}
+
+.justice-scale.balanced .beam {
+    transform: rotate(0deg);
+}
+
+/* Linke Seite Animation */
+.justice-scale .scale-left {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: 80px 135px;
+}
+
+.justice-scale.tilted-left .scale-left {
+    transform: translateY(25px);
+}
+
+.justice-scale.tilted-right .scale-left {
+    transform: translateY(-25px);
+}
+
+/* Rechte Seite Animation */
+.justice-scale .scale-right {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: 320px 135px;
+}
+
+.justice-scale.tilted-left .scale-right {
+    transform: translateY(-25px);
+}
+
+.justice-scale.tilted-right .scale-right {
+    transform: translateY(25px);
+}
+
+/* Hover-Effekte auf den Schalen */
+.justice-scale .bowl-left,
+.justice-scale .bowl-right {
+    transition: transform 0.4s ease, filter 0.4s ease;
+    cursor: pointer;
+}
+
+.justice-scale .bowl-left:hover,
+.justice-scale .bowl-right:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1) drop-shadow(0 5px 15px rgba(184, 134, 11, 0.4));
+}
+
+/* Partikel-Animationen */
+.justice-scale .particle {
+    animation: float 4s ease-in-out infinite;
+}
+
+.justice-scale .particle-1 {
+    animation-delay: 0s;
+}
+
+.justice-scale .particle-2 {
+    animation-delay: 1s;
+}
+
+.justice-scale .particle-3 {
+    animation-delay: 2s;
+}
+
+.justice-scale .particle-4 {
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.4;
+    }
+    25% {
+        transform: translateY(-10px) translateX(5px);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-5px) translateX(-5px);
+        opacity: 0.5;
+    }
+    75% {
+        transform: translateY(-15px) translateX(3px);
+        opacity: 0.8;
+    }
+}
+
+/* Pivot Glow Animation */
+.justice-scale .scale-pivot {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        filter: url(#glow) brightness(1);
+    }
+    50% {
+        filter: url(#glow) brightness(1.2);
+    }
+}
+
+/* Ketten-Bewegung */
+.justice-scale .chain-left,
+.justice-scale .chain-right {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.justice-scale.tilted-left .chain-left {
+    transform: translateY(25px);
+}
+
+.justice-scale.tilted-left .chain-right {
+    transform: translateY(-25px);
+}
+
+.justice-scale.tilted-right .chain-left {
+    transform: translateY(-25px);
+}
+
+.justice-scale.tilted-right .chain-right {
+    transform: translateY(25px);
+}
+
+/* Hinweis-Text */
+.scale-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    opacity: 0.7;
+    transition: opacity var(--transition-base);
+}
+
+.scale-hint svg {
+    color: var(--color-secondary);
+}
+
+.justice-scale-animation:hover .scale-hint {
+    opacity: 1;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 767px) {
+    .justice-scale-section {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .justice-scale {
+        max-width: 320px;
+    }
+
+    .justice-scale-content {
+        order: 1;
+    }
+
+    .justice-scale-animation {
+        order: 2;
+    }
+}
+
+/* Sanfte Einblend-Animation beim Laden */
+.justice-scale-section .justice-scale {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: scaleReveal 1s ease-out 0.5s forwards;
+}
+
+@keyframes scaleReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

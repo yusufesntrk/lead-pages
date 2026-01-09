@@ -178,7 +178,107 @@ curl -I "https://facebook.com/pagename"
 | **Externe Buttons** | URL erreichbar? |
 | **Download-Buttons** | Datei existiert im `/public`? |
 
-### 6. Navigation-Konsistenz prüfen
+### 6. CTA-Speziallinks prüfen (PFLICHT!)
+
+**Jeder CTA muss die erwartete Aktion auslösen!**
+
+#### Telefon-Links (`tel:`)
+```html
+<!-- Korrekt -->
+<a href="tel:+4978512105">Anrufen</a>
+<a href="tel:+49-7851-2105">Anrufen</a>
+
+<!-- Falsch -->
+<a href="tel:07851 2105">  <!-- Leerzeichen! -->
+<a href="tel:+49 7851 2105">  <!-- Leerzeichen! -->
+```
+
+**Prüfkriterien:**
+- ✅ Format: `tel:+[Ländercode][Nummer]` (ohne Leerzeichen/Klammern)
+- ✅ Nummer beginnt mit `+` für internationale Erreichbarkeit
+- ✅ Keine Leerzeichen, Bindestriche OK
+- ✅ Öffnet Anruf-Dialog auf Mobile/Desktop
+
+#### E-Mail-Links (`mailto:`)
+```html
+<!-- Korrekt -->
+<a href="mailto:info@firma.de">E-Mail senden</a>
+<a href="mailto:info@firma.de?subject=Anfrage">Mit Betreff</a>
+
+<!-- Falsch -->
+<a href="mailto:info@firma">  <!-- Keine Domain! -->
+<a href="mail:info@firma.de">  <!-- Falsch: mail statt mailto -->
+```
+
+**Prüfkriterien:**
+- ✅ Format: `mailto:[gültige-email]`
+- ✅ E-Mail enthält `@` und Domain
+- ✅ Optional: `?subject=` und `?body=` Parameter
+- ✅ Öffnet E-Mail-Client
+
+#### WhatsApp-Links
+```html
+<!-- Korrekt -->
+<a href="https://wa.me/4978512105">WhatsApp</a>
+<a href="https://wa.me/4978512105?text=Hallo">Mit Nachricht</a>
+
+<!-- Falsch -->
+<a href="https://wa.me/+4978512105">  <!-- Kein + Zeichen! -->
+<a href="https://whatsapp.com/...">  <!-- Falsche Domain -->
+```
+
+**Prüfkriterien:**
+- ✅ Format: `https://wa.me/[Nummer ohne +]`
+- ✅ Nummer OHNE `+` Zeichen
+- ✅ Optional: `?text=` Parameter (URL-encoded)
+
+#### Google Maps Links
+```html
+<!-- Korrekt - Place ID (BEVORZUGT) -->
+<a href="https://www.google.com/maps/place/?q=place_id:ChIJ...">Standort</a>
+
+<!-- Korrekt - Suche -->
+<a href="https://www.google.com/maps/search/?api=1&query=Firmenname+Straße+Ort">Route</a>
+
+<!-- Funktioniert, aber nicht ideal -->
+<a href="https://maps.google.com/?q=Adresse">Maps</a>
+```
+
+**Prüfkriterien:**
+- ✅ Öffnet korrekten Standort (nicht nur Adresse, sondern Business!)
+- ✅ Bevorzugt: Place-ID für exaktes Business-Profil
+- ✅ `target="_blank"` für neuen Tab
+
+#### SMS-Links
+```html
+<a href="sms:+4978512105">SMS senden</a>
+<a href="sms:+4978512105?body=Hallo">Mit Text</a>
+```
+
+#### Prüf-Checkliste für alle CTAs
+
+| Link-Typ | Prüfen | Erwartetes Verhalten |
+|----------|--------|---------------------|
+| `tel:` | Nummer-Format, keine Leerzeichen | Anruf-Dialog öffnet sich |
+| `mailto:` | Gültige E-Mail-Adresse | E-Mail-Client öffnet sich |
+| `https://wa.me/` | Nummer ohne +, korrekte Domain | WhatsApp öffnet sich |
+| `maps/place/` | Place-ID oder korrekte Query | Richtiger Standort in Maps |
+| `sms:` | Nummer-Format | SMS-App öffnet sich |
+
+#### Test mit Playwright (falls verfügbar)
+```javascript
+// Tel-Link testen
+await page.click('a[href^="tel:"]');
+// → Prüfen ob Protokoll-Handler aufgerufen wird
+
+// Mailto-Link testen
+await page.click('a[href^="mailto:"]');
+// → Prüfen ob Protokoll-Handler aufgerufen wird
+```
+
+**WICHTIG:** Bei Fehlern sofort korrigieren - CTAs sind conversion-kritisch!
+
+### 7. Navigation-Konsistenz prüfen
 
 #### Header-Menü
 - Alle Links funktionieren?
@@ -199,7 +299,7 @@ curl -I "https://facebook.com/pagename"
 - Pfade korrekt?
 - Klickbar und funktional?
 
-### 7. Fehler-Report erstellen
+### 8. Fehler-Report erstellen
 
 Strukturierter Report:
 
@@ -253,7 +353,7 @@ Strukturierter Report:
 - [ ] Trailing Slash vereinheitlichen
 ```
 
-### 8. Auto-Fix (optional)
+### 9. Auto-Fix (optional)
 
 Falls möglich, Probleme automatisch beheben:
 
@@ -273,7 +373,7 @@ old: href="/about/"
 new: href="/about"
 ```
 
-### 9. Dev-Server Test (optional, aber empfohlen)
+### 10. Dev-Server Test (optional, aber empfohlen)
 
 ```bash
 # Dev-Server starten
@@ -286,7 +386,7 @@ sleep 5
 # Playwright kann echte Navigation simulieren und Screenshots machen
 ```
 
-### 10. Qualitätssicherung
+### 11. Qualitätssicherung
 
 **Final-Check:**
 - ✅ Alle internen Links auf existierende Seiten geprüft

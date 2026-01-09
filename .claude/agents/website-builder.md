@@ -23,6 +23,30 @@ Verwende das Corporate Design des Unternehmens. Die Website soll einzigartig und
 - **Corporate Design identifizieren**: Farben, Schriften, Stil
 - **Echte Daten sammeln**: Kontakt aus Impressum, Team-Namen, Firmendaten
 
+### 1b. Personenbilder suchen und einbinden (PFLICHT!)
+
+**Bei jeder Website mit Team-/Inhaber-Sektion:**
+
+1. **Auf Original-Website suchen** → Team-Seite, Über-uns, etc.
+2. **Google Bildersuche** → `"[Name] [Firma]"` oder `"[Name] [Ort] [Beruf]"`
+3. **Business-Netzwerke prüfen** → LinkedIn, XING (Profilbilder)
+4. **Branchenverzeichnisse** → Anwaltauskunft, Jameda (Ärzte), etc.
+
+**Bilder herunterladen - Workflow:**
+```
+1. Bild in NEUEM TAB öffnen (direkter Bild-Link)
+2. Bild-URL kopieren
+3. Mit curl/wget herunterladen:
+   curl -o assets/images/[name].jpg "[BILD-URL]"
+4. In Website einbinden
+```
+
+**WICHTIG:**
+- Bilder IMMER zuerst im neuen Tab öffnen, dann herunterladen
+- Thumbnails sind oft zu klein → Vollbild-Version suchen
+- Bei fehlendem Bild: Stilisiertes Initialen-Avatar im Corporate Design erstellen
+- NIEMALS generische Stock-Fotos für echte Personen verwenden!
+
 ### 2. Social Media & Content Research
 - **Social Media recherchieren**: `WebSearch: "[Firma] LinkedIn"`, Instagram, etc.
 - **KEINE generischen Links** - nur echte, funktionierende Social-Media-Profile

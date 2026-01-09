@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initScrollAnimations();
     initSmoothScroll();
+    initJusticeScale();
 });
 
 /**
@@ -182,3 +183,167 @@ function initStatCounters() {
 
 // Initialize stat counters after DOM is loaded
 document.addEventListener('DOMContentLoaded', initStatCounters);
+
+/**
+ * Interactive Justice Scale Animation
+ * - Reacts to scroll position (tilts based on scroll)
+ * - Reacts to hover on bowls
+ * - Click to temporarily tilt
+ */
+function initJusticeScale() {
+    const scale = document.querySelector('.justice-scale');
+    const scaleSection = document.querySelector('.justice-scale-section');
+
+    if (!scale || !scaleSection) return;
+
+    const bowlLeft = scale.querySelector('.bowl-left');
+    const bowlRight = scale.querySelector('.bowl-right');
+
+    let isAnimating = false;
+    let scrollTiltEnabled = true;
+
+    // Scroll-based tilting
+    function handleScroll() {
+        if (!scrollTiltEnabled || isAnimating) return;
+
+        const rect = scaleSection.getBoundingClientRect();
+        const sectionHeight = rect.height;
+        const sectionTop = rect.top;
+        const windowHeight = window.innerHeight;
+
+        // Calculate how far through the section we've scrolled
+        // -1 = top of section at bottom of viewport
+        // 0 = center of section in center of viewport
+        // 1 = bottom of section at top of viewport
+        const scrollProgress = (windowHeight / 2 - sectionTop - sectionHeight / 2) / (sectionHeight / 2);
+
+        // Clamp between -1 and 1
+        const clampedProgress = Math.max(-1, Math.min(1, scrollProgress));
+
+        // Apply tilt classes based on scroll position
+        scale.classList.remove('tilted-left', 'tilted-right', 'balanced');
+
+        if (clampedProgress < -0.3) {
+            scale.classList.add('tilted-left');
+        } else if (clampedProgress > 0.3) {
+            scale.classList.add('tilted-right');
+        } else {
+            scale.classList.add('balanced');
+        }
+    }
+
+    // Debounced scroll handler
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(handleScroll);
+    }, { passive: true });
+
+    // Initial state
+    handleScroll();
+
+    // Click on left bowl - tilt left temporarily
+    if (bowlLeft) {
+        bowlLeft.addEventListener('click', function() {
+            if (isAnimating) return;
+
+            isAnimating = true;
+            scrollTiltEnabled = false;
+
+            scale.classList.remove('tilted-right', 'balanced');
+            scale.classList.add('tilted-left');
+
+            // Animate back to balanced, then re-enable scroll
+            setTimeout(function() {
+                scale.classList.remove('tilted-left');
+                scale.classList.add('balanced');
+
+                setTimeout(function() {
+                    isAnimating = false;
+                    scrollTiltEnabled = true;
+                    handleScroll(); // Restore scroll-based position
+                }, 800);
+            }, 1500);
+        });
+    }
+
+    // Click on right bowl - tilt right temporarily
+    if (bowlRight) {
+        bowlRight.addEventListener('click', function() {
+            if (isAnimating) return;
+
+            isAnimating = true;
+            scrollTiltEnabled = false;
+
+            scale.classList.remove('tilted-left', 'balanced');
+            scale.classList.add('tilted-right');
+
+            // Animate back to balanced, then re-enable scroll
+            setTimeout(function() {
+                scale.classList.remove('tilted-right');
+                scale.classList.add('balanced');
+
+                setTimeout(function() {
+                    isAnimating = false;
+                    scrollTiltEnabled = true;
+                    handleScroll(); // Restore scroll-based position
+                }, 800);
+            }, 1500);
+        });
+    }
+
+    // Add subtle hover effect - bowls gently rise on hover
+    function addBowlHoverEffect(bowl, side) {
+        if (!bowl) return;
+
+        bowl.addEventListener('mouseenter', function() {
+            if (isAnimating) return;
+            bowl.style.transform = 'translateY(-5px) scale(1.02)';
+        });
+
+        bowl.addEventListener('mouseleave', function() {
+            if (isAnimating) return;
+            bowl.style.transform = '';
+        });
+    }
+
+    addBowlHoverEffect(bowlLeft, 'left');
+    addBowlHoverEffect(bowlRight, 'right');
+
+    // Accessibility: keyboard interaction
+    scale.setAttribute('tabindex', '0');
+    scale.setAttribute('role', 'img');
+    scale.setAttribute('aria-label', 'Interaktive Waage der Gerechtigkeit. Drücken Sie Enter um die Animation zu sehen.');
+
+    scale.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (isAnimating) return;
+
+            isAnimating = true;
+            scrollTiltEnabled = false;
+
+            // Swing animation sequence
+            scale.classList.remove('balanced');
+            scale.classList.add('tilted-left');
+
+            setTimeout(function() {
+                scale.classList.remove('tilted-left');
+                scale.classList.add('tilted-right');
+
+                setTimeout(function() {
+                    scale.classList.remove('tilted-right');
+                    scale.classList.add('balanced');
+
+                    setTimeout(function() {
+                        isAnimating = false;
+                        scrollTiltEnabled = true;
+                        handleScroll();
+                    }, 800);
+                }, 800);
+            }, 800);
+        }
+    });
+}
