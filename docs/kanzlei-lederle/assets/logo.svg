@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+  <g fill="#1a2744">
+    <!-- Logo Icon -->
+    <rect x="0" y="5" width="40" height="40" rx="4"/>
+    <path d="M12 13h16v4H16v6h10v4H16v6h12v4H12V13z" fill="#ffffff"/>
+
+    <!-- Text: Lederle -->
+    <text x="50" y="28" font-family="Georgia, serif" font-size="22" font-weight="700">Lederle</text>
+
+    <!-- Tagline: Rechtsanwälte -->
+    <text x="50" y="42" font-family="Arial, sans-serif" font-size="10" fill="#6c757d" letter-spacing="0.5">Rechtsanwälte</text>
+  </g>
+</svg>
