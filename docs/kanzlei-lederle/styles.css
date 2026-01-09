@@ -777,6 +777,29 @@ p:last-child {
     margin-bottom: var(--space-lg);
 }
 
+.team-image img {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: all var(--transition-base);
+}
+
+.team-card:hover .team-image img {
+    transform: scale(1.05);
+}
+
+.image-frame img,
+.kanzlei-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+}
+
 .team-placeholder {
     width: 180px;
     height: 180px;
@@ -1476,6 +1499,14 @@ p:last-child {
 .team-detail-image svg {
     width: 80px;
     height: 80px;
+}
+
+.team-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-lg);
 }
 
 .team-detail-content h2 {

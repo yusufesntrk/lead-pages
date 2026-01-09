@@ -182,9 +182,12 @@ Von Original-Website übernehmen:
 | **links-checker** | Prüft alle Buttons und Links auf Korrektheit |
 | **responsive-checker** | Prüft Mobile- und Desktop-Ansicht |
 | **testimonials-verifier** | Findet und extrahiert echte Testimonials |
-| **image-verifier** | Prüft alle Bilder auf Korrektheit und Auflösung |
+| **placeholder-replacer** | Findet SVG-Platzhalter und ersetzt sie durch echte Bilder |
+| **image-quality-checker** | Prüft Bildauflösung, Dateigröße und Retina-Support |
+| **image-authenticity-checker** | Prüft ob Team/Testimonials echte Fotos sind (keine Stock) |
 | **google-maps-verifier** | Prüft Google Maps URLs |
 | **broken-images-fixer** | Findet und behebt nicht angezeigte Bilder |
+| **team-photos-extractor** | Extrahiert Team-Fotos von Original-Websites und bindet sie ein |
 
 **Agent-Aufruf:**
 ```
