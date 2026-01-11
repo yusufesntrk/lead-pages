@@ -2,7 +2,7 @@
 name: responsive-checker
 description: Prüft Mobile- und Desktop-Ansicht der Website auf Responsive-Design-Probleme
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: opus
+model: sonnet
 ---
 
 # Responsive Checker Agent

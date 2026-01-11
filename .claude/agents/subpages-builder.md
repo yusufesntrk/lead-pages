@@ -75,6 +75,11 @@ Für jede Unterseite:
 5. **Responsive**: Mobile-optimiert wie bestehende Seiten
 6. **Barrierefreiheit**: Alt-Tags, Semantic HTML
 
+**WICHTIG - Header/Footer 1:1 kopieren:**
+- Kopiere Header und Footer EXAKT von index.html
+- KEINE Modifikationen am Logo-Bereich
+- Nur `class="active"` auf den passenden Nav-Link setzen
+
 ### 5. Integration & Testing
 
 - **Navigation aktualisieren** (Header, Footer, Mobile Menu)
@@ -107,6 +112,46 @@ Für jede Unterseite:
 - ❌ "Hier kommt Text hin"
 - ❌ Generische Platzhalter-Bilder ohne Kontext
 - ❌ Fake-Kontaktdaten
+
+## ⚠️ KRITISCH: Rechtliche Seiten (Datenschutz, Impressum, AGB)
+
+**NIEMALS rechtliche Texte selbst generieren! Content-Filter blockiert diese.**
+
+### Pflicht-Workflow für rechtliche Seiten:
+
+1. **Original-Website abrufen:**
+   ```
+   WebFetch: [original-website]/impressum
+   WebFetch: [original-website]/datenschutz
+   WebFetch: [original-website]/agb
+   ```
+
+2. **HTML-Content extrahieren:**
+   - Den rechtlichen Text-Block aus dem Response kopieren
+   - NUR den reinen Text-Content übernehmen (keine Navigation, Footer, etc.)
+
+3. **In neue Seite einfügen:**
+   - Neues HTML mit dem Design-System der erstellten Website
+   - Den kopierten rechtlichen Text 1:1 einfügen
+   - Header/Footer/Navigation der neuen Website verwenden
+
+4. **Falls Original nicht abrufbar:**
+   - Seite MIT korrektem Design erstellen (Header, Footer, Navigation)
+   - Template-Text einfügen:
+   ```html
+   <section class="legal-content">
+     <h1>Datenschutzerklärung</h1>
+     <p>Die Datenschutzerklärung wird in Kürze hier veröffentlicht.</p>
+     <p>Bei Fragen zum Datenschutz kontaktieren Sie uns gerne.</p>
+   </section>
+   ```
+   - Analog für Impressum/AGB mit angepasster Überschrift
+   - NIEMALS eigene rechtliche Texte generieren!
+
+### Warum so wichtig?
+- Content-Filter blockiert rechtliche Formulierungen
+- Rechtliche Texte müssen ohnehin vom Original übernommen werden (rechtlich korrekt)
+- Eigene rechtliche Texte wären unprofessionell und möglicherweise falsch
 
 ## Framework-spezifische Anpassungen
 

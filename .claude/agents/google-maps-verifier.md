@@ -2,7 +2,7 @@
 name: google-maps-verifier
 description: Prüft Google Maps URLs und stellt sicher dass sie auf das Business-Profil verweisen statt nur auf die Adresse
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch
-model: opus
+model: sonnet
 ---
 
 # Google Maps Verifier Agent

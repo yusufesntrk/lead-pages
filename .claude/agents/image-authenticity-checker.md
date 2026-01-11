@@ -2,7 +2,7 @@
 name: image-authenticity-checker
 description: Prüft ob Team-Fotos, Testimonials und Referenzen echte Bilder sind (keine Stock-Fotos)
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch
-model: opus
+model: sonnet
 ---
 
 # Image Authenticity Checker Agent

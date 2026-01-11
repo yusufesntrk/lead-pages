@@ -2,7 +2,7 @@
 name: testimonials-verifier
 description: Findet und extrahiert Testimonials von Google/Website und fügt sie in die Website ein
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch
-model: opus
+model: sonnet
 ---
 
 # Testimonials Verifier Agent

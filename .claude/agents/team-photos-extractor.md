@@ -2,6 +2,7 @@
 name: team-photos-extractor
 description: Extrahiert Team-Fotos von Original-Websites und Anwaltsportalen und bindet sie in die erstellte Website ein
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch
+model: sonnet
 ---
 
 # Team Photos Extractor

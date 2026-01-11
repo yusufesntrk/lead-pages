@@ -2,7 +2,7 @@
 name: placeholder-replacer
 description: Findet SVG-Platzhalter (Team, Gebäude, Produkte) und ersetzt sie durch echte Bilder von der Original-Website
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch
-model: opus
+model: sonnet
 ---
 
 # Placeholder Replacer Agent

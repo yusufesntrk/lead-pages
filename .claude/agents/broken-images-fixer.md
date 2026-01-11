@@ -2,7 +2,7 @@
 name: broken-images-fixer
 description: Findet und behebt nicht angezeigte Bilder auf der Website (broken images, falsche Pfade, fehlende Dateien)
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch
-model: opus
+model: sonnet
 ---
 
 # Broken Images Fixer Agent

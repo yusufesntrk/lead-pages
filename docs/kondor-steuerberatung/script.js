@@ -4,6 +4,9 @@
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Enable JS-only animations
+    document.body.classList.add('js-ready');
+
     // Initialize all components
     initHeader();
     initMobileNav();

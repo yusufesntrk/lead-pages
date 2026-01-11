@@ -221,23 +221,33 @@ docs/
 
 ## Deployment
 
-- **Output:** `docs/[firmenname]/`
-- **Cloudflare Pages:** automatisch bei git push
+- **Output:** `docs/[firmenname]/` (in diesem Repo)
+- **Lead-Pages Repo:** `~/lead-pages/` (separates Repo für Cloudflare Pages)
+- **Cloudflare Pages:** automatisch bei git push zu lead-pages
 - **URL:** `https://lead-pages.pages.dev/[firmenname]/`
 
 ### Finalisierung
 
 ```bash
-# Git
-git add docs/[firmenname]/
+# 1. Ordner ins lead-pages Repo kopieren
+cp -r docs/[firmenname] ~/lead-pages/
+
+# 2. Im lead-pages Repo committen und pushen
+cd ~/lead-pages
+git add [firmenname]/
 git commit -m "Add landing page for [Firmenname]"
 git push origin main
 
-# Airtable Update (via MCP)
+# 3. Zurück zum website-builder
+cd ~/website-builder
+```
+
+```javascript
+// 4. Airtable Update (via MCP)
 mcp__airtable__update_records({
   baseId: "app4j0YLgGsYe1luA",
   tableId: "tblNQpZPxQleuajZc",
-  records: [{ id: "recXXX", fields: { "Seite erstellt": true, "Landingpage URL": "https://..." }}]
+  records: [{ id: "recXXX", fields: { "Seite erstellt": true, "Landingpage URL": "https://lead-pages.pages.dev/[firmenname]/" }}]
 })
 ```
 

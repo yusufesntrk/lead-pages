@@ -2,7 +2,7 @@
 name: links-checker
 description: Prüft alle Buttons und Links auf der Website auf Korrektheit und Funktionalität
 tools: Read, Write, Edit, Bash, Grep, Glob
-model: opus
+model: sonnet
 ---
 
 # Links Checker Agent
