@@ -112,10 +112,13 @@ grep -r "overflow: hidden" --include="*.css" --include="*.tsx"
 - ✅ Content passt in Viewport (kein horizontales Scrollen)
 - ✅ Grid/Flexbox bricht korrekt um (3 Spalten → 1 Spalte)
 - ✅ Margins/Paddings angemessen (nicht zu groß auf kleinem Screen)
+- ✅ Scroll-Indicator (`.hero__scroll`) auf Mobile ausgeblendet
+- ✅ Absolute positionierte Elemente überlappen nicht
 - ❌ **PROBLEME:**
   - Horizontaler Overflow
   - Text wird abgeschnitten
-  - Elemente überlappen
+  - Elemente überlappen (besonders `.hero__scroll` mit Stats!)
+  - Absolute Elemente außerhalb Container
   - Zu viel Whitespace
 
 **Desktop:**
@@ -296,7 +299,51 @@ grep -r "hidden\|md:block\|lg:block" --include="*.tsx" --include="*.jsx"
 grep -r "text-\|font-size" --include="*.css" --include="*.tsx"
 ```
 
-### 7. Accessibility auf verschiedenen Devices
+### 7. Animation & Sichtbarkeits-Checks (KRITISCH!)
+
+#### Fade-In Animationen prüfen
+```bash
+# Fade-In Klassen finden
+grep -r "\.fade-in\|opacity: 0" --include="*.css" --include="*.scss"
+
+# JavaScript IntersectionObserver prüfen
+grep -r "IntersectionObserver\|\.observe(" --include="*.js"
+```
+
+**Häufiges Problem:** Elemente mit `opacity: 0` werden bei Page-Load nicht sichtbar!
+
+**Prüfen ob Fix vorhanden:**
+```javascript
+// ✅ RICHTIG - Elemente im Viewport sofort sichtbar
+const rect = el.getBoundingClientRect();
+if (rect.top < window.innerHeight && rect.bottom > 0) {
+    el.classList.add('visible');
+}
+
+// ❌ FALSCH - Nur Observer (Content unsichtbar bei Page-Load)
+observer.observe(el);
+```
+
+#### Scroll-Indicator auf Mobile
+```bash
+# Scroll-Indicator finden
+grep -r "hero__scroll\|scroll-indicator" --include="*.html" --include="*.css"
+
+# Mobile-Hide prüfen
+grep -A5 "@media.*max-width.*768" --include="*.css" | grep -i "hero__scroll\|display.*none"
+```
+
+**KRITISCH:** `.hero__scroll` MUSS auf Mobile ausgeblendet sein (`display: none`), sonst überlappt es mit Hero-Stats!
+
+#### Header-Spacing prüfen
+```bash
+# Header-Inner Padding prüfen
+grep -A10 "header__inner\|header-inner" --include="*.css" | grep "padding"
+```
+
+**Problem:** Ohne Padding klebt die Navigation am oberen Rand!
+
+### 8. Accessibility auf verschiedenen Devices
 
 **Mobile:**
 - ✅ Touch-Targets groß genug (44x44px)
@@ -308,7 +355,7 @@ grep -r "text-\|font-size" --include="*.css" --include="*.tsx"
 - ✅ Focus-States sichtbar
 - ✅ Skip-Links vorhanden
 
-### 8. Performance-Checks
+### 9. Performance-Checks
 
 **Mobile:**
 ```bash
@@ -324,7 +371,7 @@ grep -r "srcset\|<picture>" --include="*.tsx" --include="*.jsx"
 - WebP-Format nutzen
 - Lazy Loading aktivieren
 
-### 9. Report erstellen
+### 10. Report erstellen
 
 ```markdown
 # Responsive Design Check Report
@@ -420,7 +467,7 @@ grep -r "srcset\|<picture>" --include="*.tsx" --include="*.jsx"
 4. **Teste auf echten Geräten**: Emulation ≠ echtes Device
 ```
 
-### 10. Auto-Fix (einfache Probleme)
+### 11. Auto-Fix (einfache Probleme)
 
 Falls möglich, einfache Responsive-Probleme automatisch beheben:
 
@@ -435,7 +482,7 @@ Falls möglich, einfache Responsive-Probleme automatisch beheben:
 
 **User-Bestätigung vor komplexen Fixes!**
 
-### 11. Qualitätssicherung
+### 12. Qualitätssicherung
 
 - ✅ Alle Standard-Breakpoints getestet (Mobile, Tablet, Desktop)
 - ✅ Kritische Probleme identifiziert und priorisiert
@@ -443,6 +490,9 @@ Falls möglich, einfache Responsive-Probleme automatisch beheben:
 - ✅ Fix-Vorschläge konkret und umsetzbar
 - ✅ Report übersichtlich strukturiert
 - ✅ Screenshots gelöscht (temporäre Dateien aufgeräumt)
+- ✅ **Fade-In Animationen** zeigen Content beim Page-Load
+- ✅ **Scroll-Indicator** auf Mobile ausgeblendet (keine Überlappung)
+- ✅ **Header-Padding** vorhanden (Navigation klebt nicht am Rand)
 
 ## Tools-Verwendung
 

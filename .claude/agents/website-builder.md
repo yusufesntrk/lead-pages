@@ -144,6 +144,59 @@ Typische Sektionen für eine starke Startseite:
 
 ## CSS Best Practices (PFLICHT!)
 
+### Header-Styling - Padding & Spacing
+
+**IMMER Padding im Header für besseren Abstand:**
+```css
+/* ✅ RICHTIG - Header mit vertikalem Padding */
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: var(--spacing-sm) 0;  /* WICHTIG! */
+}
+
+/* ✅ RICHTIG - Nav-List ohne Browser-Defaults */
+.nav__list {
+    display: flex;
+    list-style: none;  /* WICHTIG! */
+    margin: 0;
+    padding: 0;
+}
+```
+
+### Scroll-Indicator auf Mobile ausblenden
+
+**IMMER `.hero__scroll` auf Mobile ausblenden (überlappt mit Stats!):**
+```css
+@media (max-width: 768px) {
+    .hero__scroll {
+        display: none;  /* Verhindert Überlappung mit Hero-Stats */
+    }
+}
+```
+
+### Fade-In Animation - Sofortige Sichtbarkeit
+
+**IMMER Elemente im Viewport sofort sichtbar machen:**
+```javascript
+// ✅ RICHTIG - Elemente im Viewport beim Laden sofort zeigen
+fadeElements.forEach(function(el) {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');  // Sofort sichtbar!
+    } else {
+        observer.observe(el);  // Nur beobachten wenn außerhalb
+    }
+});
+
+// ❌ FALSCH - Alle Elemente beobachten (Content bleibt unsichtbar)
+fadeElements.forEach(function(el) {
+    observer.observe(el);
+});
+```
+
 ### Card Grids - Gleiche Breite & Button-Ausrichtung
 
 **IMMER `minmax(0, 1fr)` für gleiche Kartenbreiten:**
