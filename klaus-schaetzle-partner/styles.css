@@ -202,6 +202,7 @@ section {
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    padding: var(--spacing-sm) 0;
 }
 
 .logo {
@@ -229,16 +230,20 @@ section {
 .nav__list {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav__link {
     font-family: var(--font-primary);
-    font-size: 0.95rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-secondary);
-    padding: var(--spacing-xs) 0;
+    padding: var(--spacing-xs) var(--spacing-xs);
     position: relative;
+    white-space: nowrap;
 }
 
 .nav__link::after {

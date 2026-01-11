@@ -133,7 +133,14 @@ function initScrollAnimations() {
                 const siblingIndex = siblings.indexOf(el);
                 el.dataset.delay = siblingIndex * 100;
             }
-            observer.observe(el);
+
+            // Make elements visible immediately if already in viewport on page load
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('visible');
+            } else {
+                observer.observe(el);
+            }
         });
     } else {
         // Fallback: show all elements immediately

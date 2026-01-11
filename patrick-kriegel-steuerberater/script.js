@@ -93,7 +93,14 @@ document.addEventListener('DOMContentLoaded', function() {
             el.closest('.testimonials-grid')) {
             el.dataset.delay = (index % 3) * 100;
         }
-        fadeObserver.observe(el);
+
+        // Make elements visible immediately if already in viewport on page load
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('visible');
+        } else {
+            fadeObserver.observe(el);
+        }
     });
 
     // ============================================
