@@ -492,8 +492,7 @@ address {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: url('assets/images/hero-bg.jpg') center/cover no-repeat;
-    opacity: 0.15;
+    background: linear-gradient(135deg, rgba(0, 77, 150, 0.95) 0%, rgba(0, 50, 100, 1) 100%);
 }
 
 .hero-content {

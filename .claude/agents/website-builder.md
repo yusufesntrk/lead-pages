@@ -23,6 +23,28 @@ Baue eine **geile Startseite (index.html)** für das angegebene Unternehmen.
 - **Micro-Interactions** - Dezente Animationen die Leben reinbringen
 - **Einzigartig** - Kein Template-Look, sondern individuell für die Firma
 
+### Hero-Section nach Branche
+
+| Branche | Hero-Style |
+|---------|------------|
+| **Anwälte, Kanzleien, Steuerberater, Praxen** | KEIN Hintergrundbild! Cleaner Farbverlauf oder solide Farbe. Seriös & professionell. |
+| **Restaurants, Cafés, Hotels** | Appetitliche Food-/Ambiente-Bilder erlaubt |
+| **Kreativagenturen, Tech** | Abstrakte Visuals, Animationen, mutig |
+| **Handwerk** | Werkstatt-/Arbeitsfotos optional |
+
+**Bei seriösen Branchen (Recht, Steuern, Medizin):**
+```css
+/* ✅ RICHTIG - Kein Bild, eleganter Gradient */
+.hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+}
+
+/* ❌ FALSCH - Stock-Foto im Hintergrund */
+.hero {
+    background-image: url('hero-bg.jpg');
+}
+```
+
 ## Pflicht-Workflow
 
 ### 1. Research & Asset-Extraktion
