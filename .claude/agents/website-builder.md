@@ -45,6 +45,30 @@ Baue eine **geile Startseite (index.html)** für das angegebene Unternehmen.
 }
 ```
 
+### Hero-Section - Viewport-Regel (PFLICHT!)
+
+**Die Hero-Section MUSS beim ersten Laden den gesamten Bildschirm füllen!**
+
+```css
+/* ✅ RICHTIG - Füllt exakt den Viewport */
+.hero {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport für Mobile */
+}
+
+/* ❌ FALSCH - Abgeschnitten oder zu kurz */
+.hero {
+    height: 600px;
+    min-height: 80vh;
+}
+```
+
+**Wichtig:**
+- `100dvh` für Mobile (dynamisch, berücksichtigt Browser-UI)
+- Header-Höhe beachten: `min-height: calc(100dvh - var(--header-height))`
+- Kein Content darf unter dem Fold abgeschnitten sein
+- Scroll-Indicator am unteren Rand zeigt "mehr Content unten"
+
 ## Pflicht-Workflow
 
 ### 1. Research & Asset-Extraktion
