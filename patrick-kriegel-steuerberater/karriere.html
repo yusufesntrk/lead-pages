@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Karriere bei Patrick Kriegel Steuerberater - Werden Sie Teil unseres Teams! Stellenangebote, Ausbildung und Praktikum in Offenburg.">
+    <meta name="keywords" content="Karriere Steuerberater, Jobs Offenburg, Ausbildung Steuerfachangestellte, Steuerberatung Jobs">
+
+    <title>Karriere | Patrick Kriegel Steuerberater Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <style>
+        .page-hero {
+            padding-top: calc(var(--header-height) + var(--spacing-3xl));
+            padding-bottom: var(--spacing-3xl);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .page-hero__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-hero h1 {
+            color: var(--color-text-inverse);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        /* Why Us Section */
+        .why-us__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .why-us__card {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .why-us__card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .why-us__card-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-us__card-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-text-inverse);
+        }
+
+        .why-us__card h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .why-us__card p {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Team Departments */
+        .departments {
+            background: var(--color-bg-alt);
+        }
+
+        .departments__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .department-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: flex-start;
+            transition: box-shadow var(--transition-normal);
+        }
+
+        .department-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .department-card__icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .department-card__icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--color-text-inverse);
+        }
+
+        .department-card__content h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .department-card__content p {
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Jobs Section */
+        .jobs__intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-2xl);
+        }
+
+        .jobs__intro .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .jobs__intro h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .jobs__intro p {
+            color: var(--color-text-secondary);
+            font-size: 1.125rem;
+        }
+
+        .jobs__grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .job-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            border: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-lg);
+            transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .job-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .job-card__content h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .job-card__meta {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .job-card__tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .job-card__tag svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .job-card__action .btn {
+            white-space: nowrap;
+        }
+
+        /* Training Section */
+        .training__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            align-items: center;
+        }
+
+        .training__content .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .training__content h2 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .training__content p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .training__list {
+            margin-top: var(--spacing-lg);
+        }
+
+        .training__list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .training__list-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .training__visual {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-3xl);
+            text-align: center;
+            color: var(--color-text-inverse);
+        }
+
+        .training__visual-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .training__visual-icon svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .training__visual h3 {
+            color: var(--color-text-inverse);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .training__visual p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: var(--color-bg-alt);
+        }
+
+        .benefits__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .benefit-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .benefit-card__icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto var(--spacing-md);
+            background: var(--color-bg-alt);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .benefit-card__icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--color-primary);
+        }
+
+        .benefit-card h4 {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .benefit-card p {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Application CTA */
+        .application {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            text-align: center;
+        }
+
+        .application__inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .application h2 {
+            color: var(--color-text-inverse);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .application p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .application__contact {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .application__contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .application__contact-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-accent);
+        }
+
+        .application__contact-item a {
+            color: var(--color-text-inverse);
+            font-weight: 500;
+        }
+
+        .application__contact-item a:hover {
+            color: var(--color-accent);
+        }
+
+        @media (max-width: 1024px) {
+            .why-us__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .departments__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .training__grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-2xl);
+            }
+
+            .benefits__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .why-us__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .job-card__action {
+                width: 100%;
+            }
+
+            .job-card__action .btn {
+                width: 100%;
+            }
+
+            .benefits__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .application__contact {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater Logo">
+                </a>
+
+                <nav class="nav" id="nav">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link">Startseite</a></li>
+                        <li><a href="leistungen.html" class="nav__link">Leistungen</a></li>
+                        <li><a href="kanzlei.html" class="nav__link">Kanzlei</a></li>
+                        <li><a href="digitale-kanzlei.html" class="nav__link">Digitale Kanzlei</a></li>
+                        <li><a href="karriere.html" class="nav__link active">Karriere</a></li>
+                        <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn--primary">Beratung anfragen</a>
+                </nav>
+
+                <button class="nav-toggle" id="navToggle" aria-label="Navigation umschalten">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero__content fade-in">
+                <span class="label">Werden Sie Teil des Teams</span>
+                <h1>Karriere bei Patrick Kriegel</h1>
+                <p>Wir suchen Menschen, die mit uns gemeinsam Steuerberatung neu denken wollen. Modern, digital und immer persönlich.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Warum wir?</span>
+                <h2>Das erwartet Sie bei uns</h2>
+                <p>Eine Kanzlei, in der Sie sich wohlfühlen und entwickeln können.</p>
+            </div>
+
+            <div class="why-us__grid">
+                <article class="why-us__card fade-in">
+                    <div class="why-us__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Starkes Team</h3>
+                    <p>Über 20 Kolleginnen und Kollegen, die sich gegenseitig unterstützen und gemeinsam wachsen.</p>
+                </article>
+
+                <article class="why-us__card fade-in">
+                    <div class="why-us__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>Modern & Digital</h3>
+                    <p>Arbeiten mit neuester Technologie in einer DATEV-zertifizierten digitalen Kanzlei.</p>
+                </article>
+
+                <article class="why-us__card fade-in">
+                    <div class="why-us__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Weiterbildung</h3>
+                    <p>Regelmäßige Schulungen und Unterstützung bei Ihrer fachlichen und persönlichen Entwicklung.</p>
+                </article>
+
+                <article class="why-us__card fade-in">
+                    <div class="why-us__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3>Work-Life-Balance</h3>
+                    <p>Flexible Arbeitszeiten und die Möglichkeit, auch mal von zu Hause zu arbeiten.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="section departments">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Unsere Abteilungen</span>
+                <h2>Vielfältige Aufgabenbereiche</h2>
+                <p>In unserer Kanzlei finden Sie verschiedene Spezialisierungen und Einsatzmöglichkeiten.</p>
+            </div>
+
+            <div class="departments__grid">
+                <article class="department-card fade-in">
+                    <div class="department-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <div class="department-card__content">
+                        <h3>Sekretariat & Empfang</h3>
+                        <p>Das Herz unserer Kanzlei: Hier laufen alle Fäden zusammen. Mandantenbetreuung, Terminkoordination und Kommunikation.</p>
+                    </div>
+                </article>
+
+                <article class="department-card fade-in">
+                    <div class="department-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <div class="department-card__content">
+                        <h3>Lohnteam</h3>
+                        <p>Experten für Lohn- und Gehaltsabrechnungen. Hier kümmern Sie sich um alle Personalfragen unserer Mandanten.</p>
+                    </div>
+                </article>
+
+                <article class="department-card fade-in">
+                    <div class="department-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <div class="department-card__content">
+                        <h3>Finanzbuchhaltung</h3>
+                        <p>Laufende Buchhaltung, BWA-Erstellung und Auswertungen. Hier sorgen Sie für den Überblick über die Zahlen unserer Mandanten.</p>
+                    </div>
+                </article>
+
+                <article class="department-card fade-in">
+                    <div class="department-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <div class="department-card__content">
+                        <h3>Jahresabschluss & Steuern</h3>
+                        <p>Bilanzen, Steuererklärungen und Beratung. Hier arbeiten Sie an komplexen Fällen und entwickeln steuerliche Lösungen.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section class="section">
+        <div class="container">
+            <div class="jobs__intro fade-in">
+                <span class="label">Aktuelle Stellenangebote</span>
+                <h2>Wir suchen Verstärkung</h2>
+                <p>Finden Sie die passende Position für Ihre Karriere. Auch Initiativbewerbungen sind jederzeit willkommen.</p>
+            </div>
+
+            <div class="jobs__grid">
+                <article class="job-card fade-in">
+                    <div class="job-card__content">
+                        <h3>Steuerfachangestellte/r (m/w/d)</h3>
+                        <div class="job-card__meta">
+                            <span class="job-card__tag">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Offenburg
+                            </span>
+                            <span class="job-card__tag">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Vollzeit / Teilzeit
+                            </span>
+                        </div>
+                    </div>
+                    <div class="job-card__action">
+                        <a href="kontakt.html" class="btn btn--primary">Jetzt bewerben</a>
+                    </div>
+                </article>
+
+                <article class="job-card fade-in">
+                    <div class="job-card__content">
+                        <h3>Steuerfachwirt/in (m/w/d)</h3>
+                        <div class="job-card__meta">
+                            <span class="job-card__tag">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Offenburg
+                            </span>
+                            <span class="job-card__tag">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Vollzeit
+                            </span>
+                        </div>
+                    </div>
+                    <div class="job-card__action">
+                        <a href="kontakt.html" class="btn btn--primary">Jetzt bewerben</a>
+                    </div>
+                </article>
+
+                <article class="job-card fade-in">
+                    <div class="job-card__content">
+                        <h3>Lohnbuchhalter/in (m/w/d)</h3>
+                        <div class="job-card__meta">
+                            <span class="job-card__tag">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Offenburg
+                            </span>
+                            <span class="job-card__tag">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Vollzeit / Teilzeit
+                            </span>
+                        </div>
+                    </div>
+                    <div class="job-card__action">
+                        <a href="kontakt.html" class="btn btn--primary">Jetzt bewerben</a>
+                    </div>
+                </article>
+
+                <article class="job-card fade-in">
+                    <div class="job-card__content">
+                        <h3>Initiativbewerbung</h3>
+                        <div class="job-card__meta">
+                            <span class="job-card__tag">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Offenburg
+                            </span>
+                            <span class="job-card__tag">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Nach Vereinbarung
+                            </span>
+                        </div>
+                    </div>
+                    <div class="job-card__action">
+                        <a href="kontakt.html" class="btn btn--secondary">Bewerben</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Section -->
+    <section class="section section--alt">
+        <div class="container">
+            <div class="training__grid">
+                <div class="training__content fade-in">
+                    <span class="label">Nachwuchsförderung</span>
+                    <h2>Ausbildung & Praktikum</h2>
+                    <p>
+                        Sie stehen am Anfang Ihrer Karriere? Perfekt! Wir bilden seit Jahren erfolgreich Steuerfachangestellte aus und bieten auch Praktikumsplätze für Schüler und Studenten an.
+                    </p>
+                    <p>
+                        Bei uns lernen Sie von erfahrenen Experten und arbeiten von Anfang an an echten Mandantenfällen mit. Moderne Technologie und eine angenehme Arbeitsatmosphäre sind dabei selbstverständlich.
+                    </p>
+                    <div class="training__list">
+                        <div class="training__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Ausbildung zum/zur Steuerfachangestellten</span>
+                        </div>
+                        <div class="training__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Praktikum für Schüler und Studenten</span>
+                        </div>
+                        <div class="training__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Duales Studium in Kooperation mit Hochschulen</span>
+                        </div>
+                        <div class="training__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Unterstützung bei Weiterbildung zum Steuerfachwirt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="training__visual fade-in">
+                    <div class="training__visual-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </div>
+                    <h3>Starten Sie Ihre Karriere</h3>
+                    <p>Bewerben Sie sich jetzt für einen Ausbildungs- oder Praktikumsplatz</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section benefits">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Benefits</span>
+                <h2>Das bieten wir Ihnen</h2>
+                <p>Attraktive Konditionen für eine ausgewogene Work-Life-Balance.</p>
+            </div>
+
+            <div class="benefits__grid">
+                <article class="benefit-card fade-in">
+                    <div class="benefit-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h4>Attraktives Gehalt</h4>
+                    <p>Leistungsgerechte Vergütung plus Urlaubs- und Weihnachtsgeld</p>
+                </article>
+
+                <article class="benefit-card fade-in">
+                    <div class="benefit-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h4>Flexible Arbeitszeiten</h4>
+                    <p>Gleitzeit und Teilzeit-Modelle für Ihre Lebenssituation</p>
+                </article>
+
+                <article class="benefit-card fade-in">
+                    <div class="benefit-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h4>Home-Office</h4>
+                    <p>Flexibles Arbeiten von zu Hause nach Absprache möglich</p>
+                </article>
+
+                <article class="benefit-card fade-in">
+                    <div class="benefit-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h4>Weiterbildung</h4>
+                    <p>Regelmäßige Schulungen und Unterstützung bei Fortbildungen</p>
+                </article>
+
+                <article class="benefit-card fade-in">
+                    <div class="benefit-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h4>Team-Events</h4>
+                    <p>Gemeinsame Ausflüge, Feiern und Teambuilding-Aktivitäten</p>
+                </article>
+
+                <article class="benefit-card fade-in">
+                    <div class="benefit-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h4>Moderne Ausstattung</h4>
+                    <p>Neueste Technik, ergonomische Arbeitsplätze, digitale Tools</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application CTA -->
+    <section class="section application">
+        <div class="container">
+            <div class="application__inner fade-in">
+                <h2>Bereit für den nächsten Schritt?</h2>
+                <p>Wir freuen uns auf Ihre Bewerbung! Senden Sie uns Ihre Unterlagen per E-Mail oder nutzen Sie unser Kontaktformular.</p>
+
+                <div class="btn-group" style="justify-content: center;">
+                    <a href="mailto:karriere@stb-kriegel.de" class="btn btn--white btn--large">Jetzt bewerben</a>
+                    <a href="kontakt.html" class="btn btn--outline-white btn--large">Kontakt aufnehmen</a>
+                </div>
+
+                <div class="application__contact">
+                    <div class="application__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <a href="mailto:karriere@stb-kriegel.de">karriere@stb-kriegel.de</a>
+                    </div>
+                    <div class="application__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <a href="tel:+497819509910">+49 781 950 99 100</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater">
+                    </div>
+                    <p>Ihre moderne Steuerberatungskanzlei in Offenburg. Wir verbinden persönliche Betreuung mit digitaler Effizienz.</p>
+                    <div class="footer__social">
+                        <a href="https://www.linkedin.com/company/steuerberater-patrick-kriegel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/stb_patrick_kriegel" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/steuerberatungskanzleipatrickkriegel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Leistungen</h4>
+                    <nav class="footer__links">
+                        <a href="leistungen.html#steuererklaerung">Steuererklärung</a>
+                        <a href="leistungen.html#jahresabschluss">Jahresabschluss</a>
+                        <a href="leistungen.html#buchhaltung">Buchhaltung</a>
+                        <a href="leistungen.html#gestaltungsberatung">Gestaltungsberatung</a>
+                        <a href="leistungen.html#startup">Start-Up Begleitung</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kanzlei</h4>
+                    <nav class="footer__links">
+                        <a href="kanzlei.html">Über uns</a>
+                        <a href="kanzlei.html#team">Unser Team</a>
+                        <a href="digitale-kanzlei.html">Digitale Kanzlei</a>
+                        <a href="karriere.html">Karriere</a>
+                        <a href="kontakt.html">Kontakt</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kontakt</h4>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Englerstraße 4<br>77652 Offenburg</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>+49 781 950 99 100</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>kontakt@stb-kriegel.de</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Patrick Kriegel GmbH Steuerberatungsgesellschaft. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

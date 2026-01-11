@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lernen Sie die Patrick Kriegel GmbH Steuerberatungsgesellschaft kennen. Über 14 Jahre Erfahrung, ein engagiertes Team und moderne Steuerberatung in Offenburg.">
+    <meta name="keywords" content="Patrick Kriegel, Steuerberater Offenburg, Kanzlei, Team, Daniel Künstle">
+
+    <title>Kanzlei & Team | Patrick Kriegel Steuerberater Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <style>
+        .page-hero {
+            padding-top: calc(var(--header-height) + var(--spacing-3xl));
+            padding-bottom: var(--spacing-3xl);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .page-hero__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-hero h1 {
+            color: var(--color-text-inverse);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        /* Story Section */
+        .story__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            align-items: center;
+        }
+
+        .story__content .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .story__content h2 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .story__content p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .story__visual {
+            position: relative;
+        }
+
+        .story__image {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            border-radius: var(--radius-xl);
+            padding-top: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story__image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .story__badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--color-bg);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .story__badge-value {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .story__badge-label {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* Philosophy Section */
+        .philosophy__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .philosophy__card {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .philosophy__card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .philosophy__card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--spacing-md);
+            background: var(--color-bg-alt);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition-normal);
+        }
+
+        .philosophy__card:hover .philosophy__card-icon {
+            background: var(--color-primary);
+        }
+
+        .philosophy__card-icon svg {
+            width: 36px;
+            height: 36px;
+            color: var(--color-primary);
+            transition: color var(--transition-normal);
+        }
+
+        .philosophy__card:hover .philosophy__card-icon svg {
+            color: var(--color-text-inverse);
+        }
+
+        .philosophy__card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .philosophy__card p {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Team Section */
+        .team__intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-2xl);
+        }
+
+        .team__intro .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .team__intro h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team__intro p {
+            color: var(--color-text-secondary);
+            font-size: 1.125rem;
+        }
+
+        .team__leadership {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .team__leader {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team__leader-image {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            padding-top: 60%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team__leader-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .team__leader-content {
+            padding: var(--spacing-xl);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team__leader-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .team__leader-role {
+            font-size: 1rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team__leader-content p {
+            color: var(--color-text-secondary);
+            flex-grow: 1;
+        }
+
+        .team__departments {
+            background: var(--color-bg-alt);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+        }
+
+        .team__departments h3 {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .team__departments-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .team__department {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+        }
+
+        .team__department-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto var(--spacing-sm);
+            background: var(--color-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team__department-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--color-text-inverse);
+        }
+
+        .team__department h4 {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .team__department p {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+        }
+
+        .stats__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .stats__item {
+            text-align: center;
+        }
+
+        .stats__value {
+            font-family: var(--font-primary);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-text-inverse);
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stats__label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 1024px) {
+            .story__grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-2xl);
+            }
+
+            .story__visual {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .philosophy__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team__leadership {
+                grid-template-columns: 1fr;
+            }
+
+            .team__departments-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-lg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .philosophy__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team__departments-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats__value {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater Logo">
+                </a>
+
+                <nav class="nav" id="nav">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link">Startseite</a></li>
+                        <li><a href="leistungen.html" class="nav__link">Leistungen</a></li>
+                        <li><a href="kanzlei.html" class="nav__link active">Kanzlei</a></li>
+                        <li><a href="digitale-kanzlei.html" class="nav__link">Digitale Kanzlei</a></li>
+                        <li><a href="karriere.html" class="nav__link">Karriere</a></li>
+                        <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn--primary">Beratung anfragen</a>
+                </nav>
+
+                <button class="nav-toggle" id="navToggle" aria-label="Navigation umschalten">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero__content fade-in">
+                <span class="label">Über uns</span>
+                <h1>Ihre Kanzlei in Offenburg</h1>
+                <p>Lernen Sie uns kennen: Ein engagiertes Team mit über 14 Jahren Erfahrung, das Steuerberatung neu denkt - persönlich, digital und immer an Ihrer Seite.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section">
+        <div class="container">
+            <div class="story__grid">
+                <div class="story__content fade-in">
+                    <span class="label">Unsere Geschichte</span>
+                    <h2>Mehr als nur Zahlen</h2>
+                    <p>
+                        Die Patrick Kriegel GmbH Steuerberatungsgesellschaft wurde mit einer klaren Vision gegründet: Steuerberatung, die wirklich berät. Was als kleine Kanzlei in Offenburg begann, ist heute zu einem modernen Beratungsunternehmen mit über 20 Experten gewachsen.
+                    </p>
+                    <p>
+                        Unser Motto "Wir Steuern!" ist dabei mehr als nur ein Slogan. Es drückt unsere Haltung aus: Wir übernehmen die Führung in Ihren Steuerangelegenheiten. Aktiv, nicht reaktiv. Individuell, nicht standardisiert. Und immer mit dem Blick auf Ihre Zukunft.
+                    </p>
+                    <p>
+                        Seit 2019 sind wir als digitale Kanzlei zertifiziert und haben seither konsequent in moderne Technologien investiert. Das Ergebnis: Effiziente Prozesse, schnelle Kommunikation und mehr Zeit für das, was wirklich zählt - die persönliche Beratung.
+                    </p>
+                </div>
+                <div class="story__visual fade-in">
+                    <div class="story__image">
+                        <img src="assets/images/team/office-team.webp" alt="Patrick Kriegel Steuerberater Team im Büro">
+                    </div>
+                    <div class="story__badge">
+                        <div class="story__badge-value">14+</div>
+                        <div class="story__badge-label">Jahre Erfahrung</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="section section--alt">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Unsere Philosophie</span>
+                <h2>Das macht uns aus</h2>
+                <p>Diese vier Werte prägen unser tägliches Handeln und unsere Zusammenarbeit mit Ihnen.</p>
+            </div>
+
+            <div class="philosophy__grid">
+                <article class="philosophy__card fade-in">
+                    <div class="philosophy__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Vertrauen</h3>
+                    <p>Ihre Steuerangelegenheiten sind bei uns in sicheren Händen. Diskretion und Vertraulichkeit sind für uns selbstverständlich - seit über 14 Jahren.</p>
+                </article>
+
+                <article class="philosophy__card fade-in">
+                    <div class="philosophy__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Individualität</h3>
+                    <p>Jeder Mandant ist einzigartig. Wir entwickeln maßgeschneiderte Lösungen, die genau zu Ihrer Situation und Ihren Zielen passen.</p>
+                </article>
+
+                <article class="philosophy__card fade-in">
+                    <div class="philosophy__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>Digital</h3>
+                    <p>Als zertifizierte digitale Kanzlei setzen wir auf moderne Technologien für effiziente Prozesse und schnelle Ergebnisse.</p>
+                </article>
+
+                <article class="philosophy__card fade-in">
+                    <div class="philosophy__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Kommunikation</h3>
+                    <p>Wir erklären komplexe Sachverhalte verständlich und sind immer für Sie da - per Telefon, E-Mail oder persönlich.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" id="team">
+        <div class="container">
+            <div class="team__intro fade-in">
+                <span class="label">Unser Team</span>
+                <h2>Die Menschen hinter der Kanzlei</h2>
+                <p>Über 20 Experten arbeiten täglich daran, Ihnen die beste Beratung zu bieten. Lernen Sie unsere Geschäftsführung kennen.</p>
+            </div>
+
+            <div class="team__leadership">
+                <article class="team__leader fade-in">
+                    <div class="team__leader-image">
+                        <img src="assets/images/team/patrick-kriegel.png" alt="Patrick Kriegel - Geschäftsführer, Steuerberater">
+                    </div>
+                    <div class="team__leader-content">
+                        <h3>Patrick Kriegel</h3>
+                        <div class="team__leader-role">Geschäftsführer, Steuerberater</div>
+                        <p>
+                            Patrick Kriegel gründete die Kanzlei mit der Vision, Steuerberatung anders zu machen. Mit seiner Erfahrung und seinem Engagement für digitale Innovation hat er die Kanzlei zu dem gemacht, was sie heute ist: Ein modernes Beratungsunternehmen mit persönlicher Note.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="team__leader fade-in">
+                    <div class="team__leader-image">
+                        <img src="assets/images/team/daniel-kuenstle.png" alt="Daniel Künstle - Geschäftsführer, Steuerberater">
+                    </div>
+                    <div class="team__leader-content">
+                        <h3>Daniel Künstle</h3>
+                        <div class="team__leader-role">Geschäftsführer, Steuerberater</div>
+                        <p>
+                            Daniel Künstle verstärkt die Geschäftsführung mit seiner Expertise in komplexen Steuerfragen und Unternehmensnachfolge. Gemeinsam mit Patrick Kriegel treibt er die kontinuierliche Weiterentwicklung der Kanzlei voran.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="team__departments fade-in">
+                <h3>Unsere Abteilungen</h3>
+                <div class="team__departments-grid">
+                    <div class="team__department">
+                        <div class="team__department-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <h4>Sekretariat</h4>
+                        <p>Ihr erster Kontakt und Ihre zentrale Anlaufstelle</p>
+                    </div>
+
+                    <div class="team__department">
+                        <div class="team__department-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h4>Lohnteam</h4>
+                        <p>Experten für Lohn- und Gehaltsabrechnung</p>
+                    </div>
+
+                    <div class="team__department">
+                        <div class="team__department-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <h4>Finanzbuchhaltung</h4>
+                        <p>Laufende Buchhaltung und BWA-Erstellung</p>
+                    </div>
+
+                    <div class="team__department">
+                        <div class="team__department-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                        </div>
+                        <h4>Jahresabschluss</h4>
+                        <p>Bilanzen, GuV und Steuererklärungen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats">
+        <div class="container">
+            <div class="stats__grid">
+                <div class="stats__item fade-in">
+                    <div class="stats__value">14+</div>
+                    <div class="stats__label">Jahre Erfahrung</div>
+                </div>
+                <div class="stats__item fade-in">
+                    <div class="stats__value">800+</div>
+                    <div class="stats__label">Zufriedene Mandanten</div>
+                </div>
+                <div class="stats__item fade-in">
+                    <div class="stats__value">20+</div>
+                    <div class="stats__label">Experten im Team</div>
+                </div>
+                <div class="stats__item fade-in">
+                    <div class="stats__value">5.0</div>
+                    <div class="stats__label">Google-Bewertung</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta__inner fade-in">
+                <h2>Lernen Sie uns persönlich kennen</h2>
+                <p>Vereinbaren Sie ein unverbindliches Erstgespräch und überzeugen Sie sich selbst von unserer Beratungsqualität.</p>
+
+                <div class="btn-group">
+                    <a href="kontakt.html" class="btn btn--white btn--large">Jetzt Termin vereinbaren</a>
+                    <a href="tel:+497819509910" class="btn btn--outline-white btn--large">+49 781 950 99 100</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater">
+                    </div>
+                    <p>Ihre moderne Steuerberatungskanzlei in Offenburg. Wir verbinden persönliche Betreuung mit digitaler Effizienz.</p>
+                    <div class="footer__social">
+                        <a href="https://www.linkedin.com/company/steuerberater-patrick-kriegel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/stb_patrick_kriegel" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/steuerberatungskanzleipatrickkriegel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Leistungen</h4>
+                    <nav class="footer__links">
+                        <a href="leistungen.html#steuererklaerung">Steuererklärung</a>
+                        <a href="leistungen.html#jahresabschluss">Jahresabschluss</a>
+                        <a href="leistungen.html#buchhaltung">Buchhaltung</a>
+                        <a href="leistungen.html#gestaltungsberatung">Gestaltungsberatung</a>
+                        <a href="leistungen.html#startup">Start-Up Begleitung</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kanzlei</h4>
+                    <nav class="footer__links">
+                        <a href="kanzlei.html">Über uns</a>
+                        <a href="kanzlei.html#team">Unser Team</a>
+                        <a href="digitale-kanzlei.html">Digitale Kanzlei</a>
+                        <a href="karriere.html">Karriere</a>
+                        <a href="kontakt.html">Kontakt</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kontakt</h4>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Englerstraße 4<br>77652 Offenburg</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>+49 781 950 99 100</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>kontakt@stb-kriegel.de</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Patrick Kriegel GmbH Steuerberatungsgesellschaft. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

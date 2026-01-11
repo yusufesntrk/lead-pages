@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digitale Kanzlei - DATEV-zertifiziert seit 2019. Online-Upload, digitale Prozesse und moderne Steuerberatung bei Patrick Kriegel in Offenburg.">
+    <meta name="keywords" content="Digitale Kanzlei, DATEV, Online Steuerberater, digitale Buchhaltung, Offenburg">
+
+    <title>Digitale Kanzlei | Patrick Kriegel Steuerberater Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <style>
+        .page-hero {
+            padding-top: calc(var(--header-height) + var(--spacing-3xl));
+            padding-bottom: var(--spacing-3xl);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .page-hero__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-hero h1 {
+            color: var(--color-text-inverse);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        /* Certification Section */
+        .certification {
+            background: var(--color-bg-alt);
+        }
+
+        .certification__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            align-items: center;
+        }
+
+        .certification__content .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .certification__content h2 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .certification__content p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .certification__badges {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .certification__badge {
+            background: var(--color-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            flex: 1;
+        }
+
+        .certification__badge-year {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .certification__badge-label {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .certification__visual {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-3xl);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-text-inverse);
+        }
+
+        .certification__visual-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .certification__visual-icon svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .certification__visual h3 {
+            color: var(--color-text-inverse);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .certification__visual p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        /* Features Section */
+        .features__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .feature-card {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .feature-card__icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-card__icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-text-inverse);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-card p {
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Process Section */
+        .process {
+            background: var(--color-bg-alt);
+        }
+
+        .process__timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process__timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--color-border);
+        }
+
+        .process__step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .process__step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--color-bg);
+            border: 3px solid var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .process__step h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .process__step p {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Benefits Section */
+        .benefits__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            align-items: center;
+        }
+
+        .benefits__list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .benefits__item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .benefits__item-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .benefits__item-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-text-inverse);
+        }
+
+        .benefits__item-content h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .benefits__item-content p {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        .benefits__visual {
+            background: var(--color-bg-alt);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+        }
+
+        .benefits__visual .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .benefits__visual h3 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .benefits__visual-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .benefits__visual-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .benefits__visual-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+
+        /* FAQ Section */
+        .faq__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq__item {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            border: 1px solid var(--color-border);
+        }
+
+        .faq__item h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+
+        .faq__item p {
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .certification__grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-2xl);
+            }
+
+            .features__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process__timeline {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .process__timeline::before {
+                top: 0;
+                bottom: 0;
+                left: 40px;
+                right: auto;
+                width: 2px;
+                height: auto;
+            }
+
+            .process__step {
+                display: flex;
+                align-items: flex-start;
+                text-align: left;
+                width: 100%;
+                max-width: 400px;
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .process__step-number {
+                margin: 0 var(--spacing-lg) 0 0;
+                flex-shrink: 0;
+            }
+
+            .benefits__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .features__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certification__badges {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater Logo">
+                </a>
+
+                <nav class="nav" id="nav">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link">Startseite</a></li>
+                        <li><a href="leistungen.html" class="nav__link">Leistungen</a></li>
+                        <li><a href="kanzlei.html" class="nav__link">Kanzlei</a></li>
+                        <li><a href="digitale-kanzlei.html" class="nav__link active">Digitale Kanzlei</a></li>
+                        <li><a href="karriere.html" class="nav__link">Karriere</a></li>
+                        <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn--primary">Beratung anfragen</a>
+                </nav>
+
+                <button class="nav-toggle" id="navToggle" aria-label="Navigation umschalten">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero__content fade-in">
+                <span class="label">Zukunft der Steuerberatung</span>
+                <h1>Digitale Kanzlei</h1>
+                <p>Erleben Sie Steuerberatung neu: Weniger Papierkram, schnellere Prozesse und jederzeit Zugriff auf Ihre Unterlagen - dank modernster DATEV-Technologie.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Section -->
+    <section class="section certification">
+        <div class="container">
+            <div class="certification__grid">
+                <div class="certification__content fade-in">
+                    <span class="label">DATEV-zertifiziert</span>
+                    <h2>Ausgezeichnet digital seit 2019</h2>
+                    <p>
+                        Als eine der ersten Kanzleien in der Region haben wir 2019 die Zertifizierung zur digitalen Kanzlei erhalten. Seitdem bauen wir unsere digitalen Kompetenzen kontinuierlich aus und werden Jahr für Jahr rezertifiziert.
+                    </p>
+                    <p>
+                        Die Auszeichnung bestätigt: Wir erfüllen höchste Standards in der digitalen Zusammenarbeit mit unseren Mandanten. Von der Belegerfassung bis zur Steuererklärung - bei uns läuft alles digital, effizient und sicher.
+                    </p>
+                    <div class="certification__badges">
+                        <div class="certification__badge">
+                            <div class="certification__badge-year">2019</div>
+                            <div class="certification__badge-label">Erste Zertifizierung</div>
+                        </div>
+                        <div class="certification__badge">
+                            <div class="certification__badge-year">2025</div>
+                            <div class="certification__badge-label">Aktuell zertifiziert</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="certification__visual fade-in">
+                    <div class="certification__visual-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Digitale Kanzlei</h3>
+                    <p>Zertifiziert durch DATEV eG</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Unsere digitalen Services</span>
+                <h2>So arbeiten wir zusammen</h2>
+                <p>Moderne Technologie für eine reibungslose Zusammenarbeit - jederzeit und von überall.</p>
+            </div>
+
+            <div class="features__grid">
+                <article class="feature-card fade-in">
+                    <div class="feature-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>Online-Upload</h3>
+                    <p>Laden Sie Ihre Belege einfach hoch - per App, E-Mail oder Webportal. Wir verarbeiten alles automatisch und ordnen es richtig zu.</p>
+                </article>
+
+                <article class="feature-card fade-in">
+                    <div class="feature-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+                    <h3>Sicheres Portal</h3>
+                    <p>Ihr persönlicher Mandantenbereich: Hier finden Sie alle Dokumente, können Nachrichten austauschen und haben Ihre Zahlen im Blick.</p>
+                </article>
+
+                <article class="feature-card fade-in">
+                    <div class="feature-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Digitale Kommunikation</h3>
+                    <p>Schnell und direkt: Fragen per Chat, Dokumente per Portal, Besprechungen per Video - wie es für Sie am besten passt.</p>
+                </article>
+
+                <article class="feature-card fade-in">
+                    <div class="feature-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>Papierloses Büro</h3>
+                    <p>Schluss mit Ordnern und Papierbergen. Alle Dokumente digital, revisionssicher archiviert und jederzeit abrufbar.</p>
+                </article>
+
+                <article class="feature-card fade-in">
+                    <div class="feature-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>Echtzeit-Auswertungen</h3>
+                    <p>Aktuelle Zahlen auf Knopfdruck: BWA, Umsätze, offene Posten - Sie haben Ihr Unternehmen immer im Blick.</p>
+                </article>
+
+                <article class="feature-card fade-in">
+                    <div class="feature-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3>Automatisierte Workflows</h3>
+                    <p>Wiederkehrende Aufgaben automatisieren wir für Sie: Mahnwesen, Zahlungsverkehr, Meldungen - alles läuft wie von selbst.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section process">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">So einfach geht's</span>
+                <h2>Ihr Weg zur digitalen Buchhaltung</h2>
+                <p>In vier einfachen Schritten zu mehr Effizienz und Übersicht.</p>
+            </div>
+
+            <div class="process__timeline">
+                <div class="process__step fade-in">
+                    <div class="process__step-number">1</div>
+                    <div>
+                        <h4>Beleg erfassen</h4>
+                        <p>Fotografieren oder scannen Sie Ihre Belege mit dem Smartphone oder Scanner.</p>
+                    </div>
+                </div>
+
+                <div class="process__step fade-in">
+                    <div class="process__step-number">2</div>
+                    <div>
+                        <h4>Hochladen</h4>
+                        <p>Laden Sie die Belege über App, Portal oder E-Mail zu uns hoch.</p>
+                    </div>
+                </div>
+
+                <div class="process__step fade-in">
+                    <div class="process__step-number">3</div>
+                    <div>
+                        <h4>Verarbeitung</h4>
+                        <p>Wir verbuchen und ordnen alles automatisch und prüfen auf Vollständigkeit.</p>
+                    </div>
+                </div>
+
+                <div class="process__step fade-in">
+                    <div class="process__step-number">4</div>
+                    <div>
+                        <h4>Auswertung</h4>
+                        <p>Sie erhalten aktuelle Auswertungen und haben Ihre Zahlen im Blick.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+        <div class="container">
+            <div class="benefits__grid">
+                <div class="benefits__list fade-in">
+                    <div class="benefits__item">
+                        <div class="benefits__item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="benefits__item-content">
+                            <h4>Zeitersparnis</h4>
+                            <p>Keine Fahrten mehr zum Steuerberater, kein Sortieren von Belegen - Sie sparen wertvolle Zeit.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefits__item">
+                        <div class="benefits__item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <div class="benefits__item-content">
+                            <h4>Kosteneffizienz</h4>
+                            <p>Digitale Prozesse sind günstiger. Die Ersparnis geben wir an Sie weiter.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefits__item">
+                        <div class="benefits__item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                        </div>
+                        <div class="benefits__item-content">
+                            <h4>Aktualität</h4>
+                            <p>Immer aktuelle Zahlen statt veralteter Auswertungen - für bessere Entscheidungen.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefits__item">
+                        <div class="benefits__item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div class="benefits__item-content">
+                            <h4>Sicherheit</h4>
+                            <p>Verschlüsselte Übertragung, sichere Server, regelmäßige Backups - Ihre Daten sind geschützt.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="benefits__visual fade-in">
+                    <span class="label">Ihre Vorteile</span>
+                    <h3>Warum digital?</h3>
+                    <div class="benefits__visual-list">
+                        <div class="benefits__visual-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>24/7 Zugriff auf Ihre Unterlagen</span>
+                        </div>
+                        <div class="benefits__visual-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Schnellere Bearbeitung</span>
+                        </div>
+                        <div class="benefits__visual-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Weniger Fehler durch Automatisierung</span>
+                        </div>
+                        <div class="benefits__visual-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Umweltfreundlich ohne Papier</span>
+                        </div>
+                        <div class="benefits__visual-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Bessere Übersicht über Ihre Finanzen</span>
+                        </div>
+                        <div class="benefits__visual-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Einfache Zusammenarbeit mit Bank & Finanzamt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section--alt">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Häufige Fragen</span>
+                <h2>Das wollen unsere Mandanten wissen</h2>
+                <p>Antworten auf die wichtigsten Fragen zur digitalen Zusammenarbeit.</p>
+            </div>
+
+            <div class="faq__grid">
+                <div class="faq__item fade-in">
+                    <h4>Muss ich technisch versiert sein?</h4>
+                    <p>Nein, unsere Tools sind einfach zu bedienen. Wir schulen Sie kostenlos ein und sind bei Fragen immer für Sie da.</p>
+                </div>
+
+                <div class="faq__item fade-in">
+                    <h4>Sind meine Daten sicher?</h4>
+                    <p>Absolut. Wir nutzen verschlüsselte Verbindungen, deutsche Server und erfüllen alle Datenschutzanforderungen der DSGVO.</p>
+                </div>
+
+                <div class="faq__item fade-in">
+                    <h4>Was kostet die digitale Zusammenarbeit?</h4>
+                    <p>Nichts extra. Die digitalen Services sind in unserer Betreuung enthalten und sparen sogar Kosten durch effizientere Prozesse.</p>
+                </div>
+
+                <div class="faq__item fade-in">
+                    <h4>Kann ich auch persönlich vorbeikommen?</h4>
+                    <p>Selbstverständlich. Digital heißt nicht unpersönlich. Für Gespräche vor Ort sind wir jederzeit für Sie da.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta__inner fade-in">
+                <h2>Bereit für die digitale Zukunft?</h2>
+                <p>Lassen Sie uns gemeinsam Ihre Prozesse digitalisieren. Wir zeigen Ihnen, wie einfach es geht.</p>
+
+                <div class="btn-group">
+                    <a href="kontakt.html" class="btn btn--white btn--large">Jetzt Beratung anfragen</a>
+                    <a href="tel:+497819509910" class="btn btn--outline-white btn--large">+49 781 950 99 100</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater">
+                    </div>
+                    <p>Ihre moderne Steuerberatungskanzlei in Offenburg. Wir verbinden persönliche Betreuung mit digitaler Effizienz.</p>
+                    <div class="footer__social">
+                        <a href="https://www.linkedin.com/company/steuerberater-patrick-kriegel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/stb_patrick_kriegel" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/steuerberatungskanzleipatrickkriegel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Leistungen</h4>
+                    <nav class="footer__links">
+                        <a href="leistungen.html#steuererklaerung">Steuererklärung</a>
+                        <a href="leistungen.html#jahresabschluss">Jahresabschluss</a>
+                        <a href="leistungen.html#buchhaltung">Buchhaltung</a>
+                        <a href="leistungen.html#gestaltungsberatung">Gestaltungsberatung</a>
+                        <a href="leistungen.html#startup">Start-Up Begleitung</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kanzlei</h4>
+                    <nav class="footer__links">
+                        <a href="kanzlei.html">Über uns</a>
+                        <a href="kanzlei.html#team">Unser Team</a>
+                        <a href="digitale-kanzlei.html">Digitale Kanzlei</a>
+                        <a href="karriere.html">Karriere</a>
+                        <a href="kontakt.html">Kontakt</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kontakt</h4>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Englerstraße 4<br>77652 Offenburg</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>+49 781 950 99 100</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>kontakt@stb-kriegel.de</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Patrick Kriegel GmbH Steuerberatungsgesellschaft. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

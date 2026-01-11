@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unsere Leistungen: Steuererklärung, Jahresabschluss, Buchhaltung, Gestaltungsberatung, Start-Up Begleitung und mehr. Patrick Kriegel Steuerberater Offenburg.">
+    <meta name="keywords" content="Steuerberatung Leistungen, Steuererklärung, Jahresabschluss, Buchhaltung, Gestaltungsberatung, Offenburg">
+
+    <title>Leistungen | Patrick Kriegel Steuerberater Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <style>
+        .page-hero {
+            padding-top: calc(var(--header-height) + var(--spacing-3xl));
+            padding-bottom: var(--spacing-3xl);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .page-hero__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-hero h1 {
+            color: var(--color-text-inverse);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        .service-detail {
+            scroll-margin-top: calc(var(--header-height) + var(--spacing-lg));
+        }
+
+        .service-detail__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            align-items: center;
+        }
+
+        .service-detail__grid--reverse {
+            direction: rtl;
+        }
+
+        .service-detail__grid--reverse > * {
+            direction: ltr;
+        }
+
+        .service-detail__content .label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+            padding: 0.25rem 0.75rem;
+            background: rgba(26, 95, 60, 0.1);
+            border-radius: var(--radius-sm);
+        }
+
+        .service-detail__content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-detail__content p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-detail__list {
+            margin-top: var(--spacing-lg);
+        }
+
+        .service-detail__list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .service-detail__list-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .service-detail__visual {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .service-detail__visual svg {
+            width: 120px;
+            height: 120px;
+            color: var(--color-text-inverse);
+            opacity: 0.9;
+        }
+
+        .services-overview {
+            background: var(--color-bg-alt);
+        }
+
+        .services-overview__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .services-overview__card {
+            background: var(--color-bg);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+            border: 1px solid var(--color-border);
+        }
+
+        .services-overview__card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .services-overview__card-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .services-overview__card-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-text-inverse);
+        }
+
+        .services-overview__card h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .services-overview__card p {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .services-overview__card a {
+            color: var(--color-primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            transition: gap var(--transition-fast);
+        }
+
+        .services-overview__card a:hover {
+            gap: var(--spacing-sm);
+        }
+
+        .services-overview__card a svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .service-detail__grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+
+            .service-detail__grid--reverse {
+                direction: ltr;
+            }
+
+            .service-detail__visual {
+                order: -1;
+                min-height: 200px;
+            }
+
+            .services-overview__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-overview__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater Logo">
+                </a>
+
+                <nav class="nav" id="nav">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link">Startseite</a></li>
+                        <li><a href="leistungen.html" class="nav__link active">Leistungen</a></li>
+                        <li><a href="kanzlei.html" class="nav__link">Kanzlei</a></li>
+                        <li><a href="digitale-kanzlei.html" class="nav__link">Digitale Kanzlei</a></li>
+                        <li><a href="karriere.html" class="nav__link">Karriere</a></li>
+                        <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn--primary">Beratung anfragen</a>
+                </nav>
+
+                <button class="nav-toggle" id="navToggle" aria-label="Navigation umschalten">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero__content fade-in">
+                <span class="label">Unsere Leistungen</span>
+                <h1>Kompetente Beratung in allen Steuerfragen</h1>
+                <p>Von der klassischen Steuererklärung bis zur strategischen Unternehmensberatung - wir begleiten Sie mit Expertise und Engagement durch alle steuerlichen Herausforderungen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service 1: Steuererklärung -->
+    <section class="section service-detail" id="steuererklaerung">
+        <div class="container">
+            <div class="service-detail__grid">
+                <div class="service-detail__content fade-in">
+                    <span class="label">Klassische Steuerberatung</span>
+                    <h2>Steuererklärung</h2>
+                    <p>
+                        Die Steuererklärung ist für viele ein notwendiges Übel. Für uns ist sie eine Chance, Ihre steuerliche Situation optimal zu gestalten. Wir erstellen Ihre Steuererklärung nicht nur fristgerecht, sondern nutzen alle legalen Möglichkeiten zur Steueroptimierung.
+                    </p>
+                    <p>
+                        Ob Einkommensteuer, Körperschaftsteuer, Gewerbesteuer oder Umsatzsteuer - unser erfahrenes Team kümmert sich um alle Steuerarten und sorgt dafür, dass Sie nicht mehr zahlen als nötig.
+                    </p>
+                    <div class="service-detail__list">
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Einkommensteuererklärung für Privatpersonen</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Körperschaft- und Gewerbesteuererklärung</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Umsatzsteuervoranmeldungen und -erklärungen</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Prüfung von Steuerbescheiden und Einspruchsverfahren</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-detail__visual fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service 2: Jahresabschluss -->
+    <section class="section section--alt service-detail" id="jahresabschluss">
+        <div class="container">
+            <div class="service-detail__grid service-detail__grid--reverse">
+                <div class="service-detail__content fade-in">
+                    <span class="label">Bilanzierung</span>
+                    <h2>Jahresabschluss</h2>
+                    <p>
+                        Der Jahresabschluss ist mehr als eine gesetzliche Pflicht - er ist das Fundament für strategische Unternehmensentscheidungen. Wir erstellen Ihren Jahresabschluss nach HGB und auf Wunsch auch nach internationalen Standards (IFRS).
+                    </p>
+                    <p>
+                        Neben der reinen Erstellung bieten wir Ihnen eine aussagekräftige Analyse Ihrer Unternehmenszahlen und zeigen Optimierungspotenziale auf.
+                    </p>
+                    <div class="service-detail__list">
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Erstellung von Bilanzen und GuV-Rechnungen</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Einnahmen-Überschuss-Rechnungen (EÜR)</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Erstellung von Anhang und Lagebericht</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>E-Bilanz und Offenlegung beim Bundesanzeiger</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-detail__visual fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service 3: Buchhaltung -->
+    <section class="section service-detail" id="buchhaltung">
+        <div class="container">
+            <div class="service-detail__grid">
+                <div class="service-detail__content fade-in">
+                    <span class="label">Laufende Betreuung</span>
+                    <h2>Lohn- & Finanzbuchhaltung</h2>
+                    <p>
+                        Eine ordnungsgemäße Buchhaltung ist das Rückgrat jedes erfolgreichen Unternehmens. Wir übernehmen Ihre laufende Finanzbuchhaltung und Lohnabrechnung - digital, effizient und immer auf dem neuesten Stand.
+                    </p>
+                    <p>
+                        Mit unseren digitalen Prozessen haben Sie jederzeit einen aktuellen Überblick über Ihre Zahlen und können fundierte Entscheidungen treffen.
+                    </p>
+                    <div class="service-detail__list">
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Laufende Finanzbuchhaltung</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Lohn- und Gehaltsabrechnungen</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Betriebswirtschaftliche Auswertungen (BWA)</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Meldungen an Sozialversicherungsträger und Finanzamt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-detail__visual fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service 4: Gestaltungsberatung -->
+    <section class="section section--alt service-detail" id="gestaltungsberatung">
+        <div class="container">
+            <div class="service-detail__grid service-detail__grid--reverse">
+                <div class="service-detail__content fade-in">
+                    <span class="label">Strategische Planung</span>
+                    <h2>Gestaltungsberatung</h2>
+                    <p>
+                        Echte Steuerberatung bedeutet mehr als nur Steuern berechnen. Bei der Gestaltungsberatung analysieren wir Ihre gesamte steuerliche Situation und entwickeln Strategien, um Ihre Steuerlast langfristig zu optimieren.
+                    </p>
+                    <p>
+                        Ob Investitionsentscheidungen, Vertragsgestaltung oder steuerliche Wahlrechte - wir beraten Sie vorausschauend und helfen Ihnen, die richtigen Weichen zu stellen.
+                    </p>
+                    <div class="service-detail__list">
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Steuerliche Strukturierung von Investitionen</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Optimierung von Vertragsgestaltungen</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Nutzung steuerlicher Wahlrechte</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Langfristige Steuerplanung</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-detail__visual fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                        <polyline points="2 17 12 22 22 17"/>
+                        <polyline points="2 12 12 17 22 12"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service 5: Start-Up -->
+    <section class="section service-detail" id="startup">
+        <div class="container">
+            <div class="service-detail__grid">
+                <div class="service-detail__content fade-in">
+                    <span class="label">Für Gründer</span>
+                    <h2>Start-Up Begleitung</h2>
+                    <p>
+                        Sie haben eine Geschäftsidee und wollen durchstarten? Wir begleiten Sie von Anfang an. Von der Wahl der richtigen Rechtsform über die Anmeldung beim Finanzamt bis zur laufenden Betreuung - wir sind an Ihrer Seite.
+                    </p>
+                    <p>
+                        Als erfahrene Gründungsberater kennen wir die typischen Herausforderungen und Fallstricke und helfen Ihnen, diese zu vermeiden.
+                    </p>
+                    <div class="service-detail__list">
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Beratung zur optimalen Rechtsform</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Anmeldung und Formalitäten beim Finanzamt</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Businessplan-Prüfung aus steuerlicher Sicht</span>
+                        </div>
+                        <div class="service-detail__list-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Fördermittelberatung und Finanzierungsfragen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-detail__visual fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Services Overview -->
+    <section class="section services-overview">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Weitere Leistungen</span>
+                <h2>Spezialisierte Beratung</h2>
+                <p>Neben unseren Kernleistungen bieten wir Ihnen weitere spezialisierte Beratungsangebote.</p>
+            </div>
+
+            <div class="services-overview__grid">
+                <article class="services-overview__card fade-in" id="umstrukturierung">
+                    <div class="services-overview__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 3 21 3 21 8"/>
+                            <line x1="4" y1="20" x2="21" y2="3"/>
+                            <polyline points="21 16 21 21 16 21"/>
+                            <line x1="15" y1="15" x2="21" y2="21"/>
+                            <line x1="4" y1="4" x2="9" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>Umstrukturierung</h3>
+                    <p>Begleitung bei Umwandlungen, Verschmelzungen und Spaltungen mit steueroptimaler Gestaltung.</p>
+                    <a href="kontakt.html">
+                        Beratung anfragen
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+
+                <article class="services-overview__card fade-in" id="rechtsformoptimierung">
+                    <div class="services-overview__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Rechtsformoptimierung</h3>
+                    <p>Analyse und Empfehlung der optimalen Rechtsform für Ihre unternehmerischen Ziele.</p>
+                    <a href="kontakt.html">
+                        Beratung anfragen
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+
+                <article class="services-overview__card fade-in" id="testamentsvollstreckung">
+                    <div class="services-overview__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="12" y1="18" x2="12" y2="12"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>Testamentsvollstreckung</h3>
+                    <p>Professionelle Nachlassabwicklung und Testamentsvollstreckung mit steuerlicher Expertise.</p>
+                    <a href="kontakt.html">
+                        Beratung anfragen
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+
+                <article class="services-overview__card fade-in" id="nachfolge">
+                    <div class="services-overview__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Unternehmensnachfolge</h3>
+                    <p>Ganzheitliche Begleitung bei der Übergabe Ihres Unternehmens an die nächste Generation.</p>
+                    <a href="kontakt.html">
+                        Beratung anfragen
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+
+                <article class="services-overview__card fade-in">
+                    <div class="services-overview__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3>Internationales Steuerrecht</h3>
+                    <p>Beratung bei grenzüberschreitenden Sachverhalten und internationaler Steuerplanung.</p>
+                    <a href="kontakt.html">
+                        Beratung anfragen
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+
+                <article class="services-overview__card fade-in">
+                    <div class="services-overview__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Betriebsprüfung</h3>
+                    <p>Professionelle Begleitung und Vertretung bei steuerlichen Außenprüfungen.</p>
+                    <a href="kontakt.html">
+                        Beratung anfragen
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta__inner fade-in">
+                <h2>Lassen Sie uns über Ihre Anforderungen sprechen</h2>
+                <p>Vereinbaren Sie ein unverbindliches Erstgespräch und erfahren Sie, wie wir Sie optimal unterstützen können.</p>
+
+                <div class="btn-group">
+                    <a href="kontakt.html" class="btn btn--white btn--large">Jetzt Termin vereinbaren</a>
+                    <a href="tel:+497819509910" class="btn btn--outline-white btn--large">+49 781 950 99 100</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater">
+                    </div>
+                    <p>Ihre moderne Steuerberatungskanzlei in Offenburg. Wir verbinden persönliche Betreuung mit digitaler Effizienz.</p>
+                    <div class="footer__social">
+                        <a href="https://www.linkedin.com/company/steuerberater-patrick-kriegel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/stb_patrick_kriegel" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/steuerberatungskanzleipatrickkriegel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Leistungen</h4>
+                    <nav class="footer__links">
+                        <a href="leistungen.html#steuererklaerung">Steuererklärung</a>
+                        <a href="leistungen.html#jahresabschluss">Jahresabschluss</a>
+                        <a href="leistungen.html#buchhaltung">Buchhaltung</a>
+                        <a href="leistungen.html#gestaltungsberatung">Gestaltungsberatung</a>
+                        <a href="leistungen.html#startup">Start-Up Begleitung</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kanzlei</h4>
+                    <nav class="footer__links">
+                        <a href="kanzlei.html">Über uns</a>
+                        <a href="kanzlei.html#team">Unser Team</a>
+                        <a href="digitale-kanzlei.html">Digitale Kanzlei</a>
+                        <a href="karriere.html">Karriere</a>
+                        <a href="kontakt.html">Kontakt</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kontakt</h4>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Englerstraße 4<br>77652 Offenburg</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>+49 781 950 99 100</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>kontakt@stb-kriegel.de</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Patrick Kriegel GmbH Steuerberatungsgesellschaft. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontaktieren Sie SCHÄTZLE & PARTNER mbB Steuerberater in Offenburg und Gengenbach. Vereinbaren Sie jetzt einen Beratungstermin.">
+    <meta name="keywords" content="Kontakt, Steuerberater, Offenburg, Gengenbach, Termin, Schätzle">
+    <meta name="author" content="SCHÄTZLE & PARTNER mbB">
+
+    <title>Kontakt | SCHÄTZLE & PARTNER mbB Steuerberater</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo-original.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo-original.png" alt="SCHÄTZLE & PARTNER mbB Steuerberater">
+                </a>
+
+                <nav class="nav" id="nav">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link">Startseite</a></li>
+                        <li><a href="leistungen.html" class="nav__link">Leistungen</a></li>
+                        <li><a href="kanzlei.html" class="nav__link">Kanzlei</a></li>
+                        <li><a href="team.html" class="nav__link">Team</a></li>
+                        <li><a href="kontakt.html" class="nav__link active">Kontakt</a></li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn--primary btn--small">Termin vereinbaren</a>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero__content fade-in">
+                <div class="page-hero__badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    Wir sind für Sie da
+                </div>
+                <h1>Kontakt aufnehmen</h1>
+                <p>Vereinbaren Sie einen Termin oder stellen Sie uns Ihre Fragen. Wir melden uns zeitnah bei Ihnen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section class="kontakt">
+        <div class="container">
+            <div class="kontakt__grid">
+                <!-- Kontaktformular -->
+                <div class="kontakt__form-wrapper fade-in">
+                    <h2>Schreiben Sie uns</h2>
+                    <p>Nutzen Sie unser Kontaktformular und wir melden uns schnellstmöglich bei Ihnen.</p>
+
+                    <form class="kontakt__form" id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Ihr vollständiger Name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-Mail *</label>
+                                <input type="email" id="email" name="email" required placeholder="ihre@email.de">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone" placeholder="0123 456789">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Betreff *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Bitte wählen</option>
+                                <option value="Terminanfrage">Terminanfrage</option>
+                                <option value="Steuerberatung">Steuerberatung</option>
+                                <option value="Wirtschaftsberatung">Wirtschaftsberatung</option>
+                                <option value="Unternehmensberatung">Unternehmensberatung</option>
+                                <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="standort">Bevorzugter Standort</label>
+                            <select id="standort" name="standort">
+                                <option value="">Bitte wählen</option>
+                                <option value="Offenburg">Offenburg</option>
+                                <option value="Gengenbach">Gengenbach</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Ihre Nachricht *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Wie können wir Ihnen helfen?"></textarea>
+                        </div>
+
+                        <div class="form-group form-group--checkbox">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">
+                                Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--large">Nachricht senden</button>
+                    </form>
+                </div>
+
+                <!-- Kontaktdaten -->
+                <div class="kontakt__info fade-in">
+                    <div class="kontakt__info-card">
+                        <h3>Offenburg</h3>
+                        <div class="kontakt__info-content">
+                            <div class="kontakt__info-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                <div>
+                                    <strong>Adresse</strong>
+                                    <p>Friedenstraße 46<br>77654 Offenburg</p>
+                                </div>
+                            </div>
+                            <div class="kontakt__info-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                <div>
+                                    <strong>Telefon</strong>
+                                    <p><a href="tel:+49781932910">0781 93291-0</a></p>
+                                </div>
+                            </div>
+                            <div class="kontakt__info-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                                </svg>
+                                <div>
+                                    <strong>Fax</strong>
+                                    <p>0781 93291-17</p>
+                                </div>
+                            </div>
+                            <div class="kontakt__info-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <div>
+                                    <strong>Öffnungszeiten</strong>
+                                    <p>
+                                        Mo - Do: 8:30 - 12:00 Uhr<br>
+                                        Mo, Di, Do: 14:30 - 17:00 Uhr<br>
+                                        Fr: 8:30 - 13:00 Uhr
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kontakt__info-card">
+                        <h3>Gengenbach</h3>
+                        <div class="kontakt__info-content">
+                            <div class="kontakt__info-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                <div>
+                                    <strong>Adresse</strong>
+                                    <p>Grabenstraße 19<br>77723 Gengenbach</p>
+                                </div>
+                            </div>
+                            <div class="kontakt__info-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                <div>
+                                    <strong>Telefon</strong>
+                                    <p><a href="tel:+4978039636-60">07803 9636-60</a></p>
+                                </div>
+                            </div>
+                            <div class="kontakt__info-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                                </svg>
+                                <div>
+                                    <strong>Fax</strong>
+                                    <p>07803 9636-80</p>
+                                </div>
+                            </div>
+                            <div class="kontakt__info-row">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <div>
+                                    <strong>Öffnungszeiten</strong>
+                                    <p>
+                                        Mo - Do: 8:30 - 12:00 Uhr<br>
+                                        Mo, Di, Do: 14:30 - 17:00 Uhr<br>
+                                        Fr: 8:30 - 13:00 Uhr
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kontakt__email">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <div>
+                            <strong>E-Mail (beide Standorte)</strong>
+                            <p><a href="mailto:info@schaetzle-partner.de">info@schaetzle-partner.de</a></p>
+                        </div>
+                    </div>
+
+                    <div class="kontakt__parking">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        <span>Kostenlose Parkplätze im Innenhof vorhanden</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maps Section -->
+    <section class="kontakt-maps">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-header__overline">Anfahrt</div>
+                <h2>So finden Sie uns</h2>
+                <p>Zwei Standorte in der Ortenau - immer in Ihrer Nähe.</p>
+            </div>
+
+            <div class="kontakt-maps__grid">
+                <div class="kontakt-maps__item fade-in">
+                    <h3>Offenburg</h3>
+                    <div class="kontakt-maps__embed">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.9476!2d7.9531!3d48.4719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790fcb4c9d0f1f5%3A0xc8f2d1a9e4b5c6d7!2sSCH%C3%84TZLE%20%26%20PARTNER%20mbB%20Steuerberater!5e0!3m2!1sde!2sde!4v1736588400000"
+                            width="100%"
+                            height="300"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Standort Offenburg">
+                        </iframe>
+                    </div>
+                    <a href="https://maps.app.goo.gl/wqWwGMmbdyEkbTKD7" target="_blank" rel="noopener" class="btn btn--secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 18px; height: 18px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                        Route planen
+                    </a>
+                </div>
+
+                <div class="kontakt-maps__item fade-in">
+                    <h3>Gengenbach</h3>
+                    <div class="kontakt-maps__embed">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.9476!2d8.0145!3d48.4027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790fcb4c9d0f1f5%3A0xa9b8c7d6e5f4a3b2!2sSCH%C3%84TZLE%20%26%20PARTNER%20mbB%20Gengenbach!5e0!3m2!1sde!2sde!4v1736588400001"
+                            width="100%"
+                            height="300"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Standort Gengenbach">
+                        </iframe>
+                    </div>
+                    <a href="https://maps.app.goo.gl/DHiUCfgaJ15vjgja9" target="_blank" rel="noopener" class="btn btn--secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 18px; height: 18px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                        Route planen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="kontakt-faq">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-header__overline">Häufige Fragen</div>
+                <h2>Vor Ihrem ersten Besuch</h2>
+            </div>
+
+            <div class="kontakt-faq__grid">
+                <div class="faq-item fade-in">
+                    <h4>Was sollte ich zum Erstgespräch mitbringen?</h4>
+                    <p>Bringen Sie bitte Ihren Personalausweis, die letzten Steuerbescheide und relevante Unterlagen zu Ihrem Anliegen mit. Bei Unternehmen sind auch aktuelle BWAs und Jahresabschlüsse hilfreich.</p>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <h4>Wie lange dauert ein Erstgespräch?</h4>
+                    <p>Planen Sie etwa 30-60 Minuten für das Erstgespräch ein. In dieser Zeit lernen wir uns kennen und besprechen Ihre Situation und Bedürfnisse.</p>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <h4>Ist das Erstgespräch kostenpflichtig?</h4>
+                    <p>Das Erstgespräch dient dem gegenseitigen Kennenlernen. Vereinbaren Sie einen Termin und wir besprechen alle Details vor Ort.</p>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <h4>Kann ich auch online beraten werden?</h4>
+                    <p>Ja, über unser Mandantenportal können Sie Dokumente sicher austauschen. Für bestimmte Beratungen bieten wir auch Videokonferenzen an.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <img src="assets/logo-original.png" alt="SCHÄTZLE & PARTNER mbB Steuerberater">
+                    <p>
+                        Ihre digitale Steuerkanzlei in Offenburg und Gengenbach.
+                        Steuerberatung, Wirtschaftsberatung und Unternehmensberatung
+                        aus einer Hand seit 1989.
+                    </p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navigation</h4>
+                    <div class="footer__links">
+                        <a href="index.html" class="footer__link">Startseite</a>
+                        <a href="leistungen.html" class="footer__link">Leistungen</a>
+                        <a href="kanzlei.html" class="footer__link">Kanzlei</a>
+                        <a href="team.html" class="footer__link">Team</a>
+                        <a href="kontakt.html" class="footer__link">Kontakt</a>
+                    </div>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Leistungen</h4>
+                    <div class="footer__links">
+                        <a href="leistungen.html#steuerberatung" class="footer__link">Steuerberatung</a>
+                        <a href="leistungen.html#wirtschaftsberatung" class="footer__link">Wirtschaftsberatung</a>
+                        <a href="leistungen.html#unternehmensberatung" class="footer__link">Unternehmensberatung</a>
+                    </div>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__title">Kontakt</h4>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        <span>Friedenstraße 46<br>77654 Offenburg</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span>0781 93291-0</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span>info@schaetzle-partner.de</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; 2025 SCHÄTZLE & PARTNER mbB Steuerberater. Alle Rechte vorbehalten.
+                </p>
+                <div class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
