@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mildenberger Lusch + Partner - Ihre Wirtschaftsprüfer, Steuerberater und Rechtsanwälte in Offenburg. Über 50 Jahre Erfahrung in der Ortenau.">
+    <title>Mildenberger Lusch + Partner | Wirtschaftsprüfer Steuerberater Rechtsanwälte Offenburg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="Mildenberger Lusch + Partner" width="280" height="36">
+                </a>
+                <button class="nav-toggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="steuerberatung.html">Steuerberatung</a></li>
+                    <li><a href="wirtschaftspruefung.html">Wirtschaftsprüfung</a></li>
+                    <li><a href="rechtsberatung.html">Rechtsberatung</a></li>
+                    <li><a href="insolvenzverwaltung.html">Insolvenzverwaltung</a></li>
+                    <li><a href="standorte.html">Standorte</a></li>
+                    <li><a href="kontakt.html" class="nav-cta">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-label" data-scroll>Über 50 Jahre Erfahrung in der Ortenau</span>
+                <h1 class="hero-title">
+                    <span class="blur-reveal" data-scroll>Wirtschaftsprüfer</span>
+                    <span class="blur-reveal" data-scroll style="transition-delay: 0.1s">Steuerberater</span>
+                    <span class="blur-reveal" data-scroll style="transition-delay: 0.2s">Rechtsanwälte</span>
+                </h1>
+                <p class="hero-subtitle" data-scroll style="transition-delay: 0.3s">
+                    Mit Recht und Steuern kennen wir uns aus - unsere Leidenschaft gehört unseren Mandanten.
+                </p>
+                <div class="hero-cta" data-scroll style="transition-delay: 0.4s">
+                    <a href="kontakt.html" class="btn btn-primary">Beratung anfragen</a>
+                    <a href="#leistungen" class="btn btn-outline">Unsere Leistungen</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Unique Element: Wachsendes Balkendiagramm -->
+                <svg class="chart-growth" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wachstumsdiagramm symbolisiert erfolgreiche Beratung">
+                    <defs>
+                        <linearGradient id="barGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" style="stop-color:#105378"/>
+                            <stop offset="100%" style="stop-color:#459ACF"/>
+                        </linearGradient>
+                        <linearGradient id="barGradientAccent" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" style="stop-color:#8AB83D"/>
+                            <stop offset="100%" style="stop-color:#A0CE4E"/>
+                        </linearGradient>
+                        <filter id="chartShadow">
+                            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#105378" flood-opacity="0.15"/>
+                        </filter>
+                    </defs>
+
+                    <!-- Hintergrund-Grid -->
+                    <g class="grid-lines" stroke="#e0e0e0" stroke-width="1" opacity="0.5">
+                        <line x1="50" y1="60" x2="350" y2="60"/>
+                        <line x1="50" y1="110" x2="350" y2="110"/>
+                        <line x1="50" y1="160" x2="350" y2="160"/>
+                        <line x1="50" y1="210" x2="350" y2="210"/>
+                    </g>
+
+                    <!-- Achsen -->
+                    <line x1="50" y1="260" x2="350" y2="260" stroke="#105378" stroke-width="2"/>
+                    <line x1="50" y1="40" x2="50" y2="260" stroke="#105378" stroke-width="2"/>
+
+                    <!-- Achsenbeschriftung -->
+                    <text x="25" y="65" font-size="10" fill="#747474" text-anchor="middle">100%</text>
+                    <text x="25" y="115" font-size="10" fill="#747474" text-anchor="middle">75%</text>
+                    <text x="25" y="165" font-size="10" fill="#747474" text-anchor="middle">50%</text>
+                    <text x="25" y="215" font-size="10" fill="#747474" text-anchor="middle">25%</text>
+
+                    <!-- Balken -->
+                    <g class="bars" filter="url(#chartShadow)">
+                        <rect class="bar bar-1" x="80" y="260" width="45" height="0" fill="url(#barGradient)" rx="4"/>
+                        <rect class="bar bar-2" x="145" y="260" width="45" height="0" fill="url(#barGradient)" rx="4"/>
+                        <rect class="bar bar-3" x="210" y="260" width="45" height="0" fill="url(#barGradient)" rx="4"/>
+                        <rect class="bar bar-4" x="275" y="260" width="45" height="0" fill="url(#barGradientAccent)" rx="4"/>
+                    </g>
+
+                    <!-- Balken-Labels -->
+                    <text class="bar-label" x="102" y="280" font-size="11" fill="#747474" text-anchor="middle">2021</text>
+                    <text class="bar-label" x="167" y="280" font-size="11" fill="#747474" text-anchor="middle">2022</text>
+                    <text class="bar-label" x="232" y="280" font-size="11" fill="#747474" text-anchor="middle">2023</text>
+                    <text class="bar-label" x="297" y="280" font-size="11" fill="#747474" text-anchor="middle">2024</text>
+
+                    <!-- Trend-Linie -->
+                    <path class="trend-line" d="M102 200 Q167 160 232 130 T297 70"
+                          stroke="#A0CE4E" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="300" stroke-dashoffset="300"/>
+
+                    <!-- Trend-Punkte -->
+                    <g class="trend-points">
+                        <circle class="trend-point" cx="102" cy="200" r="5" fill="#A0CE4E"/>
+                        <circle class="trend-point" cx="167" cy="160" r="5" fill="#A0CE4E"/>
+                        <circle class="trend-point" cx="232" cy="130" r="5" fill="#A0CE4E"/>
+                        <circle class="trend-point" cx="297" cy="70" r="6" fill="#A0CE4E" stroke="#fff" stroke-width="2"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kennzahlen Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat" data-scroll>
+                    <span class="counter" data-target="50">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Jahre Erfahrung</span>
+                </div>
+                <div class="stat" data-scroll style="transition-delay: 0.1s">
+                    <span class="counter" data-target="1000">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Mandate</span>
+                </div>
+                <div class="stat" data-scroll style="transition-delay: 0.2s">
+                    <span class="counter" data-target="13">0</span>
+                    <span class="stat-suffix"></span>
+                    <span class="stat-label">Berufsträger</span>
+                </div>
+                <div class="stat" data-scroll style="transition-delay: 0.3s">
+                    <span class="counter" data-target="4">0</span>
+                    <span class="stat-suffix"></span>
+                    <span class="stat-label">Standorte</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen Section -->
+    <section id="leistungen" class="services-section">
+        <div class="container">
+            <div class="section-header" data-scroll>
+                <span class="section-label">Unsere Kompetenzen</span>
+                <h2>Interdisziplinäre <span class="underline-scroll" data-scroll>Beratung</span></h2>
+                <p>Rechtliche, steuerliche und wirtschaftliche Beratung erhalten Sie bei uns aus einer Hand.</p>
+            </div>
+            <div class="services-grid" data-scroll data-stagger>
+                <a href="steuerberatung.html" class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
+                            <line x1="8" y1="16" x2="40" y2="16" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="8" x2="16" y2="40" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="28" cy="28" r="6" stroke="currentColor" stroke-width="2"/>
+                            <line x1="32" y1="32" x2="36" y2="36" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Steuerberatung</h3>
+                    <p>Jahresabschlüsse, Steuererklärungen, Finanz- und Lohnbuchhaltung sowie gestaltende Steuerberatung durch erfahrene Experten.</p>
+                    <span class="service-link">Mehr erfahren</span>
+                </a>
+                <a href="wirtschaftspruefung.html" class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 36L20 28L28 32L36 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="36" r="3" fill="currentColor"/>
+                            <circle cx="20" cy="28" r="3" fill="currentColor"/>
+                            <circle cx="28" cy="32" r="3" fill="currentColor"/>
+                            <circle cx="36" cy="20" r="3" fill="currentColor"/>
+                            <rect x="6" y="6" width="36" height="36" rx="4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Wirtschaftsprüfung</h3>
+                    <p>Gesetzliche Abschlussprüfungen, Unternehmensbewertungen, Due-Diligence-Gutachten und betriebswirtschaftliche Beratung.</p>
+                    <span class="service-link">Mehr erfahren</span>
+                </a>
+                <a href="rechtsberatung.html" class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="16" r="8" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 42C8 34 15 28 24 28C33 28 40 34 40 42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M32 12L40 8M32 20L40 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Rechtsberatung</h3>
+                    <p>Arbeitsrecht, Gesellschaftsrecht, Erbrecht, Familienrecht und Steuerstrafrecht durch unsere spezialisierten Fachanwälte.</p>
+                    <span class="service-link">Mehr erfahren</span>
+                </a>
+                <a href="insolvenzverwaltung.html" class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 8V40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 16H28C32 16 34 18 34 22C34 26 32 28 28 28H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 28H30C34 28 36 30 36 34C36 38 34 40 30 40H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Insolvenzverwaltung</h3>
+                    <p>Professionelle Insolvenzbegleitung mit dem Ziel, Unternehmen zu erhalten, Arbeitsplätze zu sichern und Gläubiger optimal zu befriedigen.</p>
+                    <span class="service-link">Mehr erfahren</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über uns Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content" data-scroll>
+                    <span class="section-label">Über uns</span>
+                    <h2>Der <span class="highlight-scroll" data-scroll>Mandant</span> im Mittelpunkt</h2>
+                    <p class="about-lead">
+                        Seit über 50 Jahren beraten wir Unternehmen aller Rechtsformen und Privatpersonen in steuerlichen, rechtlichen und wirtschaftlichen Fragen.
+                    </p>
+                    <p>
+                        Mit 13 Berufsträgern und mehr als 60 Mitarbeitern an vier Standorten in der Ortenau garantieren wir Termintreue, Verlässlichkeit sowie Ehrlichkeit und Offenheit in der Zusammenarbeit.
+                    </p>
+                    <ul class="about-values stagger-list" data-scroll data-stagger>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Interdisziplinäre Zusammenarbeit unter einem Dach</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>DIN ISO 9001 zertifiziertes Qualitätsmanagement</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Langjährige Berufserfahrung in allen Fachgebieten</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Persönliche und individuelle Betreuung</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="about-visual" data-scroll style="transition-delay: 0.2s">
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 4L6 14V34L24 44L42 34V14L24 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M24 4V44" stroke="currentColor" stroke-width="2"/>
+                                <path d="M6 14L24 24L42 14" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3>Interdisziplinarität</h3>
+                        <p>Durch die Zusammenarbeit von Rechtsanwälten, Steuerberatern und Wirtschaftsprüfern unter einem Dach beraten wir Sie umfassend und fachübergreifend.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header" data-scroll>
+                <span class="section-label">Unser Team</span>
+                <h2>Die <span class="underline-scroll" data-scroll>Partner</span></h2>
+                <p>Erfahrene Experten für Ihre steuerlichen, rechtlichen und wirtschaftlichen Anliegen.</p>
+            </div>
+            <div class="team-grid" data-scroll data-stagger>
+                <div class="team-card">
+                    <div class="team-avatar">RL</div>
+                    <h4>Rainer Lusch</h4>
+                    <p class="team-title">Steuerberater, vereidigter Buchprüfer</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">GM</div>
+                    <h4>Gregor Mildenberger</h4>
+                    <p class="team-title">Steuerberater</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">DM</div>
+                    <h4>Dr. Martin Mildenberger</h4>
+                    <p class="team-title">Rechtsanwalt, Fachanwalt für Insolvenz- und Sanierungsrecht</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">BS</div>
+                    <h4>Bernd Streit</h4>
+                    <p class="team-title">Steuerberater, Wirtschaftsprüfer</p>
+                </div>
+            </div>
+            <div class="team-more" data-scroll>
+                <p>Weitere spezialisierte Berater finden Sie auf unseren Fachseiten:</p>
+                <div class="team-links">
+                    <a href="steuerberatung.html#team" class="btn btn-outline-small">Steuerberater</a>
+                    <a href="wirtschaftspruefung.html#team" class="btn btn-outline-small">Wirtschaftsprüfer</a>
+                    <a href="rechtsberatung.html#team" class="btn btn-outline-small">Rechtsanwälte</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Standorte Section -->
+    <section class="locations-section">
+        <div class="container">
+            <div class="section-header" data-scroll>
+                <span class="section-label">In Ihrer Nähe</span>
+                <h2>Unsere <span class="underline-scroll" data-scroll>Standorte</span></h2>
+                <p>Vier Niederlassungen in der Ortenau für Ihre optimale Erreichbarkeit.</p>
+            </div>
+            <div class="locations-grid" data-scroll data-stagger>
+                <div class="location-card location-main">
+                    <div class="location-badge">Hauptsitz</div>
+                    <h3>Offenburg</h3>
+                    <address>
+                        Bertha-von-Suttner-Str. 3<br>
+                        77654 Offenburg
+                    </address>
+                    <p class="location-hours">Mo-Do 08:00-12:30, 13:30-17:00 Uhr<br>Fr 08:00-13:00 Uhr</p>
+                    <div class="location-contact">
+                        <a href="tel:+4978193810">0781 / 9381-0</a>
+                        <a href="mailto:info@mildenberger-lusch.de">info@mildenberger-lusch.de</a>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <h3>Achern</h3>
+                    <address>
+                        Martinstraße 7<br>
+                        77855 Achern
+                    </address>
+                    <p class="location-hours">Mo-Fr 08:00-12:30 Uhr<br>Nachmittags nach Vereinbarung</p>
+                    <div class="location-contact">
+                        <a href="tel:+49784166670">07841 / 66670</a>
+                        <a href="mailto:achern@mildenberger-lusch.de">achern@mildenberger-lusch.de</a>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <h3>Gengenbach</h3>
+                    <address>
+                        Lambert-von-Büren-Str. 3<br>
+                        77723 Gengenbach
+                    </address>
+                    <p class="location-hours">Mo-Do 07:30-12:00, 13:00-17:00 Uhr<br>Fr 07:30-13:00 Uhr</p>
+                    <div class="location-contact">
+                        <a href="tel:+49780396760">07803 / 96760</a>
+                        <a href="mailto:gengenbach@mildenberger-lusch.de">gengenbach@mildenberger-lusch.de</a>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <h3>Hausach</h3>
+                    <address>
+                        Hauptstraße 104<br>
+                        77756 Hausach
+                    </address>
+                    <p class="location-hours">Mo-Fr 08:00-12:30 Uhr<br>Nachmittags nach Vereinbarung</p>
+                    <div class="location-contact">
+                        <a href="tel:+497831968310">07831 / 968310</a>
+                        <a href="mailto:hausach@mildenberger-lusch.de">hausach@mildenberger-lusch.de</a>
+                    </div>
+                </div>
+            </div>
+            <div class="locations-cta" data-scroll>
+                <a href="standorte.html" class="btn btn-primary">Alle Standorte ansehen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-scroll>
+                <h2 class="blur-reveal" data-scroll>Lassen Sie uns gemeinsam Ihre Ziele erreichen</h2>
+                <p data-scroll style="transition-delay: 0.1s">
+                    Vereinbaren Sie einen unverbindlichen Beratungstermin mit unseren Experten.
+                </p>
+                <div class="cta-buttons" data-scroll style="transition-delay: 0.2s">
+                    <a href="kontakt.html" class="btn btn-light">Kontakt aufnehmen</a>
+                    <a href="tel:+4978193810" class="btn btn-outline-light">0781 / 9381-0</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo.svg" alt="Mildenberger Lusch + Partner" width="240" height="30">
+                    <p>Mit Recht und Steuern kennen wir uns aus - unsere Leidenschaft gehört unseren Mandanten.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Leistungen</h4>
+                    <ul>
+                        <li><a href="steuerberatung.html">Steuerberatung</a></li>
+                        <li><a href="wirtschaftspruefung.html">Wirtschaftsprüfung</a></li>
+                        <li><a href="rechtsberatung.html">Rechtsberatung</a></li>
+                        <li><a href="insolvenzverwaltung.html">Insolvenzverwaltung</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Unternehmen</h4>
+                    <ul>
+                        <li><a href="standorte.html">Standorte</a></li>
+                        <li><a href="karriere.html">Karriere</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontakt</h4>
+                    <address>
+                        Bertha-von-Suttner-Str. 3<br>
+                        77654 Offenburg
+                    </address>
+                    <p>
+                        <a href="tel:+4978193810">0781 / 9381-0</a><br>
+                        <a href="mailto:info@mildenberger-lusch.de">info@mildenberger-lusch.de</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mildenberger Lusch + Partner mbB. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
