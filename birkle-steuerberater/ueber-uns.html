@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Über SHP Birkle: Seit 1994 Ihr Partner für Steuer- und Rechtsberatung in Hechingen. Mitglied der SHP Beratergruppe. Geschichte, Werte und Philosophie.">
+    <title>Über uns | SHP Birkle Steuerberatung Hechingen</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: calc(50% + 2rem);
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: calc(50% + 2rem);
+        }
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 400px;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 1.5rem;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .value-icon svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+        .value-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .value-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .shp-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+        .shp-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .shp-text h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .shp-text p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        .shp-features {
+            display: grid;
+            gap: 1rem;
+        }
+        .shp-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .shp-feature svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+            flex-shrink: 0;
+        }
+        .shp-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .shp-stat {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .shp-stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .shp-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        @media (max-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .shp-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 50px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+            .timeline-item::after {
+                left: 20px;
+            }
+            .timeline-content {
+                max-width: none;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .shp-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="SHP Beratergruppe">
+                </a>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Startseite</a></li>
+                        <li><a href="leistungen.html" class="nav-link">Leistungen</a></li>
+                        <li><a href="team.html" class="nav-link">Team</a></li>
+                        <li><a href="ueber-uns.html" class="nav-link">Über uns</a></li>
+                        <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn-primary nav-cta">Termin vereinbaren</a>
+                    <button class="menu-toggle" aria-label="Menü öffnen">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Startseite</a>
+                <span>/</span>
+                <span>Über uns</span>
+            </div>
+            <h1>Über uns</h1>
+            <p>Seit 1994 Ihr verlässlicher Partner für Steuer- und Rechtsberatung in Hechingen.</p>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <div class="about-image-main">
+                        <h3>30 Jahre Erfahrung</h3>
+                        <p>Von der Gründung 1994 bis heute - wir haben uns kontinuierlich weiterentwickelt und sind doch unseren Werten treu geblieben.</p>
+                        <div class="about-experience">
+                            <div class="about-experience-number">1994</div>
+                            <div class="about-experience-text">Gründungsjahr<br>der Kanzlei</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text fade-in">
+                    <span class="section-label">Unsere Geschichte</span>
+                    <h2>Tradition trifft Moderne</h2>
+                    <p>
+                        Die Kanzlei wurde 1994 von Josef Birkle gegründet, nach seinem Studium der Rechtswissenschaften
+                        an der Universität Tübingen und seiner Tätigkeit in renommierten Steuerbüros. Zunächst am
+                        Obertorplatz 3 in Hechingen ansässig, zog die Kanzlei 2012 in die heutigen Räumlichkeiten
+                        in der Heiligkreuzstraße 13.
+                    </p>
+                    <p>
+                        Im Jahr 2016 wurde die SHP Birkle GmbH als Mitglied der SHP Beratergruppe gegründet.
+                        Diese Partnerschaft ermöglicht es uns, lokale Präsenz mit überregionaler Expertise zu verbinden
+                        und unseren Mandanten ein noch breiteres Leistungsspektrum anzubieten.
+                    </p>
+                    <p>
+                        Heute arbeiten über 15 Mitarbeiterinnen und Mitarbeiter in unserer Kanzlei und betreuen
+                        Mandanten aus dem gesamten Zollernalbkreis und darüber hinaus.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section" style="background-color: var(--background-alt);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Meilensteine</span>
+                <h2 class="section-title">Unsere Entwicklung</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1978-1983</div>
+                        <h3>Studium</h3>
+                        <p>Josef Birkle studiert Rechtswissenschaften an der Universität Tübingen.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1992</div>
+                        <h3>Zulassung</h3>
+                        <p>Zulassung als Rechtsanwalt am Landgericht Hechingen und Bestellung zum Steuerberater.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1994</div>
+                        <h3>Kanzleigründung</h3>
+                        <p>Aufbau der eigenen Rechtsanwalt- und Steuerberaterkanzlei am Obertorplatz 3 in Hechingen.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2012</div>
+                        <h3>Umzug</h3>
+                        <p>Bezug der neuen, größeren Kanzleiräume in der Heiligkreuzstraße 13.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2016</div>
+                        <h3>SHP Beratergruppe</h3>
+                        <p>Gründung der SHP Birkle GmbH als Mitglied der renommierten SHP Beratergruppe.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Heute</div>
+                        <h3>Steuerberatung 5.0</h3>
+                        <p>Moderne digitale Prozesse verbunden mit persönlicher Beratung und über 15 Mitarbeitern.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Unsere Werte</span>
+                <h2 class="section-title">Wofür wir stehen</h2>
+                <p class="section-description">Zuverlässigkeit, Flexibilität und Individualität sind die Grundpfeiler unserer Beratung.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3>Zuverlässigkeit</h3>
+                    <p>Sie können sich auf uns verlassen. Termine werden eingehalten, Zusagen sind verbindlich, und Ihre Angelegenheiten werden gewissenhaft bearbeitet.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <h3>Flexibilität</h3>
+                    <p>Jeder Mandant ist anders. Wir passen uns Ihren Bedürfnissen an und finden individuelle Lösungen für Ihre spezifischen Anforderungen.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3>Individualität</h3>
+                    <p>Bei uns sind Sie keine Nummer. Persönliche Betreuung durch feste Ansprechpartner, die Ihre Situation genau kennen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHP Beratergruppe -->
+    <section class="section shp-section">
+        <div class="container">
+            <div class="shp-content">
+                <div class="shp-text fade-in">
+                    <span class="section-label" style="color: rgba(255,255,255,0.8);">Netzwerk</span>
+                    <h2>Teil der SHP Beratergruppe</h2>
+                    <p>
+                        Als Mitglied der SHP Beratergruppe profitieren Sie von einem starken Netzwerk
+                        erfahrener Berater. Die SHP Beratergruppe ist seit ihrer Gründung auf langfristige
+                        und nachhaltige Beziehungen in der Beratung ausgerichtet.
+                    </p>
+                    <div class="shp-features">
+                        <div class="shp-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Überregionale Expertise bei lokaler Betreuung</span>
+                        </div>
+                        <div class="shp-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Interdisziplinäre Zusammenarbeit</span>
+                        </div>
+                        <div class="shp-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Modernste digitale Infrastruktur</span>
+                        </div>
+                        <div class="shp-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Kontinuierliche Fortbildung</span>
+                        </div>
+                    </div>
+                    <a href="https://www.shp-beratergruppe.de" target="_blank" rel="noopener" class="btn btn-white" style="margin-top: 2rem;">
+                        SHP Beratergruppe besuchen
+                    </a>
+                </div>
+                <div class="shp-stats fade-in">
+                    <div class="shp-stat">
+                        <div class="shp-stat-number">8+</div>
+                        <div class="shp-stat-label">Standorte</div>
+                    </div>
+                    <div class="shp-stat">
+                        <div class="shp-stat-number">200+</div>
+                        <div class="shp-stat-label">Mitarbeiter</div>
+                    </div>
+                    <div class="shp-stat">
+                        <div class="shp-stat-number">40+</div>
+                        <div class="shp-stat-label">Jahre Erfahrung</div>
+                    </div>
+                    <div class="shp-stat">
+                        <div class="shp-stat-number">5000+</div>
+                        <div class="shp-stat-label">Mandanten</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="fade-in">
+                <h2>Werden Sie Teil unserer Mandantenfamilie</h2>
+                <p>Vereinbaren Sie ein unverbindliches Erstgespräch und lernen Sie uns kennen.</p>
+                <div class="cta-buttons">
+                    <a href="kontakt.html" class="btn btn-white">Kontakt aufnehmen</a>
+                    <a href="team.html" class="btn btn-secondary" style="border-color: white; color: white;">Unser Team kennenlernen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="assets/logo.svg" alt="SHP Beratergruppe">
+                    </a>
+                    <p>SHP Birkle Steuerberatungsgesellschaft Rechtsanwaltsgesellschaft mbH - Ihr Partner für Steuer- und Rechtsberatung in Hechingen.</p>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/josef-birkle-6aa79a98/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Leistungen</h4>
+                    <ul class="footer-links">
+                        <li><a href="leistungen.html">Steuerberatung</a></li>
+                        <li><a href="leistungen.html">Rechtsberatung</a></li>
+                        <li><a href="leistungen.html">Buchhaltung</a></li>
+                        <li><a href="leistungen.html">Betriebsprüfung</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Kanzlei</h4>
+                    <ul class="footer-links">
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="https://www.shp-beratergruppe.de" target="_blank" rel="noopener">SHP Beratergruppe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Kontakt</h4>
+                    <ul class="footer-links">
+                        <li>Heiligkreuzstraße 13</li>
+                        <li>72379 Hechingen</li>
+                        <li><a href="tel:+4974719848340">(07471) 98483-0</a></li>
+                        <li><a href="mailto:hechingen@scharf-hafner.de">hechingen@scharf-hafner.de</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SHP Birkle Steuerberatungsgesellschaft Rechtsanwaltsgesellschaft mbH</p>
+                <div class="footer-bottom-links">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
