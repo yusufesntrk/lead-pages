@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 40">
+  <defs>
+    <linearGradient id="pkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d8a5e"/>
+      <stop offset="100%" style="stop-color:#1a5f3c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- PK Monogram -->
+  <g fill="url(#pkGradient)">
+    <!-- P -->
+    <path d="M5 5h8c5.5 0 10 4.5 10 10s-4.5 10-10 10h-3v10h-5V5zm5 15h3c2.8 0 5-2.2 5-5s-2.2-5-5-5h-3v10z"/>
+    <!-- K -->
+    <path d="M28 5h5v12l10-12h6l-10 12 11 18h-6l-8-14-3 3.5V35h-5V5z"/>
+  </g>
+
+  <!-- Text: Patrick Kriegel -->
+  <text x="60" y="24" font-family="Montserrat, sans-serif" font-size="16" font-weight="600" fill="#1a1a1a">
+    Patrick Kriegel
+  </text>
+
+  <!-- Text: Steuerberater -->
+  <text x="60" y="36" font-family="Lato, sans-serif" font-size="10" font-weight="400" fill="#4a4a4a" letter-spacing="1">
+    STEUERBERATER
+  </text>
+</svg>

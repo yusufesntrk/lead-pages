@@ -1,0 +1,1704 @@
+/* ========================================
+   PARALLAX SHOWCASE - STYLES
+   ======================================== */
+
+:root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --accent: #f093fb;
+    --dark: #1a1a2e;
+    --darker: #0f0f1a;
+    --light: #ffffff;
+    --text: #e0e0e0;
+    --text-muted: #888;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--darker);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ========================================
+   MOUSE GLOW EFFECT
+   ======================================== */
+
+.mouse-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* ========================================
+   FLOATING PARTICLES
+   ======================================== */
+
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatParticle 8s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translateY(-30px) translateX(15px) rotate(90deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px) translateX(-10px) rotate(180deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(-40px) translateX(20px) rotate(270deg);
+        opacity: 0.5;
+    }
+}
+
+/* ========================================
+   PARALLAX CONTAINER
+   ======================================== */
+
+.parallax-container {
+    position: relative;
+    z-index: 10;
+}
+
+.parallax-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+}
+
+/* ========================================
+   SECTION 1: HERO
+   ======================================== */
+
+.hero {
+    background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+}
+
+.layer-deep {
+    z-index: 1;
+}
+
+.layer-back {
+    z-index: 2;
+}
+
+.layer-mid {
+    z-index: 3;
+}
+
+.layer-front {
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Gradient Orbs */
+.gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: pulseOrb 6s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--primary);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--secondary);
+    top: 50%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.orb-3 {
+    width: 350px;
+    height: 350px;
+    background: var(--accent);
+    bottom: 10%;
+    left: 30%;
+    animation-delay: 4s;
+}
+
+@keyframes pulseOrb {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+/* Floating Shapes */
+.floating-shape {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    animation: floatShape 10s ease-in-out infinite;
+}
+
+.shape-1 {
+    top: 20%;
+    left: 20%;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    top: 60%;
+    right: 25%;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 3s;
+}
+
+.shape-3 {
+    bottom: 20%;
+    left: 40%;
+    transform: rotate(45deg);
+    animation-delay: 6s;
+}
+
+@keyframes floatShape {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(180deg);
+    }
+}
+
+/* Geometric Rings */
+.geometric-ring {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: rotateRing 20s linear infinite;
+}
+
+.ring-1 {
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ring-2 {
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-direction: reverse;
+    animation-duration: 15s;
+}
+
+@keyframes rotateRing {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Hero Content */
+.hero-content {
+    text-align: center;
+    z-index: 10;
+}
+
+.glitch-text {
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    animation: glitchText 3s ease-in-out infinite;
+}
+
+@keyframes glitchText {
+    0%, 100% {
+        text-shadow: none;
+    }
+    10% {
+        text-shadow: -2px 0 var(--accent), 2px 0 var(--primary);
+    }
+    20% {
+        text-shadow: 2px 0 var(--accent), -2px 0 var(--primary);
+    }
+    30%, 100% {
+        text-shadow: none;
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.5s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeInUp 1s ease forwards 1s;
+    opacity: 0;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--text-muted);
+    border-radius: 15px;
+    position: relative;
+}
+
+.wheel {
+    width: 6px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 3px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50%) translateY(15px);
+        opacity: 0;
+    }
+}
+
+.scroll-indicator span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/* ========================================
+   SECTION 2: FLOATING CARDS
+   ======================================== */
+
+.cards-section {
+    background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+    padding: 100px 20px;
+}
+
+.section-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+}
+
+.bg-pattern {
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.layer-content {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, var(--light), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.reveal-text {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.floating-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    opacity: 0;
+    transform: translateY(100px);
+}
+
+.floating-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.floating-card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary);
+    box-shadow: 0 30px 60px rgba(102, 126, 234, 0.2);
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    color: var(--primary);
+}
+
+.card-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.floating-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--light);
+}
+
+.floating-card p {
+    color: var(--text-muted);
+}
+
+/* ========================================
+   SECTION 3: HORIZONTAL SCROLL GALLERY
+   ======================================== */
+
+.gallery-section {
+    background: var(--darker);
+    padding: 100px 0;
+}
+
+.gradient-mesh {
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(at 40% 20%, rgba(102, 126, 234, 0.2) 0px, transparent 50%),
+        radial-gradient(at 80% 80%, rgba(118, 75, 162, 0.2) 0px, transparent 50%),
+        radial-gradient(at 10% 90%, rgba(240, 147, 251, 0.1) 0px, transparent 50%);
+}
+
+.horizontal-scroll {
+    width: 100%;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.scroll-track {
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+    animation: scrollTrack 20s linear infinite;
+}
+
+@keyframes scrollTrack {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.gallery-item {
+    flex-shrink: 0;
+    width: 250px;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--darker);
+    border-radius: 18px;
+    z-index: 2;
+}
+
+.item-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+}
+
+.speed-label {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.item-content p {
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+}
+
+.speed-slow { animation-duration: 30s; }
+.speed-medium { animation-duration: 25s; }
+.speed-normal { animation-duration: 20s; }
+.speed-fast { animation-duration: 15s; }
+.speed-ultra { animation-duration: 10s; }
+
+/* ========================================
+   SECTION 4: 3D PERSPECTIVE
+   ======================================== */
+
+.perspective-section {
+    background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 50%, var(--darker) 100%);
+    perspective: 1000px;
+}
+
+.perspective-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+}
+
+.perspective-layer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.perspective-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.perspective-desc {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+/* 3D Cube */
+.cube {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCube 15s linear infinite;
+}
+
+@keyframes rotateCube {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+.cube-face {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    background: rgba(102, 126, 234, 0.05);
+    backdrop-filter: blur(5px);
+}
+
+.front { transform: translateZ(75px); }
+.back { transform: rotateY(180deg) translateZ(75px); }
+.right { transform: rotateY(90deg) translateZ(75px); }
+.left { transform: rotateY(-90deg) translateZ(75px); }
+.top { transform: rotateX(90deg) translateZ(75px); }
+.bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+/* Floating Spheres */
+.floating-sphere {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 70%);
+    animation: floatSphere 8s ease-in-out infinite;
+}
+
+.sphere-1 {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    left: 20%;
+    background: radial-gradient(circle at 30% 30%, var(--primary), transparent);
+    animation-delay: 0s;
+}
+
+.sphere-2 {
+    width: 40px;
+    height: 40px;
+    top: 60%;
+    right: 25%;
+    background: radial-gradient(circle at 30% 30%, var(--secondary), transparent);
+    animation-delay: 2s;
+}
+
+.sphere-3 {
+    width: 80px;
+    height: 80px;
+    bottom: 25%;
+    left: 35%;
+    background: radial-gradient(circle at 30% 30%, var(--accent), transparent);
+    animation-delay: 4s;
+}
+
+@keyframes floatSphere {
+    0%, 100% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px) scale(1.1);
+    }
+    50% {
+        transform: translateY(-10px) translateX(-15px) scale(0.9);
+    }
+    75% {
+        transform: translateY(-30px) translateX(5px) scale(1.05);
+    }
+}
+
+/* ========================================
+   SECTION 5: STICKY ELEMENTS
+   ======================================== */
+
+.sticky-section {
+    background: var(--dark);
+    min-height: 300vh;
+    padding: 0;
+}
+
+.sticky-container {
+    display: flex;
+    position: relative;
+    height: 100%;
+}
+
+.sticky-element {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10%;
+    width: 300px;
+    height: 300px;
+    z-index: 10;
+}
+
+.sticky-svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.pulse-ring {
+    animation: pulseRing 2s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+    0%, 100% {
+        opacity: 1;
+        r: 80;
+    }
+    50% {
+        opacity: 0.8;
+        r: 85;
+    }
+}
+
+.sticky-content {
+    margin-left: 50%;
+    padding: 100vh 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 50vh;
+}
+
+.sticky-step {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 400px;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.5s ease;
+}
+
+.sticky-step.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.sticky-step h3 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.sticky-step p {
+    color: var(--text-muted);
+}
+
+/* ========================================
+   SECTION 6: BUILD ANIMATION
+   ======================================== */
+
+.build-section {
+    background: linear-gradient(180deg, var(--darker) 0%, #2d1f3d 50%, var(--darker) 100%);
+    min-height: 200vh;
+}
+
+.build-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.build-stage {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.build-item {
+    position: absolute;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(-100px) scale(0.5);
+}
+
+.build-item.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.item-base { bottom: 0; z-index: 1; }
+.item-layer1 { bottom: 40px; z-index: 2; }
+.item-layer2 { bottom: 70px; z-index: 3; }
+.item-layer3 { bottom: 95px; z-index: 4; }
+.item-layer4 { bottom: 115px; z-index: 5; }
+.item-top { bottom: 130px; z-index: 6; }
+
+.build-progress {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    width: 0%;
+    transition: width 0.1s ease;
+    border-radius: 3px;
+}
+
+.progress-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ========================================
+   SECTION 7: PARTICLE EXPLOSION
+   ======================================== */
+
+.explosion-section {
+    background: radial-gradient(ellipse at center, var(--dark) 0%, var(--darker) 100%);
+}
+
+.explosion-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.explosion-trigger {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.explosion-trigger:hover {
+    transform: scale(1.1);
+}
+
+.explosion-center {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 30px rgba(255, 107, 107, 0.5));
+}
+
+.explosion-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.explosion-particle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.explosion-particle.exploded {
+    opacity: 1;
+}
+
+.explosion-title {
+    margin-top: 3rem;
+}
+
+.explosion-desc {
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
+
+/* ========================================
+   SECTION 8: FOOTER WITH WAVES
+   ======================================== */
+
+.footer-section {
+    background: var(--darker);
+    min-height: 60vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+
+.wave-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+}
+
+.wave-1 {
+    animation: waveMove 15s linear infinite;
+}
+
+.wave-2 {
+    animation: waveMove 12s linear infinite reverse;
+    bottom: 20px;
+}
+
+.wave-3 {
+    animation: waveMove 18s linear infinite;
+    bottom: 40px;
+}
+
+@keyframes waveMove {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.footer-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.footer-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--light), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-content p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.tech-badge {
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+    background: var(--primary);
+    color: var(--light);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   NAVIGATION DOTS
+   ======================================== */
+
+.parallax-nav {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.2);
+}
+
+.nav-dot.active {
+    background: var(--primary);
+    border-color: var(--light);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .parallax-nav {
+        right: 1rem;
+    }
+
+    .nav-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .sticky-container {
+        flex-direction: column;
+    }
+
+    .sticky-element {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 2rem auto;
+        width: 200px;
+        height: 200px;
+    }
+
+    .sticky-content {
+        margin-left: 0;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .glitch-text {
+        font-size: 3rem;
+    }
+
+    .mouse-glow {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .floating-card {
+        padding: 1.5rem;
+    }
+}
+
+/* ========================================
+   SECTION: TEXT REVEAL
+   ======================================== */
+
+.text-reveal-section {
+    background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+    overflow: hidden;
+}
+
+.text-reveal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.reveal-word {
+    display: flex;
+    overflow: hidden;
+}
+
+.reveal-letter {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-letter.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ========================================
+   SECTION: MAGNETIC BUTTONS
+   ======================================== */
+
+.magnetic-section {
+    background: var(--darker);
+}
+
+.magnetic-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.magnetic-desc {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+.magnetic-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.magnetic-btn {
+    position: relative;
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.magnetic-btn span {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+.magnetic-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.magnetic-btn:hover::before {
+    opacity: 1;
+}
+
+.magnetic-btn:hover {
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+}
+
+.magnetic-btn.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.magnetic-btn.btn-outline::before {
+    background: var(--primary);
+}
+
+.magnetic-btn.btn-outline:hover {
+    color: white;
+}
+
+.magnetic-btn.btn-ghost {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.magnetic-btn.btn-ghost::before {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+/* ========================================
+   SECTION: LIQUID BLOB
+   ======================================== */
+
+.blob-section {
+    background: radial-gradient(ellipse at center, var(--dark) 0%, var(--darker) 100%);
+}
+
+.blob-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blob-svg {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+}
+
+.blob {
+    animation: blobMove 8s ease-in-out infinite;
+}
+
+.blob-1 {
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    animation-delay: 1s;
+}
+
+.blob-3 {
+    animation-delay: 2s;
+}
+
+.blob-4 {
+    animation-delay: 3s;
+}
+
+@keyframes blobMove {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(50px, -30px);
+    }
+    50% {
+        transform: translate(-30px, 50px);
+    }
+    75% {
+        transform: translate(-50px, -20px);
+    }
+}
+
+.blob-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+}
+
+.blob-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.blob-content p {
+    color: var(--text-muted);
+}
+
+/* ========================================
+   SECTION: ANIMATED COUNTER
+   ======================================== */
+
+.counter-section {
+    background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+}
+
+.counter-container {
+    padding: 2rem;
+    text-align: center;
+}
+
+.counters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.counter-item {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.counter-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.counter-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.counter-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+}
+
+.counter-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.counter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+}
+
+/* ========================================
+   SECTION: IMAGE REVEAL
+   ======================================== */
+
+.image-reveal-section {
+    background: var(--darker);
+    padding: 100px 20px;
+}
+
+.image-reveal-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.reveal-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--primary);
+    z-index: 2;
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.reveal-image[data-direction="left"] .image-overlay {
+    transform-origin: right;
+}
+
+.reveal-image[data-direction="right"] .image-overlay {
+    transform-origin: left;
+}
+
+.reveal-image[data-direction="bottom"] .image-overlay {
+    transform-origin: top;
+}
+
+.reveal-image.revealed .image-overlay {
+    transform: scaleX(0);
+}
+
+.reveal-image[data-direction="bottom"].revealed .image-overlay {
+    transform: scaleY(0);
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+}
+
+.image-placeholder svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   SECTION: 3D CARD FLIP
+   ======================================== */
+
+.flip-section {
+    background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+    padding: 100px 20px;
+}
+
+.flip-container {
+    text-align: center;
+}
+
+.flip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.flip-card {
+    width: 280px;
+    height: 350px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.flip-card-front {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flip-card-front svg {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.flip-card-front span {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    transform: rotateY(180deg);
+}
+
+.flip-card-back h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.flip-card-back p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ========================================
+   SECTION: INFINITE MARQUEE
+   ======================================== */
+
+.marquee-section {
+    background: var(--dark);
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.marquee-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.marquee-track {
+    display: flex;
+    overflow: hidden;
+}
+
+.marquee-content {
+    display: flex;
+    animation: marqueeScroll 20s linear infinite;
+    white-space: nowrap;
+}
+
+.marquee-track.reverse .marquee-content {
+    animation-direction: reverse;
+}
+
+.marquee-fast .marquee-content {
+    animation-duration: 15s;
+}
+
+.marquee-slow .marquee-content {
+    animation-duration: 30s;
+}
+
+.marquee-medium .marquee-content {
+    animation-duration: 22s;
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-content span {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    padding: 0 1rem;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.marquee-content span:hover {
+    color: var(--primary);
+    -webkit-text-stroke: 1px var(--primary);
+}
+
+/* ========================================
+   SECTION: MORPHING SVG
+   ======================================== */
+
+.morph-section {
+    background: radial-gradient(ellipse at center, var(--dark) 0%, var(--darker) 100%);
+}
+
+.morph-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.morph-svg {
+    width: 350px;
+    height: 350px;
+    filter: drop-shadow(0 0 50px rgba(102, 126, 234, 0.5));
+}
+
+.morph-path {
+    opacity: 0.9;
+}
+
+.morph-content {
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+}
+
+.morph-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.morph-content p {
+    color: var(--text-muted);
+}
+
+/* ========================================
+   NAVIGATION UPDATE FOR MANY SECTIONS
+   ======================================== */
+
+.parallax-nav {
+    gap: 0.5rem;
+}
+
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    position: relative;
+}
+
+.nav-dot::after {
+    content: attr(title);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--dark);
+    color: var(--text);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.nav-dot:hover::after {
+    opacity: 1;
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

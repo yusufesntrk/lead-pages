@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Showcase - Immersive Scroll Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-nav {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1001;
+        }
+        .page-nav a {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            border-radius: 25px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .page-nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Navigation -->
+    <nav class="page-nav">
+        <a href="text-animations.html">Text Effects →</a>
+        <a href="text-sections.html" style="margin-left: 0.5rem;">Section Animations →</a>
+    </nav>
+
+    <!-- Mouse-Reactive Background -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- Floating Particles Layer -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Main Parallax Container -->
+    <div class="parallax-container">
+
+        <!-- Section 1: Hero with Deep Parallax -->
+        <section class="parallax-section hero" id="hero">
+            <div class="parallax-layer layer-deep">
+                <div class="gradient-orb orb-1"></div>
+                <div class="gradient-orb orb-2"></div>
+                <div class="gradient-orb orb-3"></div>
+            </div>
+            <div class="parallax-layer layer-back">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+            </div>
+            <div class="parallax-layer layer-mid">
+                <div class="geometric-ring ring-1"></div>
+                <div class="geometric-ring ring-2"></div>
+            </div>
+            <div class="parallax-layer layer-front">
+                <div class="hero-content">
+                    <h1 class="glitch-text" data-text="PARALLAX">PARALLAX</h1>
+                    <p class="hero-subtitle">Scroll to explore immersive effects</p>
+                    <div class="scroll-indicator">
+                        <div class="mouse">
+                            <div class="wheel"></div>
+                        </div>
+                        <span>Scroll Down</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Floating Cards -->
+        <section class="parallax-section cards-section" id="cards">
+            <div class="section-bg"></div>
+            <div class="parallax-layer layer-back">
+                <div class="bg-pattern"></div>
+            </div>
+            <div class="parallax-layer layer-content">
+                <h2 class="section-title reveal-text">Layered Depth</h2>
+                <div class="cards-grid">
+                    <div class="floating-card" data-depth="0.2">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Layer 1</h3>
+                        <p>Deep Background</p>
+                    </div>
+                    <div class="floating-card" data-depth="0.4">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 100 100">
+                                <polygon points="50,10 90,90 10,90" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <polygon points="50,30 75,75 25,75" fill="currentColor" opacity="0.3"/>
+                            </svg>
+                        </div>
+                        <h3>Layer 2</h3>
+                        <p>Mid Ground</p>
+                    </div>
+                    <div class="floating-card" data-depth="0.6">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(45 50 50)"/>
+                                <rect x="35" y="35" width="30" height="30" fill="currentColor" opacity="0.5" transform="rotate(45 50 50)"/>
+                            </svg>
+                        </div>
+                        <h3>Layer 3</h3>
+                        <p>Foreground</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Horizontal Scroll Gallery -->
+        <section class="parallax-section gallery-section" id="gallery">
+            <div class="parallax-layer layer-back">
+                <div class="gradient-mesh"></div>
+            </div>
+            <div class="parallax-layer layer-content">
+                <h2 class="section-title reveal-text">Speed Variations</h2>
+                <div class="horizontal-scroll">
+                    <div class="scroll-track">
+                        <div class="gallery-item speed-slow">
+                            <div class="item-content">
+                                <span class="speed-label">0.2x</span>
+                                <p>Very Slow</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item speed-medium">
+                            <div class="item-content">
+                                <span class="speed-label">0.5x</span>
+                                <p>Medium</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item speed-normal">
+                            <div class="item-content">
+                                <span class="speed-label">1.0x</span>
+                                <p>Normal</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item speed-fast">
+                            <div class="item-content">
+                                <span class="speed-label">1.5x</span>
+                                <p>Fast</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item speed-ultra">
+                            <div class="item-content">
+                                <span class="speed-label">2.0x</span>
+                                <p>Ultra Fast</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: 3D Perspective -->
+        <section class="parallax-section perspective-section" id="perspective">
+            <div class="perspective-container">
+                <div class="perspective-layer" data-depth="1">
+                    <div class="cube">
+                        <div class="cube-face front"></div>
+                        <div class="cube-face back"></div>
+                        <div class="cube-face right"></div>
+                        <div class="cube-face left"></div>
+                        <div class="cube-face top"></div>
+                        <div class="cube-face bottom"></div>
+                    </div>
+                </div>
+                <div class="perspective-layer" data-depth="2">
+                    <div class="floating-sphere sphere-1"></div>
+                    <div class="floating-sphere sphere-2"></div>
+                    <div class="floating-sphere sphere-3"></div>
+                </div>
+                <div class="perspective-content">
+                    <h2 class="section-title reveal-text">3D Perspective</h2>
+                    <p class="perspective-desc">Elements react to scroll with depth</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Sticky Elements -->
+        <section class="parallax-section sticky-section" id="sticky">
+            <div class="sticky-container">
+                <div class="sticky-element">
+                    <svg class="sticky-svg" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="stickyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea"/>
+                                <stop offset="100%" style="stop-color:#764ba2"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="100" cy="100" r="80" fill="url(#stickyGrad)" class="pulse-ring"/>
+                        <circle cx="100" cy="100" r="60" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+                        <circle cx="100" cy="100" r="40" fill="none" stroke="white" stroke-width="2" opacity="0.3"/>
+                        <text x="100" y="105" text-anchor="middle" fill="white" font-size="24" font-weight="bold">STICKY</text>
+                    </svg>
+                </div>
+                <div class="sticky-content">
+                    <div class="sticky-step" data-step="1">
+                        <h3>Step 1</h3>
+                        <p>Elements can stick to viewport while content scrolls</p>
+                    </div>
+                    <div class="sticky-step" data-step="2">
+                        <h3>Step 2</h3>
+                        <p>Perfect for storytelling and progressive reveals</p>
+                    </div>
+                    <div class="sticky-step" data-step="3">
+                        <h3>Step 3</h3>
+                        <p>Combine with transforms for dynamic effects</p>
+                    </div>
+                    <div class="sticky-step" data-step="4">
+                        <h3>Step 4</h3>
+                        <p>Great for product showcases and tutorials</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Build Animation (like Döner concept) -->
+        <section class="parallax-section build-section" id="build">
+            <div class="build-container">
+                <div class="build-stage">
+                    <div class="build-item item-base" data-trigger="0.1">
+                        <svg viewBox="0 0 200 60">
+                            <ellipse cx="100" cy="30" rx="90" ry="25" fill="#8B4513"/>
+                            <ellipse cx="100" cy="25" rx="85" ry="20" fill="#A0522D"/>
+                        </svg>
+                    </div>
+                    <div class="build-item item-layer1" data-trigger="0.25">
+                        <svg viewBox="0 0 180 40">
+                            <ellipse cx="90" cy="20" rx="80" ry="18" fill="#228B22" opacity="0.9"/>
+                            <ellipse cx="90" cy="18" rx="75" ry="15" fill="#32CD32" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="build-item item-layer2" data-trigger="0.4">
+                        <svg viewBox="0 0 160 35">
+                            <circle cx="40" cy="17" r="15" fill="#FF6347"/>
+                            <circle cx="80" cy="17" r="15" fill="#FF6347"/>
+                            <circle cx="120" cy="17" r="15" fill="#FF6347"/>
+                        </svg>
+                    </div>
+                    <div class="build-item item-layer3" data-trigger="0.55">
+                        <svg viewBox="0 0 140 30">
+                            <ellipse cx="35" cy="15" rx="25" ry="12" fill="#9370DB" opacity="0.8"/>
+                            <ellipse cx="70" cy="15" rx="25" ry="12" fill="#9370DB" opacity="0.8"/>
+                            <ellipse cx="105" cy="15" rx="25" ry="12" fill="#9370DB" opacity="0.8"/>
+                        </svg>
+                    </div>
+                    <div class="build-item item-layer4" data-trigger="0.7">
+                        <svg viewBox="0 0 120 25">
+                            <path d="M10,20 Q60,0 110,20" stroke="#FFD700" stroke-width="8" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="build-item item-top" data-trigger="0.85">
+                        <svg viewBox="0 0 200 50">
+                            <ellipse cx="100" cy="35" rx="85" ry="20" fill="#A0522D"/>
+                            <ellipse cx="100" cy="30" rx="80" ry="18" fill="#8B4513"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="build-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="buildProgress"></div>
+                    </div>
+                    <span class="progress-text">Scroll to Build</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Text Reveal with Clip-Path -->
+        <section class="parallax-section text-reveal-section" id="textreveal">
+            <div class="text-reveal-container">
+                <div class="reveal-word" data-delay="0">
+                    <span class="reveal-letter">C</span>
+                    <span class="reveal-letter">R</span>
+                    <span class="reveal-letter">E</span>
+                    <span class="reveal-letter">A</span>
+                    <span class="reveal-letter">T</span>
+                    <span class="reveal-letter">I</span>
+                    <span class="reveal-letter">V</span>
+                    <span class="reveal-letter">E</span>
+                </div>
+                <div class="reveal-word" data-delay="0.5">
+                    <span class="reveal-letter">S</span>
+                    <span class="reveal-letter">C</span>
+                    <span class="reveal-letter">R</span>
+                    <span class="reveal-letter">O</span>
+                    <span class="reveal-letter">L</span>
+                    <span class="reveal-letter">L</span>
+                </div>
+                <div class="reveal-word" data-delay="1">
+                    <span class="reveal-letter">M</span>
+                    <span class="reveal-letter">A</span>
+                    <span class="reveal-letter">G</span>
+                    <span class="reveal-letter">I</span>
+                    <span class="reveal-letter">C</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Magnetic Buttons -->
+        <section class="parallax-section magnetic-section" id="magnetic">
+            <div class="magnetic-container">
+                <h2 class="section-title reveal-text">Magnetic Elements</h2>
+                <p class="magnetic-desc">Hover over the buttons - they follow your cursor</p>
+                <div class="magnetic-buttons">
+                    <button class="magnetic-btn" data-strength="40">
+                        <span>Hover Me</span>
+                    </button>
+                    <button class="magnetic-btn btn-outline" data-strength="30">
+                        <span>Magnetic</span>
+                    </button>
+                    <button class="magnetic-btn btn-ghost" data-strength="50">
+                        <span>Interactive</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Liquid Blob Animation -->
+        <section class="parallax-section blob-section" id="blob">
+            <div class="blob-container">
+                <svg class="blob-svg" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <linearGradient id="blobGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea"/>
+                            <stop offset="50%" style="stop-color:#764ba2"/>
+                            <stop offset="100%" style="stop-color:#f093fb"/>
+                        </linearGradient>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"/>
+                            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                        </filter>
+                    </defs>
+                    <g filter="url(#goo)">
+                        <circle class="blob blob-1" cx="250" cy="250" r="80" fill="url(#blobGrad1)"/>
+                        <circle class="blob blob-2" cx="250" cy="250" r="60" fill="url(#blobGrad1)"/>
+                        <circle class="blob blob-3" cx="250" cy="250" r="70" fill="url(#blobGrad1)"/>
+                        <circle class="blob blob-4" cx="250" cy="250" r="50" fill="url(#blobGrad1)"/>
+                    </g>
+                </svg>
+                <div class="blob-content">
+                    <h2>Liquid Motion</h2>
+                    <p>SVG Filter Magic</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: Animated Counter -->
+        <section class="parallax-section counter-section" id="counter">
+            <div class="counter-container">
+                <h2 class="section-title reveal-text">Stats That Animate</h2>
+                <div class="counters-grid">
+                    <div class="counter-item">
+                        <div class="counter-number" data-target="15">0</div>
+                        <div class="counter-label">Parallax Effects</div>
+                        <div class="counter-bar"><div class="counter-fill" data-width="100"></div></div>
+                    </div>
+                    <div class="counter-item">
+                        <div class="counter-number" data-target="8">0</div>
+                        <div class="counter-label">New Sections</div>
+                        <div class="counter-bar"><div class="counter-fill" data-width="80"></div></div>
+                    </div>
+                    <div class="counter-item">
+                        <div class="counter-number" data-target="1500">0</div>
+                        <div class="counter-label">Lines of Code</div>
+                        <div class="counter-bar"><div class="counter-fill" data-width="90"></div></div>
+                    </div>
+                    <div class="counter-item">
+                        <div class="counter-number" data-target="60">0</div>
+                        <div class="counter-label">FPS Target</div>
+                        <div class="counter-bar"><div class="counter-fill" data-width="100"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 11: Image Reveal on Scroll -->
+        <section class="parallax-section image-reveal-section" id="imagereveal">
+            <div class="image-reveal-container">
+                <h2 class="section-title reveal-text">Scroll Reveal</h2>
+                <div class="image-grid">
+                    <div class="reveal-image" data-direction="left">
+                        <div class="image-overlay"></div>
+                        <div class="image-placeholder">
+                            <svg viewBox="0 0 400 300">
+                                <defs>
+                                    <linearGradient id="imgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#1a1a2e"/>
+                                        <stop offset="100%" style="stop-color:#667eea"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#imgGrad1)"/>
+                                <circle cx="100" cy="80" r="30" fill="rgba(255,255,255,0.1)"/>
+                                <polygon points="0,300 150,150 250,220 400,100 400,300" fill="rgba(255,255,255,0.05)"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="reveal-image" data-direction="bottom">
+                        <div class="image-overlay"></div>
+                        <div class="image-placeholder">
+                            <svg viewBox="0 0 400 300">
+                                <defs>
+                                    <linearGradient id="imgGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#764ba2"/>
+                                        <stop offset="100%" style="stop-color:#1a1a2e"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#imgGrad2)"/>
+                                <rect x="50" y="50" width="100" height="100" fill="rgba(255,255,255,0.1)" rx="10"/>
+                                <rect x="250" y="150" width="80" height="80" fill="rgba(255,255,255,0.05)" rx="10"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="reveal-image" data-direction="right">
+                        <div class="image-overlay"></div>
+                        <div class="image-placeholder">
+                            <svg viewBox="0 0 400 300">
+                                <defs>
+                                    <linearGradient id="imgGrad3" x1="100%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#f093fb"/>
+                                        <stop offset="100%" style="stop-color:#1a1a2e"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="400" height="300" fill="url(#imgGrad3)"/>
+                                <circle cx="200" cy="150" r="60" fill="rgba(255,255,255,0.1)"/>
+                                <circle cx="200" cy="150" r="40" fill="rgba(255,255,255,0.05)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 12: 3D Card Flip Gallery -->
+        <section class="parallax-section flip-section" id="flip">
+            <div class="flip-container">
+                <h2 class="section-title reveal-text">3D Card Flip</h2>
+                <div class="flip-grid">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="35" fill="none" stroke="#667eea" stroke-width="2"/>
+                                    <path d="M50 25 L50 75 M25 50 L75 50" stroke="#667eea" stroke-width="2"/>
+                                </svg>
+                                <span>Hover</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>Design</h4>
+                                <p>Creative layouts with CSS 3D transforms</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <svg viewBox="0 0 100 100">
+                                    <polygon points="50,15 85,85 15,85" fill="none" stroke="#764ba2" stroke-width="2"/>
+                                </svg>
+                                <span>Hover</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>Animate</h4>
+                                <p>Smooth transitions with hardware acceleration</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <svg viewBox="0 0 100 100">
+                                    <rect x="20" y="20" width="60" height="60" fill="none" stroke="#f093fb" stroke-width="2" rx="10"/>
+                                </svg>
+                                <span>Hover</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h4>Interact</h4>
+                                <p>User engagement through motion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 13: Infinite Marquee -->
+        <section class="parallax-section marquee-section" id="marquee">
+            <div class="marquee-container">
+                <div class="marquee-track marquee-fast">
+                    <div class="marquee-content">
+                        <span>PARALLAX</span>
+                        <span>•</span>
+                        <span>SCROLL</span>
+                        <span>•</span>
+                        <span>ANIMATION</span>
+                        <span>•</span>
+                        <span>EFFECTS</span>
+                        <span>•</span>
+                        <span>PARALLAX</span>
+                        <span>•</span>
+                        <span>SCROLL</span>
+                        <span>•</span>
+                        <span>ANIMATION</span>
+                        <span>•</span>
+                        <span>EFFECTS</span>
+                        <span>•</span>
+                    </div>
+                </div>
+                <div class="marquee-track marquee-slow reverse">
+                    <div class="marquee-content">
+                        <span>CSS</span>
+                        <span>✦</span>
+                        <span>JAVASCRIPT</span>
+                        <span>✦</span>
+                        <span>SVG</span>
+                        <span>✦</span>
+                        <span>TRANSFORMS</span>
+                        <span>✦</span>
+                        <span>CSS</span>
+                        <span>✦</span>
+                        <span>JAVASCRIPT</span>
+                        <span>✦</span>
+                        <span>SVG</span>
+                        <span>✦</span>
+                        <span>TRANSFORMS</span>
+                        <span>✦</span>
+                    </div>
+                </div>
+                <div class="marquee-track marquee-medium">
+                    <div class="marquee-content">
+                        <span>IMMERSIVE</span>
+                        <span>◆</span>
+                        <span>INTERACTIVE</span>
+                        <span>◆</span>
+                        <span>ENGAGING</span>
+                        <span>◆</span>
+                        <span>DYNAMIC</span>
+                        <span>◆</span>
+                        <span>IMMERSIVE</span>
+                        <span>◆</span>
+                        <span>INTERACTIVE</span>
+                        <span>◆</span>
+                        <span>ENGAGING</span>
+                        <span>◆</span>
+                        <span>DYNAMIC</span>
+                        <span>◆</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 14: Morphing SVG -->
+        <section class="parallax-section morph-section" id="morph">
+            <div class="morph-container">
+                <svg class="morph-svg" viewBox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="morphGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea">
+                                <animate attributeName="stop-color" values="#667eea;#f093fb;#764ba2;#667eea" dur="4s" repeatCount="indefinite"/>
+                            </stop>
+                            <stop offset="100%" style="stop-color:#764ba2">
+                                <animate attributeName="stop-color" values="#764ba2;#667eea;#f093fb;#764ba2" dur="4s" repeatCount="indefinite"/>
+                            </stop>
+                        </linearGradient>
+                    </defs>
+                    <path class="morph-path" fill="url(#morphGrad)">
+                        <animate
+                            attributeName="d"
+                            dur="8s"
+                            repeatCount="indefinite"
+                            values="
+                                M100,20 C150,20 180,50 180,100 C180,150 150,180 100,180 C50,180 20,150 20,100 C20,50 50,20 100,20;
+                                M100,40 C140,20 180,60 170,100 C160,140 140,170 100,160 C60,150 30,130 40,100 C50,70 60,60 100,40;
+                                M100,30 C160,40 170,80 160,100 C150,120 160,160 100,170 C40,180 30,140 40,100 C50,60 40,20 100,30;
+                                M100,20 C150,20 180,50 180,100 C180,150 150,180 100,180 C50,180 20,150 20,100 C20,50 50,20 100,20
+                            "
+                        />
+                    </path>
+                </svg>
+                <div class="morph-content">
+                    <h2>Morphing Shapes</h2>
+                    <p>Pure SVG Animation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 15: Particle Explosion -->
+            <div class="explosion-container">
+                <div class="explosion-trigger" id="explosionTrigger">
+                    <svg viewBox="0 0 100 100" class="explosion-center">
+                        <defs>
+                            <radialGradient id="explosionGrad">
+                                <stop offset="0%" style="stop-color:#ff6b6b"/>
+                                <stop offset="100%" style="stop-color:#ee5a24"/>
+                            </radialGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="40" fill="url(#explosionGrad)"/>
+                    </svg>
+                </div>
+                <div class="explosion-particles" id="explosionParticles"></div>
+                <h2 class="section-title reveal-text explosion-title">Scroll Triggers</h2>
+                <p class="explosion-desc">Watch the particles explode on scroll</p>
+            </div>
+        </section>
+
+        <!-- Section 8: Footer with Wave -->
+        <section class="parallax-section footer-section" id="footer">
+            <div class="wave-container">
+                <svg class="wave wave-1" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="rgba(102, 126, 234, 0.3)" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+                <svg class="wave wave-2" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="rgba(118, 75, 162, 0.3)" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,128C960,149,1056,171,1152,165.3C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+                <svg class="wave wave-3" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="rgba(102, 126, 234, 0.5)" d="M0,256L48,240C96,224,192,192,288,181.3C384,171,480,181,576,197.3C672,213,768,235,864,218.7C960,203,1056,149,1152,138.7C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+            </div>
+            <div class="footer-content">
+                <h2>Parallax Showcase</h2>
+                <p>Created with pure HTML, CSS & JavaScript</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">CSS Transforms</span>
+                    <span class="tech-badge">Intersection Observer</span>
+                    <span class="tech-badge">requestAnimationFrame</span>
+                    <span class="tech-badge">CSS Animations</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Navigation Dots -->
+    <nav class="parallax-nav">
+        <a href="#hero" class="nav-dot active" data-section="hero" title="Hero"></a>
+        <a href="#cards" class="nav-dot" data-section="cards" title="Cards"></a>
+        <a href="#gallery" class="nav-dot" data-section="gallery" title="Gallery"></a>
+        <a href="#perspective" class="nav-dot" data-section="perspective" title="3D"></a>
+        <a href="#sticky" class="nav-dot" data-section="sticky" title="Sticky"></a>
+        <a href="#build" class="nav-dot" data-section="build" title="Build"></a>
+        <a href="#textreveal" class="nav-dot" data-section="textreveal" title="Text"></a>
+        <a href="#magnetic" class="nav-dot" data-section="magnetic" title="Magnetic"></a>
+        <a href="#blob" class="nav-dot" data-section="blob" title="Blob"></a>
+        <a href="#counter" class="nav-dot" data-section="counter" title="Counter"></a>
+        <a href="#imagereveal" class="nav-dot" data-section="imagereveal" title="Reveal"></a>
+        <a href="#flip" class="nav-dot" data-section="flip" title="Flip"></a>
+        <a href="#marquee" class="nav-dot" data-section="marquee" title="Marquee"></a>
+        <a href="#morph" class="nav-dot" data-section="morph" title="Morph"></a>
+        <a href="#explosion" class="nav-dot" data-section="explosion" title="Explosion"></a>
+        <a href="#footer" class="nav-dot" data-section="footer" title="Footer"></a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

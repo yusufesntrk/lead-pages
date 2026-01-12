@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontaktieren Sie Patrick Kriegel Steuerberater in Offenburg. Telefon: +49 781 950 99 100, E-Mail: kontakt@stb-kriegel.de. Englerstraße 4, 77652 Offenburg.">
+    <meta name="keywords" content="Kontakt Steuerberater Offenburg, Patrick Kriegel Kontakt, Steuerberatung Termin">
+
+    <title>Kontakt | Patrick Kriegel Steuerberater Offenburg</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <style>
+        .page-hero {
+            padding-top: calc(var(--header-height) + var(--spacing-3xl));
+            padding-bottom: var(--spacing-3xl);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .page-hero__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-hero h1 {
+            color: var(--color-text-inverse);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+
+        .contact-info__header .label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-info__header h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info__header p {
+            color: var(--color-text-secondary);
+        }
+
+        .contact-info__items {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .contact-info__item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: var(--color-bg-alt);
+            border-radius: var(--radius-lg);
+            transition: background var(--transition-normal);
+        }
+
+        .contact-info__item:hover {
+            background: var(--color-bg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-info__item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-info__item-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-text-inverse);
+        }
+
+        .contact-info__item-content h4 {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .contact-info__item-content p {
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        .contact-info__item-content a {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .contact-info__item-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--color-bg);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .contact-form h3 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form__group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form__label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-text);
+        }
+
+        .form__input,
+        .form__textarea,
+        .form__select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            background: var(--color-bg);
+            color: var(--color-text);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .form__input:focus,
+        .form__textarea:focus,
+        .form__select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(26, 95, 60, 0.1);
+        }
+
+        .form__textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form__row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .form__checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .form__checkbox input {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: var(--color-primary);
+        }
+
+        .form__checkbox label {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .form__checkbox label a {
+            color: var(--color-primary);
+        }
+
+        .form__submit {
+            margin-top: var(--spacing-lg);
+        }
+
+        .form__submit .btn {
+            width: 100%;
+        }
+
+        /* Opening Hours */
+        .opening-hours {
+            background: var(--color-bg-alt);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+        }
+
+        .opening-hours h4 {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .opening-hours h4 svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+        }
+
+        .opening-hours__list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .opening-hours__item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9375rem;
+        }
+
+        .opening-hours__item span:first-child {
+            color: var(--color-text-secondary);
+        }
+
+        .opening-hours__item span:last-child {
+            font-weight: 500;
+        }
+
+        /* Map Section */
+        .map {
+            background: var(--color-bg-alt);
+        }
+
+        .map__container {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .map__container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        .map__info {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-2xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .map__info-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .map__info-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+        }
+
+        /* Quick Contact */
+        .quick-contact {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+        }
+
+        .quick-contact__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .quick-contact__card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            backdrop-filter: blur(8px);
+            transition: background var(--transition-normal);
+        }
+
+        .quick-contact__card:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .quick-contact__card-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--spacing-md);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-contact__card-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--color-text-inverse);
+        }
+
+        .quick-contact__card h3 {
+            font-size: 1.125rem;
+            color: var(--color-text-inverse);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .quick-contact__card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .quick-contact__card a {
+            color: var(--color-text-inverse);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .quick-contact__card a:hover {
+            color: var(--color-accent);
+        }
+
+        .quick-contact__card a svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .contact__grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-2xl);
+            }
+
+            .quick-contact__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form__row {
+                grid-template-columns: 1fr;
+            }
+
+            .map__info {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater Logo">
+                </a>
+
+                <nav class="nav" id="nav">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link">Startseite</a></li>
+                        <li><a href="leistungen.html" class="nav__link">Leistungen</a></li>
+                        <li><a href="kanzlei.html" class="nav__link">Kanzlei</a></li>
+                        <li><a href="digitale-kanzlei.html" class="nav__link">Digitale Kanzlei</a></li>
+                        <li><a href="karriere.html" class="nav__link">Karriere</a></li>
+                        <li><a href="kontakt.html" class="nav__link active">Kontakt</a></li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn--primary">Beratung anfragen</a>
+                </nav>
+
+                <button class="nav-toggle" id="navToggle" aria-label="Navigation umschalten">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero__content fade-in">
+                <span class="label">Sprechen Sie mit uns</span>
+                <h1>Kontakt</h1>
+                <p>Sie haben Fragen oder möchten einen Beratungstermin vereinbaren? Wir sind für Sie da - persönlich, telefonisch oder digital.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact -->
+    <section class="section quick-contact">
+        <div class="container">
+            <div class="quick-contact__grid">
+                <div class="quick-contact__card fade-in">
+                    <div class="quick-contact__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <h3>Anrufen</h3>
+                    <p>Direkt mit uns sprechen</p>
+                    <a href="tel:+497819509910">
+                        +49 781 950 99 100
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="quick-contact__card fade-in">
+                    <div class="quick-contact__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3>E-Mail senden</h3>
+                    <p>Wir antworten zeitnah</p>
+                    <a href="mailto:kontakt@stb-kriegel.de">
+                        kontakt@stb-kriegel.de
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="quick-contact__card fade-in">
+                    <div class="quick-contact__card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Besuchen</h3>
+                    <p>Persönlich vorbeikommen</p>
+                    <a href="https://maps.app.goo.gl/o5M1PChv7gka27wH9" target="_blank" rel="noopener noreferrer">
+                        Route planen
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="contact__grid">
+                <!-- Contact Info -->
+                <div class="contact-info fade-in">
+                    <div class="contact-info__header">
+                        <span class="label">Kontaktdaten</span>
+                        <h2>So erreichen Sie uns</h2>
+                        <p>Wir freuen uns auf Ihre Anfrage und nehmen uns Zeit für Sie - egal ob persönlich, telefonisch oder per E-Mail.</p>
+                    </div>
+
+                    <div class="contact-info__items">
+                        <div class="contact-info__item">
+                            <div class="contact-info__item-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info__item-content">
+                                <h4>Adresse</h4>
+                                <p>Patrick Kriegel GmbH<br>Steuerberatungsgesellschaft<br>Englerstraße 4<br>77652 Offenburg</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info__item">
+                            <div class="contact-info__item-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info__item-content">
+                                <h4>Telefon & Fax</h4>
+                                <p>Tel: <a href="tel:+497819509910">+49 781 950 99 100</a><br>Fax: +49 781 950 99 199</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info__item">
+                            <div class="contact-info__item-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info__item-content">
+                                <h4>E-Mail</h4>
+                                <p><a href="mailto:kontakt@stb-kriegel.de">kontakt@stb-kriegel.de</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="opening-hours">
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            Öffnungszeiten
+                        </h4>
+                        <div class="opening-hours__list">
+                            <div class="opening-hours__item">
+                                <span>Montag - Donnerstag</span>
+                                <span>9:00 - 12:00 & 13:00 - 16:00</span>
+                            </div>
+                            <div class="opening-hours__item">
+                                <span>Freitag</span>
+                                <span>9:00 - 12:00</span>
+                            </div>
+                            <div class="opening-hours__item">
+                                <span>Samstag - Sonntag</span>
+                                <span>Geschlossen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form fade-in">
+                    <h3>Nachricht senden</h3>
+                    <form action="#" method="post">
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label class="form__label" for="vorname">Vorname *</label>
+                                <input type="text" id="vorname" name="vorname" class="form__input" required>
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="nachname">Nachname *</label>
+                                <input type="text" id="nachname" name="nachname" class="form__input" required>
+                            </div>
+                        </div>
+
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label class="form__label" for="email">E-Mail *</label>
+                                <input type="email" id="email" name="email" class="form__input" required>
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="telefon">Telefon</label>
+                                <input type="tel" id="telefon" name="telefon" class="form__input">
+                            </div>
+                        </div>
+
+                        <div class="form__group">
+                            <label class="form__label" for="betreff">Betreff *</label>
+                            <select id="betreff" name="betreff" class="form__select" required>
+                                <option value="">Bitte wählen...</option>
+                                <option value="beratung">Beratungstermin vereinbaren</option>
+                                <option value="angebot">Angebot anfordern</option>
+                                <option value="buchhaltung">Frage zur Buchhaltung</option>
+                                <option value="steuer">Frage zur Steuererklärung</option>
+                                <option value="karriere">Karriere / Bewerbung</option>
+                                <option value="sonstiges">Sonstiges</option>
+                            </select>
+                        </div>
+
+                        <div class="form__group">
+                            <label class="form__label" for="nachricht">Ihre Nachricht *</label>
+                            <textarea id="nachricht" name="nachricht" class="form__textarea" required placeholder="Wie können wir Ihnen helfen?"></textarea>
+                        </div>
+
+                        <div class="form__checkbox">
+                            <input type="checkbox" id="datenschutz" name="datenschutz" required>
+                            <label for="datenschutz">
+                                Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *
+                            </label>
+                        </div>
+
+                        <div class="form__submit">
+                            <button type="submit" class="btn btn--primary btn--large">Nachricht senden</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section map">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Standort</span>
+                <h2>So finden Sie uns</h2>
+                <p>Unsere Kanzlei befindet sich zentral in Offenburg mit guter Anbindung und Parkmöglichkeiten.</p>
+            </div>
+
+            <div class="map__container fade-in">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2643.376!2d7.9399!3d48.4682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790a2eadf1ad0cd%3A0x8a38c5d5a5f6a7e0!2sPatrick%20Kriegel%20GmbH%20Steuerberatungsgesellschaft!5e0!3m2!1sde!2sde!4v1736595000000!5m2!1sde!2sde"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Standort Patrick Kriegel Steuerberater">
+                </iframe>
+            </div>
+
+            <div class="map__info fade-in">
+                <div class="map__info-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="3" y1="9" x2="21" y2="9"/>
+                        <line x1="9" y1="21" x2="9" y2="9"/>
+                    </svg>
+                    <span>Parkplätze vor dem Gebäude</span>
+                </div>
+                <div class="map__info-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span>Barrierefreier Zugang</span>
+                </div>
+                <div class="map__info-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="3" width="15" height="13"/>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                        <circle cx="5.5" cy="18.5" r="2.5"/>
+                        <circle cx="18.5" cy="18.5" r="2.5"/>
+                    </svg>
+                    <span>Gute ÖPNV-Anbindung</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/logo.svg" alt="Patrick Kriegel Steuerberater">
+                    </div>
+                    <p>Ihre moderne Steuerberatungskanzlei in Offenburg. Wir verbinden persönliche Betreuung mit digitaler Effizienz.</p>
+                    <div class="footer__social">
+                        <a href="https://www.linkedin.com/company/steuerberater-patrick-kriegel" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/stb_patrick_kriegel" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/steuerberatungskanzleipatrickkriegel" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Leistungen</h4>
+                    <nav class="footer__links">
+                        <a href="leistungen.html#steuererklaerung">Steuererklärung</a>
+                        <a href="leistungen.html#jahresabschluss">Jahresabschluss</a>
+                        <a href="leistungen.html#buchhaltung">Buchhaltung</a>
+                        <a href="leistungen.html#gestaltungsberatung">Gestaltungsberatung</a>
+                        <a href="leistungen.html#startup">Start-Up Begleitung</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kanzlei</h4>
+                    <nav class="footer__links">
+                        <a href="kanzlei.html">Über uns</a>
+                        <a href="kanzlei.html#team">Unser Team</a>
+                        <a href="digitale-kanzlei.html">Digitale Kanzlei</a>
+                        <a href="karriere.html">Karriere</a>
+                        <a href="kontakt.html">Kontakt</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kontakt</h4>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Englerstraße 4<br>77652 Offenburg</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>+49 781 950 99 100</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>kontakt@stb-kriegel.de</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Patrick Kriegel GmbH Steuerberatungsgesellschaft. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,941 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+}
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #1a1a1a;
+}
+
+.nav-cta {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 0.6rem 1.25rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.nav-cta:hover {
+    background: #333;
+}
+
+/* Nav Dark Variant */
+.nav.nav-dark {
+    background: rgba(10,10,10,0.95);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav.nav-dark .nav-logo {
+    color: #fff;
+}
+
+.nav.nav-dark .nav-links a {
+    color: #888;
+}
+
+.nav.nav-dark .nav-links a:hover {
+    color: #fff;
+}
+
+.nav.nav-dark .nav-cta {
+    background: #fff;
+    color: #0a0a0a;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+}
+
+/* =============================================
+   ANIMATED BACKGROUNDS
+   ============================================= */
+
+/* HERO 1 - Morphing Blobs + Orbits */
+.morph-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.morph {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: morph 15s ease-in-out infinite;
+}
+
+.morph-1 {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    right: -100px;
+    top: -100px;
+}
+
+.morph-2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+    left: -100px;
+    bottom: -100px;
+    animation-delay: -7s;
+}
+
+@keyframes morph {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg); }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: rotate(180deg); }
+}
+
+.orbit {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+}
+
+.orbit-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 50%;
+    animation: spin 20s linear infinite;
+}
+
+.ring-2 {
+    inset: 50px;
+    animation-duration: 15s;
+    animation-direction: reverse;
+}
+
+.ring-3 {
+    inset: 100px;
+    animation-duration: 25s;
+}
+
+.orbit-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    top: -4px;
+    left: 50%;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* HERO 2 - Particles + Glow Lines */
+.particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    animation: float-up 10s ease-in infinite;
+}
+
+.p1 { left: 10%; animation-delay: 0s; }
+.p2 { left: 25%; animation-delay: 2s; }
+.p3 { left: 45%; animation-delay: 4s; }
+.p4 { left: 65%; animation-delay: 1s; }
+.p5 { left: 80%; animation-delay: 3s; }
+.p6 { left: 90%; animation-delay: 5s; }
+
+@keyframes float-up {
+    0% { bottom: -10px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { bottom: 100%; opacity: 0; }
+}
+
+.glow-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.glow-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: scan 4s ease-in-out infinite;
+}
+
+.gl-1 { top: 30%; width: 60%; left: 20%; }
+.gl-2 { top: 50%; width: 40%; left: 30%; animation-delay: 1.5s; }
+.gl-3 { top: 70%; width: 50%; left: 25%; animation-delay: 3s; }
+
+@keyframes scan {
+    0%, 100% { opacity: 0; transform: translateX(-100%); }
+    50% { opacity: 1; transform: translateX(100%); }
+}
+
+.pulse-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    animation: pulse 3s ease-out infinite;
+    pointer-events: none;
+}
+
+.pulse-circle::before,
+.pulse-circle::after {
+    content: '';
+    position: absolute;
+    inset: -50px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+    animation: pulse 3s ease-out infinite;
+}
+
+.pulse-circle::before { animation-delay: 1s; }
+.pulse-circle::after { animation-delay: 2s; inset: -100px; }
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* HERO 3 - Floating Shapes + Scanner */
+.floating-shapes {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.float-shape {
+    position: absolute;
+    background: #e0e0e0;
+    animation: float 6s ease-in-out infinite;
+}
+
+.fs-1 {
+    width: 100px;
+    height: 100px;
+    right: 10%;
+    top: 20%;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.fs-2 {
+    width: 60px;
+    height: 60px;
+    left: 8%;
+    top: 40%;
+    border-radius: 50%;
+    animation-delay: 1s;
+}
+
+.fs-3 {
+    width: 80px;
+    height: 80px;
+    right: 20%;
+    bottom: 25%;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    animation-delay: 2s;
+}
+
+.fs-4 {
+    width: 40px;
+    height: 40px;
+    left: 15%;
+    bottom: 30%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+.scanner-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ccc, transparent);
+    animation: scanner 4s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scanner {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* HERO 4 - Matrix + Spin Ring */
+.matrix-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+.matrix-col {
+    writing-mode: vertical-rl;
+    font-family: monospace;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 10px;
+    animation: matrix-fall 8s linear infinite;
+}
+
+.mc-1 { animation-delay: 0s; }
+.mc-2 { animation-delay: 2s; }
+.mc-3 { animation-delay: 4s; }
+.mc-4 { animation-delay: 6s; }
+
+@keyframes matrix-fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.spin-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    border: 2px dashed rgba(255,255,255,0.1);
+    border-radius: 50%;
+    animation: spin 30s linear infinite;
+    pointer-events: none;
+}
+
+.corner-brackets {
+    position: absolute;
+    inset: 10%;
+    pointer-events: none;
+}
+
+.cb {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: rgba(255,255,255,0.2);
+    border-style: solid;
+    border-width: 0;
+    animation: bracket-pulse 2s ease-in-out infinite;
+}
+
+.cb-tl { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+.cb-tr { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; animation-delay: 0.5s; }
+.cb-bl { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; animation-delay: 1s; }
+.cb-br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; animation-delay: 1.5s; }
+
+@keyframes bracket-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* HERO 6 - Animated gradient */
+.hero-6 {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-6::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    right: -25%;
+    bottom: -25%;
+    background: conic-gradient(from 0deg, transparent, rgba(0,0,0,0.03), transparent);
+    animation: slow-rotate 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes slow-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .orbit, .morph-2, .floating-shapes, .matrix-bg, .corner-brackets {
+        display: none;
+    }
+    .morph-1 {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* =============================================
+   HERO 1: Zentriert mit Stats unten
+   ============================================= */
+.hero-1 {
+    background: #fff;
+}
+
+.hero-1-inner {
+    max-width: 800px;
+}
+
+.hero-1-overline {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    background: #1a1a1a;
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.hero-1-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-1-text {
+    font-size: 1.15rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-1-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #333;
+}
+
+.btn-secondary {
+    display: inline-block;
+    color: #1a1a1a;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid #1a1a1a;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.hero-1-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid #e5e5e5;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* =============================================
+   HERO 2: Dunkel mit großer Typo
+   ============================================= */
+.hero-2 {
+    background: #0a0a0a;
+    color: #fff;
+}
+
+.hero-2-inner {
+    max-width: 900px;
+}
+
+.hero-2-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+}
+
+.hero-2-title span {
+    color: #666;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.hero-2-text {
+    font-size: 1.15rem;
+    color: #888;
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-2-btn {
+    display: inline-block;
+    background: #fff;
+    color: #0a0a0a;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+    margin-bottom: 4rem;
+}
+
+.hero-2-btn:hover {
+    background: #f0f0f0;
+}
+
+.hero-2-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid #333;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.stat-desc {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* =============================================
+   HERO 3: Große Typografie
+   ============================================= */
+.hero-3 {
+    background: #f5f5f5;
+}
+
+.hero-3-inner {
+    max-width: 900px;
+}
+
+.hero-3-title {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+}
+
+.hero-3-text {
+    font-size: 1.15rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-3-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+    border-bottom: 2px solid #1a1a1a;
+    transition: gap 0.3s;
+}
+
+.hero-3-btn:hover {
+    gap: 1.5rem;
+}
+
+/* =============================================
+   HERO 4: Mit Service-Liste
+   ============================================= */
+.hero-4 {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.hero-4-inner {
+    max-width: 800px;
+}
+
+.hero-4-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    border: 1px solid #444;
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-4-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-4-text {
+    font-size: 1.1rem;
+    color: #999;
+    margin-bottom: 3rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-4-services {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.service {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #333;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.hero-4-btn {
+    display: inline-block;
+    background: #fff;
+    color: #1a1a1a;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.hero-4-btn:hover {
+    background: #f0f0f0;
+}
+
+/* =============================================
+   HERO 5: Zentriert mit Hintergrundtext
+   ============================================= */
+.hero-5 {
+    background: #111;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-5-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25vw;
+    font-weight: 800;
+    color: rgba(255,255,255,0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+}
+
+.hero-5-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-5-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #666;
+    border: 1px solid #333;
+    padding: 0.6rem 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.hero-5-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-5-title span {
+    font-style: italic;
+    font-weight: 300;
+    color: #888;
+}
+
+.hero-5-text {
+    font-size: 1.15rem;
+    color: #666;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+}
+
+.hero-5-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.hero-5-btn-primary {
+    display: inline-block;
+    background: #fff;
+    color: #111;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.hero-5-btn-primary:hover {
+    background: #f0f0f0;
+}
+
+.hero-5-btn-secondary {
+    display: inline-block;
+    color: #fff;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid #444;
+    transition: border-color 0.3s;
+}
+
+.hero-5-btn-secondary:hover {
+    border-color: #fff;
+}
+
+/* =============================================
+   HERO 6: Mit Zahlenleiste oben
+   ============================================= */
+.hero-6 {
+    background: #f0f0f0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+}
+
+.hero-6-stats {
+    width: 100%;
+    background: #1a1a1a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    padding: 2rem;
+}
+
+.stat-block {
+    text-align: center;
+}
+
+.stat-num {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.stat-lbl {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-6-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    max-width: 700px;
+}
+
+.hero-6-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-6-text {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+.hero-6-btn {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.hero-6-btn:hover {
+    background: #333;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+    .hero-1-stats,
+    .hero-2-stats {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-4-services {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-5-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-6-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

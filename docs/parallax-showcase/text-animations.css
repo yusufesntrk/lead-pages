@@ -1,0 +1,913 @@
+/* ========================================
+   TEXT ANIMATIONS SHOWCASE - COMPACT GRID
+   ======================================== */
+
+:root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --accent: #f093fb;
+    --neon-pink: #ff00ff;
+    --neon-cyan: #00ffff;
+    --dark: #0a0a0f;
+    --darker: #050508;
+    --light: #ffffff;
+    --text: #e0e0e0;
+    --text-muted: #666;
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--darker);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5, 5, 8, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.nav-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--primary);
+}
+
+/* ========================================
+   GRID LAYOUT
+   ======================================== */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 1rem 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+}
+
+/* ========================================
+   CARD SECTIONS
+   ======================================== */
+
+.text-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.text-section:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateY(-2px);
+}
+
+.text-section.dark-bg {
+    background: var(--dark);
+}
+
+.text-section.wide {
+    grid-column: span 2;
+}
+
+.text-section.tall {
+    grid-row: span 2;
+    min-height: 420px;
+}
+
+.section-label {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--primary);
+    opacity: 0.6;
+    background: rgba(102, 126, 234, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.section-desc {
+    position: absolute;
+    bottom: 0.75rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 0 0.5rem;
+}
+
+/* ========================================
+   CURSOR GLOW (subtle)
+   ======================================== */
+
+.cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* ========================================
+   01: TYPEWRITER
+   ======================================== */
+
+.typewriter-container {
+    display: flex;
+    align-items: center;
+}
+
+.typewriter-text {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--light);
+}
+
+.typewriter-cursor {
+    font-size: 1.2rem;
+    color: var(--primary);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* ========================================
+   02: GLITCH
+   ======================================== */
+
+.glitch {
+    font-size: 3rem;
+    font-weight: 900;
+    position: relative;
+    color: var(--light);
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.glitch::before {
+    color: var(--neon-cyan);
+    animation: glitch-1 2s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+
+.glitch::after {
+    color: var(--neon-pink);
+    animation: glitch-2 2s infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-1 {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(2px); }
+    40% { transform: translateX(-2px); }
+}
+
+/* ========================================
+   03: WAVE
+   ======================================== */
+
+.wave-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    display: flex;
+}
+
+.wave-text span {
+    display: inline-block;
+    color: var(--light);
+    animation: wave 1.5s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); color: var(--primary); }
+}
+
+/* ========================================
+   04: SCRAMBLE
+   ======================================== */
+
+.scramble-text {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Courier New', monospace;
+    color: var(--primary);
+    letter-spacing: 0.05em;
+    cursor: pointer;
+}
+
+/* ========================================
+   05: GRADIENT FLOW
+   ======================================== */
+
+.gradient-text {
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--neon-cyan), var(--primary));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientFlow 3s linear infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* ========================================
+   06: SPLIT REVEAL
+   ======================================== */
+
+.split-text {
+    font-size: 3rem;
+    font-weight: 900;
+    position: relative;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.split-top, .split-bottom {
+    display: block;
+    color: var(--light);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.split-top {
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+.split-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+}
+
+.split-text:hover .split-top {
+    transform: translateY(-5px);
+    color: var(--primary);
+}
+
+.split-text:hover .split-bottom {
+    transform: translateY(5px);
+    color: var(--accent);
+}
+
+/* ========================================
+   07: NEON GLOW
+   ======================================== */
+
+.neon-text {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--light);
+    text-shadow:
+        0 0 5px var(--neon-pink),
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink),
+        0 0 40px var(--neon-pink);
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% { text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink); }
+    50% { text-shadow: 0 0 2px var(--neon-pink), 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink); }
+}
+
+/* ========================================
+   08: 3D LAYERS
+   ======================================== */
+
+.text-3d {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--light);
+    text-shadow:
+        1px 1px 0 var(--primary),
+        2px 2px 0 var(--primary),
+        3px 3px 0 var(--secondary),
+        4px 4px 0 rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.text-3d:hover {
+    transform: translate(-2px, -2px);
+    text-shadow:
+        1px 1px 0 var(--primary),
+        2px 2px 0 var(--primary),
+        3px 3px 0 var(--secondary),
+        4px 4px 0 var(--secondary),
+        5px 5px 0 var(--accent),
+        6px 6px 0 rgba(0,0,0,0.1);
+}
+
+/* ========================================
+   09: STROKE DRAW
+   ======================================== */
+
+.stroke-svg {
+    width: 200px;
+    height: 60px;
+}
+
+.stroke-text {
+    font-size: 40px;
+    font-weight: 900;
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 1.5;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: strokeDraw 2.5s ease forwards infinite;
+}
+
+@keyframes strokeDraw {
+    0% { stroke-dashoffset: 300; fill: transparent; }
+    50% { stroke-dashoffset: 0; fill: transparent; }
+    100% { stroke-dashoffset: 0; fill: var(--primary); }
+}
+
+/* ========================================
+   10: BOUNCE
+   ======================================== */
+
+.bounce-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    display: flex;
+}
+
+.bounce-text span {
+    display: inline-block;
+    color: var(--light);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.bounce-text span:hover {
+    transform: translateY(-10px) scale(1.2);
+    color: var(--primary);
+}
+
+/* ========================================
+   11: BLUR REVEAL
+   ======================================== */
+
+.blur-text {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--light);
+    filter: blur(6px);
+    opacity: 0.4;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.blur-text:hover {
+    filter: blur(0);
+    opacity: 1;
+    color: var(--primary);
+}
+
+/* ========================================
+   12: MARQUEE
+   ======================================== */
+
+.text-marquee {
+    width: 100%;
+    overflow: hidden;
+}
+
+.marquee-inner {
+    display: flex;
+    animation: marquee 10s linear infinite;
+}
+
+.marquee-inner span {
+    font-size: 1.5rem;
+    font-weight: 900;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--primary);
+    padding-right: 1rem;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ========================================
+   13: HIGHLIGHT SWIPE
+   ======================================== */
+
+.highlight-word {
+    font-size: 2rem;
+    font-weight: 900;
+    position: relative;
+    color: var(--light);
+    display: inline-block;
+}
+
+.highlight-word::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 40%;
+    background: var(--primary);
+    opacity: 0.3;
+    z-index: -1;
+    transition: width 0.4s;
+}
+
+.highlight-word:hover::before {
+    width: 100%;
+}
+
+/* ========================================
+   14: 3D ROTATE
+   ======================================== */
+
+.rotate-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--light);
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.rotate-text:hover {
+    transform: rotateY(360deg);
+    color: var(--primary);
+}
+
+/* ========================================
+   15: SHAKE
+   ======================================== */
+
+.shake-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--light);
+    cursor: pointer;
+}
+
+.shake-text:hover {
+    animation: shake 0.4s ease-in-out infinite;
+    color: var(--accent);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+/* ========================================
+   16: CLIP REVEAL
+   ======================================== */
+
+.clip-container {
+    position: relative;
+}
+
+.clip-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-muted);
+}
+
+.clip-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--primary);
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.6s ease;
+}
+
+.clip-container:hover .clip-overlay {
+    clip-path: inset(0 0 0 0);
+}
+
+/* ========================================
+   17: ELASTIC
+   ======================================== */
+
+.elastic-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    display: flex;
+}
+
+.elastic-text span {
+    display: inline-block;
+    color: var(--light);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.elastic-text span:hover {
+    transform: scaleY(1.4) scaleX(0.85);
+    color: var(--primary);
+}
+
+/* ========================================
+   18: SHADOW POP
+   ======================================== */
+
+.shadow-pop-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--light);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.shadow-pop-text:hover {
+    transform: translate(-3px, -3px);
+    text-shadow: 3px 3px 0 var(--primary), 6px 6px 0 var(--secondary);
+}
+
+/* ========================================
+   19: SPACING
+   ======================================== */
+
+.spacing-text {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--light);
+    letter-spacing: 0;
+    transition: letter-spacing 0.4s, color 0.3s;
+}
+
+.spacing-text:hover {
+    letter-spacing: 0.3em;
+    color: var(--primary);
+}
+
+/* ========================================
+   20: FLIP
+   ======================================== */
+
+.flip-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    display: flex;
+}
+
+.flip-text span {
+    display: inline-block;
+    color: var(--light);
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.flip-text span:hover {
+    transform: rotateX(360deg);
+    color: var(--primary);
+}
+
+/* ========================================
+   21: MATRIX
+   ======================================== */
+
+.matrix-container {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#matrixCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.matrix-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0;
+    position: relative;
+    z-index: 10;
+}
+
+/* ========================================
+   22: PARTICLES
+   ======================================== */
+
+.particle-text-container {
+    width: 100%;
+    height: 120px;
+}
+
+#particleCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   23: KINETIC
+   ======================================== */
+
+.kinetic-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.kinetic-word {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--light);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: kineticReveal 0.6s ease forwards;
+    animation-delay: var(--delay);
+}
+
+@keyframes kineticReveal {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   24: LIQUID FILL
+   ======================================== */
+
+.liquid-text {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--primary);
+    position: relative;
+}
+
+.liquid-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    color: var(--primary);
+    -webkit-text-stroke: 0;
+    overflow: hidden;
+    transition: height 0.4s;
+}
+
+.liquid-text:hover::before {
+    height: 100%;
+}
+
+/* ========================================
+   BASIC EFFECTS - NEW
+   ======================================== */
+
+/* Fade In */
+.fade-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--light);
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.fade-text:hover {
+    opacity: 1;
+}
+
+/* Scale */
+.scale-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--light);
+    transition: transform 0.3s;
+}
+
+.scale-text:hover {
+    transform: scale(1.2);
+    color: var(--primary);
+}
+
+/* Underline Slide */
+.underline-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--light);
+    position: relative;
+    display: inline-block;
+}
+
+.underline-text::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+.underline-text:hover::after {
+    width: 100%;
+}
+
+/* Color Change */
+.color-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--light);
+    transition: color 0.3s;
+}
+
+.color-text:hover {
+    color: var(--accent);
+}
+
+/* Rotate */
+.rotate-simple {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--light);
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.rotate-simple:hover {
+    transform: rotate(5deg);
+    color: var(--primary);
+}
+
+/* Skew */
+.skew-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--light);
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.skew-text:hover {
+    transform: skewX(-10deg);
+    color: var(--primary);
+}
+
+/* Text Shadow Simple */
+.shadow-simple {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--light);
+    transition: text-shadow 0.3s;
+}
+
+.shadow-simple:hover {
+    text-shadow: 4px 4px 0 var(--primary);
+}
+
+/* Outline to Fill */
+.outline-text {
+    font-size: 2rem;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--light);
+    transition: all 0.3s;
+}
+
+.outline-text:hover {
+    color: var(--primary);
+    -webkit-text-stroke: 1px var(--primary);
+}
+
+/* ========================================
+   BACK TO TOP
+   ======================================== */
+
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--light);
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--secondary);
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .text-section.wide {
+        grid-column: span 1;
+    }
+
+    .top-nav {
+        padding: 0.75rem 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

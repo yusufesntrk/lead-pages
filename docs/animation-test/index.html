@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Test - Dashboard Graphics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    /* ===== DASHBOARD GRAPHIC ANIMATIONS ===== */
+    .graphic-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .graphic-fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .graphic-fade-in-left {
+      opacity: 0;
+      transform: translateX(-12px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .graphic-fade-in-left.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .progress-bar-animate {
+      width: 0%;
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .progress-bar-animate.is-visible {
+      width: var(--progress, 0%);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .circle-progress-animate {
+      stroke-dashoffset: 251.2;
+      transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .circle-progress-animate.is-visible {
+      stroke-dashoffset: var(--progress-offset, 251.2);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    /* ===== JARVIS GRAPHIC ANIMATIONS ===== */
+    .jarvis-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .jarvis-fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .jarvis-fade-in-scale {
+      opacity: 0;
+      transform: translateY(16px) scale(0.9);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .jarvis-fade-in-scale.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .jarvis-glow {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .jarvis-glow.is-visible {
+      opacity: 1;
+      transition-delay: 300ms;
+    }
+
+    .jarvis-lines-fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .jarvis-lines-fade.is-visible {
+      opacity: 1;
+      transition-delay: 200ms;
+    }
+
+    .jarvis-line-draw {
+      stroke-dashoffset: var(--dashoffset, 200);
+      transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .jarvis-line-draw.is-visible {
+      stroke-dashoffset: 0;
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .jarvis-dots-fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .jarvis-dots-fade.is-visible {
+      opacity: 1;
+      transition-delay: 800ms;
+    }
+
+    /* ===== FUNNEL GRAPHIC ANIMATIONS ===== */
+    .funnel-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .funnel-fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .funnel-fade-in-down {
+      opacity: 0;
+      transform: translateY(-24px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .funnel-fade-in-down.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .funnel-fade-in-scale {
+      opacity: 0;
+      transform: translateY(16px) scale(0.9);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .funnel-fade-in-scale.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .funnel-glow {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .funnel-glow.is-visible {
+      opacity: 1;
+      transition-delay: 1200ms;
+    }
+
+    .funnel-lines-fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .funnel-lines-fade.is-visible {
+      opacity: 1;
+      transition-delay: 300ms;
+    }
+
+    .funnel-line-draw {
+      stroke-dashoffset: var(--dashoffset, 150);
+      transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .funnel-line-draw.is-visible {
+      stroke-dashoffset: 0;
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .funnel-dot-fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .funnel-dot-fade.is-visible {
+      opacity: 1;
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .funnel-dots-fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .funnel-dots-fade.is-visible {
+      opacity: 1;
+      transition-delay: 1100ms;
+    }
+
+    /* Scroll animation trigger */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen py-12">
+
+  <div class="space-y-16 md:space-y-24 max-w-6xl mx-auto px-4">
+
+    <!-- Card 1: Agency Cockpit Dashboard -->
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center animate-on-scroll"
+         x-data="{ shown: false }"
+         x-init="setTimeout(() => shown = true, 100)"
+         :class="shown ? 'is-visible' : ''">
+
+      <!-- Visual -->
+      <div class="order-2 md:order-1">
+        <div class="dashboard-graphic"
+             x-data="{ visible: false }"
+             x-init="
+               const observer = new IntersectionObserver((entries) => {
+                 if (entries[0].isIntersecting) {
+                   observer.disconnect();
+                   setTimeout(() => visible = true, 200);
+                   setInterval(() => {
+                     visible = false;
+                     setTimeout(() => visible = true, 800);
+                   }, 6000);
+                 }
+               }, { threshold: 0.1 });
+               observer.observe($el);
+             ">
+          <div class="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-4 md:p-6 overflow-hidden border border-slate-200">
+
+            <!-- Dotted background pattern -->
+            <div class="absolute inset-0 opacity-30">
+              <svg width="100%" height="100%">
+                <defs>
+                  <pattern id="dashboardDots" width="16" height="16" patternUnits="userSpaceOnUse">
+                    <circle cx="1" cy="1" r="1" fill="#94a3b8"></circle>
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#dashboardDots)"></rect>
+              </svg>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="relative z-10">
+
+              <!-- KPI Cards Row -->
+              <div class="grid grid-cols-3 gap-2 md:gap-3 mb-4 md:mb-5">
+
+                <!-- KPI 1: Aktive Kunden -->
+                <div class="bg-white rounded-lg p-2 md:p-3 border border-slate-100 shadow-sm graphic-fade-in"
+                     :class="visible ? 'is-visible' : ''"
+                     style="--delay: 0ms;">
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
+                    <span class="text-slate-500 text-[10px] md:text-xs">Aktive Kunden</span>
+                  </div>
+                  <div class="text-slate-900 text-lg md:text-2xl font-bold"
+                       x-data="{ count: 0, counting: false }"
+                       x-effect="if(visible && !counting) { counting = true; count = 0; let interval = setInterval(() => { if(count < 23) count++; else clearInterval(interval); }, 50); } else if(!visible) { counting = false; count = 0; }">
+                    <span x-text="count">0</span>
+                  </div>
+                </div>
+
+                <!-- KPI 2: Pipeline Wert -->
+                <div class="bg-white rounded-lg p-2 md:p-3 border border-slate-100 shadow-sm graphic-fade-in"
+                     :class="visible ? 'is-visible' : ''"
+                     style="--delay: 100ms;">
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <span class="text-slate-500 text-[10px] md:text-xs">Pipeline</span>
+                  </div>
+                  <div class="text-slate-900 text-lg md:text-2xl font-bold"
+                       x-data="{ count: 0, counting: false }"
+                       x-effect="if(visible && !counting) { counting = true; count = 0; let interval = setInterval(() => { if(count < 247) count += 7; else { count = 247; clearInterval(interval); } }, 20); } else if(!visible) { counting = false; count = 0; }">
+                    €<span x-text="count">0</span>k
+                  </div>
+                </div>
+
+                <!-- KPI 3: Marge -->
+                <div class="bg-white rounded-lg p-2 md:p-3 border border-slate-100 shadow-sm graphic-fade-in"
+                     :class="visible ? 'is-visible' : ''"
+                     style="--delay: 200ms;">
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <div class="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse"></div>
+                    <span class="text-slate-500 text-[10px] md:text-xs">Ø Marge</span>
+                  </div>
+                  <div class="text-slate-900 text-lg md:text-2xl font-bold"
+                       x-data="{ count: 0, counting: false }"
+                       x-effect="if(visible && !counting) { counting = true; count = 0; let interval = setInterval(() => { if(count < 34) count++; else clearInterval(interval); }, 60); } else if(!visible) { counting = false; count = 0; }">
+                    <span x-text="count">0</span>.2%
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Progress Section -->
+              <div class="bg-white rounded-lg p-3 md:p-4 border border-slate-100 shadow-sm mb-4 md:mb-5 graphic-fade-in"
+                   :class="visible ? 'is-visible' : ''"
+                   style="--delay: 300ms;">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-slate-700 text-xs md:text-sm font-medium">Projekt-Übersicht</span>
+                  <span class="text-slate-400 text-[10px] md:text-xs">4 aktiv</span>
+                </div>
+
+                <div class="space-y-2.5">
+                  <!-- Project 1 -->
+                  <div class="flex items-center gap-2 md:gap-3">
+                    <span class="text-slate-600 text-[10px] md:text-xs w-24 md:w-36 truncate">Rebranding Müller</span>
+                    <div class="flex-1 h-1.5 md:h-2 bg-slate-200 rounded-full overflow-hidden">
+                      <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full progress-bar-animate"
+                           :class="visible ? 'is-visible' : ''"
+                           style="--progress: 78%; --delay: 500ms;"></div>
+                    </div>
+                    <span class="text-slate-700 text-[10px] md:text-xs font-medium w-8 text-right">78%</span>
+                  </div>
+
+                  <!-- Project 2 -->
+                  <div class="flex items-center gap-2 md:gap-3">
+                    <span class="text-slate-600 text-[10px] md:text-xs w-24 md:w-36 truncate">Website Schmidt</span>
+                    <div class="flex-1 h-1.5 md:h-2 bg-slate-200 rounded-full overflow-hidden">
+                      <div class="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full progress-bar-animate"
+                           :class="visible ? 'is-visible' : ''"
+                           style="--progress: 89%; --delay: 600ms;"></div>
+                    </div>
+                    <span class="text-slate-700 text-[10px] md:text-xs font-medium w-8 text-right">89%</span>
+                  </div>
+
+                  <!-- Project 3 -->
+                  <div class="flex items-center gap-2 md:gap-3">
+                    <span class="text-slate-600 text-[10px] md:text-xs w-24 md:w-36 truncate">Kampagne SportFit</span>
+                    <div class="flex-1 h-1.5 md:h-2 bg-slate-200 rounded-full overflow-hidden">
+                      <div class="h-full bg-gradient-to-r from-amber-500 to-amber-400 rounded-full progress-bar-animate"
+                           :class="visible ? 'is-visible' : ''"
+                           style="--progress: 42%; --delay: 700ms;"></div>
+                    </div>
+                    <span class="text-slate-700 text-[10px] md:text-xs font-medium w-8 text-right">42%</span>
+                  </div>
+
+                  <!-- Project 4 -->
+                  <div class="flex items-center gap-2 md:gap-3">
+                    <span class="text-slate-600 text-[10px] md:text-xs w-24 md:w-36 truncate">Onboarding TechStart</span>
+                    <div class="flex-1 h-1.5 md:h-2 bg-slate-200 rounded-full overflow-hidden">
+                      <div class="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full progress-bar-animate"
+                           :class="visible ? 'is-visible' : ''"
+                           style="--progress: 24%; --delay: 800ms;"></div>
+                    </div>
+                    <span class="text-slate-700 text-[10px] md:text-xs font-medium w-8 text-right">24%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Row: Auslastung + Kunden Status -->
+              <div class="grid grid-cols-2 gap-2 md:gap-3">
+
+                <!-- Auslastung Circle -->
+                <div class="bg-white rounded-lg p-3 md:p-4 border border-slate-100 shadow-sm graphic-fade-in"
+                     :class="visible ? 'is-visible' : ''"
+                     style="--delay: 400ms;">
+                  <span class="text-slate-500 text-[10px] md:text-xs block mb-2">Auslastung</span>
+                  <div class="flex items-center justify-center relative">
+                    <svg class="w-16 h-16 md:w-20 md:h-20 -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" stroke-width="8"></circle>
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="url(#auslastungGradient)" stroke-width="8" stroke-linecap="round" stroke-dasharray="251.2"
+                              class="circle-progress-animate"
+                              :class="visible ? 'is-visible' : ''"
+                              style="--progress-offset: 32.656; --delay: 600ms;"></circle>
+                      <defs>
+                        <linearGradient id="auslastungGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#3B82F6"></stop>
+                          <stop offset="100%" stop-color="#8B5CF6"></stop>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <span class="absolute text-slate-900 text-sm md:text-lg font-bold graphic-fade-in"
+                          :class="visible ? 'is-visible' : ''"
+                          style="--delay: 800ms;">87%</span>
+                  </div>
+                </div>
+
+                <!-- Kunden Status -->
+                <div class="bg-white rounded-lg p-3 md:p-4 border border-slate-100 shadow-sm graphic-fade-in"
+                     :class="visible ? 'is-visible' : ''"
+                     style="--delay: 500ms;">
+                  <span class="text-slate-500 text-[10px] md:text-xs block mb-2 md:mb-3">Kunden-Status</span>
+                  <div class="space-y-1.5 md:space-y-2">
+                    <div class="flex items-center gap-2 graphic-fade-in-left"
+                         :class="visible ? 'is-visible' : ''"
+                         style="--delay: 700ms;">
+                      <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                      <span class="text-slate-700 text-[10px] md:text-xs">18 Aktiv</span>
+                    </div>
+                    <div class="flex items-center gap-2 graphic-fade-in-left"
+                         :class="visible ? 'is-visible' : ''"
+                         style="--delay: 800ms;">
+                      <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                      <span class="text-slate-700 text-[10px] md:text-xs">3 Onboarding</span>
+                    </div>
+                    <div class="flex items-center gap-2 graphic-fade-in-left"
+                         :class="visible ? 'is-visible' : ''"
+                         style="--delay: 900ms;">
+                      <div class="w-2 h-2 rounded-full bg-violet-500"></div>
+                      <span class="text-slate-700 text-[10px] md:text-xs">2 Upsell-Ready</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="order-1 md:order-2">
+        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-4">
+          <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+          Dashboards
+        </div>
+        <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-4">
+          Steuere deine Agentur wie ein Pilot.
+        </h3>
+        <p class="text-slate-600 text-lg leading-relaxed">
+          Ein Dashboard. Alle KPIs. Echtzeit.<br>
+          Du siehst sofort wo du Geld verlierst – und wo du Hebel hast.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2: AI Jarvis -->
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center animate-on-scroll"
+         x-data="{ shown: false }"
+         x-intersect="shown = true"
+         :class="shown ? 'is-visible' : ''">
+
+      <!-- Visual -->
+      <div class="order-2 md:order-2">
+        <div class="jarvis-graphic"
+             x-data="{ visible: false }"
+             x-init="
+               const observer = new IntersectionObserver((entries) => {
+                 if (entries[0].isIntersecting) {
+                   observer.disconnect();
+                   setTimeout(() => visible = true, 200);
+                   setInterval(() => {
+                     visible = false;
+                     setTimeout(() => visible = true, 800);
+                   }, 6000);
+                 }
+               }, { threshold: 0.1 });
+               observer.observe($el);
+             ">
+          <div class="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-4 md:p-6 overflow-hidden border border-slate-200">
+
+            <!-- Dotted background -->
+            <div class="absolute inset-0 opacity-30">
+              <svg width="100%" height="100%">
+                <defs>
+                  <pattern id="jarvisDots" width="16" height="16" patternUnits="userSpaceOnUse">
+                    <circle cx="1" cy="1" r="1" fill="#94a3b8"></circle>
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#jarvisDots)"></rect>
+              </svg>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10">
+
+              <!-- Jarvis Brain -->
+              <div class="flex justify-center mb-4 md:mb-6">
+                <div class="relative jarvis-fade-in-scale"
+                     :class="visible ? 'is-visible' : ''"
+                     style="--delay: 0ms;">
+                  <div class="absolute inset-0 bg-blue-500/20 rounded-full blur-xl jarvis-glow"
+                       :class="visible ? 'is-visible' : ''"></div>
+
+                  <div class="relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-3 md:p-4 shadow-lg shadow-blue-500/25">
+                    <div class="flex flex-col items-center">
+                      <svg class="w-8 h-8 md:w-10 md:h-10 text-white mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="6" y="6" width="12" height="12" rx="2" stroke-width="1.5"></rect>
+                        <text x="12" y="13.5" text-anchor="middle" font-size="5" font-weight="bold" fill="currentColor" stroke="none">AI</text>
+                        <line x1="9" y1="6" x2="9" y2="3" stroke-width="1.5"></line>
+                        <line x1="15" y1="6" x2="15" y2="3" stroke-width="1.5"></line>
+                        <line x1="9" y1="18" x2="9" y2="21" stroke-width="1.5"></line>
+                        <line x1="15" y1="18" x2="15" y2="21" stroke-width="1.5"></line>
+                        <line x1="6" y1="9" x2="3" y2="9" stroke-width="1.5"></line>
+                        <line x1="6" y1="15" x2="3" y2="15" stroke-width="1.5"></line>
+                        <line x1="18" y1="9" x2="21" y2="9" stroke-width="1.5"></line>
+                        <line x1="18" y1="15" x2="21" y2="15" stroke-width="1.5"></line>
+                      </svg>
+                      <span class="text-white text-xs md:text-sm font-bold">JARVIS</span>
+                      <span class="text-blue-200 text-[10px]">AI Operator</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Connection Lines -->
+              <div class="absolute left-1/2 top-24 md:top-28 -translate-x-1/2 w-full max-w-xs md:max-w-sm pointer-events-none">
+                <svg class="w-full h-16 md:h-20" viewBox="0 0 300 60" preserveAspectRatio="xMidYMid meet">
+                  <g class="jarvis-lines-fade" :class="visible ? 'is-visible' : ''">
+                    <path d="M150 0 L150 15 L50 45 L50 60" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="200"
+                          class="jarvis-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 200; --delay: 300ms;"></path>
+                    <path d="M150 0 L150 60" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="60"
+                          class="jarvis-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 60; --delay: 400ms;"></path>
+                    <path d="M150 0 L150 15 L250 45 L250 60" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="200"
+                          class="jarvis-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 200; --delay: 300ms;"></path>
+                  </g>
+
+                  <g class="jarvis-dots-fade" :class="visible ? 'is-visible' : ''">
+                    <circle r="3" fill="#3B82F6">
+                      <animateMotion dur="2s" repeatCount="indefinite" path="M150 0 L150 15 L50 45 L50 60"></animateMotion>
+                    </circle>
+                    <circle r="3" fill="#3B82F6">
+                      <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.2s" path="M150 0 L150 60"></animateMotion>
+                    </circle>
+                    <circle r="3" fill="#3B82F6">
+                      <animateMotion dur="2s" repeatCount="indefinite" begin="0.4s" path="M150 0 L150 15 L250 45 L250 60"></animateMotion>
+                    </circle>
+                  </g>
+                </svg>
+              </div>
+
+              <div class="h-12 md:h-16"></div>
+
+              <!-- Worker Cards -->
+              <div class="grid grid-cols-3 gap-2 md:gap-3 mb-3 md:mb-4">
+                <div class="jarvis-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 500ms;">
+                  <div class="bg-white rounded-xl p-2.5 md:p-3 shadow-md border border-slate-100 text-center">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-amber-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                      <span class="text-xl md:text-2xl">✍️</span>
+                    </div>
+                    <span class="text-slate-900 text-[10px] md:text-xs font-semibold block">COPY</span>
+                    <span class="text-slate-500 text-[9px] md:text-[10px]">Worker</span>
+                  </div>
+                </div>
+
+                <div class="jarvis-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 600ms;">
+                  <div class="bg-white rounded-xl p-2.5 md:p-3 shadow-md border border-slate-100 text-center">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-violet-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                      <span class="text-xl md:text-2xl">📸</span>
+                    </div>
+                    <span class="text-slate-900 text-[10px] md:text-xs font-semibold block">FOTO</span>
+                    <span class="text-slate-500 text-[9px] md:text-[10px]">AI</span>
+                  </div>
+                </div>
+
+                <div class="jarvis-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 700ms;">
+                  <div class="bg-white rounded-xl p-2.5 md:p-3 shadow-md border border-slate-100 text-center">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                      <span class="text-xl md:text-2xl">👔</span>
+                    </div>
+                    <span class="text-slate-900 text-[10px] md:text-xs font-semibold block">CEO</span>
+                    <span class="text-slate-500 text-[9px] md:text-[10px]">Copilot</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Task Cards -->
+              <div class="grid grid-cols-3 gap-2 md:gap-3">
+                <div class="jarvis-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 800ms;">
+                  <div class="bg-slate-800 rounded-lg p-2 md:p-2.5 text-center">
+                    <p class="text-white text-[9px] md:text-[10px] leading-tight mb-1.5">"Neue Meta-Ad Copy"</p>
+                    <div class="flex items-center justify-center gap-1 text-emerald-400 jarvis-fade-in"
+                         :class="visible ? 'is-visible' : ''" style="--delay: 1100ms;">
+                      <svg class="w-3 h-3 md:w-3.5 md:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-[9px] md:text-[10px] font-medium">Done</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="jarvis-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 900ms;">
+                  <div class="bg-slate-800 rounded-lg p-2 md:p-2.5 text-center">
+                    <p class="text-white text-[9px] md:text-[10px] leading-tight mb-1.5">"Produktfotos für Katalog"</p>
+                    <div class="flex items-center justify-center gap-1 text-amber-400">
+                      <div class="flex gap-0.5">
+                        <div class="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-amber-400"></div>
+                        <div class="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-amber-400"></div>
+                        <div class="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-slate-600"></div>
+                        <div class="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-slate-600"></div>
+                        <div class="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-slate-600"></div>
+                      </div>
+                      <span class="text-[9px] md:text-[10px] font-medium">2/5</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="jarvis-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 1000ms;">
+                  <div class="bg-slate-800 rounded-lg p-2 md:p-2.5 text-center">
+                    <p class="text-white text-[9px] md:text-[10px] leading-tight mb-1.5">"Q4 Strategie Briefing"</p>
+                    <div class="flex items-center justify-center gap-1 text-blue-400">
+                      <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-blue-400 animate-pulse"></div>
+                      <span class="text-[9px] md:text-[10px] font-medium">Active</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="order-1 md:order-1">
+        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-4">
+          <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+          AI Mitarbeiter
+        </div>
+        <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-4">
+          Dein persönlicher AI-Operator.
+        </h3>
+        <p class="text-slate-600 text-lg leading-relaxed mb-4">
+          Frag Jarvis alles über dein Business – und bekomm sofort Antworten.
+        </p>
+        <p class="text-slate-600 text-lg leading-relaxed">
+          Plus: Trainiere Jarvis auf spezifische Tasks wie Copy, Design-Feedback oder Reporting.
+          AI, die auf deinen echten Daten läuft. Nicht auf generischem Wissen.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 3: Tool Consolidation Funnel -->
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center animate-on-scroll"
+         x-data="{ shown: false }"
+         x-intersect="shown = true"
+         :class="shown ? 'is-visible' : ''">
+
+      <!-- Visual -->
+      <div class="order-2 md:order-1">
+        <div class="funnel-graphic"
+             x-data="{ visible: false }"
+             x-init="
+               const observer = new IntersectionObserver((entries) => {
+                 if (entries[0].isIntersecting) {
+                   observer.disconnect();
+                   setTimeout(() => visible = true, 200);
+                   setInterval(() => {
+                     visible = false;
+                     setTimeout(() => visible = true, 800);
+                   }, 6000);
+                 }
+               }, { threshold: 0.1 });
+               observer.observe($el);
+             ">
+          <div class="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-4 md:p-6 overflow-hidden border border-slate-200">
+
+            <!-- Dotted background -->
+            <div class="absolute inset-0 opacity-30">
+              <svg width="100%" height="100%">
+                <defs>
+                  <pattern id="funnelDots" width="16" height="16" patternUnits="userSpaceOnUse">
+                    <circle cx="1" cy="1" r="1" fill="#94a3b8"></circle>
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#funnelDots)"></rect>
+              </svg>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10">
+
+              <!-- Tool Icons Row -->
+              <div class="flex justify-center items-end gap-1.5 md:gap-3 mb-2">
+
+                <!-- ClickUp -->
+                <div class="funnel-fade-in-down" :class="visible ? 'is-visible' : ''" style="--delay: 0ms;">
+                  <div class="w-9 h-9 md:w-12 md:h-12 bg-white rounded-xl shadow-md border border-slate-100 flex items-center justify-center p-1.5 md:p-2">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none">
+                      <defs>
+                        <linearGradient id="clickupGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#8930FD"></stop>
+                          <stop offset="50%" stop-color="#FF02F0"></stop>
+                          <stop offset="100%" stop-color="#49CCF9"></stop>
+                        </linearGradient>
+                      </defs>
+                      <path d="M12 4L4 13l3.5 2.5L12 11l4.5 4.5L20 13L12 4z" fill="url(#clickupGrad1)"></path>
+                    </svg>
+                  </div>
+                  <span class="text-[8px] md:text-[10px] text-slate-500 text-center block mt-1">ClickUp</span>
+                </div>
+
+                <!-- Asana -->
+                <div class="funnel-fade-in-down" :class="visible ? 'is-visible' : ''" style="--delay: 50ms;">
+                  <div class="w-9 h-9 md:w-12 md:h-12 bg-white rounded-xl shadow-md border border-slate-100 flex items-center justify-center p-1.5 md:p-2">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="5.5" r="3.5" fill="#F06A6A"></circle>
+                      <circle cx="5.5" cy="16.5" r="3.5" fill="#F06A6A"></circle>
+                      <circle cx="18.5" cy="16.5" r="3.5" fill="#F06A6A"></circle>
+                    </svg>
+                  </div>
+                  <span class="text-[8px] md:text-[10px] text-slate-500 text-center block mt-1">Asana</span>
+                </div>
+
+                <!-- Monday -->
+                <div class="funnel-fade-in-down" :class="visible ? 'is-visible' : ''" style="--delay: 100ms;">
+                  <div class="w-9 h-9 md:w-12 md:h-12 bg-white rounded-xl shadow-md border border-slate-100 flex items-center justify-center p-1.5 md:p-2">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none">
+                      <rect x="3" y="6" width="5" height="14" rx="2.5" fill="#FF3D57"></rect>
+                      <rect x="10" y="4" width="5" height="16" rx="2.5" fill="#FFCB00"></rect>
+                      <rect x="17" y="8" width="5" height="12" rx="2.5" fill="#00CA72"></rect>
+                    </svg>
+                  </div>
+                  <span class="text-[8px] md:text-[10px] text-slate-500 text-center block mt-1">Monday</span>
+                </div>
+
+                <!-- HubSpot -->
+                <div class="funnel-fade-in-down" :class="visible ? 'is-visible' : ''" style="--delay: 150ms;">
+                  <div class="w-9 h-9 md:w-12 md:h-12 bg-white rounded-xl shadow-md border border-slate-100 flex items-center justify-center p-1.5 md:p-2">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="#FF7A59">
+                      <path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.984 2.21 2.21 0 00-2.209-2.209 2.21 2.21 0 00-2.209 2.209c0 .9.544 1.673 1.32 2.014v2.815a5.638 5.638 0 00-2.759 1.392l-7.29-5.67a2.978 2.978 0 00.076-.663 3.001 3.001 0 10-3.001 3.001c.638 0 1.227-.203 1.714-.545l7.15 5.561a5.673 5.673 0 00-.387 2.06 5.672 5.672 0 005.672 5.672 5.672 5.672 0 005.672-5.672 5.67 5.67 0 00-5.016-5.635zm-.942 8.72a3.087 3.087 0 01-3.087-3.087 3.087 3.087 0 013.087-3.087 3.087 3.087 0 013.087 3.087 3.087 3.087 0 01-3.087 3.087z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-[8px] md:text-[10px] text-slate-500 text-center block mt-1">HubSpot</span>
+                </div>
+
+                <!-- Excel -->
+                <div class="funnel-fade-in-down" :class="visible ? 'is-visible' : ''" style="--delay: 200ms;">
+                  <div class="w-9 h-9 md:w-12 md:h-12 bg-white rounded-xl shadow-md border border-slate-100 flex items-center justify-center p-1.5 md:p-2">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="#217346">
+                      <path d="M23 1.5q.41 0 .7.3.3.29.3.7v19q0 .41-.3.7-.29.3-.7.3H7q-.41 0-.7-.3-.3-.29-.3-.7V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h5V2.5q0-.41.3-.7.29-.3.7-.3zM6 13.28l1.42 2.66h2.14l-2.38-3.87 2.34-3.8H7.46l-1.3 2.4-.05.08-.04.09-.64-1.28-.66-1.29H2.59l2.27 3.82-2.48 3.85h2.16zM14.25 21v-3H7.5v3zm0-4.5v-3.75H12v3.75zm0-5.25V7.5H12v3.75zm0-5.25V3H7.5v3zm8.25 15v-3h-6.75v3zm0-4.5v-3.75h-6.75v3.75zm0-5.25V7.5h-6.75v3.75zm0-5.25V3h-6.75v3z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-[8px] md:text-[10px] text-slate-500 text-center block mt-1">Excel</span>
+                </div>
+
+                <!-- Notion -->
+                <div class="funnel-fade-in-down" :class="visible ? 'is-visible' : ''" style="--delay: 250ms;">
+                  <div class="w-9 h-9 md:w-12 md:h-12 bg-white rounded-xl shadow-md border border-slate-100 flex items-center justify-center p-1.5 md:p-2">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="#000000">
+                      <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 2.03c-.42-.326-.98-.7-2.055-.607L3.01 2.75c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.166V6.354c0-.606-.233-.933-.748-.886l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952l1.448.327s0 .84-1.168.84l-3.22.186c-.094-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.886.747-.933zM2.877 1.49l13.588-1.007c1.635-.14 2.055-.047 3.082.7l4.25 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.89c0-.84.374-1.54 1.168-1.4z"></path>
+                    </svg>
+                  </div>
+                  <span class="text-[8px] md:text-[10px] text-slate-500 text-center block mt-1">Notion</span>
+                </div>
+              </div>
+
+              <!-- Funnel SVG -->
+              <div class="relative mx-auto max-w-xs md:max-w-sm">
+                <svg class="w-full h-32 md:h-40" viewBox="0 0 300 120" preserveAspectRatio="xMidYMid meet">
+                  <g class="funnel-lines-fade" :class="visible ? 'is-visible' : ''">
+                    <path d="M30 0 L30 20 Q30 40 150 70" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="150"
+                          class="funnel-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 150; --delay: 400ms;" opacity="0.6"></path>
+                    <path d="M78 0 L78 15 Q78 35 150 70" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="120"
+                          class="funnel-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 120; --delay: 450ms;" opacity="0.7"></path>
+                    <path d="M126 0 L126 10 Q126 30 150 70" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="90"
+                          class="funnel-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 90; --delay: 500ms;" opacity="0.8"></path>
+                    <path d="M150 0 L150 70" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="70"
+                          class="funnel-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 70; --delay: 550ms;"></path>
+                    <path d="M174 0 L174 10 Q174 30 150 70" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="90"
+                          class="funnel-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 90; --delay: 500ms;" opacity="0.8"></path>
+                    <path d="M222 0 L222 15 Q222 35 150 70" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="120"
+                          class="funnel-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 120; --delay: 450ms;" opacity="0.7"></path>
+                    <path d="M270 0 L270 20 Q270 40 150 70" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="150"
+                          class="funnel-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 150; --delay: 400ms;" opacity="0.6"></path>
+
+                    <circle cx="150" cy="70" r="4" fill="#3B82F6" class="funnel-dot-fade" :class="visible ? 'is-visible' : ''" style="--delay: 800ms;"></circle>
+
+                    <path d="M150 74 L150 110" fill="none" stroke="#3B82F6" stroke-width="3" stroke-dasharray="36"
+                          class="funnel-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 36; --delay: 900ms;"></path>
+                  </g>
+
+                  <g class="funnel-dots-fade" :class="visible ? 'is-visible' : ''">
+                    <circle r="2.5" fill="#60A5FA">
+                      <animateMotion dur="2s" repeatCount="indefinite" path="M30 0 L30 20 Q30 40 150 70 L150 110"></animateMotion>
+                    </circle>
+                    <circle r="2.5" fill="#60A5FA">
+                      <animateMotion dur="2s" repeatCount="indefinite" begin="0.3s" path="M126 0 L126 10 Q126 30 150 70 L150 110"></animateMotion>
+                    </circle>
+                    <circle r="2.5" fill="#60A5FA">
+                      <animateMotion dur="2s" repeatCount="indefinite" begin="0.6s" path="M270 0 L270 20 Q270 40 150 70 L150 110"></animateMotion>
+                    </circle>
+                    <circle r="2.5" fill="#60A5FA">
+                      <animateMotion dur="2s" repeatCount="indefinite" begin="0.9s" path="M174 0 L174 10 Q174 30 150 70 L150 110"></animateMotion>
+                    </circle>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Nexus Badge -->
+              <div class="flex justify-center -mt-2">
+                <div class="relative funnel-fade-in-scale" :class="visible ? 'is-visible' : ''" style="--delay: 1000ms;">
+                  <div class="absolute inset-0 bg-blue-500/30 rounded-2xl blur-xl funnel-glow"
+                       :class="visible ? 'is-visible' : ''" style="transform: scale(1.5);"></div>
+
+                  <div class="relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl px-5 py-3 md:px-6 md:py-4 shadow-xl shadow-blue-500/30">
+                    <div class="flex items-center gap-2 md:gap-3">
+                      <div class="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                        <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                      </div>
+                      <div>
+                        <span class="text-white text-sm md:text-base font-bold block">NEXUS</span>
+                        <span class="text-blue-200 text-[10px] md:text-xs">Ein System. Alle Daten.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Benefits Row -->
+              <div class="flex justify-center gap-3 md:gap-6 mt-4 md:mt-6">
+                <div class="flex items-center gap-1.5 funnel-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 1200ms;">
+                  <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-slate-700 text-[10px] md:text-xs font-medium">Connected</span>
+                </div>
+                <div class="flex items-center gap-1.5 funnel-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 1300ms;">
+                  <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-slate-700 text-[10px] md:text-xs font-medium">Automated</span>
+                </div>
+                <div class="flex items-center gap-1.5 funnel-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 1400ms;">
+                  <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-slate-700 text-[10px] md:text-xs font-medium">Scalable</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="order-1 md:order-2">
+        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-4">
+          <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+          Simple Scales
+        </div>
+        <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-4">
+          Das letzte System, das du einführen musst.
+        </h3>
+        <p class="text-slate-600 text-lg leading-relaxed">
+          Weniger Tools. Weniger Kosten. Weniger Chaos.<br>
+          Alles in einer Infrastruktur, die endlich zusammenarbeitet.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Intersect plugin for scroll animations -->
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.directive('intersect', (el, { expression }, { evaluate }) => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              evaluate(expression);
+            }
+          });
+        }, { threshold: 0.1 });
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

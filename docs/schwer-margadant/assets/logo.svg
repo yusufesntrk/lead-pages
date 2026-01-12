@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a365d"/>
+      <stop offset="100%" style="stop-color:#2c5282"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: Stylized S+M with columns -->
+  <g transform="translate(0, 8)">
+    <!-- Left column -->
+    <rect x="2" y="8" width="6" height="36" rx="1" fill="url(#logoGradient)"/>
+    <!-- Middle column (taller) -->
+    <rect x="12" y="4" width="6" height="40" rx="1" fill="url(#logoGradient)"/>
+    <!-- Right column -->
+    <rect x="22" y="8" width="6" height="36" rx="1" fill="url(#logoGradient)"/>
+    <!-- Connecting bar top -->
+    <rect x="2" y="4" width="26" height="4" rx="1" fill="url(#logoGradient)"/>
+    <!-- Accent line -->
+    <rect x="2" y="48" width="26" height="2" rx="1" fill="#b8860b"/>
+  </g>
+
+  <!-- Text: Schwer + Margadant -->
+  <text x="42" y="28" font-family="'Libre Baskerville', Georgia, serif" font-size="18" font-weight="700" fill="#1a365d">
+    Schwer <tspan fill="#b8860b">+</tspan> Margadant
+  </text>
+
+  <!-- Subtitle -->
+  <text x="42" y="46" font-family="'Source Sans 3', sans-serif" font-size="11" font-weight="500" fill="#4a5568" letter-spacing="1.5">
+    STEUERBERATER
+  </text>
+</svg>

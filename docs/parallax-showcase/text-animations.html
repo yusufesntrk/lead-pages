@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Animations Showcase</title>
+    <link rel="stylesheet" href="text-animations.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">← Parallax</a>
+        <span class="nav-title">Text Animations</span>
+        <a href="text-sections.html" class="nav-link">Section Demos →</a>
+    </nav>
+
+    <main class="container">
+        <div class="grid">
+
+            <!-- BASIC EFFECTS -->
+            <div class="text-section">
+                <span class="section-label">Fade</span>
+                <h2 class="fade-text">Hover Me</h2>
+                <span class="section-desc">opacity: 0.3 → 1</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Scale</span>
+                <h2 class="scale-text">Hover Me</h2>
+                <span class="section-desc">transform: scale(1.2)</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Color</span>
+                <h2 class="color-text">Hover Me</h2>
+                <span class="section-desc">color transition</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Underline</span>
+                <h2 class="underline-text">Hover Me</h2>
+                <span class="section-desc">width: 0 → 100%</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Rotate</span>
+                <h2 class="rotate-simple">Hover Me</h2>
+                <span class="section-desc">transform: rotate(5deg)</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Skew</span>
+                <h2 class="skew-text">Hover Me</h2>
+                <span class="section-desc">transform: skewX(-10deg)</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Shadow</span>
+                <h2 class="shadow-simple">Hover Me</h2>
+                <span class="section-desc">text-shadow on hover</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Outline → Fill</span>
+                <h2 class="outline-text">Hover Me</h2>
+                <span class="section-desc">stroke → fill</span>
+            </div>
+
+            <!-- INTERMEDIATE EFFECTS -->
+            <div class="text-section">
+                <span class="section-label">Typewriter</span>
+                <div class="typewriter-container">
+                    <span class="typewriter-text" data-text="Hello World..."></span>
+                    <span class="typewriter-cursor">|</span>
+                </div>
+                <span class="section-desc">character by character</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Wave</span>
+                <h2 class="wave-text">
+                    <span style="--i:1">W</span>
+                    <span style="--i:2">A</span>
+                    <span style="--i:3">V</span>
+                    <span style="--i:4">E</span>
+                </h2>
+                <span class="section-desc">staggered translateY</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Bounce</span>
+                <h2 class="bounce-text">
+                    <span>B</span>
+                    <span>O</span>
+                    <span>U</span>
+                    <span>N</span>
+                    <span>C</span>
+                    <span>E</span>
+                </h2>
+                <span class="section-desc">hover each letter</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Elastic</span>
+                <h2 class="elastic-text">
+                    <span>S</span>
+                    <span>T</span>
+                    <span>R</span>
+                    <span>E</span>
+                    <span>T</span>
+                    <span>C</span>
+                    <span>H</span>
+                </h2>
+                <span class="section-desc">scaleY + scaleX</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Flip</span>
+                <h2 class="flip-text">
+                    <span>F</span>
+                    <span>L</span>
+                    <span>I</span>
+                    <span>P</span>
+                </h2>
+                <span class="section-desc">rotateX(360deg)</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Spacing</span>
+                <h2 class="spacing-text">EXPAND</h2>
+                <span class="section-desc">letter-spacing</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Blur → Focus</span>
+                <h2 class="blur-text">FOCUS</h2>
+                <span class="section-desc">filter: blur()</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Shake</span>
+                <h2 class="shake-text">SHAKE</h2>
+                <span class="section-desc">translateX animation</span>
+            </div>
+
+            <!-- ADVANCED EFFECTS -->
+            <div class="text-section">
+                <span class="section-label">Glitch</span>
+                <h2 class="glitch" data-text="GLITCH">GLITCH</h2>
+                <span class="section-desc">RGB split + clip-path</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Gradient Flow</span>
+                <h2 class="gradient-text">RAINBOW</h2>
+                <span class="section-desc">animated background-position</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Split</span>
+                <h2 class="split-text">
+                    <span class="split-top">SPLIT</span>
+                    <span class="split-bottom">SPLIT</span>
+                </h2>
+                <span class="section-desc">clip-path polygon</span>
+            </div>
+
+            <div class="text-section dark-bg">
+                <span class="section-label">Neon</span>
+                <h2 class="neon-text">NEON</h2>
+                <span class="section-desc">animated text-shadow</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">3D Layers</span>
+                <h2 class="text-3d">DEPTH</h2>
+                <span class="section-desc">stacked text-shadow</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Shadow Pop</span>
+                <h2 class="shadow-pop-text">POP</h2>
+                <span class="section-desc">dynamic shadow</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">3D Rotate</span>
+                <h2 class="rotate-text">SPIN</h2>
+                <span class="section-desc">rotateY(360deg)</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Clip Reveal</span>
+                <div class="clip-container">
+                    <h2 class="clip-text">REVEAL</h2>
+                    <h2 class="clip-text clip-overlay">REVEAL</h2>
+                </div>
+                <span class="section-desc">clip-path inset</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Highlight</span>
+                <h2 class="highlight-word">MARKER</h2>
+                <span class="section-desc">::before width</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Liquid Fill</span>
+                <h2 class="liquid-text" data-text="FILL">FILL</h2>
+                <span class="section-desc">::before height</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Stroke Draw</span>
+                <svg class="stroke-svg" viewBox="0 0 200 60">
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="stroke-text">DRAW</text>
+                </svg>
+                <span class="section-desc">stroke-dashoffset</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Scramble</span>
+                <h2 class="scramble-text" data-final="DECODED">XXXXXXX</h2>
+                <span class="section-desc">hover to decode</span>
+            </div>
+
+            <!-- SPECIAL EFFECTS -->
+            <div class="text-section wide">
+                <span class="section-label">Marquee</span>
+                <div class="text-marquee">
+                    <div class="marquee-inner">
+                        <span>INFINITE SCROLL • TEXT ANIMATION • </span>
+                        <span>INFINITE SCROLL • TEXT ANIMATION • </span>
+                    </div>
+                </div>
+                <span class="section-desc">translateX loop</span>
+            </div>
+
+            <div class="text-section">
+                <span class="section-label">Kinetic</span>
+                <div class="kinetic-container">
+                    <span class="kinetic-word" style="--delay: 0s">KINETIC</span>
+                    <span class="kinetic-word" style="--delay: 0.2s">TYPE</span>
+                </div>
+                <span class="section-desc">staggered reveal</span>
+            </div>
+
+            <div class="text-section dark-bg tall">
+                <span class="section-label">Matrix</span>
+                <div class="matrix-container">
+                    <canvas id="matrixCanvas"></canvas>
+                    <h2 class="matrix-text">MATRIX</h2>
+                </div>
+                <span class="section-desc">canvas rain effect</span>
+            </div>
+
+            <div class="text-section dark-bg tall">
+                <span class="section-label">Particles</span>
+                <div class="particle-text-container">
+                    <canvas id="particleCanvas"></canvas>
+                </div>
+                <span class="section-desc">interactive particles</span>
+            </div>
+
+        </div>
+    </main>
+
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script src="text-animations.js"></script>
+</body>
+</html>

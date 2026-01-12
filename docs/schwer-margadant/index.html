@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Schwer + Margadant Steuerberater in Kehl - Ihre traditionsreiche Steuerkanzlei seit 1932. Kompetente Beratung für Privatpersonen und Unternehmen. Finanzbuchhaltung, Lohnbuchhaltung, Jahresabschluss.">
+    <meta name="keywords" content="Steuerberater Kehl, Steuerkanzlei Kehl, Steuerberatung, Gabriele Margadant, Finanzbuchhaltung, Lohnbuchhaltung, Jahresabschluss">
+    <meta name="author" content="Schwer + Margadant Steuerberater">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Schwer + Margadant Steuerberater - Tradition seit 1932">
+    <meta property="og:description" content="Ihre traditionsreiche Steuerkanzlei in Kehl. Kompetente Beratung mit Anstand, Integrität und gesundem Menschenverstand.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.schwer-margadant-stb.de">
+    <meta property="og:locale" content="de_DE">
+
+    <title>Schwer + Margadant Steuerberater | Steuerkanzlei Kehl - Seit 1932</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="Schwer + Margadant Steuerberater">
+                </a>
+
+                <nav class="nav" id="nav">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link active">Startseite</a></li>
+                        <li><a href="leistungen.html" class="nav__link">Leistungen</a></li>
+                        <li><a href="ueber-uns.html" class="nav__link">Über uns</a></li>
+                        <li><a href="kontakt.html" class="nav__link">Kontakt</a></li>
+                    </ul>
+                    <a href="kontakt.html" class="btn btn--primary">Termin vereinbaren</a>
+                </nav>
+
+                <button class="nav-toggle" id="navToggle" aria-label="Navigation umschalten">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__gradient"></div>
+        <div class="container">
+            <div class="hero__content">
+                <span class="hero__label fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Seit 1932 in Kehl
+                </span>
+
+                <h1 class="fade-in">Steuerberatung mit<br><span class="underline-scroll" data-scroll>Tradition und Vertrauen</span></h1>
+
+                <p class="hero__subtitle fade-in">
+                    Wir begleiten Privatpersonen und Unternehmen in allen steuerlichen Angelegenheiten - mit Anstand, Integrität und gesundem Menschenverstand.
+                </p>
+
+                <div class="btn-group fade-in">
+                    <a href="kontakt.html" class="btn btn--white btn--large">Jetzt Beratung anfragen</a>
+                    <a href="leistungen.html" class="btn btn--outline-white btn--large">Unsere Leistungen</a>
+                </div>
+            </div>
+
+            <!-- Unique Element: Animiertes Diagramm -->
+            <div class="hero__visual fade-in">
+                <svg class="chart-growth" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wachstumsdiagramm">
+                    <defs>
+                        <linearGradient id="barGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" style="stop-color:#1a365d"/>
+                            <stop offset="100%" style="stop-color:#2c5282"/>
+                        </linearGradient>
+                        <linearGradient id="barGradientHover" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" style="stop-color:#2c5282"/>
+                            <stop offset="100%" style="stop-color:#4a7ab8"/>
+                        </linearGradient>
+                        <filter id="chartShadow">
+                            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1a365d" flood-opacity="0.15"/>
+                        </filter>
+                    </defs>
+
+                    <!-- Hintergrund -->
+                    <rect x="30" y="30" width="340" height="240" rx="12" fill="white" filter="url(#chartShadow)"/>
+
+                    <!-- Gitterlinien -->
+                    <g stroke="#e2e8f0" stroke-width="1">
+                        <line x1="60" y1="80" x2="350" y2="80" stroke-dasharray="4,4"/>
+                        <line x1="60" y1="130" x2="350" y2="130" stroke-dasharray="4,4"/>
+                        <line x1="60" y1="180" x2="350" y2="180" stroke-dasharray="4,4"/>
+                    </g>
+
+                    <!-- Achsen -->
+                    <line x1="60" y1="230" x2="350" y2="230" stroke="#1a365d" stroke-width="2"/>
+                    <line x1="60" y1="60" x2="60" y2="230" stroke="#1a365d" stroke-width="2"/>
+
+                    <!-- Balken -->
+                    <g class="bars">
+                        <rect class="bar bar-1" x="85" y="230" width="45" height="0" fill="url(#barGradient)" rx="4"/>
+                        <rect class="bar bar-2" x="155" y="230" width="45" height="0" fill="url(#barGradient)" rx="4"/>
+                        <rect class="bar bar-3" x="225" y="230" width="45" height="0" fill="url(#barGradient)" rx="4"/>
+                        <rect class="bar bar-4" x="295" y="230" width="45" height="0" fill="url(#barGradient)" rx="4"/>
+                    </g>
+
+                    <!-- Trend-Pfeil -->
+                    <path class="trend-line" d="M85 190 Q155 140 225 120 T340 70" stroke="#b8860b" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <circle class="trend-dot" cx="340" cy="70" r="6" fill="#b8860b"/>
+
+                    <!-- Labels -->
+                    <text x="107" y="250" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Source Sans 3">Q1</text>
+                    <text x="177" y="250" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Source Sans 3">Q2</text>
+                    <text x="247" y="250" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Source Sans 3">Q3</text>
+                    <text x="317" y="250" text-anchor="middle" fill="#4a5568" font-size="11" font-family="Source Sans 3">Q4</text>
+                </svg>
+                <p class="hero__visual-hint">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    Ihr Wachstum im Blick
+                </p>
+            </div>
+        </div>
+
+        <div class="hero__scroll">
+            <span>Mehr erfahren</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+        <div class="container">
+            <div class="trust__inner fade-in">
+                <div class="trust__item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Steuerberaterkammer Freiburg</span>
+                </div>
+                <div class="trust__item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span>Über 90 Jahre Erfahrung</span>
+                </div>
+                <div class="trust__item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Persönliche Betreuung</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="leistungen">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Unsere Leistungen</span>
+                <h2 class="blur-reveal" data-scroll>Das gesamte Spektrum der Steuerberatung</h2>
+                <p>Von der Buchhaltung bis zum Jahresabschluss - wir sind Ihr Ansprechpartner für alle steuerlichen Themen.</p>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card fade-in">
+                    <div class="service-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>Steuererklärungen</h3>
+                    <p>Wir erstellen alle anfallenden Steuererklärungen für Privatpersonen und Unternehmen - termingerecht und optimiert.</p>
+                    <a href="leistungen.html#steuererklaerungen" class="service-card__link">
+                        Mehr erfahren
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="service-card fade-in">
+                    <div class="service-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <h3>Finanzbuchhaltung</h3>
+                    <p>Die korrekte Finanzbuchhaltung bildet alle Geschäftsvorgänge ab und ermöglicht eine objektive Bewertung Ihres Unternehmens.</p>
+                    <a href="leistungen.html#finanzbuchhaltung" class="service-card__link">
+                        Mehr erfahren
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="service-card fade-in">
+                    <div class="service-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <line x1="17" y1="11" x2="23" y2="11"/>
+                            <line x1="20" y1="8" x2="20" y2="14"/>
+                        </svg>
+                    </div>
+                    <h3>Lohnbuchhaltung</h3>
+                    <p>Professionelle Lohnabrechnungen und Meldungen - pünktlich und zuverlässig für Ihre Mitarbeiter.</p>
+                    <a href="leistungen.html#lohnbuchhaltung" class="service-card__link">
+                        Mehr erfahren
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="service-card fade-in">
+                    <div class="service-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>Jahresabschluss</h3>
+                    <p>Erstellung von Jahresabschlüssen und Einnahmenüberschussrechnungen mit aussagekräftiger Analyse.</p>
+                    <a href="leistungen.html#jahresabschluss" class="service-card__link">
+                        Mehr erfahren
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section--alt about">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__content fade-in">
+                    <span class="label">Über uns</span>
+                    <h2>Eine Kanzlei mit Geschichte</h2>
+                    <p>
+                        1932 eröffnete der ehemalige Finanzbeamte Ernst Schwer das erste Büro als "Helfer in Steuersachen" in Kehl am Rhein. In den folgenden Jahrzehnten erweiterte sich die Kanzlei stetig - auch seine Söhne Gerd und Kurt Schwer traten in die Fußstapfen des Vaters.
+                    </p>
+                    <p>
+                        Am 1. Juni 2008 wurde die Sozietät "Schwer + Margadant Steuerberater" gegründet. Gabriele Margadant, geb. Schwer, führt die Familientradition heute in dritter Generation fort - mit den Werten, die schon immer Grundlage unserer Arbeit waren.
+                    </p>
+
+                    <div class="about__values">
+                        <div class="about__value">
+                            <div class="about__value-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Anstand</h4>
+                                <p>Ehrlichkeit und Fairness</p>
+                            </div>
+                        </div>
+                        <div class="about__value">
+                            <div class="about__value-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Integrität</h4>
+                                <p>Zuverlässig und vertrauenswürdig</p>
+                            </div>
+                        </div>
+                        <div class="about__value">
+                            <div class="about__value-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Gesunder Menschenverstand</h4>
+                                <p>Pragmatische Lösungen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about__visual fade-in">
+                    <div class="about__timeline">
+                        <div class="timeline__item">
+                            <div class="timeline__year">1932</div>
+                            <div class="timeline__content">
+                                <h4>Gründung</h4>
+                                <p>Ernst Schwer eröffnet das erste Büro in Kehl</p>
+                            </div>
+                        </div>
+                        <div class="timeline__item">
+                            <div class="timeline__year">1964</div>
+                            <div class="timeline__content">
+                                <h4>Übernahme</h4>
+                                <p>Gerd und Kurt Schwer übernehmen die Leitung</p>
+                            </div>
+                        </div>
+                        <div class="timeline__item">
+                            <div class="timeline__year">2008</div>
+                            <div class="timeline__content">
+                                <h4>Sozietät</h4>
+                                <p>Gründung Schwer + Margadant Steuerberater</p>
+                            </div>
+                        </div>
+                        <div class="timeline__item timeline__item--active">
+                            <div class="timeline__year">Heute</div>
+                            <div class="timeline__content">
+                                <h4>3. Generation</h4>
+                                <p>Gabriele Margadant führt die Tradition fort</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="section clients">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="label">Unsere Mandanten</span>
+                <h2>Vielfältig wie Ihre Bedürfnisse</h2>
+                <p>Wir beraten Privatpersonen genauso professionell wie Unternehmen in unterschiedlichsten Branchen.</p>
+            </div>
+
+            <div class="clients-grid" data-scroll data-stagger>
+                <div class="client-card fade-in">
+                    <div class="client-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Privatpersonen</h3>
+                    <p>Arbeitnehmer, Vermieter, Rentner</p>
+                </div>
+
+                <div class="client-card fade-in">
+                    <div class="client-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Freiberufler</h3>
+                    <p>Ärzte, Anwälte, Architekten</p>
+                </div>
+
+                <div class="client-card fade-in">
+                    <div class="client-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <h3>Einzelunternehmen</h3>
+                    <p>Handwerker, Händler, Dienstleister</p>
+                </div>
+
+                <div class="client-card fade-in">
+                    <div class="client-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Personengesellschaften</h3>
+                    <p>GbR, OHG, KG</p>
+                </div>
+
+                <div class="client-card fade-in">
+                    <div class="client-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="3" y1="9" x2="21" y2="9"/>
+                            <line x1="9" y1="21" x2="9" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>Kapitalgesellschaften</h3>
+                    <p>GmbH, UG, AG</p>
+                </div>
+
+                <div class="client-card fade-in">
+                    <div class="client-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Vereine</h3>
+                    <p>Sport-, Kultur-, Fördervereine</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section section--primary stats">
+        <div class="container">
+            <div class="stats__grid">
+                <div class="stat fade-in">
+                    <span class="counter" data-target="90" data-scroll>0</span>
+                    <span class="stat__suffix">+</span>
+                    <span class="stat__label">Jahre Erfahrung</span>
+                </div>
+                <div class="stat fade-in">
+                    <span class="counter" data-target="3" data-scroll>0</span>
+                    <span class="stat__suffix"></span>
+                    <span class="stat__label">Generationen</span>
+                </div>
+                <div class="stat fade-in">
+                    <span class="counter" data-target="1932" data-scroll>0</span>
+                    <span class="stat__suffix"></span>
+                    <span class="stat__label">Gegründet</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta__inner fade-in">
+                <h2>Lernen Sie uns kennen</h2>
+                <p>Vereinbaren Sie ein unverbindliches Erstgespräch und erfahren Sie, wie wir Sie unterstützen können.</p>
+
+                <div class="btn-group">
+                    <a href="kontakt.html" class="btn btn--white btn--large">Termin vereinbaren</a>
+                    <a href="tel:+497851483484" class="btn btn--outline-white btn--large">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        07851 483484
+                    </a>
+                </div>
+
+                <div class="cta__info">
+                    <div class="cta__info-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Rheinstr. 80, 77694 Kehl</span>
+                    </div>
+                    <div class="cta__info-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <a href="mailto:steuerberatung@margadant.de">steuerberatung@margadant.de</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/logo.svg" alt="Schwer + Margadant Steuerberater">
+                    </div>
+                    <p>Ihre traditionsreiche Steuerkanzlei in Kehl - seit 1932. Wir beraten Sie mit Anstand, Integrität und gesundem Menschenverstand.</p>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Leistungen</h4>
+                    <nav class="footer__links">
+                        <a href="leistungen.html#steuererklaerungen">Steuererklärungen</a>
+                        <a href="leistungen.html#finanzbuchhaltung">Finanzbuchhaltung</a>
+                        <a href="leistungen.html#lohnbuchhaltung">Lohnbuchhaltung</a>
+                        <a href="leistungen.html#jahresabschluss">Jahresabschluss</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kanzlei</h4>
+                    <nav class="footer__links">
+                        <a href="ueber-uns.html">Über uns</a>
+                        <a href="kontakt.html">Kontakt & Anfahrt</a>
+                        <a href="impressum.html">Impressum</a>
+                        <a href="datenschutz.html">Datenschutz</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Kontakt</h4>
+                    <div class="footer__contact">
+                        <div class="footer__contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Rheinstr. 80<br>77694 Kehl</span>
+                        </div>
+                        <div class="footer__contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>07851 483484</span>
+                        </div>
+                        <div class="footer__contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <span>steuerberatung@margadant.de</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Schwer + Margadant Steuerberater. Alle Rechte vorbehalten.</p>
+                <nav class="footer__legal">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

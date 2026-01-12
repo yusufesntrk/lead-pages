@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sebastian & Schneider Steuerberatungsgesellschaft mbH in Kehl - Kompetente Steuerberatung, Wirtschaftsberatung und Unternehmensberatung seit 2009.">
+    <meta name="keywords" content="Steuerberater Kehl, Steuerberatung, Wirtschaftsberatung, Unternehmensberatung, Sebastian Schneider, Steuererklärung">
+    <meta name="author" content="Sebastian & Schneider Steuerberatungsgesellschaft mbH">
+    <title>Sebastian & Schneider Steuerberatungsgesellschaft mbH | Steuerberater in Kehl</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo" aria-label="Sebastian & Schneider - Zur Startseite">
+                    <svg class="logo-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="50" height="50" rx="8" fill="#a23232"/>
+                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Playfair Display, serif" font-size="24" font-weight="700">S&S</text>
+                    </svg>
+                    <span class="logo-text">Sebastian & Schneider</span>
+                </a>
+                <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#leistungen">Leistungen</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                    <li><a href="#kontakt" class="nav-cta">Beratung anfragen</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-background">
+                <div class="hero-gradient"></div>
+                <div class="hero-pattern"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-label blur-reveal" data-scroll>Steuerberatung in Kehl</span>
+                    <h1 class="hero-title">
+                        <span class="fade-in" data-scroll>Wir begleiten</span><br>
+                        <span class="underline-scroll" data-scroll>Ihren Erfolg</span>
+                    </h1>
+                    <p class="hero-text blur-reveal" data-scroll style="transition-delay: 0.3s">
+                        Kompetente Steuer-, Wirtschafts- und Unternehmensberatung mit persönlicher Betreuung.
+                        Maßgeschneiderte Lösungen für Unternehmen und Privatpersonen in Kehl und Umgebung.
+                    </p>
+                    <div class="hero-actions fade-in" data-scroll style="transition-delay: 0.5s">
+                        <a href="#kontakt" class="btn btn-primary">Erstberatung vereinbaren</a>
+                        <a href="#leistungen" class="btn btn-secondary">Unsere Leistungen</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Unique Element: Interaktiver Taschenrechner / Diagramm -->
+                    <div class="unique-element-wrapper">
+                        <svg class="unique-element calculator-element" viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaktives Finanzdiagramm">
+                            <defs>
+                                <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#a23232"/>
+                                    <stop offset="100%" stop-color="#7a2525"/>
+                                </linearGradient>
+                                <linearGradient id="accentGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" stop-color="#a23232"/>
+                                    <stop offset="100%" stop-color="#c94545"/>
+                                </linearGradient>
+                                <linearGradient id="barGradient1" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" stop-color="#a23232"/>
+                                    <stop offset="100%" stop-color="#d35555"/>
+                                </linearGradient>
+                                <linearGradient id="barGradient2" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" stop-color="#2d5a7b"/>
+                                    <stop offset="100%" stop-color="#4a8ab5"/>
+                                </linearGradient>
+                                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#a23232" flood-opacity="0.2"/>
+                                </filter>
+                                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                                    <feMerge>
+                                        <feMergeNode in="blur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- Base Chart Area -->
+                            <g class="chart-base" filter="url(#shadow)">
+                                <rect x="50" y="40" width="300" height="250" rx="16" fill="white"/>
+                                <rect x="50" y="40" width="300" height="50" rx="16" fill="url(#primaryGradient)"/>
+                                <rect x="50" y="74" width="300" height="16" fill="url(#primaryGradient)"/>
+                            </g>
+
+                            <!-- Chart Header -->
+                            <g class="chart-header">
+                                <text x="70" y="72" fill="white" font-family="Source Sans 3, sans-serif" font-size="14" font-weight="600">Finanzübersicht</text>
+                                <circle cx="310" cy="65" r="8" fill="rgba(255,255,255,0.3)" class="header-dot"/>
+                                <circle cx="330" cy="65" r="8" fill="rgba(255,255,255,0.5)" class="header-dot"/>
+                            </g>
+
+                            <!-- Grid Lines -->
+                            <g class="chart-grid" stroke="#f0f0f0" stroke-width="1">
+                                <line x1="70" y1="130" x2="330" y2="130"/>
+                                <line x1="70" y1="170" x2="330" y2="170"/>
+                                <line x1="70" y1="210" x2="330" y2="210"/>
+                                <line x1="70" y1="250" x2="330" y2="250"/>
+                            </g>
+
+                            <!-- Animated Bars -->
+                            <g class="chart-bars">
+                                <rect class="bar bar-1" x="85" y="250" width="30" height="0" rx="4" fill="url(#barGradient1)">
+                                    <animate attributeName="height" from="0" to="100" dur="1s" fill="freeze" begin="0.2s"/>
+                                    <animate attributeName="y" from="250" to="150" dur="1s" fill="freeze" begin="0.2s"/>
+                                </rect>
+                                <rect class="bar bar-2" x="130" y="250" width="30" height="0" rx="4" fill="url(#barGradient2)">
+                                    <animate attributeName="height" from="0" to="70" dur="1s" fill="freeze" begin="0.4s"/>
+                                    <animate attributeName="y" from="250" to="180" dur="1s" fill="freeze" begin="0.4s"/>
+                                </rect>
+                                <rect class="bar bar-3" x="175" y="250" width="30" height="0" rx="4" fill="url(#barGradient1)">
+                                    <animate attributeName="height" from="0" to="130" dur="1s" fill="freeze" begin="0.6s"/>
+                                    <animate attributeName="y" from="250" to="120" dur="1s" fill="freeze" begin="0.6s"/>
+                                </rect>
+                                <rect class="bar bar-4" x="220" y="250" width="30" height="0" rx="4" fill="url(#barGradient2)">
+                                    <animate attributeName="height" from="0" to="90" dur="1s" fill="freeze" begin="0.8s"/>
+                                    <animate attributeName="y" from="250" to="160" dur="1s" fill="freeze" begin="0.8s"/>
+                                </rect>
+                                <rect class="bar bar-5" x="265" y="250" width="30" height="0" rx="4" fill="url(#barGradient1)">
+                                    <animate attributeName="height" from="0" to="150" dur="1s" fill="freeze" begin="1s"/>
+                                    <animate attributeName="y" from="250" to="100" dur="1s" fill="freeze" begin="1s"/>
+                                </rect>
+                                <rect class="bar bar-6" x="310" y="250" width="30" height="0" rx="4" fill="url(#barGradient2)">
+                                    <animate attributeName="height" from="0" to="110" dur="1s" fill="freeze" begin="1.2s"/>
+                                    <animate attributeName="y" from="250" to="140" dur="1s" fill="freeze" begin="1.2s"/>
+                                </rect>
+                            </g>
+
+                            <!-- Trend Line -->
+                            <path class="trend-line" d="M100 200 Q150 180, 190 155 T280 100 T340 90" stroke="#a23232" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="300" stroke-dashoffset="300" filter="url(#glow)">
+                                <animate attributeName="stroke-dashoffset" from="300" to="0" dur="1.5s" fill="freeze" begin="1.5s"/>
+                            </path>
+
+                            <!-- Data Points -->
+                            <g class="data-points" opacity="0">
+                                <circle cx="100" cy="200" r="6" fill="#a23232"/>
+                                <circle cx="190" cy="155" r="6" fill="#a23232"/>
+                                <circle cx="280" cy="100" r="6" fill="#a23232"/>
+                                <circle cx="340" cy="90" r="6" fill="#a23232"/>
+                                <animate attributeName="opacity" from="0" to="1" dur="0.5s" fill="freeze" begin="2s"/>
+                            </g>
+
+                            <!-- Floating Numbers -->
+                            <g class="floating-numbers" opacity="0">
+                                <text x="95" y="140" fill="#a23232" font-family="Source Sans 3, sans-serif" font-size="11" font-weight="600">+12%</text>
+                                <text x="270" y="90" fill="#a23232" font-family="Source Sans 3, sans-serif" font-size="11" font-weight="600">+28%</text>
+                                <animate attributeName="opacity" from="0" to="1" dur="0.8s" fill="freeze" begin="2.2s"/>
+                            </g>
+
+                            <!-- Calculator Overlay (subtle) -->
+                            <g class="calculator-hint" transform="translate(300, 280)" opacity="0.8">
+                                <rect x="0" y="0" width="60" height="50" rx="8" fill="url(#primaryGradient)" filter="url(#shadow)"/>
+                                <text x="10" y="20" fill="white" font-family="Source Sans 3, sans-serif" font-size="10" font-weight="600">789</text>
+                                <text x="10" y="32" fill="white" font-family="Source Sans 3, sans-serif" font-size="10" font-weight="600">456</text>
+                                <text x="10" y="44" fill="white" font-family="Source Sans 3, sans-serif" font-size="10" font-weight="600">123</text>
+                            </g>
+                        </svg>
+                        <p class="element-hint fade-in" data-scroll style="transition-delay: 0.8s">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M8 4v4.5l3 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            Ihre Finanzen im Blick
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span>Mehr erfahren</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item" data-scroll>
+                        <span class="counter" data-target="15">0</span>
+                        <span class="stat-suffix">+</span>
+                        <span class="stat-label">Jahre Erfahrung</span>
+                    </div>
+                    <div class="stat-item" data-scroll style="transition-delay: 0.15s">
+                        <span class="counter" data-target="500">0</span>
+                        <span class="stat-suffix">+</span>
+                        <span class="stat-label">Zufriedene Mandanten</span>
+                    </div>
+                    <div class="stat-item" data-scroll style="transition-delay: 0.3s">
+                        <span class="counter" data-target="100">0</span>
+                        <span class="stat-suffix">%</span>
+                        <span class="stat-label">Persönliche Betreuung</span>
+                    </div>
+                    <div class="stat-item" data-scroll style="transition-delay: 0.45s">
+                        <span class="counter" data-target="2">0</span>
+                        <span class="stat-suffix"></span>
+                        <span class="stat-label">Geschäftsführer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leistungen Section -->
+        <section class="services-section" id="leistungen">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label fade-in" data-scroll>Was wir bieten</span>
+                    <h2 class="section-title">
+                        <span class="blur-reveal" data-scroll>Unsere Leistungen</span>
+                    </h2>
+                    <p class="section-desc fade-in" data-scroll style="transition-delay: 0.2s">
+                        Maßgeschneiderte Lösungen mit Einsatzfreude und Kompetenz.
+                        Wir unterstützen Sie in allen steuerlichen und betriebswirtschaftlichen Fragen.
+                    </p>
+                </div>
+
+                <div class="services-grid" data-scroll data-stagger>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 48 48" fill="none">
+                                <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M16 24h16M24 16v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M14 32l4-8 4 4 6-10 6 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Steuerberatung</h3>
+                        <p>Umfassende steuerliche Beratung für Unternehmen und Privatpersonen. Von der Steuererklärung bis zur strategischen Steuerplanung.</p>
+                        <ul class="service-features">
+                            <li>Einkommensteuererklärung</li>
+                            <li>Körperschaftsteuer</li>
+                            <li>Umsatzsteuer</li>
+                            <li>Lohnsteuerberatung</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 48 48" fill="none">
+                                <rect x="8" y="12" width="32" height="24" rx="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M8 20h32M16 28h8M16 32h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Wirtschaftsberatung</h3>
+                        <p>Betriebswirtschaftliche Beratung basierend auf Verlässlichkeit, Verantwortung und Vertrauen. Wir denken mit Ihnen voraus.</p>
+                        <ul class="service-features">
+                            <li>Finanzplanung</li>
+                            <li>Investitionsberatung</li>
+                            <li>Controlling</li>
+                            <li>Betriebswirtschaftliche Analysen</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 48 48" fill="none">
+                                <path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3>Unternehmensberatung</h3>
+                        <p>Unterstützung bei der Risikominderung und Zukunftsgestaltung. Gradlinig, gesetzeskonform, kreativ und unternehmerisch denkend.</p>
+                        <ul class="service-features">
+                            <li>Unternehmensnachfolge</li>
+                            <li>Existenzgründung</li>
+                            <li>Sanierungsberatung</li>
+                            <li>Strategische Planung</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 48 48" fill="none">
+                                <rect x="10" y="6" width="28" height="36" rx="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 14h16M16 22h16M16 30h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="34" cy="34" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="M34 30v8M30 34h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Finanzbuchhaltung</h3>
+                        <p>Professionelle Buchführung und Jahresabschlusserstellung. Wir halten Ihre Zahlen im Blick, damit Sie sich auf Ihr Geschäft konzentrieren können.</p>
+                        <ul class="service-features">
+                            <li>Laufende Buchhaltung</li>
+                            <li>Jahresabschluss</li>
+                            <li>Lohnbuchhaltung</li>
+                            <li>Digitale Buchführung</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Über uns Section -->
+        <section class="about-section" id="ueber-uns">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <span class="section-label fade-in" data-scroll>Über uns</span>
+                        <h2 class="section-title">
+                            <span class="blur-reveal" data-scroll>Richtig. Gut. Beraten.</span>
+                        </h2>
+                        <div class="about-text">
+                            <p class="fade-in" data-scroll style="transition-delay: 0.1s">
+                                Die Sebastian & Schneider Steuerberatungsgesellschaft mbH steht für kompetente und persönliche Beratung in Kehl und der Region. Seit 2009 begleiten wir Unternehmen und Privatpersonen auf ihrem Weg zum Erfolg.
+                            </p>
+                            <p class="fade-in" data-scroll style="transition-delay: 0.2s">
+                                Unsere Philosophie basiert auf <strong>Kompetenz, Klarheit und partnerschaftlichem Miteinander</strong>. Wir verstehen uns nicht nur als Steuerberater, sondern als langfristige Partner unserer Mandanten.
+                            </p>
+                            <p class="fade-in" data-scroll style="transition-delay: 0.3s">
+                                Betriebswirtschaftliches Denken hat bei uns Tradition. Wir sprechen die Sprache der Wirtschaft, denken strategisch und blicken nach vorne. So erzielen wir nachhaltige Erfolge - gradlinig und gesetzeskonform, kreativ und unternehmerisch denkend.
+                            </p>
+                        </div>
+                        <div class="about-values stagger-list" data-scroll data-stagger>
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <span>Kompetenz</span>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <span>Klarheit</span>
+                            </div>
+                            <div class="value-item">
+                                <div class="value-icon">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <span>Partnerschaft</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="about-image-wrapper fade-in" data-scroll>
+                            <div class="about-image-placeholder">
+                                <svg viewBox="0 0 400 300" fill="none">
+                                    <rect width="400" height="300" fill="#f5f5f5"/>
+                                    <rect x="50" y="50" width="300" height="200" rx="8" fill="#e8e8e8"/>
+                                    <path d="M150 200 L200 120 L250 180 L300 100" stroke="#a23232" stroke-width="3" stroke-linecap="round"/>
+                                    <circle cx="150" cy="200" r="6" fill="#a23232"/>
+                                    <circle cx="200" cy="120" r="6" fill="#a23232"/>
+                                    <circle cx="250" cy="180" r="6" fill="#a23232"/>
+                                    <circle cx="300" cy="100" r="6" fill="#a23232"/>
+                                    <text x="200" y="270" text-anchor="middle" fill="#666" font-family="Source Sans 3" font-size="14">Erfolgreiche Zusammenarbeit</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="about-card fade-in" data-scroll style="transition-delay: 0.3s">
+                            <div class="about-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="about-card-content">
+                                <span class="about-card-number">Seit 2009</span>
+                                <span class="about-card-text">Ihr Partner für Steuern</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section" id="team">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label fade-in" data-scroll>Unser Team</span>
+                    <h2 class="section-title">
+                        <span class="blur-reveal" data-scroll>Die Geschäftsführung</span>
+                    </h2>
+                    <p class="section-desc fade-in" data-scroll style="transition-delay: 0.2s">
+                        Persönliche Betreuung durch erfahrene Steuerberater. Vertrauen hat auch viel mit Nähe zu tun.
+                    </p>
+                </div>
+
+                <div class="team-grid" data-scroll data-stagger>
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <span>DS</span>
+                        </div>
+                        <h3>Dieter Sebastian</h3>
+                        <p class="team-role">Geschäftsführer</p>
+                        <p class="team-desc">Steuerberater mit langjähriger Erfahrung in der Beratung von mittelständischen Unternehmen und Privatpersonen.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <span>WS</span>
+                        </div>
+                        <h3>Wolfgang Schneider</h3>
+                        <p class="team-role">Geschäftsführer</p>
+                        <p class="team-desc">Experte für Wirtschafts- und Unternehmensberatung mit Fokus auf strategische Steuerplanung.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title blur-reveal" data-scroll>Bereit für kompetente Beratung?</h2>
+                    <p class="cta-text fade-in" data-scroll style="transition-delay: 0.2s">
+                        Vereinbaren Sie jetzt Ihre kostenlose Erstberatung. Wir nehmen uns Zeit für Ihre Anliegen.
+                    </p>
+                    <div class="cta-actions fade-in" data-scroll style="transition-delay: 0.4s">
+                        <a href="tel:+4978519344O" class="btn btn-primary btn-large">
+                            <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            07851 9 34 40
+                        </a>
+                        <a href="#kontakt" class="btn btn-secondary btn-large">Kontaktformular</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt Section -->
+        <section class="contact-section" id="kontakt">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <span class="section-label fade-in" data-scroll>Kontakt</span>
+                        <h2 class="section-title">
+                            <span class="blur-reveal" data-scroll>Sprechen Sie uns an</span>
+                        </h2>
+                        <p class="contact-intro fade-in" data-scroll style="transition-delay: 0.1s">
+                            Wir sind für Sie da. Kontaktieren Sie uns telefonisch, per E-Mail oder besuchen Sie uns in unserer Kanzlei in Kehl.
+                        </p>
+
+                        <div class="contact-details stagger-list" data-scroll data-stagger>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>Adresse</strong>
+                                    <p>Rheinstr. 75<br>77694 Kehl</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>Telefon</strong>
+                                    <p><a href="tel:+4978519344O">07851 9 34 40</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>E-Mail</strong>
+                                    <p><a href="mailto:info@sebastian-gmbh.de">info@sebastian-gmbh.de</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-text">
+                                    <strong>Öffnungszeiten</strong>
+                                    <p>Mo - Do: 08:00 - 17:00 Uhr<br>Fr: 08:00 - 14:00 Uhr</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper fade-in" data-scroll>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Ihr vollständiger Name">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">E-Mail *</label>
+                                    <input type="email" id="email" name="email" required placeholder="ihre@email.de">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Telefon</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="Ihre Telefonnummer">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Betreff</label>
+                                <select id="subject" name="subject">
+                                    <option value="">Bitte wählen...</option>
+                                    <option value="steuerberatung">Steuerberatung</option>
+                                    <option value="wirtschaftsberatung">Wirtschaftsberatung</option>
+                                    <option value="unternehmensberatung">Unternehmensberatung</option>
+                                    <option value="buchhaltung">Finanzbuchhaltung</option>
+                                    <option value="sonstiges">Sonstiges</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Nachricht *</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Wie können wir Ihnen helfen?"></textarea>
+                            </div>
+                            <div class="form-group form-checkbox">
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                <label for="privacy">Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und akzeptiere diese. *</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Nachricht senden</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div class="contact-map fade-in" data-scroll>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2652.123456789!2d7.813456!3d48.573456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796491c0c9c7c7d%3A0x123456789abcdef!2sRheinstr.%2075%2C%2077694%20Kehl!5e0!3m2!1sde!2sde!4v1234567890123"
+                        width="100%"
+                        height="400"
+                        style="border:0; border-radius: 16px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Standort Sebastian & Schneider Steuerberatungsgesellschaft mbH">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="50" height="50" rx="8" fill="#a23232"/>
+                            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Playfair Display, serif" font-size="24" font-weight="700">S&S</text>
+                        </svg>
+                        <span>Sebastian & Schneider</span>
+                    </a>
+                    <p class="footer-tagline">Richtig. Gut. Beraten.</p>
+                    <p class="footer-desc">Ihre kompetente Steuerberatungsgesellschaft in Kehl. Persönliche Betreuung und maßgeschneiderte Lösungen seit 2009.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Leistungen</h4>
+                    <ul>
+                        <li><a href="#leistungen">Steuerberatung</a></li>
+                        <li><a href="#leistungen">Wirtschaftsberatung</a></li>
+                        <li><a href="#leistungen">Unternehmensberatung</a></li>
+                        <li><a href="#leistungen">Finanzbuchhaltung</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Unternehmen</h4>
+                    <ul>
+                        <li><a href="#ueber-uns">Über uns</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Kontakt</h4>
+                    <p>Rheinstr. 75<br>77694 Kehl</p>
+                    <p><a href="tel:+4978519344O">07851 9 34 40</a></p>
+                    <p><a href="mailto:info@sebastian-gmbh.de">info@sebastian-gmbh.de</a></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sebastian & Schneider Steuerberatungsgesellschaft mbH. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="favGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d8a5e"/>
+      <stop offset="100%" style="stop-color:#1a5f3c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="url(#favGradient)"/>
+
+  <!-- PK Letters -->
+  <g fill="#ffffff">
+    <!-- P -->
+    <path d="M6 7h5c3 0 5.5 2.5 5.5 5.5S14 18 11 18H9v7H6V7zm3 8h2c1.4 0 2.5-1.1 2.5-2.5S12.4 10 11 10H9v5z"/>
+    <!-- K -->
+    <path d="M18 7h3v7l6-7h4l-6 7 6.5 11h-4l-4.5-8-2 2.5V25h-3V7z"/>
+  </g>
+</svg>

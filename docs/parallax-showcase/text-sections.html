@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Animations in Sektionen</title>
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --dark: #0a0a0f;
+            --light: #ffffff;
+            --text: #e0e0e0;
+            --text-muted: #888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .top-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .top-nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 120px 2rem 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* =============================================
+           EFFEKT 1: Underline beim Scrollen
+           ============================================= */
+
+        .underline-scroll {
+            position: relative;
+            display: inline;
+        }
+
+        .underline-scroll::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .underline-scroll.active::after {
+            width: 100%;
+        }
+
+        /* =============================================
+           EFFEKT 2: Wort für Wort erscheinen
+           ============================================= */
+
+        .word-reveal {
+            display: inline;
+        }
+
+        .word-reveal .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .word-reveal.active .word {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =============================================
+           EFFEKT 3: Highlight/Marker Animation
+           ============================================= */
+
+        .highlight-scroll {
+            position: relative;
+            display: inline;
+        }
+
+        .highlight-scroll::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -4px;
+            right: -4px;
+            height: 40%;
+            background: var(--primary);
+            opacity: 0.3;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .highlight-scroll.active::before {
+            transform: scaleX(1);
+        }
+
+        /* =============================================
+           EFFEKT 4: Buchstabe für Buchstabe
+           ============================================= */
+
+        .letter-reveal .letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .letter-reveal.active .letter {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =============================================
+           EFFEKT 5: Gradient Reveal
+           ============================================= */
+
+        .gradient-reveal {
+            background: linear-gradient(90deg, var(--light) 50%, var(--text-muted) 50%);
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: background-position 1s ease;
+        }
+
+        .gradient-reveal.active {
+            background-position: 0 0;
+        }
+
+        /* =============================================
+           EFFEKT 6: Split Lines
+           ============================================= */
+
+        .split-lines .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .split-lines .line-inner {
+            display: block;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .split-lines.active .line-inner {
+            transform: translateY(0);
+        }
+
+        /* =============================================
+           EFFEKT 7: Typewriter
+           ============================================= */
+
+        .typewriter-scroll {
+            border-right: 2px solid var(--primary);
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: none;
+        }
+
+        .typewriter-scroll.active {
+            animation: typewrite 2s steps(30) forwards, blink 0.7s step-end infinite;
+        }
+
+        @keyframes typewrite {
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* =============================================
+           EFFEKT 8: Blur to Sharp
+           ============================================= */
+
+        .blur-reveal {
+            filter: blur(10px);
+            opacity: 0.3;
+            transition: all 0.8s ease;
+        }
+
+        .blur-reveal.active {
+            filter: blur(0);
+            opacity: 1;
+        }
+
+        /* =============================================
+           EFFEKT 9: Scale Up
+           ============================================= */
+
+        .scale-reveal {
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scale-reveal.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* =============================================
+           EFFEKT 10: Clip Path Reveal
+           ============================================= */
+
+        .clip-reveal {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .clip-reveal.active {
+            clip-path: inset(0 0 0 0);
+        }
+
+        /* =============================================
+           EFFEKT 11: Counter Animation
+           ============================================= */
+
+        .counter {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* =============================================
+           EFFEKT 12: Staggered List
+           ============================================= */
+
+        .stagger-list {
+            list-style: none;
+        }
+
+        .stagger-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stagger-list.active li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .stagger-list li strong {
+            color: var(--light);
+            font-size: 1.2rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cards-grid.active .card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.3s;
+        }
+
+        .cta-btn.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 100px 1rem 60px;
+            }
+
+            .stats-row {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="index.html">← Parallax Showcase</a>
+        <a href="text-animations.html">Text Effects →</a>
+    </nav>
+
+    <!-- SEKTION 1: Underline beim Scrollen -->
+    <section>
+        <span class="section-label">Leistungen</span>
+        <h2>
+            Wir entwickeln<br>
+            <span class="underline-scroll" data-scroll>RuleBreaker Systeme</span>
+        </h2>
+        <p>Innovative Lösungen, die bestehende Grenzen sprengen und neue Maßstäbe setzen.</p>
+    </section>
+
+    <!-- SEKTION 2: Highlight/Marker -->
+    <section>
+        <span class="section-label">Warum wir</span>
+        <h2>
+            Wir sind keine gewöhnliche Agentur.<br>
+            Wir sind <span class="highlight-scroll" data-scroll>Digitalarchitekten</span>.
+        </h2>
+        <p>Mit über 10 Jahren Erfahrung gestalten wir die digitale Zukunft.</p>
+    </section>
+
+    <!-- SEKTION 3: Wort für Wort -->
+    <section>
+        <span class="section-label">Vision</span>
+        <h2 class="word-reveal" data-scroll data-words>
+            Technologie sollte Menschen verbinden, nicht trennen.
+        </h2>
+        <p>Das ist unsere Mission seit Tag eins.</p>
+    </section>
+
+    <!-- SEKTION 4: Buchstabe für Buchstabe -->
+    <section>
+        <span class="section-label">Expertise</span>
+        <h2>
+            <span class="letter-reveal" data-scroll data-letters>INNOVATION</span>
+        </h2>
+        <p>Jeder Buchstabe steht für einen Wert, den wir leben.</p>
+    </section>
+
+    <!-- SEKTION 5: Gradient Reveal -->
+    <section>
+        <span class="section-label">Philosophie</span>
+        <h2 class="gradient-reveal" data-scroll>
+            Design trifft Technologie
+        </h2>
+        <p>Wo Ästhetik auf Funktionalität trifft, entstehen außergewöhnliche Erlebnisse.</p>
+    </section>
+
+    <!-- SEKTION 6: Split Lines -->
+    <section>
+        <span class="section-label">Manifest</span>
+        <h2 class="split-lines" data-scroll data-lines>
+            <span class="line"><span class="line-inner">Wir glauben an Mut.</span></span>
+            <span class="line"><span class="line-inner">Wir glauben an Qualität.</span></span>
+            <span class="line"><span class="line-inner">Wir glauben an Sie.</span></span>
+        </h2>
+    </section>
+
+    <!-- SEKTION 7: Blur to Sharp -->
+    <section>
+        <span class="section-label">Fokus</span>
+        <h2 class="blur-reveal" data-scroll>
+            Klarheit in jeder Zeile Code
+        </h2>
+        <p>Vom verschwommenen Konzept zur kristallklaren Lösung.</p>
+    </section>
+
+    <!-- SEKTION 8: Scale Up -->
+    <section>
+        <span class="section-label">Impact</span>
+        <h2 class="scale-reveal" data-scroll>
+            Groß denken. Größer liefern.
+        </h2>
+        <p>Unsere Projekte sprechen für sich.</p>
+    </section>
+
+    <!-- SEKTION 9: Counter Animation -->
+    <section>
+        <span class="section-label">Zahlen</span>
+        <h2>Unsere Erfolgsbilanz</h2>
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-number"><span class="counter" data-target="150" data-scroll>0</span>+</div>
+                <div class="stat-label">Projekte</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number"><span class="counter" data-target="98" data-scroll>0</span>%</div>
+                <div class="stat-label">Zufriedenheit</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number"><span class="counter" data-target="12" data-scroll>0</span></div>
+                <div class="stat-label">Jahre Erfahrung</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKTION 10: Clip Path Reveal -->
+    <section>
+        <span class="section-label">Slogan</span>
+        <h2 class="clip-reveal" data-scroll>
+            Die Zukunft beginnt heute.
+        </h2>
+        <p>Sind Sie bereit?</p>
+        <a href="#" class="cta-btn" data-scroll>Projekt starten</a>
+    </section>
+
+    <!-- SEKTION 11: Staggered List -->
+    <section>
+        <span class="section-label">Services</span>
+        <h2>Was wir bieten</h2>
+        <ul class="stagger-list" data-scroll data-stagger>
+            <li><strong>Webentwicklung</strong> — Moderne, schnelle Websites</li>
+            <li><strong>App Development</strong> — Native & Cross-Platform</li>
+            <li><strong>UI/UX Design</strong> — Nutzerzentrierte Interfaces</li>
+            <li><strong>Consulting</strong> — Strategische Digitalberatung</li>
+        </ul>
+    </section>
+
+    <!-- SEKTION 12: Cards mit Stagger -->
+    <section>
+        <span class="section-label">Leistungen</span>
+        <h2>Unsere <span class="underline-scroll" data-scroll>Kernkompetenzen</span></h2>
+        <div class="cards-grid" data-scroll data-cards>
+            <div class="card" style="transition-delay: 0s">
+                <h3>Frontend</h3>
+                <p>React, Vue, Angular — wir beherrschen alle modernen Frameworks.</p>
+            </div>
+            <div class="card" style="transition-delay: 0.1s">
+                <h3>Backend</h3>
+                <p>Skalierbare APIs und robuste Server-Architekturen.</p>
+            </div>
+            <div class="card" style="transition-delay: 0.2s">
+                <h3>Cloud</h3>
+                <p>AWS, GCP, Azure — Ihre Infrastruktur in besten Händen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKTION 13: Typewriter -->
+    <section>
+        <span class="section-label">Statement</span>
+        <h2>
+            <span class="typewriter-scroll" data-scroll>Code ist Poesie.</span>
+        </h2>
+        <p>Jede Zeile erzählt eine Geschichte.</p>
+    </section>
+
+    <!-- SEKTION 14: Kombiniert -->
+    <section>
+        <span class="section-label">Kontakt</span>
+        <h2 class="split-lines" data-scroll data-lines>
+            <span class="line"><span class="line-inner">Bereit für</span></span>
+            <span class="line"><span class="line-inner"><span class="highlight-scroll" data-scroll>Ihr Projekt</span>?</span></span>
+        </h2>
+        <p class="blur-reveal" data-scroll>Lassen Sie uns gemeinsam Großes schaffen.</p>
+        <a href="#" class="cta-btn" data-scroll>Kontakt aufnehmen</a>
+    </section>
+
+    <script>
+        // Intersection Observer für Scroll-Animationen
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+
+                    // Words Animation
+                    if (el.hasAttribute('data-words')) {
+                        const text = el.textContent.trim();
+                        el.innerHTML = text.split(' ').map(word =>
+                            `<span class="word">${word}</span>`
+                        ).join(' ');
+
+                        el.querySelectorAll('.word').forEach((word, i) => {
+                            word.style.transitionDelay = `${i * 0.1}s`;
+                        });
+                    }
+
+                    // Letters Animation
+                    if (el.hasAttribute('data-letters')) {
+                        const text = el.textContent.trim();
+                        el.innerHTML = text.split('').map(letter =>
+                            `<span class="letter">${letter}</span>`
+                        ).join('');
+
+                        el.querySelectorAll('.letter').forEach((letter, i) => {
+                            letter.style.transitionDelay = `${i * 0.05}s`;
+                        });
+                    }
+
+                    // Lines Animation
+                    if (el.hasAttribute('data-lines')) {
+                        el.querySelectorAll('.line-inner').forEach((line, i) => {
+                            line.style.transitionDelay = `${i * 0.15}s`;
+                        });
+                    }
+
+                    // Stagger Animation
+                    if (el.hasAttribute('data-stagger')) {
+                        el.querySelectorAll('li').forEach((item, i) => {
+                            item.style.transitionDelay = `${i * 0.1}s`;
+                        });
+                    }
+
+                    // Cards Animation
+                    if (el.hasAttribute('data-cards')) {
+                        el.querySelectorAll('.card').forEach((card, i) => {
+                            card.style.transitionDelay = `${i * 0.15}s`;
+                        });
+                    }
+
+                    // Counter Animation
+                    if (el.classList.contains('counter')) {
+                        const target = parseInt(el.dataset.target);
+                        const duration = 2000;
+                        const start = performance.now();
+
+                        function update(now) {
+                            const progress = Math.min((now - start) / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            el.textContent = Math.floor(eased * target);
+
+                            if (progress < 1) {
+                                requestAnimationFrame(update);
+                            }
+                        }
+
+                        requestAnimationFrame(update);
+                    }
+
+                    // Activate
+                    setTimeout(() => el.classList.add('active'), 50);
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Alle Elemente mit data-scroll beobachten
+        document.querySelectorAll('[data-scroll]').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>

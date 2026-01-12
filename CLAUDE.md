@@ -44,6 +44,14 @@ mcp__airtable__update_records({
 })
 ```
 
+### Lead-Priorisierung
+
+**Reihenfolge bei Website-Erstellung:**
+1. Firmen am nächsten zu **Offenburg** zuerst
+2. Sortierung nach Priorität absteigend
+
+Bei Batch-Erstellung immer mit dem nächstgelegenen Standort zu Offenburg starten.
+
 ---
 
 ## Tools & CLIs
