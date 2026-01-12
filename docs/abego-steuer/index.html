@@ -60,136 +60,36 @@
             </svg>
         </div>
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
+            <div class="hero-content hero-content-centered">
+                <div class="hero-text hero-text-centered">
                     <span class="hero-badge" data-scroll>Seit 1959 in Oberkirch</span>
                     <h1 data-scroll>Steuerberatung mit <span class="underline-scroll" data-scroll>Tradition</span></h1>
                     <p class="hero-description blur-reveal" data-scroll>
-                        Seit uber 60 Jahren begleiten wir Unternehmen und Privatpersonen bei allen Fragen rund um Steuern, Rechnungswesen und Betriebswirtschaft. Persoenlich, kompetent und zuverlassig.
+                        Seit über 60 Jahren begleiten wir Unternehmen und Privatpersonen bei allen Fragen rund um Steuern, Rechnungswesen und Betriebswirtschaft. Persönlich, kompetent und zuverlässig.
                     </p>
                     <div class="hero-buttons" data-scroll>
                         <a href="kontakt.html" class="btn btn-primary">Termin vereinbaren</a>
                         <a href="leistungen.html" class="btn btn-secondary">Unsere Leistungen</a>
                     </div>
-                </div>
-                <div class="hero-visual">
-                    <!-- Unique Element: Interaktiver Taschenrechner/Diagramm -->
-                    <div class="unique-element-wrapper" data-scroll>
-                        <svg class="unique-element calculator-element" viewBox="0 0 400 350" role="img" aria-label="Interaktive Steuerberatung Grafik">
-                            <defs>
-                                <linearGradient id="calcGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#1a4a6e"/>
-                                    <stop offset="100%" style="stop-color:#2d6a9f"/>
-                                </linearGradient>
-                                <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#0d2b3e"/>
-                                    <stop offset="100%" style="stop-color:#1a4a6e"/>
-                                </linearGradient>
-                                <linearGradient id="barGradient1" x1="0%" y1="100%" x2="0%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#1a4a6e"/>
-                                    <stop offset="100%" style="stop-color:#3d8bc9"/>
-                                </linearGradient>
-                                <linearGradient id="barGradient2" x1="0%" y1="100%" x2="0%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#c9a227"/>
-                                    <stop offset="100%" style="stop-color:#e6c955"/>
-                                </linearGradient>
-                                <filter id="calcShadow">
-                                    <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="rgba(26, 74, 110, 0.3)"/>
-                                </filter>
-                                <filter id="glow">
-                                    <feGaussianBlur stdDeviation="2" result="blur"/>
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                                </filter>
-                            </defs>
-
-                            <!-- Calculator Body -->
-                            <g class="calc-body" filter="url(#calcShadow)">
-                                <rect x="80" y="30" width="240" height="290" rx="20" fill="url(#calcGradient)"/>
-                                <rect x="95" y="45" width="210" height="80" rx="10" fill="url(#screenGradient)"/>
-                            </g>
-
-                            <!-- Display Content - Numbers Animation -->
-                            <g class="calc-display">
-                                <text x="280" y="95" fill="#4fd1c5" font-family="monospace" font-size="32" font-weight="bold" text-anchor="end" class="calc-number">0</text>
-                                <text x="280" y="70" fill="rgba(255,255,255,0.5)" font-family="sans-serif" font-size="12" text-anchor="end">Steuerersparnis</text>
-                            </g>
-
-                            <!-- Calculator Buttons -->
-                            <g class="calc-buttons">
-                                <!-- Row 1 -->
-                                <rect class="calc-btn hoverable" x="95" y="140" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="150" y="140" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="205" y="140" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="260" y="140" width="45" height="35" rx="6" fill="#c9a227"/>
-
-                                <!-- Row 2 -->
-                                <rect class="calc-btn hoverable" x="95" y="185" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="150" y="185" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="205" y="185" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="260" y="185" width="45" height="35" rx="6" fill="#c9a227"/>
-
-                                <!-- Row 3 -->
-                                <rect class="calc-btn hoverable" x="95" y="230" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="150" y="230" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="205" y="230" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="260" y="230" width="45" height="75" rx="6" fill="#3d8bc9"/>
-
-                                <!-- Row 4 -->
-                                <rect class="calc-btn hoverable" x="95" y="275" width="100" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-                                <rect class="calc-btn hoverable" x="205" y="275" width="45" height="35" rx="6" fill="rgba(255,255,255,0.15)"/>
-
-                                <!-- Button Labels -->
-                                <text x="117" y="163" fill="white" font-size="14" text-anchor="middle">7</text>
-                                <text x="172" y="163" fill="white" font-size="14" text-anchor="middle">8</text>
-                                <text x="227" y="163" fill="white" font-size="14" text-anchor="middle">9</text>
-                                <text x="282" y="163" fill="white" font-size="14" text-anchor="middle">%</text>
-
-                                <text x="117" y="208" fill="white" font-size="14" text-anchor="middle">4</text>
-                                <text x="172" y="208" fill="white" font-size="14" text-anchor="middle">5</text>
-                                <text x="227" y="208" fill="white" font-size="14" text-anchor="middle">6</text>
-                                <text x="282" y="208" fill="white" font-size="14" text-anchor="middle">-</text>
-
-                                <text x="117" y="253" fill="white" font-size="14" text-anchor="middle">1</text>
-                                <text x="172" y="253" fill="white" font-size="14" text-anchor="middle">2</text>
-                                <text x="227" y="253" fill="white" font-size="14" text-anchor="middle">3</text>
-                                <text x="282" y="273" fill="white" font-size="18" text-anchor="middle">=</text>
-
-                                <text x="145" y="298" fill="white" font-size="14" text-anchor="middle">0</text>
-                                <text x="227" y="298" fill="white" font-size="14" text-anchor="middle">.</text>
-                            </g>
-
-                            <!-- Floating Chart Elements -->
-                            <g class="floating-charts">
-                                <!-- Mini Bar Chart -->
-                                <g class="mini-chart" transform="translate(320, 80)">
-                                    <rect class="chart-bar bar-1" x="0" y="60" width="12" height="0" rx="2" fill="url(#barGradient1)"/>
-                                    <rect class="chart-bar bar-2" x="18" y="60" width="12" height="0" rx="2" fill="url(#barGradient2)"/>
-                                    <rect class="chart-bar bar-3" x="36" y="60" width="12" height="0" rx="2" fill="url(#barGradient1)"/>
-                                    <rect class="chart-bar bar-4" x="54" y="60" width="12" height="0" rx="2" fill="url(#barGradient2)"/>
-                                </g>
-
-                                <!-- Floating Plus Signs -->
-                                <g class="float-icon plus-1" opacity="0.6">
-                                    <circle cx="50" cy="100" r="15" fill="rgba(26, 74, 110, 0.1)"/>
-                                    <text x="50" y="106" fill="#1a4a6e" font-size="18" text-anchor="middle">+</text>
-                                </g>
-                                <g class="float-icon plus-2" opacity="0.4">
-                                    <circle cx="350" cy="280" r="12" fill="rgba(201, 162, 39, 0.15)"/>
-                                    <text x="350" y="285" fill="#c9a227" font-size="14" text-anchor="middle">%</text>
-                                </g>
-
-                                <!-- Trend Line -->
-                                <path class="trend-line" d="M 30 320 Q 100 300, 150 280 T 250 240 T 370 180"
-                                      stroke="#3d8bc9" stroke-width="2" fill="none" stroke-dasharray="8,4" opacity="0.5"/>
-                            </g>
-                        </svg>
-                        <p class="element-hint">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 16v-4M12 8h.01"/>
+                    <div class="hero-trust" data-scroll>
+                        <div class="hero-trust-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            Scrollen Sie fur die Animation
-                        </p>
+                            <span>Über 60 Jahre Erfahrung</span>
+                        </div>
+                        <div class="hero-trust-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>Persönliche Betreuung</span>
+                        </div>
+                        <div class="hero-trust-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span>Vor Ort in Oberkirch</span>
+                        </div>
                     </div>
                 </div>
             </div>

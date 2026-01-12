@@ -297,8 +297,29 @@ img {
     align-items: center;
 }
 
+.hero-content-centered {
+    display: flex;
+    justify-content: center;
+    grid-template-columns: unset;
+}
+
 .hero-text {
     position: relative;
+}
+
+.hero-text-centered {
+    text-align: center;
+    max-width: 800px;
+}
+
+.hero-text-centered .hero-description {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-text-centered .hero-buttons {
+    justify-content: center;
 }
 
 .hero-badge {
@@ -334,11 +355,30 @@ img {
     flex-wrap: wrap;
 }
 
-.hero-visual {
-    position: relative;
+/* Hero Trust Items */
+.hero-trust {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.hero-trust-item {
+    display: flex;
     align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.hero-trust-item svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary);
+    flex-shrink: 0;
 }
 
 /* ============================================
