@@ -1,7 +1,7 @@
 ---
 name: industry-presets
 description: Branchenspezifische Design-Presets für Website-Erstellung. Definiert Hero-Stil, Animationen, Farben und UX-Patterns je Branche. Verwende diesen Skill um konsistente, branchengerechte Websites zu erstellen.
-allowed-tools: Read, Glob, Grep
+tools: Read, Glob, Grep
 ---
 
 # Industry Presets

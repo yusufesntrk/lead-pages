@@ -1,6 +1,6 @@
-# Steuerberater Preset
+# Rechtsanwalt Preset
 
-Branche: Steuerberater, Wirtschaftsprüfer, Buchhalter
+Branche: Rechtsanwälte, Kanzleien, Notare
 
 > **Implementierung:** Siehe `scroll-text-animations` Skill für CSS/JS Code
 
@@ -10,7 +10,7 @@ Branche: Steuerberater, Wirtschaftsprüfer, Buchhalter
 
 ```yaml
 layout: centered
-background: gradient (Primary → darker shade)
+background: gradient (dunkel, seriös)
 height: 100dvh
 unique_element: false
 ```
@@ -21,7 +21,7 @@ unique_element: false
 | Subline | fade-in (0.5s delay) |
 | CTA | fade-in (0.8s delay) |
 
-**VERBOTEN:** letter-reveal, Animierte SVGs, Parallax, Floating elements
+**VERBOTEN:** letter-reveal, Animierte SVGs, Parallax, Floating elements, Bunte Farben
 
 ---
 
@@ -31,11 +31,11 @@ unique_element: false
 
 | Effekt | Einsatz |
 |--------|---------|
-| `underline-scroll` | Headlines |
+| `underline-scroll` | Rechtsgebiete |
 | `blur-reveal` | Section-Überschriften |
-| `stagger-list` | Service-Cards |
-| `counter` | Statistiken |
-| `fade` | Paragraphen |
+| `stagger-list` | Rechtsgebiete-Cards |
+| `counter` | Jahre Erfahrung |
+| `fade` | Paragraphen, Team |
 
 ### Verboten
 
@@ -57,17 +57,17 @@ timing: ease-out
 
 | Rolle | Wert |
 |-------|------|
-| Primary | Dunkelblau (#1a365d) |
+| Primary | Dunkelblau (#1a365d), Anthrazit (#2d3748) |
 | Secondary | Grau (#718096) |
-| Accent | Gold (#b8860b) oder Grün (#2f855a) |
-| Background | Weiß, helles Grau (#f7fafc) |
+| Accent | Gold (#b8860b), Bordeaux (#8b0000) |
+| Background | Weiß, helles Grau (#f8f9fa) |
 | Text | Dunkelgrau (#2d3748) |
 
 ---
 
 ## Typography
 
-- **Headings:** Serif oder elegante Sans-Serif
+- **Headings:** Elegante Serif
 - **Body:** Clean Sans-Serif
 - Empfohlen: Playfair Display + Source Sans Pro
 
@@ -76,21 +76,21 @@ timing: ease-out
 ## UX
 
 ```yaml
-cta_style: subtle-prominent
+cta_style: subtle
 trust_signals: SEHR WICHTIG
-testimonials: prominent
+testimonials: dezent (Datenschutz!)
 ```
 
 ### Trust-Elemente (PFLICHT)
 
+- Rechtsanwaltskammer-Zugehörigkeit
+- Fachanwalt-Titel
 - "Seit [Jahr] in [Stadt]"
-- Steuerberaterkammer-Badge
-- Google-Rating (wenn 4.5+)
-- Qualifikationen
+- Mitgliedschaften (DAV)
 
 ### CTA-Texte
 
-- "Beratungstermin vereinbaren"
-- "Kostenlose Erstberatung"
+- "Erstberatung anfragen"
+- "Kontakt aufnehmen"
 
-**NICHT:** "Jetzt loslegen!", Emojis
+**NICHT:** "Jetzt loslegen!", Dringlichkeit, Emojis

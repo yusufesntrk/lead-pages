@@ -11,19 +11,48 @@ Baue **index.html** für `docs/[firmenname]/`. Unterseiten → `subpages-builder
 
 ## Workflow
 
-1. **Skills laden (PFLICHT!):**
-   ```
-   Read(".claude/skills/scroll-text-animations/SKILL.md")
-   Read(".claude/skills/industry-presets/presets/[branche].md")
-   ```
+### 1. Branche identifizieren
 
-2. **Website analysieren:** Logo, Farben, Content extrahieren
+Analysiere die Original-Website und ordne einer Branche zu:
 
-3. **Build:** index.html, styles.css, script.js, assets/
+| Branche | Preset-Datei |
+|---------|--------------|
+| Steuerberater, Wirtschaftsprüfer | `steuerberater.md` |
+| Rechtsanwälte, Kanzleien, Notare | `rechtsanwalt.md` |
+| Ärzte, Zahnarzt, Therapeuten | `arzt.md` |
+| Restaurants, Cafés, Bars | `restaurant.md` |
+| Handwerker, Elektriker, Sanitär | `handwerk.md` |
+| IT, Startups, Software, Agenturen | `tech.md` |
+| Immobilienmakler, Hausverwaltung | `immobilien.md` |
+
+### 2. Skills laden (PFLICHT!)
+
+```
+Read(".claude/skills/scroll-text-animations/SKILL.md")   → CSS/JS Code
+Read(".claude/skills/industry-presets/presets/[branche].md")  → Regeln
+```
+
+**NUR das passende Preset laden, NICHT alle!**
+
+### 3. Website analysieren
+
+- Logo extrahieren (→ SVG konvertieren)
+- Farben identifizieren
+- Content sammeln (Texte, Services, Team)
+- Kontaktdaten aus Impressum
+
+### 4. Build
+
+- `index.html` - Homepage
+- `styles.css` - Styling nach Preset-Farben
+- `script.js` - Animationen aus scroll-text-animations
+
+Output: `docs/[firmenname]/`
 
 ## Regeln
 
 - Hero = 100dvh, Gradient (kein Bild bei seriösen Branchen)
-- Logo enthält Firmenname → NUR Bild, kein Text
-- Text-Animationen aus Skill einbauen
+- Logo enthält Firmenname → NUR Bild, kein Text daneben
+- Text-Animationen gemäß Preset (erlaubt/verboten beachten!)
 - Echte Daten, KEINE Platzhalter
+- Deutsche Umlaute: ä, ö, ü, ß (NICHT ae, oe, ue)
