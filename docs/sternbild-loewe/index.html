@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sternbild Löwe - Interaktive Sternenkarte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(ellipse at center, #1a1a3a 0%, #0a0a1a 70%);
+            min-height: 500vh;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Sternenhimmel Hintergrund */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star-bg {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Hauptcontainer für Sternbild - FIXIERT ohne Bewegung */
+        .constellation-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 500px;
+            z-index: 10;
+        }
+
+        /* SVG Sternbild */
+        .constellation-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Verbindungslinien */
+        .constellation-line {
+            stroke: rgba(255, 215, 0, 0.15);
+            stroke-width: 2;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        /* Animierte Leucht-Linie */
+        .glow-line {
+            stroke: #ffd700;
+            stroke-width: 3;
+            fill: none;
+            filter: drop-shadow(0 0 6px #ffd700) drop-shadow(0 0 12px #ffa500);
+            stroke-linecap: round;
+            opacity: 0;
+        }
+
+        .glow-line.animating {
+            opacity: 1;
+        }
+
+        /* Sterne - GRÖSSER */
+        .star {
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .star-core {
+            fill: #fff;
+            transition: all 0.5s ease;
+        }
+
+        .star-glow {
+            fill: url(#starGlow);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .star-outer-glow {
+            fill: url(#starOuterGlow);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .star.active .star-core {
+            fill: #ffd700;
+        }
+
+        .star.active .star-glow,
+        .star.active .star-outer-glow {
+            opacity: 1;
+        }
+
+        /* Pulsierende Animation für aktive Sterne */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .star.active {
+            animation: pulse 2s infinite ease-in-out;
+            transform-origin: center;
+            filter: drop-shadow(0 0 25px #ffd700) drop-shadow(0 0 50px #ffa500);
+        }
+
+        /* Info-Karten - AN DEN RÄNDERN */
+        .info-panel {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 320px;
+            z-index: 100;
+        }
+
+        .info-panel.left {
+            left: 40px;
+        }
+
+        .info-panel.right {
+            right: 40px;
+        }
+
+        .star-info {
+            background: rgba(10, 10, 30, 0.9);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.1), inset 0 0 30px rgba(255, 215, 0, 0.02);
+        }
+
+        .info-panel.right .star-info {
+            transform: translateX(30px);
+        }
+
+        .star-info.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .star-info h3 {
+            color: #ffd700;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .star-info h3::before {
+            content: '★';
+            font-size: 1.4rem;
+            filter: drop-shadow(0 0 8px #ffd700);
+        }
+
+        .star-info .designation {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-style: italic;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .star-info .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .star-info .data-row:last-child {
+            border-bottom: none;
+        }
+
+        .star-info .data-label {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        .star-info .data-value {
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
+        /* Scroll-Indikator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            animation: bounce 2s infinite;
+            transition: opacity 0.5s ease;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator .arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid rgba(255, 215, 0, 0.6);
+            border-bottom: 2px solid rgba(255, 215, 0, 0.6);
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            left: 50%;
+            bottom: 100px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+            background: rgba(10, 10, 30, 0.6);
+            padding: 15px 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .progress-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-dot::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.4);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .progress-dot:hover::after {
+            opacity: 1;
+        }
+
+        .progress-dot.active {
+            background: #ffd700;
+            box-shadow: 0 0 20px #ffd700;
+            transform: scale(1.4);
+        }
+
+        .progress-dot:hover {
+            background: rgba(255, 215, 0, 0.5);
+        }
+
+        /* Titel */
+        .title-container {
+            position: fixed;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+        }
+
+        .title-container h1 {
+            font-size: 3rem;
+            font-weight: 200;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffd700, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-container p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.95rem;
+            letter-spacing: 6px;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        /* Stern-Nummer Anzeige */
+        .star-counter {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            font-weight: 100;
+            color: rgba(255, 215, 0, 0.08);
+            z-index: 5;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .info-panel {
+                width: 280px;
+            }
+            .info-panel.left { left: 20px; }
+            .info-panel.right { right: 20px; }
+            .constellation-container {
+                width: 500px;
+                height: 380px;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .info-panel {
+                top: auto;
+                bottom: 180px;
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 400px;
+            }
+            .info-panel .star-info {
+                transform: translateY(20px);
+            }
+            .info-panel .star-info.visible {
+                transform: translateY(0);
+            }
+            .constellation-container {
+                width: 90vw;
+                height: 40vh;
+                top: 35%;
+            }
+            .progress-container {
+                bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hintergrund-Sterne -->
+    <div class="stars-bg" id="starsBg"></div>
+
+    <!-- Titel -->
+    <div class="title-container">
+        <h1>Leo</h1>
+        <p>Das Sternbild des Löwen</p>
+    </div>
+
+    <!-- Stern-Counter -->
+    <div class="star-counter" id="starCounter">1</div>
+
+    <!-- Sternbild Container -->
+    <div class="constellation-container">
+        <svg class="constellation-svg" viewBox="0 0 700 500">
+            <defs>
+                <!-- Glow Gradient für Sterne -->
+                <radialGradient id="starGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+                    <stop offset="40%" style="stop-color:#ffa500;stop-opacity:0.5" />
+                    <stop offset="100%" style="stop-color:#ff6b00;stop-opacity:0" />
+                </radialGradient>
+
+                <radialGradient id="starOuterGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.3" />
+                    <stop offset="100%" style="stop-color:#ffd700;stop-opacity:0" />
+                </radialGradient>
+            </defs>
+
+            <!-- Verbindungslinien des Löwen-Sternbilds -->
+            <g class="lines">
+                <!-- Basis-Linien (immer sichtbar, dezent) -->
+                <line class="constellation-line" x1="150" y1="350" x2="220" y2="280"/>
+                <line class="constellation-line" x1="220" y1="280" x2="300" y2="220"/>
+                <line class="constellation-line" x1="300" y1="220" x2="420" y2="200"/>
+                <line class="constellation-line" x1="420" y1="200" x2="550" y2="250"/>
+                <line class="constellation-line" x1="300" y1="220" x2="350" y2="130"/>
+                <line class="constellation-line" x1="350" y1="130" x2="270" y2="90"/>
+                <line class="constellation-line" x1="270" y1="90" x2="180" y2="120"/>
+                <line class="constellation-line" x1="180" y1="120" x2="220" y2="280"/>
+                <line class="constellation-line" x1="400" y1="320" x2="420" y2="200"/>
+                <line class="constellation-line" x1="400" y1="320" x2="550" y2="250"/>
+            </g>
+
+            <!-- Animierte Glow-Linien (für Übergangseffekt) -->
+            <g class="glow-lines">
+                <line class="glow-line" id="glow-0-7" x1="150" y1="350" x2="220" y2="280"/>
+                <line class="glow-line" id="glow-7-2" x1="220" y1="280" x2="300" y2="220"/>
+                <line class="glow-line" id="glow-2-3" x1="300" y1="220" x2="420" y2="200"/>
+                <line class="glow-line" id="glow-3-1" x1="420" y1="200" x2="550" y2="250"/>
+                <line class="glow-line" id="glow-2-6" x1="300" y1="220" x2="350" y2="130"/>
+                <line class="glow-line" id="glow-6-5" x1="350" y1="130" x2="270" y2="90"/>
+                <line class="glow-line" id="glow-5-4" x1="270" y1="90" x2="180" y2="120"/>
+                <line class="glow-line" id="glow-4-7" x1="180" y1="120" x2="220" y2="280"/>
+                <line class="glow-line" id="glow-8-3" x1="400" y1="320" x2="420" y2="200"/>
+                <line class="glow-line" id="glow-8-1" x1="400" y1="320" x2="550" y2="250"/>
+            </g>
+
+            <!-- Sterne - GRÖSSER -->
+            <g class="stars-group">
+                <!-- Regulus (Alpha Leonis) - Hellster Stern -->
+                <g class="star" id="regulus" data-index="0">
+                    <circle class="star-outer-glow" cx="150" cy="350" r="60"/>
+                    <circle class="star-glow" cx="150" cy="350" r="35"/>
+                    <circle class="star-core" cx="150" cy="350" r="12"/>
+                </g>
+
+                <!-- Denebola (Beta Leonis) -->
+                <g class="star" id="denebola" data-index="1">
+                    <circle class="star-outer-glow" cx="550" cy="250" r="55"/>
+                    <circle class="star-glow" cx="550" cy="250" r="30"/>
+                    <circle class="star-core" cx="550" cy="250" r="10"/>
+                </g>
+
+                <!-- Algieba (Gamma Leonis) -->
+                <g class="star" id="algieba" data-index="2">
+                    <circle class="star-outer-glow" cx="300" cy="220" r="50"/>
+                    <circle class="star-glow" cx="300" cy="220" r="28"/>
+                    <circle class="star-core" cx="300" cy="220" r="9"/>
+                </g>
+
+                <!-- Zosma (Delta Leonis) -->
+                <g class="star" id="zosma" data-index="3">
+                    <circle class="star-outer-glow" cx="420" cy="200" r="45"/>
+                    <circle class="star-glow" cx="420" cy="200" r="25"/>
+                    <circle class="star-core" cx="420" cy="200" r="8"/>
+                </g>
+
+                <!-- Epsilon Leonis -->
+                <g class="star" id="epsilon" data-index="4">
+                    <circle class="star-outer-glow" cx="180" cy="120" r="42"/>
+                    <circle class="star-glow" cx="180" cy="120" r="22"/>
+                    <circle class="star-core" cx="180" cy="120" r="7"/>
+                </g>
+
+                <!-- Rasalas (Mu Leonis) -->
+                <g class="star" id="rasalas" data-index="5">
+                    <circle class="star-outer-glow" cx="270" cy="90" r="38"/>
+                    <circle class="star-glow" cx="270" cy="90" r="20"/>
+                    <circle class="star-core" cx="270" cy="90" r="6"/>
+                </g>
+
+                <!-- Adhafera (Zeta Leonis) -->
+                <g class="star" id="adhafera" data-index="6">
+                    <circle class="star-outer-glow" cx="350" cy="130" r="40"/>
+                    <circle class="star-glow" cx="350" cy="130" r="22"/>
+                    <circle class="star-core" cx="350" cy="130" r="7"/>
+                </g>
+
+                <!-- Eta Leonis -->
+                <g class="star" id="eta" data-index="7">
+                    <circle class="star-outer-glow" cx="220" cy="280" r="38"/>
+                    <circle class="star-glow" cx="220" cy="280" r="20"/>
+                    <circle class="star-core" cx="220" cy="280" r="6"/>
+                </g>
+
+                <!-- Chertan (Theta Leonis) -->
+                <g class="star" id="chertan" data-index="8">
+                    <circle class="star-outer-glow" cx="400" cy="320" r="40"/>
+                    <circle class="star-glow" cx="400" cy="320" r="22"/>
+                    <circle class="star-core" cx="400" cy="320" r="7"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Info-Panel LINKS -->
+    <div class="info-panel left" id="infoLeft">
+        <div class="star-info" id="info-regulus">
+            <h3>Regulus</h3>
+            <div class="designation">α Leonis · Hellster Stern im Löwen</div>
+            <div class="data-row">
+                <span class="data-label">Entfernung</span>
+                <span class="data-value">79 Lichtjahre</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Helligkeit</span>
+                <span class="data-value">1,40 mag</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Spektralklasse</span>
+                <span class="data-value">B8 IVn</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Temperatur</span>
+                <span class="data-value">12.460 K</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Bedeutung</span>
+                <span class="data-value">„Kleiner König"</span>
+            </div>
+        </div>
+
+        <div class="star-info" id="info-algieba">
+            <h3>Algieba</h3>
+            <div class="designation">γ Leonis · Doppelsternsystem</div>
+            <div class="data-row">
+                <span class="data-label">Entfernung</span>
+                <span class="data-value">130 Lichtjahre</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Helligkeit</span>
+                <span class="data-value">2,01 mag</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Spektralklasse</span>
+                <span class="data-value">K1 III + G7 III</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Besonderheit</span>
+                <span class="data-value">Doppelstern</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Bedeutung</span>
+                <span class="data-value">„Die Stirn"</span>
+            </div>
+        </div>
+
+        <div class="star-info" id="info-epsilon">
+            <h3>Ras Elased</h3>
+            <div class="designation">ε Leonis · Gelber Überriese</div>
+            <div class="data-row">
+                <span class="data-label">Entfernung</span>
+                <span class="data-value">247 Lichtjahre</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Helligkeit</span>
+                <span class="data-value">2,98 mag</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Spektralklasse</span>
+                <span class="data-value">G1 II</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Masse</span>
+                <span class="data-value">4 Sonnenmassen</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Bedeutung</span>
+                <span class="data-value">„Kopf des Löwen"</span>
+            </div>
+        </div>
+
+        <div class="star-info" id="info-rasalas">
+            <h3>Rasalas</h3>
+            <div class="designation">μ Leonis · Roter Riese</div>
+            <div class="data-row">
+                <span class="data-label">Entfernung</span>
+                <span class="data-value">133 Lichtjahre</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Helligkeit</span>
+                <span class="data-value">3,88 mag</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Spektralklasse</span>
+                <span class="data-value">K2 III</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Radius</span>
+                <span class="data-value">14 Sonnenradien</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Bedeutung</span>
+                <span class="data-value">„Kopf des Löwen"</span>
+            </div>
+        </div>
+
+        <div class="star-info" id="info-eta">
+            <h3>Al Jabhah</h3>
+            <div class="designation">η Leonis · Weißer Überriese</div>
+            <div class="data-row">
+                <span class="data-label">Entfernung</span>
+                <span class="data-value">2.000 Lichtjahre</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Helligkeit</span>
+                <span class="data-value">3,52 mag</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Spektralklasse</span>
+                <span class="data-value">A0 Ib</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Leuchtkraft</span>
+                <span class="data-value">19.000 Sonnen</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Bedeutung</span>
+                <span class="data-value">„Die Stirn"</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info-Panel RECHTS -->
+    <div class="info-panel right" id="infoRight">
+        <div class="star-info" id="info-denebola">
+            <h3>Denebola</h3>
+            <div class="designation">β Leonis · Zweithellster Stern</div>
+            <div class="data-row">
+                <span class="data-label">Entfernung</span>
+                <span class="data-value">36 Lichtjahre</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Helligkeit</span>
+                <span class="data-value">2,14 mag</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Spektralklasse</span>
+                <span class="data-value">A3 V</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Temperatur</span>
+                <span class="data-value">8.500 K</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Bedeutung</span>
+                <span class="data-value">„Schwanz des Löwen"</span>
+            </div>
+        </div>
+
+        <div class="star-info" id="info-zosma">
+            <h3>Zosma</h3>
+            <div class="designation">δ Leonis · Weißer Hauptreihenstern</div>
+            <div class="data-row">
+                <span class="data-label">Entfernung</span>
+                <span class="data-value">58 Lichtjahre</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Helligkeit</span>
+                <span class="data-value">2,56 mag</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Spektralklasse</span>
+                <span class="data-value">A4 V</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Temperatur</span>
+                <span class="data-value">8.296 K</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Bedeutung</span>
+                <span class="data-value">„Der Gürtel"</span>
+            </div>
+        </div>
+
+        <div class="star-info" id="info-adhafera">
+            <h3>Adhafera</h3>
+            <div class="designation">ζ Leonis · Gelb-weißer Riese</div>
+            <div class="data-row">
+                <span class="data-label">Entfernung</span>
+                <span class="data-value">274 Lichtjahre</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Helligkeit</span>
+                <span class="data-value">3,44 mag</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Spektralklasse</span>
+                <span class="data-value">F0 III</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Leuchtkraft</span>
+                <span class="data-value">85 Sonnen</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Bedeutung</span>
+                <span class="data-value">„Die Mähne"</span>
+            </div>
+        </div>
+
+        <div class="star-info" id="info-chertan">
+            <h3>Chertan</h3>
+            <div class="designation">θ Leonis · Weißer Stern</div>
+            <div class="data-row">
+                <span class="data-label">Entfernung</span>
+                <span class="data-value">165 Lichtjahre</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Helligkeit</span>
+                <span class="data-value">3,34 mag</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Spektralklasse</span>
+                <span class="data-value">A2 V</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Temperatur</span>
+                <span class="data-value">9.350 K</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Bedeutung</span>
+                <span class="data-value">„Zwei kleine Rippen"</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indikator -->
+    <div class="scroll-indicator" id="scrollIndicator">
+        <span>Scroll</span>
+        <div class="arrow"></div>
+    </div>
+
+    <!-- Progress Dots -->
+    <div class="progress-container" id="progressContainer"></div>
+
+    <script>
+        // Stern-Daten mit Verbindungen für Animation
+        const stars = [
+            { id: 'regulus', name: 'Regulus', panel: 'left', connections: ['0-7'] },
+            { id: 'denebola', name: 'Denebola', panel: 'right', connections: ['3-1', '8-1'] },
+            { id: 'algieba', name: 'Algieba', panel: 'left', connections: ['7-2', '2-3', '2-6'] },
+            { id: 'zosma', name: 'Zosma', panel: 'right', connections: ['2-3', '3-1', '8-3'] },
+            { id: 'epsilon', name: 'Ras Elased', panel: 'left', connections: ['5-4', '4-7'] },
+            { id: 'rasalas', name: 'Rasalas', panel: 'left', connections: ['6-5', '5-4'] },
+            { id: 'adhafera', name: 'Adhafera', panel: 'right', connections: ['2-6', '6-5'] },
+            { id: 'eta', name: 'Al Jabhah', panel: 'left', connections: ['0-7', '7-2', '4-7'] },
+            { id: 'chertan', name: 'Chertan', panel: 'right', connections: ['8-3', '8-1'] }
+        ];
+
+        // Pfad durch das Sternbild (Reihenfolge für Linien-Animation)
+        const starPath = [
+            { from: null, to: 0 },      // Start bei Regulus
+            { from: 0, to: 7, line: '0-7' },     // Regulus → Eta
+            { from: 7, to: 2, line: '7-2' },     // Eta → Algieba
+            { from: 2, to: 6, line: '2-6' },     // Algieba → Adhafera
+            { from: 6, to: 5, line: '6-5' },     // Adhafera → Rasalas
+            { from: 5, to: 4, line: '5-4' },     // Rasalas → Epsilon
+            { from: 4, to: 7, line: '4-7' },     // Epsilon → Eta (zurück)
+            { from: 2, to: 3, line: '2-3' },     // Algieba → Zosma
+            { from: 3, to: 1, line: '3-1' },     // Zosma → Denebola
+            { from: 3, to: 8, line: '8-3' },     // Zosma → Chertan
+        ];
+
+        let currentStarIndex = -1;
+        let isAnimating = false;
+
+        // Hintergrund-Sterne generieren
+        function generateBackgroundStars() {
+            const container = document.getElementById('starsBg');
+            const numStars = 150;
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star-bg';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = (Math.random() * 2 + 0.5) + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // Progress Dots erstellen
+        function createProgressDots() {
+            const container = document.getElementById('progressContainer');
+            stars.forEach((star, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'progress-dot';
+                dot.setAttribute('data-name', star.name);
+                dot.addEventListener('click', () => {
+                    scrollToStar(index);
+                });
+                container.appendChild(dot);
+            });
+        }
+
+        // Zu einem bestimmten Stern scrollen
+        function scrollToStar(index) {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const targetScroll = (scrollHeight / stars.length) * (index + 0.5);
+            window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        }
+
+        // Linien-Animation von einem Stern zum anderen
+        function animateLine(lineId, reverse = false) {
+            const line = document.getElementById('glow-' + lineId);
+            if (!line) return Promise.resolve();
+
+            return new Promise(resolve => {
+                const length = line.getTotalLength ? line.getTotalLength() :
+                    Math.sqrt(Math.pow(line.x2.baseVal.value - line.x1.baseVal.value, 2) +
+                              Math.pow(line.y2.baseVal.value - line.y1.baseVal.value, 2));
+
+                line.style.strokeDasharray = length;
+                line.style.strokeDashoffset = reverse ? -length : length;
+                line.classList.add('animating');
+
+                // Animation starten
+                requestAnimationFrame(() => {
+                    line.style.transition = 'stroke-dashoffset 0.6s ease-out';
+                    line.style.strokeDashoffset = '0';
+                });
+
+                setTimeout(() => {
+                    line.style.transition = 'opacity 0.3s ease';
+                    line.classList.remove('animating');
+                    line.style.strokeDashoffset = length;
+                    resolve();
+                }, 800);
+            });
+        }
+
+        // Stern aktivieren
+        async function activateStar(index) {
+            if (index === currentStarIndex || isAnimating) return;
+
+            const previousIndex = currentStarIndex;
+            currentStarIndex = index;
+
+            // Alle Sterne und Infos zurücksetzen
+            document.querySelectorAll('.star').forEach(star => {
+                star.classList.remove('active');
+            });
+            document.querySelectorAll('.star-info').forEach(info => {
+                info.classList.remove('visible');
+            });
+            document.querySelectorAll('.progress-dot').forEach(dot => {
+                dot.classList.remove('active');
+            });
+
+            if (index >= 0 && index < stars.length) {
+                const star = stars[index];
+
+                // Linien-Animation wenn vorheriger Stern existiert
+                if (previousIndex >= 0 && previousIndex < stars.length) {
+                    const pathStep = starPath.find(p =>
+                        (p.from === previousIndex && p.to === index) ||
+                        (p.from === index && p.to === previousIndex)
+                    );
+
+                    if (pathStep && pathStep.line) {
+                        isAnimating = true;
+                        await animateLine(pathStep.line, pathStep.from === index);
+                        isAnimating = false;
+                    }
+                }
+
+                // Stern aktivieren
+                document.getElementById(star.id).classList.add('active');
+
+                // Info anzeigen
+                document.getElementById('info-' + star.id).classList.add('visible');
+
+                // Progress Dot aktivieren
+                document.querySelectorAll('.progress-dot')[index].classList.add('active');
+
+                // Counter aktualisieren
+                document.getElementById('starCounter').textContent = index + 1;
+
+                // Scroll-Indikator ausblenden
+                if (index > 0) {
+                    document.getElementById('scrollIndicator').style.opacity = '0';
+                }
+            }
+        }
+
+        // Scroll-Handler
+        function handleScroll() {
+            const scrollTop = window.scrollY;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollTop / scrollHeight;
+
+            // Berechne welcher Stern aktiv sein soll
+            const starIndex = Math.floor(scrollPercent * stars.length);
+            activateStar(Math.min(starIndex, stars.length - 1));
+        }
+
+        // Initialisierung
+        document.addEventListener('DOMContentLoaded', () => {
+            generateBackgroundStars();
+            createProgressDots();
+
+            // Glow-Linien vorbereiten
+            document.querySelectorAll('.glow-line').forEach(line => {
+                const length = Math.sqrt(
+                    Math.pow(parseFloat(line.getAttribute('x2')) - parseFloat(line.getAttribute('x1')), 2) +
+                    Math.pow(parseFloat(line.getAttribute('y2')) - parseFloat(line.getAttribute('y1')), 2)
+                );
+                line.style.strokeDasharray = length;
+                line.style.strokeDashoffset = length;
+            });
+
+            // Scroll-Event
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        handleScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // Initial ersten Stern aktivieren
+            setTimeout(() => {
+                if (window.scrollY < 100) {
+                    activateStar(0);
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll-Driven Roadmaps</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Scroll-Driven Roadmaps</h1>
+        <p>Animationen reagieren auf deine Scroll-Position</p>
+        <div class="scroll-hint">
+            <div class="mouse"><div class="wheel"></div></div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- VARIATION 1: Path Progress - Linie zeichnet sich beim Scrollen -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="roadmap-section v1" data-scroll-section>
+        <h2>Path Progress</h2>
+        <p class="section-desc">Die Linie zeichnet sich während du scrollst</p>
+
+        <div class="path-timeline">
+            <svg class="progress-path" viewBox="0 0 100 400" preserveAspectRatio="none">
+                <path class="path-bg" d="M50 0 L50 400"/>
+                <path class="path-progress" d="M50 0 L50 400"/>
+            </svg>
+
+            <div class="path-steps">
+                <div class="path-step" data-progress="0">
+                    <div class="step-marker"></div>
+                    <div class="step-content">
+                        <span class="step-num">01</span>
+                        <h3>Anfrage</h3>
+                    </div>
+                </div>
+                <div class="path-step" data-progress="33">
+                    <div class="step-marker"></div>
+                    <div class="step-content">
+                        <span class="step-num">02</span>
+                        <h3>Beratung</h3>
+                    </div>
+                </div>
+                <div class="path-step" data-progress="66">
+                    <div class="step-marker"></div>
+                    <div class="step-content">
+                        <span class="step-num">03</span>
+                        <h3>Umsetzung</h3>
+                    </div>
+                </div>
+                <div class="path-step" data-progress="100">
+                    <div class="step-marker"></div>
+                    <div class="step-content">
+                        <span class="step-num">04</span>
+                        <h3>Launch</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- VARIATION 2: Horizontal Scroll - Cards schieben sich rein -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="roadmap-section v2" data-scroll-section>
+        <h2>Horizontal Slide</h2>
+        <p class="section-desc">Cards schieben sich von den Seiten rein</p>
+
+        <div class="horizontal-timeline">
+            <div class="h-step from-left" data-speed="0.3">
+                <div class="h-card">
+                    <span class="h-num">01</span>
+                    <h3>Discovery</h3>
+                </div>
+            </div>
+            <div class="h-step from-right" data-speed="0.4">
+                <div class="h-card">
+                    <span class="h-num">02</span>
+                    <h3>Design</h3>
+                </div>
+            </div>
+            <div class="h-step from-left" data-speed="0.5">
+                <div class="h-card">
+                    <span class="h-num">03</span>
+                    <h3>Develop</h3>
+                </div>
+            </div>
+            <div class="h-step from-right" data-speed="0.6">
+                <div class="h-card">
+                    <span class="h-num">04</span>
+                    <h3>Deploy</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- VARIATION 3: Scale & Fade - Wächst beim Scrollen -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="roadmap-section v3" data-scroll-section>
+        <h2>Scale & Fade</h2>
+        <p class="section-desc">Elemente wachsen und werden sichtbar</p>
+
+        <div class="scale-timeline">
+            <div class="scale-step" data-delay="0">
+                <div class="scale-circle">
+                    <span>1</span>
+                </div>
+                <div class="scale-label">Planung</div>
+            </div>
+            <div class="scale-connector"></div>
+            <div class="scale-step" data-delay="0.15">
+                <div class="scale-circle">
+                    <span>2</span>
+                </div>
+                <div class="scale-label">Design</div>
+            </div>
+            <div class="scale-connector"></div>
+            <div class="scale-step" data-delay="0.3">
+                <div class="scale-circle">
+                    <span>3</span>
+                </div>
+                <div class="scale-label">Code</div>
+            </div>
+            <div class="scale-connector"></div>
+            <div class="scale-step" data-delay="0.45">
+                <div class="scale-circle">
+                    <span>4</span>
+                </div>
+                <div class="scale-label">Launch</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- VARIATION 4: Parallax Layers - Unterschiedliche Geschwindigkeiten -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="roadmap-section v4" data-scroll-section>
+        <h2>Parallax Layers</h2>
+        <p class="section-desc">Ebenen bewegen sich unterschiedlich schnell</p>
+
+        <div class="parallax-timeline">
+            <div class="parallax-layer layer-bg" data-speed="0.1"></div>
+            <div class="parallax-layer layer-mid" data-speed="0.3"></div>
+
+            <div class="parallax-steps">
+                <div class="parallax-step" data-speed="0.2">
+                    <div class="p-card">
+                        <span class="p-num">01</span>
+                        <h3>Analyse</h3>
+                    </div>
+                </div>
+                <div class="parallax-step" data-speed="0.35">
+                    <div class="p-card">
+                        <span class="p-num">02</span>
+                        <h3>Konzept</h3>
+                    </div>
+                </div>
+                <div class="parallax-step" data-speed="0.5">
+                    <div class="p-card">
+                        <span class="p-num">03</span>
+                        <h3>Umsetzung</h3>
+                    </div>
+                </div>
+                <div class="parallax-step" data-speed="0.65">
+                    <div class="p-card">
+                        <span class="p-num">04</span>
+                        <h3>Fertig</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- VARIATION 5: Rotate on Scroll - Dreht sich beim Scrollen -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="roadmap-section v5" data-scroll-section>
+        <h2>Rotate on Scroll</h2>
+        <p class="section-desc">Elemente rotieren basierend auf Scroll-Position</p>
+
+        <div class="rotate-timeline">
+            <div class="rotate-step" data-rotation="360">
+                <div class="rotate-card">
+                    <div class="rotate-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <span>Start</span>
+                </div>
+            </div>
+            <div class="rotate-step" data-rotation="720">
+                <div class="rotate-card">
+                    <div class="rotate-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span>Build</span>
+                </div>
+            </div>
+            <div class="rotate-step" data-rotation="1080">
+                <div class="rotate-card">
+                    <div class="rotate-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <span>Test</span>
+                </div>
+            </div>
+            <div class="rotate-step" data-rotation="1440">
+                <div class="rotate-card">
+                    <div class="rotate-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                    <span>Ship</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- VARIATION 6: Sticky Progress - Fixierte Fortschrittsanzeige -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="roadmap-section v6" data-scroll-section>
+        <h2>Sticky Progress</h2>
+        <p class="section-desc">Fortschrittsbalken folgt deinem Scroll</p>
+
+        <div class="sticky-timeline">
+            <div class="sticky-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-dots">
+                    <div class="progress-dot" data-step="1"><span>1</span></div>
+                    <div class="progress-dot" data-step="2"><span>2</span></div>
+                    <div class="progress-dot" data-step="3"><span>3</span></div>
+                    <div class="progress-dot" data-step="4"><span>4</span></div>
+                </div>
+            </div>
+
+            <div class="sticky-content">
+                <div class="sticky-step" data-step="1">
+                    <h3>Schritt 1: Idee</h3>
+                    <p>Die Grundidee wird entwickelt und validiert.</p>
+                </div>
+                <div class="sticky-step" data-step="2">
+                    <h3>Schritt 2: Design</h3>
+                    <p>Visuelle Gestaltung und UX werden erarbeitet.</p>
+                </div>
+                <div class="sticky-step" data-step="3">
+                    <h3>Schritt 3: Entwicklung</h3>
+                    <p>Die technische Umsetzung erfolgt.</p>
+                </div>
+                <div class="sticky-step" data-step="4">
+                    <h3>Schritt 4: Launch</h3>
+                    <p>Das Produkt geht live!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- VARIATION 7: 3D Flip on Scroll - Kippt beim Scrollen -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="roadmap-section v7" data-scroll-section>
+        <h2>3D Flip</h2>
+        <p class="section-desc">Cards kippen basierend auf Scroll</p>
+
+        <div class="flip-timeline">
+            <div class="flip-step" data-flip="rotateX">
+                <div class="flip-card">
+                    <div class="flip-front">
+                        <span class="flip-num">01</span>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Kickoff</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-step" data-flip="rotateY">
+                <div class="flip-card">
+                    <div class="flip-front">
+                        <span class="flip-num">02</span>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Sprint</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-step" data-flip="rotateX">
+                <div class="flip-card">
+                    <div class="flip-front">
+                        <span class="flip-num">03</span>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Review</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-step" data-flip="rotateY">
+                <div class="flip-card">
+                    <div class="flip-front">
+                        <span class="flip-num">04</span>
+                    </div>
+                    <div class="flip-back">
+                        <h3>Release</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- VARIATION 8: Counter Animation - Zahlen zählen hoch -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section class="roadmap-section v8" data-scroll-section>
+        <h2>Scroll Counter</h2>
+        <p class="section-desc">Zahlen animieren basierend auf Scroll</p>
+
+        <div class="counter-timeline">
+            <div class="counter-step">
+                <div class="counter-circle">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="counter-bg" cx="50" cy="50" r="45"/>
+                        <circle class="counter-progress" cx="50" cy="50" r="45" data-target="25"/>
+                    </svg>
+                    <span class="counter-num" data-target="25">0</span>
+                    <span class="counter-suffix">%</span>
+                </div>
+                <div class="counter-label">Phase 1</div>
+            </div>
+            <div class="counter-step">
+                <div class="counter-circle">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="counter-bg" cx="50" cy="50" r="45"/>
+                        <circle class="counter-progress" cx="50" cy="50" r="45" data-target="50"/>
+                    </svg>
+                    <span class="counter-num" data-target="50">0</span>
+                    <span class="counter-suffix">%</span>
+                </div>
+                <div class="counter-label">Phase 2</div>
+            </div>
+            <div class="counter-step">
+                <div class="counter-circle">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="counter-bg" cx="50" cy="50" r="45"/>
+                        <circle class="counter-progress" cx="50" cy="50" r="45" data-target="75"/>
+                    </svg>
+                    <span class="counter-num" data-target="75">0</span>
+                    <span class="counter-suffix">%</span>
+                </div>
+                <div class="counter-label">Phase 3</div>
+            </div>
+            <div class="counter-step">
+                <div class="counter-circle">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="counter-bg" cx="50" cy="50" r="45"/>
+                        <circle class="counter-progress" cx="50" cy="50" r="45" data-target="100"/>
+                    </svg>
+                    <span class="counter-num" data-target="100">0</span>
+                    <span class="counter-suffix">%</span>
+                </div>
+                <div class="counter-label">Fertig</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <section class="spacer"></section>
+
+    <script src="script.js"></script>
+</body>
+</html>

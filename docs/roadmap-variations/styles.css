@@ -1,0 +1,729 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLL-DRIVEN ROADMAP ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #0a0a0f;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0f 100%);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    color: #888;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.scroll-hint {
+    animation: bounce 2s infinite;
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid #667eea;
+    border-radius: 13px;
+    position: relative;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: #667eea;
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-wheel 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+@keyframes scroll-wheel {
+    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ROADMAP SECTIONS - BASE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.roadmap-section {
+    min-height: 100vh;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.roadmap-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-desc {
+    color: #666;
+    margin-bottom: 60px;
+    font-size: 1rem;
+}
+
+.spacer {
+    height: 50vh;
+    background: #0a0a0f;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   V1: PATH PROGRESS - Linie zeichnet sich beim Scrollen
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.v1 {
+    background: linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+}
+
+.path-timeline {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 500px;
+}
+
+.progress-path {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+}
+
+.path-bg {
+    stroke: #222;
+    stroke-width: 4;
+    fill: none;
+}
+
+.path-progress {
+    stroke: #667eea;
+    stroke-width: 4;
+    fill: none;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+}
+
+.path-steps {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.path-step {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0.3;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.path-step:nth-child(odd) {
+    flex-direction: row;
+    padding-left: calc(50% + 30px);
+}
+
+.path-step:nth-child(even) {
+    flex-direction: row-reverse;
+    padding-right: calc(50% + 30px);
+}
+
+.path-step.active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.step-marker {
+    width: 20px;
+    height: 20px;
+    background: #1a1a2e;
+    border: 3px solid #667eea;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.path-step.active .step-marker {
+    background: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+}
+
+.step-content {
+    background: rgba(102, 126, 234, 0.1);
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.step-num {
+    font-size: 0.8rem;
+    color: #667eea;
+    font-weight: 600;
+}
+
+.step-content h3 {
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   V2: HORIZONTAL SLIDE - Cards schieben sich rein
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.v2 {
+    background: linear-gradient(180deg, #12121a 0%, #0f0f17 100%);
+}
+
+.horizontal-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.h-step {
+    will-change: transform, opacity;
+}
+
+.h-step.from-left {
+    transform: translateX(-100vw);
+}
+
+.h-step.from-right {
+    transform: translateX(100vw);
+}
+
+.h-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 16px;
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.h-num {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.h-card h3 {
+    font-size: 1.3rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   V3: SCALE & FADE - Wächst beim Scrollen
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.v3 {
+    background: linear-gradient(180deg, #0f0f17 0%, #0a0a12 100%);
+}
+
+.scale-timeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.scale-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transform: scale(0);
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.scale-circle {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.4);
+}
+
+.scale-label {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.scale-connector {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+    transform: scaleX(0);
+    will-change: transform;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   V4: PARALLAX LAYERS - Unterschiedliche Geschwindigkeiten
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.v4 {
+    background: linear-gradient(180deg, #0a0a12 0%, #0d0d15 100%);
+}
+
+.parallax-timeline {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+}
+
+.parallax-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.layer-bg {
+    background: radial-gradient(circle at 30% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+}
+
+.layer-mid {
+    background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 30%);
+}
+
+.parallax-steps {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.parallax-step {
+    will-change: transform;
+}
+
+.p-card {
+    background: rgba(20, 20, 35, 0.9);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.p-num {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.p-card h3 {
+    font-size: 1.1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   V5: ROTATE ON SCROLL - Dreht sich beim Scrollen
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.v5 {
+    background: linear-gradient(180deg, #0d0d15 0%, #0a0a10 100%);
+}
+
+.rotate-timeline {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.rotate-step {
+    perspective: 500px;
+}
+
+.rotate-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    will-change: transform;
+}
+
+.rotate-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+    border: 2px solid #667eea;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+.rotate-icon svg {
+    width: 36px;
+    height: 36px;
+    color: #667eea;
+}
+
+.rotate-card span {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   V6: STICKY PROGRESS - Fixierte Fortschrittsanzeige
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.v6 {
+    background: linear-gradient(180deg, #0a0a10 0%, #0c0c14 100%);
+    min-height: 200vh;
+    padding-top: 50px;
+}
+
+.sticky-timeline {
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+}
+
+.sticky-progress {
+    position: sticky;
+    top: 50px;
+    z-index: 100;
+    background: rgba(10, 10, 15, 0.95);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    backdrop-filter: blur(10px);
+    margin-bottom: 40px;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #222;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+.progress-dots {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-dot {
+    width: 36px;
+    height: 36px;
+    background: #1a1a2e;
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.progress-dot.active {
+    border-color: #667eea;
+    background: #667eea;
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+}
+
+.progress-dot.completed {
+    border-color: #764ba2;
+    background: #764ba2;
+}
+
+.sticky-content {
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    padding: 50px 0;
+}
+
+.sticky-step {
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 16px;
+    padding: 40px;
+    opacity: 0.3;
+    transform: translateY(30px);
+    transition: all 0.3s;
+}
+
+.sticky-step.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sticky-step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sticky-step p {
+    color: #aaa;
+    font-size: 1.1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   V7: 3D FLIP ON SCROLL - Kippt beim Scrollen
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.v7 {
+    background: linear-gradient(180deg, #0c0c14 0%, #0a0a0f 100%);
+}
+
+.flip-timeline {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+
+.flip-step {
+    width: 120px;
+    height: 150px;
+}
+
+.flip-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.flip-front,
+.flip-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flip-front {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.flip-num {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.flip-back {
+    background: rgba(20, 20, 35, 0.95);
+    border: 2px solid #667eea;
+    transform: rotateY(180deg);
+}
+
+.flip-step[data-flip="rotateX"] .flip-back {
+    transform: rotateX(180deg);
+}
+
+.flip-back h3 {
+    font-size: 1.2rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   V8: SCROLL COUNTER - Zahlen animieren
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.v8 {
+    background: linear-gradient(180deg, #0a0a0f 0%, #0a0a0f 100%);
+}
+
+.counter-timeline {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.counter-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.counter-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.counter-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.counter-bg {
+    fill: none;
+    stroke: #222;
+    stroke-width: 8;
+}
+
+.counter-progress {
+    fill: none;
+    stroke: #667eea;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.5));
+}
+
+.counter-num {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.counter-suffix {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 25px);
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #667eea;
+}
+
+.counter-label {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .roadmap-section {
+        padding: 60px 15px;
+    }
+
+    .roadmap-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .path-step:nth-child(odd),
+    .path-step:nth-child(even) {
+        padding-left: 60px;
+        padding-right: 20px;
+        flex-direction: row;
+    }
+
+    .h-card {
+        padding: 20px;
+    }
+
+    .parallax-steps {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .rotate-timeline,
+    .flip-timeline,
+    .counter-timeline {
+        gap: 20px;
+    }
+
+    .sticky-content {
+        gap: 100px;
+    }
+}

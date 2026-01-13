@@ -57,3 +57,10 @@ Erstelle ALLE fehlenden Unterseiten für die Website im angegebenen Ordner.
 
 Für jede Seite:
 - `[seitenname].html` im gleichen Ordner wie index.html
+
+## Skills
+
+- `/unique-element-generator` - Animiertes SVG-Element für Hero
+- `/scroll-text-animations` - Text-Animationen (Underline, Counter, Word-Reveal)
+- `/parallax-svg-generator` - Detaillierte SVG-Grafiken
+- `/parallax-design-ideas` - Inspiration für Scroll-Effekte
