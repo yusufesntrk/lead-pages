@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 100">
+  <defs>
+    <style>
+      .logo-text { font-family: 'Arial', sans-serif; font-weight: 300; letter-spacing: 8px; }
+    </style>
+  </defs>
+  <!-- GKK -->
+  <text x="0" y="70" class="logo-text" fill="#d9222b" font-size="60">GKK</text>
+  <!-- PARTNERS -->
+  <text x="200" y="70" class="logo-text" fill="#1a1a1a" font-size="60">PARTNERS</text>
+</svg>
