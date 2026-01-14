@@ -246,13 +246,13 @@ p {
 .nav {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
 }
 
 .nav__list {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
 }
 
 .nav__link {
