@@ -98,6 +98,38 @@ rmdir docs/[firmenname]/.playwright-tmp
 
 ## Website-Erstellung - Kernprinzipien
 
+### 🚨 IMMER ZUERST: Industry Preset lesen!
+
+**BEVOR du eine Website baust - egal ob Agent oder manuell:**
+
+```
+.claude/skills/industry-presets/presets/[branche].md
+```
+
+| Branche | Preset-Datei |
+|---------|--------------|
+| Steuerberater | `steuerberater.md` |
+| Rechtsanwalt | `rechtsanwalt.md` |
+| Restaurant | `restaurant.md` |
+| Arzt | `arzt.md` |
+| Handwerk | `handwerk.md` |
+| Immobilien | `immobilien.md` |
+| Tech/IT | `tech.md` |
+
+**Das Preset enthält:**
+- Navbar-Styling (Höhe, Abstände, Logo-Größe)
+- Erlaubte Animationen
+- Farbschema-Richtlinien
+- Hero-Layout
+- UX-Regeln
+
+```
+❌ FALSCH: Einfach drauflos bauen
+✅ RICHTIG: Preset lesen → Regeln anwenden → dann bauen
+```
+
+---
+
 ### 1. Deutsche Sprache - Umlaute verwenden!
 
 **IMMER echte deutsche Umlaute und Sonderzeichen:**
