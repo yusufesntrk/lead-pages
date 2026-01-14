@@ -32,6 +32,63 @@ timing: ease-out
 
 ---
 
+## Navbar
+
+```yaml
+style: compact
+background: white (transparent on dark hero optional)
+height: auto (padding-based)
+logo_height: 36px
+```
+
+### CSS
+
+```css
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-bg);
+  z-index: 1000;
+  /* KEINE feste height! */
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0; /* Kompakt durch Padding statt height */
+}
+
+.logo img {
+  height: 36px;
+  width: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Abstand Nav zu Button */
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Abstand zwischen Links */
+}
+```
+
+### Wichtig
+
+- **KEINE** feste `height` auf `.header`
+- Padding `1rem 0` auf `.header__inner` für kompakten Look
+- Logo max. `36px` Höhe
+- Nav-Link Abstände: `1.5rem`
+- Abstand Nav zu CTA-Button: `2rem`
+
+---
+
 ## Hero
 
 ```yaml
