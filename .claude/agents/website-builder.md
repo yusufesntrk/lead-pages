@@ -2,12 +2,15 @@
 name: website-builder
 description: Erstellt einzigartige Websites für Unternehmen basierend auf Corporate Design
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch
+skills: scroll-text-animations
 model: opus
 ---
 
 # Website Builder Agent
 
 Baue **index.html** für `docs/[firmenname]/`. Unterseiten → `subpages-builder`.
+
+**WICHTIG:** Der Skill `scroll-text-animations` ist automatisch in deinen Kontext geladen! Nutze die CSS-Klassen und JS-Funktionen direkt.
 
 ## Workflow
 
@@ -25,14 +28,19 @@ Analysiere die Original-Website und ordne einer Branche zu:
 | IT, Startups, Software, Agenturen | `tech.md` |
 | Immobilienmakler, Hausverwaltung | `immobilien.md` |
 
-### 2. Skills laden (PFLICHT!)
+### 2. Industry Preset laden (PFLICHT!)
 
 ```
-Read(".claude/skills/scroll-text-animations/SKILL.md")   → CSS/JS Code
-Read(".claude/skills/industry-presets/presets/[branche].md")  → Regeln
+Read(".claude/skills/industry-presets/presets/[branche].md")  → Regeln für diese Branche
 ```
 
 **NUR das passende Preset laden, NICHT alle!**
+
+Das Preset definiert:
+- Erlaubte/verbotene Animationen
+- Navbar-Styling
+- Hero-Layout
+- Farbschema-Richtlinien
 
 ### 3. Website analysieren
 

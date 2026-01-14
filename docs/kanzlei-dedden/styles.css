@@ -28,8 +28,8 @@
     --color-border-light: #edf2f7;
 
     /* Typography */
-    --font-heading: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
 
     /* Spacing */
     --space-xs: 0.25rem;
@@ -457,6 +457,51 @@ ul, ol {
     0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
     40% { transform: translateX(-50%) translateY(-10px); }
     60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* ----------------------------------------
+   TRUST BADGES SECTION
+   ---------------------------------------- */
+.trust-badges {
+    padding: var(--space-2xl) 0;
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.trust-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3xl);
+    flex-wrap: wrap;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.trust-item svg {
+    width: 24px;
+    height: 24px;
+    color: var(--color-primary);
+}
+
+/* ----------------------------------------
+   BLUR REVEAL ANIMATION
+   ---------------------------------------- */
+.blur-reveal {
+    filter: blur(8px);
+    opacity: 0.3;
+    transition: filter 0.8s ease, opacity 0.8s ease;
+}
+
+.blur-reveal.visible {
+    filter: blur(0);
+    opacity: 1;
 }
 
 /* ----------------------------------------
