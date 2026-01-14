@@ -52,7 +52,7 @@
 
     /* Layout */
     --container-max: 1200px;
-    --header-height: 64px;
+    --header-height: 68px;
 
     /* Border Radius */
     --radius-sm: 4px;
@@ -216,7 +216,6 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    height: var(--header-height);
     background: var(--color-bg);
     z-index: 1000;
     transition: box-shadow var(--transition-normal), background var(--transition-normal);
@@ -230,7 +229,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
+    padding: var(--spacing-sm) 0;
 }
 
 .logo {
@@ -239,7 +238,7 @@ p {
 }
 
 .logo img {
-    height: 40px;
+    height: 36px;
     width: auto;
 }
 
