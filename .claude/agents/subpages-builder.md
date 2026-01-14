@@ -20,27 +20,20 @@ Erstelle ALLE fehlenden Unterseiten für die Website im angegebenen Ordner.
 - Gleiche CSS-Variablen, Komponenten, Spacing wie Startseite
 - Gleiche Animationen und Hover-Effekte
 
-### 3. Rechtliche Seiten (KRITISCH!)
-**NIEMALS rechtliche Texte selbst generieren!**
-
-1. Von Original-Website abrufen: `WebFetch: [original]/impressum`
-2. Text 1:1 kopieren
-3. Falls nicht abrufbar → Platzhalter:
-   ```
-   "Die Datenschutzerklärung wird in Kürze hier veröffentlicht."
-   ```
-
-### 4. Echte Daten
+### 3. Echte Daten
 - **NIEMALS Platzhalter** (Lorem Ipsum, Fake-Kontakte)
 - Content aus Original-Website oder WebSearch ableiten
 
 ## Priorisierung
 
+**NICHT erstellen (macht website-builder):**
+- Impressum, Datenschutz
+
 **Must-Have:**
-- Impressum, Datenschutz, Kontakt
+- Kontakt, Über uns, Leistungen/Services
 
 **Should-Have:**
-- Über uns, Leistungen/Services, Team (falls Daten vorhanden)
+- Team (falls Daten vorhanden)
 
 **Optional:**
 - Blog, FAQ, Karriere, Downloads
