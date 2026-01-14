@@ -204,6 +204,19 @@ Von Original-Website übernehmen:
 "Use the responsive-checker to test mobile view"
 ```
 
+### Agent blockiert? Anweisungen trotzdem befolgen!
+
+**WICHTIG:** Wenn ein Agent durch Content-Filter blockiert wird und du die Aufgabe selbst übernimmst:
+
+1. **Agent-Datei LESEN:** `.claude/agents/[agent-name].md`
+2. **Alle Anweisungen befolgen** - der Agent hat spezifische Regeln!
+3. **Keine Abkürzungen** - der Agent-Prompt existiert aus gutem Grund
+
+```
+❌ FALSCH: Agent blockiert → einfach selbst machen
+✅ RICHTIG: Agent blockiert → Agent-Datei lesen → nach Anweisungen arbeiten
+```
+
 ---
 
 ## Output-Struktur
