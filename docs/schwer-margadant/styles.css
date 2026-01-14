@@ -52,7 +52,7 @@
 
     /* Layout */
     --container-max: 1200px;
-    --header-height: 80px;
+    --header-height: 64px;
 
     /* Border Radius */
     --radius-sm: 4px;
@@ -239,7 +239,7 @@ p {
 }
 
 .logo img {
-    height: 48px;
+    height: 40px;
     width: auto;
 }
 
