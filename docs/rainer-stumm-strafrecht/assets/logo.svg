@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a365d"/>
+      <stop offset="100%" style="stop-color:#2d3748"/>
+    </linearGradient>
+  </defs>
+  <!-- Waage Symbol -->
+  <g fill="url(#logoGradient)">
+    <rect x="22" y="8" width="3" height="40" rx="1.5"/>
+    <rect x="10" y="45" width="27" height="4" rx="2"/>
+    <circle cx="23.5" cy="8" r="4"/>
+    <path d="M8 18 L39 18" stroke="url(#logoGradient)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M5 18 L5 28 L13 28 L13 18" fill="none" stroke="url(#logoGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M34 18 L34 28 L42 28 L42 18" fill="none" stroke="url(#logoGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Text -->
+  <text x="55" y="28" font-family="Playfair Display, Georgia, serif" font-size="20" font-weight="700" fill="#1a365d">Rainer Stumm</text>
+  <text x="55" y="46" font-family="Source Sans Pro, sans-serif" font-size="12" font-weight="400" fill="#718096" letter-spacing="2">FACHANWALT FÜR STRAFRECHT</text>
+</svg>
