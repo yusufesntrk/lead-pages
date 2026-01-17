@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JARVIS - AI Team Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 20px currentColor; }
+      50% { box-shadow: 0 0 40px currentColor, 0 0 60px currentColor; }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0) rotate(0); }
+      25% { transform: translateX(-3px) rotate(-2deg); }
+      75% { transform: translateX(3px) rotate(2deg); }
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: white; }
+    }
+
+    @keyframes sound-wave {
+      0%, 100% { height: 8px; }
+      50% { height: 24px; }
+    }
+
+    @keyframes data-particle {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-60px) scale(0.5); opacity: 0; }
+    }
+
+    .pulse-ring {
+      animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .glow-active {
+      animation: glow-pulse 1.5s ease-in-out infinite;
+    }
+
+    .agent-working {
+      animation: shake 0.2s ease-in-out infinite;
+    }
+
+    .sound-bar {
+      animation: sound-wave 0.5s ease-in-out infinite;
+    }
+
+    .sound-bar:nth-child(2) { animation-delay: 0.1s; }
+    .sound-bar:nth-child(3) { animation-delay: 0.2s; }
+    .sound-bar:nth-child(4) { animation-delay: 0.3s; }
+    .sound-bar:nth-child(5) { animation-delay: 0.15s; }
+
+    .speech-bubble {
+      position: relative;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid white;
+    }
+
+    .speech-bubble-down::after {
+      top: -8px;
+      bottom: auto;
+      border-top: none;
+      border-bottom: 8px solid;
+      border-bottom-color: inherit;
+    }
+
+    .line-animate {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      transition: stroke-dashoffset 0.6s ease-out;
+    }
+
+    .line-animate.active {
+      stroke-dashoffset: 0;
+    }
+
+    .particle {
+      animation: data-particle 1s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 min-h-screen flex items-center justify-center p-4 overflow-hidden">
+
+  <div x-data="jarvisDemo()" x-init="init()" class="w-full max-w-5xl">
+
+    <!-- Main Container -->
+    <div class="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-slate-700/50 shadow-2xl">
+
+      <!-- Background Grid -->
+      <div class="absolute inset-0 opacity-5 rounded-3xl overflow-hidden">
+        <svg width="100%" height="100%">
+          <defs>
+            <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+              <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#3B82F6" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)"/>
+        </svg>
+      </div>
+
+      <!-- Connection Lines SVG -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none z-0">
+        <!-- User to Jarvis -->
+        <path d="M 50% 82% Q 50% 65% 50% 55%"
+              class="line-animate"
+              :class="lines.userToJarvis ? 'active' : ''"
+              stroke="#3B82F6" stroke-width="3" fill="none" opacity="0.7"
+              style="stroke-dasharray: 150; stroke-dashoffset: 150; transition: stroke-dashoffset 0.5s;"
+              :style="lines.userToJarvis ? 'stroke-dashoffset: 0' : ''"/>
+
+        <!-- Jarvis to Agents -->
+        <path d="M 50% 38% Q 35% 30% 18% 22%"
+              class="line-animate"
+              stroke="#FBBF24" stroke-width="2" fill="none" opacity="0.6"
+              style="stroke-dasharray: 150; stroke-dashoffset: 150; transition: stroke-dashoffset 0.5s ease-out 0.2s;"
+              :style="lines.jarvisToCopy ? 'stroke-dashoffset: 0' : ''"/>
+
+        <path d="M 50% 38% L 50% 22%"
+              class="line-animate"
+              stroke="#A78BFA" stroke-width="2" fill="none" opacity="0.6"
+              style="stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 0.5s ease-out 0.3s;"
+              :style="lines.jarvisToFoto ? 'stroke-dashoffset: 0' : ''"/>
+
+        <path d="M 50% 38% Q 65% 30% 82% 22%"
+              class="line-animate"
+              stroke="#60A5FA" stroke-width="2" fill="none" opacity="0.6"
+              style="stroke-dasharray: 150; stroke-dashoffset: 150; transition: stroke-dashoffset 0.5s ease-out 0.4s;"
+              :style="lines.jarvisToCeo ? 'stroke-dashoffset: 0' : ''"/>
+
+        <!-- Agent to Agent -->
+        <path d="M 25% 18% Q 37% 12% 45% 18%"
+              stroke="#EC4899" stroke-width="2" fill="none" stroke-dasharray="4,4" opacity="0"
+              :style="lines.copyToFoto ? 'opacity: 0.6' : ''"
+              style="transition: opacity 0.3s"/>
+
+        <path d="M 55% 18% Q 67% 12% 75% 18%"
+              stroke="#EC4899" stroke-width="2" fill="none" stroke-dasharray="4,4" opacity="0"
+              :style="lines.fotoToCeo ? 'opacity: 0.6' : ''"
+              style="transition: opacity 0.3s"/>
+      </svg>
+
+      <div class="relative z-10">
+
+        <!-- Agents Row -->
+        <div class="flex justify-around items-start mb-6 md:mb-8">
+
+          <!-- COPY Agent -->
+          <div class="flex flex-col items-center">
+            <div class="relative">
+              <!-- Speech Bubble -->
+              <div x-show="speech.copy"
+                   x-transition:enter="transition ease-out duration-200"
+                   x-transition:enter-start="opacity-0 -translate-y-2"
+                   x-transition:enter-end="opacity-100 translate-y-0"
+                   x-transition:leave="transition ease-in duration-150"
+                   x-transition:leave-start="opacity-100"
+                   x-transition:leave-end="opacity-0"
+                   class="absolute -top-14 left-1/2 -translate-x-1/2 bg-white rounded-lg px-3 py-1.5 shadow-lg speech-bubble whitespace-nowrap z-20">
+                <p class="text-xs text-slate-700 font-medium" x-text="speech.copy"></p>
+              </div>
+
+              <!-- Agent Avatar -->
+              <div class="w-14 h-14 md:w-18 md:h-18 rounded-2xl p-1 transition-all duration-300"
+                   :class="{
+                     'bg-amber-400/20 ring-2 ring-amber-400 glow-active': active.copy,
+                     'bg-amber-100': !active.copy,
+                     'agent-working': working.copy
+                   }"
+                   style="--tw-shadow-color: #FBBF24;">
+                <svg viewBox="0 0 48 48" class="w-full h-full">
+                  <circle cx="24" cy="24" r="18" fill="#FBBF24"/>
+                  <path d="M10 18 Q12 8 24 10 Q36 8 38 18" fill="#92400E"/>
+                  <circle cx="14" cy="12" r="3" fill="#92400E"/>
+                  <circle cx="34" cy="12" r="3" fill="#92400E"/>
+                  <ellipse cx="24" cy="9" rx="4" ry="3" fill="#92400E"/>
+                  <rect x="12" y="20" width="10" height="8" rx="2" fill="none" stroke="#1E293B" stroke-width="1.5"/>
+                  <rect x="26" y="20" width="10" height="8" rx="2" fill="none" stroke="#1E293B" stroke-width="1.5"/>
+                  <line x1="22" y1="24" x2="26" y2="24" stroke="#1E293B" stroke-width="1.5"/>
+                  <ellipse cx="17" cy="24" rx="2.5" ry="3" fill="white"/>
+                  <ellipse cx="31" cy="24" rx="2.5" ry="3" fill="white"/>
+                  <circle cx="17" cy="24" r="1.5" fill="#1E293B"/>
+                  <circle cx="31" cy="24" r="1.5" fill="#1E293B"/>
+                  <!-- Mouth - changes when speaking -->
+                  <template x-if="speaking.copy">
+                    <ellipse cx="24" cy="34" rx="4" ry="3" fill="#DC2626">
+                      <animate attributeName="ry" values="3;1.5;3.5;2;3" dur="0.3s" repeatCount="indefinite"/>
+                    </ellipse>
+                  </template>
+                  <template x-if="!speaking.copy">
+                    <path d="M20 34 Q24 37 28 34" fill="none" stroke="#92400E" stroke-width="2" stroke-linecap="round"/>
+                  </template>
+                </svg>
+              </div>
+
+              <!-- Status Dot -->
+              <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-slate-800 transition-colors"
+                   :class="working.copy ? 'bg-amber-400' : (active.copy ? 'bg-green-400' : 'bg-slate-600')"></div>
+            </div>
+            <span class="text-white text-xs font-bold mt-2">COPY</span>
+          </div>
+
+          <!-- FOTO Agent -->
+          <div class="flex flex-col items-center">
+            <div class="relative">
+              <div x-show="speech.foto"
+                   x-transition:enter="transition ease-out duration-200"
+                   x-transition:enter-start="opacity-0 -translate-y-2"
+                   x-transition:enter-end="opacity-100 translate-y-0"
+                   x-transition:leave="transition ease-in duration-150"
+                   class="absolute -top-14 left-1/2 -translate-x-1/2 bg-white rounded-lg px-3 py-1.5 shadow-lg speech-bubble whitespace-nowrap z-20">
+                <p class="text-xs text-slate-700 font-medium" x-text="speech.foto"></p>
+              </div>
+
+              <div class="w-14 h-14 md:w-18 md:h-18 rounded-2xl p-1 transition-all duration-300"
+                   :class="{
+                     'bg-violet-400/20 ring-2 ring-violet-400 glow-active': active.foto,
+                     'bg-violet-100': !active.foto,
+                     'agent-working': working.foto
+                   }">
+                <svg viewBox="0 0 48 48" class="w-full h-full">
+                  <circle cx="24" cy="24" r="18" fill="#A78BFA"/>
+                  <path d="M8 20 Q8 6 24 8 Q40 6 40 20 L38 18 Q38 10 24 11 Q10 10 10 18 Z" fill="#4C1D95"/>
+                  <circle cx="16" cy="24" r="4" fill="white"/>
+                  <circle cx="16" cy="24" r="2" fill="#1E293B"/>
+                  <circle cx="32" cy="24" r="5" fill="#1E293B"/>
+                  <circle cx="32" cy="24" r="3.5" fill="#3B82F6"/>
+                  <circle cx="32" cy="24" r="2" fill="#1E293B"/>
+                  <circle cx="33.5" cy="22.5" r="1" fill="white" opacity="0.8"/>
+                  <!-- Flash when working -->
+                  <template x-if="working.foto">
+                    <circle cx="32" cy="24" r="6" fill="white">
+                      <animate attributeName="opacity" values="0;0.9;0" dur="0.4s" repeatCount="indefinite"/>
+                    </circle>
+                  </template>
+                  <template x-if="speaking.foto">
+                    <ellipse cx="24" cy="34" rx="3" ry="2.5" fill="#4C1D95">
+                      <animate attributeName="ry" values="2.5;1;3;1.5;2.5" dur="0.3s" repeatCount="indefinite"/>
+                    </ellipse>
+                  </template>
+                  <template x-if="!speaking.foto">
+                    <path d="M18 33 Q24 37 30 33" fill="none" stroke="#4C1D95" stroke-width="2" stroke-linecap="round"/>
+                  </template>
+                </svg>
+              </div>
+
+              <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-slate-800 transition-colors"
+                   :class="working.foto ? 'bg-violet-400' : (active.foto ? 'bg-green-400' : 'bg-slate-600')"></div>
+            </div>
+            <span class="text-white text-xs font-bold mt-2">FOTO</span>
+          </div>
+
+          <!-- CEO Agent -->
+          <div class="flex flex-col items-center">
+            <div class="relative">
+              <div x-show="speech.ceo"
+                   x-transition:enter="transition ease-out duration-200"
+                   x-transition:enter-start="opacity-0 -translate-y-2"
+                   x-transition:enter-end="opacity-100 translate-y-0"
+                   x-transition:leave="transition ease-in duration-150"
+                   class="absolute -top-14 left-1/2 -translate-x-1/2 bg-white rounded-lg px-3 py-1.5 shadow-lg speech-bubble whitespace-nowrap z-20">
+                <p class="text-xs text-slate-700 font-medium" x-text="speech.ceo"></p>
+              </div>
+
+              <div class="w-14 h-14 md:w-18 md:h-18 rounded-2xl p-1 transition-all duration-300"
+                   :class="{
+                     'bg-blue-400/20 ring-2 ring-blue-400 glow-active': active.ceo,
+                     'bg-blue-100': !active.ceo,
+                     'agent-working': working.ceo
+                   }">
+                <svg viewBox="0 0 48 48" class="w-full h-full">
+                  <circle cx="24" cy="22" r="16" fill="#60A5FA"/>
+                  <path d="M10 18 Q10 6 24 8 Q38 6 38 18 Q36 14 24 14 Q12 14 10 18 Z" fill="#1E3A5F"/>
+                  <line x1="13" y1="17" x2="19" y2="18" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="29" y1="18" x2="35" y2="17" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round"/>
+                  <ellipse cx="16" cy="22" rx="3" ry="3.5" fill="white"/>
+                  <ellipse cx="32" cy="22" rx="3" ry="3.5" fill="white"/>
+                  <circle cx="16" cy="22" r="1.5" fill="#1E293B"/>
+                  <circle cx="32" cy="22" r="1.5" fill="#1E293B"/>
+                  <template x-if="speaking.ceo">
+                    <rect x="20" y="29" width="8" height="4" rx="2" fill="#1E40AF">
+                      <animate attributeName="height" values="4;2;5;3;4" dur="0.25s" repeatCount="indefinite"/>
+                    </rect>
+                  </template>
+                  <template x-if="!speaking.ceo">
+                    <path d="M19 30 Q24 33 29 30" fill="none" stroke="#1E40AF" stroke-width="2" stroke-linecap="round"/>
+                  </template>
+                  <polygon points="24,38 21,42 24,48 27,42" fill="#1E40AF"/>
+                </svg>
+              </div>
+
+              <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-slate-800 transition-colors"
+                   :class="working.ceo ? 'bg-blue-400' : (active.ceo ? 'bg-green-400' : 'bg-slate-600')"></div>
+            </div>
+            <span class="text-white text-xs font-bold mt-2">CEO</span>
+          </div>
+        </div>
+
+        <!-- JARVIS Central -->
+        <div class="flex justify-center mb-6 md:mb-8">
+          <div class="relative">
+            <!-- Jarvis Speech -->
+            <div x-show="speech.jarvis"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 -translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-200"
+                 class="absolute -top-16 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl px-4 py-2 shadow-xl z-20 whitespace-nowrap">
+              <p class="text-sm text-white font-medium" x-text="speech.jarvis"></p>
+              <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-blue-600 rotate-45"></div>
+            </div>
+
+            <!-- Pulse when active -->
+            <template x-if="jarvisActive">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="absolute w-28 h-28 md:w-32 md:h-32 rounded-full bg-blue-500/20 pulse-ring"></div>
+                <div class="absolute w-28 h-28 md:w-32 md:h-32 rounded-full bg-blue-500/10 pulse-ring" style="animation-delay: 0.5s"></div>
+              </div>
+            </template>
+
+            <!-- Jarvis Core -->
+            <div class="relative w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 shadow-xl flex items-center justify-center transition-all duration-300"
+                 :class="{ 'shadow-blue-500/50 shadow-2xl': jarvisActive, 'floating': !jarvisActive }">
+              <div class="absolute inset-1 rounded-full bg-gradient-to-br from-blue-400/30 to-transparent"></div>
+              <div class="relative z-10 text-center">
+                <svg class="w-10 h-10 md:w-12 md:h-12 mx-auto text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <rect x="6" y="6" width="12" height="12" rx="2" stroke-width="1.5"/>
+                  <text x="12" y="13.5" text-anchor="middle" font-size="5" font-weight="bold" fill="currentColor" stroke="none">AI</text>
+                  <line x1="9" y1="6" x2="9" y2="3" stroke-width="1.5"/>
+                  <line x1="15" y1="6" x2="15" y2="3" stroke-width="1.5"/>
+                  <line x1="9" y1="18" x2="9" y2="21" stroke-width="1.5"/>
+                  <line x1="15" y1="18" x2="15" y2="21" stroke-width="1.5"/>
+                </svg>
+                <span class="text-white font-bold text-xs">JARVIS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Section -->
+        <div class="flex justify-center mb-4">
+          <div class="relative">
+            <!-- User Speech Bubble -->
+            <div x-show="speech.user"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-200"
+                 class="absolute -top-14 left-1/2 -translate-x-1/2 bg-slate-700 rounded-xl px-4 py-2 shadow-xl z-20 whitespace-nowrap border border-slate-600">
+              <p class="text-sm text-white" x-text="speech.user"></p>
+              <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-700 rotate-45 border-r border-b border-slate-600"></div>
+            </div>
+
+            <!-- User Avatar -->
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center shadow-lg border-2 transition-colors duration-300"
+                 :class="userSpeaking ? 'border-green-400' : 'border-slate-500'">
+              <div class="relative">
+                <!-- User Icon -->
+                <svg class="w-8 h-8 md:w-10 md:h-10 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+
+                <!-- Sound Waves when speaking -->
+                <div x-show="userSpeaking" class="absolute -right-6 top-1/2 -translate-y-1/2 flex gap-0.5">
+                  <div class="w-1 bg-green-400 rounded-full sound-bar"></div>
+                  <div class="w-1 bg-green-400 rounded-full sound-bar"></div>
+                  <div class="w-1 bg-green-400 rounded-full sound-bar"></div>
+                  <div class="w-1 bg-green-400 rounded-full sound-bar"></div>
+                </div>
+              </div>
+            </div>
+
+            <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-slate-400 text-xs font-medium">DU</span>
+          </div>
+        </div>
+
+        <!-- Status Display -->
+        <div class="text-center mt-8">
+          <p class="text-slate-400 text-sm" x-text="status"></p>
+        </div>
+
+        <!-- Play Button -->
+        <div class="flex justify-center mt-6">
+          <button @click="playDemo()"
+                  :disabled="isPlaying"
+                  class="px-6 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-medium rounded-xl transition-all flex items-center gap-2 shadow-lg hover:shadow-blue-500/25">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <span x-text="isPlaying ? 'Läuft...' : 'Demo starten'"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function jarvisDemo() {
+      return {
+        isPlaying: false,
+        status: 'Klicke auf "Demo starten" um die Animation zu sehen',
+
+        // States
+        userSpeaking: false,
+        jarvisActive: false,
+
+        speech: {
+          user: '',
+          jarvis: '',
+          copy: '',
+          foto: '',
+          ceo: ''
+        },
+
+        speaking: {
+          copy: false,
+          foto: false,
+          ceo: false
+        },
+
+        active: {
+          copy: false,
+          foto: false,
+          ceo: false
+        },
+
+        working: {
+          copy: false,
+          foto: false,
+          ceo: false
+        },
+
+        lines: {
+          userToJarvis: false,
+          jarvisToCopy: false,
+          jarvisToFoto: false,
+          jarvisToCeo: false,
+          copyToFoto: false,
+          fotoToCeo: false
+        },
+
+        init() {},
+
+        async playDemo() {
+          if (this.isPlaying) return;
+          this.isPlaying = true;
+          this.resetAll();
+
+          // === USER SPEAKS ===
+          this.status = 'Du sprichst zu Jarvis...';
+          this.userSpeaking = true;
+          await this.delay(400);
+          this.speech.user = '"Erledige alle meine Mails"';
+          await this.delay(2000);
+
+          // === MESSAGE TO JARVIS ===
+          this.lines.userToJarvis = true;
+          this.userSpeaking = false;
+          await this.delay(600);
+          this.speech.user = '';
+
+          // === JARVIS ACKNOWLEDGES ===
+          this.jarvisActive = true;
+          this.speech.jarvis = 'Verstanden! Ich verteile die Aufgaben...';
+          this.status = 'Jarvis analysiert die Anfrage...';
+          await this.delay(2000);
+
+          // === JARVIS DELEGATES ===
+          this.speech.jarvis = 'Team, wir haben Arbeit!';
+          this.status = 'Jarvis delegiert an das Team...';
+
+          // Activate lines to agents
+          this.lines.jarvisToCopy = true;
+          await this.delay(200);
+          this.lines.jarvisToFoto = true;
+          await this.delay(200);
+          this.lines.jarvisToCeo = true;
+          await this.delay(500);
+
+          // === CEO TAKES LEAD ===
+          this.speech.jarvis = '';
+          this.active.ceo = true;
+          this.speaking.ceo = true;
+          this.speech.ceo = 'Ich priorisiere die Mails!';
+          this.status = 'CEO analysiert und priorisiert...';
+          await this.delay(1500);
+
+          this.working.ceo = true;
+          this.speaking.ceo = false;
+          this.speech.ceo = '';
+          await this.delay(1200);
+          this.working.ceo = false;
+
+          // CEO sends to others
+          this.lines.fotoToCeo = true;
+          this.speaking.ceo = true;
+          this.speech.ceo = 'Copy, Foto - hier sind eure Tasks!';
+          await this.delay(1500);
+          this.speaking.ceo = false;
+          this.speech.ceo = '';
+
+          // === COPY WORKS ===
+          this.active.copy = true;
+          this.speaking.copy = true;
+          this.speech.copy = 'Ich schreibe die Antworten!';
+          this.status = 'Copy Agent schreibt E-Mail-Antworten...';
+          await this.delay(1500);
+
+          this.working.copy = true;
+          this.speaking.copy = false;
+          this.speech.copy = '';
+          await this.delay(2000);
+
+          // Copy talks to Foto
+          this.lines.copyToFoto = true;
+          this.working.copy = false;
+          this.speaking.copy = true;
+          this.speech.copy = 'Foto, brauch ein Bild für Mail 3!';
+          await this.delay(1500);
+          this.speaking.copy = false;
+          this.speech.copy = '';
+
+          // === FOTO WORKS ===
+          this.active.foto = true;
+          this.speaking.foto = true;
+          this.speech.foto = 'Ich erstelle das Bild!';
+          this.status = 'Foto Agent erstellt Grafik...';
+          await this.delay(1200);
+
+          this.working.foto = true;
+          this.speaking.foto = false;
+          this.speech.foto = '';
+          await this.delay(1800);
+          this.working.foto = false;
+
+          this.speaking.foto = true;
+          this.speech.foto = 'Fertig! Sieht super aus!';
+          await this.delay(1200);
+          this.speaking.foto = false;
+          this.speech.foto = '';
+
+          // === COPY FINISHES ===
+          this.speaking.copy = true;
+          this.speech.copy = 'Alle Antworten fertig!';
+          this.status = 'Copy Agent finalisiert...';
+          await this.delay(1200);
+          this.speaking.copy = false;
+          this.speech.copy = '';
+
+          // === CEO REVIEWS ===
+          this.speaking.ceo = true;
+          this.speech.ceo = 'Ich prüfe alles...';
+          this.status = 'CEO prüft die Ergebnisse...';
+          await this.delay(1500);
+
+          this.speech.ceo = 'Perfekt! Alles freigegeben!';
+          await this.delay(1200);
+          this.speaking.ceo = false;
+          this.speech.ceo = '';
+
+          // === JARVIS REPORTS BACK ===
+          this.jarvisActive = true;
+          this.speech.jarvis = 'Alle 12 Mails bearbeitet!';
+          this.status = 'Jarvis meldet Ergebnis...';
+          await this.delay(2000);
+
+          // === DONE ===
+          this.speech.jarvis = '✓ Aufgabe erledigt!';
+          this.status = 'Fertig! Alle Mails wurden bearbeitet.';
+          await this.delay(2500);
+
+          // Reset
+          this.resetAll();
+          this.status = 'Klicke auf "Demo starten" um die Animation erneut zu sehen';
+          this.isPlaying = false;
+        },
+
+        resetAll() {
+          this.userSpeaking = false;
+          this.jarvisActive = false;
+          this.speech = { user: '', jarvis: '', copy: '', foto: '', ceo: '' };
+          this.speaking = { copy: false, foto: false, ceo: false };
+          this.active = { copy: false, foto: false, ceo: false };
+          this.working = { copy: false, foto: false, ceo: false };
+          this.lines = {
+            userToJarvis: false,
+            jarvisToCopy: false,
+            jarvisToFoto: false,
+            jarvisToCeo: false,
+            copyToFoto: false,
+            fotoToCeo: false
+          };
+        },
+
+        delay(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+      };
+    }
+  </script>
+</body>
+</html>

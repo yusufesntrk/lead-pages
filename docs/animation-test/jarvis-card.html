@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jarvis Demo - Interactive Card</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    .jarvis-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .jarvis-fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: var(--delay, 0ms);
+    }
+    .jarvis-fade-in-scale {
+      opacity: 0;
+      transform: translateY(16px) scale(0.9);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .jarvis-fade-in-scale.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition-delay: var(--delay, 0ms);
+    }
+    .jarvis-glow {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    .jarvis-glow.is-visible {
+      opacity: 1;
+      transition-delay: 300ms;
+    }
+    .jarvis-lines-fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    .jarvis-lines-fade.is-visible {
+      opacity: 1;
+      transition-delay: 200ms;
+    }
+    .jarvis-line-draw {
+      stroke-dashoffset: var(--dashoffset, 200);
+      transition: stroke-dashoffset 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .jarvis-line-draw.is-visible {
+      stroke-dashoffset: 0;
+      transition-delay: var(--delay, 0ms);
+    }
+    .jarvis-dots-fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    .jarvis-dots-fade.is-visible {
+      opacity: 1;
+      transition-delay: 800ms;
+    }
+    .speech-bubble {
+      opacity: 0;
+      transform: scale(0.8) translateY(5px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .speech-bubble.is-visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    .checklist-fade {
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .checklist-fade.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .check-item {
+      transition: all 0.3s ease;
+    }
+    .check-item.is-checked .check-box {
+      background: #10B981;
+      border-color: #10B981;
+    }
+    .check-item.is-checked .check-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .check-item.is-checked .check-text {
+      text-decoration: line-through;
+      color: #94a3b8;
+    }
+    .check-icon {
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-8">
+
+  <div class="grid md:grid-cols-2 gap-8 max-w-5xl w-full">
+
+    <!-- Left: Description -->
+    <div class="flex flex-col justify-center">
+      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-4 w-fit">
+        <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+        AI Mitarbeiter
+      </div>
+      <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+        Dein persönlicher AI-Operator.
+      </h3>
+      <p class="text-slate-600 text-lg leading-relaxed mb-4">
+        Sprich mit Jarvis und er delegiert die Aufgaben an seine spezialisierten Agenten.
+      </p>
+      <p class="text-slate-600 text-lg leading-relaxed">
+        Die Agenten arbeiten zusammen, kommunizieren untereinander und liefern das Ergebnis.
+      </p>
+    </div>
+
+    <!-- Right: Jarvis Card -->
+    <div class="jarvis-graphic"
+         x-data="{
+           visible: true,
+           userSpeaking: false,
+           userText: '',
+           jarvisSpeaking: false,
+           jarvisText: '',
+           jarvisResponse: false,
+           jarvisResponseText: '',
+
+           copyList: false,
+           copySpeaking: false,
+           copyText: '',
+           copyTask1: '',
+           copyTask2: '',
+           copyCheck1: false,
+           copyCheck2: false,
+
+           fotoList: false,
+           fotoSpeaking: false,
+           fotoText: '',
+           fotoTask1: '',
+           fotoTask2: '',
+           fotoCheck1: false,
+           fotoCheck2: false,
+
+           ceoList: false,
+           ceoSpeaking: false,
+           ceoText: '',
+           ceoTask1: '',
+           ceoTask2: '',
+           ceoCheck1: false,
+           ceoCheck2: false,
+
+           start() {
+             this.visible = true;
+
+             // ========== RUNDE 1: MAILS ==========
+
+             // User spricht
+             setTimeout(() => { this.userSpeaking = true; this.userText = 'Erledige alle meine Mails!'; }, 500);
+             setTimeout(() => this.userSpeaking = false, 2500);
+
+             // Jarvis verteilt
+             setTimeout(() => { this.jarvisSpeaking = true; this.jarvisText = 'Verteile Aufgaben...'; }, 3000);
+             setTimeout(() => this.jarvisSpeaking = false, 4500);
+
+             // Checklisten Setup Runde 1
+             setTimeout(() => {
+               this.copyTask1 = 'Mails lesen';
+               this.copyTask2 = 'Antworten';
+               this.fotoTask1 = 'Anhänge';
+               this.fotoTask2 = 'Formatieren';
+               this.ceoTask1 = 'Prüfen';
+               this.ceoTask2 = 'Freigabe';
+             }, 4600);
+
+             // COPY Agent Runde 1
+             setTimeout(() => { this.copyList = true; }, 4800);
+             setTimeout(() => { this.copySpeaking = true; this.copyText = 'Mails lesen...'; }, 5200);
+             setTimeout(() => { this.copyCheck1 = true; }, 5800);
+             setTimeout(() => { this.copyText = 'Antworten...'; }, 6200);
+             setTimeout(() => { this.copyCheck2 = true; this.copyText = 'Done! FOTO, du bist dran!'; }, 6800);
+             setTimeout(() => this.copySpeaking = false, 7500);
+
+             // FOTO Agent Runde 1
+             setTimeout(() => { this.fotoList = true; }, 7200);
+             setTimeout(() => { this.fotoSpeaking = true; this.fotoText = 'Anhänge prüfen...'; }, 7600);
+             setTimeout(() => { this.fotoCheck1 = true; }, 8200);
+             setTimeout(() => { this.fotoText = 'Formatieren...'; }, 8600);
+             setTimeout(() => { this.fotoCheck2 = true; this.fotoText = 'Fertig! CEO?'; }, 9200);
+             setTimeout(() => this.fotoSpeaking = false, 9800);
+
+             // CEO Agent Runde 1
+             setTimeout(() => { this.ceoList = true; }, 9500);
+             setTimeout(() => { this.ceoSpeaking = true; this.ceoText = 'Prüfe...'; }, 9900);
+             setTimeout(() => { this.ceoCheck1 = true; }, 10400);
+             setTimeout(() => { this.ceoText = 'Freigabe...'; }, 10800);
+             setTimeout(() => { this.ceoCheck2 = true; this.ceoText = 'Alles top!'; }, 11300);
+             setTimeout(() => this.ceoSpeaking = false, 11900);
+
+             // Jarvis meldet Erfolg
+             setTimeout(() => { this.jarvisResponse = true; this.jarvisResponseText = 'Mails erledigt!'; }, 12200);
+             setTimeout(() => this.jarvisResponse = false, 13500);
+
+             // ========== RUNDE 2: SOCIAL MEDIA ==========
+
+             // User bedankt sich und neue Aufgabe
+             setTimeout(() => { this.userSpeaking = true; this.userText = 'Danke! Jetzt Social Media!'; }, 14000);
+             setTimeout(() => this.userSpeaking = false, 16000);
+
+             // Reset Checklisten für Runde 2
+             setTimeout(() => {
+               this.copyList = false;
+               this.copyCheck1 = false;
+               this.copyCheck2 = false;
+               this.fotoList = false;
+               this.fotoCheck1 = false;
+               this.fotoCheck2 = false;
+               this.ceoList = false;
+               this.ceoCheck1 = false;
+               this.ceoCheck2 = false;
+             }, 16200);
+
+             // Jarvis verteilt neue Aufgaben
+             setTimeout(() => { this.jarvisSpeaking = true; this.jarvisText = 'Social Media? Easy!'; }, 16500);
+             setTimeout(() => this.jarvisSpeaking = false, 18000);
+
+             // Checklisten Setup Runde 2
+             setTimeout(() => {
+               this.copyTask1 = 'Texte';
+               this.copyTask2 = 'Hashtags';
+               this.fotoTask1 = 'Bilder';
+               this.fotoTask2 = 'Reels';
+               this.ceoTask1 = 'Review';
+               this.ceoTask2 = 'Posten';
+             }, 18100);
+
+             // COPY Agent Runde 2
+             setTimeout(() => { this.copyList = true; }, 18300);
+             setTimeout(() => { this.copySpeaking = true; this.copyText = 'Schreibe Posts...'; }, 18700);
+             setTimeout(() => { this.copyCheck1 = true; }, 19300);
+             setTimeout(() => { this.copyText = 'Hashtags...'; }, 19700);
+             setTimeout(() => { this.copyCheck2 = true; this.copyText = 'FOTO, mach schön!'; }, 20300);
+             setTimeout(() => this.copySpeaking = false, 21000);
+
+             // FOTO Agent Runde 2
+             setTimeout(() => { this.fotoList = true; }, 20700);
+             setTimeout(() => { this.fotoSpeaking = true; this.fotoText = 'Generiere Bilder...'; }, 21100);
+             setTimeout(() => { this.fotoCheck1 = true; }, 21700);
+             setTimeout(() => { this.fotoText = 'Schneide Reels...'; }, 22100);
+             setTimeout(() => { this.fotoCheck2 = true; this.fotoText = 'CEO, ready!'; }, 22700);
+             setTimeout(() => this.fotoSpeaking = false, 23300);
+
+             // CEO Agent Runde 2
+             setTimeout(() => { this.ceoList = true; }, 23000);
+             setTimeout(() => { this.ceoSpeaking = true; this.ceoText = 'Checke Content...'; }, 23400);
+             setTimeout(() => { this.ceoCheck1 = true; }, 24000);
+             setTimeout(() => { this.ceoText = 'Plane Posts...'; }, 24400);
+             setTimeout(() => { this.ceoCheck2 = true; this.ceoText = 'Live! 🚀'; }, 25000);
+             setTimeout(() => this.ceoSpeaking = false, 25600);
+
+             // Jarvis meldet finalen Erfolg
+             setTimeout(() => { this.jarvisResponse = true; this.jarvisResponseText = 'Alles online!'; }, 26000);
+           },
+           reset() {
+             this.visible = false;
+             this.userSpeaking = false;
+             this.userText = '';
+             this.jarvisSpeaking = false;
+             this.jarvisText = '';
+             this.jarvisResponse = false;
+             this.jarvisResponseText = '';
+             this.copyList = false;
+             this.copySpeaking = false;
+             this.copyText = '';
+             this.copyTask1 = '';
+             this.copyTask2 = '';
+             this.copyCheck1 = false;
+             this.copyCheck2 = false;
+             this.fotoList = false;
+             this.fotoSpeaking = false;
+             this.fotoText = '';
+             this.fotoTask1 = '';
+             this.fotoTask2 = '';
+             this.fotoCheck1 = false;
+             this.fotoCheck2 = false;
+             this.ceoList = false;
+             this.ceoSpeaking = false;
+             this.ceoText = '';
+             this.ceoTask1 = '';
+             this.ceoTask2 = '';
+             this.ceoCheck1 = false;
+             this.ceoCheck2 = false;
+           }
+         }"
+         x-init="start(); setInterval(() => { reset(); setTimeout(() => start(), 500); }, 30000)">
+      <div class="relative bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-4 md:p-6 overflow-hidden border border-slate-200">
+
+        <!-- Dotted background -->
+        <div class="absolute inset-0 opacity-30">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern id="jarvisDots" width="16" height="16" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="#94a3b8"></circle>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#jarvisDots)"></rect>
+          </svg>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10">
+
+          <!-- Jarvis Brain -->
+          <div class="flex justify-center mb-4">
+            <div class="relative jarvis-fade-in-scale"
+                 :class="visible ? 'is-visible' : ''"
+                 style="--delay: 0ms;">
+              <div class="absolute inset-0 bg-blue-500/20 rounded-full blur-xl jarvis-glow"
+                   :class="visible ? 'is-visible' : ''"></div>
+
+              <div class="relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-3 shadow-lg shadow-blue-500/25">
+                <div class="flex flex-col items-center">
+                  <svg class="w-8 h-8 text-white mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect x="6" y="6" width="12" height="12" rx="2" stroke-width="1.5"></rect>
+                    <text x="12" y="13.5" text-anchor="middle" font-size="5" font-weight="bold" fill="currentColor" stroke="none">AI</text>
+                    <line x1="9" y1="6" x2="9" y2="3" stroke-width="1.5"></line>
+                    <line x1="15" y1="6" x2="15" y2="3" stroke-width="1.5"></line>
+                    <line x1="9" y1="18" x2="9" y2="21" stroke-width="1.5"></line>
+                    <line x1="15" y1="18" x2="15" y2="21" stroke-width="1.5"></line>
+                  </svg>
+                  <span class="text-white text-xs font-bold">JARVIS</span>
+                </div>
+              </div>
+
+              <!-- Jarvis Speaking Bubble -->
+              <div class="absolute -right-2 top-0 transform translate-x-full speech-bubble"
+                   :class="jarvisSpeaking ? 'is-visible' : ''">
+                <div class="bg-white rounded-lg px-2 py-1.5 shadow-lg border border-slate-200 text-[10px] text-slate-700 whitespace-nowrap">
+                  "<span x-text="jarvisText"></span>"
+                </div>
+              </div>
+
+              <!-- Jarvis Response Bubble -->
+              <div class="absolute -left-2 top-0 transform -translate-x-full speech-bubble"
+                   :class="jarvisResponse ? 'is-visible' : ''">
+                <div class="bg-emerald-50 rounded-lg px-2 py-1.5 shadow-lg border border-emerald-200 text-[10px] text-emerald-800 whitespace-nowrap">
+                  "<span x-text="jarvisResponseText"></span>"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connection Lines from Jarvis to Agents -->
+          <div class="absolute left-1/2 top-20 -translate-x-1/2 w-full max-w-[300px] pointer-events-none">
+            <svg class="w-full h-12" viewBox="0 0 300 48" preserveAspectRatio="xMidYMid meet">
+              <g class="jarvis-lines-fade" :class="visible ? 'is-visible' : ''">
+                <path d="M150 0 L150 12 L50 36 L50 48" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="150"
+                      class="jarvis-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 150; --delay: 300ms;"></path>
+                <path d="M150 0 L150 48" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="48"
+                      class="jarvis-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 48; --delay: 400ms;"></path>
+                <path d="M150 0 L150 12 L250 36 L250 48" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="150"
+                      class="jarvis-line-draw" :class="visible ? 'is-visible' : ''" style="--dashoffset: 150; --delay: 300ms;"></path>
+              </g>
+              <g class="jarvis-dots-fade" :class="visible ? 'is-visible' : ''">
+                <circle r="3" fill="#3B82F6">
+                  <animateMotion dur="1.5s" repeatCount="indefinite" path="M150 0 L150 12 L50 36 L50 48"></animateMotion>
+                </circle>
+                <circle r="3" fill="#3B82F6">
+                  <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.2s" path="M150 0 L150 48"></animateMotion>
+                </circle>
+                <circle r="3" fill="#3B82F6">
+                  <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.4s" path="M150 0 L150 12 L250 36 L250 48"></animateMotion>
+                </circle>
+              </g>
+            </svg>
+          </div>
+
+          <div class="h-10"></div>
+
+          <!-- Worker Cards - BIGGER with Checklists -->
+          <div class="flex justify-center gap-4 mb-4">
+
+            <!-- COPY Agent -->
+            <div class="jarvis-fade-in flex flex-col items-center" :class="visible ? 'is-visible' : ''" style="--delay: 500ms;">
+              <div class="relative">
+                <div class="bg-white rounded-xl p-3 shadow-md border border-slate-100 text-center w-20">
+                  <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mx-auto mb-1 overflow-hidden">
+                    <svg viewBox="0 0 48 48" class="w-full h-full">
+                      <circle cx="24" cy="24" r="18" fill="#FBBF24"/>
+                      <path d="M10 18 Q12 8 24 10 Q36 8 38 18" fill="#92400E"/>
+                      <rect x="12" y="20" width="10" height="8" rx="2" fill="none" stroke="#1E293B" stroke-width="1.5"/>
+                      <rect x="26" y="20" width="10" height="8" rx="2" fill="none" stroke="#1E293B" stroke-width="1.5"/>
+                      <line x1="22" y1="24" x2="26" y2="24" stroke="#1E293B" stroke-width="1.5"/>
+                      <ellipse cx="17" cy="24" rx="2" ry="2.5" fill="white"/>
+                      <ellipse cx="31" cy="24" rx="2" ry="2.5" fill="white"/>
+                      <circle cx="17" cy="24" r="1" fill="#1E293B"/>
+                      <circle cx="31" cy="24" r="1" fill="#1E293B"/>
+                      <ellipse cx="24" cy="34" rx="3" ry="2" fill="#DC2626" :class="copySpeaking ? '' : 'hidden'">
+                        <animate attributeName="ry" values="2;1;2.5;1.5;2" dur="0.5s" repeatCount="indefinite"/>
+                      </ellipse>
+                      <path d="M21 33 Q24 35 27 33" fill="none" stroke="#92400E" stroke-width="1.5" stroke-linecap="round" :class="copySpeaking ? 'hidden' : ''"/>
+                    </svg>
+                  </div>
+                  <span class="text-slate-900 text-[10px] font-semibold block">COPY</span>
+                </div>
+                <!-- COPY Speech Bubble -->
+                <div class="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full speech-bubble z-20"
+                     :class="copySpeaking ? 'is-visible' : ''">
+                  <div class="bg-amber-100 rounded-lg px-2 py-1 shadow-lg border border-amber-300 text-[9px] text-amber-800 whitespace-nowrap">
+                    <span x-text="copyText"></span>
+                  </div>
+                </div>
+              </div>
+              <!-- COPY Checklist -->
+              <div class="checklist-fade mt-2 bg-white rounded-lg p-2 shadow-sm border border-slate-100 w-20"
+                   :class="copyList ? 'is-visible' : ''">
+                <div class="check-item flex items-center gap-1.5 mb-1" :class="copyCheck1 ? 'is-checked' : ''">
+                  <div class="check-box w-3 h-3 rounded border border-slate-300 flex items-center justify-center flex-shrink-0">
+                    <svg class="check-icon w-2 h-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="check-text text-[8px] text-slate-600" x-text="copyTask1"></span>
+                </div>
+                <div class="check-item flex items-center gap-1.5" :class="copyCheck2 ? 'is-checked' : ''">
+                  <div class="check-box w-3 h-3 rounded border border-slate-300 flex items-center justify-center flex-shrink-0">
+                    <svg class="check-icon w-2 h-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="check-text text-[8px] text-slate-600" x-text="copyTask2"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- FOTO Agent -->
+            <div class="jarvis-fade-in flex flex-col items-center" :class="visible ? 'is-visible' : ''" style="--delay: 600ms;">
+              <div class="relative">
+                <div class="bg-white rounded-xl p-3 shadow-md border border-slate-100 text-center w-20">
+                  <div class="w-12 h-12 bg-violet-100 rounded-lg flex items-center justify-center mx-auto mb-1 overflow-hidden">
+                    <svg viewBox="0 0 48 48" class="w-full h-full">
+                      <circle cx="24" cy="24" r="18" fill="#A78BFA"/>
+                      <path d="M8 20 Q8 6 24 8 Q40 6 40 20 L38 18 Q38 10 24 11 Q10 10 10 18 Z" fill="#4C1D95"/>
+                      <circle cx="16" cy="24" r="3" fill="white"/>
+                      <circle cx="16" cy="24" r="1.5" fill="#1E293B"/>
+                      <circle cx="32" cy="24" r="4" fill="#1E293B"/>
+                      <circle cx="32" cy="24" r="2.5" fill="#3B82F6"/>
+                      <circle cx="32" cy="24" r="1.5" fill="#1E293B"/>
+                      <ellipse cx="24" cy="34" rx="3" ry="2" fill="#DC2626" :class="fotoSpeaking ? '' : 'hidden'">
+                        <animate attributeName="ry" values="2;1;2.5;1.5;2" dur="0.5s" repeatCount="indefinite"/>
+                      </ellipse>
+                      <path d="M18 33 Q24 37 30 33" fill="none" stroke="#4C1D95" stroke-width="2" stroke-linecap="round" :class="fotoSpeaking ? 'hidden' : ''"/>
+                    </svg>
+                  </div>
+                  <span class="text-slate-900 text-[10px] font-semibold block">FOTO</span>
+                </div>
+                <!-- FOTO Speech Bubble -->
+                <div class="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full speech-bubble z-20"
+                     :class="fotoSpeaking ? 'is-visible' : ''">
+                  <div class="bg-violet-100 rounded-lg px-2 py-1 shadow-lg border border-violet-300 text-[9px] text-violet-800 whitespace-nowrap">
+                    <span x-text="fotoText"></span>
+                  </div>
+                </div>
+              </div>
+              <!-- FOTO Checklist -->
+              <div class="checklist-fade mt-2 bg-white rounded-lg p-2 shadow-sm border border-slate-100 w-20"
+                   :class="fotoList ? 'is-visible' : ''">
+                <div class="check-item flex items-center gap-1.5 mb-1" :class="fotoCheck1 ? 'is-checked' : ''">
+                  <div class="check-box w-3 h-3 rounded border border-slate-300 flex items-center justify-center flex-shrink-0">
+                    <svg class="check-icon w-2 h-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="check-text text-[8px] text-slate-600" x-text="fotoTask1"></span>
+                </div>
+                <div class="check-item flex items-center gap-1.5" :class="fotoCheck2 ? 'is-checked' : ''">
+                  <div class="check-box w-3 h-3 rounded border border-slate-300 flex items-center justify-center flex-shrink-0">
+                    <svg class="check-icon w-2 h-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="check-text text-[8px] text-slate-600" x-text="fotoTask2"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CEO Agent -->
+            <div class="jarvis-fade-in flex flex-col items-center" :class="visible ? 'is-visible' : ''" style="--delay: 700ms;">
+              <div class="relative">
+                <div class="bg-white rounded-xl p-3 shadow-md border border-slate-100 text-center w-20">
+                  <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-1 overflow-hidden">
+                    <svg viewBox="0 0 48 48" class="w-full h-full">
+                      <circle cx="24" cy="22" r="16" fill="#60A5FA"/>
+                      <path d="M10 18 Q10 6 24 8 Q38 6 38 18 Q36 14 24 14 Q12 14 10 18 Z" fill="#1E3A5F"/>
+                      <ellipse cx="16" cy="22" rx="2.5" ry="3" fill="white"/>
+                      <ellipse cx="32" cy="22" rx="2.5" ry="3" fill="white"/>
+                      <circle cx="16" cy="22" r="1" fill="#1E293B"/>
+                      <circle cx="32" cy="22" r="1" fill="#1E293B"/>
+                      <ellipse cx="24" cy="32" rx="3" ry="2" fill="#DC2626" :class="ceoSpeaking ? '' : 'hidden'">
+                        <animate attributeName="ry" values="2;1;2.5;1.5;2" dur="0.5s" repeatCount="indefinite"/>
+                      </ellipse>
+                      <rect x="20" y="29" width="8" height="3" rx="1.5" fill="#1E40AF" :class="ceoSpeaking ? 'hidden' : ''"/>
+                      <polygon points="24,38 22,41 24,46 26,41" fill="#1E40AF"/>
+                    </svg>
+                  </div>
+                  <span class="text-slate-900 text-[10px] font-semibold block">CEO</span>
+                </div>
+                <!-- CEO Speech Bubble -->
+                <div class="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full speech-bubble z-20"
+                     :class="ceoSpeaking ? 'is-visible' : ''">
+                  <div class="bg-blue-100 rounded-lg px-2 py-1 shadow-lg border border-blue-300 text-[9px] text-blue-800 whitespace-nowrap">
+                    <span x-text="ceoText"></span>
+                  </div>
+                </div>
+              </div>
+              <!-- CEO Checklist -->
+              <div class="checklist-fade mt-2 bg-white rounded-lg p-2 shadow-sm border border-slate-100 w-20"
+                   :class="ceoList ? 'is-visible' : ''">
+                <div class="check-item flex items-center gap-1.5 mb-1" :class="ceoCheck1 ? 'is-checked' : ''">
+                  <div class="check-box w-3 h-3 rounded border border-slate-300 flex items-center justify-center flex-shrink-0">
+                    <svg class="check-icon w-2 h-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="check-text text-[8px] text-slate-600" x-text="ceoTask1"></span>
+                </div>
+                <div class="check-item flex items-center gap-1.5" :class="ceoCheck2 ? 'is-checked' : ''">
+                  <div class="check-box w-3 h-3 rounded border border-slate-300 flex items-center justify-center flex-shrink-0">
+                    <svg class="check-icon w-2 h-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <span class="check-text text-[8px] text-slate-600" x-text="ceoTask2"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider + User -->
+          <div class="border-t border-slate-200 pt-3">
+            <div class="flex justify-center">
+              <div class="relative jarvis-fade-in" :class="visible ? 'is-visible' : ''" style="--delay: 200ms;">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center shadow-lg overflow-hidden border-2 border-slate-300">
+                  <svg viewBox="0 0 48 48" class="w-full h-full">
+                    <circle cx="24" cy="20" r="12" fill="#F5D0C5"/>
+                    <path d="M12 18 Q12 6 24 8 Q36 6 36 18 Q34 12 24 12 Q14 12 12 18 Z" fill="#4A3728"/>
+                    <circle cx="19" cy="19" r="2" fill="#1E293B"/>
+                    <circle cx="29" cy="19" r="2" fill="#1E293B"/>
+                    <ellipse cx="24" cy="26" rx="3" ry="2" fill="#DC2626" :class="userSpeaking ? 'block' : 'hidden'">
+                      <animate attributeName="ry" values="2;0.5;2.5;1;2" dur="0.3s" repeatCount="indefinite"/>
+                    </ellipse>
+                    <path d="M21 26 Q24 28 27 26" fill="none" stroke="#C0796B" stroke-width="1.5" stroke-linecap="round" :class="userSpeaking ? 'hidden' : 'block'"/>
+                    <path d="M12 48 Q12 36 24 34 Q36 36 36 48" fill="#3B82F6"/>
+                  </svg>
+                </div>
+                <div class="text-center mt-1">
+                  <span class="text-slate-700 text-[10px] font-semibold">DU</span>
+                </div>
+                <!-- User Speaking Bubble -->
+                <div class="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full speech-bubble"
+                     :class="userSpeaking ? 'is-visible' : ''">
+                  <div class="bg-blue-600 text-white rounded px-2 py-1 shadow-lg text-[10px] whitespace-nowrap">
+                    "<span x-text="userText"></span>"
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

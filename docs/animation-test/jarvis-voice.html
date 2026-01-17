@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JARVIS - Voice AI System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    @keyframes pulse-ring {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.4); }
+    }
+
+    @keyframes data-flow {
+      0% { stroke-dashoffset: 20; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes typing {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-2px) rotate(-1deg); }
+      75% { transform: translateX(2px) rotate(1deg); }
+    }
+
+    .pulse-ring {
+      animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .glow-active {
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+
+    .line-active {
+      stroke-dasharray: 10 5;
+      animation: data-flow 0.5s linear infinite;
+    }
+
+    .typing-indicator span {
+      animation: typing 1s ease-in-out infinite;
+    }
+
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+    .agent-working {
+      animation: shake 0.3s ease-in-out infinite;
+    }
+
+    .speech-bubble {
+      position: relative;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid white;
+    }
+
+    .message-line {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      transition: stroke-dashoffset 0.8s ease-out;
+    }
+
+    .message-line.active {
+      stroke-dashoffset: 0;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 min-h-screen flex items-center justify-center p-4">
+
+  <div x-data="jarvisSystem()" class="w-full max-w-4xl">
+
+    <!-- Main Container -->
+    <div class="relative bg-slate-800/50 backdrop-blur-xl rounded-3xl p-6 md:p-10 border border-slate-700/50">
+
+      <!-- Background Grid -->
+      <div class="absolute inset-0 opacity-10 rounded-3xl overflow-hidden">
+        <svg width="100%" height="100%">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3B82F6" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)"/>
+        </svg>
+      </div>
+
+      <!-- Connection Lines SVG -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="none">
+        <!-- User to Jarvis -->
+        <line x1="50%" y1="85%" x2="50%" y2="45%"
+              class="message-line"
+              :class="messageToJarvis ? 'active' : ''"
+              stroke="#3B82F6" stroke-width="2" opacity="0.6"/>
+
+        <!-- Jarvis to Agents -->
+        <line x1="50%" y1="35%" x2="20%" y2="15%"
+              class="message-line"
+              :class="delegatingTo.copy ? 'active' : ''"
+              stroke="#FBBF24" stroke-width="2" opacity="0.6"/>
+        <line x1="50%" y1="35%" x2="50%" y2="15%"
+              class="message-line"
+              :class="delegatingTo.foto ? 'active' : ''"
+              stroke="#A78BFA" stroke-width="2" opacity="0.6"/>
+        <line x1="50%" y1="35%" x2="80%" y2="15%"
+              class="message-line"
+              :class="delegatingTo.ceo ? 'active' : ''"
+              stroke="#60A5FA" stroke-width="2" opacity="0.6"/>
+
+        <!-- Agent to Agent communication -->
+        <line x1="25%" y1="12%" x2="45%" y2="12%"
+              class="message-line"
+              :class="agentComm.copyToFoto ? 'active' : ''"
+              stroke="#EC4899" stroke-width="2" stroke-dasharray="5,5"/>
+        <line x1="55%" y1="12%" x2="75%" y2="12%"
+              class="message-line"
+              :class="agentComm.fotoToCeo ? 'active' : ''"
+              stroke="#EC4899" stroke-width="2" stroke-dasharray="5,5"/>
+      </svg>
+
+      <div class="relative z-10">
+
+        <!-- Agents Row -->
+        <div class="flex justify-between items-start mb-8 px-4 md:px-12">
+
+          <!-- COPY Agent -->
+          <div class="flex flex-col items-center">
+            <div class="relative">
+              <!-- Speech Bubble -->
+              <div x-show="agentSpeech.copy"
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-2"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   class="absolute -top-16 left-1/2 -translate-x-1/2 bg-white rounded-lg px-3 py-2 shadow-lg speech-bubble whitespace-nowrap z-20">
+                <p class="text-xs text-slate-700" x-text="agentSpeech.copy"></p>
+              </div>
+
+              <!-- Agent Avatar -->
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-amber-100 p-1 shadow-lg transition-all duration-300"
+                   :class="{ 'glow-active ring-4 ring-amber-400/50': activeAgent === 'copy', 'agent-working': workingAgent === 'copy' }">
+                <svg viewBox="0 0 48 48" class="w-full h-full">
+                  <circle cx="24" cy="24" r="18" fill="#FBBF24"/>
+                  <path d="M10 18 Q12 8 24 10 Q36 8 38 18" fill="#92400E" stroke="#92400E" stroke-width="2"/>
+                  <circle cx="14" cy="12" r="3" fill="#92400E"/>
+                  <circle cx="34" cy="12" r="3" fill="#92400E"/>
+                  <ellipse cx="24" cy="9" rx="4" ry="3" fill="#92400E"/>
+                  <rect x="12" y="20" width="10" height="8" rx="2" fill="none" stroke="#1E293B" stroke-width="1.5"/>
+                  <rect x="26" y="20" width="10" height="8" rx="2" fill="none" stroke="#1E293B" stroke-width="1.5"/>
+                  <line x1="22" y1="24" x2="26" y2="24" stroke="#1E293B" stroke-width="1.5"/>
+                  <g class="agent-eyes">
+                    <ellipse cx="17" cy="24" rx="2.5" ry="3" fill="white"/>
+                    <ellipse cx="31" cy="24" rx="2.5" ry="3" fill="white"/>
+                    <circle cx="17" cy="24" r="1.5" fill="#1E293B">
+                      <animate attributeName="cy" values="24;24;23;24" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="31" cy="24" r="1.5" fill="#1E293B">
+                      <animate attributeName="cy" values="24;24;23;24" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <ellipse cx="17" cy="24" rx="2.5" ry="3" fill="#FBBF24">
+                      <animate attributeName="ry" values="0;0;3;3;3;3;3;3;0;0;3" dur="4s" repeatCount="indefinite"/>
+                    </ellipse>
+                    <ellipse cx="31" cy="24" rx="2.5" ry="3" fill="#FBBF24">
+                      <animate attributeName="ry" values="0;0;3;3;3;3;3;3;0;0;3" dur="4s" repeatCount="indefinite"/>
+                    </ellipse>
+                  </g>
+                  <template x-if="workingAgent === 'copy' || activeAgent === 'copy'">
+                    <ellipse cx="24" cy="34" rx="4" ry="2.5" fill="#DC2626">
+                      <animate attributeName="ry" values="2.5;1.5;3;2;2.5" dur="0.4s" repeatCount="indefinite"/>
+                    </ellipse>
+                  </template>
+                  <template x-if="workingAgent !== 'copy' && activeAgent !== 'copy'">
+                    <path d="M20 34 Q24 37 28 34" fill="none" stroke="#92400E" stroke-width="2" stroke-linecap="round"/>
+                  </template>
+                </svg>
+              </div>
+
+              <!-- Status Indicator -->
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-slate-800 transition-colors duration-300"
+                   :class="workingAgent === 'copy' ? 'bg-amber-400' : (activeAgent === 'copy' ? 'bg-green-400' : 'bg-slate-500')">
+              </div>
+            </div>
+            <span class="text-white text-xs font-bold mt-2">COPY</span>
+            <span class="text-slate-400 text-[10px]">Writer</span>
+          </div>
+
+          <!-- FOTO Agent -->
+          <div class="flex flex-col items-center">
+            <div class="relative">
+              <div x-show="agentSpeech.foto"
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-2"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   class="absolute -top-16 left-1/2 -translate-x-1/2 bg-white rounded-lg px-3 py-2 shadow-lg speech-bubble whitespace-nowrap z-20">
+                <p class="text-xs text-slate-700" x-text="agentSpeech.foto"></p>
+              </div>
+
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-violet-100 p-1 shadow-lg transition-all duration-300"
+                   :class="{ 'glow-active ring-4 ring-violet-400/50': activeAgent === 'foto', 'agent-working': workingAgent === 'foto' }">
+                <svg viewBox="0 0 48 48" class="w-full h-full">
+                  <circle cx="24" cy="24" r="18" fill="#A78BFA"/>
+                  <path d="M8 20 Q8 6 24 8 Q40 6 40 20 L38 18 Q38 10 24 11 Q10 10 10 18 Z" fill="#4C1D95"/>
+                  <g class="agent-eyes">
+                    <circle cx="16" cy="24" r="4" fill="white"/>
+                    <circle cx="16" cy="24" r="2" fill="#1E293B">
+                      <animate attributeName="cx" values="16;17;16;15;16" dur="2.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="16" cy="24" r="4" fill="#A78BFA">
+                      <animate attributeName="r" values="0;0;4;4;4;4;4;4;0;0;4" dur="3.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="32" cy="24" r="5" fill="#1E293B"/>
+                    <circle cx="32" cy="24" r="3.5" fill="#3B82F6"/>
+                    <circle cx="32" cy="24" r="2" fill="#1E293B"/>
+                    <circle cx="33.5" cy="22.5" r="1" fill="white" opacity="0.8"/>
+                    <template x-if="workingAgent === 'foto'">
+                      <circle cx="32" cy="24" r="5" fill="white" opacity="0.8">
+                        <animate attributeName="opacity" values="0.8;0;0.8" dur="0.3s" repeatCount="indefinite"/>
+                      </circle>
+                    </template>
+                  </g>
+                  <template x-if="workingAgent === 'foto' || activeAgent === 'foto'">
+                    <ellipse cx="24" cy="34" rx="3" ry="2" fill="#4C1D95">
+                      <animate attributeName="ry" values="2;1;2.5;1.5;2" dur="0.5s" repeatCount="indefinite"/>
+                    </ellipse>
+                  </template>
+                  <template x-if="workingAgent !== 'foto' && activeAgent !== 'foto'">
+                    <path d="M18 33 Q24 38 30 33" fill="none" stroke="#4C1D95" stroke-width="2" stroke-linecap="round"/>
+                  </template>
+                </svg>
+              </div>
+
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-slate-800 transition-colors duration-300"
+                   :class="workingAgent === 'foto' ? 'bg-violet-400' : (activeAgent === 'foto' ? 'bg-green-400' : 'bg-slate-500')">
+              </div>
+            </div>
+            <span class="text-white text-xs font-bold mt-2">FOTO</span>
+            <span class="text-slate-400 text-[10px]">Designer</span>
+          </div>
+
+          <!-- CEO Agent -->
+          <div class="flex flex-col items-center">
+            <div class="relative">
+              <div x-show="agentSpeech.ceo"
+                   x-transition:enter="transition ease-out duration-300"
+                   x-transition:enter-start="opacity-0 transform -translate-y-2"
+                   x-transition:enter-end="opacity-100 transform translate-y-0"
+                   class="absolute -top-16 left-1/2 -translate-x-1/2 bg-white rounded-lg px-3 py-2 shadow-lg speech-bubble whitespace-nowrap z-20">
+                <p class="text-xs text-slate-700" x-text="agentSpeech.ceo"></p>
+              </div>
+
+              <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-blue-100 p-1 shadow-lg transition-all duration-300"
+                   :class="{ 'glow-active ring-4 ring-blue-400/50': activeAgent === 'ceo', 'agent-working': workingAgent === 'ceo' }">
+                <svg viewBox="0 0 48 48" class="w-full h-full">
+                  <circle cx="24" cy="22" r="16" fill="#60A5FA"/>
+                  <path d="M10 18 Q10 6 24 8 Q38 6 38 18 Q36 14 24 14 Q12 14 10 18 Z" fill="#1E3A5F"/>
+                  <path d="M24 8 L24 14" stroke="#1E3A5F" stroke-width="1"/>
+                  <line x1="13" y1="17" x2="19" y2="18" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round"/>
+                  <line x1="29" y1="18" x2="35" y2="17" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round"/>
+                  <g class="agent-eyes">
+                    <ellipse cx="16" cy="22" rx="3" ry="3.5" fill="white"/>
+                    <ellipse cx="32" cy="22" rx="3" ry="3.5" fill="white"/>
+                    <circle cx="16" cy="22" r="1.5" fill="#1E293B">
+                      <animate attributeName="cy" values="22;22;21;22" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="32" cy="22" r="1.5" fill="#1E293B">
+                      <animate attributeName="cy" values="22;22;21;22" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <ellipse cx="16" cy="22" rx="3" ry="3.5" fill="#60A5FA">
+                      <animate attributeName="ry" values="0;0;3.5;3.5;3.5;3.5;3.5;0;0;3.5" dur="5s" repeatCount="indefinite"/>
+                    </ellipse>
+                    <ellipse cx="32" cy="22" rx="3" ry="3.5" fill="#60A5FA">
+                      <animate attributeName="ry" values="0;0;3.5;3.5;3.5;3.5;3.5;0;0;3.5" dur="5s" repeatCount="indefinite"/>
+                    </ellipse>
+                  </g>
+                  <template x-if="workingAgent === 'ceo' || activeAgent === 'ceo'">
+                    <rect x="20" y="29" width="8" height="4" rx="2" fill="#1E40AF">
+                      <animate attributeName="height" values="4;2;5;3;4" dur="0.4s" repeatCount="indefinite"/>
+                    </rect>
+                  </template>
+                  <template x-if="workingAgent !== 'ceo' && activeAgent !== 'ceo'">
+                    <path d="M19 30 Q24 33 29 30" fill="none" stroke="#1E40AF" stroke-width="2" stroke-linecap="round"/>
+                  </template>
+                  <polygon points="24,38 21,42 24,48 27,42" fill="#1E40AF"/>
+                  <polygon points="22,38 26,38 25,40 23,40" fill="#1E3A8A"/>
+                </svg>
+              </div>
+
+              <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-slate-800 transition-colors duration-300"
+                   :class="workingAgent === 'ceo' ? 'bg-blue-400' : (activeAgent === 'ceo' ? 'bg-green-400' : 'bg-slate-500')">
+              </div>
+            </div>
+            <span class="text-white text-xs font-bold mt-2">CEO</span>
+            <span class="text-slate-400 text-[10px]">Strategist</span>
+          </div>
+        </div>
+
+        <!-- JARVIS Central -->
+        <div class="flex justify-center mb-8">
+          <div class="relative">
+            <!-- Jarvis Speech Bubble -->
+            <div x-show="jarvisSpeech"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-2"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 class="absolute -top-20 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl px-4 py-3 shadow-xl z-20 min-w-[200px] max-w-[300px]">
+              <p class="text-sm text-white text-center" x-text="jarvisSpeech"></p>
+              <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-blue-600 rotate-45"></div>
+            </div>
+
+            <!-- Pulse Rings when listening -->
+            <template x-if="isListening">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="absolute w-32 h-32 md:w-40 md:h-40 rounded-full bg-blue-500/30 pulse-ring"></div>
+                <div class="absolute w-32 h-32 md:w-40 md:h-40 rounded-full bg-blue-500/20 pulse-ring" style="animation-delay: 0.5s"></div>
+              </div>
+            </template>
+
+            <!-- Jarvis Core -->
+            <div class="relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 shadow-2xl flex items-center justify-center transition-all duration-300"
+                 :class="{ 'glow-active': isListening || isProcessing, 'floating': !isListening && !isProcessing }">
+
+              <!-- Inner glow -->
+              <div class="absolute inset-2 rounded-full bg-gradient-to-br from-blue-400/50 to-transparent"></div>
+
+              <!-- Jarvis Face/Icon -->
+              <div class="relative z-10 text-center">
+                <svg class="w-12 h-12 md:w-16 md:h-16 mx-auto text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <rect x="6" y="6" width="12" height="12" rx="2" stroke-width="1.5"/>
+                  <text x="12" y="13.5" text-anchor="middle" font-size="5" font-weight="bold" fill="currentColor" stroke="none">AI</text>
+                  <line x1="9" y1="6" x2="9" y2="3" stroke-width="1.5"/>
+                  <line x1="15" y1="6" x2="15" y2="3" stroke-width="1.5"/>
+                  <line x1="9" y1="18" x2="9" y2="21" stroke-width="1.5"/>
+                  <line x1="15" y1="18" x2="15" y2="21" stroke-width="1.5"/>
+                  <line x1="6" y1="9" x2="3" y2="9" stroke-width="1.5"/>
+                  <line x1="6" y1="15" x2="3" y2="15" stroke-width="1.5"/>
+                  <line x1="18" y1="9" x2="21" y2="9" stroke-width="1.5"/>
+                  <line x1="18" y1="15" x2="21" y2="15" stroke-width="1.5"/>
+                </svg>
+                <span class="text-white font-bold text-sm md:text-base">JARVIS</span>
+              </div>
+            </div>
+
+            <!-- Status Ring -->
+            <div class="absolute -inset-2 rounded-full border-2 transition-colors duration-300"
+                 :class="isListening ? 'border-green-400' : (isProcessing ? 'border-blue-400' : 'border-slate-600')">
+            </div>
+          </div>
+        </div>
+
+        <!-- User Speech Display -->
+        <div class="bg-slate-700/50 rounded-2xl p-4 mb-6 min-h-[60px] flex items-center justify-center">
+          <template x-if="isListening && !userSpeech">
+            <div class="flex items-center gap-2 text-slate-400">
+              <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span>Ich höre zu...</span>
+            </div>
+          </template>
+          <template x-if="userSpeech">
+            <p class="text-white text-center text-lg" x-text="userSpeech"></p>
+          </template>
+          <template x-if="!isListening && !userSpeech">
+            <p class="text-slate-500 text-center">Drücke den Mikrofon-Button um zu sprechen</p>
+          </template>
+        </div>
+
+        <!-- Microphone Button -->
+        <div class="flex justify-center">
+          <button @click="toggleListening()"
+                  class="relative w-20 h-20 md:w-24 md:h-24 rounded-full transition-all duration-300 flex items-center justify-center group"
+                  :class="isListening ? 'bg-red-500 hover:bg-red-600 scale-110' : 'bg-blue-500 hover:bg-blue-600'">
+
+            <!-- Pulse when listening -->
+            <template x-if="isListening">
+              <div class="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-25"></div>
+            </template>
+
+            <!-- Mic Icon -->
+            <svg class="w-8 h-8 md:w-10 md:h-10 text-white transition-transform group-hover:scale-110"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <template x-if="!isListening">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+              </template>
+              <template x-if="isListening">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
+              </template>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Status Text -->
+        <p class="text-center text-slate-400 text-sm mt-4" x-text="statusText"></p>
+
+        <!-- Demo Buttons -->
+        <div class="flex justify-center gap-3 mt-6">
+          <button @click="runDemo('marketing')"
+                  class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm rounded-lg transition-colors">
+            Demo: Marketing
+          </button>
+          <button @click="runDemo('content')"
+                  class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm rounded-lg transition-colors">
+            Demo: Content
+          </button>
+          <button @click="runDemo('strategy')"
+                  class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm rounded-lg transition-colors">
+            Demo: Strategie
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function jarvisSystem() {
+      return {
+        // States
+        isListening: false,
+        isProcessing: false,
+        userSpeech: '',
+        jarvisSpeech: '',
+        statusText: 'Bereit für deine Anfrage',
+
+        // Agent states
+        activeAgent: null,
+        workingAgent: null,
+        agentSpeech: {
+          copy: '',
+          foto: '',
+          ceo: ''
+        },
+
+        // Connection states
+        messageToJarvis: false,
+        delegatingTo: {
+          copy: false,
+          foto: false,
+          ceo: false
+        },
+        agentComm: {
+          copyToFoto: false,
+          fotoToCeo: false
+        },
+
+        // Speech Recognition
+        recognition: null,
+        synthesis: window.speechSynthesis,
+
+        init() {
+          // Setup Speech Recognition
+          if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            this.recognition = new SpeechRecognition();
+            this.recognition.continuous = false;
+            this.recognition.interimResults = true;
+            this.recognition.lang = 'de-DE';
+
+            this.recognition.onresult = (event) => {
+              const transcript = Array.from(event.results)
+                .map(result => result[0].transcript)
+                .join('');
+              this.userSpeech = transcript;
+            };
+
+            this.recognition.onend = () => {
+              if (this.isListening) {
+                this.isListening = false;
+                if (this.userSpeech) {
+                  this.processUserInput(this.userSpeech);
+                }
+              }
+            };
+
+            this.recognition.onerror = (event) => {
+              console.error('Speech recognition error:', event.error);
+              this.isListening = false;
+              this.statusText = 'Fehler bei der Spracherkennung. Versuche es erneut.';
+            };
+          }
+        },
+
+        toggleListening() {
+          if (this.isListening) {
+            this.recognition?.stop();
+            this.isListening = false;
+          } else {
+            this.resetState();
+            this.isListening = true;
+            this.statusText = 'Ich höre zu...';
+            this.recognition?.start();
+          }
+        },
+
+        resetState() {
+          this.userSpeech = '';
+          this.jarvisSpeech = '';
+          this.activeAgent = null;
+          this.workingAgent = null;
+          this.agentSpeech = { copy: '', foto: '', ceo: '' };
+          this.messageToJarvis = false;
+          this.delegatingTo = { copy: false, foto: false, ceo: false };
+          this.agentComm = { copyToFoto: false, fotoToCeo: false };
+        },
+
+        speak(text) {
+          return new Promise((resolve) => {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'de-DE';
+            utterance.rate = 1.0;
+            utterance.onend = resolve;
+            this.synthesis.speak(utterance);
+          });
+        },
+
+        async processUserInput(input) {
+          this.isProcessing = true;
+          this.statusText = 'Verarbeite Anfrage...';
+
+          // Animate message to Jarvis
+          this.messageToJarvis = true;
+          await this.delay(800);
+
+          // Jarvis acknowledges
+          this.jarvisSpeech = 'Verstanden! Ich koordiniere das Team...';
+          await this.speak('Verstanden! Ich koordiniere das Team.');
+          await this.delay(500);
+
+          // Determine which agents to involve based on input
+          const lowerInput = input.toLowerCase();
+          let workflow = 'general';
+
+          if (lowerInput.includes('marketing') || lowerInput.includes('kampagne') || lowerInput.includes('werbung')) {
+            workflow = 'marketing';
+          } else if (lowerInput.includes('text') || lowerInput.includes('artikel') || lowerInput.includes('content') || lowerInput.includes('schreib')) {
+            workflow = 'content';
+          } else if (lowerInput.includes('strategie') || lowerInput.includes('plan') || lowerInput.includes('quartal')) {
+            workflow = 'strategy';
+          }
+
+          await this.runWorkflow(workflow);
+        },
+
+        async runDemo(type) {
+          this.resetState();
+
+          const demos = {
+            marketing: 'Erstelle eine neue Marketing-Kampagne für Q1',
+            content: 'Schreibe einen Blogartikel über KI-Trends',
+            strategy: 'Entwickle eine Strategie für mehr Kundenbindung'
+          };
+
+          this.userSpeech = demos[type];
+          await this.delay(500);
+          await this.processUserInput(demos[type]);
+        },
+
+        async runWorkflow(type) {
+          const workflows = {
+            marketing: [
+              { agent: 'ceo', action: 'delegating', speech: 'Ich analysiere die Zielgruppe...' },
+              { agent: 'ceo', action: 'working', speech: 'Strategie wird entwickelt!' },
+              { comm: 'fotoToCeo', delay: 300 },
+              { agent: 'copy', action: 'delegating', speech: 'Warte auf Briefing...' },
+              { agent: 'foto', action: 'delegating', speech: 'Bereite Visuals vor...' },
+              { comm: 'copyToFoto', delay: 300 },
+              { agent: 'copy', action: 'working', speech: 'Schreibe Headlines!' },
+              { agent: 'foto', action: 'working', speech: 'Erstelle Grafiken!' },
+              { agent: 'ceo', action: 'active', speech: 'Prüfe Ergebnisse...' },
+            ],
+            content: [
+              { agent: 'copy', action: 'delegating', speech: 'Recherchiere Thema...' },
+              { agent: 'copy', action: 'working', speech: 'Schreibe den Artikel!' },
+              { comm: 'copyToFoto', delay: 500 },
+              { agent: 'foto', action: 'delegating', speech: 'Warte auf Text...' },
+              { agent: 'foto', action: 'working', speech: 'Erstelle Bilder!' },
+              { agent: 'ceo', action: 'delegating', speech: 'Überprüfe SEO...' },
+              { agent: 'ceo', action: 'active', speech: 'Freigabe erteilt!' },
+            ],
+            strategy: [
+              { agent: 'ceo', action: 'delegating', speech: 'Analysiere Daten...' },
+              { agent: 'ceo', action: 'working', speech: 'Entwickle Strategie!' },
+              { comm: 'fotoToCeo', delay: 300 },
+              { agent: 'copy', action: 'delegating', speech: 'Bereite Präsentation vor...' },
+              { comm: 'copyToFoto', delay: 300 },
+              { agent: 'foto', action: 'delegating', speech: 'Erstelle Charts...' },
+              { agent: 'foto', action: 'working', speech: 'Visualisiere KPIs!' },
+              { agent: 'copy', action: 'working', speech: 'Formuliere Kernbotschaften!' },
+              { agent: 'ceo', action: 'active', speech: 'Finaler Review!' },
+            ],
+            general: [
+              { agent: 'ceo', action: 'delegating', speech: 'Verstehe Anfrage...' },
+              { agent: 'copy', action: 'delegating', speech: 'Prüfe Textbedarf...' },
+              { agent: 'foto', action: 'delegating', speech: 'Prüfe Bildbedarf...' },
+              { agent: 'ceo', action: 'working', speech: 'Koordiniere Team!' },
+              { comm: 'copyToFoto', delay: 300 },
+              { comm: 'fotoToCeo', delay: 300 },
+              { agent: 'copy', action: 'working', speech: 'Arbeite daran!' },
+              { agent: 'foto', action: 'working', speech: 'Unterstütze!' },
+              { agent: 'ceo', action: 'active', speech: 'Fast fertig!' },
+            ]
+          };
+
+          const steps = workflows[type] || workflows.general;
+
+          for (const step of steps) {
+            if (step.comm) {
+              this.agentComm[step.comm] = true;
+              await this.delay(step.delay || 500);
+              continue;
+            }
+
+            const { agent, action, speech } = step;
+
+            if (action === 'delegating') {
+              this.delegatingTo[agent] = true;
+              this.activeAgent = agent;
+              this.agentSpeech[agent] = speech;
+              await this.speak(speech);
+              await this.delay(300);
+            } else if (action === 'working') {
+              this.workingAgent = agent;
+              this.agentSpeech[agent] = speech;
+              await this.delay(1500);
+              this.workingAgent = null;
+            } else if (action === 'active') {
+              this.activeAgent = agent;
+              this.agentSpeech[agent] = speech;
+              await this.delay(1000);
+            }
+          }
+
+          // Clear agent speeches
+          await this.delay(500);
+          this.agentSpeech = { copy: '', foto: '', ceo: '' };
+
+          // Jarvis final response
+          this.jarvisSpeech = 'Erledigt! Das Team hat die Aufgabe abgeschlossen.';
+          await this.speak('Erledigt! Das Team hat die Aufgabe abgeschlossen.');
+
+          this.isProcessing = false;
+          this.statusText = 'Bereit für die nächste Anfrage';
+
+          // Reset connections after a delay
+          await this.delay(2000);
+          this.messageToJarvis = false;
+          this.delegatingTo = { copy: false, foto: false, ceo: false };
+          this.agentComm = { copyToFoto: false, fotoToCeo: false };
+          this.jarvisSpeech = '';
+        },
+
+        delay(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+      };
+    }
+  </script>
+</body>
+</html>

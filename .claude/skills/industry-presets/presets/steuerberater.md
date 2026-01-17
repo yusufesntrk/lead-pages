@@ -23,10 +23,11 @@ timing: ease-out
 | `blur-reveal` | Section-Überschriften | Text wird scharf beim Scrollen |
 | `stagger-list` | Service-Cards, Listen | Elemente erscheinen nacheinander |
 | `counter` | Statistiken | Zahlen zählen hoch |
+| `logo-mask-intro` | Page Load | Logo als Maske, zoomt auf beim Scrollen |
 
 ### Verboten
 
-- Logo-Maske, Parallax, letter-reveal
+- Parallax, letter-reveal
 - Floating elements, Animierte SVGs
 - Alles andere nicht explizit erlaubte
 
@@ -178,6 +179,275 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 ```
+
+---
+
+## Logo Mask Intro Animation
+
+Premium Intro-Effekt: Seite startet mit Logo als "Fenster", beim Scrollen zoomt das Logo auf und gibt den Blick auf den Hero frei.
+
+### Wann verwenden
+
+- Hochwertige Kanzlei-Websites
+- Wenn ein starkes Logo vorhanden ist
+- Als Premium-Feature für Unterscheidung
+
+### Struktur
+
+```
+┌─────────────────────────────┐
+│  Grauer Overlay (#e5e5e5)   │
+│  ┌─────────────────────┐    │
+│  │    LOGO (Loch)      │    │  ← Viewport 1: Intro
+│  │  (Video/Gradient    │    │
+│  │   durchscheint)     │    │
+│  └─────────────────────┘    │
+└─────────────────────────────┘
+           ↓ Scroll
+┌─────────────────────────────┐
+│      HERO SECTION           │  ← Viewport 2: Hero
+│   "Gemeinsam Zukunft..."    │
+└─────────────────────────────┘
+           ↓ Scroll
+┌─────────────────────────────┐
+│      MAIN CONTENT           │  ← Viewport 3+: Content
+│   (weißer Hintergrund)      │
+└─────────────────────────────┘
+```
+
+### HTML
+
+```html
+<!-- GSAP (im <head>) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Video/Gradient Hintergrund (fixed, z-index: 1) -->
+<section id="video-section">
+  <video autoplay loop muted playsinline>
+    <source src="intro-video.mp4" type="video/mp4">
+  </video>
+  <div class="video-fallback"></div> <!-- Gradient Fallback -->
+</section>
+
+<!-- Logo Mask Overlay (fixed, z-index: 9998) -->
+<div id="intro-mask">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <mask id="logoRevealMask">
+        <rect width="100%" height="100%" fill="white"/>
+        <g id="logo-cutout" transform="translate(760, 390) scale(1)">
+          <!-- LOGO SVG PATHS HIER (fill="black") -->
+          <!-- Schwarz = Loch/Transparent -->
+        </g>
+      </mask>
+    </defs>
+    <rect id="mask-rect" width="100%" height="100%" fill="#e5e5e5" mask="url(#logoRevealMask)"/>
+  </svg>
+</div>
+
+<!-- Scroll Indicator -->
+<div class="scroll-down" id="scrollDown">
+  <svg viewBox="0 0 50 50" fill="none" stroke="white" stroke-width="2">
+    <circle cx="25" cy="25" r="23" opacity="0.3"/>
+    <path d="M25 15 L25 35 M17 27 L25 35 L33 27" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<!-- Hero Section (margin-top: 100vh) -->
+<section id="hero-section">
+  <div class="hero-content">
+    <h1>HEADLINE</h1>
+  </div>
+</section>
+
+<!-- Main Content (position: relative, z-index: 10, background: white) -->
+<main id="main-content">
+  <!-- Normale Sektionen -->
+</main>
+```
+
+### CSS
+
+```css
+/* Video Background */
+#video-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#video-section video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.video-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+}
+
+/* Logo Mask Overlay */
+#intro-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#intro-mask svg {
+  width: 100%;
+  height: 100%;
+}
+
+#intro-mask.fade-out {
+  opacity: 0;
+}
+
+#logo-cutout {
+  transform-origin: center center;
+  transform-box: fill-box;
+}
+
+/* Scroll Indicator */
+.scroll-down {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+.scroll-down svg {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+.scroll-down.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-15px); }
+  60% { transform: translateX(-50%) translateY(-7px); }
+}
+
+/* Hero Section */
+#hero-section {
+  position: relative;
+  height: 100vh;
+  margin-top: 100vh; /* WICHTIG: Schiebt Hero unter Intro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+/* Main Content */
+#main-content {
+  position: relative;
+  z-index: 10;
+  background: white;
+}
+```
+
+### JavaScript
+
+```javascript
+gsap.registerPlugin(ScrollTrigger);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const introMask = document.getElementById('intro-mask');
+  const scrollDown = document.getElementById('scrollDown');
+  const logoCutout = document.getElementById('logo-cutout');
+  const maskRect = document.getElementById('mask-rect');
+
+  // Logo zoom Animation beim Scrollen
+  gsap.to(logoCutout, {
+    scale: 20,
+    scrollTrigger: {
+      trigger: '#hero-section',
+      start: 'top bottom',
+      end: 'top top',
+      scrub: 0.5,
+      onUpdate: (self) => {
+        const progress = self.progress;
+
+        // Grauer Overlay ausblenden
+        if (maskRect) {
+          maskRect.style.opacity = 1 - progress;
+        }
+
+        // Scroll-Indicator verstecken
+        if (progress > 0.1) {
+          scrollDown.classList.add('hidden');
+        } else {
+          scrollDown.classList.remove('hidden');
+        }
+
+        // Intro-Mask komplett ausblenden wenn fertig
+        if (progress > 0.95) {
+          introMask.classList.add('fade-out');
+        } else {
+          introMask.classList.remove('fade-out');
+        }
+      }
+    }
+  });
+
+  // Click auf Scroll-Indicator
+  scrollDown.addEventListener('click', () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  });
+});
+```
+
+### Logo SVG vorbereiten
+
+Das Logo muss als SVG-Pfade in die Maske eingefügt werden:
+
+1. Logo SVG öffnen
+2. Alle `<path>` Elemente kopieren
+3. `fill="black"` setzen (schwarz = transparent/Loch)
+4. In `#logo-cutout` einfügen
+5. `transform="translate(X, Y) scale(S)"` anpassen für Zentrierung
+
+```svg
+<!-- Beispiel: Logo zentrieren in 1920x1080 -->
+<g id="logo-cutout" transform="translate(760, 390) scale(1.2)">
+  <path fill="black" d="M..."/> <!-- Logo Pfad 1 -->
+  <path fill="black" d="M..."/> <!-- Logo Pfad 2 -->
+</g>
+```
+
+### Ohne Video (nur Gradient)
+
+Falls kein Video vorhanden, einfach `<video>` weglassen - der `.video-fallback` Gradient wird angezeigt.
 
 ---
 
