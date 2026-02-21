@@ -91,7 +91,14 @@ function initScrollReveal() {
         rootMargin: '0px 0px -50px 0px'
     });
 
-    revealElements.forEach(el => observer.observe(el));
+    revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('visible');
+        } else {
+            observer.observe(el);
+        }
+    });
 }
 
 /* ========================================
