@@ -39,37 +39,10 @@
         </div>
     </header>
 
-    <!-- HERO - Fullscreen mit SVG-Pattern -->
+    <!-- HERO - Fullscreen mit Food-Bild -->
     <section class="hero" id="hero">
-        <div class="hero-bg-pattern">
-            <svg class="hero-pattern" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <radialGradient id="glow1" cx="30%" cy="40%" r="50%">
-                        <stop offset="0%" stop-color="#c40000" stop-opacity="0.15"/>
-                        <stop offset="100%" stop-color="#000" stop-opacity="0"/>
-                    </radialGradient>
-                    <radialGradient id="glow2" cx="70%" cy="60%" r="40%">
-                        <stop offset="0%" stop-color="#d4a574" stop-opacity="0.1"/>
-                        <stop offset="100%" stop-color="#000" stop-opacity="0"/>
-                    </radialGradient>
-                </defs>
-                <rect width="800" height="600" fill="#000"/>
-                <rect width="800" height="600" fill="url(#glow1)"/>
-                <rect width="800" height="600" fill="url(#glow2)"/>
-                <!-- Decorative kebab skewer -->
-                <g opacity="0.06" transform="translate(600, 80) rotate(15)">
-                    <rect x="-3" y="0" width="6" height="300" rx="3" fill="#d4a574"/>
-                    <ellipse cx="0" cy="60" rx="25" ry="18" fill="#c40000"/>
-                    <ellipse cx="0" cy="110" rx="22" ry="16" fill="#d4a574"/>
-                    <ellipse cx="0" cy="155" rx="25" ry="18" fill="#c40000"/>
-                    <ellipse cx="0" cy="200" rx="22" ry="16" fill="#d4a574"/>
-                    <ellipse cx="0" cy="245" rx="25" ry="18" fill="#c40000"/>
-                </g>
-                <!-- Decorative circles -->
-                <circle cx="120" cy="480" r="80" fill="none" stroke="#c40000" stroke-width="0.5" opacity="0.08"/>
-                <circle cx="120" cy="480" r="120" fill="none" stroke="#d4a574" stroke-width="0.3" opacity="0.05"/>
-                <circle cx="680" cy="500" r="60" fill="none" stroke="#d4a574" stroke-width="0.5" opacity="0.06"/>
-            </svg>
+        <div class="hero-bg-image">
+            <img src="assets/images/hero-doener.jpg" alt="Frischer Döner bei YUMMY Offenburg" loading="eager">
         </div>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
@@ -258,23 +231,8 @@
 
     <!-- STORY / ÜBER UNS -->
     <section class="section section--story" id="story">
-        <div class="story-pattern">
-            <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <radialGradient id="storyGlow" cx="50%" cy="50%" r="60%">
-                        <stop offset="0%" stop-color="#c40000" stop-opacity="0.12"/>
-                        <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
-                    </radialGradient>
-                </defs>
-                <rect width="800" height="500" fill="#0a0a0a"/>
-                <rect width="800" height="500" fill="url(#storyGlow)"/>
-                <g opacity="0.04">
-                    <circle cx="100" cy="100" r="40" fill="none" stroke="#d4a574" stroke-width="1"/>
-                    <circle cx="700" cy="400" r="60" fill="none" stroke="#c40000" stroke-width="0.8"/>
-                    <line x1="200" y1="0" x2="200" y2="500" stroke="#d4a574" stroke-width="0.3"/>
-                    <line x1="600" y1="0" x2="600" y2="500" stroke="#d4a574" stroke-width="0.3"/>
-                </g>
-            </svg>
+        <div class="story-bg">
+            <img src="assets/images/kebabteller.jpg" alt="Kebabteller bei YUMMY" loading="lazy">
         </div>
         <div class="story-overlay"></div>
         <div class="container story-content">
@@ -303,14 +261,8 @@
 
     <!-- TESTIMONIALS -->
     <section class="section section--testimonials" id="bewertungen">
-        <div class="testimonials-bg-pattern">
-            <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <rect width="800" height="400" fill="#111"/>
-                <g opacity="0.05">
-                    <path d="M0 200 Q200 100 400 200 Q600 300 800 200" fill="none" stroke="#c40000" stroke-width="2"/>
-                    <path d="M0 250 Q200 150 400 250 Q600 350 800 250" fill="none" stroke="#d4a574" stroke-width="1"/>
-                </g>
-            </svg>
+        <div class="testimonials-bg">
+            <img src="assets/images/kebab.jpg" alt="Kebab bei YUMMY" loading="lazy">
         </div>
         <div class="testimonials-overlay"></div>
         <div class="container testimonials-content">

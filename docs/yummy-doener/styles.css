@@ -380,25 +380,22 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
 }
 
-.hero-bg-pattern {
+.hero-bg-image {
     position: absolute;
     inset: 0;
 }
 
-.hero-bg-pattern svg {
+.hero-bg-image img {
     width: 100%;
     height: 100%;
-}
-
-.hero-pattern {
-    width: 100%;
-    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.6) 100%);
 }
 
 .hero-content {
@@ -645,20 +642,22 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-.story-pattern {
+.story-bg {
     position: absolute;
     inset: 0;
 }
 
-.story-pattern svg {
+.story-bg img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .story-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .story-content {
@@ -717,20 +716,22 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-.testimonials-bg-pattern {
+.testimonials-bg {
     position: absolute;
     inset: 0;
 }
 
-.testimonials-bg-pattern svg {
+.testimonials-bg img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .testimonials-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.75);
 }
 
 .testimonials-content {
