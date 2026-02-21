@@ -678,6 +678,11 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--space-xs);
 }
 
+.stat-value {
+    display: flex;
+    align-items: baseline;
+}
+
 .stat-number {
     font-family: var(--font-heading);
     font-size: clamp(2.5rem, 5vw, 3.5rem);
