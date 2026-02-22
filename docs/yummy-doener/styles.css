@@ -743,24 +743,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     padding: 8rem 2rem;
     overflow: hidden;
-}
-
-.testimonials-bg {
-    position: absolute;
-    inset: 0;
-}
-
-.testimonials-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.testimonials-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
+    background: var(--bg-section);
 }
 
 .testimonials-content {
