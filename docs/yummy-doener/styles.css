@@ -578,12 +578,26 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--space-xl);
 }
 
+.menu-item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin-bottom: var(--space-md);
+    transition: transform var(--transition-base);
+}
+
+.menu-item:hover .menu-item-image {
+    transform: scale(1.03);
+}
+
 .menu-item {
     background: var(--bg-card);
     padding: var(--space-xl);
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: border-color var(--transition-base), transform var(--transition-base);
     position: relative;
+    overflow: hidden;
     animation-delay: var(--delay, 0s);
 }
 
