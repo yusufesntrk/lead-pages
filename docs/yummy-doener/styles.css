@@ -838,6 +838,19 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--space-4xl);
 }
 
+.map-embed {
+    margin-top: var(--space-4xl);
+}
+
+.map-embed iframe {
+    filter: grayscale(0.3) brightness(0.85);
+    transition: filter var(--transition-base);
+}
+
+.map-embed iframe:hover {
+    filter: grayscale(0) brightness(1);
+}
+
 .contact-info {
     display: flex;
     flex-direction: column;
