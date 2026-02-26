@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YUMMY Döner Offenburg – Frischer Yaprak Döner, Falafel, Lahmacun & mehr. Täglich frisch zubereitet in der Ritterstraße 3.">
+    <meta name="keywords" content="Döner Offenburg, Yaprak Döner, Falafel, Lahmacun, Pizza, türkisches Restaurant Offenburg, YUMMY">
+    <title>YUMMY Döner | Frisch. Lecker. Offenburg.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.svg" alt="YUMMY Logo" class="logo-img">
+                </a>
+                <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#speisekarte" class="nav-link">Speisekarte</a></li>
+                    <li><a href="#story" class="nav-link">Über uns</a></li>
+                    <li><a href="#bewertungen" class="nav-link">Bewertungen</a></li>
+                    <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+                    <li class="nav-social">
+                        <a href="https://www.instagram.com/yummy_offenburg/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO - Split: Text links, Döner-Bild rechts auf schwarzem BG -->
+    <section class="hero" id="hero">
+        <div class="container hero-split">
+            <div class="hero-content">
+                <span class="hero-script">Willkommen bei</span>
+                <h1 class="hero-title">YUMMY DÖNER</h1>
+                <p class="hero-text">Frischer Yaprak Döner, knusprige Falafel und hausgemachte Lahmacun – täglich frisch zubereitet mit besten Zutaten in Offenburg.</p>
+                <div class="hero-actions">
+                    <a href="#speisekarte" class="btn btn-primary">Speisekarte entdecken</a>
+                    <a href="tel:+4978125080527" class="btn btn-outline">Jetzt anrufen</a>
+                </div>
+                <div class="hero-badge">
+                    <div class="hero-badge-stars">
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="18" height="18"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="18" height="18"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="18" height="18"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="18" height="18"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="18" height="18"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                    </div>
+                    <span class="hero-badge-text">4.7 / 5 bei 771+ Bewertungen</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/hero-doener.png" alt="Frischer Yaprak Döner von YUMMY" loading="eager">
+            </div>
+        </div>
+    </section>
+
+    <!-- HIGHLIGHTS - 3 Features -->
+    <section class="section section--dark" id="highlights">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-script">Was uns ausmacht</span>
+                <h2 class="section-title">Unsere Highlights</h2>
+            </div>
+            <div class="features-grid">
+                <article class="feature-card reveal-up" style="--delay: 0s">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="var(--accent)" stroke-width="1.5">
+                            <path d="M24 4C14 4 8 12 8 20c0 6 4 10 8 12h16c4-2 8-6 8-12 0-8-6-16-16-16z"/>
+                            <path d="M16 32v4c0 2 2 4 4 4h8c2 0 4-2 4-4v-4"/>
+                            <circle cx="18" cy="18" r="2" fill="var(--accent)" opacity="0.3"/>
+                            <circle cx="28" cy="16" r="3" fill="var(--accent)" opacity="0.2"/>
+                            <path d="M20 22c2 2 6 2 8 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Täglich frisch</h3>
+                    <p class="feature-text">Unsere Zutaten werden jeden Tag frisch geliefert. Knackige Salate, saftige Tomaten und handgeschnittenes Gemüse – für den perfekten Geschmack.</p>
+                </article>
+                <article class="feature-card reveal-up" style="--delay: 0.15s">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="var(--accent)" stroke-width="1.5">
+                            <path d="M24 4L6 14v20l18 10 18-10V14L24 4z"/>
+                            <path d="M24 14v20"/>
+                            <path d="M14 19l10 5 10-5"/>
+                            <circle cx="24" cy="24" r="4" fill="var(--accent)" opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Yaprak Döner</h3>
+                    <p class="feature-text">Unser Yaprak Döner wird aus hauchdünnen Fleischscheiben am Spieß geschichtet – keine Hackfleischmasse, sondern echtes, mariniertes Fleisch.</p>
+                </article>
+                <article class="feature-card reveal-up" style="--delay: 0.3s">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="var(--accent)" stroke-width="1.5">
+                            <path d="M24 44c0-16 12-24 12-36"/>
+                            <path d="M24 44c0-16-12-24-12-36"/>
+                            <path d="M18 24c4-2 8-2 12 0"/>
+                            <circle cx="24" cy="16" r="3" fill="var(--accent)" opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Vegetarische Vielfalt</h3>
+                    <p class="feature-text">Von knuspriger Falafel über vegetarische Wraps bis zu frischen Salaten – bei uns findet jeder sein Lieblingsgericht, auch ohne Fleisch.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPEISEKARTE -->
+    <section class="section section--menu" id="speisekarte">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-script">Unsere Küche</span>
+                <h2 class="section-title">Speisekarte</h2>
+            </div>
+            <div class="menu-categories">
+                <button class="menu-tab active" data-category="all">Alle</button>
+                <button class="menu-tab" data-category="doener">Döner</button>
+                <button class="menu-tab" data-category="falafel">Falafel</button>
+                <button class="menu-tab" data-category="lahmacun">Lahmacun</button>
+                <button class="menu-tab" data-category="pizza">Pizza</button>
+                <button class="menu-tab" data-category="dessert">Desserts</button>
+            </div>
+            <div class="menu-grid">
+                <!-- Döner -->
+                <div class="menu-item reveal-up" data-category="doener" style="--delay: 0s">
+                    <img src="assets/images/menu/yaprak-doener.jpg" alt="Yaprak Döner" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Yaprak Döner</h3>
+                        <span class="menu-item-price">8,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Hauchdünn geschnittenes Dönerfleisch im frischen Fladenbrot mit Salat, Tomaten, Zwiebeln und Sauce nach Wahl.</p>
+                    <span class="menu-item-badge">Bestseller</span>
+                </div>
+                <div class="menu-item reveal-up" data-category="doener" style="--delay: 0.1s">
+                    <img src="assets/images/menu/doener-teller.jpg" alt="Döner Teller" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Döner Teller</h3>
+                        <span class="menu-item-price">12,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Yaprak Döner serviert auf dem Teller mit Reis, frischem Salat und gegrilltem Gemüse.</p>
+                </div>
+                <div class="menu-item reveal-up" data-category="doener" style="--delay: 0.2s">
+                    <img src="assets/images/menu/doener-dueruem.jpg" alt="Döner Dürüm" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Döner Dürüm</h3>
+                        <span class="menu-item-price">9,00 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Dönerfleisch im dünnen Yufka-Wrap mit knackigem Salat und unserer hausgemachten Sauce.</p>
+                </div>
+                <div class="menu-item reveal-up" data-category="doener" style="--delay: 0.3s">
+                    <img src="assets/images/menu/doener-spiess.jpg" alt="Döner Box" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Döner Box</h3>
+                        <span class="menu-item-price">9,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Dönerfleisch mit Pommes, Salat und Sauce in der praktischen Box zum Mitnehmen.</p>
+                </div>
+                <!-- Falafel -->
+                <div class="menu-item reveal-up" data-category="falafel" style="--delay: 0s">
+                    <img src="assets/images/menu/falafel-sandwich.jpg" alt="Falafel Sandwich" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Falafel Sandwich</h3>
+                        <span class="menu-item-price">7,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Knusprige Falafel-Bällchen im Fladenbrot mit Hummus, frischem Salat und Tahini-Sauce.</p>
+                    <span class="menu-item-badge menu-item-badge--veg">Vegetarisch</span>
+                </div>
+                <div class="menu-item reveal-up" data-category="falafel" style="--delay: 0.1s">
+                    <img src="assets/images/menu/falafel-teller.jpg" alt="Falafel Teller" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Falafel Teller</h3>
+                        <span class="menu-item-price">11,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Falafel-Bällchen auf dem Teller mit Hummus, Reis, Salat und Fladenbrot.</p>
+                    <span class="menu-item-badge menu-item-badge--veg">Vegetarisch</span>
+                </div>
+                <!-- Lahmacun -->
+                <div class="menu-item reveal-up" data-category="lahmacun" style="--delay: 0s">
+                    <img src="assets/images/menu/lahmacun.jpg" alt="Lahmacun" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Lahmacun</h3>
+                        <span class="menu-item-price">7,00 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Hauchdünner, knuspriger Teigfladen mit gewürztem Hackfleisch, Petersilie und Zitrone.</p>
+                </div>
+                <div class="menu-item reveal-up" data-category="lahmacun" style="--delay: 0.1s">
+                    <img src="assets/images/menu/lahmacun.jpg" alt="Lahmacun mit Döner" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Lahmacun mit Döner</h3>
+                        <span class="menu-item-price">9,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Lahmacun gefüllt mit saftigem Dönerfleisch, frischem Salat und Sauce.</p>
+                </div>
+                <!-- Pizza -->
+                <div class="menu-item reveal-up" data-category="pizza" style="--delay: 0s">
+                    <img src="assets/images/menu/pizza-doener.jpg" alt="Pizza Döner" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Pizza Döner</h3>
+                        <span class="menu-item-price">10,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Knusprige Pizza belegt mit Dönerfleisch, frischem Gemüse und Sauce.</p>
+                </div>
+                <div class="menu-item reveal-up" data-category="pizza" style="--delay: 0.1s">
+                    <img src="assets/images/menu/pizza-margherita.jpg" alt="Pizza Margherita" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Pizza Margherita</h3>
+                        <span class="menu-item-price">8,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Klassische Pizza mit Tomatensauce, Mozzarella und frischem Basilikum.</p>
+                    <span class="menu-item-badge menu-item-badge--veg">Vegetarisch</span>
+                </div>
+                <!-- Desserts -->
+                <div class="menu-item reveal-up" data-category="dessert" style="--delay: 0s">
+                    <img src="assets/images/menu/baklava.jpg" alt="Baklava" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Baklava</h3>
+                        <span class="menu-item-price">4,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Traditionelles Blätterteiggebäck mit Pistazien und Honigsirup – süß und knusprig.</p>
+                </div>
+                <div class="menu-item reveal-up" data-category="dessert" style="--delay: 0.1s">
+                    <img src="assets/images/menu/kuenefe.jpg" alt="Künefe" class="menu-item-image">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-name">Künefe</h3>
+                        <span class="menu-item-price">6,50 &euro;</span>
+                    </div>
+                    <p class="menu-item-desc">Warmes Kadayıf-Gebäck mit geschmolzenem Käse und Zuckersirup – ein türkischer Klassiker.</p>
+                </div>
+            </div>
+            <p class="menu-note reveal-up">Alle Preise inkl. MwSt. Allergene und Zusatzstoffe auf Anfrage. Preise können variieren.</p>
+        </div>
+    </section>
+
+    <!-- STORY / ÜBER UNS -->
+    <section class="section section--story" id="story">
+        <div class="story-bg">
+            <img src="assets/images/kebabteller.jpg" alt="Kebabteller bei YUMMY" loading="lazy">
+        </div>
+        <div class="story-overlay"></div>
+        <div class="container story-content">
+            <span class="section-script reveal-up">Unsere Geschichte</span>
+            <h2 class="section-title reveal-up">Mehr als nur Döner</h2>
+            <p class="section-text section-text--wide reveal-up">Bei YUMMY in Offenburg verbinden wir die Tradition der türkischen Küche mit frischen, hochwertigen Zutaten. Unser Yaprak Döner wird nach Original-Rezept aus hauchdünn geschnittenem, mariniertem Fleisch am Drehspieß zubereitet – kein Vergleich zu gewöhnlichem Döner.</p>
+            <p class="section-text section-text--wide reveal-up" style="margin-top: 1rem;">Von der Falafel bis zum Baklava – jedes Gericht bereiten wir mit Leidenschaft und Sorgfalt zu. Denn gutes Essen verbindet Menschen, und genau das ist unser Antrieb.</p>
+            <div class="story-stats reveal-up">
+                <div class="stat">
+                    <span class="stat-number" data-target="771">0</span>
+                    <span class="stat-label">Google Bewertungen</span>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">
+                        <span class="stat-number" data-target="4">0</span><span class="stat-suffix">.7</span>
+                    </div>
+                    <span class="stat-label">Sterne Rating</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="6">0</span>
+                    <span class="stat-label">Tage die Woche</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section--testimonials" id="bewertungen">
+        <div class="container testimonials-content">
+            <div class="section-header reveal-up">
+                <span class="section-script">So gut schmeckt es</span>
+                <h2 class="section-title">Das sagen unsere Gäste</h2>
+                <div class="google-rating">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    <span>4.7 / 5 auf Google (771+ Bewertungen)</span>
+                </div>
+            </div>
+            <div class="testimonials-slider" id="testimonialSlider">
+                <div class="testimonial-card active">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                    </div>
+                    <blockquote class="testimonial-text">"Bester Döner in Offenburg! Das Fleisch ist super saftig und die Soßen sind hausgemacht. Man merkt einfach die Qualität. Komme immer wieder gerne!"</blockquote>
+                    <cite class="testimonial-author">Marco S. &mdash; Google Bewertung</cite>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                    </div>
+                    <blockquote class="testimonial-text">"Die Falafel sind unglaublich knusprig und der Lahmacun ist der beste, den ich je gegessen habe. Super freundliches Personal und alles frisch. Absolute Empfehlung!"</blockquote>
+                    <cite class="testimonial-author">Lisa K. &mdash; Google Bewertung</cite>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                        <svg viewBox="0 0 20 20" fill="#d4a574" width="16" height="16"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>
+                    </div>
+                    <blockquote class="testimonial-text">"Endlich ein Döner-Laden, der Yaprak Döner richtig macht! Große Portionen, faire Preise und das Baklava zum Nachtisch ist ein Traum. Unser Stamm-Laden!"</blockquote>
+                    <cite class="testimonial-author">Thomas B. &mdash; Google Bewertung</cite>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <button class="t-dot active" data-testimonial="0" aria-label="Bewertung 1"></button>
+                <button class="t-dot" data-testimonial="1" aria-label="Bewertung 2"></button>
+                <button class="t-dot" data-testimonial="2" aria-label="Bewertung 3"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÖFFNUNGSZEITEN & KONTAKT -->
+    <section class="section section--dark" id="kontakt">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-script">Komm vorbei</span>
+                <h2 class="section-title">Öffnungszeiten & Kontakt</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal-left">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <span class="contact-label">Adresse</span>
+                            <a href="https://maps.google.com/?q=Ritterstra%C3%9Fe+3,+77652+Offenburg" target="_blank" rel="noopener" class="contact-value">Ritterstraße 3, 77652 Offenburg</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <span class="contact-label">Telefon</span>
+                            <a href="tel:+4978125080527" class="contact-value">0781 250 805 27</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </div>
+                        <div>
+                            <span class="contact-label">Instagram</span>
+                            <a href="https://www.instagram.com/yummy_offenburg/" target="_blank" rel="noopener" class="contact-value">@yummy_offenburg</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hours-card reveal-right">
+                    <h3 class="hours-title">Öffnungszeiten</h3>
+                    <div class="hours-table">
+                        <div class="hours-row hours-row--closed">
+                            <span class="hours-day">Montag</span>
+                            <span class="hours-time">Ruhetag</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Dienstag</span>
+                            <span class="hours-time">11:00 – 22:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Mittwoch</span>
+                            <span class="hours-time">11:00 – 22:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Donnerstag</span>
+                            <span class="hours-time">11:00 – 22:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Freitag</span>
+                            <span class="hours-time">11:00 – 22:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Samstag</span>
+                            <span class="hours-time">11:00 – 22:00</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Sonntag</span>
+                            <span class="hours-time">11:30 – 22:00</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Ritterstra%C3%9Fe+3,+77652+Offenburg" target="_blank" rel="noopener" class="btn btn-primary btn-full" style="margin-top: 1.5rem;">
+                        Route planen
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="map-embed reveal-up">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2637.5!2d7.9437756!3d48.4688617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796d35916ed2b19%3A0x2e488ccb8e4b013e!2sYUMMY%20D%C3%B6ner%20Offenburg!5e0!3m2!1sde!2sde!4v1708000000000" width="100%" height="400" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM CTA -->
+    <section class="section section--instagram" id="instagram">
+        <div class="container">
+            <div class="instagram-cta reveal-up">
+                <div class="instagram-cta-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </div>
+                <span class="section-script">Folge uns</span>
+                <h2 class="section-title">@yummy_offenburg</h2>
+                <p class="section-text" style="margin: 0 auto 2rem; text-align: center;">Entdecke unsere neuesten Kreationen, Behind-the-Scenes und exklusive Angebote auf Instagram.</p>
+                <a href="https://www.instagram.com/yummy_offenburg/" target="_blank" rel="noopener" class="btn btn-primary">Auf Instagram folgen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid footer-grid--simple">
+                <div class="footer-brand">
+                    <img src="assets/logo.svg" alt="YUMMY Logo" class="footer-logo-img">
+                    <p class="footer-tagline">Frischer Döner in Offenburg</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/yummy_offenburg/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul>
+                        <li><a href="#speisekarte">Speisekarte</a></li>
+                        <li><a href="#story">Über uns</a></li>
+                        <li><a href="#bewertungen">Bewertungen</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Kontakt</h4>
+                    <ul>
+                        <li><a href="tel:+4978125080527">0781 250 805 27</a></li>
+                        <li><a href="https://maps.google.com/?q=Ritterstra%C3%9Fe+3,+77652+Offenburg" target="_blank" rel="noopener">Ritterstraße 3</a></li>
+                        <li>77652 Offenburg</li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">Öffnungszeiten</h4>
+                    <ul>
+                        <li>Di – Sa: 11:00 – 22:00</li>
+                        <li>So: 11:30 – 22:00</li>
+                        <li>Mo: Ruhetag</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 YUMMY Döner Offenburg. Alle Rechte vorbehalten.</p>
+                <div class="footer-legal">
+                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="impressum.html">Impressum</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p>Wir verwenden Cookies, um Inhalte zu personalisieren und die Zugriffe auf unsere Website zu analysieren. Weitere Informationen finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+        <div class="cookie-actions">
+            <button class="btn btn-outline btn-sm" id="cookieReject">Ablehnen</button>
+            <button class="btn btn-primary btn-sm" id="cookieAccept">Akzeptieren</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

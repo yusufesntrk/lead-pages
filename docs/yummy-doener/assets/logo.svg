@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" fill="white">
+  <!-- Chef Hat (Toque) -->
+  <ellipse cx="100" cy="42" rx="38" ry="30"/>
+  <rect x="72" y="42" width="56" height="18" rx="2"/>
+  <circle cx="78" cy="30" r="14"/>
+  <circle cx="100" cy="22" r="16"/>
+  <circle cx="122" cy="30" r="14"/>
+
+  <!-- Hat Band -->
+  <rect x="72" y="56" width="56" height="6" rx="1" fill="white"/>
+
+  <!-- Fork (left) -->
+  <g transform="translate(72, 30) rotate(-12, 10, 40)">
+    <rect x="8" y="38" width="4" height="48" rx="2"/>
+    <rect x="2" y="28" width="3" height="18" rx="1.5"/>
+    <rect x="7" y="26" width="3" height="20" rx="1.5"/>
+    <rect x="12" y="28" width="3" height="18" rx="1.5"/>
+    <rect x="2" y="38" width="16" height="4" rx="2"/>
+  </g>
+
+  <!-- Knife (center-right) -->
+  <g transform="translate(108, 30) rotate(0, 6, 40)">
+    <rect x="4" y="38" width="4" height="48" rx="2"/>
+    <path d="M3,28 Q6,20 9,28 L9,42 L3,42 Z"/>
+  </g>
+
+  <!-- Spoon (right) -->
+  <g transform="translate(120, 30) rotate(12, 6, 40)">
+    <rect x="4" y="42" width="4" height="44" rx="2"/>
+    <ellipse cx="6" cy="34" rx="8" ry="12"/>
+    <ellipse cx="6" cy="34" rx="4.5" ry="7" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
+  </g>
+
+  <!-- "Bon Appétit!" Text -->
+  <text x="100" y="118" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="16" fill="white" letter-spacing="0.5">Bon Appétit !</text>
+
+  <!-- "YUMMY" Text -->
+  <text x="100" y="155" text-anchor="middle" font-family="'Oswald', 'Arial Black', sans-serif" font-size="48" font-weight="700" fill="white" letter-spacing="6">YUMMY</text>
+</svg>
