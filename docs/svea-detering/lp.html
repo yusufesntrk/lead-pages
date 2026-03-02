@@ -3,13 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kostenloses Erstgesprach – Paartherapie Halle | Svea Detering</title>
-  <meta name="description" content="Fühlen Sie sich in Ihrer Beziehung unverstanden? Jetzt kostenloses, unverbindliches Erstgespräch mit Svea Detering – EFT-zertifizierte Paartherapeutin in Halle.">
+  <title>Paartherapie Halle – Kostenloses Erstgespräch | Svea Detering</title>
+  <meta name="description" content="Fühlen Sie sich in Ihrer Beziehung unverstanden? Svea Detering begleitet Paare in Halle zurück zueinander. Kostenloses Erstgespräch – unverbindlich und vertraulich.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="lp.css">
+  <style>
+    /* ── Story-specific additions ── */
+    .story { padding: 96px 0; background: var(--white); }
+    .story-intro {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .story-intro .lead {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .story-intro .lead em { color: var(--rose-primary); font-style: normal; font-weight: 700; }
+    .story-body {
+      font-size: 1.02rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .story-scenarios {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .scenario {
+      background: var(--rose-faint);
+      border-radius: 18px;
+      padding: 28px 24px;
+      border-left: 3px solid var(--rose-primary);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .scenario:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(201,24,74,0.09); }
+    .scenario-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .scenario-quote::before { content: '\201E'; color: var(--rose-light); font-size: 2rem; line-height: 0; vertical-align: -0.5rem; margin-right: 4px; }
+    .scenario-sub { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* ── Agitation ── */
+    .agitation {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #1a0010 0%, #3d0820 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .agitation::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(201,24,74,0.15) 0%, transparent 60%);
+    }
+    .agitation-inner { max-width: 760px; margin: 0 auto; padding: 0 32px; text-align: center; position: relative; z-index: 1; }
+    .agitation-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .agitation-inner h2 em { font-style: italic; color: var(--gold-light); }
+    .agitation-inner p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .agitation-steps {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .ag-step {
+      text-align: center;
+      padding: 20px 32px;
+      position: relative;
+    }
+    .ag-step::after {
+      content: '→';
+      position: absolute;
+      right: -4px; top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.2);
+      font-size: 1.2rem;
+    }
+    .ag-step:last-child::after { display: none; }
+    .ag-step-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--rose-light);
+      margin-bottom: 6px;
+    }
+    .ag-step-text { font-size: 0.88rem; color: rgba(255,255,255,0.60); line-height: 1.5; max-width: 120px; margin: 0 auto; }
+
+    /* ── Guide ── */
+    .guide { padding: 96px 0; background: var(--rose-faint); }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .guide-photo-wrap { position: relative; }
+    .guide-photo {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .guide-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .guide-pull-quote {
+      position: absolute;
+      bottom: -24px; right: -24px;
+      background: var(--rose-primary);
+      color: var(--white);
+      border-radius: 18px;
+      padding: 20px 22px;
+      max-width: 200px;
+      box-shadow: 0 12px 36px rgba(201,24,74,0.35);
+    }
+    .guide-pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.92rem;
+      font-style: italic;
+      line-height: 1.55;
+    }
+    .guide-content .lead-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      padding-left: 20px;
+      border-left: 3px solid var(--rose-primary);
+    }
+    .guide-text { color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; font-size: 0.97rem; }
+    .guide-creds { display: flex; flex-direction: column; gap: 10px; margin: 28px 0 36px; }
+    .guide-cred {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.9rem; color: var(--text-mid);
+    }
+    .guide-cred-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--rose-primary); flex-shrink: 0; }
+
+    /* ── Transformation ── */
+    .transformation { padding: 96px 0; background: var(--white); }
+    .transf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 56px;
+    }
+    .transf-col { background: var(--rose-faint); border-radius: 20px; padding: 36px; }
+    .transf-col.after { background: linear-gradient(135deg, var(--rose-primary), var(--rose-mid)); color: var(--white); }
+    .transf-col-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .transf-col .transf-col-label { color: var(--rose-primary); }
+    .transf-col.after .transf-col-label { color: rgba(255,255,255,0.7); }
+    .transf-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .transf-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .transf-col .transf-icon { background: var(--rose-pale); color: var(--rose-primary); }
+    .transf-col.after .transf-icon { background: rgba(255,255,255,0.2); color: var(--white); }
+    .transf-item-text { font-size: 0.92rem; line-height: 1.65; }
+    .transf-col .transf-item-text { color: var(--text-mid); }
+    .transf-col.after .transf-item-text { color: rgba(255,255,255,0.88); }
+
+    /* Responsive additions */
+    @media (max-width: 900px) {
+      .story-scenarios { grid-template-columns: 1fr; }
+      .guide-grid { grid-template-columns: 1fr; }
+      .guide-photo-wrap { max-width: 340px; margin: 0 auto; }
+      .guide-pull-quote { right: 0; }
+      .transf-grid { grid-template-columns: 1fr; }
+      .agitation-steps { flex-direction: column; align-items: center; gap: 16px; }
+      .ag-step::after { display: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -29,40 +237,38 @@
     </div>
   </header>
 
-  <!-- ── Hero + Form ─────────────────────────────────────── -->
+  <!-- ── HERO ───────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-inner">
 
-      <!-- Left: Headline -->
+      <!-- Left: Emotional Headline -->
       <div class="hero-text">
         <div class="hero-badge">
           <span class="badge-dot"></span>
           Paartherapie in Halle (Saale)
         </div>
         <h1 class="hero-headline">
-          Fühlen Sie sich in Ihrer<br>
-          Beziehung <em>unverstanden?</em>
+          Sie lieben sich noch.<br>
+          Aber irgendwann ging<br>
+          die <em>Verbindung</em> verloren.
         </h1>
         <p class="hero-sub">
-          Viele Paare warten zu lange. Dabei ist der erste Schritt einfacher als gedacht –
-          ein offenes, unverbindliches Gespräch. Kostenlos und ohne Druck.
+          Jeden Abend derselbe Abstand. Dieselben Missverständnisse.
+          Viele Paare warten zu lange. Dabei ist der erste Schritt
+          einfacher als gedacht – und kostenlos.
         </p>
         <div class="hero-checks">
+          <div class="hero-check">
+            <div class="check-icon">✓</div>
+            <span>Kostenloses Erstgespräch – unverbindlich und vertraulich</span>
+          </div>
           <div class="hero-check">
             <div class="check-icon">✓</div>
             <span>EFT-zertifizierte Therapeutin mit 15+ Jahren Erfahrung</span>
           </div>
           <div class="hero-check">
             <div class="check-icon">✓</div>
-            <span>Online oder vor Ort in Halle (Saale)</span>
-          </div>
-          <div class="hero-check">
-            <div class="check-icon">✓</div>
-            <span>Erstgespräch kostenlos und unverbindlich</span>
-          </div>
-          <div class="hero-check">
-            <div class="check-icon">✓</div>
-            <span>Antwort innerhalb von 24 Stunden</span>
+            <span>Online oder vor Ort in Halle – Antwort in 24 Stunden</span>
           </div>
         </div>
       </div>
@@ -70,10 +276,10 @@
       <!-- Right: Form -->
       <div class="form-card" id="form">
         <div id="formContent">
-          <h2 class="form-card-headline">Jetzt Erstgesprach sichern</h2>
+          <h2 class="form-card-headline">Kostenloses Erstgesprach</h2>
           <p class="form-card-sub">
-            <strong>Kostenlos &amp; unverbindlich.</strong> Ich melde mich persönlich
-            bei Ihnen – diskret und vertraulich.
+            <strong>Kostenlos &amp; unverbindlich.</strong> Ich melde mich
+            persönlich – diskret und vertraulich.
           </p>
           <form class="lp-form" id="lpForm">
             <div class="lp-field">
@@ -92,7 +298,7 @@
                 <option>Wir haben uns entfremdet</option>
                 <option>Vertrauensbruch / Untreue</option>
                 <option>Kommunikationsprobleme</option>
-                <option>Wir kriseln seit Längerem</option>
+                <option>Wir kriseln seit Langerem</option>
                 <option>Ich möchte präventiv arbeiten</option>
                 <option>Sonstiges</option>
               </select>
@@ -101,216 +307,256 @@
               Jetzt Erstgesprach sichern &rarr;
             </button>
             <p class="lp-privacy">
-              Ihre Daten sind sicher. Kein Spam, keine Weitergabe an Dritte.
+              Ihre Daten sind sicher. Kein Spam, keine Weitergabe.
               Mit dem Absenden stimmen Sie der
               <a href="datenschutz.html" target="_blank">Datenschutzerklarung</a> zu.
             </p>
           </form>
           <div class="lp-trust-row">
-            <div class="lp-trust-item">
-              <strong>15+</strong>
-              <span>Jahre<br>Erfahrung</span>
-            </div>
+            <div class="lp-trust-item"><strong>15+</strong><span>Jahre<br>Erfahrung</span></div>
             <div class="lp-trust-sep"></div>
-            <div class="lp-trust-item">
-              <strong>EFT</strong>
-              <span>Zertifi-<br>ziert</span>
-            </div>
+            <div class="lp-trust-item"><strong>EFT</strong><span>Zertifi-<br>ziert</span></div>
             <div class="lp-trust-sep"></div>
-            <div class="lp-trust-item">
-              <strong>100%</strong>
-              <span>Vertrau-<br>lich</span>
-            </div>
+            <div class="lp-trust-item"><strong>100%</strong><span>Vertrau-<br>lich</span></div>
           </div>
         </div>
-
-        <!-- Success State (hidden by default) -->
         <div class="success-msg" id="successMsg">
           <div class="success-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M20 6L9 17l-5-5"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
           </div>
           <h3>Vielen Dank!</h3>
-          <p>
-            Ihre Anfrage ist eingegangen. Ich melde mich <strong>innerhalb von 24 Stunden</strong>
-            persönlich bei Ihnen.<br><br>
-            Bis dahin alles Gute – Svea Detering
-          </p>
+          <p>Ich melde mich <strong>innerhalb von 24 Stunden</strong> persönlich bei Ihnen.<br><br>Bis dahin alles Gute – Svea Detering</p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ── Social Proof Bar ────────────────────────────────── -->
+  <!-- ── Trust Bar ───────────────────────────────────────── -->
   <div class="proof-bar">
     <div class="proof-inner">
-      <div class="proof-item">
-        <div class="proof-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-        </div>
-        Systemische Familientherapeutin (DGSF)
-      </div>
+      <div class="proof-item"><div class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>Systemische Familientherapeutin (DGSF)</div>
       <div class="proof-sep"></div>
-      <div class="proof-item">
-        <div class="proof-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-          </svg>
-        </div>
-        EFT-zertifizierte Paartherapeutin
-      </div>
+      <div class="proof-item"><div class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>EFT-zertifizierte Paartherapeutin</div>
       <div class="proof-sep"></div>
-      <div class="proof-item">
-        <div class="proof-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-        </div>
-        Hold Me Tight® Trainerin
-      </div>
+      <div class="proof-item"><div class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>Antwort in 24 Stunden</div>
       <div class="proof-sep"></div>
-      <div class="proof-item">
-        <div class="proof-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-        </div>
-        Antwort in 24 Stunden
-      </div>
+      <div class="proof-item"><div class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>Online &amp; Vor Ort</div>
     </div>
   </div>
 
-  <!-- ── Pain Points ─────────────────────────────────────── -->
-  <section class="pain">
+  <!-- ── ACT 1: Die Geschichte beginnt ──────────────────── -->
+  <section class="story">
     <div class="section-inner">
-      <div class="section-header-center">
+      <div class="story-intro">
         <div class="section-tag">Kommt Ihnen das bekannt vor?</div>
-        <h2 class="section-heading">Viele Paare fühlen sich<br><em>allein damit</em></h2>
-        <p class="section-sub">
-          Das sind die häufigsten Situationen, mit denen Paare zu mir kommen.
-          Sie sind häufiger als Sie denken – und veränderbar.
+        <p class="lead">
+          Sie sitzen am selben Tisch – und fühlen sich
+          <em>meilenweit voneinander entfernt.</em>
+        </p>
+        <p class="story-body">
+          Gespräche, die früher einfach waren, enden jetzt in Schweigen oder Streit.
+          Das Gefühl von Nähe, das Sie einmal kannten, scheint weit weg.
+          Nicht weil die Liebe weg ist – sondern weil sich etwas zwischen Sie geschoben hat,
+          das Sie nicht benennen können.
+        </p>
+        <p class="story-body">
+          Das ist nicht das Ende Ihrer Beziehung. Das ist ein Muster.
+          Und Muster lassen sich verändern.
         </p>
       </div>
-      <div class="pain-grid">
 
-        <div class="pain-card">
-          <div class="pain-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          </div>
-          <h3>"Wir reden nicht mehr richtig miteinander"</h3>
-          <p>Gespräche enden in Schweigen oder Streit. Jeder fühlt sich missverstanden,
-          dabei wünschen sich beide eigentlich das Gleiche: gehört zu werden.</p>
-          <div class="pain-resolution">
-            EFT zeigt, was wirklich dahintersteckt
-          </div>
+      <div class="story-scenarios">
+        <div class="scenario">
+          <p class="scenario-quote">
+            Immer wieder dasselbe Thema, derselbe Streit – und danach das vertraute Schweigen.
+            Als würde ein Drehbuch ablaufen, das keiner von uns geschrieben hat.
+          </p>
+          <p class="scenario-sub">Viele Paare stecken in Mustern fest, die sie selbst nicht verstehen.</p>
         </div>
-
-        <div class="pain-card">
-          <div class="pain-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-          </div>
-          <h3>"Wir leben nebeneinander her"</h3>
-          <p>Die Nähe und Verbindung von früher scheint weit weg. Man funktioniert zusammen,
-          aber das Gefühl von echter Zweisamkeit fehlt seit Längerem.</p>
-          <div class="pain-resolution">
-            Verbindung kann wiederhergestellt werden
-          </div>
+        <div class="scenario">
+          <p class="scenario-quote">
+            Ich habe aufgehört zu erzählen, wie es mir geht. Er fragt nicht mehr.
+            Wir funktionieren – aber wir sind keine Partner mehr.
+          </p>
+          <p class="scenario-sub">Emotionale Distanz entsteht langsam und unbemerkt.</p>
         </div>
-
-        <div class="pain-card">
-          <div class="pain-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" y1="8" x2="12" y2="12"/>
-              <line x1="12" y1="16" x2="12.01" y2="16"/>
-            </svg>
-          </div>
-          <h3>"Wir streiten immer über dasselbe"</h3>
-          <p>Die Themen wechseln, aber das Muster bleibt. Dieselben Reaktionen,
-          dieselben Verletzungen, dieselbe Erschöpfung. Ein Kreis ohne Ausweg.</p>
-          <div class="pain-resolution">
-            Muster erkennen und dauerhaft durchbrechen
-          </div>
+        <div class="scenario">
+          <p class="scenario-quote">
+            Wir lieben uns, da bin ich sicher. Aber irgendwie wissen wir nicht mehr,
+            wie wir das dem anderen zeigen sollen.
+          </p>
+          <p class="scenario-sub">Liebe ist da – aber die Verbindung fehlt.</p>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ── About Strip ─────────────────────────────────────── -->
-  <section class="about-strip">
+  <!-- ── ACT 2: Was passiert, wenn nichts passiert ─────── -->
+  <section class="agitation">
+    <div class="agitation-inner">
+      <div class="section-tag" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);">Die unbequeme Wahrheit</div>
+      <h2>Was passiert, wenn Paare <em>zu lange warten?</em></h2>
+      <p>
+        Die meisten Paare kommen zu mir, nachdem sie Jahre gewartet haben.
+        In der Hoffnung, dass es sich von selbst löst. Tut es nicht.
+        Aus Erschöpfung wird Gleichgültigkeit. Und Gleichgültigkeit ist schwerer
+        zu überwinden als jeder Streit.
+      </p>
+      <p>
+        Der beste Zeitpunkt wäre vor zwei Jahren gewesen.
+        Der zweitbeste Zeitpunkt ist jetzt.
+      </p>
+      <div class="agitation-steps">
+        <div class="ag-step">
+          <div class="ag-step-label">Heute</div>
+          <div class="ag-step-text">Distanz &amp; Missverstandnis</div>
+        </div>
+        <div class="ag-step">
+          <div class="ag-step-label">6 Monate</div>
+          <div class="ag-step-text">Emotionale Erschöpfung</div>
+        </div>
+        <div class="ag-step">
+          <div class="ag-step-label">1 Jahr</div>
+          <div class="ag-step-text">Gleichgültigkeit</div>
+        </div>
+        <div class="ag-step">
+          <div class="ag-step-label">Oder jetzt</div>
+          <div class="ag-step-text" style="color:var(--gold-light);font-weight:600;">Der Wendepunkt</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ACT 3: Die Guide betritt die Geschichte ────────── -->
+  <section class="guide">
     <div class="section-inner">
-      <div class="about-strip-grid">
-        <div class="about-photo-wrap">
-          <div class="about-photo-circle">
+      <div class="guide-grid">
+
+        <div class="guide-photo-wrap">
+          <div class="guide-photo">
             <img src="assets/images/svea-detering.jpg" alt="Svea Detering – Paartherapeutin in Halle">
           </div>
-          <div class="about-photo-badge">
-            <strong>15+</strong>
-            Jahre<br>Erfahrung
+          <div class="guide-pull-quote">
+            <p>"Hinter jedem Konflikt steckt ein unerfülltes Bedürfnis nach Verbindung."</p>
           </div>
         </div>
-        <div class="about-strip-content">
-          <div class="section-tag">Ihre Therapeutin</div>
-          <h2 class="section-heading">Ich bin Svea Detering</h2>
-          <p class="about-strip-intro">
-            Systemische Familientherapeutin und EFT-zertifizierte Paartherapeutin
-            aus Halle (Saale). Seit über 15 Jahren begleite ich Paare auf dem Weg
-            zurück zueinander.
+
+        <div class="guide-content">
+          <div class="section-tag">Ihre Begleiterin</div>
+          <h2 class="section-heading">Ich höre das jeden Tag.<br><em>Ich kenne den Weg hinaus.</em></h2>
+          <p class="lead-quote">
+            "Paare kommen zu mir, wenn sie nicht mehr weiterwissen.
+            Was ich immer sehe: Sie haben nicht aufgehört zu lieben.
+            Sie haben nur verlernt, sich zu erreichen."
           </p>
-          <p class="about-strip-text">
-            Meine Überzeugung: Hinter jedem Konflikt steckt ein unerfülltes Bedürfnis
-            nach Verbindung. In einem sicheren, wertfreien Raum helfe ich Paaren,
-            diese Bedürfnisse zu verstehen – und füreinander erreichbar zu werden.
+          <p class="guide-text">
+            Ich bin Svea Detering. Seit über 15 Jahren begleite ich Paare in Halle,
+            Berlin und Brandenburg. Nicht als neutrale Beobachterin – sondern als
+            jemand, der wirklich versteht, was in einer Beziehungskrise passiert.
           </p>
-          <div class="about-creds">
-            <div class="about-cred"><div class="cred-dot"></div><span>Systemische Familientherapeutin (DGSF)</span></div>
-            <div class="about-cred"><div class="cred-dot"></div><span>EFT-zertifizierte Paartherapeutin</span></div>
-            <div class="about-cred"><div class="cred-dot"></div><span>Hold Me Tight® Trainerin</span></div>
-            <div class="about-cred"><div class="cred-dot"></div><span>Supervisorin und Coach</span></div>
+          <p class="guide-text">
+            Mein Ansatz basiert auf der Emotionsfokussierten Therapie (EFT) –
+            der wissenschaftlich am besten erforschten Methode für Paare.
+            Sie hilft nicht, besser zu streiten. Sie hilft, wieder erreichbar füreinander zu sein.
+          </p>
+          <div class="guide-creds">
+            <div class="guide-cred"><div class="guide-cred-dot"></div><span>Systemische Familientherapeutin (DGSF)</span></div>
+            <div class="guide-cred"><div class="guide-cred-dot"></div><span>EFT-zertifizierte Paartherapeutin</span></div>
+            <div class="guide-cred"><div class="guide-cred-dot"></div><span>Hold Me Tight® Trainerin (Dr. Sue Johnson)</span></div>
+            <div class="guide-cred"><div class="guide-cred-dot"></div><span>Supervisorin und Coach</span></div>
           </div>
-          <a href="#form" class="topbar-cta" style="font-size:0.92rem;padding:13px 28px;">
-            Jetzt kostenloses Erstgesprach anfragen
+          <a href="#form" class="topbar-cta" style="font-size:0.9rem;padding:13px 28px;">
+            Kostenloses Erstgesprach anfragen
           </a>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ── How It Works ────────────────────────────────────── -->
+  <!-- ── ACT 4: Der einfache Plan ───────────────────────── -->
   <section class="hiw">
     <div class="section-inner">
       <div class="section-header-center">
-        <div class="section-tag">So einfach geht's</div>
-        <h2 class="section-heading">Drei Schritte zu Ihrer <em>Veranderung</em></h2>
+        <div class="section-tag">Der Weg</div>
+        <h2 class="section-heading">Drei Schritte – <em>kein Mut aufbringen,</em><br>nur kurz anmelden</h2>
+        <p class="section-sub">Sie müssen nicht wissen, was Sie sagen wollen. Sie müssen nur anfangen.</p>
       </div>
       <div class="hiw-steps">
         <div class="hiw-step">
           <div class="hiw-num">1</div>
-          <h4>Formular ausfüllen</h4>
-          <p>Nur Name und Telefonnummer – kein langer Fragebogen, keine Verpflichtung. Dauert 30 Sekunden.</p>
+          <h4>30 Sekunden – fertig</h4>
+          <p>Nur Name und Telefonnummer. Kein langer Fragebogen, keine Vorbereitung. Kein Commitment.</p>
         </div>
         <div class="hiw-step">
           <div class="hiw-num">2</div>
-          <h4>Ich melde mich bei Ihnen</h4>
-          <p>Innerhalb von 24 Stunden rufe ich Sie persönlich an oder schreibe Ihnen – diskret und vertraulich.</p>
+          <h4>Ich rufe Sie an</h4>
+          <p>Innerhalb von 24 Stunden. Persönlich, ruhig, ohne Druck. Wir schauen gemeinsam, wie ich helfen kann.</p>
         </div>
         <div class="hiw-step">
           <div class="hiw-num">3</div>
-          <h4>Kostenloses Erstgesprach</h4>
-          <p>Wir schauen gemeinsam, ob und wie ich helfen kann – ohne Druck, ohne Vorabkosten, ganz in Ihrem Tempo.</p>
+          <h4>Ihr Tempo, Ihr Weg</h4>
+          <p>Ob vor Ort in Halle, online oder beim Workshop – wir finden den Weg, der zu Ihnen passt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ACT 5: Die Transformation ─────────────────────── -->
+  <section class="transformation">
+    <div class="section-inner">
+      <div class="section-header-center">
+        <div class="section-tag">Vorher &rarr; Nachher</div>
+        <h2 class="section-heading">So fühlt sich der Unterschied an</h2>
+        <p class="section-sub">Das ist keine Utopie. Das beschreiben Paare nach ihrer Therapie.</p>
+      </div>
+      <div class="transf-grid">
+        <div class="transf-col">
+          <span class="transf-col-label">Vorher – wie es sich anfühlt</span>
+          <div class="transf-item">
+            <div class="transf-icon">–</div>
+            <div class="transf-item-text">"Ich rede, aber er hört nicht wirklich zu."</div>
+          </div>
+          <div class="transf-item">
+            <div class="transf-icon">–</div>
+            <div class="transf-item-text">Dieselbe Diskussion, die nirgendwohin führt – zum dritten Mal diese Woche.</div>
+          </div>
+          <div class="transf-item">
+            <div class="transf-icon">–</div>
+            <div class="transf-item-text">Das Gefühl: Wir sind Mitbewohner, keine Partner mehr.</div>
+          </div>
+          <div class="transf-item">
+            <div class="transf-icon">–</div>
+            <div class="transf-item-text">Berührungen, die sich fremd anfühlen. Nähe, die wehtut.</div>
+          </div>
+          <div class="transf-item">
+            <div class="transf-icon">–</div>
+            <div class="transf-item-text">"Ich weiß nicht mehr, warum wir zusammen sind."</div>
+          </div>
+        </div>
+        <div class="transf-col after">
+          <span class="transf-col-label">Nachher – was möglich wird</span>
+          <div class="transf-item">
+            <div class="transf-icon">✓</div>
+            <div class="transf-item-text">"Zum ersten Mal seit Jahren hat er wirklich verstanden, was ich meine."</div>
+          </div>
+          <div class="transf-item">
+            <div class="transf-icon">✓</div>
+            <div class="transf-item-text">Streit ohne Eskalation. Meinungsverschiedenheit ohne Verletzung.</div>
+          </div>
+          <div class="transf-item">
+            <div class="transf-icon">✓</div>
+            <div class="transf-item-text">Das Gefühl: Wir sind wieder ein Team. Mit echtem Vertrauen.</div>
+          </div>
+          <div class="transf-item">
+            <div class="transf-icon">✓</div>
+            <div class="transf-item-text">Nähe, die sich natürlich anfühlt. Verbindung, die trägt.</div>
+          </div>
+          <div class="transf-item">
+            <div class="transf-icon">✓</div>
+            <div class="transf-item-text">"Ich bin froh, dass wir diesen Schritt gemacht haben."</div>
+          </div>
         </div>
       </div>
     </div>
@@ -324,88 +570,26 @@
         <h2 class="section-heading">Was Sie noch <em>wissen möchten</em></h2>
       </div>
       <div class="faq-list">
-
         <div class="faq-item">
-          <div class="faq-q">
-            Ist das Erstgesprach wirklich kostenlos?
-            <div class="faq-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-          </div>
-          <div class="faq-a">
-            <div class="faq-a-inner">
-              Ja, absolut. Das erste Gespräch ist kostenlos und unverbindlich. Es dient dazu,
-              dass wir uns kennenlernen und gemeinsam schauen, ob Paartherapie der richtige
-              Schritt für Sie ist. Sie gehen keinerlei Verpflichtung ein.
-            </div>
-          </div>
+          <div class="faq-q">Ist das Erstgespräch wirklich kostenlos?<div class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+          <div class="faq-a"><div class="faq-a-inner">Ja, absolut. Das erste Gespräch ist kostenlos und unverbindlich. Es dient dazu, dass wir uns kennenlernen und gemeinsam schauen, ob meine Arbeit der richtige Schritt für Sie ist. Keinerlei Verpflichtung.</div></div>
         </div>
-
         <div class="faq-item">
-          <div class="faq-q">
-            Kann ich die Therapie auch online machen?
-            <div class="faq-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-          </div>
-          <div class="faq-a">
-            <div class="faq-a-inner">
-              Ja. Ich biete Paartherapie sowohl vor Ort in Halle (Saale) als auch online an.
-              Online-Therapie ist genauso wirksam wie eine Sitzung vor Ort und für Paare geeignet,
-              die weiter weg wohnen oder flexible Zeiten benötigen.
-            </div>
-          </div>
+          <div class="faq-q">Muss mein Partner / meine Partnerin auch kommen?<div class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+          <div class="faq-a"><div class="faq-a-inner">Für das erste Gespräch können Sie auch alleine kommen. Viele machen das so. Wir besprechen dann, wie der weitere Weg aussehen kann. Paartherapie funktioniert am besten wenn beide teilnehmen – aber der erste Schritt kann von einer Seite kommen.</div></div>
         </div>
-
         <div class="faq-item">
-          <div class="faq-q">
-            Muss mein Partner/meine Partnerin auch kommen?
-            <div class="faq-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-          </div>
-          <div class="faq-a">
-            <div class="faq-a-inner">
-              Für das erste Gespräch können Sie auch alleine kommen. Wir besprechen dann,
-              wie der weitere Weg aussehen kann. Paartherapie funktioniert am besten wenn
-              beide Partner teilnehmen, aber der erste Schritt kann auch von einer Seite kommen.
-            </div>
-          </div>
+          <div class="faq-q">Können wir die Therapie auch online machen?<div class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+          <div class="faq-a"><div class="faq-a-inner">Ja. Online-Therapie ist genauso wirksam wie eine Sitzung vor Ort – und für viele Paare sogar angenehmer, weil sie sich in der eigenen Umgebung sicherer fühlen. Ich biete beides an.</div></div>
         </div>
-
         <div class="faq-item">
-          <div class="faq-q">
-            Was passiert nach meiner Anfrage?
-            <div class="faq-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-          </div>
-          <div class="faq-a">
-            <div class="faq-a-inner">
-              Nach Ihrer Anfrage erhalten Sie innerhalb von 24 Stunden eine persönliche
-              Rückmeldung von mir – per Telefon oder E-Mail, wie Sie es bevorzugen.
-              Ich nehme mir Zeit für Sie und gehe nicht einfach eine Liste ab. Alles
-              bleibt selbstverständlich vertraulich.
-            </div>
-          </div>
+          <div class="faq-q">Wie lange dauert eine Paartherapie bei Ihnen?<div class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+          <div class="faq-a"><div class="faq-a-inner">Das hängt von Ihrer Situation ab. Viele Paare erleben bereits nach 8–12 Sitzungen deutliche Veränderungen. EFT ist keine endlose Therapie – sie hat ein klares Ziel und messbare Ergebnisse.</div></div>
         </div>
-
         <div class="faq-item">
-          <div class="faq-q">
-            Wie lange dauert eine Paartherapie?
-            <div class="faq-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-          </div>
-          <div class="faq-a">
-            <div class="faq-a-inner">
-              Das hängt von Ihrer Situation ab. Viele Paare erleben bereits nach 8–12 Sitzungen
-              deutliche Veränderungen. EFT ist eine der am besten erforschten Paartherapien
-              weltweit und zeigt nachhaltige Wirkung – keine endlose Therapie ohne Ziel.
-            </div>
-          </div>
+          <div class="faq-q">Wir streiten kaum – brauchen wir trotzdem Paartherapie?<div class="faq-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+          <div class="faq-a"><div class="faq-a-inner">Ja. Emotionale Distanz äußert sich nicht immer in Streit – manchmal im Gegenteil: im Schweigen, im Nebeneinander-Leben, im Vermeiden. Das ist genauso ein Signal. Und genauso veränderbar.</div></div>
         </div>
-
       </div>
     </div>
   </section>
@@ -413,13 +597,14 @@
   <!-- ── Final CTA ───────────────────────────────────────── -->
   <section class="final-cta">
     <div class="final-cta-inner">
-      <h2>Der erste Schritt ist leichter<br>als gedacht</h2>
+      <h2>Der beste Zeitpunkt war früher.<br>Der zweitbeste ist jetzt.</h2>
       <p>
-        Warten Sie nicht, bis der Abstand größer wird. Ein kurzes Gespräch
-        kann den Unterschied machen – kostenlos, vertraulich und ohne Verpflichtung.
+        Ein kurzes Gespräch kann der Wendepunkt sein.
+        Kostenlos, vertraulich und ohne jede Verpflichtung.
+        Sie entscheiden, was danach passiert.
       </p>
       <a href="#form" class="btn-final">Jetzt kostenloses Erstgesprach sichern</a>
-      <p class="final-note">Kostenlos &bull; Unverbindlich &bull; Antwort in 24h</p>
+      <p class="final-note">Kostenlos &bull; Unverbindlich &bull; Persönliche Antwort in 24h</p>
     </div>
   </section>
 
@@ -436,7 +621,6 @@
   </footer>
 
   <script>
-    // FAQ Accordion
     document.querySelectorAll('.faq-q').forEach(q => {
       q.addEventListener('click', () => {
         const item = q.closest('.faq-item');
@@ -445,16 +629,12 @@
         if (!isOpen) item.classList.add('open');
       });
     });
-
-    // Smooth scroll to form
     document.querySelectorAll('a[href="#form"]').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();
         document.getElementById('form').scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });
-
-    // Form submit
     document.getElementById('lpForm').addEventListener('submit', e => {
       e.preventDefault();
       document.getElementById('formContent').style.display = 'none';
