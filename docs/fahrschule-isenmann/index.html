@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fahrschule Isenmann – Deine Fahrschule in Offenburg, Gengenbach & Diersburg</title>
+  <meta name="description" content="Fahrschule Isenmann – Deine moderne Fahrschule in Offenburg, Gengenbach und Diersburg. Führerschein Klasse B, Motorrad, Anhänger und mehr. Jetzt anmelden!">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="60" height="60" rx="8" fill="#D40074"/>
+            <path d="M12 44V16H22L30 32L38 16H48V44H40V28L32 44H28L20 28V44H12Z" fill="white"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Fahrschule</span>
+          <span class="logo-sub">Isenmann</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#ausbildung">Deine Ausbildung</a></li>
+        <li class="has-dropdown">
+          <a href="#klassen">Führerscheinklassen ▾</a>
+          <ul class="dropdown">
+            <li><a href="#klassen">Klasse B / B197</a></li>
+            <li><a href="#klassen">Automatik</a></li>
+            <li><a href="#klassen">Klasse B96</a></li>
+            <li><a href="#klassen">Klasse BE</a></li>
+            <li><a href="#klassen">Motorrad A1 / A2 / A</a></li>
+            <li><a href="#klassen">Klasse AM & Mofa</a></li>
+            <li><a href="#klassen">Klasse L</a></li>
+          </ul>
+        </li>
+        <li><a href="#standorte">Standorte</a></li>
+        <li><a href="#team">Über Uns</a></li>
+        <li><a href="#kontakt" class="nav-cta">Jetzt anmelden</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">🚗 Führerschein mit System</div>
+      <h1 class="hero-title">
+        Dein Führerschein.<br>
+        <span class="hero-accent">Sicher. Schnell. Persönlich.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Fahrschule Isenmann – deine moderne Fahrschule in Offenburg, Gengenbach und Diersburg.<br>
+        Mit 3 einzigartigen Wegen zu deinem Führerschein.
+      </p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary btn-lg">
+          Jetzt Ausbildungsvertrag anfragen
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#ausbildung" class="btn btn-outline btn-lg">Mehr erfahren</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Standorte</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">7</span>
+          <span class="stat-label">Theorie­abende</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Transparenz</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card hero-card-1">
+        <div class="hcard-icon">🎯</div>
+        <div class="hcard-text">
+          <strong>Onboarding</strong>
+          <span>Persönliche Beratung</span>
+        </div>
+      </div>
+      <div class="hero-car-graphic">
+        <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="200" cy="170" rx="180" ry="20" fill="rgba(212,0,116,0.15)"/>
+          <rect x="60" y="100" width="280" height="70" rx="15" fill="#1a1a2e"/>
+          <rect x="80" y="70" width="220" height="60" rx="12" fill="#252545"/>
+          <rect x="100" y="78" width="80" height="40" rx="8" fill="rgba(212,0,116,0.3)"/>
+          <rect x="220" y="78" width="80" height="40" rx="8" fill="rgba(212,0,116,0.3)"/>
+          <circle cx="110" cy="165" r="28" fill="#111"/>
+          <circle cx="110" cy="165" r="18" fill="#333"/>
+          <circle cx="110" cy="165" r="8" fill="#D40074"/>
+          <circle cx="290" cy="165" r="28" fill="#111"/>
+          <circle cx="290" cy="165" r="18" fill="#333"/>
+          <circle cx="290" cy="165" r="8" fill="#D40074"/>
+          <rect x="55" y="115" width="20" height="30" rx="5" fill="#D40074" opacity="0.8"/>
+          <rect x="325" y="115" width="20" height="30" rx="5" fill="#ff0" opacity="0.6"/>
+          <rect x="335" y="110" width="10" height="15" rx="3" fill="#ff0" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="hero-card hero-card-2">
+        <div class="hcard-icon">🏆</div>
+        <div class="hcard-text">
+          <strong>Bestanden!</strong>
+          <span>Führerschein erhalten</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== 3 WEGE SECTION ===== -->
+  <section class="ways-section" id="ausbildung">
+    <div class="container">
+      <div class="section-label">Dein Weg zum Führerschein</div>
+      <h2 class="section-title">3 einzigartige Wege,<br>damit du <span class="text-pink">sicher ankommst</span></h2>
+      <p class="section-subtitle">Niemand würde ins Wasser springen, ohne zu wissen, was er im Wasser können muss. Genauso verstehen wir dein Praxiswissen.</p>
+
+      <div class="ways-grid">
+        <div class="way-card">
+          <div class="way-number">01</div>
+          <div class="way-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="20" fill="rgba(212,0,116,0.1)"/>
+              <path d="M20 10C14.48 10 10 14.48 10 20s4.48 10 10 10 10-4.48 10-10S25.52 10 20 10zm-2 15l-5-5 1.41-1.41L18 22.17l7.59-7.59L27 16l-9 9z" fill="#D40074"/>
+            </svg>
+          </div>
+          <h3>Onboarding Termin vereinbaren</h3>
+          <p>Wir lernen uns kennen, klären deine Ausbildungsziele und finden das für dich passende Ausbildungskonzept. Dabei planen wir deine gesamte Führerscheinausbildung – von der ersten Minute bis zum Prüfungstag.</p>
+          <a href="#kontakt" class="way-link">Termin anfragen →</a>
+        </div>
+
+        <div class="way-card way-card-featured">
+          <div class="way-number">02</div>
+          <div class="way-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.2)"/>
+              <path d="M20 10l2.39 7.26H30l-6.19 4.5 2.39 7.26L20 24.52l-6.19 4.5 2.39-7.26L10 17.26h7.61L20 10z" fill="white"/>
+            </svg>
+          </div>
+          <h3>Passendes Ausbildungskonzept wählen</h3>
+          <p>Bei Fahrschule Isenmann haben wir viele Möglichkeiten, deine Führerscheinausbildung zu gestalten. Dabei passen wir uns deinen Umständen an und bieten dir für jede Situation die passende Ausbildung.</p>
+          <a href="#klassen" class="way-link way-link-white">Klassen entdecken →</a>
+        </div>
+
+        <div class="way-card">
+          <div class="way-number">03</div>
+          <div class="way-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="20" fill="rgba(212,0,116,0.1)"/>
+              <path d="M17 12L25 20L17 28" stroke="#D40074" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Direkt mit dem Führerschein starten</h3>
+          <p>In nur 7 Sitzungen bereiten wir in Gruppen das theoretische Wissen vor, welches du für die Praxis brauchst. Danach setzt du dein Wissen auf der Straße und im Auto um – mit Fahrstundengarantie!</p>
+          <a href="#kontakt" class="way-link">Jetzt starten →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner-inner">
+        <div class="cta-banner-text">
+          <h2>Jetzt Ausbildungsvertrag anfragen!</h2>
+          <p>Starte noch heute deine Führerscheinausbildung bei Fahrschule Isenmann</p>
+        </div>
+        <a href="#kontakt" class="btn btn-white btn-lg">
+          Ausbildungsvertrag anfragen
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm-2 19l-5-5 1.41-1.41L14 18.17l7.59-7.59L23 12l-9 9z" fill="#D40074"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Klimatisierte Unterrichtsräume</strong>
+            <span>Angenehmes Lernen das ganze Jahr</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M26 4H6C4.9 4 4 4.9 4 6v20c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-4 14h-4v4h-4v-4H10v-4h4V10h4v4h4v4z" fill="#D40074"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>MPU Vorbereitungsfahrten</strong>
+            <span>Professionelle Vorbereitung</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 2a14 14 0 100 28A14 14 0 0016 2zm1 21h-2v-8h2v8zm0-10h-2V9h2v4z" fill="#D40074"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Kostenüberblick – drive.buzz App</strong>
+            <span>Volle Transparenz über deine Kosten</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M22.7 19.1l-5.1-3.6c-.3-.2-.4-.5-.4-.8V7c0-.6-.4-1-1-1s-1 .4-1 1v8.1c0 1 .5 1.9 1.3 2.4l5.1 3.6c.5.3 1.1.2 1.4-.3.3-.4.2-1-.3-1.3V19.1z" fill="#D40074"/>
+              <path d="M16 2C8.3 2 2 8.3 2 16s6.3 14 14 14 14-6.3 14-14S23.7 2 16 2zm0 26C9.4 28 4 22.6 4 16S9.4 4 16 4s12 5.4 12 12-5.4 12-12 12z" fill="#D40074"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Fast Lane</strong>
+            <span>Schneller zum Führerschein</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M28 8H4L2 4H0v2h1.5l5 19H27l3-15H8.5l-.5-2H28V8zm-3.5 14H8.8L7.1 10H26.9L24.5 22z" fill="#D40074"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>B96 Schnellkurse</strong>
+            <span>Anhänger-Führerschein in einem Tag</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 6l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L16 20.4l-5.6 2.8 1.1-6.2L7 12.6l6.2-.9L16 6zm0-4L12.3 9.6l-8.3 1.2 6 5.9-1.4 8.3L16 21l7.4 3.9-1.4-8.3 6-5.9-8.3-1.2L16 2z" fill="#D40074"/>
+            </svg>
+          </div>
+          <div class="feature-text">
+            <strong>Motorrad-Ausbildung</strong>
+            <span>Passendes Bike für dein Training</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STANDORTE ===== -->
+  <section class="locations-section" id="standorte">
+    <div class="container">
+      <div class="section-label">Unsere Standorte</div>
+      <h2 class="section-title">3x in der Region –<br><span class="text-pink">immer in deiner Nähe</span></h2>
+      <p class="section-subtitle">Fahrschule Isenmann ist mit drei Standorten in der Region präsent – für maximale Flexibilität und kurze Wege zu deiner Fahrschule.</p>
+
+      <div class="locations-grid">
+        <div class="location-card">
+          <div class="location-header">
+            <div class="location-badge">Hauptstandort</div>
+            <div class="location-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M16 2C10.48 2 6 6.48 6 12c0 7.5 10 18 10 18s10-10.5 10-18c0-5.52-4.48-10-10-10zm0 13.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Offenburg</h3>
+          <address>
+            <p>Weingartenstraße 20</p>
+            <p>77654 Offenburg</p>
+          </address>
+          <div class="location-hours">
+            <div class="hours-row">
+              <span class="hours-day">Montag</span>
+              <span class="hours-time">19:00 – 20:30 Uhr</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Mittwoch</span>
+              <span class="hours-time">19:00 – 20:30 Uhr</span>
+            </div>
+          </div>
+          <div class="location-contact">
+            <a href="tel:01713666613" class="location-phone">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              0171 3666613
+            </a>
+            <a href="mailto:info@fahrschule-isenmann.de" class="location-email">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              info@fahrschule-isenmann.de
+            </a>
+          </div>
+          <a href="https://maps.google.com/?q=Weingartenstraße+20+Offenburg" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Route planen</a>
+        </div>
+
+        <div class="location-card">
+          <div class="location-header">
+            <div class="location-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M16 2C10.48 2 6 6.48 6 12c0 7.5 10 18 10 18s10-10.5 10-18c0-5.52-4.48-10-10-10zm0 13.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="#D40074"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Gengenbach</h3>
+          <address>
+            <p>Brückenhäuserstraße 5</p>
+            <p>77723 Gengenbach</p>
+          </address>
+          <div class="location-hours">
+            <div class="hours-row">
+              <span class="hours-day">Montag</span>
+              <span class="hours-time">19:00 – 20:30 Uhr</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Mittwoch</span>
+              <span class="hours-time">19:00 – 20:30 Uhr</span>
+            </div>
+          </div>
+          <div class="location-contact">
+            <a href="tel:01713666613" class="location-phone">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              0171 3666613
+            </a>
+          </div>
+          <a href="https://maps.google.com/?q=Brückenhäuserstraße+5+Gengenbach" target="_blank" rel="noopener" class="btn btn-outline-pink btn-sm">Route planen</a>
+        </div>
+
+        <div class="location-card">
+          <div class="location-header">
+            <div class="location-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M16 2C10.48 2 6 6.48 6 12c0 7.5 10 18 10 18s10-10.5 10-18c0-5.52-4.48-10-10-10zm0 13.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z" fill="#D40074"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Diersburg</h3>
+          <address>
+            <p>Ölerstraße 26</p>
+            <p>Diersburg</p>
+          </address>
+          <div class="location-hours">
+            <div class="hours-row">
+              <span class="hours-day">Montag</span>
+              <span class="hours-time">19:00 – 20:30 Uhr</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Mittwoch</span>
+              <span class="hours-time">19:00 – 20:30 Uhr</span>
+            </div>
+          </div>
+          <div class="location-contact">
+            <a href="tel:01713666613" class="location-phone">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              0171 3666613
+            </a>
+          </div>
+          <a href="https://maps.google.com/?q=Ölerstraße+26+Diersburg" target="_blank" rel="noopener" class="btn btn-outline-pink btn-sm">Route planen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANGEBOT / KLASSEN ===== -->
+  <section class="classes-section" id="klassen">
+    <div class="classes-bg">
+      <div class="container">
+        <div class="classes-inner">
+          <div class="classes-text">
+            <div class="section-label section-label-white">Unser Angebot</div>
+            <h2 class="section-title text-white">Alle Führerschein­klassen –<br>aus einer Hand</h2>
+            <p class="text-white-60">Von Klasse B bis Motorrad – bei Fahrschule Isenmann bekommst du alle Führerscheine unter einem Dach. Kompetent, flexibel und auf dich zugeschnitten.</p>
+            <a href="#kontakt" class="btn btn-white btn-lg" style="margin-top:2rem">Jetzt anmelden</a>
+          </div>
+          <div class="classes-grid">
+            <div class="class-card">
+              <div class="class-icon">🚗</div>
+              <h4>Klasse B / B197</h4>
+              <p>PKW Führerschein – auch mit Automatik-Erweiterung (B197)</p>
+            </div>
+            <div class="class-card">
+              <div class="class-icon">⚙️</div>
+              <h4>Automatik</h4>
+              <p>Automatik-Führerschein für einfacheres Fahren</p>
+            </div>
+            <div class="class-card">
+              <div class="class-icon">🚐</div>
+              <h4>Klasse B96 & BE</h4>
+              <p>Anhänger bis 3.500 kg – als Tageskurs erhältlich</p>
+            </div>
+            <div class="class-card">
+              <div class="class-icon">🏍️</div>
+              <h4>Motorrad A1 / A2 / A</h4>
+              <p>Alle Motorradklassen – mit passendem Bike für dein Training</p>
+            </div>
+            <div class="class-card">
+              <div class="class-icon">🛵</div>
+              <h4>Klasse AM & Mofa</h4>
+              <p>Führerschein für Mopeds und Roller ab 15 Jahren</p>
+            </div>
+            <div class="class-card">
+              <div class="class-icon">🚜</div>
+              <h4>Klasse L & B196</h4>
+              <p>Land- und forstwirtschaftliche Zugmaschinen sowie Leichtkraftrad</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WARUM ISENMANN ===== -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-label">Warum Isenmann?</div>
+      <h2 class="section-title">7 starke Gründe,<br>die <span class="text-pink">für uns sprechen</span></h2>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-number">01</div>
+          <div class="why-icon">🤝</div>
+          <h4>Freundlich &amp; persönlich</h4>
+          <p>Geduldig, erfahren und immer auf Augenhöhe mit dir. Wir nehmen uns Zeit für deine Fragen.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">02</div>
+          <div class="why-icon">⚡</div>
+          <h4>Schnell ans Ziel</h4>
+          <p>Mehr Fahrstunden pro Woche möglich. Mit unserem Fast-Lane-Programm noch schneller zum Führerschein.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">03</div>
+          <div class="why-icon">💯</div>
+          <h4>100% Transparenz</h4>
+          <p>Keine versteckten Kosten. Volle Klarheit über deine Ausbildungskosten mit der drive.buzz App.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">04</div>
+          <div class="why-icon">📍</div>
+          <h4>3 Standorte</h4>
+          <p>Offenburg, Gengenbach und Diersburg – immer in deiner Nähe für maximale Flexibilität.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">05</div>
+          <div class="why-icon">📱</div>
+          <h4>Moderne Ausstattung</h4>
+          <p>drive.buzz App für Kostenüberblick, Lern-App für Theorie und moderne Ausbildungsfahrzeuge.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">06</div>
+          <div class="why-icon">🎯</div>
+          <h4>Individuell &amp; flexibel</h4>
+          <p>Wir passen uns deinen Umständen an. Kein starres Konzept – deine Ausbildung, dein Tempo.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">07</div>
+          <div class="why-icon">🏆</div>
+          <h4>Hohe Erfolgsquote</h4>
+          <p>Gezieltes Training mit dem LOCATION MANAGER – wir üben auf den echten Prüfungsrouten.</p>
+        </div>
+        <div class="why-card why-card-cta">
+          <div class="why-cta-content">
+            <h4>Bereit für deinen Führerschein?</h4>
+            <p>Melde dich jetzt an und starte deine Ausbildung bei Fahrschule Isenmann!</p>
+            <a href="#kontakt" class="btn btn-white btn-sm">Jetzt anmelden →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MEILENSTEINE ===== -->
+  <section class="milestones-section">
+    <div class="container">
+      <div class="milestones-inner">
+        <div class="milestones-text">
+          <div class="section-label">Deine Reise</div>
+          <h2 class="section-title">Deine Meilensteine<br>zum <span class="text-pink">Führerschein</span></h2>
+          <p>Erreiche deine Ziele und werde dafür belohnt! Mit unseren Meilensteinen kannst du einfach sehen, wie weit du in deiner Ausbildung bist – vom Onboarding bis zur bestandenen Prüfung.</p>
+          <a href="#kontakt" class="btn btn-primary btn-lg" style="margin-top:2rem">Starte jetzt →</a>
+        </div>
+        <div class="milestones-steps">
+          <div class="milestone-step">
+            <div class="milestone-dot milestone-done">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="milestone-content">
+              <div class="milestone-badge">Schritt 1</div>
+              <h4>OnBoarding Completed</h4>
+              <p>Wir lernen uns kennen, klären deine Ausbildungsziele und planen deine gesamte Führerscheinausbildung von der ersten Minute bis zum Prüfungstag.</p>
+            </div>
+          </div>
+          <div class="milestone-step">
+            <div class="milestone-dot milestone-active">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="4" fill="white"/>
+              </svg>
+            </div>
+            <div class="milestone-content">
+              <div class="milestone-badge">Schritt 2</div>
+              <h4>Theory Finished</h4>
+              <p>Der erste große Meilenstein auf deinem Weg zum Führerschein. In nur 7 Abenden bereiten wir dich zielgerichtet auf die Theorieprüfung vor.</p>
+            </div>
+          </div>
+          <div class="milestone-step">
+            <div class="milestone-dot milestone-pending">
+              <span>3</span>
+            </div>
+            <div class="milestone-content">
+              <div class="milestone-badge">Schritt 3</div>
+              <h4>Ready for Sofas</h4>
+              <p>Raus aus der Stadt, Radius erweitern, Geschwindigkeit erleben und die Besonderheiten Überland trainieren. Auch Fahrten bei Dunkelheit inklusive.</p>
+            </div>
+          </div>
+          <div class="milestone-step">
+            <div class="milestone-dot milestone-pending">
+              <span>4</span>
+            </div>
+            <div class="milestone-content">
+              <div class="milestone-badge">Schritt 4</div>
+              <h4>Mission Completed 🎉</h4>
+              <p>Deine gezielte Vorbereitung hat dich mit allem vertraut gemacht, was du für den Straßenverkehr brauchst. Prüfungsreif – Führerschein in der Tasche!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials-section" id="bewertungen">
+    <div class="container">
+      <div class="section-label">Das sagen unsere Fahrschüler</div>
+      <h2 class="section-title">Echte Erfahrungen,<br><span class="text-pink">echte Erfolge</span></h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Super Fahrschule! Die Ausbildung war sehr gut strukturiert und die Fahrlehrer extrem geduldig. Beim ersten Versuch bestanden – kann ich nur empfehlen!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div>
+              <strong>Max R.</strong>
+              <span>Klasse B – Offenburg</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card testimonial-featured">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Endlich eine Fahrschule, die wirklich auf einen eingeht! Das drive.buzz-System gibt einem immer einen guten Überblick über die Kosten. Sehr empfehlenswert!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div>
+              <strong>Sarah K.</strong>
+              <span>Klasse B – Gengenbach</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Die 7 Theorie-Abende waren super effizient. Kein endloses Lernen, sondern gezieltes Wissen. Bin nach 3 Monaten fertig geworden – top Fahrschule!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">T</div>
+            <div>
+              <strong>Tom H.</strong>
+              <span>Klasse B + BE – Diersburg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="google-rating">
+        <div class="google-stars">★★★★★</div>
+        <div class="google-text">
+          <strong>Top bewertet auf Google</strong>
+          <span>Fahrschule Isenmann Offenburg</span>
+        </div>
+        <a href="https://maps.google.com/?q=Fahrschule+Isenmann+Offenburg" target="_blank" rel="noopener" class="btn btn-outline-pink btn-sm">Alle Bewertungen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KONTAKT ===== -->
+  <section class="contact-section" id="kontakt">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info">
+          <div class="section-label">Kontakt</div>
+          <h2 class="section-title text-white">Bereit zum Durchstarten?<br><span style="color:#ff69b4">Melde dich jetzt an!</span></h2>
+          <p class="text-white-60">Nimm Kontakt auf und wir finden gemeinsam den besten Einstieg für deine Führerscheinausbildung.</p>
+
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📍</div>
+              <div>
+                <strong>Hauptstandort Offenburg</strong>
+                <span>Weingartenstraße 20, 77654 Offenburg</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📞</div>
+              <div>
+                <strong>Telefon</strong>
+                <a href="tel:01713666613" class="contact-link">0171 3666613</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">✉️</div>
+              <div>
+                <strong>E-Mail</strong>
+                <a href="mailto:info@fahrschule-isenmann.de" class="contact-link">info@fahrschule-isenmann.de</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">🕐</div>
+              <div>
+                <strong>Theorieunterricht</strong>
+                <span>Mo &amp; Mi | 19:00 – 20:30 Uhr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form class="contact-form" action="#" method="post" novalidate>
+            <h3>Ausbildungsvertrag anfragen</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Dein Name *</label>
+                <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefonnummer *</label>
+                <input type="tel" id="phone" name="phone" placeholder="0151 12345678" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">E-Mail Adresse *</label>
+              <input type="email" id="email" name="email" placeholder="max@example.de" required>
+            </div>
+            <div class="form-group">
+              <label for="standort">Gewünschter Standort</label>
+              <select id="standort" name="standort">
+                <option value="">Standort wählen...</option>
+                <option value="offenburg">Offenburg – Weingartenstraße 20</option>
+                <option value="gengenbach">Gengenbach – Brückenhäuserstraße 5</option>
+                <option value="diersburg">Diersburg – Ölerstraße 26</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="klasse">Gewünschte Führerscheinklasse</label>
+              <select id="klasse" name="klasse">
+                <option value="">Klasse wählen...</option>
+                <option value="b">Klasse B (PKW)</option>
+                <option value="b197">Klasse B197 (Automatik)</option>
+                <option value="b96">Klasse B96 (Anhänger)</option>
+                <option value="be">Klasse BE (Anhänger)</option>
+                <option value="a1">Motorrad A1</option>
+                <option value="a2">Motorrad A2</option>
+                <option value="a">Motorrad A</option>
+                <option value="am">Klasse AM / Mofa</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Nachricht (optional)</label>
+              <textarea id="message" name="message" rows="3" placeholder="Deine Fragen oder Anmerkungen..."></textarea>
+            </div>
+            <div class="form-privacy">
+              <input type="checkbox" id="privacy" name="privacy" required>
+              <label for="privacy">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme zu. *</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-full">
+              Jetzt anfragen
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+              <rect width="60" height="60" rx="8" fill="#D40074"/>
+              <path d="M12 44V16H22L30 32L38 16H48V44H40V28L32 44H28L20 28V44H12Z" fill="white"/>
+            </svg>
+            <div>
+              <span class="footer-name">Fahrschule Isenmann</span>
+            </div>
+          </div>
+          <p>Deine moderne Fahrschule in Offenburg, Gengenbach und Diersburg. Sicher, schnell und persönlich zum Führerschein.</p>
+          <div class="footer-contact-quick">
+            <a href="tel:01713666613">📞 0171 3666613</a>
+            <a href="mailto:info@fahrschule-isenmann.de">✉️ info@fahrschule-isenmann.de</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Führerscheinklassen</h5>
+          <ul>
+            <li><a href="#klassen">Klasse B / B197</a></li>
+            <li><a href="#klassen">Automatik</a></li>
+            <li><a href="#klassen">Klasse B96 &amp; BE</a></li>
+            <li><a href="#klassen">Motorrad A1/A2/A</a></li>
+            <li><a href="#klassen">Klasse AM &amp; Mofa</a></li>
+            <li><a href="#klassen">Klasse L &amp; B196</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Standorte</h5>
+          <ul>
+            <li><a href="#standorte">Offenburg<br><small>Weingartenstraße 20</small></a></li>
+            <li><a href="#standorte">Gengenbach<br><small>Brückenhäuserstraße 5</small></a></li>
+            <li><a href="#standorte">Diersburg<br><small>Ölerstraße 26</small></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Theorieunterricht</h5>
+          <div class="footer-hours">
+            <div class="footer-hours-row">
+              <span>Montag</span>
+              <span>19:00 – 20:30</span>
+            </div>
+            <div class="footer-hours-row">
+              <span>Mittwoch</span>
+              <span>19:00 – 20:30</span>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem">
+            <h5>Rechtliches</h5>
+            <ul>
+              <li><a href="impressum.html">Impressum</a></li>
+              <li><a href="datenschutz.html">Datenschutz</a></li>
+              <li><a href="agb.html">AGB</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Fahrschule Isenmann · Uwe Isenmann · Weingartenstraße 20 · 77654 Offenburg</p>
+        <p>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="agb.html">AGB</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
