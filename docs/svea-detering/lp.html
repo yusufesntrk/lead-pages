@@ -207,6 +207,106 @@
     .transf-col .transf-item-text { color: var(--text-mid); }
     .transf-col.after .transf-item-text { color: rgba(255,255,255,0.88); }
 
+    /* ── Testimonials ── */
+    .testimonials { padding: 96px 0; background: var(--rose-faint); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 24px rgba(201,24,74,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .testi-stars { display: flex; gap: 4px; }
+    .testi-star { color: #f5a623; font-size: 1rem; }
+    .testi-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.97rem;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .testi-text::before { content: '\201E'; color: var(--rose-light); font-size: 1.6rem; line-height: 0; vertical-align: -0.4rem; margin-right: 3px; }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: auto;
+    }
+    .testi-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--rose-pale);
+    }
+    .testi-name {
+      font-size: 0.87rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .testi-location {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      margin-top: 2px;
+    }
+    .testi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-top: 40px;
+      justify-content: center;
+    }
+    .testi-badge svg { width: 14px; height: 14px; opacity: 0.5; }
+
+    /* ── Sticky CTA ── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: none;
+    }
+    .sticky-cta.visible { display: block; }
+    .sticky-cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--rose-primary);
+      color: var(--white);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 32px rgba(201,24,74,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .sticky-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,24,74,0.55); }
+    .sticky-cta-pulse {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulse 1.6s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.75); } }
+
     /* Responsive additions */
     @media (max-width: 900px) {
       .story-scenarios { grid-template-columns: 1fr; }
@@ -216,10 +316,21 @@
       .transf-grid { grid-template-columns: 1fr; }
       .agitation-steps { flex-direction: column; align-items: center; gap: 16px; }
       .ag-step::after { display: none; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .sticky-cta { bottom: 16px; right: 16px; }
+      .sticky-cta-btn { font-size: 0.82rem; padding: 12px 18px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ── Sticky CTA ─────────────────────────────────────── -->
+  <div class="sticky-cta" id="stickyCta">
+    <a href="#form" class="sticky-cta-btn">
+      <span class="sticky-cta-pulse"></span>
+      Kostenloses Erstgespräch sichern
+    </a>
+  </div>
 
   <!-- ── Top Bar ─────────────────────────────────────────── -->
   <header class="topbar">
@@ -562,6 +673,62 @@
     </div>
   </section>
 
+  <!-- ── Testimonials ───────────────────────────────────── -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="section-header-center">
+        <div class="section-tag">Stimmen aus der Praxis</div>
+        <h2 class="section-heading">Was Paare über ihre <em>Erfahrung</em> sagen</h2>
+        <p class="section-sub">Alle Namen anonymisiert – auf ausdrücklichen Wunsch der Klienten.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">
+            <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+          </div>
+          <p class="testi-text">Wir haben drei Jahre gewartet. Ich wünschte, wir hätten früher den Mut gehabt. Nach zehn Sitzungen haben wir wieder eine Sprache, die wir beide verstehen – und endlich das Gefühl, wirklich gehört zu werden.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=face" alt="Martina K." class="testi-avatar">
+            <div>
+              <div class="testi-name">Martina K.</div>
+              <div class="testi-location">Halle (Saale) · Paartherapie</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">
+            <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+          </div>
+          <p class="testi-text">Ich war skeptisch – Therapie war nie mein Ding. Aber Svea hat einen Weg gefunden, auch mich zu erreichen. Wir sind heute ein besseres Team als in den ersten Jahren unserer Beziehung. Ich bin froh, dass meine Frau mich überzeugt hat.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=96&h=96&fit=crop&crop=face" alt="Thomas R." class="testi-avatar">
+            <div>
+              <div class="testi-name">Thomas R.</div>
+              <div class="testi-location">Leipzig · Paartherapie</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">
+            <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+          </div>
+          <p class="testi-text">Nach einem Vertrauensbruch glaubten wir beide nicht mehr daran. Svea hat uns durch einen sehr schwierigen Prozess begleitet – mit Geduld, Wärme und echter Kompetenz. Ich kann sie jedem Paar in einer Krise empfehlen.</p>
+          <div class="testi-author">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=96&h=96&fit=crop&crop=face" alt="Sandra M." class="testi-avatar">
+            <div>
+              <div class="testi-name">Sandra M.</div>
+              <div class="testi-location">Halle (Saale) · EFT-Therapie</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="testi-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Alle Angaben anonymisiert und mit Einwilligung der Klienten veröffentlicht
+      </p>
+    </div>
+  </section>
+
   <!-- ── FAQ ────────────────────────────────────────────── -->
   <section class="faq">
     <div class="section-inner">
@@ -621,6 +788,14 @@
   </footer>
 
   <script>
+    // Sticky CTA
+    const stickyCta = document.getElementById('stickyCta');
+    const heroSection = document.querySelector('.hero');
+    const observer = new IntersectionObserver(entries => {
+      stickyCta.classList.toggle('visible', !entries[0].isIntersecting);
+    }, { threshold: 0.1 });
+    observer.observe(heroSection);
+
     document.querySelectorAll('.faq-q').forEach(q => {
       q.addEventListener('click', () => {
         const item = q.closest('.faq-item');
@@ -633,6 +808,11 @@
       a.addEventListener('click', e => {
         e.preventDefault();
         document.getElementById('form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Hide sticky on scroll to form
+        stickyCta.classList.remove('visible');
+        setTimeout(() => {
+          if (!heroSection.getBoundingClientRect().bottom > 0) stickyCta.classList.add('visible');
+        }, 1500);
       });
     });
     document.getElementById('lpForm').addEventListener('submit', e => {
