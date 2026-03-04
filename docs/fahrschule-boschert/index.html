@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fahrschule Boschert – Gelassen zur Fahrprüfung in Offenburg & Zell-Weierbach</title>
+  <meta name="description" content="Fahrschule Boschert – Seit 2005 in Offenburg und Zell-Weierbach. PKW, Motorrad, B96, BE. Theorie 5x pro Woche. Jetzt anmelden!">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+            <rect width="56" height="56" rx="6" fill="#1a1a2e"/>
+            <rect x="4" y="4" width="48" height="48" rx="4" fill="#0f0f1e"/>
+            <!-- Steering wheel icon -->
+            <circle cx="28" cy="28" r="18" stroke="#E8A000" stroke-width="2.5" fill="none"/>
+            <circle cx="28" cy="28" r="6" stroke="#E8A000" stroke-width="2.5" fill="none"/>
+            <line x1="28" y1="10" x2="28" y2="22" stroke="#E8A000" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="28" y1="34" x2="28" y2="46" stroke="#E8A000" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="10" y1="28" x2="22" y2="28" stroke="#E8A000" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="34" y1="28" x2="46" y2="28" stroke="#E8A000" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">Fahrschule</span>
+          <span class="logo-sub">Boschert</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#warum">Warum Boschert</a></li>
+        <li><a href="#standorte">Standorte</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#kontakt" class="nav-cta">Jetzt anmelden</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <!-- Animated road background -->
+    <div class="hero-road-scene">
+      <div class="road-surface"></div>
+      <div class="road-center-line">
+        <div class="dash"></div><div class="dash"></div><div class="dash"></div>
+        <div class="dash"></div><div class="dash"></div><div class="dash"></div>
+        <div class="dash"></div><div class="dash"></div><div class="dash"></div>
+        <div class="dash"></div><div class="dash"></div><div class="dash"></div>
+      </div>
+      <div class="road-left-edge"></div>
+      <div class="road-right-edge"></div>
+      <!-- Speedometer SVG (background decoration) -->
+      <div class="hero-speedometer">
+        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Speedometer arc -->
+          <path d="M 30 180 A 120 120 0 0 1 270 180" stroke="rgba(232,160,0,0.08)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M 30 180 A 120 120 0 0 1 270 180" stroke="rgba(232,160,0,0.04)" stroke-width="20" fill="none" stroke-linecap="round"/>
+          <!-- Animated fill arc -->
+          <path class="speed-arc" d="M 30 180 A 120 120 0 0 1 150 60" stroke="rgba(232,160,0,0.18)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- Tick marks -->
+          <line x1="30" y1="180" x2="44" y2="168" stroke="rgba(232,160,0,0.15)" stroke-width="2"/>
+          <line x1="55" y1="135" x2="66" y2="127" stroke="rgba(232,160,0,0.15)" stroke-width="2"/>
+          <line x1="95" y1="100" x2="103" y2="95" stroke="rgba(232,160,0,0.15)" stroke-width="2"/>
+          <line x1="150" y1="60" x2="150" y2="68" stroke="rgba(232,160,0,0.15)" stroke-width="2"/>
+          <line x1="205" y1="100" x2="197" y2="95" stroke="rgba(232,160,0,0.15)" stroke-width="2"/>
+          <line x1="245" y1="135" x2="234" y2="127" stroke="rgba(232,160,0,0.15)" stroke-width="2"/>
+          <line x1="270" y1="180" x2="256" y2="168" stroke="rgba(232,160,0,0.15)" stroke-width="2"/>
+          <!-- Needle -->
+          <line class="speedo-needle" x1="150" y1="175" x2="90" y2="95" stroke="rgba(232,160,0,0.4)" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="150" cy="175" r="5" fill="rgba(232,160,0,0.3)"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span>Seit 2005 in Offenburg</span>
+        <div class="eyebrow-line"></div>
+      </div>
+
+      <h1 class="hero-title">
+        Gelassen zur<br>
+        <span class="hero-accent">Fahrprüfung.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Professionalität, langjährige Berufserfahrung und modernste Unterrichtsmethoden –<br>
+        Fahrschule Boschert bringt Sie sicher zum Führerschein.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary">
+          Jetzt anmelden
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#leistungen" class="btn btn-ghost">Unsere Leistungen</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hstat">
+          <span class="hstat-num" data-target="20">0</span>
+          <span class="hstat-unit">Jahre</span>
+          <span class="hstat-label">Erfahrung</span>
+        </div>
+        <div class="hstat-sep"></div>
+        <div class="hstat">
+          <span class="hstat-num" data-target="5">0</span>
+          <span class="hstat-unit">x/Woche</span>
+          <span class="hstat-label">Theorieunterricht</span>
+        </div>
+        <div class="hstat-sep"></div>
+        <div class="hstat">
+          <span class="hstat-num" data-target="2">0</span>
+          <span class="hstat-unit">Standorte</span>
+          <span class="hstat-label">Offenburg</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated car driving through hero -->
+    <div class="hero-car-wrapper">
+      <div class="hero-car">
+        <svg viewBox="0 0 180 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Car body -->
+          <rect x="10" y="30" width="160" height="32" rx="6" fill="#1a1a2e"/>
+          <!-- Car roof -->
+          <path d="M 45 30 Q 55 8 80 8 L 130 8 Q 148 8 158 30 Z" fill="#252545"/>
+          <!-- Windows -->
+          <rect x="55" y="12" width="38" height="17" rx="3" fill="rgba(232,160,0,0.15)"/>
+          <rect x="98" y="12" width="35" height="17" rx="3" fill="rgba(232,160,0,0.12)"/>
+          <!-- Headlights -->
+          <rect x="158" y="34" width="12" height="8" rx="3" fill="#E8A000" opacity="0.9"/>
+          <ellipse cx="164" cy="38" rx="8" ry="4" fill="rgba(232,160,0,0.2)"/>
+          <!-- Taillights -->
+          <rect x="10" y="35" width="10" height="7" rx="2" fill="rgba(200,0,0,0.6)"/>
+          <!-- Wheels -->
+          <circle cx="48" cy="62" r="10" fill="#111" stroke="#333" stroke-width="2"/>
+          <circle cx="48" cy="62" r="4" fill="#E8A000" opacity="0.4"/>
+          <circle cx="138" cy="62" r="10" fill="#111" stroke="#333" stroke-width="2"/>
+          <circle cx="138" cy="62" r="4" fill="#E8A000" opacity="0.4"/>
+          <!-- Door detail -->
+          <line x1="90" y1="30" x2="90" y2="62" stroke="rgba(232,160,0,0.08)" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <div class="scroll-wheel">
+        <div class="scroll-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MILESTONE BANNER ===== -->
+  <div class="milestone-banner">
+    <div class="milestone-track">
+      <div class="milestone-items">
+        <span>20 Jahre Fahrschule Boschert</span>
+        <span class="milestone-dot-sep"></span>
+        <span>2005 – 2025</span>
+        <span class="milestone-dot-sep"></span>
+        <span>Professionalität seit Tag 1</span>
+        <span class="milestone-dot-sep"></span>
+        <span>Theorie 5x pro Woche</span>
+        <span class="milestone-dot-sep"></span>
+        <span>PKW &amp; Motorrad</span>
+        <span class="milestone-dot-sep"></span>
+        <span>2 Standorte in Offenburg</span>
+        <span class="milestone-dot-sep"></span>
+        <span>20 Jahre Fahrschule Boschert</span>
+        <span class="milestone-dot-sep"></span>
+        <span>2005 – 2025</span>
+        <span class="milestone-dot-sep"></span>
+        <span>Professionalität seit Tag 1</span>
+        <span class="milestone-dot-sep"></span>
+        <span>Theorie 5x pro Woche</span>
+        <span class="milestone-dot-sep"></span>
+        <span>PKW &amp; Motorrad</span>
+        <span class="milestone-dot-sep"></span>
+        <span>2 Standorte in Offenburg</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LEISTUNGEN ===== -->
+  <section class="services-section" id="leistungen">
+    <div class="container">
+      <div class="section-intro">
+        <div class="section-label">Unser Angebot</div>
+        <h2 class="section-title">Alle Führerscheinklassen –<br><span class="text-amber">aus einer Hand</span></h2>
+        <p class="section-sub">Von der ersten Fahrstunde bis zur bestandenen Prüfung begleiten wir Sie mit Erfahrung und modernen Methoden.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card service-featured">
+          <div class="service-icon-wrap">
+            <!-- Car icon SVG -->
+            <svg class="service-icon" viewBox="0 0 64 64" fill="none">
+              <rect x="8" y="28" width="48" height="22" rx="4" fill="currentColor" opacity="0.15"/>
+              <path d="M18 28 Q22 14 32 14 Q42 14 46 28" fill="currentColor" opacity="0.2"/>
+              <rect x="20" y="16" width="10" height="10" rx="2" fill="currentColor" opacity="0.4"/>
+              <rect x="34" y="16" width="10" height="10" rx="2" fill="currentColor" opacity="0.3"/>
+              <rect x="52" y="30" width="8" height="6" rx="2" fill="currentColor" opacity="0.6"/>
+              <rect x="4" y="30" width="8" height="6" rx="2" fill="currentColor" opacity="0.3"/>
+              <circle cx="20" cy="50" r="7" fill="currentColor" opacity="0.8"/>
+              <circle cx="20" cy="50" r="3" fill="white" opacity="0.6"/>
+              <circle cx="44" cy="50" r="7" fill="currentColor" opacity="0.8"/>
+              <circle cx="44" cy="50" r="3" fill="white" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3>Klasse B – PKW</h3>
+            <p>Der klassische Führerschein. Wir bereiten Sie umfassend auf Theorie und Praxis vor – mit Fahrstunden auf allen relevanten Strecken in Offenburg und Umgebung.</p>
+            <ul class="service-list">
+              <li>Klasse B (Schaltgetriebe)</li>
+              <li>Klasse B Automatik</li>
+              <li>BF17 – Begleitetes Fahren ab 17</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon-wrap">
+            <!-- Motorcycle SVG -->
+            <svg class="service-icon" viewBox="0 0 64 64" fill="none">
+              <circle cx="14" cy="44" r="10" fill="currentColor" opacity="0.7"/>
+              <circle cx="14" cy="44" r="4" fill="white" opacity="0.5"/>
+              <circle cx="50" cy="44" r="10" fill="currentColor" opacity="0.7"/>
+              <circle cx="50" cy="44" r="4" fill="white" opacity="0.5"/>
+              <path d="M14 44 L26 28 L36 28 L46 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+              <path d="M36 28 L50 44" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+              <path d="M44 20 L52 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+              <circle cx="30" cy="22" r="4" fill="currentColor" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3>Motorrad-Führerschein</h3>
+            <p>Fahren Sie mit uns und leben Sie Ihren Motorrad-Traum! Alle Klassen vom Moped bis zur schweren Maschine – mit erfahrenen Motorrad-Fahrlehrern.</p>
+            <ul class="service-list">
+              <li>Klasse AM – Moped / Roller</li>
+              <li>Klasse A1 (bis 125 ccm)</li>
+              <li>Klasse A2 (Mittelstufe)</li>
+              <li>Klasse A (unbegrenzt)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon-wrap">
+            <!-- Trailer SVG -->
+            <svg class="service-icon" viewBox="0 0 64 64" fill="none">
+              <rect x="4" y="24" width="30" height="20" rx="3" fill="currentColor" opacity="0.15"/>
+              <rect x="10" y="28" width="8" height="8" rx="1" fill="currentColor" opacity="0.4"/>
+              <rect x="50" y="28" width="10" height="14" rx="2" fill="currentColor" opacity="0.15"/>
+              <line x1="34" y1="36" x2="50" y2="36" stroke="currentColor" stroke-width="2.5" opacity="0.5"/>
+              <circle cx="16" cy="44" r="7" fill="currentColor" opacity="0.7"/>
+              <circle cx="16" cy="44" r="3" fill="white" opacity="0.5"/>
+              <circle cx="52" cy="44" r="6" fill="currentColor" opacity="0.7"/>
+              <circle cx="52" cy="44" r="2.5" fill="white" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3>Anhänger B96 &amp; BE</h3>
+            <p>Fahrzeugkombinationen sicher beherrschen. Ob Pferdeanhänger, Wohnwagen oder Transporter – wir machen Sie fit für das Fahren mit Anhänger.</p>
+            <ul class="service-list">
+              <li>B96 – bis 4.250 kg</li>
+              <li>BE – bis 3.500 kg Anhänger</li>
+              <li>Auch als Tageskurs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card service-wide">
+          <div class="service-icon-wrap">
+            <!-- Theory/book SVG -->
+            <svg class="service-icon" viewBox="0 0 64 64" fill="none">
+              <rect x="10" y="8" width="44" height="52" rx="4" fill="currentColor" opacity="0.12"/>
+              <rect x="16" y="16" width="32" height="3" rx="1.5" fill="currentColor" opacity="0.5"/>
+              <rect x="16" y="24" width="28" height="3" rx="1.5" fill="currentColor" opacity="0.4"/>
+              <rect x="16" y="32" width="32" height="3" rx="1.5" fill="currentColor" opacity="0.3"/>
+              <rect x="16" y="40" width="20" height="3" rx="1.5" fill="currentColor" opacity="0.3"/>
+              <path d="M8 8 L8 60" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3>Theorie 5x pro Woche</h3>
+            <p>Kein langes Warten auf den Theoriestart – bei uns beginnt der Theorieunterricht bereits eine halbe Stunde nach Ihrer Anmeldung. Mit 5 Terminen pro Woche in beiden Standorten sind Sie maximal flexibel.</p>
+            <div class="theory-schedule">
+              <div class="schedule-item">
+                <strong>Montag &amp; Mittwoch</strong>
+                <span>Zell-Weierbach · 17:30 – 19:30 Uhr</span>
+              </div>
+              <div class="schedule-divider"></div>
+              <div class="schedule-item">
+                <strong>Dienstag &amp; Donnerstag</strong>
+                <span>Offenburg · 18:00 – 20:00 Uhr</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROAD DIVIDER ===== -->
+  <div class="road-divider" aria-hidden="true">
+    <div class="road-div-surface"></div>
+    <div class="road-div-markings">
+      <div class="road-mark"></div><div class="road-mark"></div><div class="road-mark"></div>
+      <div class="road-mark"></div><div class="road-mark"></div><div class="road-mark"></div>
+      <div class="road-mark"></div><div class="road-mark"></div><div class="road-mark"></div>
+      <div class="road-mark"></div><div class="road-mark"></div><div class="road-mark"></div>
+    </div>
+    <!-- Motorcycle silhouette driving through -->
+    <div class="road-moto">
+      <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="36" r="12" stroke="rgba(232,160,0,0.5)" stroke-width="2" fill="none"/>
+        <circle cx="20" cy="36" r="5" fill="rgba(232,160,0,0.2)"/>
+        <circle cx="100" cy="36" r="12" stroke="rgba(232,160,0,0.5)" stroke-width="2" fill="none"/>
+        <circle cx="100" cy="36" r="5" fill="rgba(232,160,0,0.2)"/>
+        <path d="M20 36 L40 18 L60 18 L80 10" stroke="rgba(232,160,0,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M60 18 L100 36" stroke="rgba(232,160,0,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M75 10 L88 10" stroke="rgba(232,160,0,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+        <ellipse cx="52" cy="14" rx="6" ry="7" fill="rgba(232,160,0,0.2)"/>
+        <circle cx="52" cy="8" rx="5" r="5" fill="rgba(232,160,0,0.3)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ===== WARUM BOSCHERT ===== -->
+  <section class="why-section" id="warum">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-left">
+          <div class="section-label">Warum Boschert</div>
+          <h2 class="section-title">Ihr Führerschein in<br>guten Händen –<br><span class="text-amber">seit 20 Jahren</span></h2>
+          <p>Seit 2005 begleiten wir unsere Fahrschülerinnen und Fahrschüler sicher und gelassen durch die Führerscheinausbildung. Unser Anspruch: Sie nicht nur die Prüfung bestehen zu lassen, sondern Sie zu einem selbstbewussten und verantwortungsvollen Fahrer zu machen.</p>
+          <a href="#kontakt" class="btn btn-primary" style="margin-top:2rem">Anmeldung anfragen</a>
+        </div>
+        <div class="why-cards">
+          <div class="why-card" data-reveal>
+            <div class="why-card-num">01</div>
+            <div class="why-card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 2C7.37 2 2 7.37 2 14s5.37 12 12 12 12-5.37 12-12S20.63 2 14 2zm-2 17l-5-5 1.41-1.41L12 16.17l7.59-7.59L21 10l-9 9z" fill="currentColor"/>
+              </svg>
+            </div>
+            <h4>Gelassene Atmosphäre</h4>
+            <p>Kein Druck, keine Hektik. Wir nehmen uns Zeit für jeden Fahrschüler individuell.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <div class="why-card-num">02</div>
+            <div class="why-card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 2a12 12 0 100 24A12 12 0 0014 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v4z" fill="currentColor"/>
+              </svg>
+            </div>
+            <h4>Sofortiger Theoriestart</h4>
+            <p>Theorieunterricht beginnt 30 Minuten nach Anmeldung – kein unnötiges Warten.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <div class="why-card-num">03</div>
+            <div class="why-card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M4 4h20v4H4V4zm0 8h20v4H4v-4zm0 8h12v4H4v-4z" fill="currentColor"/>
+              </svg>
+            </div>
+            <h4>Moderne Methoden</h4>
+            <p>Aktuellster Unterricht kombiniert mit jahrzehntelanger Praxiserfahrung.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <div class="why-card-num">04</div>
+            <div class="why-card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 2C7.37 2 2 7.37 2 14s5.37 12 12 12 12-5.37 12-12S20.63 2 14 2zM7 14l3.5 3.5L21 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h4>Hohe Erfolgsquote</h4>
+            <p>Durch gezieltes Training und realistische Prüfungsvorbereitung zum Ziel.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <div class="why-card-num">05</div>
+            <div class="why-card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M20 4H8C6.9 4 6 4.9 6 6v16l4-4h10c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" fill="currentColor" opacity="0.8"/>
+              </svg>
+            </div>
+            <h4>Direkte Erreichbarkeit</h4>
+            <p>WhatsApp, SMS, Chat, Telefon – wir sind auf vielen Wegen für Sie da.</p>
+          </div>
+          <div class="why-card" data-reveal>
+            <div class="why-card-num">06</div>
+            <div class="why-card-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 2l3.09 6.26L24 9.27l-5 4.87 1.18 6.88L14 17.77l-6.18 3.25L9 14.14 4 9.27l6.91-1.01L14 2z" fill="currentColor"/>
+              </svg>
+            </div>
+            <h4>PKW &amp; Motorrad</h4>
+            <p>Alle Führerscheinklassen unter einem Dach – inklusive Motorradtouren.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STANDORTE ===== -->
+  <section class="locations-section" id="standorte">
+    <div class="container">
+      <div class="section-intro text-center">
+        <div class="section-label">Standorte</div>
+        <h2 class="section-title">2x in Offenburg –<br><span class="text-amber">immer in Ihrer Nähe</span></h2>
+      </div>
+
+      <div class="locations-grid">
+        <div class="location-card location-main">
+          <div class="location-tag">Hauptstandort</div>
+          <!-- Animated pin -->
+          <div class="location-pin">
+            <div class="pin-body">
+              <svg width="40" height="48" viewBox="0 0 40 48" fill="none">
+                <path d="M20 0C9 0 0 9 0 20c0 15 20 28 20 28S40 35 40 20C40 9 31 0 20 0z" fill="#E8A000"/>
+                <circle cx="20" cy="20" r="8" fill="white" opacity="0.9"/>
+              </svg>
+            </div>
+            <div class="pin-pulse"></div>
+          </div>
+          <h3>Zell-Weierbach</h3>
+          <address>
+            <p>Rathausgasse 2</p>
+            <p>77654 Offenburg</p>
+          </address>
+          <div class="location-hours">
+            <div class="hours-row">
+              <span>Montag</span>
+              <span>17:30 – 19:30 Uhr</span>
+            </div>
+            <div class="hours-row">
+              <span>Mittwoch</span>
+              <span>17:30 – 19:30 Uhr</span>
+            </div>
+          </div>
+          <div class="location-contacts">
+            <a href="tel:01791301806" class="loc-contact">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              0179 / 1301806
+            </a>
+            <a href="tel:078125081002" class="loc-contact">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              0781 / 9500980
+            </a>
+          </div>
+          <a href="https://www.google.com/maps/search/Rathausgasse+2+77654+Offenburg" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Route planen</a>
+        </div>
+
+        <div class="location-card">
+          <div class="location-pin">
+            <div class="pin-body">
+              <svg width="40" height="48" viewBox="0 0 40 48" fill="none">
+                <path d="M20 0C9 0 0 9 0 20c0 15 20 28 20 28S40 35 40 20C40 9 31 0 20 0z" fill="rgba(232,160,0,0.3)"/>
+                <circle cx="20" cy="20" r="8" fill="rgba(232,160,0,0.5)"/>
+              </svg>
+            </div>
+          </div>
+          <h3>Offenburg Stadt</h3>
+          <address>
+            <p>Gerberstrasse 11</p>
+            <p>77652 Offenburg</p>
+          </address>
+          <div class="location-hours">
+            <div class="hours-row">
+              <span>Dienstag</span>
+              <span>18:00 – 20:00 Uhr</span>
+            </div>
+            <div class="hours-row">
+              <span>Donnerstag</span>
+              <span>18:00 – 20:00 Uhr</span>
+            </div>
+          </div>
+          <div class="location-contacts">
+            <a href="tel:017340858628" class="loc-contact">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              0173 / 4085828
+            </a>
+            <a href="mailto:kontakt@fahrschuleboschert.de" class="loc-contact">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              kontakt@fahrschuleboschert.de
+            </a>
+          </div>
+          <a href="https://www.google.com/maps/search/Gerberstrasse+11+77652+Offenburg" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Route planen</a>
+        </div>
+      </div>
+
+      <div class="location-note">
+        Der Theorieunterricht beginnt jeweils eine halbe Stunde nach der Anmeldezeit.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM ===== -->
+  <section class="team-section" id="team">
+    <div class="team-bg"></div>
+    <div class="container">
+      <div class="section-intro text-center">
+        <div class="section-label section-label-light">Das Team</div>
+        <h2 class="section-title text-white">Menschen, denen Sie<br><span class="text-amber">vertrauen können</span></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="30" r="18" fill="rgba(232,160,0,0.3)"/>
+                <path d="M10 75c0-16.57 13.43-30 30-30s30 13.43 30 30" fill="rgba(232,160,0,0.2)"/>
+              </svg>
+            </div>
+            <div class="avatar-badge">Fahrlehrer</div>
+          </div>
+          <div class="team-info">
+            <h4>Wolfgang Boschert</h4>
+            <span class="team-role">Inhaber &amp; Fahrlehrer</span>
+            <p>Seit Gründung der Fahrschule 2005 mit vollem Einsatz dabei. Wolfgang Boschert steht für persönliches Engagement und hohe Fachkompetenz.</p>
+            <a href="tel:01791301806" class="team-phone">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              0179 / 1301806
+            </a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">
+            <div class="avatar-placeholder">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="30" r="18" fill="rgba(232,160,0,0.3)"/>
+                <path d="M10 75c0-16.57 13.43-30 30-30s30 13.43 30 30" fill="rgba(232,160,0,0.2)"/>
+              </svg>
+            </div>
+            <div class="avatar-badge">Büro</div>
+          </div>
+          <div class="team-info">
+            <h4>Sandra Hanser</h4>
+            <span class="team-role">Fahrschulbüro</span>
+            <p>Ihre erste Anlaufstelle für alle Fragen rund um die Führerscheinausbildung. Sandra Hanser ist per WhatsApp, Chat, SMS und Telefon erreichbar.</p>
+            <a href="tel:078125081002" class="team-phone">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              0781 / 25081002
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KONTAKT ===== -->
+  <section class="contact-section" id="kontakt">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-label">Anmeldung &amp; Kontakt</div>
+          <h2 class="section-title">Bereit für den<br><span class="text-amber">ersten Schritt?</span></h2>
+          <p>Melden Sie sich jetzt an – persönlich, telefonisch oder über unser Kontaktformular. Wir freuen uns auf Sie!</p>
+
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="cmethod-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.96a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <strong>Telefon / WhatsApp</strong>
+                <a href="tel:01791301806">0179 / 1301806 (Herr Boschert)</a>
+                <a href="tel:078125081002">0781 / 25081002 (Büro)</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="cmethod-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <strong>E-Mail</strong>
+                <a href="mailto:kontakt@fahrschuleboschert.de">kontakt@fahrschuleboschert.de</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="cmethod-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <strong>Hauptstandort</strong>
+                <span>Rathausgasse 2, 77654 Offenburg (Zell-Weierbach)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" action="#" method="post" novalidate>
+          <h3>Anmeldung anfragen</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" placeholder="Max Mustermann" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon *</label>
+              <input type="tel" id="phone" name="phone" placeholder="0151 12345678" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="email" placeholder="max@beispiel.de" required>
+          </div>
+          <div class="form-group">
+            <label for="standort">Bevorzugter Standort</label>
+            <select id="standort" name="standort">
+              <option value="">Bitte wählen...</option>
+              <option value="zell">Zell-Weierbach – Rathausgasse 2</option>
+              <option value="offenburg">Offenburg – Gerberstrasse 11</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="klasse">Gewünschte Führerscheinklasse</label>
+            <select id="klasse" name="klasse">
+              <option value="">Bitte wählen...</option>
+              <option>Klasse B (PKW)</option>
+              <option>Klasse B Automatik</option>
+              <option>BF17 – Begleitetes Fahren</option>
+              <option>B96 – Anhänger</option>
+              <option>BE – Anhänger</option>
+              <option>AM – Moped / Roller</option>
+              <option>A1 – Motorrad</option>
+              <option>A2 – Motorrad</option>
+              <option>A – Motorrad</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="msg">Nachricht</label>
+            <textarea id="msg" name="msg" rows="3" placeholder="Ihre Fragen oder Anmerkungen..."></textarea>
+          </div>
+          <div class="form-privacy">
+            <input type="checkbox" id="privacy" name="privacy" required>
+            <label for="privacy">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme zu. *</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            Jetzt anfragen
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 56 56" fill="none" width="44" height="44">
+              <rect width="56" height="56" rx="6" fill="#1a1a2e"/>
+              <circle cx="28" cy="28" r="18" stroke="#E8A000" stroke-width="2" fill="none"/>
+              <circle cx="28" cy="28" r="6" stroke="#E8A000" stroke-width="2" fill="none"/>
+              <line x1="28" y1="10" x2="28" y2="22" stroke="#E8A000" stroke-width="2" stroke-linecap="round"/>
+              <line x1="28" y1="34" x2="28" y2="46" stroke="#E8A000" stroke-width="2" stroke-linecap="round"/>
+              <line x1="10" y1="28" x2="22" y2="28" stroke="#E8A000" stroke-width="2" stroke-linecap="round"/>
+              <line x1="34" y1="28" x2="46" y2="28" stroke="#E8A000" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <span class="footer-name">Fahrschule Boschert</span>
+              <span class="footer-since">Seit 2005</span>
+            </div>
+          </div>
+          <p>Professionalität, Erfahrung und modernste Unterrichtsmethoden – Ihre Fahrschule in Offenburg seit 20 Jahren.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Angebot</h5>
+          <ul>
+            <li><a href="#leistungen">Klasse B – PKW</a></li>
+            <li><a href="#leistungen">Motorrad A1 / A2 / A</a></li>
+            <li><a href="#leistungen">Anhänger B96 &amp; BE</a></li>
+            <li><a href="#leistungen">BF17 Begleitetes Fahren</a></li>
+            <li><a href="#leistungen">Theorie 5x / Woche</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Standorte</h5>
+          <ul>
+            <li><a href="#standorte">Zell-Weierbach<br><small>Rathausgasse 2 · Mo &amp; Mi 17:30–19:30</small></a></li>
+            <li><a href="#standorte">Offenburg Stadt<br><small>Gerberstrasse 11 · Di &amp; Do 18:00–20:00</small></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Kontakt</h5>
+          <ul>
+            <li><a href="tel:01791301806">0179 / 1301806</a></li>
+            <li><a href="tel:078125081002">0781 / 25081002</a></li>
+            <li><a href="mailto:kontakt@fahrschuleboschert.de">kontakt@fahrschuleboschert.de</a></li>
+          </ul>
+          <div style="margin-top:1.5rem">
+            <h5>Rechtliches</h5>
+            <ul>
+              <li><a href="impressum.html">Impressum</a></li>
+              <li><a href="datenschutz.html">Datenschutz</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Fahrschule Boschert · Wolfgang Boschert · Rathausgasse 2 · 77654 Offenburg</p>
+        <p>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
