@@ -392,30 +392,6 @@ img { max-width: 100%; display: block; }
 }
 
 /* Animated car in hero */
-.hero-car-wrapper {
-  position: absolute;
-  bottom: 90px;
-  left: -500px;
-  z-index: 3;
-  animation: carDrive 14s linear infinite;
-}
-@keyframes carDrive {
-  0% { left: -500px; opacity: 0; }
-  4% { opacity: 1; }
-  88% { opacity: 1; }
-  100% { left: calc(100vw + 200px); opacity: 0; }
-}
-.hero-car {
-  filter: drop-shadow(0 12px 40px rgba(232,160,0,0.4)) drop-shadow(0 0 60px rgba(232,160,0,0.12));
-}
-.car-with-wheels {
-  position: relative;
-  width: 420px;
-}
-.car-with-wheels img {
-  width: 100%;
-  display: block;
-}
 
 /* Scroll indicator */
 .hero-scroll-indicator {
