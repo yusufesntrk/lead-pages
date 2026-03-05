@@ -165,51 +165,10 @@
       <div class="hero-car">
         <div class="car-with-wheels">
           <img src="assets/car-body.png" alt="Muscle Car">
-          <!-- Wheel overlay: rotating rims over original wheels -->
-          <svg class="wheel-overlay" viewBox="0 0 1275 750" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- REAR WHEEL (left, cx≈430, cy≈547) -->
-            <circle cx="430" cy="547" r="107" fill="#111"/>
-            <circle cx="430" cy="547" r="107" fill="none" stroke="#0a0a0a" stroke-width="18"/>
-            <g>
-              <circle cx="430" cy="547" r="70" fill="#a0a0a0"/>
-              <circle cx="430" cy="547" r="70" fill="none" stroke="#888" stroke-width="3"/>
-              <!-- 4 spokes -->
-              <rect x="418" y="477" width="24" height="140" rx="10" fill="#797979"/>
-              <rect x="360" y="535" width="140" height="24" rx="10" fill="#797979"/>
-              <!-- spoke highlights -->
-              <rect x="425" y="477" width="8" height="140" rx="6" fill="rgba(255,255,255,0.12)"/>
-              <rect x="360" y="542" width="140" height="8" rx="6" fill="rgba(255,255,255,0.12)"/>
-              <!-- center cap -->
-              <circle cx="430" cy="547" r="26" fill="#666"/>
-              <circle cx="430" cy="547" r="18" fill="#888"/>
-              <circle cx="430" cy="547" r="8" fill="#555"/>
-              <animateTransform attributeName="transform" type="rotate"
-                from="0 430 547" to="360 430 547" dur="0.7s" repeatCount="indefinite"/>
-            </g>
-            <!-- tire inner shadow -->
-            <circle cx="430" cy="547" r="107" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="6"/>
-
-            <!-- FRONT WHEEL (right, cx≈1135, cy≈550) -->
-            <circle cx="1135" cy="550" r="98" fill="#111"/>
-            <circle cx="1135" cy="550" r="98" fill="none" stroke="#0a0a0a" stroke-width="16"/>
-            <g>
-              <circle cx="1135" cy="550" r="64" fill="#a0a0a0"/>
-              <circle cx="1135" cy="550" r="64" fill="none" stroke="#888" stroke-width="3"/>
-              <!-- 4 spokes -->
-              <rect x="1123" y="486" width="24" height="128" rx="10" fill="#797979"/>
-              <rect x="1071" y="538" width="128" height="24" rx="10" fill="#797979"/>
-              <!-- spoke highlights -->
-              <rect x="1130" y="486" width="8" height="128" rx="6" fill="rgba(255,255,255,0.12)"/>
-              <rect x="1071" y="545" width="128" height="8" rx="6" fill="rgba(255,255,255,0.12)"/>
-              <!-- center cap -->
-              <circle cx="1135" cy="550" r="24" fill="#666"/>
-              <circle cx="1135" cy="550" r="16" fill="#888"/>
-              <circle cx="1135" cy="550" r="7" fill="#555"/>
-              <animateTransform attributeName="transform" type="rotate"
-                from="0 1135 550" to="360 1135 550" dur="0.7s" repeatCount="indefinite"/>
-            </g>
-            <circle cx="1135" cy="550" r="98" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="6"/>
-          </svg>
+          <!-- Rear wheel rim (extracted from illustration, animates in place) -->
+          <img class="wheel-spin wheel-spin-rear" src="assets/wheel-rear.png" alt="">
+          <!-- Front wheel rim (extracted from illustration, animates in place) -->
+          <img class="wheel-spin wheel-spin-front" src="assets/wheel-front.png" alt="">
         </div>
       </div>
     </div>
