@@ -412,32 +412,9 @@ img { max-width: 100%; display: block; }
   position: relative;
   width: 420px;
 }
-.car-with-wheels img:first-child {
+.car-with-wheels img {
   width: 100%;
   display: block;
-}
-/* Extracted wheel rims – positioned over original illustration wheels */
-.wheel-spin {
-  position: absolute;
-  pointer-events: none;
-  border-radius: 50%;
-  animation: wheelSpin 0.65s linear infinite;
-  transform-origin: center center;
-}
-/* Rear wheel: center at 430/1275=33.7%, 547/750=72.9%, size 160/1275=12.55% */
-.wheel-spin-rear {
-  width: 12.55%;
-  left: calc(430 / 1275 * 100% - 6.27%);
-  top: calc(547 / 750 * 100% - 6.27%);
-}
-/* Front wheel: center at 1135/1275=89%, 550/750=73.3%, size 144/1275=11.29% */
-.wheel-spin-front {
-  width: 11.29%;
-  left: calc(1135 / 1275 * 100% - 5.65%);
-  top: calc(550 / 750 * 100% - 5.65%);
-}
-@keyframes wheelSpin {
-  to { transform: rotate(360deg); }
 }
 
 /* Scroll indicator */
