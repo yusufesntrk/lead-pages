@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Montage Gurmuz – Vision | Planung | Montage</title>
+  <meta name="description" content="Montage Gurmuz – Ihr Spezialist für Lüftungsanlagen, Brandschutz, Montage und Demontage. Vision. Planung. Montage." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <svg class="logo-svg" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Wave coils -->
+          <path d="M10 30 C14 20, 20 20, 24 30 C28 40, 34 40, 38 30 C42 20, 48 20, 52 30" stroke="#00B8D9" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M10 38 C14 28, 20 28, 24 38 C28 48, 34 48, 38 38 C42 28, 48 28, 52 38" stroke="#0D0D0D" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M10 22 C14 12, 20 12, 24 22 C28 32, 34 32, 38 22 C42 12, 48 12, 52 22" stroke="#0D0D0D" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- Vertical lines -->
+          <line x1="56" y1="14" x2="56" y2="46" stroke="#0D0D0D" stroke-width="2.5"/>
+          <line x1="62" y1="14" x2="62" y2="46" stroke="#0D0D0D" stroke-width="2.5"/>
+          <line x1="68" y1="14" x2="68" y2="46" stroke="#0D0D0D" stroke-width="2.5"/>
+          <!-- Frame lines top/bottom -->
+          <line x1="54" y1="14" x2="70" y2="14" stroke="#0D0D0D" stroke-width="2"/>
+          <line x1="54" y1="46" x2="70" y2="46" stroke="#0D0D0D" stroke-width="2"/>
+        </svg>
+        <span class="logo-text"><span class="logo-black">MONTAGE</span> <span class="logo-cyan">GURMUZ</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#leistungen" class="nav-link">Leistungen</a>
+        <a href="#about" class="nav-link">Über uns</a>
+        <a href="#team" class="nav-link">Team</a>
+        <a href="#kontakt" class="nav-link">Kontakt</a>
+        <a href="tel:+491727651116" class="nav-cta">Jetzt anrufen</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-stripe hero-stripe-top"></div>
+    <div class="hero-container">
+      <div class="hero-badge fade-in" style="animation-delay:0.1s">Ihr Lüftungsanlagen-Spezialist</div>
+      <h1 class="hero-title fade-in" style="animation-delay:0.2s">
+        <span class="title-white">Vision.</span>
+        <span class="title-cyan"> Planung.</span>
+        <span class="title-white"> Montage.</span>
+      </h1>
+      <p class="hero-sub fade-in" style="animation-delay:0.4s">
+        Von der Projektierung bis zur Inbetriebnahme – wir planen, montieren und warten Ihre Lüftungsanlagen mit höchster Präzision und Zuverlässigkeit.
+      </p>
+      <div class="hero-cta-group fade-in" style="animation-delay:0.6s">
+        <a href="#kontakt" class="btn-primary">Angebot anfordern</a>
+        <a href="#leistungen" class="btn-outline">Unsere Leistungen</a>
+      </div>
+      <div class="hero-stats fade-in" style="animation-delay:0.8s">
+        <div class="stat-item">
+          <span class="stat-num" data-target="7">0</span>
+          <span class="stat-label">Fachbereiche</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="100">0</span><span class="stat-suffix">%</span>
+          <span class="stat-label">Qualitätsanspruch</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="2">0</span>
+          <span class="stat-label">Geschäftsführer</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>Mehr entdecken</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="leistungen" id="leistungen">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag fade-in">Was wir bieten</span>
+        <h2 class="section-title fade-in">Unsere <span class="text-cyan">Leistungen</span></h2>
+        <p class="section-sub fade-in">Von der ersten Planung bis zur regelmäßigen Wartung – wir sind Ihr Partner für alle Bereiche der Lüftungstechnik.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card fade-in" style="animation-delay:0.1s">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" class="service-icon">
+              <rect x="6" y="6" width="36" height="36" rx="4" stroke="#00B8D9" stroke-width="2.5"/>
+              <path d="M14 18h20M14 24h14M14 30h10" stroke="#00B8D9" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="36" cy="30" r="5" fill="#00B8D9" opacity="0.2" stroke="#00B8D9" stroke-width="2"/>
+              <path d="M34 30l1.5 1.5L38 28" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Projektierung &amp; Planung</h3>
+          <p class="service-desc">Professionelle Auslegung und Planung von Lüftungsanlagen nach aktuellen Normen und individuellen Anforderungen.</p>
+          <div class="service-line"></div>
+        </div>
+
+        <div class="service-card fade-in" style="animation-delay:0.2s">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" class="service-icon">
+              <path d="M12 36L8 40M36 12l4-4M12 12L8 8M36 36l4 4" stroke="#00B8D9" stroke-width="2.5" stroke-linecap="round"/>
+              <rect x="14" y="14" width="20" height="20" rx="3" stroke="#00B8D9" stroke-width="2.5"/>
+              <path d="M19 24h10M24 19v10" stroke="#00B8D9" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Montage- &amp; Demontagearbeiten</h3>
+          <p class="service-desc">Fachgerechte Installation und Demontage aller gängigen Lüftungssysteme – schnell, sauber und zuverlässig.</p>
+          <div class="service-line"></div>
+        </div>
+
+        <div class="service-card fade-in" style="animation-delay:0.3s">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" class="service-icon">
+              <path d="M24 8C15.2 8 8 15.2 8 24s7.2 16 16 16 16-7.2 16-16S32.8 8 24 8z" stroke="#00B8D9" stroke-width="2.5"/>
+              <path d="M24 14v10l6 3" stroke="#00B8D9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="24" cy="24" r="3" fill="#00B8D9" opacity="0.3"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Wartung von Lüftungsanlagen</h3>
+          <p class="service-desc">Regelmäßige Wartung für eine lange Lebensdauer und optimale Effizienz Ihrer Lüftungsanlage.</p>
+          <div class="service-line"></div>
+        </div>
+
+        <div class="service-card fade-in" style="animation-delay:0.1s">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" class="service-icon">
+              <path d="M10 38l8-8M30 18l8-8" stroke="#00B8D9" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="8" stroke="#00B8D9" stroke-width="2.5"/>
+              <path d="M24 20v4l2 2" stroke="#00B8D9" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M16 24H12M36 24h-4M24 16v-4M24 36v-4" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Instandhaltung von Lüftungsanlagen</h3>
+          <p class="service-desc">Schnelle Störungsbehebung und präventive Instandhaltungsmaßnahmen für dauerhaft einwandfreien Betrieb.</p>
+          <div class="service-line"></div>
+        </div>
+
+        <div class="service-card fade-in" style="animation-delay:0.2s">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" class="service-icon">
+              <path d="M24 8L10 20v4h4v16h20V24h4v-4L24 8z" stroke="#00B8D9" stroke-width="2.5" stroke-linejoin="round"/>
+              <rect x="20" y="28" width="8" height="12" rx="1" stroke="#00B8D9" stroke-width="2"/>
+              <path d="M18 20h12" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="24" cy="16" r="2" fill="#00B8D9"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Brandschutzklappenprüfung</h3>
+          <p class="service-desc">Normgerechte Prüfung und Dokumentation von Brandschutzklappen gemäß DIN EN 1366-2.</p>
+          <div class="service-line"></div>
+        </div>
+
+        <div class="service-card fade-in" style="animation-delay:0.3s">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" class="service-icon">
+              <path d="M8 24h32" stroke="#00B8D9" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M16 18c0-4.4 3.6-8 8-8s8 3.6 8 8v6H16v-6z" stroke="#00B8D9" stroke-width="2.5"/>
+              <path d="M14 30h20v4a2 2 0 01-2 2H16a2 2 0 01-2-2v-4z" stroke="#00B8D9" stroke-width="2" fill="#00B8D9" fill-opacity="0.1"/>
+              <path d="M24 16v4M20 22h8" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Luftmengenmessung</h3>
+          <p class="service-desc">Präzise Messung und Einregulierung von Luftmengen für optimales Raumklima und Energieeffizienz.</p>
+          <div class="service-line"></div>
+        </div>
+
+        <div class="service-card service-card--full fade-in" style="animation-delay:0.15s">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" class="service-icon">
+              <path d="M24 6L6 18v6l4-2v20h28V22l4 2v-6L24 6z" stroke="#00B8D9" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="24" cy="28" r="6" stroke="#00B8D9" stroke-width="2.5"/>
+              <path d="M24 24v4l3 2" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 12l6-4 6 4" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Explosionsschutz</h3>
+            <p class="service-desc">Planung und Realisierung von Lüftungsanlagen in explosionsgefährdeten Bereichen (ATEX) – höchste Sicherheitsstandards für industrielle Umgebungen.</p>
+          </div>
+          <div class="service-line"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / WHY US -->
+  <section class="about" id="about">
+    <div class="about-bg-stripe"></div>
+    <div class="section-container">
+      <div class="about-grid">
+        <div class="about-visual fade-in">
+          <div class="about-card-stack">
+            <div class="about-card about-card-1">
+              <div class="about-icon-big">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="40" r="36" fill="#00B8D9" fill-opacity="0.08" stroke="#00B8D9" stroke-width="2"/>
+                  <path d="M20 40C20 29 29 20 40 20C51 20 60 29 60 40" stroke="#00B8D9" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M25 52C28 47 33.5 44 40 44C46.5 44 52 47 55 52" stroke="#0D0D0D" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="40" cy="34" r="6" stroke="#00B8D9" stroke-width="2.5"/>
+                  <path d="M32 58h16" stroke="#00B8D9" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-card-title">Inhabergeführt</div>
+                <div class="about-card-sub">Persönlicher Kontakt &amp; direkte Ansprechpartner</div>
+              </div>
+            </div>
+            <div class="about-card about-card-2">
+              <div class="about-icon-big">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="40" r="36" fill="#0D0D0D" fill-opacity="0.05" stroke="#0D0D0D" stroke-width="2"/>
+                  <path d="M26 40l10 10 18-20" stroke="#00B8D9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-card-title">Zertifiziert</div>
+                <div class="about-card-sub">Normgerechte Ausführung nach DIN/VDE</div>
+              </div>
+            </div>
+            <div class="about-card about-card-3">
+              <div class="about-icon-big">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="40" r="36" fill="#00B8D9" fill-opacity="0.08" stroke="#00B8D9" stroke-width="2"/>
+                  <path d="M22 40h36M40 22v36" stroke="#00B8D9" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="40" cy="40" r="8" stroke="#0D0D0D" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-card-title">Deutschlandweit</div>
+                <div class="about-card-sub">Bundesweiter Einsatz für alle Projekte</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text fade-in" style="animation-delay:0.2s">
+          <span class="section-tag">Über uns</span>
+          <h2 class="section-title">Warum <span class="text-cyan">Montage Gurmuz?</span></h2>
+          <p class="about-lead">Wir sind ein inhabergeführtes Unternehmen mit dem Fokus auf Qualität, Zuverlässigkeit und modernste Lüftungstechnik.</p>
+          <div class="about-points">
+            <div class="about-point">
+              <div class="point-dot"></div>
+              <div>
+                <strong>Ganzheitlicher Ansatz</strong>
+                <p>Von der ersten Beratung bis zur finalen Abnahme – alles aus einer Hand.</p>
+              </div>
+            </div>
+            <div class="about-point">
+              <div class="point-dot"></div>
+              <div>
+                <strong>Termintreue &amp; Verlässlichkeit</strong>
+                <p>Wir halten, was wir versprechen – pünktlich und professionell.</p>
+              </div>
+            </div>
+            <div class="about-point">
+              <div class="point-dot"></div>
+              <div>
+                <strong>Brandschutz-Expertise</strong>
+                <p>Spezialkenntnisse im Bereich ATEX und Brandschutzklappenprüfung.</p>
+              </div>
+            </div>
+            <div class="about-point">
+              <div class="point-dot"></div>
+              <div>
+                <strong>Direkter Kontakt</strong>
+                <p>Kurze Kommunikationswege – Sie sprechen immer mit den Entscheidungsträgern.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#kontakt" class="btn-primary" style="margin-top:2rem">Jetzt Kontakt aufnehmen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team" id="team">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag fade-in">Die Menschen dahinter</span>
+        <h2 class="section-title fade-in">Unsere <span class="text-cyan">Geschäftsführer</span></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card fade-in" style="animation-delay:0.1s">
+          <div class="team-avatar">
+            <div class="team-avatar-inner">
+              <svg viewBox="0 0 100 100" fill="none" class="avatar-svg">
+                <circle cx="50" cy="50" r="48" fill="#F0FAFB" stroke="#00B8D9" stroke-width="2"/>
+                <circle cx="50" cy="38" r="16" fill="#00B8D9" fill-opacity="0.2" stroke="#00B8D9" stroke-width="2"/>
+                <path d="M18 82c0-17.7 14.3-32 32-32s32 14.3 32 32" fill="#00B8D9" fill-opacity="0.1" stroke="#00B8D9" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="team-badge">GF</div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Andrei Gurmuz</h3>
+            <span class="team-role">Geschäftsführer</span>
+            <div class="team-contacts">
+              <a href="tel:+491727651116" class="team-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" class="contact-icon">
+                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7 12.8 12.8 0 00.7 2.8 2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5 12.8 12.8 0 002.8.7A2 2 0 0122 16.9z" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                +49 172 7651116
+              </a>
+              <a href="mailto:andrei.gurmuz@montage-gurmuz.de" class="team-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" class="contact-icon">
+                  <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z" stroke="#00B8D9" stroke-width="2"/>
+                  <path d="M22 6l-10 7L2 6" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                andrei.gurmuz@montage-gurmuz.de
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card fade-in" style="animation-delay:0.2s">
+          <div class="team-avatar">
+            <div class="team-avatar-inner">
+              <svg viewBox="0 0 100 100" fill="none" class="avatar-svg">
+                <circle cx="50" cy="50" r="48" fill="#F0FAFB" stroke="#00B8D9" stroke-width="2"/>
+                <circle cx="50" cy="38" r="16" fill="#00B8D9" fill-opacity="0.2" stroke="#00B8D9" stroke-width="2"/>
+                <path d="M18 82c0-17.7 14.3-32 32-32s32 14.3 32 32" fill="#00B8D9" fill-opacity="0.1" stroke="#00B8D9" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="team-badge">GF</div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Constantin Gurmuz</h3>
+            <span class="team-role">Geschäftsführer</span>
+            <div class="team-contacts">
+              <a href="tel:+491779036632" class="team-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" class="contact-icon">
+                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7 12.8 12.8 0 00.7 2.8 2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5 12.8 12.8 0 002.8.7A2 2 0 0122 16.9z" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                +49 177 9036632
+              </a>
+              <a href="mailto:constantin.gurmuz@montage-gurmuz.de" class="team-contact-item">
+                <svg viewBox="0 0 24 24" fill="none" class="contact-icon">
+                  <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z" stroke="#00B8D9" stroke-width="2"/>
+                  <path d="M22 6l-10 7L2 6" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                constantin.gurmuz@montage-gurmuz.de
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="kontakt" id="kontakt">
+    <div class="kontakt-bg"></div>
+    <div class="section-container">
+      <div class="kontakt-grid">
+        <div class="kontakt-info fade-in">
+          <span class="section-tag section-tag--light">Kontakt</span>
+          <h2 class="section-title title-white">Sprechen wir <span class="text-cyan">miteinander.</span></h2>
+          <p class="kontakt-sub">Sie haben ein Projekt? Fragen zu unseren Leistungen? Wir sind persönlich für Sie erreichbar.</p>
+          <div class="kontakt-cards">
+            <a href="tel:+491727651116" class="kontakt-card">
+              <svg viewBox="0 0 24 24" fill="none" class="kontakt-card-icon">
+                <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7 12.8 12.8 0 00.7 2.8 2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5 12.8 12.8 0 002.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <div class="kontakt-card-label">Andrei Gurmuz</div>
+                <div class="kontakt-card-value">+49 172 7651116</div>
+              </div>
+            </a>
+            <a href="tel:+491779036632" class="kontakt-card">
+              <svg viewBox="0 0 24 24" fill="none" class="kontakt-card-icon">
+                <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7 12.8 12.8 0 00.7 2.8 2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5 12.8 12.8 0 002.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <div class="kontakt-card-label">Constantin Gurmuz</div>
+                <div class="kontakt-card-value">+49 177 9036632</div>
+              </div>
+            </a>
+            <a href="mailto:andrei.gurmuz@montage-gurmuz.de" class="kontakt-card">
+              <svg viewBox="0 0 24 24" fill="none" class="kontakt-card-icon">
+                <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z" stroke="currentColor" stroke-width="2"/>
+                <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <div class="kontakt-card-label">E-Mail</div>
+                <div class="kontakt-card-value">andrei.gurmuz@montage-gurmuz.de</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="kontakt-form-wrap fade-in" style="animation-delay:0.2s">
+          <form class="kontakt-form" id="kontaktForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Ihr vollständiger Name" required />
+              </div>
+              <div class="form-group">
+                <label for="firma">Unternehmen</label>
+                <input type="text" id="firma" name="firma" placeholder="Firmenname (optional)" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" name="email" placeholder="ihre@email.de" required />
+              </div>
+              <div class="form-group">
+                <label for="telefon">Telefon</label>
+                <input type="tel" id="telefon" name="telefon" placeholder="+49 ..." />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="leistung">Gewünschte Leistung</label>
+              <select id="leistung" name="leistung">
+                <option value="">Bitte wählen...</option>
+                <option value="projektierung">Projektierung &amp; Planung</option>
+                <option value="montage">Montage- &amp; Demontagearbeiten</option>
+                <option value="wartung">Wartung von Lüftungsanlagen</option>
+                <option value="instandhaltung">Instandhaltung</option>
+                <option value="brandschutz">Brandschutzklappenprüfung</option>
+                <option value="luftmengen">Luftmengenmessung</option>
+                <option value="explosionsschutz">Explosionsschutz</option>
+                <option value="sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nachricht">Ihre Nachricht</label>
+              <textarea id="nachricht" name="nachricht" rows="4" placeholder="Beschreiben Sie kurz Ihr Vorhaben..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-full">
+              Nachricht senden
+              <svg viewBox="0 0 24 24" fill="none" class="btn-arrow">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-stripe"></div>
+    <div class="section-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo footer-logo">
+            <svg class="logo-svg" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 30 C14 20, 20 20, 24 30 C28 40, 34 40, 38 30 C42 20, 48 20, 52 30" stroke="#00B8D9" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M10 38 C14 28, 20 28, 24 38 C28 48, 34 48, 38 38 C42 28, 48 28, 52 38" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <path d="M10 22 C14 12, 20 12, 24 22 C28 32, 34 32, 38 22 C42 12, 48 12, 52 22" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <line x1="56" y1="14" x2="56" y2="46" stroke="#fff" stroke-width="2.5"/>
+              <line x1="62" y1="14" x2="62" y2="46" stroke="#fff" stroke-width="2.5"/>
+              <line x1="68" y1="14" x2="68" y2="46" stroke="#fff" stroke-width="2.5"/>
+              <line x1="54" y1="14" x2="70" y2="14" stroke="#fff" stroke-width="2"/>
+              <line x1="54" y1="46" x2="70" y2="46" stroke="#fff" stroke-width="2"/>
+            </svg>
+            <span class="logo-text footer-logo-text"><span class="logo-white">MONTAGE</span> <span class="logo-cyan">GURMUZ</span></span>
+          </a>
+          <p class="footer-tagline">Vision | Planung | Montage</p>
+        </div>
+        <div class="footer-links">
+          <h4 class="footer-heading">Leistungen</h4>
+          <ul>
+            <li><a href="#leistungen">Projektierung &amp; Planung</a></li>
+            <li><a href="#leistungen">Montage &amp; Demontage</a></li>
+            <li><a href="#leistungen">Wartung &amp; Instandhaltung</a></li>
+            <li><a href="#leistungen">Brandschutzklappen</a></li>
+            <li><a href="#leistungen">Explosionsschutz</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4 class="footer-heading">Kontakt</h4>
+          <ul>
+            <li><a href="tel:+491727651116">+49 172 7651116 (Andrei)</a></li>
+            <li><a href="tel:+491779036632">+49 177 9036632 (Constantin)</a></li>
+            <li><a href="mailto:andrei.gurmuz@montage-gurmuz.de">andrei.gurmuz@montage-gurmuz.de</a></li>
+            <li><a href="mailto:constantin.gurmuz@montage-gurmuz.de">constantin.gurmuz@montage-gurmuz.de</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Montage Gurmuz. Alle Rechte vorbehalten.</p>
+        <div class="footer-legal">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
