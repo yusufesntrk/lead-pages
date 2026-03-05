@@ -196,29 +196,134 @@
       </div>
     </div>
 
-    <!-- Animated car driving through hero -->
+    <!-- Animated sports car driving through hero -->
     <div class="hero-car-wrapper">
       <div class="hero-car">
-        <svg viewBox="0 0 180 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Car body -->
-          <rect x="10" y="30" width="160" height="32" rx="6" fill="#1a1a2e"/>
-          <!-- Car roof -->
-          <path d="M 45 30 Q 55 8 80 8 L 130 8 Q 148 8 158 30 Z" fill="#252545"/>
-          <!-- Windows -->
-          <rect x="55" y="12" width="38" height="17" rx="3" fill="rgba(232,160,0,0.15)"/>
-          <rect x="98" y="12" width="35" height="17" rx="3" fill="rgba(232,160,0,0.12)"/>
-          <!-- Headlights -->
-          <rect x="158" y="34" width="12" height="8" rx="3" fill="#E8A000" opacity="0.9"/>
-          <ellipse cx="164" cy="38" rx="8" ry="4" fill="rgba(232,160,0,0.2)"/>
-          <!-- Taillights -->
-          <rect x="10" y="35" width="10" height="7" rx="2" fill="rgba(200,0,0,0.6)"/>
-          <!-- Wheels -->
-          <circle cx="48" cy="62" r="10" fill="#111" stroke="#333" stroke-width="2"/>
-          <circle cx="48" cy="62" r="4" fill="#E8A000" opacity="0.4"/>
-          <circle cx="138" cy="62" r="10" fill="#111" stroke="#333" stroke-width="2"/>
-          <circle cx="138" cy="62" r="4" fill="#E8A000" opacity="0.4"/>
-          <!-- Door detail -->
-          <line x1="90" y1="30" x2="90" y2="62" stroke="rgba(232,160,0,0.08)" stroke-width="1"/>
+        <svg viewBox="0 0 280 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="carBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FFD060"/>
+              <stop offset="55%" stop-color="#E8A000"/>
+              <stop offset="100%" stop-color="#B87800"/>
+            </linearGradient>
+            <linearGradient id="carSideGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#B87800"/>
+              <stop offset="50%" stop-color="#E8A000"/>
+              <stop offset="100%" stop-color="#FFB800"/>
+            </linearGradient>
+            <filter id="carGlow">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- Ground shadow -->
+          <ellipse cx="145" cy="85" rx="118" ry="5" fill="rgba(0,0,0,0.35)"/>
+
+          <!-- Main body – low slung sports coupe shape -->
+          <path d="
+            M 22 65
+            C 16 62 12 56 14 50
+            L 20 44
+            L 36 40
+            Q 52 24 76 20
+            L 140 18
+            Q 174 17 200 30
+            L 230 38
+            C 244 42 252 48 254 55
+            L 254 64
+            C 244 67 234 67 226 64
+            Q 210 58 196 62
+            L 82 62
+            Q 68 67 56 67
+            Q 38 67 22 65 Z
+          " fill="url(#carBodyGrad)"/>
+
+          <!-- Body sheen highlight -->
+          <path d="M 78 20 Q 130 16 168 19 L 198 30 Q 162 24 138 22 L 78 20 Z" fill="rgba(255,240,160,0.45)"/>
+
+          <!-- Rear quarter lower crease -->
+          <path d="M 22 54 Q 50 50 80 52 L 80 62 Q 50 62 22 64 Z" fill="rgba(0,0,0,0.12)"/>
+
+          <!-- Front quarter shadow -->
+          <path d="M 196 62 Q 220 58 254 62 L 254 67 Q 220 67 196 67 Z" fill="rgba(0,0,0,0.1)"/>
+
+          <!-- Windows – dark tinted glass -->
+          <path d="M 88 22 Q 98 19 136 18 L 168 19 Q 190 21 202 33 L 168 38 Q 148 38 128 37 L 88 34 Z" fill="rgba(10,10,20,0.78)"/>
+          <!-- Window frame -->
+          <path d="M 88 22 Q 98 19 136 18 L 168 19 Q 190 21 202 33 L 168 38 Q 148 38 128 37 L 88 34 Z" stroke="rgba(232,160,0,0.4)" stroke-width="1.2" fill="none"/>
+
+          <!-- Windshield reflection -->
+          <path d="M 100 22 Q 120 20 150 19 L 160 20 Q 140 22 110 23 Z" fill="rgba(255,255,255,0.12)"/>
+
+          <!-- A-pillar -->
+          <line x1="88" y1="22" x2="88" y2="34" stroke="#B87800" stroke-width="2"/>
+          <!-- B-pillar -->
+          <line x1="158" y1="18" x2="158" y2="38" stroke="#B87800" stroke-width="1.5"/>
+
+          <!-- Body side crease line -->
+          <path d="M 30 52 Q 90 48 160 46 Q 200 45 230 48" stroke="rgba(184,120,0,0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+          <!-- Rear spoiler -->
+          <rect x="14" y="38" width="20" height="3.5" rx="1.5" fill="#9A6800"/>
+          <rect x="13" y="36" width="5" height="5" rx="1" fill="#B87800"/>
+
+          <!-- Rear taillight – LED strip style -->
+          <path d="M 14 46 L 21 44 L 21 54 L 14 54 Z" fill="rgba(200,20,20,0.9)" rx="1"/>
+          <rect x="14" y="45" width="7" height="2" fill="rgba(255,80,80,0.7)"/>
+          <!-- Rear diffuser / bottom -->
+          <path d="M 14 62 L 22 60 L 22 66 L 14 66 Z" fill="rgba(0,0,0,0.55)"/>
+          <line x1="14" y1="62" x2="80" y2="60" stroke="rgba(0,0,0,0.35)" stroke-width="2"/>
+
+          <!-- Front headlight – LED DRL style -->
+          <path d="M 242 44 L 254 46 L 254 54 L 242 52 Z" fill="rgba(255,255,200,0.95)" rx="1"/>
+          <!-- DRL strip -->
+          <path d="M 236 46 L 242 45 L 242 53 L 236 52 Z" fill="rgba(255,255,180,0.6)"/>
+          <line x1="238" y1="46" x2="238" y2="52" stroke="rgba(255,255,255,0.8)" stroke-width="0.5"/>
+          <line x1="240" y1="45.5" x2="240" y2="52.5" stroke="rgba(255,255,255,0.6)" stroke-width="0.5"/>
+          <!-- Headlight glow -->
+          <ellipse cx="257" cy="50" rx="6" ry="3.5" fill="rgba(255,255,200,0.25)"/>
+
+          <!-- Front splitter / air dam -->
+          <path d="M 226 60 L 256 57 L 256 63 L 226 63 Z" fill="rgba(0,0,0,0.6)"/>
+          <!-- Intake grille lines -->
+          <line x1="232" y1="58" x2="232" y2="62" stroke="rgba(232,160,0,0.3)" stroke-width="1"/>
+          <line x1="238" y1="57.5" x2="238" y2="62" stroke="rgba(232,160,0,0.3)" stroke-width="1"/>
+          <line x1="244" y1="57.5" x2="244" y2="62" stroke="rgba(232,160,0,0.3)" stroke-width="1"/>
+          <line x1="250" y1="58" x2="250" y2="62" stroke="rgba(232,160,0,0.3)" stroke-width="1"/>
+
+          <!-- Side vent -->
+          <path d="M 180 44 L 194 41 L 194 46 L 180 49 Z" fill="rgba(0,0,0,0.2)" rx="1"/>
+          <line x1="183" y1="44" x2="183" y2="48" stroke="rgba(232,160,0,0.2)" stroke-width="0.8"/>
+          <line x1="187" y1="43" x2="187" y2="47.5" stroke="rgba(232,160,0,0.2)" stroke-width="0.8"/>
+
+          <!-- ===== FRONT WHEEL ===== -->
+          <circle cx="216" cy="70" r="20" fill="#0d0d1a"/>
+          <circle cx="216" cy="70" r="15.5" fill="#161625"/>
+          <!-- 5-spoke AMG-style rim -->
+          <line x1="216" y1="54.5" x2="216" y2="62" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="229.7" y1="59" x2="224" y2="64.6" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="224.5" y1="74.5" x2="219" y2="70.5" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="207.5" y1="74.5" x2="213" y2="70.5" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="202.3" y1="59" x2="208" y2="64.6" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <!-- Center cap -->
+          <circle cx="216" cy="70" r="5" fill="#E8A000" opacity="0.5"/>
+          <circle cx="216" cy="70" r="2.5" fill="#E8A000" opacity="0.9"/>
+          <!-- Tyre -->
+          <circle cx="216" cy="70" r="20" stroke="rgba(255,255,255,0.04)" stroke-width="1" fill="none"/>
+
+          <!-- ===== REAR WHEEL ===== -->
+          <circle cx="62" cy="70" r="20" fill="#0d0d1a"/>
+          <circle cx="62" cy="70" r="15.5" fill="#161625"/>
+          <!-- 5-spoke rim -->
+          <line x1="62" y1="54.5" x2="62" y2="62" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="75.7" y1="59" x2="70" y2="64.6" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="70.5" y1="74.5" x2="65" y2="70.5" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="53.5" y1="74.5" x2="59" y2="70.5" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="48.3" y1="59" x2="54" y2="64.6" stroke="rgba(232,160,0,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <!-- Center cap -->
+          <circle cx="62" cy="70" r="5" fill="#E8A000" opacity="0.5"/>
+          <circle cx="62" cy="70" r="2.5" fill="#E8A000" opacity="0.9"/>
         </svg>
       </div>
     </div>

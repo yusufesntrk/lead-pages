@@ -401,7 +401,7 @@ img { max-width: 100%; display: block; }
   85% { opacity: 1; }
   100% { left: calc(100vw + 100px); opacity: 0; }
 }
-.hero-car { width: 180px; filter: drop-shadow(0 4px 20px rgba(232,160,0,0.3)); }
+.hero-car { width: 260px; filter: drop-shadow(0 6px 28px rgba(232,160,0,0.5)) drop-shadow(0 0 60px rgba(232,160,0,0.15)); }
 
 /* Scroll indicator */
 .hero-scroll-indicator {
