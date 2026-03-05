@@ -606,18 +606,6 @@ img { max-width: 100%; display: block; }
 }
 
 /* Motorcycle in road divider */
-.road-moto {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -160px;
-  animation: motoDrive 8s linear infinite;
-}
-.road-moto svg { width: 120px; }
-@keyframes motoDrive {
-  0% { left: -160px; }
-  100% { left: calc(100% + 160px); }
-}
 
 /* ===== WHY SECTION ===== */
 .why-section { padding: 100px 0; background: white; }
