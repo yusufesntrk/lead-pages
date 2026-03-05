@@ -276,14 +276,16 @@ img { max-width: 100%; display: block; }
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 700px;
+  max-width: 800px;
   padding: 140px 24px 240px;
-  margin-left: max(24px, calc((100vw - 1200px) / 2 + 24px));
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-eyebrow {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
   margin-bottom: 2rem;
   color: rgba(255,255,255,0.4);
@@ -327,9 +329,11 @@ img { max-width: 100%; display: block; }
   line-height: 1.7;
   margin-bottom: 2.5rem;
   max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 3.5rem; justify-content: center; }
 
 /* ===== TACHOMETER STATS ===== */
 .hero-tacho-stats {
@@ -908,7 +912,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 900px) {
-  .hero-content { padding: 120px 24px 200px; margin-left: 0; }
+  .hero-content { padding: 120px 24px 200px; }
   .hero-speedometer { width: 240px; right: 2%; bottom: 80px; }
   .services-grid { grid-template-columns: 1fr; }
   .locations-grid { grid-template-columns: 1fr; }
