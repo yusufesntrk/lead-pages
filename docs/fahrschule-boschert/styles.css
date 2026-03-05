@@ -331,26 +331,61 @@ img { max-width: 100%; display: block; }
 
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 3.5rem; }
 
-.hero-stats { display: flex; gap: 0; }
-.hstat {
+/* ===== TACHOMETER STATS ===== */
+.hero-tacho-stats {
+  display: flex;
+  gap: 8px;
+  margin-top: 0.5rem;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+.tacho-wrap {
+  flex: 1;
+  max-width: 175px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 24px;
-  border-right: 1px solid rgba(255,255,255,0.08);
 }
-.hstat:first-child { padding-left: 0; }
-.hstat:last-child { border-right: none; }
-.hstat-num {
+.tacho-gauge {
+  width: 100%;
+  filter: drop-shadow(0 0 18px rgba(232,160,0,0.22));
+}
+.tacho-needle {
+  transform-origin: 100px 112px;
+  transform: rotate(0deg);
+  transition: transform 1.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.tacho-arc {
+  transition: stroke-dasharray 1.6s ease-out;
+}
+.tacho-value {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-top: -6px;
+}
+.tacho-num {
   font-family: var(--font-cond);
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   font-weight: 900;
-  color: var(--amber);
+  color: #fff;
   line-height: 1;
 }
-.hstat-unit { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
-.hstat-label { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
-.hstat-sep { display: none; }
+.tacho-unit {
+  font-family: var(--font-cond);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--amber);
+  letter-spacing: 0.02em;
+}
+.tacho-label {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 3px;
+}
 
 /* Animated car in hero */
 .hero-car-wrapper {
@@ -886,9 +921,9 @@ img { max-width: 100%; display: block; }
   .nav-menu a { font-size: 1.2rem; padding: 14px 32px; }
 
   .hero-title { font-size: 3.2rem; }
-  .hero-stats { gap: 4px; }
-  .hstat { padding: 0 12px; }
-  .hstat-num { font-size: 2rem; }
+  .hero-tacho-stats { gap: 4px; }
+  .tacho-num { font-size: 1.8rem; }
+  .tacho-unit { font-size: 0.75rem; }
 
   .why-cards { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }

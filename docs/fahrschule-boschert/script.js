@@ -29,28 +29,46 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ===== COUNTER ANIMATION (odometer style) =====
-const counters = document.querySelectorAll('.hstat-num[data-target]');
-let countersAnimated = false;
+// ===== TACHOMETER ANIMATION =====
+const tachoWraps = document.querySelectorAll('.tacho-wrap');
+let tachosAnimated = false;
 
-function animateCounters() {
-  if (countersAnimated) return;
-  countersAnimated = true;
-  counters.forEach(el => {
-    const target = parseInt(el.dataset.target);
-    const duration = 2000;
-    const steps = 50;
-    const inc = target / steps;
-    let current = 0;
-    let step = 0;
-    const timer = setInterval(() => {
-      step++;
-      current = Math.min(Math.round(inc * step), target);
-      el.textContent = current;
-      if (step >= steps) clearInterval(timer);
-    }, duration / steps);
+function animateTachos() {
+  if (tachosAnimated) return;
+  tachosAnimated = true;
+  tachoWraps.forEach((wrap, i) => {
+    const percent = parseFloat(wrap.dataset.percent) / 100;
+    const maxDash = parseFloat(wrap.dataset.maxDash);
+    const arc = wrap.querySelector('.tacho-arc');
+    const needle = wrap.querySelector('.tacho-needle');
+    const num = wrap.querySelector('.tacho-num');
+    const delay = i * 150;
+
+    setTimeout(() => {
+      // Animate arc fill: 0% = left, 100% = right (counterclockwise over top)
+      if (arc) arc.style.strokeDasharray = `${maxDash * percent} ${maxDash}`;
+      // Animate needle: rotate(0deg) = pointing left, rotate(180deg) = pointing right
+      if (needle) needle.style.transform = `rotate(${180 * percent}deg)`;
+      // Animate counter
+      if (num) {
+        const target = parseInt(num.dataset.target);
+        let current = 0;
+        const steps = 40;
+        const inc = target / steps;
+        let step = 0;
+        const timer = setInterval(() => {
+          step++;
+          current = Math.min(Math.round(inc * step), target);
+          num.textContent = current;
+          if (step >= steps) clearInterval(timer);
+        }, 1600 / steps);
+      }
+    }, delay);
   });
 }
+
+// Legacy counter support (kept for other potential uses)
+function animateCounters() {}
 
 // ===== SCROLL REVEAL =====
 const revealObserver = new IntersectionObserver((entries) => {
@@ -66,12 +84,12 @@ document.querySelectorAll('[data-reveal]').forEach((el, i) => {
   revealObserver.observe(el);
 });
 
-// Trigger counter when hero is visible
+// Trigger tachometers when hero is visible
 const heroObserver = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting) animateCounters();
-}, { threshold: 0.3 });
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) heroObserver.observe(heroStats);
+  if (entries[0].isIntersecting) animateTachos();
+}, { threshold: 0.2 });
+const tachoStats = document.querySelector('.hero-tacho-stats');
+if (tachoStats) heroObserver.observe(tachoStats);
 
 // ===== CONTACT FORM =====
 const form = document.querySelector('.contact-form');
