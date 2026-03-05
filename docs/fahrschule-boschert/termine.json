@@ -7,8 +7,8 @@
       "date": "2026-03-05",
       "time": "18:00",
       "duration": 90,
-      "title": "Theoriestunde",
-      "description": "Lektion 4: Vorfahrtsregeln",
+      "title": "Lektion 4: Vorfahrtsregeln",
+      "description": "",
       "instructor": "Wolfgang Boschert",
       "location": "Rathausgasse 2, Offenburg"
     },
@@ -18,8 +18,8 @@
       "date": "2026-03-07",
       "time": "10:00",
       "duration": 90,
-      "title": "Theoriestunde",
-      "description": "Lektion 5: Geschwindigkeit & Abstand",
+      "title": "Lektion 5: Geschwindigkeit & Abstand",
+      "description": "",
       "instructor": "Wolfgang Boschert",
       "location": "Rathausgasse 2, Offenburg"
     },
@@ -29,8 +29,8 @@
       "date": "2026-03-10",
       "time": "18:00",
       "duration": 90,
-      "title": "Theoriestunde",
-      "description": "Lektion 6: Alkohol & Drogen im Straßenverkehr",
+      "title": "Lektion 6: Alkohol & Drogen",
+      "description": "",
       "instructor": "Wolfgang Boschert",
       "location": "Rathausgasse 2, Offenburg"
     },
@@ -40,8 +40,8 @@
       "date": "2026-03-12",
       "time": "18:00",
       "duration": 90,
-      "title": "Theoriestunde",
-      "description": "Lektion 7: Fahrzeugführung",
+      "title": "Lektion 7: Fahrzeugführung",
+      "description": "",
       "instructor": "Wolfgang Boschert",
       "location": "Rathausgasse 2, Offenburg"
     },
@@ -51,8 +51,8 @@
       "date": "2026-03-14",
       "time": "10:00",
       "duration": 90,
-      "title": "Theoriestunde",
-      "description": "Lektion 8: Umweltschutz & Energie sparen",
+      "title": "Lektion 8: Umweltschutz",
+      "description": "",
       "instructor": "Wolfgang Boschert",
       "location": "Rathausgasse 2, Offenburg"
     }
