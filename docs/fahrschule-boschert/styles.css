@@ -1030,7 +1030,7 @@ img { max-width: 100%; display: block; }
 /* Calendar grid */
 .week-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 2px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.06);
