@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 58" width="320" height="58">
+  <!-- Background -->
+  <rect width="320" height="58" fill="#2b2b2b"/>
+
+  <!-- Diamond shape (rotated square) -->
+  <!-- Center: x=34, y=29, half-diagonal ~22 -->
+  <polygon points="34,7 56,29 34,51 12,29" fill="#FFE200" stroke="#1a1a1a" stroke-width="3"/>
+
+  <!-- Thin inner diamond border -->
+  <polygon points="34,11 52,29 34,47 16,29" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- Divider line between diamond and text -->
+  <line x1="68" y1="4" x2="68" y2="54" stroke="#444" stroke-width="1"/>
+
+  <!-- FAHRSCHULE text -->
+  <text x="78" y="20"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="10.5"
+    font-weight="600"
+    letter-spacing="2.5"
+    fill="#cccccc">FAHRSCHULE</text>
+
+  <!-- BOSCHERT text -->
+  <text x="76" y="40"
+    font-family="Arial Black, Arial, sans-serif"
+    font-size="22"
+    font-weight="900"
+    letter-spacing="1"
+    fill="#ffffff">BOSCHERT</text>
+
+  <!-- SO LERNT MAN HEUTE text -->
+  <text x="78" y="52"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="8.5"
+    font-weight="400"
+    letter-spacing="1.8"
+    fill="#aaaaaa">SO LERNT MAN HEUTE</text>
+</svg>
