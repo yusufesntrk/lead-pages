@@ -585,7 +585,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   transition: var(--transition);
 }
 .class-card:hover { background: rgba(212,0,116,0.15); border-color: rgba(212,0,116,0.4); transform: translateY(-2px); }
-.class-icon { font-size: 1.8rem; margin-bottom: 8px; }
+.class-icon { font-size: 1.8rem; margin-bottom: 8px; color: var(--pink-light); }
 .class-card h4 { font-size: 0.95rem; font-weight: 700; color: white; margin-bottom: 6px; }
 .class-card p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
 
@@ -612,7 +612,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   color: var(--pink);
   margin-bottom: 12px;
 }
-.why-icon { font-size: 2rem; margin-bottom: 12px; }
+.why-icon { font-size: 2rem; margin-bottom: 12px; color: var(--pink); }
 .why-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
 .why-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
 
@@ -742,7 +742,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 
 .contact-details { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 20px; }
 .contact-detail { display: flex; align-items: flex-start; gap: 14px; }
-.contact-detail-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+.contact-detail-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; color: var(--pink-light); }
 .contact-detail strong { display: block; color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; }
 .contact-detail span { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
 .contact-link { color: var(--pink); font-weight: 600; transition: var(--transition); }
