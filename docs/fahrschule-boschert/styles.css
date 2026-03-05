@@ -947,3 +947,265 @@ img { max-width: 100%; display: block; }
   .contact-form { padding: 28px 20px; }
   .hero-speedometer { display: none; }
 }
+
+/* ===== TERMINE / KALENDER SEKTION ===== */
+.termine-section {
+  background: var(--dark);
+  padding: 80px 0 90px;
+  position: relative;
+}
+.termine-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232,160,0,0.3), transparent);
+}
+
+.termine-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.termine-title-block .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-cond);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+.termine-title-block .section-label::before {
+  content: ''; display: block;
+  width: 24px; height: 2px;
+  background: var(--amber);
+}
+.termine-title-block h2 {
+  font-family: var(--font-cond);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+  line-height: 1;
+}
+.termine-title-block h2 span { color: var(--amber); }
+
+/* Week navigation */
+.week-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.week-nav-label {
+  font-family: var(--font-cond);
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  min-width: 160px;
+  text-align: center;
+}
+.week-nav-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: white;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  font-size: 1rem;
+}
+.week-nav-btn:hover {
+  background: rgba(232,160,0,0.15);
+  border-color: rgba(232,160,0,0.4);
+  color: var(--amber);
+}
+
+/* Calendar grid */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.day-col {
+  background: var(--dark-2);
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+}
+.day-col.today .day-header {
+  background: rgba(232,160,0,0.15);
+  border-bottom-color: rgba(232,160,0,0.3);
+}
+.day-col.today .day-name { color: var(--amber); }
+.day-col.today .day-num { color: var(--amber); }
+.day-header {
+  padding: 10px 10px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+.day-name {
+  font-family: var(--font-cond);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.day-num {
+  font-family: var(--font-cond);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.1;
+}
+.day-appointments {
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+/* Appointment pills */
+.appt-pill {
+  border-radius: 3px;
+  padding: 5px 8px;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+  position: relative;
+}
+.appt-pill:hover { transform: scale(1.03); opacity: 0.9; }
+.appt-pill.fahrstunde {
+  background: rgba(232,160,0,0.18);
+  border-left: 3px solid var(--amber);
+}
+.appt-pill.theorie {
+  background: rgba(59,130,246,0.18);
+  border-left: 3px solid #3b82f6;
+}
+.appt-time {
+  font-family: var(--font-cond);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.appt-pill.fahrstunde .appt-time { color: var(--amber); }
+.appt-pill.theorie .appt-time { color: #60a5fa; }
+.appt-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+}
+
+/* Tooltip */
+.appt-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: var(--dark-3);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 12px 14px;
+  min-width: 200px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.appt-pill:hover .appt-tooltip { opacity: 1; }
+.appt-tooltip-title {
+  font-family: var(--font-cond);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 6px;
+}
+.appt-tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 3px;
+}
+.appt-tooltip-row svg { flex-shrink: 0; opacity: 0.5; }
+
+/* Legend */
+.termine-legend {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+}
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 2px;
+}
+.legend-dot.fahrstunde { background: var(--amber); }
+.legend-dot.theorie { background: #3b82f6; }
+
+/* No appointments */
+.no-appointments {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: rgba(255,255,255,0.3);
+  font-family: var(--font-inter);
+  font-size: 0.9rem;
+}
+
+/* Admin link */
+.termine-admin-link {
+  margin-top: 24px;
+  text-align: right;
+}
+.termine-admin-link a {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.termine-admin-link a:hover { color: rgba(255,255,255,0.5); }
+
+/* Responsive calendar */
+@media (max-width: 900px) {
+  .week-grid {
+    grid-template-columns: repeat(7, minmax(90px, 1fr));
+    overflow-x: auto;
+    display: flex;
+  }
+  .day-col { min-width: 90px; flex-shrink: 0; flex: 1; }
+  .termine-header { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .week-nav-label { min-width: 120px; font-size: 0.85rem; }
+  .day-col { min-width: 80px; }
+  .appt-tooltip { left: 0; transform: none; min-width: 160px; }
+}

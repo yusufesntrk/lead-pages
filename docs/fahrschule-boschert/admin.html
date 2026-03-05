@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Fahrschule Boschert</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --amber: #E8A000;
+      --dark: #0a0a14;
+      --dark-2: #111120;
+      --dark-3: #1a1a2e;
+      --dark-4: #252540;
+      --border: rgba(255,255,255,0.1);
+      --font: 'Barlow', sans-serif;
+      --font-cond: 'Barlow Condensed', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    html, body { min-height: 100vh; }
+    body { font-family: var(--font-body); background: var(--dark); color: white; }
+
+    /* ===== LOGIN ===== */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--dark) 0%, #12121f 100%);
+    }
+    .login-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 380px;
+    }
+    .login-logo {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .login-logo img { height: 36px; }
+    .login-card h1 {
+      font-family: var(--font-cond);
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .login-card p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      background: var(--dark-3);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+      padding: 10px 14px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--amber);
+    }
+    .form-group select option { background: var(--dark-3); }
+    .form-group textarea { resize: vertical; min-height: 70px; }
+    .btn-primary {
+      width: 100%;
+      background: var(--amber);
+      color: var(--dark);
+      border: none;
+      padding: 12px 24px;
+      font-family: var(--font-cond);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: #FFB800; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+    #loginError {
+      color: #f87171;
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* ===== ADMIN PORTAL ===== */
+    #adminPortal { display: none; }
+
+    .admin-topbar {
+      background: var(--dark-2);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .admin-topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .admin-topbar img { height: 30px; }
+    .admin-topbar-title {
+      font-family: var(--font-cond);
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em;
+    }
+    .admin-topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-sm {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: rgba(255,255,255,0.7);
+      padding: 7px 14px;
+      font-family: var(--font-cond);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-sm:hover { border-color: rgba(255,255,255,0.3); color: white; }
+    .btn-publish {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: var(--dark);
+    }
+    .btn-publish:hover { background: #FFB800; border-color: #FFB800; color: var(--dark); }
+    .btn-danger {
+      background: transparent;
+      border: 1px solid rgba(248,113,113,0.3);
+      color: rgba(248,113,113,0.7);
+    }
+    .btn-danger:hover { border-color: #f87171; color: #f87171; }
+
+    .admin-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    /* Toolbar */
+    .admin-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .admin-toolbar h2 {
+      font-family: var(--font-cond);
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Table */
+    .appt-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--dark-2);
+    }
+    .appt-table th {
+      background: var(--dark-3);
+      font-family: var(--font-cond);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .appt-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .appt-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .appt-table tr:last-child td { border-bottom: none; }
+
+    .type-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-family: var(--font-cond);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+    .type-badge.fahrstunde {
+      background: rgba(232,160,0,0.15);
+      color: var(--amber);
+      border: 1px solid rgba(232,160,0,0.3);
+    }
+    .type-badge.theorie {
+      background: rgba(59,130,246,0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    .actions-cell { display: flex; gap: 6px; }
+    .icon-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5);
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.8rem;
+    }
+    .icon-btn:hover { border-color: rgba(255,255,255,0.3); color: white; }
+    .icon-btn.delete:hover { border-color: #f87171; color: #f87171; }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: rgba(255,255,255,0.3);
+    }
+    .empty-state svg { margin-bottom: 16px; opacity: 0.3; }
+    .empty-state p { font-size: 0.9rem; }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-header h3 {
+      font-family: var(--font-cond);
+      font-size: 1.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+    }
+    .modal-close:hover { color: white; }
+    .modal-body { padding: 24px; }
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* ===== SETTINGS PANEL ===== */
+    .settings-panel {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      border-top: none;
+      padding: 20px 24px;
+      display: none;
+    }
+    .settings-panel.open { display: block; }
+    .settings-panel h3 {
+      font-family: var(--font-cond);
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: rgba(255,255,255,0.6);
+    }
+    .settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .settings-note {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.5;
+    }
+    .settings-note a { color: var(--amber); }
+
+    /* ===== STATUS TOAST ===== */
+    #statusToast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      padding: 14px 20px;
+      font-size: 0.88rem;
+      z-index: 300;
+      display: none;
+      gap: 10px;
+      align-items: center;
+      min-width: 260px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    #statusToast.show { display: flex; }
+    #statusToast.success { border-color: rgba(74,222,128,0.4); }
+    #statusToast.error { border-color: rgba(248,113,113,0.4); }
+    .toast-icon { font-size: 1.1rem; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+      .settings-grid { grid-template-columns: 1fr; }
+      .admin-topbar-title { display: none; }
+      .appt-table th:nth-child(5),
+      .appt-table td:nth-child(5) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== LOGIN ===== -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="assets/logo.svg" alt="Fahrschule Boschert">
+    </div>
+    <h1>Admin-Portal</h1>
+    <p>Terminverwaltung · Fahrschule Boschert</p>
+    <div class="form-group">
+      <label>Passwort</label>
+      <input type="password" id="loginPassword" placeholder="••••••••••" autocomplete="current-password">
+    </div>
+    <button class="btn-primary" id="loginBtn">Einloggen</button>
+    <div id="loginError">Falsches Passwort. Bitte erneut versuchen.</div>
+  </div>
+</div>
+
+<!-- ===== ADMIN PORTAL ===== -->
+<div id="adminPortal">
+
+  <!-- Topbar -->
+  <div class="admin-topbar">
+    <div class="admin-topbar-left">
+      <img src="assets/logo.svg" alt="Fahrschule Boschert">
+      <span class="admin-topbar-title">Terminverwaltung</span>
+    </div>
+    <div class="admin-topbar-actions">
+      <a href="index.html" class="btn-sm">
+        ← Website
+      </a>
+      <button class="btn-sm" id="settingsToggle">
+        ⚙ GitHub
+      </button>
+      <button class="btn-sm" id="exportBtn">
+        ⬇ JSON
+      </button>
+      <button class="btn-sm btn-publish" id="publishBtn">
+        🚀 Veröffentlichen
+      </button>
+      <button class="btn-sm btn-danger" id="logoutBtn">Logout</button>
+    </div>
+  </div>
+
+  <!-- Settings Panel -->
+  <div class="settings-panel" id="settingsPanel">
+    <div style="max-width:1100px;margin:0 auto">
+      <h3>GitHub Einstellungen (für automatisches Deployment)</h3>
+      <div class="settings-grid">
+        <div class="form-group">
+          <label>GitHub Personal Access Token</label>
+          <input type="password" id="ghToken" placeholder="github_pat_...">
+        </div>
+        <div class="form-group">
+          <label>Repository</label>
+          <input type="text" id="ghRepo" value="yusufesntrk/lead-pages" readonly>
+        </div>
+      </div>
+      <button class="btn-sm" id="saveSettingsBtn" style="margin-top:8px">Speichern</button>
+      <p class="settings-note">
+        Token wird nur in diesem Browser gespeichert, nie übertragen.<br>
+        <a href="https://github.com/settings/tokens?type=beta" target="_blank">Fine-Grained Token erstellen</a>
+        → Repository: lead-pages → Permission: Contents (Read &amp; Write)
+      </p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="admin-content">
+    <div class="admin-toolbar">
+      <h2>Termine <span style="color:rgba(255,255,255,0.25);font-size:1rem" id="apptCount"></span></h2>
+      <div class="toolbar-right">
+        <button class="btn-sm btn-publish" id="addBtn">+ Termin hinzufügen</button>
+      </div>
+    </div>
+
+    <table class="appt-table" id="apptTable">
+      <thead>
+        <tr>
+          <th>Datum</th>
+          <th>Uhrzeit</th>
+          <th>Typ</th>
+          <th>Titel</th>
+          <th>Fahrlehrer</th>
+          <th>Dauer</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody id="apptTableBody"></tbody>
+    </table>
+
+    <div class="empty-state" id="emptyState" style="display:none">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      <p>Noch keine Termine. Klicke auf "+ Termin hinzufügen".</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: Termin hinzufügen/bearbeiten ===== -->
+<div class="modal-overlay" id="apptModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Termin hinzufügen</h3>
+      <button class="modal-close" id="modalClose">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editId">
+      <div class="form-group">
+        <label>Typ *</label>
+        <select id="fType">
+          <option value="fahrstunde">Fahrstunde</option>
+          <option value="theorie">Theoriestunde</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Datum *</label>
+          <input type="date" id="fDate">
+        </div>
+        <div class="form-group">
+          <label>Uhrzeit *</label>
+          <input type="time" id="fTime">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Dauer (Minuten)</label>
+          <input type="number" id="fDuration" value="45" min="15" step="15">
+        </div>
+        <div class="form-group">
+          <label>Fahrlehrer</label>
+          <select id="fInstructor">
+            <option value="">– Kein –</option>
+            <option value="Wolfgang Boschert">Wolfgang Boschert</option>
+            <option value="Armin Rottenecker">Armin Rottenecker</option>
+            <option value="Sebastian Stumm">Sebastian Stumm</option>
+            <option value="Sandra Hanser">Sandra Hanser</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Titel</label>
+        <input type="text" id="fTitle" placeholder="z.B. Überlandfahrt, Sonderfahrt...">
+      </div>
+      <div class="form-group">
+        <label>Beschreibung (optional)</label>
+        <textarea id="fDesc" placeholder="z.B. Lektion 3: Vorfahrtsregeln"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Ort (optional)</label>
+        <input type="text" id="fLocation" placeholder="z.B. Rathausgasse 2">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm" id="modalCancel">Abbrechen</button>
+      <button class="btn-sm btn-publish" id="modalSave">Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div id="statusToast">
+  <span class="toast-icon" id="toastIcon"></span>
+  <span id="toastMsg"></span>
+</div>
+
+<script>
+// ===== CONFIG =====
+const REPO = 'yusufesntrk/lead-pages';
+const FILE_PATH = 'docs/fahrschule-boschert/termine.json';
+
+// SHA-256 of 'boschert2025'
+const PASSWORD_HASH = '857247c3ed0b24f46a5e46ac4226d15bb45f3ecdab4ada705db4162da399a972';
+
+// ===== UTILS =====
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2);
+}
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('statusToast');
+  const icon = document.getElementById('toastIcon');
+  const msgEl = document.getElementById('toastMsg');
+  icon.textContent = type === 'success' ? '✅' : '❌';
+  msgEl.textContent = msg;
+  t.className = 'show ' + type;
+  setTimeout(() => t.className = '', 4000);
+}
+
+function formatDateDE(str) {
+  if (!str) return '';
+  const [y,m,d] = str.split('-');
+  return `${d}.${m}.${y}`;
+}
+
+// ===== STORAGE =====
+function loadAppointments() {
+  try {
+    return JSON.parse(localStorage.getItem('boschert_appointments') || '[]');
+  } catch { return []; }
+}
+
+function saveAppointments(arr) {
+  localStorage.setItem('boschert_appointments', JSON.stringify(arr));
+}
+
+// ===== LOGIN =====
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  const pw = document.getElementById('loginPassword').value;
+  const hash = await sha256(pw);
+  if (hash === PASSWORD_HASH) {
+    localStorage.setItem('adminLoggedIn', '1');
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminPortal').style.display = 'block';
+    initPortal();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+});
+
+document.getElementById('loginPassword').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('loginBtn').click();
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  localStorage.removeItem('adminLoggedIn');
+  location.reload();
+});
+
+// ===== AUTO LOGIN =====
+if (localStorage.getItem('adminLoggedIn') === '1') {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminPortal').style.display = 'block';
+  document.addEventListener('DOMContentLoaded', initPortal);
+}
+
+// ===== PORTAL =====
+let appointments = [];
+
+async function initPortal() {
+  // Load from termine.json first, then fall back to localStorage
+  try {
+    const res = await fetch('termine.json?v=' + Date.now());
+    const data = await res.json();
+    appointments = data.appointments || [];
+    saveAppointments(appointments);
+  } catch {
+    appointments = loadAppointments();
+  }
+
+  renderTable();
+  loadGhSettings();
+}
+
+function renderTable() {
+  const tbody = document.getElementById('apptTableBody');
+  const empty = document.getElementById('emptyState');
+  const count = document.getElementById('apptCount');
+
+  const sorted = [...appointments].sort((a,b) => {
+    if (a.date !== b.date) return a.date.localeCompare(b.date);
+    return a.time.localeCompare(b.time);
+  });
+
+  count.textContent = sorted.length ? `(${sorted.length})` : '';
+
+  if (!sorted.length) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  tbody.innerHTML = sorted.map(a => `
+    <tr>
+      <td><strong>${formatDateDE(a.date)}</strong></td>
+      <td>${a.time} Uhr</td>
+      <td><span class="type-badge ${a.type}">${a.type === 'fahrstunde' ? 'Fahrstunde' : 'Theorie'}</span></td>
+      <td>${a.title || '–'}</td>
+      <td>${a.instructor || '–'}</td>
+      <td>${a.duration} Min.</td>
+      <td>
+        <div class="actions-cell">
+          <button class="icon-btn" onclick="editAppt('${a.id}')" title="Bearbeiten">✏</button>
+          <button class="icon-btn delete" onclick="deleteAppt('${a.id}')" title="Löschen">🗑</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+// ===== MODAL =====
+function openModal(appt = null) {
+  const modal = document.getElementById('apptModal');
+  document.getElementById('modalTitle').textContent = appt ? 'Termin bearbeiten' : 'Termin hinzufügen';
+  document.getElementById('editId').value = appt ? appt.id : '';
+  document.getElementById('fType').value = appt ? appt.type : 'fahrstunde';
+  document.getElementById('fDate').value = appt ? appt.date : '';
+  document.getElementById('fTime').value = appt ? appt.time : '';
+  document.getElementById('fDuration').value = appt ? appt.duration : 45;
+  document.getElementById('fInstructor').value = appt ? (appt.instructor || '') : '';
+  document.getElementById('fTitle').value = appt ? (appt.title || '') : '';
+  document.getElementById('fDesc').value = appt ? (appt.description || '') : '';
+  document.getElementById('fLocation').value = appt ? (appt.location || '') : '';
+
+  // Auto-fill title if empty and type changes
+  if (!appt) {
+    document.getElementById('fType').addEventListener('change', autoTitle, {once:false});
+    autoTitle();
+  }
+
+  modal.classList.add('open');
+}
+
+function autoTitle() {
+  const type = document.getElementById('fType').value;
+  const title = document.getElementById('fTitle');
+  if (!title.value || title.value === 'Fahrstunde' || title.value === 'Theoriestunde') {
+    title.value = type === 'theorie' ? 'Theoriestunde' : 'Fahrstunde';
+  }
+}
+
+function closeModal() {
+  document.getElementById('apptModal').classList.remove('open');
+}
+
+document.getElementById('addBtn').addEventListener('click', () => openModal());
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalCancel').addEventListener('click', closeModal);
+document.getElementById('apptModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('apptModal')) closeModal();
+});
+
+document.getElementById('modalSave').addEventListener('click', () => {
+  const date = document.getElementById('fDate').value;
+  const time = document.getElementById('fTime').value;
+  if (!date || !time) {
+    showToast('Bitte Datum und Uhrzeit ausfüllen.', 'error');
+    return;
+  }
+
+  const id = document.getElementById('editId').value || uid();
+  const appt = {
+    id,
+    type: document.getElementById('fType').value,
+    date,
+    time,
+    duration: parseInt(document.getElementById('fDuration').value) || 45,
+    title: document.getElementById('fTitle').value || (document.getElementById('fType').value === 'theorie' ? 'Theoriestunde' : 'Fahrstunde'),
+    description: document.getElementById('fDesc').value,
+    instructor: document.getElementById('fInstructor').value,
+    location: document.getElementById('fLocation').value,
+  };
+
+  const existing = appointments.findIndex(a => a.id === id);
+  if (existing >= 0) {
+    appointments[existing] = appt;
+  } else {
+    appointments.push(appt);
+  }
+
+  saveAppointments(appointments);
+  renderTable();
+  closeModal();
+  showToast(existing >= 0 ? 'Termin aktualisiert.' : 'Termin hinzugefügt.');
+});
+
+function editAppt(id) {
+  const appt = appointments.find(a => a.id === id);
+  if (appt) openModal(appt);
+}
+
+function deleteAppt(id) {
+  if (!confirm('Termin wirklich löschen?')) return;
+  appointments = appointments.filter(a => a.id !== id);
+  saveAppointments(appointments);
+  renderTable();
+  showToast('Termin gelöscht.');
+}
+
+// ===== SETTINGS =====
+function loadGhSettings() {
+  const token = localStorage.getItem('ghToken') || '';
+  document.getElementById('ghToken').value = token;
+}
+
+document.getElementById('settingsToggle').addEventListener('click', () => {
+  document.getElementById('settingsPanel').classList.toggle('open');
+});
+
+document.getElementById('saveSettingsBtn').addEventListener('click', () => {
+  localStorage.setItem('ghToken', document.getElementById('ghToken').value);
+  document.getElementById('settingsPanel').classList.remove('open');
+  showToast('GitHub-Einstellungen gespeichert.');
+});
+
+// ===== EXPORT =====
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const data = {
+    lastUpdated: new Date().toISOString(),
+    appointments: [...appointments].sort((a,b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time))
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'termine.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('termine.json heruntergeladen.');
+});
+
+// ===== PUBLISH via GitHub API =====
+document.getElementById('publishBtn').addEventListener('click', async () => {
+  const token = localStorage.getItem('ghToken');
+  if (!token) {
+    document.getElementById('settingsPanel').classList.add('open');
+    showToast('Bitte zuerst GitHub Token eingeben.', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('publishBtn');
+  btn.textContent = '⏳ Wird veröffentlicht...';
+  btn.disabled = true;
+
+  const data = {
+    lastUpdated: new Date().toISOString(),
+    appointments: [...appointments].sort((a,b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time))
+  };
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+
+  try {
+    // Get current file SHA
+    const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+    });
+    const getJson = await getRes.json();
+    const sha = getJson.sha;
+
+    // Update file
+    const putRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `Update termine.json – ${new Date().toLocaleString('de-DE')}`,
+        content,
+        sha
+      })
+    });
+
+    if (putRes.ok) {
+      showToast('✅ Veröffentlicht! Website wird in ~1 Min aktualisiert.');
+    } else {
+      const err = await putRes.json();
+      showToast('Fehler: ' + (err.message || 'Unbekannter Fehler'), 'error');
+    }
+  } catch(e) {
+    showToast('Netzwerkfehler: ' + e.message, 'error');
+  }
+
+  btn.textContent = '🚀 Veröffentlichen';
+  btn.disabled = false;
+});
+</script>
+</body>
+</html>
