@@ -105,3 +105,18 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 counters.forEach(c => counterObserver.observe(c));
+
+// ===== DATA-ANIM OBSERVER =====
+const animObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('anim-visible');
+      animObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('[data-anim]').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 5) * 60}ms`;
+  animObserver.observe(el);
+});

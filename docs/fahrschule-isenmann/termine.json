@@ -1,0 +1,60 @@
+{
+  "lastUpdated": "2026-03-05T10:00:00Z",
+  "appointments": [
+    {
+      "id": "1",
+      "type": "theorie",
+      "date": "2026-03-05",
+      "time": "18:30",
+      "duration": 90,
+      "title": "Lektion 4: Vorfahrtsregeln",
+      "description": "",
+      "instructor": "Thomas Isenmann",
+      "location": "Offenburg"
+    },
+    {
+      "id": "2",
+      "type": "theorie",
+      "date": "2026-03-07",
+      "time": "10:00",
+      "duration": 90,
+      "title": "Lektion 5: Geschwindigkeit & Abstand",
+      "description": "",
+      "instructor": "Thomas Isenmann",
+      "location": "Gengenbach"
+    },
+    {
+      "id": "3",
+      "type": "theorie",
+      "date": "2026-03-10",
+      "time": "18:30",
+      "duration": 90,
+      "title": "Lektion 6: Alkohol & Drogen",
+      "description": "",
+      "instructor": "Thomas Isenmann",
+      "location": "Offenburg"
+    },
+    {
+      "id": "4",
+      "type": "theorie",
+      "date": "2026-03-12",
+      "time": "18:30",
+      "duration": 90,
+      "title": "Lektion 7: Fahrzeugführung",
+      "description": "",
+      "instructor": "Thomas Isenmann",
+      "location": "Diersburg"
+    },
+    {
+      "id": "5",
+      "type": "theorie",
+      "date": "2026-03-14",
+      "time": "10:00",
+      "duration": 90,
+      "title": "Lektion 8: Umweltschutz",
+      "description": "",
+      "instructor": "Thomas Isenmann",
+      "location": "Gengenbach"
+    }
+  ]
+}

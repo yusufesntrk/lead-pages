@@ -33,6 +33,7 @@
       </button>
 
       <ul class="nav-menu" id="navMenu">
+        <li><a href="#termine">Termine</a></li>
         <li><a href="#ausbildung">Deine Ausbildung</a></li>
         <li class="has-dropdown">
           <a href="#klassen">Führerscheinklassen ▾</a>
@@ -138,6 +139,38 @@
     </div>
   </section>
 
+  <!-- ===== TERMINE / KALENDER ===== -->
+  <section class="termine-section" id="termine">
+    <div class="container">
+      <div class="termine-header">
+        <div class="termine-title-block">
+          <div class="termine-label">Aktuell &amp; Kommend</div>
+          <h2>Nächste <span>Theorie­termine</span></h2>
+        </div>
+        <div class="week-nav">
+          <button class="week-nav-btn" id="weekPrev" aria-label="Vorherige Woche">&#8249;</button>
+          <div class="week-nav-label" id="weekLabel">Diese Woche</div>
+          <button class="week-nav-btn" id="weekNext" aria-label="Nächste Woche">&#8250;</button>
+        </div>
+      </div>
+
+      <div class="week-grid" id="weekGrid">
+        <!-- Kalender wird per JS befüllt -->
+      </div>
+
+      <div class="termine-legend">
+        <div class="legend-item">
+          <div class="legend-dot theorie"></div>
+          <span>Theoriestunde</span>
+        </div>
+      </div>
+
+      <div class="termine-admin-link">
+        <a href="admin.html">&#9998; Termine verwalten</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== 3 WEGE SECTION ===== -->
   <section class="ways-section" id="ausbildung">
     <div class="container">
@@ -145,7 +178,7 @@
       <h2 class="section-title">3 einzigartige Wege,<br>damit du <span class="text-pink">sicher ankommst</span></h2>
       <p class="section-subtitle">Niemand würde ins Wasser springen, ohne zu wissen, was er im Wasser können muss. Genauso verstehen wir dein Praxiswissen.</p>
 
-      <div class="ways-grid">
+      <div class="ways-grid" data-anim>
         <div class="way-card">
           <div class="way-number">01</div>
           <div class="way-icon">
@@ -207,7 +240,7 @@
   <!-- ===== FEATURES ===== -->
   <section class="features-section">
     <div class="container">
-      <div class="features-grid">
+      <div class="features-grid" data-anim>
         <div class="feature-item">
           <div class="feature-icon">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -286,7 +319,7 @@
       <h2 class="section-title">3x in der Region –<br><span class="text-pink">immer in deiner Nähe</span></h2>
       <p class="section-subtitle">Fahrschule Isenmann ist mit drei Standorten in der Region präsent – für maximale Flexibilität und kurze Wege zu deiner Fahrschule.</p>
 
-      <div class="locations-grid">
+      <div class="locations-grid" data-anim>
         <div class="location-card">
           <div class="location-header">
             <div class="location-badge">Hauptstandort</div>
@@ -395,7 +428,7 @@
   <section class="classes-section" id="klassen">
     <div class="classes-bg">
       <div class="container">
-        <div class="classes-inner">
+        <div class="classes-inner" data-anim>
           <div class="classes-text">
             <div class="section-label section-label-white">Unser Angebot</div>
             <h2 class="section-title text-white">Alle Führerschein­klassen –<br>aus einer Hand</h2>
@@ -445,7 +478,7 @@
       <div class="section-label">Warum Isenmann?</div>
       <h2 class="section-title">7 starke Gründe,<br>die <span class="text-pink">für uns sprechen</span></h2>
 
-      <div class="why-grid">
+      <div class="why-grid" data-anim>
         <div class="why-card">
           <div class="why-number">01</div>
           <div class="why-icon">🤝</div>
@@ -503,13 +536,13 @@
   <section class="milestones-section">
     <div class="container">
       <div class="milestones-inner">
-        <div class="milestones-text">
+        <div class="milestones-text" data-anim="left">
           <div class="section-label">Deine Reise</div>
           <h2 class="section-title">Deine Meilensteine<br>zum <span class="text-pink">Führerschein</span></h2>
           <p>Erreiche deine Ziele und werde dafür belohnt! Mit unseren Meilensteinen kannst du einfach sehen, wie weit du in deiner Ausbildung bist – vom Onboarding bis zur bestandenen Prüfung.</p>
           <a href="#kontakt" class="btn btn-primary btn-lg" style="margin-top:2rem">Starte jetzt →</a>
         </div>
-        <div class="milestones-steps">
+        <div class="milestones-steps" data-anim="right">
           <div class="milestone-step">
             <div class="milestone-dot milestone-done">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -564,7 +597,7 @@
     <div class="container">
       <div class="section-label">Das sagen unsere Fahrschüler</div>
       <h2 class="section-title">Echte Erfahrungen,<br><span class="text-pink">echte Erfolge</span></h2>
-      <div class="testimonials-grid">
+      <div class="testimonials-grid" data-anim>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
           <p class="testimonial-text">"Super Fahrschule! Die Ausbildung war sehr gut strukturiert und die Fahrlehrer extrem geduldig. Beim ersten Versuch bestanden – kann ich nur empfehlen!"</p>
@@ -786,5 +819,134 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+  // ===== KALENDER =====
+  (function() {
+    const DAY_NAMES = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+    let currentWeekOffset = 0;
+    let appointments = [];
+
+    function getMonday(date) {
+      const d = new Date(date);
+      const day = d.getDay();
+      const diff = (day === 0 ? -6 : 1 - day);
+      d.setDate(d.getDate() + diff);
+      d.setHours(0,0,0,0);
+      return d;
+    }
+
+    function formatDate(date) {
+      return date.toISOString().split('T')[0];
+    }
+
+    function formatDisplay(date) {
+      return date.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' });
+    }
+
+    function renderCalendar() {
+      const today = new Date();
+      const monday = getMonday(today);
+      monday.setDate(monday.getDate() + currentWeekOffset * 7);
+
+      const days = Array.from({length: 7}, (_, i) => {
+        const d = new Date(monday);
+        d.setDate(monday.getDate() + i);
+        return d;
+      });
+
+      const label = document.getElementById('weekLabel');
+      if (currentWeekOffset === 0) {
+        label.textContent = 'Diese Woche';
+      } else if (currentWeekOffset === 1) {
+        label.textContent = 'Nächste Woche';
+      } else if (currentWeekOffset === -1) {
+        label.textContent = 'Letzte Woche';
+      } else {
+        label.textContent = formatDisplay(days[0]) + ' – ' + formatDisplay(days[6]);
+      }
+
+      const grid = document.getElementById('weekGrid');
+      grid.innerHTML = '';
+
+      const todayStr = formatDate(today);
+      let hasAny = false;
+
+      days.forEach((day, i) => {
+        const dateStr = formatDate(day);
+        const dayAppts = appointments.filter(a => a.date === dateStr)
+          .sort((a, b) => a.time.localeCompare(b.time));
+
+        if (dayAppts.length) hasAny = true;
+
+        const col = document.createElement('div');
+        col.className = 'day-col' + (dateStr === todayStr ? ' today' : '');
+        col.innerHTML = `
+          <div class="day-header">
+            <div class="day-name">${DAY_NAMES[i]}</div>
+            <div class="day-num">${day.getDate()}</div>
+          </div>
+          <div class="day-appointments">
+            ${dayAppts.map(a => `
+              <div class="appt-pill ${a.type}" title="${a.title}">
+                <div class="appt-time">${a.time} Uhr</div>
+                <span class="appt-label">${a.title}</span>
+                <div class="appt-tooltip">
+                  <div class="appt-tooltip-title">${a.title}</div>
+                  <div class="appt-tooltip-row">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    ${a.time} Uhr · ${a.duration} Min.
+                  </div>
+                  ${a.instructor ? `<div class="appt-tooltip-row">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    ${a.instructor}
+                  </div>` : ''}
+                  ${a.location ? `<div class="appt-tooltip-row">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    ${a.location}
+                  </div>` : ''}
+                </div>
+              </div>
+            `).join('')}
+          </div>`;
+        grid.appendChild(col);
+      });
+
+      if (!hasAny) {
+        const empty = document.createElement('div');
+        empty.className = 'no-appointments';
+        empty.textContent = 'Keine Termine in dieser Woche';
+        grid.appendChild(empty);
+      }
+    }
+
+    async function loadAndRender() {
+      try {
+        const res = await fetch('termine.json?v=' + Date.now());
+        const data = await res.json();
+        appointments = data.appointments || [];
+      } catch(e) {
+        appointments = [];
+      }
+      renderCalendar();
+    }
+
+    document.getElementById('weekPrev').addEventListener('click', () => {
+      currentWeekOffset--;
+      renderCalendar();
+    });
+    document.getElementById('weekNext').addEventListener('click', () => {
+      currentWeekOffset++;
+      renderCalendar();
+    });
+
+    loadAndRender();
+  })();
+  </script>
 </body>
 </html>
