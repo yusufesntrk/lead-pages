@@ -233,7 +233,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 
 /* ===== ROAD & CAR ===== */
 
-/* Static road */
+/* ===== ROAD ===== */
 .cartoon-road {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -241,52 +241,71 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 }
 
 .road-ground {
-  height: 20px;
-  background: linear-gradient(to bottom, #1a1200, #0d0a00);
-  border-top: 3px solid #2a1f00;
+  height: 22px;
+  background: linear-gradient(to bottom, #111118 0%, #0a0a0e 100%);
 }
 
 .road-surface {
-  height: 80px;
-  background: #1c1c2a;
-  display: flex;
-  flex-direction: column;
-  border-top: 4px solid #3a3a50;
+  height: 96px;
+  position: relative;
   overflow: hidden;
+  /* Asphalt: subtle gradient for depth */
+  background: linear-gradient(
+    to bottom,
+    #28283a 0%,
+    #222230 25%,
+    #1d1d2a 60%,
+    #191924 100%
+  );
+  /* Top shadow = road edge glow */
+  box-shadow: 0 -6px 32px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
-.road-stripe {
-  height: 7px;
-  background: rgba(255,255,255,0.8);
-  margin: 9px 0;
-  flex-shrink: 0;
+/* Top edge line (white) */
+.road-surface::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: rgba(255,255,255,0.75);
 }
+
+/* Bottom edge line (white) */
+.road-surface::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: rgba(255,255,255,0.5);
+}
+
+/* Hide old stripe elements */
+.road-stripe { display: none; }
 
 .road-dashes {
-  flex: 1;
-  display: flex;
-  align-items: center;
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+  height: 12px;
 }
 
-/* Static dashes – no animation */
+/* Static dashes */
 .dash-track {
   width: 100%;
-  height: 10px;
+  height: 12px;
   background: repeating-linear-gradient(
     to right,
-    rgba(255, 210, 0, 0.55) 0px,
-    rgba(255, 210, 0, 0.55) 60px,
-    transparent 60px,
-    transparent 120px
+    rgba(255, 218, 40, 0.8) 0px,
+    rgba(255, 218, 40, 0.8) 70px,
+    transparent 70px,
+    transparent 140px
   );
-  border-radius: 5px;
 }
 
 /* Scroll-driven car */
 .car-scene {
   position: absolute;
-  /* road is 100px tall (80 surface + 20 ground), car sits on top */
-  bottom: 100px;
+  bottom: 118px; /* road surface top */
   left: 0; right: 0;
   pointer-events: none;
   overflow: visible;
@@ -295,9 +314,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 .car-assembly {
   position: absolute;
   bottom: 0;
-  /* JS sets left; starts off-screen */
   left: -480px;
-  width: 380px;
+  width: 400px;
   will-change: left;
   animation: carBounce 0.3s ease-in-out infinite alternate;
 }
@@ -312,31 +330,31 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   width: 100%;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.55));
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.65));
 }
 
 .wheel {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   transform-origin: center center;
   animation: wheelSpin 0.7s linear infinite;
   will-change: transform;
 }
 
-/* Rear wheel: 21 Zoll – etwas größer */
+/* Rear wheel: 21 Zoll */
 .wheel-rear {
-  width: 80px;
-  height: 80px;
-  left: 13.5%;
-  bottom: 2px;
+  width: 76px;
+  height: 76px;
+  left: 7.5%;
+  bottom: -4px;
 }
 
-/* Front wheel: 20 Zoll – etwas kleiner */
+/* Front wheel: 20 Zoll */
 .wheel-front {
-  width: 74px;
-  height: 74px;
-  right: 13%;
-  bottom: 5px;
+  width: 70px;
+  height: 70px;
+  right: 14.5%;
+  bottom: -2px;
 }
 
 @keyframes wheelSpin {
