@@ -345,8 +345,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 .wheel-rear {
   width: 76px;
   height: 76px;
-  left: 7.5%;
-  bottom: -4px;
+  left: 10.5%;
+  bottom: 18px;
 }
 
 /* Front wheel: 20 Zoll */
@@ -354,7 +354,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   width: 70px;
   height: 70px;
   right: 14.5%;
-  bottom: -2px;
+  bottom: 20px;
 }
 
 @keyframes wheelSpin {
