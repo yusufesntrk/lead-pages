@@ -231,74 +231,15 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 .shape-3 { width: 250px; height: 250px; background: rgba(212,0,116,0.07); top: 40%; left: -80px; animation: driftShape 10s ease-in-out infinite; }
 @keyframes driftShape { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px, -20px); } }
 
-/* ===== CARTOON ROAD ANIMATION ===== */
+/* ===== ROAD & CAR ===== */
+
+/* Static road */
 .cartoon-road {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   pointer-events: none;
-  overflow: visible;
 }
 
-/* --- Car scene --- */
-.car-scene {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  /* sits just above the road surface */
-  margin-bottom: -2px;
-}
-
-.car-assembly {
-  position: relative;
-  width: 420px;
-  animation: carBounce 0.25s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-@keyframes carBounce {
-  from { transform: translateY(0px); }
-  to   { transform: translateY(-3px); }
-}
-
-.car-body {
-  display: block;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-  /* flip so car drives to the right */
-  transform: scaleX(-1);
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
-}
-
-.wheel {
-  position: absolute;
-  width: 88px;
-  height: 88px;
-  z-index: 1;
-  animation: wheelSpin 0.6s linear infinite;
-  will-change: transform;
-  /* flip to match car direction */
-  transform-origin: center center;
-}
-
-/* Rear wheel – sits in back arch (~19% from left edge) */
-.wheel-back {
-  left: 14.5%;
-  bottom: 6px;
-}
-
-/* Front wheel – sits in front arch (~79% from left, which after scaleX(-1) means ~21% visually) */
-.wheel-front {
-  right: 14%;
-  bottom: 6px;
-}
-
-@keyframes wheelSpin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* --- Road --- */
 .road-ground {
   height: 20px;
   background: linear-gradient(to bottom, #1a1200, #0d0a00);
@@ -306,7 +247,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 }
 
 .road-surface {
-  height: 86px;
+  height: 80px;
   background: #1c1c2a;
   display: flex;
   flex-direction: column;
@@ -325,27 +266,82 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   flex: 1;
   display: flex;
   align-items: center;
-  overflow: hidden;
 }
 
+/* Static dashes – no animation */
 .dash-track {
-  width: 200%;
+  width: 100%;
   height: 10px;
   background: repeating-linear-gradient(
     to right,
-    rgba(255, 210, 0, 0.9) 0px,
-    rgba(255, 210, 0, 0.9) 60px,
+    rgba(255, 210, 0, 0.55) 0px,
+    rgba(255, 210, 0, 0.55) 60px,
     transparent 60px,
     transparent 120px
   );
   border-radius: 5px;
-  animation: dashScroll 1.8s linear infinite;
+}
+
+/* Scroll-driven car */
+.car-scene {
+  position: absolute;
+  /* road is 100px tall (80 surface + 20 ground), car sits on top */
+  bottom: 100px;
+  left: 0; right: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.car-assembly {
+  position: absolute;
+  bottom: 0;
+  /* JS sets left; starts off-screen */
+  left: -480px;
+  width: 380px;
+  will-change: left;
+  animation: carBounce 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes carBounce {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-4px); }
+}
+
+.car-body {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.55));
+}
+
+.wheel {
+  position: absolute;
+  z-index: 1;
+  transform-origin: center center;
+  animation: wheelSpin 0.7s linear infinite;
   will-change: transform;
 }
 
-@keyframes dashScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Rear wheel: 21 Zoll – etwas größer */
+.wheel-rear {
+  width: 80px;
+  height: 80px;
+  left: 13.5%;
+  bottom: 2px;
+}
+
+/* Front wheel: 20 Zoll – etwas kleiner */
+.wheel-front {
+  width: 74px;
+  height: 74px;
+  right: 13%;
+  bottom: 5px;
+}
+
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* Road lines decoration (legacy, hidden) */

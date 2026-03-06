@@ -1,3 +1,35 @@
+// ===== SCROLL-DRIVEN CAR =====
+(function () {
+  const hero     = document.getElementById('hero');
+  const assembly = document.getElementById('carAssembly');
+  if (!hero || !assembly) return;
+
+  const CAR_W = 380; // matches CSS width
+
+  function update() {
+    const scrollY  = window.scrollY;
+    const heroH    = hero.offsetHeight;
+    const viewW    = window.innerWidth;
+
+    // progress 0 → 1 as the hero scrolls past
+    const progress = Math.max(0, Math.min(1, scrollY / (heroH * 0.9)));
+
+    // car travels from -CAR_W (fully left) to viewW+50 (fully right)
+    const x = -CAR_W + progress * (viewW + CAR_W + 50);
+    assembly.style.left = x + 'px';
+
+    // wheel spin speed increases with scroll speed (visual only via CSS animation)
+    // tie rotation rate to progress: faster near middle, slower at start/end
+    const speed = 0.3 + progress * 0.6;
+    assembly.querySelectorAll('.wheel').forEach(w => {
+      w.style.animationDuration = speed + 's';
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
 // ===== NAVBAR SCROLL =====
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
