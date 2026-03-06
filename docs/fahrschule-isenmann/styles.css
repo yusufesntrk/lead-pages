@@ -236,36 +236,91 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   position: absolute;
   bottom: 0; left: 0; right: 0;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
+/* --- Car scene --- */
+.car-scene {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* sits just above the road surface */
+  margin-bottom: -2px;
+}
+
+.car-assembly {
+  position: relative;
+  width: 420px;
+  animation: carBounce 0.25s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes carBounce {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-3px); }
+}
+
+.car-body {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  /* flip so car drives to the right */
+  transform: scaleX(-1);
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
+}
+
+.wheel {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  z-index: 1;
+  animation: wheelSpin 0.6s linear infinite;
+  will-change: transform;
+  /* flip to match car direction */
+  transform-origin: center center;
+}
+
+/* Rear wheel – sits in back arch (~19% from left edge) */
+.wheel-back {
+  left: 14.5%;
+  bottom: 6px;
+}
+
+/* Front wheel – sits in front arch (~79% from left, which after scaleX(-1) means ~21% visually) */
+.wheel-front {
+  right: 14%;
+  bottom: 6px;
+}
+
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Road --- */
 .road-ground {
-  height: 18px;
+  height: 20px;
   background: linear-gradient(to bottom, #1a1200, #0d0a00);
   border-top: 3px solid #2a1f00;
 }
 
 .road-surface {
-  height: 90px;
+  height: 86px;
   background: #1c1c2a;
   display: flex;
   flex-direction: column;
-  border-top: 4px solid #2d2d3f;
-  border-bottom: 4px solid #2d2d3f;
-  position: relative;
+  border-top: 4px solid #3a3a50;
   overflow: hidden;
 }
 
-/* White edge stripes */
 .road-stripe {
-  height: 8px;
-  background: rgba(255,255,255,0.85);
-  border-radius: 2px;
-  margin: 8px 0;
+  height: 7px;
+  background: rgba(255,255,255,0.8);
+  margin: 9px 0;
   flex-shrink: 0;
 }
 
-/* Center dashes container */
 .road-dashes {
   flex: 1;
   display: flex;
@@ -273,18 +328,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   overflow: hidden;
 }
 
-/* The moving dash track – one long strip of dashes that scrolls left infinitely */
 .dash-track {
-  display: flex;
-  gap: 0;
-  /* wide enough to cover + wrap without gap */
   width: 200%;
-  animation: dashScroll 2s linear infinite;
-  will-change: transform;
-}
-
-/* Each dash – created via repeating-linear-gradient on the track */
-.dash-track {
   height: 10px;
   background: repeating-linear-gradient(
     to right,
@@ -294,6 +339,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
     transparent 120px
   );
   border-radius: 5px;
+  animation: dashScroll 1.8s linear infinite;
+  will-change: transform;
 }
 
 @keyframes dashScroll {
