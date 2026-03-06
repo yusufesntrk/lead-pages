@@ -231,7 +231,18 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 .shape-3 { width: 250px; height: 250px; background: rgba(212,0,116,0.07); top: 40%; left: -80px; animation: driftShape 10s ease-in-out infinite; }
 @keyframes driftShape { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px, -20px); } }
 
-/* Road lines decoration */
+/* Road canvas */
+.road-canvas {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.55;
+  display: block;
+}
+
+/* Road lines decoration (legacy, hidden) */
 .hero-road {
   position: absolute;
   bottom: 0; left: 0; right: 0;
