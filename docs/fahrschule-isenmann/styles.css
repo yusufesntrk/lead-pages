@@ -345,16 +345,16 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 .wheel-rear {
   width: 76px;
   height: 76px;
-  left: 10.5%;
-  bottom: 18px;
+  left: 11.5%;
+  bottom: 22px;
 }
 
 /* Front wheel: 20 Zoll */
 .wheel-front {
   width: 70px;
   height: 70px;
-  right: 14.5%;
-  bottom: 20px;
+  right: 14%;
+  bottom: 22px;
 }
 
 @keyframes wheelSpin {
