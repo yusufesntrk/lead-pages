@@ -335,7 +335,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 
 .wheel {
   position: absolute;
-  z-index: 3;
+  /* HINTER der Karosserie – sichtbar nur durch die transparenten Radkästen */
+  z-index: 1;
   transform-origin: center center;
   animation: wheelSpin 0.7s linear infinite;
   will-change: transform;
@@ -343,18 +344,18 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 
 /* Rear wheel: 21 Zoll */
 .wheel-rear {
-  width: 76px;
-  height: 76px;
-  left: 11.5%;
-  bottom: 22px;
+  width: 82px;
+  height: 82px;
+  left: 14%;
+  bottom: 20px;
 }
 
 /* Front wheel: 20 Zoll */
 .wheel-front {
-  width: 70px;
-  height: 70px;
-  right: 14%;
-  bottom: 22px;
+  width: 76px;
+  height: 76px;
+  right: 11%;
+  bottom: 20px;
 }
 
 @keyframes wheelSpin {
