@@ -342,20 +342,20 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   will-change: transform;
 }
 
-/* Rear wheel: 21 Zoll */
+/* Rear wheel: 21 Zoll – center at 23.2% from left, 68.4% from top (pixel-precise) */
 .wheel-rear {
   width: 82px;
   height: 82px;
-  left: 17%;
-  bottom: 20px;
+  left: 13%;
+  bottom: 12px;
 }
 
-/* Front wheel: 20 Zoll */
+/* Front wheel: 20 Zoll – center at 78.4% from left, 69.7% from top (pixel-precise) */
 .wheel-front {
   width: 76px;
   height: 76px;
-  right: 8%;
-  bottom: 20px;
+  right: 12%;
+  bottom: 12px;
 }
 
 @keyframes wheelSpin {
