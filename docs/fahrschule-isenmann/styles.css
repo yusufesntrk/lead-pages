@@ -417,6 +417,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  margin-top: 28px;
 }
 .hero-feature {
   display: flex;
