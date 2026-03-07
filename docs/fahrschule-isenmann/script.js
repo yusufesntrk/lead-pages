@@ -1,26 +1,16 @@
-// ===== SCROLL-DRIVEN CAR (always-fixed hero + spacer) =====
+// ===== SCROLL-DRIVEN CAR (sticky hero inside hero-track) =====
 (function () {
-  const spacer   = document.querySelector('.hero-spacer');
-  const hero     = document.getElementById('hero');
+  const track    = document.querySelector('.hero-track');
   const assembly = document.getElementById('carAssembly');
-  if (!spacer || !hero || !assembly) return;
+  if (!track || !assembly) return;
 
   function update() {
-    const scrollY  = window.scrollY;
-    const spacerH  = spacer.offsetHeight; // ~100dvh in px
-    const viewW    = window.innerWidth;
-    const progress = Math.max(0, Math.min(1, scrollY / spacerH));
-
-    // Fade hero out as car exits (progress 0.8 → 1.0)
-    if (progress >= 0.8) {
-      const fade = 1 - (progress - 0.8) / 0.2;
-      hero.style.opacity = Math.max(0, fade);
-    } else {
-      hero.style.opacity = '1';
-    }
-
-    // Disable pointer events once fully faded
-    hero.style.pointerEvents = progress >= 1 ? 'none' : '';
+    const scrollY   = window.scrollY;
+    const trackH    = track.offsetHeight;   // 200dvh in px
+    const viewH     = window.innerHeight;
+    const viewW     = window.innerWidth;
+    const maxScroll = trackH - viewH;       // 100dvh scroll space
+    const progress  = Math.max(0, Math.min(1, scrollY / maxScroll));
 
     // car: starts half-visible on left, exits fully right
     const carW = viewW <= 640 ? 260 : 400;
