@@ -969,6 +969,15 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   /* Calendar */
   .week-grid { grid-template-columns: repeat(7, minmax(72px, 1fr)); overflow-x: auto; }
   .termine-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+  /* Section typography */
+  .section-title { font-size: 1.55rem; line-height: 1.2; }
+  .section-subtitle { font-size: 0.92rem; margin-bottom: 2rem; }
+  .container { padding-left: 16px; padding-right: 16px; }
+
+  /* Section paddings */
+  section { padding-top: 56px !important; padding-bottom: 56px !important; }
+  .cta-banner { padding: 40px 20px; }
 }
 
 /* ===== SMALL PHONES (≤390px) ===== */
