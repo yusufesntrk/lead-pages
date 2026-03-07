@@ -199,9 +199,15 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 .mobile-toggle span { width: 24px; height: 2px; background: white; border-radius: 2px; display: block; transition: var(--transition); }
 
 /* ===== HERO ===== */
-.hero {
-  min-height: 100vh;
+.hero-track {
+  height: 200vh;
   position: relative;
+}
+
+.hero {
+  height: 100vh;
+  position: sticky;
+  top: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -231,81 +237,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 .shape-3 { width: 250px; height: 250px; background: rgba(212,0,116,0.07); top: 40%; left: -80px; animation: driftShape 10s ease-in-out infinite; }
 @keyframes driftShape { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px, -20px); } }
 
-/* ===== ROAD & CAR ===== */
-
-/* ===== ROAD ===== */
-.cartoon-road {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  pointer-events: none;
-}
-
-.road-ground {
-  height: 22px;
-  background: linear-gradient(to bottom, #111118 0%, #0a0a0e 100%);
-}
-
-.road-surface {
-  height: 96px;
-  position: relative;
-  overflow: hidden;
-  /* Asphalt: subtle gradient for depth */
-  background: linear-gradient(
-    to bottom,
-    #28283a 0%,
-    #222230 25%,
-    #1d1d2a 60%,
-    #191924 100%
-  );
-  /* Top shadow = road edge glow */
-  box-shadow: 0 -6px 32px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08);
-}
-
-/* Top edge line (white) */
-.road-surface::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: rgba(255,255,255,0.75);
-}
-
-/* Bottom edge line (white) */
-.road-surface::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 4px;
-  background: rgba(255,255,255,0.5);
-}
-
-/* Hide old stripe elements */
-.road-stripe { display: none; }
-
-.road-dashes {
-  position: absolute;
-  top: 50%; left: 0; right: 0;
-  transform: translateY(-50%);
-  height: 12px;
-}
-
-/* Static dashes */
-.dash-track {
-  width: 100%;
-  height: 12px;
-  background: repeating-linear-gradient(
-    to right,
-    rgba(255, 218, 40, 0.8) 0px,
-    rgba(255, 218, 40, 0.8) 70px,
-    transparent 70px,
-    transparent 140px
-  );
-}
+/* ===== CAR ===== */
 
 /* Scroll-driven car */
 .car-scene {
   position: absolute;
-  bottom: 118px; /* road surface top */
+  bottom: 30px;
   left: 0; right: 0;
   pointer-events: none;
   overflow: visible;
@@ -314,10 +251,10 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 .car-assembly {
   position: absolute;
   bottom: 0;
-  left: -480px;
+  left: -200px;
   width: 400px;
   will-change: left;
-  animation: carBounce 0.3s ease-in-out infinite alternate;
+  animation: carBounce 0.35s ease-in-out infinite alternate;
 }
 
 @keyframes carBounce {
@@ -363,25 +300,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   to   { transform: rotate(360deg); }
 }
 
-/* Road lines decoration (legacy, hidden) */
-.hero-road {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 120px;
-  overflow: hidden;
-  opacity: 0.06;
-}
-.road-line {
-  position: absolute;
-  bottom: 0;
-  height: 100%;
-  width: 2px;
-  background: linear-gradient(to top, white, transparent);
-}
-.road-line:nth-child(1) { left: 25%; animation: roadLine 3s linear infinite; }
-.road-line:nth-child(2) { left: 50%; animation: roadLine 3s linear infinite 1s; }
-.road-line:nth-child(3) { left: 75%; animation: roadLine 3s linear infinite 2s; }
-@keyframes roadLine { 0% { opacity: 0; transform: scaleY(0); transform-origin: bottom; } 50% { opacity: 1; transform: scaleY(1); } 100% { opacity: 0; transform: scaleY(0); transform-origin: top; } }
 
 /* Hero inner – single column, centered */
 .hero-inner {

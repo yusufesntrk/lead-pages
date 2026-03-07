@@ -1,26 +1,27 @@
 // ===== SCROLL-DRIVEN CAR =====
 (function () {
-  const hero     = document.getElementById('hero');
+  const track    = document.querySelector('.hero-track');
   const assembly = document.getElementById('carAssembly');
-  if (!hero || !assembly) return;
+  if (!track || !assembly) return;
 
-  const CAR_W = 380; // matches CSS width
+  const CAR_W = 400; // matches CSS width
 
   function update() {
-    const scrollY  = window.scrollY;
-    const heroH    = hero.offsetHeight;
-    const viewW    = window.innerWidth;
+    const scrollY   = window.scrollY;
+    const trackH    = track.offsetHeight;    // 200vh
+    const viewH     = window.innerHeight;
+    const viewW     = window.innerWidth;
+    const maxScroll = trackH - viewH;        // 100vh of scroll space
 
-    // progress 0 → 1 as the hero scrolls past
-    const progress = Math.max(0, Math.min(1, scrollY / (heroH * 0.9)));
+    // progress 0 → 1 while scrolling through the hero-track
+    const progress = Math.max(0, Math.min(1, scrollY / maxScroll));
 
-    // car travels from -CAR_W (fully left) to viewW+50 (fully right)
-    const x = -CAR_W + progress * (viewW + CAR_W + 50);
+    // car: starts half-visible on left (-200px), exits fully right (viewW+50)
+    const x = -(CAR_W / 2) + progress * (viewW + CAR_W / 2 + 50);
     assembly.style.left = x + 'px';
 
-    // wheel spin speed increases with scroll speed (visual only via CSS animation)
-    // tie rotation rate to progress: faster near middle, slower at start/end
-    const speed = 0.3 + progress * 0.6;
+    // wheel spin: slow at start, faster mid-scroll
+    const speed = 0.8 - progress * 0.5;
     assembly.querySelectorAll('.wheel').forEach(w => {
       w.style.animationDuration = speed + 's';
     });
