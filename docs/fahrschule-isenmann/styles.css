@@ -218,7 +218,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   top: 0;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
