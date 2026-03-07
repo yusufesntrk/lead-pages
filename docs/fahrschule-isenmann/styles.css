@@ -31,7 +31,7 @@ body {
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
-  overflow-x: clip; /* clip statt hidden – bricht position:sticky nicht! */
+  overflow-x: hidden;
 }
 
 .container {
@@ -211,20 +211,23 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
   height: 200vh;
   height: 200dvh;
   position: relative;
-  /* Kein weißer Flash wenn hero-track über Viewport-Rand scrollt */
+  /* Verhindert weißen Flash wenn hero-track über Viewport-Rand scrollt */
   background: linear-gradient(150deg, #0a0a18 0%, #12002a 45%, #200040 70%, #0d0d1a 100%);
 }
 
 .hero {
   height: 100vh;
   height: 100dvh;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 5;
   overflow: clip;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  /* JS steuert opacity für den Fade-out */
 }
 
 .hero-bg {

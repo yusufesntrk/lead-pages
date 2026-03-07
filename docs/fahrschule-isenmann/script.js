@@ -1,8 +1,13 @@
-// ===== SCROLL-DRIVEN CAR (sticky hero inside hero-track) =====
+// ===== SCROLL-DRIVEN CAR =====
+// Hero bleibt immer position:fixed – kein sticky, kein Sprung.
+// Am Ende der Animation: Hero faded aus → wechselt unsichtbar auf absolute.
 (function () {
   const track    = document.querySelector('.hero-track');
+  const hero     = document.getElementById('hero');
   const assembly = document.getElementById('carAssembly');
-  if (!track || !assembly) return;
+  if (!track || !hero || !assembly) return;
+
+  let released = false;
 
   function update() {
     const scrollY   = window.scrollY;
@@ -12,12 +17,37 @@
     const maxScroll = trackH - viewH;       // 100dvh scroll space
     const progress  = Math.max(0, Math.min(1, scrollY / maxScroll));
 
-    // car: starts half-visible on left, exits fully right
+    // --- Fade + Position-Switch ---
+    if (progress >= 1 && !released) {
+      // Hero komplett unsichtbar → jetzt sicher auf absolute wechseln (kein Sprung sichtbar)
+      released = true;
+      hero.style.opacity       = '0';
+      hero.style.pointerEvents = 'none';
+      hero.style.position      = 'absolute';
+      hero.style.top           = 'auto';
+      hero.style.bottom        = '0';
+    } else if (progress < 1 && released) {
+      // Zurück-Scrollen: wieder fixed machen
+      released = false;
+      hero.style.position      = 'fixed';
+      hero.style.top           = '0';
+      hero.style.bottom        = 'auto';
+      hero.style.pointerEvents = '';
+    }
+
+    // Opacity-Fade: progress 0.75 → 1.0
+    if (!released) {
+      hero.style.opacity = progress >= 0.75
+        ? String(Math.max(0, 1 - (progress - 0.75) / 0.25))
+        : '1';
+    }
+
+    // car: startet halb links, fährt nach rechts raus
     const carW = viewW <= 640 ? 260 : 400;
-    const x = -(carW / 2) + progress * (viewW + carW / 2 + 50);
+    const x    = -(carW / 2) + progress * (viewW + carW / 2 + 50);
     assembly.style.left = x + 'px';
 
-    // wheel spin speed
+    // Rad-Drehgeschwindigkeit
     const speed = 0.8 - progress * 0.5;
     assembly.querySelectorAll('.wheel').forEach(w => {
       w.style.animationDuration = speed + 's';
