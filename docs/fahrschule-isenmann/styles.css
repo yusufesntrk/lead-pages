@@ -219,9 +219,12 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 .hero {
   height: 100vh;
   height: 100dvh;
-  position: sticky;
+  position: fixed;
   top: 0;
-  overflow: clip; /* clip statt hidden – bricht position:sticky nicht auf Mobile */
+  left: 0;
+  right: 0;
+  z-index: 5;
+  overflow: clip;
   display: flex;
   align-items: flex-start;
   justify-content: center;

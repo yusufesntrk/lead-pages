@@ -1,26 +1,54 @@
-// ===== SCROLL-DRIVEN CAR =====
+// ===== SCROLL-DRIVEN CAR (fixed → absolute) =====
 (function () {
   const track    = document.querySelector('.hero-track');
+  const hero     = document.getElementById('hero');
   const assembly = document.getElementById('carAssembly');
-  if (!track || !assembly) return;
+  if (!track || !hero || !assembly) return;
 
-  const CAR_W = 400; // matches CSS width
+  let lastMode = ''; // 'fixed' or 'done'
+
+  function setFixed() {
+    if (lastMode === 'fixed') return;
+    lastMode = 'fixed';
+    hero.style.position = 'fixed';
+    hero.style.top      = '0';
+    hero.style.bottom   = 'auto';
+    hero.style.left     = '0';
+    hero.style.right    = '0';
+  }
+
+  function setDone() {
+    if (lastMode === 'done') return;
+    lastMode = 'done';
+    // Pin hero to bottom of track so it scrolls off naturally
+    hero.style.position = 'absolute';
+    hero.style.top      = 'auto';
+    hero.style.bottom   = '0';
+    hero.style.left     = '0';
+    hero.style.right    = '0';
+  }
 
   function update() {
     const scrollY   = window.scrollY;
-    const trackH    = track.offsetHeight;    // 200vh
+    const trackH    = track.offsetHeight;  // 200dvh in px
     const viewH     = window.innerHeight;
     const viewW     = window.innerWidth;
-    const maxScroll = trackH - viewH;        // 100vh of scroll space
+    const maxScroll = trackH - viewH;      // 100dvh scroll space
 
-    // progress 0 → 1 while scrolling through the hero-track
-    const progress = Math.max(0, Math.min(1, scrollY / maxScroll));
+    if (scrollY >= maxScroll) {
+      setDone();
+      return;
+    }
 
-    // car: starts half-visible on left (-200px), exits fully right (viewW+50)
-    const x = -(CAR_W / 2) + progress * (viewW + CAR_W / 2 + 50);
+    setFixed();
+    const progress = Math.max(0, scrollY / maxScroll);
+
+    // car: starts half-visible on left, exits fully right
+    const carW = viewW <= 640 ? 260 : 400;
+    const x = -(carW / 2) + progress * (viewW + carW / 2 + 50);
     assembly.style.left = x + 'px';
 
-    // wheel spin: slow at start, faster mid-scroll
+    // wheel spin speed
     const speed = 0.8 - progress * 0.5;
     assembly.querySelectorAll('.wheel').forEach(w => {
       w.style.animationDuration = speed + 's';
@@ -28,6 +56,7 @@
   }
 
   window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
   update();
 })();
 
