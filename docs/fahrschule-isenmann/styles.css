@@ -208,12 +208,17 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 
 /* ===== HERO ===== */
 .hero-track {
+  /* dvh = Dynamic Viewport Height: passt sich dem mobilen Browser-Chrome an */
   height: 200vh;
+  height: 200dvh;
   position: relative;
+  /* Kein weißer Flash wenn hero-track über Viewport-Rand scrollt */
+  background: linear-gradient(150deg, #0a0a18 0%, #12002a 45%, #200040 70%, #0d0d1a 100%);
 }
 
 .hero {
   height: 100vh;
+  height: 100dvh;
   position: sticky;
   top: 0;
   overflow: hidden;
