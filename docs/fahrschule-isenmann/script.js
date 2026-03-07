@@ -1,47 +1,26 @@
-// ===== SCROLL-DRIVEN CAR (fixed → absolute) =====
+// ===== SCROLL-DRIVEN CAR (always-fixed hero + spacer) =====
 (function () {
-  const track    = document.querySelector('.hero-track');
+  const spacer   = document.querySelector('.hero-spacer');
   const hero     = document.getElementById('hero');
   const assembly = document.getElementById('carAssembly');
-  if (!track || !hero || !assembly) return;
-
-  let lastMode = ''; // 'fixed' or 'done'
-
-  function setFixed() {
-    if (lastMode === 'fixed') return;
-    lastMode = 'fixed';
-    hero.style.position = 'fixed';
-    hero.style.top      = '0';
-    hero.style.bottom   = 'auto';
-    hero.style.left     = '0';
-    hero.style.right    = '0';
-  }
-
-  function setDone() {
-    if (lastMode === 'done') return;
-    lastMode = 'done';
-    // Pin hero to bottom of track so it scrolls off naturally
-    hero.style.position = 'absolute';
-    hero.style.top      = 'auto';
-    hero.style.bottom   = '0';
-    hero.style.left     = '0';
-    hero.style.right    = '0';
-  }
+  if (!spacer || !hero || !assembly) return;
 
   function update() {
-    const scrollY   = window.scrollY;
-    const trackH    = track.offsetHeight;  // 200dvh in px
-    const viewH     = window.innerHeight;
-    const viewW     = window.innerWidth;
-    const maxScroll = trackH - viewH;      // 100dvh scroll space
+    const scrollY  = window.scrollY;
+    const spacerH  = spacer.offsetHeight; // ~100dvh in px
+    const viewW    = window.innerWidth;
+    const progress = Math.max(0, Math.min(1, scrollY / spacerH));
 
-    if (scrollY >= maxScroll) {
-      setDone();
-      return;
+    // Fade hero out as car exits (progress 0.8 → 1.0)
+    if (progress >= 0.8) {
+      const fade = 1 - (progress - 0.8) / 0.2;
+      hero.style.opacity = Math.max(0, fade);
+    } else {
+      hero.style.opacity = '1';
     }
 
-    setFixed();
-    const progress = Math.max(0, scrollY / maxScroll);
+    // Disable pointer events once fully faded
+    hero.style.pointerEvents = progress >= 1 ? 'none' : '';
 
     // car: starts half-visible on left, exits fully right
     const carW = viewW <= 640 ? 260 : 400;
