@@ -852,7 +852,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 900px) {
-  .hero-content { padding: 120px 24px 100px; }
+  .hero-content { padding: 120px 24px 60px; }
   .hero-speedometer { width: 240px; right: 2%; bottom: 80px; }
   .services-grid { grid-template-columns: 1fr; }
   .locations-grid { grid-template-columns: 1fr; }
@@ -886,10 +886,6 @@ img { max-width: 100%; display: block; }
   .nav-menu a { font-size: 1.2rem; padding: 14px 32px; }
 
   .hero-title { font-size: 3.2rem; }
-  .hero-tacho-stats { gap: 4px; flex-wrap: wrap; justify-content: center; }
-  .tacho-wrap { max-width: 85px; flex: 0 0 calc(50% - 4px); }
-  .tacho-num { font-size: 1.6rem; }
-  .tacho-unit { font-size: 0.7rem; }
 
   .why-cards { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
@@ -911,7 +907,52 @@ img { max-width: 100%; display: block; }
   .hero-road-scene { display: none; }
   .hero-scroll-indicator { display: none; }
   .hero { height: 100svh; min-height: 0; overflow: hidden; }
-  .hero-content { padding: 80px 20px 20px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  /* flex-start + padding-top: Content startet unter der Navbar, kein Clipping oben */
+  .hero-content {
+    padding: 88px 20px 16px;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  /* Hero-Elemente: Abstände reduzieren damit alles in 100svh passt */
+  .hero-eyebrow { margin-bottom: 14px; }
+  .hero-title { margin-bottom: 12px; }
+  .hero-subtitle { margin-bottom: 16px; font-size: 0.9rem; }
+  .hero-subtitle br { display: none; }
+  .hero-actions { margin-bottom: 16px; }
+
+  /* Tacho-Stats: SVG ausblenden, kompakte Zahlenzeile */
+  .tacho-gauge { display: none; }
+  .hero-tacho-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    flex-wrap: nowrap;
+    margin-top: auto;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .tacho-wrap {
+    flex: 1;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 4px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .tacho-wrap:last-child { border-right: none; }
+  .tacho-value { display: flex; align-items: baseline; gap: 2px; }
+  .tacho-num { font-size: 2rem; }
+  .tacho-unit { font-size: 0.7rem; }
+  .tacho-label { font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 2px; }
 
   /* Why-Sektion: br-Tags und Gap */
   .why-section br { display: none; }
@@ -1191,53 +1232,37 @@ img { max-width: 100%; display: block; }
   .appt-tooltip { left: 0; transform: none; min-width: 160px; }
 }
 
-/* Mobile calendar: vertikales Listen-Layout, kein horizontales Scrollen */
+/* Mobile calendar: 5-Spalten horizontal, kein Scrollen, Sa+So ausgeblendet */
 @media (max-width: 640px) {
   .week-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     overflow-x: unset;
     gap: 2px;
   }
+  /* Sa (Index 5) + So (Index 6) ausblenden */
+  .week-grid .day-col:nth-child(6),
+  .week-grid .day-col:nth-child(7) {
+    display: none;
+  }
   .day-col {
-    flex-direction: row;
     min-width: 0;
-    flex: none;
     min-height: 0;
-    align-items: stretch;
   }
   .day-header {
-    width: 52px;
-    min-width: 52px;
-    border-bottom: none;
-    border-right: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 6px;
-    flex-shrink: 0;
+    padding: 6px 4px;
   }
-  .day-num { font-size: 1.1rem; }
-  .day-name { font-size: 0.62rem; }
+  .day-num { font-size: 1rem; }
+  .day-name { font-size: 0.58rem; }
   .day-appointments {
-    flex: 1;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 6px 8px;
+    padding: 4px 4px;
     gap: 4px;
-    align-items: flex-start;
-    align-content: flex-start;
-    min-height: 42px;
+    min-height: 0;
   }
   .appt-pill {
-    flex: 0 0 auto;
-    padding: 4px 8px;
+    padding: 4px 5px;
   }
-  .appt-label {
-    white-space: normal;
-    font-size: 0.65rem;
-  }
-  .appt-time { font-size: 0.65rem; }
-  .appt-tooltip { left: 0; transform: none; min-width: 160px; bottom: auto; top: calc(100% + 6px); }
+  .appt-label { font-size: 0.6rem; white-space: normal; }
+  .appt-time { font-size: 0.6rem; }
+  .appt-tooltip { left: 0; transform: none; min-width: 150px; bottom: auto; top: calc(100% + 6px); }
 }
