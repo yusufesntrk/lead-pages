@@ -852,15 +852,22 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 900px) {
-  .hero-content { padding: 120px 24px 200px; }
+  .hero-content { padding: 120px 24px 100px; }
   .hero-speedometer { width: 240px; right: 2%; bottom: 80px; }
   .services-grid { grid-template-columns: 1fr; }
   .locations-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; gap: 32px; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .why-cards { grid-template-columns: 1fr 1fr; }
+
+  /* Section-Padding auf Tablet reduzieren */
+  .services-section { padding: 72px 0; }
+  .why-section { padding: 72px 0; }
+  .locations-section { padding: 72px 0; }
+  .team-section { padding: 72px 0; }
+  .contact-section { padding: 72px 0; }
 }
 
 @media (max-width: 640px) {
@@ -879,9 +886,10 @@ img { max-width: 100%; display: block; }
   .nav-menu a { font-size: 1.2rem; padding: 14px 32px; }
 
   .hero-title { font-size: 3.2rem; }
-  .hero-tacho-stats { gap: 4px; }
-  .tacho-num { font-size: 1.8rem; }
-  .tacho-unit { font-size: 0.75rem; }
+  .hero-tacho-stats { gap: 4px; flex-wrap: wrap; justify-content: center; }
+  .tacho-wrap { max-width: 85px; flex: 0 0 calc(50% - 4px); }
+  .tacho-num { font-size: 1.6rem; }
+  .tacho-unit { font-size: 0.7rem; }
 
   .why-cards { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
@@ -890,6 +898,36 @@ img { max-width: 100%; display: block; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .contact-form { padding: 28px 20px; }
   .hero-speedometer { display: none; }
+
+  /* Section-Padding reduzieren */
+  .services-section { padding: 60px 0; }
+  .why-section { padding: 60px 0; }
+  .locations-section { padding: 60px 0; }
+  .team-section { padding: 60px 0; }
+  .contact-section { padding: 60px 0; }
+  .termine-section { padding: 56px 0 64px; }
+
+  /* Hero: exakt Bildschirmhöhe, kein Overflow */
+  .hero-road-scene { display: none; }
+  .hero-scroll-indicator { display: none; }
+  .hero { height: 100svh; min-height: 0; overflow: hidden; }
+  .hero-content { padding: 80px 20px 20px; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+  /* Why-Sektion: br-Tags und Gap */
+  .why-section br { display: none; }
+  .why-grid { gap: 32px; }
+  .why-cards { gap: 16px; }
+
+  /* Team: Grid-Gap reduzieren */
+  .team-grid { gap: 24px; }
+  .team-card { gap: 16px; }
+
+  /* Footer: Gap reduzieren */
+  .footer-grid { gap: 32px; margin-bottom: 40px; }
+
+  /* Termine: leere Kalender-Slots nicht aufblähen */
+  .day-col { min-height: 0; }
+  .day-appointments { min-height: 0; }
 }
 
 /* ===== TERMINE / KALENDER SEKTION ===== */
