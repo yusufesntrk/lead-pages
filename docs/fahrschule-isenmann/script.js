@@ -192,3 +192,66 @@ document.querySelectorAll('[data-anim]').forEach((el, i) => {
   el.style.transitionDelay = `${(i % 5) * 60}ms`;
   animObserver.observe(el);
 });
+
+// ===== TERMIN DETAIL BOTTOM SHEET =====
+(function () {
+  const overlay = document.getElementById('apptOverlay');
+  const sheet   = document.getElementById('apptSheet');
+  const closeBtn = document.getElementById('apptSheetClose');
+  if (!overlay || !sheet) return;
+
+  function openSheet(appt) {
+    document.getElementById('sheetTitle').textContent = appt.title;
+    document.getElementById('sheetBadge').textContent =
+      appt.type === 'theorie' ? 'Theoriestunde' : 'Fahrstunde';
+
+    const rows = document.getElementById('sheetRows');
+    rows.innerHTML = '';
+
+    // Datum
+    if (appt.date) {
+      const d = new Date(appt.date);
+      const dateStr = d.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' });
+      rows.innerHTML += row('📅', 'Datum', dateStr);
+    }
+    // Uhrzeit + Dauer
+    rows.innerHTML += row('🕐', 'Uhrzeit', appt.time + ' Uhr' + (appt.duration ? ' · ' + appt.duration + ' Min.' : ''));
+    // Lehrer
+    if (appt.instructor) rows.innerHTML += row('👤', 'Kursleiter', appt.instructor);
+    // Ort
+    if (appt.location) rows.innerHTML += row('📍', 'Ort', appt.location);
+
+    overlay.classList.add('active');
+    requestAnimationFrame(() => {
+      overlay.classList.add('visible');
+      sheet.classList.add('visible');
+    });
+  }
+
+  function closeSheet() {
+    overlay.classList.remove('visible');
+    sheet.classList.remove('visible');
+    setTimeout(() => overlay.classList.remove('active'), 300);
+  }
+
+  function row(icon, label, value) {
+    return `<div class="appt-sheet-row">
+      <div class="appt-sheet-row-icon">${icon}</div>
+      <div>
+        <span class="appt-sheet-row-label">${label}</span>
+        <span class="appt-sheet-row-value">${value}</span>
+      </div>
+    </div>`;
+  }
+
+  // Klick auf Termin-Pill → Sheet öffnen
+  document.getElementById('weekGrid').addEventListener('click', function (e) {
+    const pill = e.target.closest('.appt-pill');
+    if (!pill) return;
+    const appt = JSON.parse(pill.dataset.appt || '{}');
+    if (appt.title) openSheet(appt);
+  });
+
+  closeBtn.addEventListener('click', closeSheet);
+  overlay.addEventListener('click', closeSheet);
+})();

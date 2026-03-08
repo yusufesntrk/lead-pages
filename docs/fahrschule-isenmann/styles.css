@@ -1442,3 +1442,105 @@ h1, h2, h3, h4, h5 { font-family: var(--font); line-height: 1.2; }
 @media (max-width: 768px) {
   .car-scene { display: none; }
 }
+
+/* ===== TERMIN DETAIL BOTTOM SHEET ===== */
+.appt-sheet-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.appt-sheet-overlay.active { display: block; }
+.appt-sheet-overlay.visible { opacity: 1; }
+
+.appt-sheet {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2001;
+  background: var(--dark-2);
+  border-top: 1px solid rgba(212,0,116,0.25);
+  border-radius: 20px 20px 0 0;
+  padding: 12px 24px 40px;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
+}
+.appt-sheet.visible { transform: translateY(0); }
+
+.appt-sheet-handle {
+  width: 40px; height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+.appt-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.appt-sheet-badge {
+  font-family: var(--font);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pink-light);
+  background: rgba(212,0,116,0.12);
+  border: 1px solid rgba(212,0,116,0.25);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.appt-sheet-close {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: rgba(255,255,255,0.6);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.appt-sheet-title {
+  font-family: var(--font);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.appt-sheet-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.appt-sheet-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+}
+.appt-sheet-row-icon {
+  width: 36px; height: 36px;
+  background: rgba(212,0,116,0.1);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--pink-light);
+}
+.appt-sheet-row-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  display: block;
+  margin-bottom: 1px;
+}
+.appt-sheet-row-value {
+  font-weight: 600;
+  color: white;
+}

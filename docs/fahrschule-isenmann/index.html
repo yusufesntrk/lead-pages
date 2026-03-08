@@ -897,7 +897,7 @@
           </div>
           <div class="day-appointments">
             ${dayAppts.map(a => `
-              <div class="appt-pill ${a.type}" title="${a.title}">
+              <div class="appt-pill ${a.type}" title="${a.title}" data-appt='${JSON.stringify({title:a.title,time:a.time,duration:a.duration,instructor:a.instructor||'',location:a.location||'',type:a.type,date:dateStr})}'>
                 <div class="appt-time">${a.time} Uhr</div>
                 <span class="appt-label">${a.title}</span>
                 <div class="appt-tooltip">
@@ -958,5 +958,18 @@
     loadAndRender();
   })();
   </script>
+  <!-- ===== TERMIN DETAIL BOTTOM SHEET ===== -->
+  <div class="appt-sheet-overlay" id="apptOverlay"></div>
+  <div class="appt-sheet" id="apptSheet">
+    <div class="appt-sheet-handle"></div>
+    <div class="appt-sheet-content">
+      <div class="appt-sheet-header">
+        <div class="appt-sheet-badge" id="sheetBadge">Theoriestunde</div>
+        <button class="appt-sheet-close" id="apptSheetClose" aria-label="Schließen">✕</button>
+      </div>
+      <h3 class="appt-sheet-title" id="sheetTitle"></h3>
+      <div class="appt-sheet-rows" id="sheetRows"></div>
+    </div>
+  </div>
 </body>
 </html>
