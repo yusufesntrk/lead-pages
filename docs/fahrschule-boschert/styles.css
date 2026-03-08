@@ -893,7 +893,6 @@ img { max-width: 100%; display: block; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .contact-form { padding: 28px 20px; }
-  .hero-speedometer { display: none; }
 
   /* Section-Padding reduzieren */
   .services-section { padding: 60px 0; }
@@ -904,8 +903,13 @@ img { max-width: 100%; display: block; }
   .termine-section { padding: 56px 0 64px; }
 
   /* Hero: exakt Bildschirmhöhe, kein Overflow */
-  .hero-road-scene { display: none; }
-  .hero-scroll-indicator { display: none; }
+  .hero-road-scene,
+  .hero-road-scene *,
+  .hero-scroll-indicator,
+  .hero-speedometer {
+    display: none !important;
+    animation: none !important;
+  }
   .hero { height: 100svh; min-height: 0; overflow: hidden; }
   /* flex-start + padding-top: Content startet unter der Navbar, kein Clipping oben */
   .hero-content {
