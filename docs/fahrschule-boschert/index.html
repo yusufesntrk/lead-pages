@@ -700,6 +700,13 @@
     </div>
   </section>
 
+  <!-- ===== TERMIN DETAIL MODAL ===== -->
+  <div class="appt-modal-backdrop" id="apptBackdrop"></div>
+  <div class="appt-modal" id="apptModal">
+    <div class="appt-modal-handle"></div>
+    <div class="appt-modal-content" id="apptModalContent"></div>
+  </div>
+
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
@@ -839,7 +846,14 @@
           </div>
           <div class="day-appointments">
             ${dayAppts.map(a => `
-              <div class="appt-pill ${a.type}" title="${a.title}">
+              <div class="appt-pill ${a.type}"
+                data-title="${a.title}"
+                data-time="${a.time}"
+                data-duration="${a.duration || ''}"
+                data-instructor="${a.instructor || ''}"
+                data-description="${a.description || ''}"
+                data-date="${dateStr}"
+                data-type="${a.type}">
                 <div class="appt-time">${a.time} Uhr</div>
                 <span class="appt-label">${a.title}</span>
                 <div class="appt-tooltip">
@@ -893,6 +907,48 @@
     });
 
     loadAndRender();
+
+    // Bottom Sheet Modal für Termin-Details
+    const backdrop = document.getElementById('apptBackdrop');
+    const modal = document.getElementById('apptModal');
+    const modalContent = document.getElementById('apptModalContent');
+
+    function openModal(pill) {
+      const title = pill.dataset.title;
+      const time = pill.dataset.time;
+      const duration = pill.dataset.duration;
+      const instructor = pill.dataset.instructor;
+      const description = pill.dataset.description;
+      const dateStr = pill.dataset.date;
+      const type = pill.dataset.type;
+
+      const dateFormatted = dateStr ? new Date(dateStr).toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: 'long' }) : '';
+      const typeLabel = type === 'theorie' ? 'Theoriestunde' : type === 'fahrstunde' ? 'Fahrstunde' : 'Termin';
+      const typeColor = type === 'theorie' ? '#3b82f6' : '#E8A000';
+
+      modalContent.innerHTML = `
+        <div class="appt-modal-type" style="color:${typeColor}">${typeLabel}</div>
+        <div class="appt-modal-title">${title}</div>
+        ${dateFormatted ? `<div class="appt-modal-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${dateFormatted}</div>` : ''}
+        <div class="appt-modal-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${time} Uhr${duration ? ` · ${duration} Minuten` : ''}</div>
+        ${instructor ? `<div class="appt-modal-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>${instructor}</div>` : ''}
+        ${description ? `<div class="appt-modal-desc">${description}</div>` : ''}
+      `;
+      backdrop.classList.add('active');
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      backdrop.classList.remove('active');
+      modal.classList.remove('active');
+    }
+
+    document.getElementById('weekGrid').addEventListener('click', e => {
+      const pill = e.target.closest('.appt-pill');
+      if (pill) openModal(pill);
+    });
+    backdrop.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   })();
   </script>
 </body>
