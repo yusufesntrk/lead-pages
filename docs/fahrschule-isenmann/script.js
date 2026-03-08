@@ -8,6 +8,14 @@
   const assembly = document.getElementById('carAssembly');
   if (!track || !hero || !assembly) return;
 
+  // Auf Mobile: kein Scroll-Hijack, hero normal positionieren
+  if (window.innerWidth <= 768) {
+    track.style.height = 'auto';
+    hero.style.position = 'relative';
+    hero.style.top = 'auto';
+    return;
+  }
+
   let done = false;
 
   function update() {
@@ -49,7 +57,16 @@
   }
 
   window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', update);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768) {
+      track.style.height = 'auto';
+      hero.style.position = 'relative';
+      hero.style.top = 'auto';
+    } else {
+      track.style.height = '';
+      update();
+    }
+  });
   update();
 })();
 
