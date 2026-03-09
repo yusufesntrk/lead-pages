@@ -25,7 +25,7 @@
   --font-body: 'Inter', sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; overflow-x: hidden; }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
