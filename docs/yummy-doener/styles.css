@@ -1226,6 +1226,9 @@ h1, h2, h3, h4, h5, h6 {
         height: auto;
         max-height: 45vh;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .hero-image img {
