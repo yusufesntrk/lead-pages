@@ -70,6 +70,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 body {
@@ -1206,50 +1207,74 @@ h1, h2, h3, h4, h5, h6 {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Hero Mobile */
+    /* Hero Mobile - Bild zuerst, sofort sichtbar */
     .hero {
         height: auto;
-        min-height: 100dvh;
+        min-height: auto;
     }
 
     .hero-split {
         grid-template-columns: 1fr;
-        padding-top: calc(var(--nav-height) + 2rem);
-        padding-bottom: 2rem;
+        padding-top: var(--nav-height);
+        padding-bottom: 1.5rem;
+        gap: 0;
+    }
+
+    .hero-image {
+        order: -1;
+        padding-top: 1rem;
+        height: auto;
+        max-height: 45vh;
+        overflow: hidden;
+    }
+
+    .hero-image img {
+        max-height: 40vh;
+        margin: 0 auto;
     }
 
     .hero-content {
-        padding-top: 0;
+        padding-top: 1rem;
         text-align: center;
         max-width: 100%;
     }
 
-    .hero-title {
-        font-size: clamp(2.5rem, 10vw, 3.5rem);
+    .hero-script {
+        font-size: 1.2rem;
+        margin-bottom: 0.25rem;
     }
 
-    .hero-script {
-        font-size: clamp(1.3rem, 5vw, 2rem);
+    .hero-title {
+        font-size: clamp(2.2rem, 9vw, 3rem);
+        margin: 0.25rem 0 0.5rem;
+    }
+
+    .hero-text {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.5;
     }
 
     .hero-actions {
         flex-direction: column;
         align-items: center;
+        gap: 0.5rem;
+    }
+
+    .hero-actions .btn {
+        padding: 0.8rem 1.5rem;
     }
 
     .hero-badge {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: var(--space-sm);
+        margin-top: 1.25rem;
+        justify-content: center;
     }
 
-    .hero-image {
-        padding-top: 0;
-        height: auto;
-    }
-
-    .hero-image img {
-        max-height: 50vh;
+    .hero-badge-text {
+        font-size: 0.75rem;
     }
 
     /* Grids */
@@ -1308,6 +1333,22 @@ h1, h2, h3, h4, h5, h6 {
         padding-right: 0;
     }
 
+    .hero-image {
+        max-height: 40vh;
+    }
+
+    .hero-image img {
+        max-height: 35vh;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 9vw, 2.5rem);
+    }
+
+    .hero-text {
+        font-size: 0.85rem;
+    }
+
     .footer-grid--simple {
         grid-template-columns: 1fr;
     }
@@ -1324,5 +1365,17 @@ h1, h2, h3, h4, h5, h6 {
 
     .hours-card {
         padding: var(--space-lg);
+    }
+
+    .section-header {
+        margin-bottom: var(--space-2xl);
+    }
+
+    .section--testimonials {
+        padding: 3rem 1rem;
+    }
+
+    .story-stats {
+        align-items: center;
     }
 }
